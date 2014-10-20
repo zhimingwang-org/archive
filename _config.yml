@@ -2,12 +2,12 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yoursite.com
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+url: http://zmwangx.github.io
+title: Daily (?) Complaints (?)
+subtitle: Mostly technical stuff. Mostly negative (really?).
+author: Zhiming Wang
 simple_search: https://www.google.com/search
-description:
+description: Yet another crappy blog.
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
@@ -64,7 +64,7 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
 # ----------------------- #
 
 # Github repositories
-github_user:
+github_user: zmwangx
 github_repo_count: 0
 github_show_profile_link: true
 github_skip_forks: true
