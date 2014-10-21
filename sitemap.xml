@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://zmwangx.github.io/blog/2014/10/21/get-rolling/</loc>
+    <lastmod>2014-10-21T11:40:14-07:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>http://zmwangx.github.io/blog/2014/10/20/help-mou-hit-1-dot-0/</loc>
     <lastmod>2014-10-20T17:37:45-07:00</lastmod>
     <priority>0.8</priority>
@@ -12,13 +17,13 @@
   </url>
   <url>
     <loc>http://zmwangx.github.io/blog/archives/</loc>
-    <lastmod>2014-10-21T11:36:12-07:00</lastmod>
+    <lastmod>2014-10-21T12:44:44-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://zmwangx.github.io/</loc>
-    <lastmod>2014-10-21T11:36:12-07:00</lastmod>
+    <lastmod>2014-10-21T12:44:44-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
