@@ -3,8 +3,7 @@ layout: post
 title: "Hello, Octopress!"
 date: 2014-10-20 16:53:00 -0700
 comments: true
-categories: Misc
-tags: ['first post', 'octopress', 'tumblr']
+categories: ['first post', 'octopress', 'tumblr']
 ---
 This post marks my transition from Tumblr to Octopress & GitHub Pages.
 
