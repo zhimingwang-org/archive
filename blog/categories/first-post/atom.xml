@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Daily (?) Complaints (?)]]></title>
-  <link href="http://zmwangx.github.io/atom.xml" rel="self"/>
+  <title><![CDATA[Category: First Post | Daily (?) Complaints (?)]]></title>
+  <link href="http://zmwangx.github.io/blog/categories/first-post/atom.xml" rel="self"/>
   <link href="http://zmwangx.github.io/"/>
   <updated>2014-10-20T17:35:04-07:00</updated>
   <id>http://zmwangx.github.io/</id>
@@ -36,24 +36,18 @@
 
 <p>(Let me give it a try first.)</p>
 
-<figure class='code'><figcaption><span>hello.c</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello, Octopress!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+<pre><code class="C hello.c">#include &lt;stdio.h&gt;
 
+int main(int argc, char **argv) {
+    printf("Hello, Octopress!\n")
+}
+</code></pre>
 
 <p>Gorgeous. I&rsquo;ll get to the theme customization later. I&rsquo;m actually busy as crazy this week.</p>
 
 <p>Before I close this post, let me also try to embed a random gist I authored yesterday (for brewing):</p>
 
-<div><script src='https://gist.github.com/828fd00bdecd6611cf40.js?file=brew.sh'></script>
+<p><div><script src='https://gist.github.com/828fd00bdecd6611cf40.js?file=brew.sh'></script>
 <noscript><pre><code>#!/usr/bin/env bash
 
 progname=$(basename &quot;$0&quot;)
@@ -244,7 +238,7 @@ execute &quot;sudo chown root:wheel ${prefix}/htop &amp;&amp; sudo chmod u+s ${p
 
 echo -n &quot;${caveats}&quot; &gt;&amp;2
 </code></pre></noscript></div>
-
+</p>
 ]]></content>
   </entry>
   
