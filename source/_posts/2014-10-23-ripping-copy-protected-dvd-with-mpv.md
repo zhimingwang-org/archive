@@ -11,7 +11,7 @@ So, can we proceed from here? Most certainly. I noticed that although `mpv` won�
 
     brew install mpv --with-libdvdnav --with-libdvdread
 
-For better performance and backup, I first cloned the DVD into a `.cdr` image (DVD/CD-R Master Image) using Disk Utilities (I've never tried creating/cloning image with `diskutil` CLI, so nothing to report on that). Then I mount the image, say the mount point is `/Volumes/UPBX_80165`. As said I can hand that mount point to `mpv` and it simply works, but how about extracting the MPEG-2 video stream? The `--stream-capture=<filename>` option is there just for you. In principle `--stream-dump=<filename>` should also work, but without monitoring the output and controlling where to end, I’m not sure if it will ever terminate itself when reading from a DVD (when I stream captured the DVD it just kept repeating itself until I explicitly quit with `q`). So that's it:
+For better performance and backup, I first cloned the DVD into a `.cdr` image (DVD/CD-R Master Image) using Disk Utility (I've never tried creating/cloning image with `diskutil` CLI, so nothing to report on that). Then I mount the image, say the mount point is `/Volumes/UPBX_80165`. As said I can hand that mount point to `mpv` and it simply works, but how about extracting the MPEG-2 video stream? The `--stream-capture=<filename>` option is there just for you. In principle `--stream-dump=<filename>` should also work, but without monitoring the output and controlling where to end, I’m not sure if it will ever terminate itself when reading from a DVD (when I stream captured the DVD it just kept repeating itself until I explicitly quit with `q`). So that's it:
 
     mpv --stream-capture=dump.mpg /Volumes/UPBX_80165
 
