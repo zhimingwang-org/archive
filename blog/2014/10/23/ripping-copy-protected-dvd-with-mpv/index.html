@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Help Mou Hit 1.0 - Daily (?) Complaints (?)</title>
+  <title>Ripping Copy-protected DVD With Mpv - Daily (?) Complaints (?)</title>
   <meta name="author" content="Zhiming Wang">
 
   
-  <meta name="description" content="Quick call for Mou 1.0 fundraiser on Indiegogo. At the time of writing, it has raised $6,178/$20,000, and has 39 days to go (with 21 already passed &hellip;">
+  <meta name="description" content="Yesterday I was trying to rip a music video off a newly released DVD from Japan. I knew very little about how DRM (in this case, CSS) actually works &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://zmwangx.github.io/blog/2014/10/20/help-mou-hit-1-dot-0">
+  <link rel="canonical" href="http://zmwangx.github.io/blog/2014/10/23/ripping-copy-protected-dvd-with-mpv">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Daily (?) Complaints (?)" type="application/atom+xml">
@@ -80,7 +80,7 @@
   
   <header>
     
-      <h1 class="entry-title">Help Mou Hit 1.0</h1>
+      <h1 class="entry-title">Ripping Copy-protected DVD With Mpv</h1>
     
     
       <p class="meta">
@@ -89,7 +89,7 @@
 
 
 
-<time class='entry-date' datetime='2014-10-20T17:37:45-07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:37 pm</span></time>
+<time class='entry-date' datetime='2014-10-23T20:03:22-07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>8:03 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://zmwangx.github.io">Comments</a>
@@ -99,11 +99,19 @@
   </header>
 
 
-<div class="entry-content"><p>Quick call for <a href="https://www.indiegogo.com/projects/mou-1-0-markdown-editor-on-os-x-for-you">Mou 1.0 fundraiser</a> on Indiegogo. At the time of writing, it has raised $6,178/$20,000, and has 39 days to go (with 21 already passed).</p>
+<div class="entry-content"><p>Yesterday I was trying to rip a music video off a newly released DVD from Japan. I knew very little about how DRM (in this case, CSS) actually works and how to break it. I tried to operate directly on the VOB file with <code>ffmpeg</code> or <code>mpv</code> but both failed with a lot of header errors — I suppose more files than the VOB are required for authentication? Whatever, maybe I’ll learn the details in the future, but I don’t see the need since DVD is an outdated technology anyway.</p>
 
-<p>I&rsquo;m actually writing this post in Mou right now. It&rsquo;s far less powerful than Emacs, but when I want preview-on-the-fly, Mou is the Markdown editor to go. Right now it&rsquo;s far from perfect; for instance, GFM fenced blocks (now included in <a href="http://commonmark.org">CommonMark</a>) are not supported, so you get nonsense preview when your code block is fenced rather than indented. (Of course, Mou is even less suitable for editing an Octopress post due to the yaml metadata upfront, but that&rsquo;s not a big deal.)</p>
+<p>So, can we proceed from here? Most certainly. I noticed that although <code>mpv</code> won’t let me play a single VOB, I can simply hand it the DVD mount point, and it will play the whole DVD seamlessly. <strong>Caution:</strong> <code>mpv</code> needs to be compiled with <code>libdvdnav</code> and <code>libdvdread</code>! With brew you just do</p>
 
-<p>Let&rsquo;s hope for Mou hitting the 1.0 mark.</p>
+<pre><code>brew install mpv --with-libdvdnav --with-libdvdread
+</code></pre>
+
+<p>For better performance and backup, I first cloned the DVD into a <code>.cdr</code> image (DVD/CD-R Master Image) using Disk Utilities (I&rsquo;ve never tried creating/cloning image with <code>diskutil</code> CLI, so nothing to report on that). Then I mount the image, say the mount point is <code>/Volumes/UPBX_80165</code>. As said I can hand that mount point to <code>mpv</code> and it simply works, but how about extracting the MPEG-2 video stream? The <code>--stream-capture=&lt;filename&gt;</code> option is there just for you. In principle <code>--stream-dump=&lt;filename&gt;</code> should also work, but without monitoring the output and controlling where to end, I’m not sure if it will ever terminate itself when reading from a DVD (when I stream captured the DVD it just kept repeating itself until I explicitly quit with <code>q</code>). So that&rsquo;s it:</p>
+
+<pre><code>mpv --stream-capture=dump.mpg /Volumes/UPBX_80165
+</code></pre>
+
+<p>Then you can torture the <code>dump.mpg</code> with <code>ffmpeg</code> however you want. The most obvious thing is to cut out the music video part, and put into a new container like MPEG-TS. Or transcode it to H.264 for your iPhone. The nice thing about <code>dump.mpg</code> is that, unless I got it wrong, there&rsquo;s no quality loss here — the only thing you got rid of is that goddamn DRM.</p>
 </div>
 
 
@@ -119,12 +127,12 @@
 
 
 
-<time class='entry-date' datetime='2014-10-20T17:37:45-07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:37 pm</span></time>
+<time class='entry-date' datetime='2014-10-23T20:03:22-07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>8:03 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/fundraiser/'>fundraiser</a>, <a class='category' href='/blog/categories/indiegogo/'>indiegogo</a>, <a class='category' href='/blog/categories/markdown/'>markdown</a>, <a class='category' href='/blog/categories/mou/'>mou</a>, <a class='category' href='/blog/categories/text-editor/'>text editor</a>
+    <a class='category' href='/blog/categories/copyright/'>copyright</a>, <a class='category' href='/blog/categories/drm/'>drm</a>, <a class='category' href='/blog/categories/dvd/'>dvd</a>, <a class='category' href='/blog/categories/ffmpeg/'>ffmpeg</a>, <a class='category' href='/blog/categories/mplayer/'>mplayer</a>, <a class='category' href='/blog/categories/mpv/'>mpv</a>, <a class='category' href='/blog/categories/transcoding/'>transcoding</a>, <a class='category' href='/blog/categories/video/'>video</a>
   
 </span>
 
@@ -133,7 +141,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://zmwangx.github.io/blog/2014/10/20/help-mou-hit-1-dot-0/" data-via="" data-counturl="http://zmwangx.github.io/blog/2014/10/20/help-mou-hit-1-dot-0/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://zmwangx.github.io/blog/2014/10/23/ripping-copy-protected-dvd-with-mpv/" data-via="" data-counturl="http://zmwangx.github.io/blog/2014/10/23/ripping-copy-protected-dvd-with-mpv/" >Tweet</a>
   
   
   
@@ -142,10 +150,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/10/20/hello-octopress/" title="Previous Post: Hello, Octopress!">&laquo; Hello, Octopress!</a>
+        <a class="basic-alignment left" href="/blog/2014/10/21/get-rolling/" title="Previous Post: Get rolling">&laquo; Get rolling</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/10/21/get-rolling/" title="Next Post: Get rolling">Get rolling &raquo;</a>
       
     </p>
   </footer>
@@ -236,8 +242,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://zmwangx.github.io/blog/2014/10/20/help-mou-hit-1-dot-0/';
-        var disqus_url = 'http://zmwangx.github.io/blog/2014/10/20/help-mou-hit-1-dot-0/';
+        var disqus_identifier = 'http://zmwangx.github.io/blog/2014/10/23/ripping-copy-protected-dvd-with-mpv/';
+        var disqus_url = 'http://zmwangx.github.io/blog/2014/10/23/ripping-copy-protected-dvd-with-mpv/';
         var disqus_script = 'embed.js';
       
     (function () {

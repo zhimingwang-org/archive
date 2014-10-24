@@ -4,7 +4,7 @@
   <title><![CDATA[Daily (?) Complaints (?)]]></title>
   <link href="http://zmwangx.github.io/atom.xml" rel="self"/>
   <link href="http://zmwangx.github.io/"/>
-  <updated>2014-10-21T16:03:47-07:00</updated>
+  <updated>2014-10-23T20:42:07-07:00</updated>
   <id>http://zmwangx.github.io/</id>
   <author>
     <name><![CDATA[Zhiming Wang]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ripping Copy-protected DVD With Mpv]]></title>
+    <link href="http://zmwangx.github.io/blog/2014/10/23/ripping-copy-protected-dvd-with-mpv/"/>
+    <updated>2014-10-23T20:03:22-07:00</updated>
+    <id>http://zmwangx.github.io/blog/2014/10/23/ripping-copy-protected-dvd-with-mpv</id>
+    <content type="html"><![CDATA[<p>Yesterday I was trying to rip a music video off a newly released DVD from Japan. I knew very little about how DRM (in this case, CSS) actually works and how to break it. I tried to operate directly on the VOB file with <code>ffmpeg</code> or <code>mpv</code> but both failed with a lot of header errors — I suppose more files than the VOB are required for authentication? Whatever, maybe I’ll learn the details in the future, but I don’t see the need since DVD is an outdated technology anyway.</p>
+
+<p>So, can we proceed from here? Most certainly. I noticed that although <code>mpv</code> won’t let me play a single VOB, I can simply hand it the DVD mount point, and it will play the whole DVD seamlessly. <strong>Caution:</strong> <code>mpv</code> needs to be compiled with <code>libdvdnav</code> and <code>libdvdread</code>! With brew you just do</p>
+
+<pre><code>brew install mpv --with-libdvdnav --with-libdvdread
+</code></pre>
+
+<p>For better performance and backup, I first cloned the DVD into a <code>.cdr</code> image (DVD/CD-R Master Image) using Disk Utilities (I&rsquo;ve never tried creating/cloning image with <code>diskutil</code> CLI, so nothing to report on that). Then I mount the image, say the mount point is <code>/Volumes/UPBX_80165</code>. As said I can hand that mount point to <code>mpv</code> and it simply works, but how about extracting the MPEG-2 video stream? The <code>--stream-capture=&lt;filename&gt;</code> option is there just for you. In principle <code>--stream-dump=&lt;filename&gt;</code> should also work, but without monitoring the output and controlling where to end, I’m not sure if it will ever terminate itself when reading from a DVD (when I stream captured the DVD it just kept repeating itself until I explicitly quit with <code>q</code>). So that&rsquo;s it:</p>
+
+<pre><code>mpv --stream-capture=dump.mpg /Volumes/UPBX_80165
+</code></pre>
+
+<p>Then you can torture the <code>dump.mpg</code> with <code>ffmpeg</code> however you want. The most obvious thing is to cut out the music video part, and put into a new container like MPEG-TS. Or transcode it to H.264 for your iPhone. The nice thing about <code>dump.mpg</code> is that, unless I got it wrong, there&rsquo;s no quality loss here — the only thing you got rid of is that goddamn DRM.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Get Rolling]]></title>
