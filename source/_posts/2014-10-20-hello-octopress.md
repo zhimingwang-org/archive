@@ -7,7 +7,7 @@ categories: ['first post', 'octopress', 'tumblr']
 ---
 This post marks my transition from Tumblr to Octopress & GitHub Pages.
 
-I've been microblogging for a while at [zshello3.tumblr.com](http://zshello3.tumblr.com) for a while and I liked it. Not because of readers, which I suspect I have none; but there are certainly a huge amount of information I want to dump off my mind. Back in the days I *loved* my handwritten journals, and I really poured a lot into them. Peers were usually amazed when they saw my journals. These days typing seems to be a more robust solution to keeping my thoughts, especially when the thoughts are mostly technical.
+I've been microblogging for a while at [zshello3.tumblr.com](http://zshello3.tumblr.com) and I liked it. Not because of readers, which I suspect I have none; but there are certainly a huge amount of information I want to dump off my mind. Back in the days I *loved* my handwritten journals, and I really poured a lot into them. Peers were usually amazed when they saw my journals. These days typing seems to be a more robust solution to keeping my thoughts, especially when the thoughts are mostly technical.
 
 Tumblr is awesome. Compared to WordPress (.com for pedantic people), it is both lightweight and beautiful (you get all the customization for free), so you quickly get to the writing. However, it is not designed for geeks, so
 
