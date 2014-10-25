@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Mpv - Daily (?) Complaints (?)</title>
+  <title>OS X Package Receipts - Daily (?) Complaints (?)</title>
   <meta name="author" content="Zhiming Wang">
 
   
-  <meta name="description" content="Category: mpv">
+  <meta name="description" content="I just learned something new. Whenever you install a pkg on OS X, OS X stores a receipt of what was installed in /var/db/receipts (I&rsquo;m running &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://zmwangx.github.io/blog/categories/mpv">
+  <link rel="canonical" href="http://zmwangx.github.io/blog/2014/10/25/os-x-package-receipts">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Daily (?) Complaints (?)" type="application/atom+xml">
@@ -76,36 +76,93 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Mpv</h1>
+    
+      <h1 class="entry-title">OS X Package Receipts</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-10-25T13:26:02-07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:26 pm</span></time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://zmwangx.github.io">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>I just learned something new. Whenever you install a <code>pkg</code> on OS X, OS X stores a receipt of what was installed in <code>/var/db/receipts</code> (I&rsquo;m running OS X 10.9.5 at the time of writing), called a <strong>bom</strong> — bill of materials (I’d rather call it a manifest, whatever). This feature was introduced in NeXTSTEP. From <code>man 5 bom</code>:</p>
 
-  
-  <h2>2014</h2>
+<blockquote><p>The Mac OS X Installer uses a file system &ldquo;bill of materials&rdquo; to determine which files to install, remove, or upgrade. A bill of materials, <strong>bom</strong>, contains all the files within a directory, along with some information about each file. File information includes: the file&rsquo;s UNIX permissions, its owner and group, its size, its time of last modification, and so on.  Also included are a checksum of each file and information about hard links.</p></blockquote>
 
-<article>
-  
-<h1><a href="/blog/2014/10/23/ripping-copy-protected-dvd-with-mpv/">Ripping Copy-protected DVD With Mpv</a></h1>
-<time datetime="2014-10-23T20:03:22-07:00" pubdate><span class='month'>Oct</span> <span class='day'>23</span> <span class='year'>2014</span></time>
+<p><code>man 5 bom</code> is actually badly maintained, as it says &ldquo;The bill of materials for installed packages are found within the package receipts located in /Library/Receipts,&rdquo; whereas those have been migrated to <code>/var/db/receipts</code> a long time ago.</p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/copyright/'>copyright</a>, <a class='category' href='/blog/categories/drm/'>drm</a>, <a class='category' href='/blog/categories/dvd/'>dvd</a>, <a class='category' href='/blog/categories/ffmpeg/'>ffmpeg</a>, <a class='category' href='/blog/categories/mplayer/'>mplayer</a>, <a class='category' href='/blog/categories/mpv/'>mpv</a>, <a class='category' href='/blog/categories/transcoding/'>transcoding</a>, <a class='category' href='/blog/categories/video/'>video</a></span>
-</footer>
+<p><code>.bom</code> files are binary, but you can access the contents via <code>lsbom</code>. For instance, to list the files installed,</p>
 
+<pre><code>lsbom -f /var/db/receipts/org.macports.MacPorts.bom
+</code></pre>
 
-</article>
+<p>Note that the paths printed are always relative to <code>/</code>. See <code>man 1 lsbom</code> for detailed option listing.</p>
 
+<p>(Beware when you try to clean up unwanted packages using the <code>lsbom</code> listing. Packages might overwrite files, so make sure you review the listing first and know what you are doing. &ldquo;Knowing what you are doing&rdquo; is the prerequisite for using <code>sudo</code> anyway.)</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Zhiming Wang</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-10-25T13:26:02-07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:26 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/install/'>install</a>, <a class='category' href='/blog/categories/os-x/'>os x</a>, <a class='category' href='/blog/categories/package/'>package</a>, <a class='category' href='/blog/categories/uninstall/'>uninstall</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://zmwangx.github.io/blog/2014/10/25/os-x-package-receipts/" data-via="" data-counturl="http://zmwangx.github.io/blog/2014/10/25/os-x-package-receipts/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/10/24/charles-munger-donated-$65m-to-kitp/" title="Previous Post: Charles Munger donated $65M to KITP">&laquo; Charles Munger donated $65M to KITP</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -189,7 +246,10 @@
       var disqus_shortname = 'zmwangx';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://zmwangx.github.io/blog/2014/10/25/os-x-package-receipts/';
+        var disqus_url = 'http://zmwangx.github.io/blog/2014/10/25/os-x-package-receipts/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

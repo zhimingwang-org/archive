@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Os X | Daily (?) Complaints (?)]]></title>
+  <link href="http://zmwangx.github.io/blog/categories/os-x/atom.xml" rel="self"/>
+  <link href="http://zmwangx.github.io/"/>
+  <updated>2014-10-25T13:45:51-07:00</updated>
+  <id>http://zmwangx.github.io/</id>
+  <author>
+    <name><![CDATA[Zhiming Wang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[OS X Package Receipts]]></title>
+    <link href="http://zmwangx.github.io/blog/2014/10/25/os-x-package-receipts/"/>
+    <updated>2014-10-25T13:26:02-07:00</updated>
+    <id>http://zmwangx.github.io/blog/2014/10/25/os-x-package-receipts</id>
+    <content type="html"><![CDATA[<p>I just learned something new. Whenever you install a <code>pkg</code> on OS X, OS X stores a receipt of what was installed in <code>/var/db/receipts</code> (I&rsquo;m running OS X 10.9.5 at the time of writing), called a <strong>bom</strong> — bill of materials (I’d rather call it a manifest, whatever). This feature was introduced in NeXTSTEP. From <code>man 5 bom</code>:</p>
+
+<blockquote><p>The Mac OS X Installer uses a file system &ldquo;bill of materials&rdquo; to determine which files to install, remove, or upgrade. A bill of materials, <strong>bom</strong>, contains all the files within a directory, along with some information about each file. File information includes: the file&rsquo;s UNIX permissions, its owner and group, its size, its time of last modification, and so on.  Also included are a checksum of each file and information about hard links.</p></blockquote>
+
+<p><code>man 5 bom</code> is actually badly maintained, as it says &ldquo;The bill of materials for installed packages are found within the package receipts located in /Library/Receipts,&rdquo; whereas those have been migrated to <code>/var/db/receipts</code> a long time ago.</p>
+
+<p><code>.bom</code> files are binary, but you can access the contents via <code>lsbom</code>. For instance, to list the files installed,</p>
+
+<pre><code>lsbom -f /var/db/receipts/org.macports.MacPorts.bom
+</code></pre>
+
+<p>Note that the paths printed are always relative to <code>/</code>. See <code>man 1 lsbom</code> for detailed option listing.</p>
+
+<p>(Beware when you try to clean up unwanted packages using the <code>lsbom</code> listing. Packages might overwrite files, so make sure you review the listing first and know what you are doing. &ldquo;Knowing what you are doing&rdquo; is the prerequisite for using <code>sudo</code> anyway.)</p>
+]]></content>
+  </entry>
+  
+</feed>
