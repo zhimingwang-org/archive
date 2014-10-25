@@ -5,6 +5,20 @@ date: 2014-10-23 20:03:22 -0700
 comments: true
 categories:  [video, ffmpeg, mpv, mplayer, dvd, transcoding, copyright, drm]
 ---
+**_10/25/2014 update:_**
+
+I'm such an idiot. `vobcopy` is the real, hassel-free way to go.
+
+    brew install vobcopy
+
+Then, with the DVD mounted,
+
+> **vobcopy** without any options will copy the title with the most chapters into files of 2GB size into the current working directory.
+
+Of course there are a ton of options, but I generally hate to browse through options unless I have to, so I'm happy with calling without argument.
+
+---
+
 Yesterday I was trying to rip a music video off a newly released DVD from Japan. I knew very little about how DRM (in this case, CSS) actually works and how to break it. I tried to operate directly on the VOB file with `ffmpeg` or `mpv` but both failed with a lot of header errors — I suppose more files than the VOB are required for authentication? Whatever, maybe I’ll learn the details in the future, but I don’t see the need since DVD is an outdated technology anyway.
 
 So, can we proceed from here? Most certainly. I noticed that although `mpv` won’t let me play a single VOB, I can simply hand it the DVD mount point, and it will play the whole DVD seamlessly. **Caution:** `mpv` needs to be compiled with `libdvdnav` and `libdvdread`! With brew you just do
