@@ -3,7 +3,7 @@ layout: post
 title: "OneDrive goes unlimited"
 date: 2014-10-27 09:44:51 -0700
 comments: true
-categories: [onedrive, 'google drive', icloud, storage, office, 'office 365']
+categories: [onedrive, 'google drive', icloud, storage, office, 'office 365', microsoft, apple, google]
 ---
 The OneDrive team just [announced on their blog](https://blog.onedrive.com/office-365-onedrive-unlimited-storage/) that
 
