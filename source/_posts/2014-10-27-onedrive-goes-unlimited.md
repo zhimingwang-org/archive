@@ -5,6 +5,11 @@ date: 2014-10-27 09:44:51 -0700
 comments: true
 categories: [onedrive, 'google drive', icloud, storage, office, 'office 365', microsoft, apple, google]
 ---
+**10/28/2014 Update:**
+
+Yesterday Microsoft pushed an update to OneDrive.app to MAS. After uninstalling, reinstalling, and wiping the 10 GB folder I'd like to sync (that's for photos; I upload videos via the web interface) on both client and server sides, it actually began to work. The speed was around 1 MB/s during my last sync of 10 GB worth of data. Not fast, but I will be fairly satisfied if it can keep up with that speed. Time will tell.
+
+---
 The OneDrive team just [announced on their blog](https://blog.onedrive.com/office-365-onedrive-unlimited-storage/) that
 
 > Today, storage limits just became a thing of the past with Office 365. Moving forward, all Office 365 customers will get unlimited OneDrive storage at no additional cost.
