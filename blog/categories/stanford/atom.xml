@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Stanford | Daily (?) Complaints (?)]]></title>
+  <link href="http://zmwangx.github.io/blog/categories/stanford/atom.xml" rel="self"/>
+  <link href="http://zmwangx.github.io/"/>
+  <updated>2014-10-29T12:00:38-07:00</updated>
+  <id>http://zmwangx.github.io/</id>
+  <author>
+    <name><![CDATA[Zhiming Wang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Fun]]></title>
+    <link href="http://zmwangx.github.io/blog/2014/10/29/fun/"/>
+    <updated>2014-10-29T11:26:29-07:00</updated>
+    <id>http://zmwangx.github.io/blog/2014/10/29/fun</id>
+    <content type="html"><![CDATA[<p>This happened in yesterday&rsquo;s Math 210A lecture.</p>
+
+<blockquote><p>Ravi: I won&rsquo;t be here next Thursday.<br>
+Someone: Will there be a lecture?<br>
+Ravi: Yeah, Brian Conrad will give a lecture. Don&rsquo;t tell him, he don&rsquo;t know this yet.</p></blockquote>
+
+<p>&hellip;</p>
+]]></content>
+  </entry>
+  
+</feed>
