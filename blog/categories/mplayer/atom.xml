@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mplayer | Daily (?) Complaints (?)]]></title>
   <link href="http://zmwangx.github.io/blog/categories/mplayer/atom.xml" rel="self"/>
   <link href="http://zmwangx.github.io/"/>
-  <updated>2014-11-02T17:28:20-08:00</updated>
+  <updated>2014-11-02T17:34:49-08:00</updated>
   <id>http://zmwangx.github.io/</id>
   <author>
     <name><![CDATA[Zhiming Wang]]></name>
@@ -18,7 +18,13 @@
     <link href="http://zmwangx.github.io/blog/2014/10/23/ripping-copy-protected-dvd-with-mpv/"/>
     <updated>2014-10-23T20:03:22-07:00</updated>
     <id>http://zmwangx.github.io/blog/2014/10/23/ripping-copy-protected-dvd-with-mpv</id>
-    <content type="html"><![CDATA[<p><strong><em>10/25/2014 update:</em></strong></p>
+    <content type="html"><![CDATA[<p><strong><em>11/02/2014 update:</em></strong></p>
+
+<p>See <a href="/blog/2014/11/02/vobcopy-dvdbackup-etc/">this post</a> for issues, explanations, and more.</p>
+
+<hr />
+
+<p><strong><em>10/25/2014 update:</em></strong></p>
 
 <p>I&rsquo;m such an idiot. <code>vobcopy</code> is the real, hassel-free way to go.</p>
 
