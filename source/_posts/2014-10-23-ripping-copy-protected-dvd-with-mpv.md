@@ -5,6 +5,12 @@ date: 2014-10-23 20:03:22 -0700
 comments: true
 categories:  [video, ffmpeg, mpv, mplayer, dvd, transcoding, copyright, drm]
 ---
+**_11/02/2014 update:_**
+
+See [this post](/blog/2014/11/02/vobcopy-dvdbackup-etc/) for issues, explanations, and more.
+
+---
+
 **_10/25/2014 update:_**
 
 I'm such an idiot. `vobcopy` is the real, hassel-free way to go.

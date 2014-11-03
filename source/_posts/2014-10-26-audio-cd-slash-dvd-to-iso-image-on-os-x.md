@@ -5,6 +5,12 @@ date: 2014-10-26 23:29:47 -0700
 comments: true
 categories: [cd, dvd, iso, image, disk, diskutil, hdiutil, 'os x', filesystem, music]
 ---
+**_11/02/2014 update:_**
+
+See [this post](/blog/2014/11/02/vobcopy-dvdbackup-etc/) for issues, explanations, and more.
+
+---
+
 Today it occurred to me that I should make clones of my audio CDs (as stand-alone ISO images, I mean, not just rsyncing the AIFFs to subdirectories in `~/aud/lossless`). One can never have too many backups.
 
 Of course I could simply pack the aforementioned directories with AIFFs into ISOs — that’s not impressive. The end result might actually be the same, but I want to make the clones directly from the original CDs. It turns out that this is not so simple with the Disk Utility GUI — unlike DVDs, the “New Image” option is grayed out for Audio CDs. I’m not sure why, but maybe they want you to just use iTunes to deal with Audio CDs (which works well for all practical purposes — but theoretical curiosity never ends).
