@@ -4,7 +4,7 @@
   <title><![CDATA[Daily (?) Complaints (?)]]></title>
   <link href="http://zmwangx.github.io/atom.xml" rel="self"/>
   <link href="http://zmwangx.github.io/"/>
-  <updated>2014-11-05T11:20:09-08:00</updated>
+  <updated>2014-11-05T11:42:46-08:00</updated>
   <id>http://zmwangx.github.io/</id>
   <author>
     <name><![CDATA[Zhiming Wang]]></name>
@@ -85,16 +85,32 @@
 
 <p>There you go, a list of URIs you can use. Of course you can put this in a script to save some typing:</p>
 
-<div><script src='https://gist.github.com/0245788475f963210ed9.js'></script>
-<noscript><pre><code>#!/usr/bin/env bash
-# Takes a YouTube URI to a playlist (fairly liberal, it&#39;s fine as long
-# as the playlist id can be extracted), and prints a list of URIs in a
-# YouTube playlist.
-#
-# Requires youtube-dl 2014.10.24, tested on youtube-dl
-# 2014.11.02.1. Feature subject to change.
-youtube-dl -j --flat-playlist &quot;$1&quot; | jq -r &#39;.id&#39; | sed &#39;s_^_https://youtube.com/v/_&#39;</code></pre></noscript></div>
+<figure class='code'><figcaption><span>youtube-ls-playlist.sh</span><a href='https://gist.github.com/zmwangx/0245788475f963210ed9'>Gist</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/usr/bin/env bash</span>
+</span><span class='line'><span class="c"># Takes a YouTube URI to a playlist (fairly liberal, it&#39;s fine as long</span>
+</span><span class='line'><span class="c"># as the playlist id can be extracted), and prints a list of URIs in a</span>
+</span><span class='line'><span class="c"># YouTube playlist.</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c"># Requires youtube-dl 2014.10.24, tested on youtube-dl</span>
+</span><span class='line'><span class="c"># 2014.11.02.1. Feature subject to change.</span>
+</span><span class='line'>youtube-dl -j --flat-playlist <span class="s2">&quot;$1&quot;</span> <span class="p">|</span> jq -r <span class="s1">&#39;.id&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;s_^_https://youtube.com/v/_&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
 
+
+<p><strong><em>Aside:</em></strong> I first embedded the gist here, but <a href="http://i.imgur.com/m3cr0Im.png">it looked a bit off</a>. See <a href="https://github.com/imathis/octopress/issues/1392">imathis/octopress#1392</a>.</p>
+
+<blockquote><p>In the next version of the Gist tag plugin we are just downloading the gists and embedding them upon generation so we don&rsquo;t have to worry about GitHub going down and breaking all your gists, or changing the HTML and breaking all the styles.</p>
+
+<p>For the time being I suggest embedding your code snippets directly if you want them to look good.</p></blockquote>
+
+<p>Okay. End of aside.</p>
 
 <p>By the way, <code>youtube-dl</code> supports playlist bulk download natively. The reason I need a list of video ids or URIs, however, is that among other things, <code>youtube-dl</code> doesn&rsquo;t download highest resolution DASH video by default, so I have to rely on something like <code>youtube-dl-dash</code> (<a href="https://github.com/zmwangx/sh/blob/master/youtube-dl-dash">link</a>) to download the best version.</p>
 ]]></content>

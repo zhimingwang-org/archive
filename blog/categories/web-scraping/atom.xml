@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web Scraping | Daily (?) Complaints (?)]]></title>
   <link href="http://zmwangx.github.io/blog/categories/web-scraping/atom.xml" rel="self"/>
   <link href="http://zmwangx.github.io/"/>
-  <updated>2014-11-05T11:20:09-08:00</updated>
+  <updated>2014-11-05T11:42:46-08:00</updated>
   <id>http://zmwangx.github.io/</id>
   <author>
     <name><![CDATA[Zhiming Wang]]></name>
@@ -59,16 +59,23 @@ https://youtube.com/v/qyE7-auTIcc
 
 <p>There you go, a list of URIs you can use. Of course you can put this in a script to save some typing:</p>
 
-<p><div><script src='https://gist.github.com/0245788475f963210ed9.js'></script>
-<noscript><pre><code>#!/usr/bin/env bash
-# Takes a YouTube URI to a playlist (fairly liberal, it&#39;s fine as long
+<pre><code class="bash youtube-ls-playlist.sh https://gist.github.com/zmwangx/0245788475f963210ed9 Gist">#!/usr/bin/env bash
+# Takes a YouTube URI to a playlist (fairly liberal, it's fine as long
 # as the playlist id can be extracted), and prints a list of URIs in a
 # YouTube playlist.
 #
 # Requires youtube-dl 2014.10.24, tested on youtube-dl
 # 2014.11.02.1. Feature subject to change.
-youtube-dl -j --flat-playlist &quot;$1&quot; | jq -r &#39;.id&#39; | sed &#39;s_^_https://youtube.com/v/_&#39;</code></pre></noscript></div>
-</p>
+youtube-dl -j --flat-playlist "$1" | jq -r '.id' | sed 's_^_https://youtube.com/v/_'
+</code></pre>
+
+<p><strong><em>Aside:</em></strong> I first embedded the gist here, but <a href="http://i.imgur.com/m3cr0Im.png">it looked a bit off</a>. See <a href="https://github.com/imathis/octopress/issues/1392">imathis/octopress#1392</a>.</p>
+
+<blockquote><p>In the next version of the Gist tag plugin we are just downloading the gists and embedding them upon generation so we don&rsquo;t have to worry about GitHub going down and breaking all your gists, or changing the HTML and breaking all the styles.</p>
+
+<p>For the time being I suggest embedding your code snippets directly if you want them to look good.</p></blockquote>
+
+<p>Okay. End of aside.</p>
 
 <p>By the way, <code>youtube-dl</code> supports playlist bulk download natively. The reason I need a list of video ids or URIs, however, is that among other things, <code>youtube-dl</code> doesn&rsquo;t download highest resolution DASH video by default, so I have to rely on something like <code>youtube-dl-dash</code> (<a href="https://github.com/zmwangx/sh/blob/master/youtube-dl-dash">link</a>) to download the best version.</p>
 ]]></content>
