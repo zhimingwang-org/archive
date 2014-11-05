@@ -49,6 +49,23 @@ https://youtube.com/v/qyE7-auTIcc
 
 There you go, a list of URIs you can use. Of course you can put this in a script to save some typing:
 
-{% gist 0245788475f963210ed9 %}
+```bash youtube-ls-playlist.sh https://gist.github.com/zmwangx/0245788475f963210ed9 Gist
+#!/usr/bin/env bash
+# Takes a YouTube URI to a playlist (fairly liberal, it's fine as long
+# as the playlist id can be extracted), and prints a list of URIs in a
+# YouTube playlist.
+#
+# Requires youtube-dl 2014.10.24, tested on youtube-dl
+# 2014.11.02.1. Feature subject to change.
+youtube-dl -j --flat-playlist "$1" | jq -r '.id' | sed 's_^_https://youtube.com/v/_'
+```
+
+**_Aside:_** I first embedded the gist here, but [it looked a bit off](http://i.imgur.com/m3cr0Im.png). See [imathis/octopress#1392](https://github.com/imathis/octopress/issues/1392).
+
+> In the next version of the Gist tag plugin we are just downloading the gists and embedding them upon generation so we don't have to worry about GitHub going down and breaking all your gists, or changing the HTML and breaking all the styles.
+>
+> For the time being I suggest embedding your code snippets directly if you want them to look good.
+
+Okay. End of aside.
 
 By the way, `youtube-dl` supports playlist bulk download natively. The reason I need a list of video ids or URIs, however, is that among other things, `youtube-dl` doesn't download highest resolution DASH video by default, so I have to rely on something like `youtube-dl-dash` ([link](https://github.com/zmwangx/sh/blob/master/youtube-dl-dash)) to download the best version.
