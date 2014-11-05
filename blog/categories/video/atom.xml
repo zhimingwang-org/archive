@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Video | Daily (?) Complaints (?)]]></title>
   <link href="http://zmwangx.github.io/blog/categories/video/atom.xml" rel="self"/>
   <link href="http://zmwangx.github.io/"/>
-  <updated>2014-11-02T17:34:49-08:00</updated>
+  <updated>2014-11-05T11:20:09-08:00</updated>
   <id>http://zmwangx.github.io/</id>
   <author>
     <name><![CDATA[Zhiming Wang]]></name>
@@ -12,6 +12,67 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[List YouTube Playlist With Youtube-dl]]></title>
+    <link href="http://zmwangx.github.io/blog/2014/11/05/list-youtube-playlist-with-youtube-dl/"/>
+    <updated>2014-11-05T10:37:58-08:00</updated>
+    <id>http://zmwangx.github.io/blog/2014/11/05/list-youtube-playlist-with-youtube-dl</id>
+    <content type="html"><![CDATA[<p>Of course you are always welcome to use the <a href="https://developers.google.com/api-client-library/python/">Google APIs Client Library for Python</a> to wrestle with YouTube, which is usually pretty simple. (As an added bonus, YouTube has some <a href="https://developers.google.com/youtube/v3/code_samples/">nice runnable sample scripts</a> to get you started.) With the client library, listing videos in a YouTube playlist is a breeze.</p>
+
+<p>However, if you don&rsquo;t feel like writing code yourself (I usually don&rsquo;t feel like writing code myself until I use something often enough and existing solutions are suboptimal), <code>youtube-dl</code> recently added the functionality to list videos in a playlist with the <code>--flat-playlist</code> option.</p>
+
+<p><a href="https://github.com/rg3/youtube-dl/issues/4003#issuecomment-60322630">According to one of the project collaborators</a>, currently <code>--flat-playlist</code> is only helpful with the <code>-j</code> option for dumping JSON (so I suppose this feature is subject to change). For instance, <code>--flat-playlist</code> alone would emit something like this:</p>
+
+<pre><code class="bash">&gt; youtube-dl --flat-playlist 'https://www.youtube.com/watch?v=gdOwwI0ngqQ&amp;list=PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F'
+[youtube:playlist] Downloading playlist PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F - add --no-playlist to just download video gdOwwI0ngqQ
+[youtube:playlist] PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F: Downloading webpage
+[youtube:playlist] PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F: Downloading page #1
+[download] Downloading playlist: Cam By apinknomfan
+[youtube:playlist] playlist Cam By apinknomfan: Collected 119 video ids (downloading 119 of them)
+[download] Downloading video #1 of 119
+[download] Downloading video #2 of 119
+[download] Downloading video #3 of 119
+[download] Downloading video #4 of 119
+...
+</code></pre>
+
+<p>which doesn&rsquo;t really make sense — it tells you that it collected 119 video ids, and no more. Once you have <code>-j</code> on, you get JSON data that you can parse with anything:</p>
+
+<pre><code class="bash">&gt; youtube-dl -j --flat-playlist 'https://www.youtube.com/watch?v=gdOwwI0ngqQ&amp;list=PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F'
+{"url": "gdOwwI0ngqQ", "_type": "url", "ie_key": "Youtube", "id": "gdOwwI0ngqQ"}
+{"url": "j9l5nchv1Z8", "_type": "url", "ie_key": "Youtube", "id": "j9l5nchv1Z8"}
+{"url": "znW5ALwWNQw", "_type": "url", "ie_key": "Youtube", "id": "znW5ALwWNQw"}
+{"url": "qyE7-auTIcc", "_type": "url", "ie_key": "Youtube", "id": "qyE7-auTIcc"}
+...
+</code></pre>
+
+<p>The most straightforward way to parse this is to use a command line JSON parser, the best one being <a href="https://github.com/stedolan/jq">jq</a>:</p>
+
+<pre><code class="bash">&gt; youtube-dl -j --flat-playlist 'https://www.youtube.com/watch?v=gdOwwI0ngqQ&amp;list=PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F' | jq -r '.id' | sed 's_^_https://youtube.com/v/_'
+https://youtube.com/v/gdOwwI0ngqQ
+https://youtube.com/v/j9l5nchv1Z8
+https://youtube.com/v/znW5ALwWNQw
+https://youtube.com/v/qyE7-auTIcc
+...
+</code></pre>
+
+<p>There you go, a list of URIs you can use. Of course you can put this in a script to save some typing:</p>
+
+<p><div><script src='https://gist.github.com/0245788475f963210ed9.js'></script>
+<noscript><pre><code>#!/usr/bin/env bash
+# Takes a YouTube URI to a playlist (fairly liberal, it&#39;s fine as long
+# as the playlist id can be extracted), and prints a list of URIs in a
+# YouTube playlist.
+#
+# Requires youtube-dl 2014.10.24, tested on youtube-dl
+# 2014.11.02.1. Feature subject to change.
+youtube-dl -j --flat-playlist &quot;$1&quot; | jq -r &#39;.id&#39; | sed &#39;s_^_https://youtube.com/v/_&#39;</code></pre></noscript></div>
+</p>
+
+<p>By the way, <code>youtube-dl</code> supports playlist bulk download natively. The reason I need a list of video ids or URIs, however, is that among other things, <code>youtube-dl</code> doesn&rsquo;t download highest resolution DASH video by default, so I have to rely on something like <code>youtube-dl-dash</code> (<a href="https://github.com/zmwangx/sh/blob/master/youtube-dl-dash">link</a>) to download the best version.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Vobcopy, Dvdbackup, Etc.]]></title>
