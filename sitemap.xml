@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://zmwangx.github.io/blog/2014/11/10/average-phone-plan-in-the-u-dot-s-costs-ten-time-as-much-as-that-in-the-u-dot-k/</loc>
+    <lastmod>2014-11-10T11:11:46-08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>http://zmwangx.github.io/blog/2014/11/07/interstellar/</loc>
     <lastmod>2014-11-07T23:56:31-08:00</lastmod>
     <priority>0.8</priority>
@@ -87,13 +92,13 @@
   </url>
   <url>
     <loc>http://zmwangx.github.io/blog/archives/</loc>
-    <lastmod>2014-11-08T00:49:02-08:00</lastmod>
+    <lastmod>2014-11-10T11:17:14-08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://zmwangx.github.io/</loc>
-    <lastmod>2014-11-08T00:49:02-08:00</lastmod>
+    <lastmod>2014-11-10T11:17:14-08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Mobile | Daily (?) Complaints (?)]]></title>
+  <link href="http://zmwangx.github.io/blog/categories/mobile/atom.xml" rel="self"/>
+  <link href="http://zmwangx.github.io/"/>
+  <updated>2014-11-10T11:17:14-08:00</updated>
+  <id>http://zmwangx.github.io/</id>
+  <author>
+    <name><![CDATA[Zhiming Wang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Average Phone Plan in the U.S. Costs Ten Time as Much as That in the U.K.]]></title>
+    <link href="http://zmwangx.github.io/blog/2014/11/10/average-phone-plan-in-the-u-dot-s-costs-ten-time-as-much-as-that-in-the-u-dot-k/"/>
+    <updated>2014-11-10T11:11:46-08:00</updated>
+    <id>http://zmwangx.github.io/blog/2014/11/10/average-phone-plan-in-the-u-dot-s-costs-ten-time-as-much-as-that-in-the-u-dot-k</id>
+    <content type="html"><![CDATA[<p>To quote <a href="http://blogs.opera.com/news/2014/11/mobile-data-anyway/">Opera News</a>,</p>
+
+<blockquote><p>According to research by the International Telecommunication Union, the average phone plan with 500MB of data costs $85 in the United States, compared to $24.10 in China and $8.80 in the United Kingdom.</p></blockquote>
+
+<p>Holy shit!</p>
+]]></content>
+  </entry>
+  
+</feed>
