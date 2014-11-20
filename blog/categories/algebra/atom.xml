@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Algebra | Daily (?) Complaints (?)]]></title>
+  <link href="http://zmwangx.github.io/blog/categories/algebra/atom.xml" rel="self"/>
+  <link href="http://zmwangx.github.io/"/>
+  <updated>2014-11-19T23:27:34-08:00</updated>
+  <id>http://zmwangx.github.io/</id>
+  <author>
+    <name><![CDATA[Zhiming Wang]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Convolution of Irreducible Characters]]></title>
+    <link href="http://zmwangx.github.io/blog/2014/11/19/convolution-of-irreducible-characters/"/>
+    <updated>2014-11-19T20:40:37-08:00</updated>
+    <id>http://zmwangx.github.io/blog/2014/11/19/convolution-of-irreducible-characters</id>
+    <content type="html"><![CDATA[<p><strong><em>TL; DR:</em> The actual PDF write-up is <a href="/pdf/20141119-convolution-of-irreducible-characters.pdf">here</a>.</strong></p>
+
+<hr />
+
+<p>Yesterday I was trying to establish the formula for orthogonal primitive central idempotents of a group ring. It is possible to establish the result through the convolution of irreducible characters. However, I stuck quite a while on trying to work out the convolutions themselves. For a formidable and unenlightening proof using &ldquo;matrix entry functions&rdquo; (i.e., fix a basis, induce a matrix representation, and explicitly expand everything in matrix elements), see <a href="http://drexel28.wordpress.com/2011/03/02/representation-theory-using-orthogonality-relations-to-compute-convolutions-of-characters-and-matrix-entry-functions/">this post</a> (in fact, this is just one in a series of posts that lead up to the result). That&rsquo;s a really sad proof.</p>
+
+<p>It turns out that I really should have been working the other way round &mdash; first establish the orthogonal idempotents (the proof of which is really simple and elegant, I was just trapped in a single thread of thought), then use that to compute the convolution of irreducible characters.</p>
+
+<p>I feel like this is worth presenting (as the only proof I saw online is the really sad one above), so I TeX&#8217;ed it up. I tried to convert to MathJax HTML but eventually gave up (that&rsquo;s the story for another post). So, the write-up is in good ol&#8217; PDF, available <a href="/pdf/20141119-convolution-of-irreducible-characters.pdf">here</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>
