@@ -9,7 +9,7 @@
   <meta name="author" content="Zhiming Wang">
 
   
-  <meta name="description" content="Today I upgraded the RAM of my MacBook Pro mid-2012 to 2x8GB. I purchased the Crucial 16GB Kit (8GBx2) DDR3/DDR3L 1600 MHz (PC3-12800) CL11 SODIMM &hellip;">
+  <meta name="description" content="TL; DR: Jump to the paragraph beginning with “workaround”. I started a Day One journal two days ago. I&rsquo;ve heard good things about Day One, but &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,76 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/11/26/original-images-in-day-one-journal/">Original Images in Day One Journal</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-11-26T00:22:16-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:22 am</span></time>
+        
+           | <a href="/blog/2014/11/26/original-images-in-day-one-journal/#disqus_thread"
+             data-disqus-identifier="http://zmwangx.github.io/blog/2014/11/26/original-images-in-day-one-journal/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong>TL; DR:</strong> Jump to the paragraph beginning with “workaround”.</p>
+
+<hr />
+
+<p>I started a Day One journal two days ago. I&rsquo;ve heard good things about Day One, but after using it for a dozen entries, I&rsquo;m not that satisfied. For one thing, the editor is pretty horrible — keybindings aside, I can’t even find and replace?! And the overview doesn’t look very pretty if you are a heavy Markdown user (i.e., you have a lot of markups, e.g., italics and inline links) — the markups are displayed as is. Moreover, I can’t even <code>#</code> my title: it kills the bold font rendering in the bird’s-eye view. What a let down. Anyway, it’s better than nothing, and I hope it will help me keep on track. (I used to manage a Markdown journal in an encrypted sparse bundle, and it was a pain in the ass — mentally. Maybe some GUI sugar is necessary, although Day One is certainly not as pretty as advertised.) Also a private journal means more privacy — I certainly don’t want to publish everything I write on this public blog.</p>
+
+<p>Too much irrelevant talking. Onto one of the most annoying “features”, and the subject of this post. Images are automatically JPEG-compressed when imported into Day One. See <a href="https://dayone.zendesk.com/hc/en-us/articles/200145875-Are-photos-resized-when-imported-into-Day-One-">this support article</a>, which says:</p>
+
+<blockquote><p>Every photo imported into Day One is converted to JPEG format and resized to a maximum resolution of 2100 x 2100 pixels. The aspect ratio is maintained. We resize photos for more efficient sync and storage. At this size the average photo is about 700KB which means you can store:
+* Dropbox: 2,500+ photos using the free 2GB account
+* iCloud: 6,000+ photos using the free 5GB account</p></blockquote>
+
+<p>What the heck. Dude, who cares about storage these days? And transfer rate? I have a gigabit Ethernet. I certainly have much more than 2GB in my Dropbox. Even for those underpriviledged folks with only 2GB, remember, Day One allows <em>only one photo per entry</em>. That’s 2,500+ entries. At any rate, this should be an opt-in rather than an uncustomizable “feature”. I’m about to submit a ticket, but I doubt the outcome (I’m sure many people have submitted tickets about the plain text format even when password-protected, but so far, no response).</p>
+
+<p>With photos, most of the time JPEG compression works pretty well (but people surely want to keep photos in highest quality). However, I’m a techie guy, and my images are often screenshots or precision images, where JPEG compression totally ruins the sharpness.</p>
+
+<p>Workaround? Simple (yet a bit annoying). Day One lets you show the photo in Finder. So just go ahead and replace that compressed image with the original using <code>cp</code> or <code>mv</code>. I shouldn’t have needed to do this, but every piece of software comes with some annoyances. Overall Day One’s pretty good — at least it does what it was designed for, albeit not perfectly.</p>
+
+<hr />
+
+<p>By the way, here is my support ticket:</p>
+
+<blockquote><p>I understand that Day One does JPEG compression to every imported photo, as written in the support article “Are photos resized when imported into Day One?” <a href="http://goo.gl/Rzi017">http://goo.gl/Rzi017</a> . Yet I beg an option. The reason is that the benefits outlined in the support article are virtually non-existent:</p>
+
+<ul>
+<li><p>“More efficient sync and storage”: these days transfer rates are really high with SSDs and gigabit Ethernet, so reducing a few hundred KBs won’t help me the slightest;</p></li>
+<li><p>“Dropbox: 2,500+ photos using the free 2GB account”: I have much more than 2GB in my Dropbox; even if I only have 2GB, Day One allows only one photo per entry, and that means 2,500+ entries with photos, which is more than enough for most users, I suppose. By the way, Dropbox storage shouldn’t be your concern; people will buy more when they need more.</p></li>
+</ul>
+
+
+<p>And some of the bad things about JPEG compression:</p>
+
+<ul>
+<li><p>JPEG compression usually works pretty well with photos, but when I import high precision images, the sharpness is totally ruined;</p></li>
+<li><p>People want to keep their photos in highest quality, which is defeated by forced compression.</p></li>
+</ul>
+
+
+<p>I know an ugly workaround, which is simply replace the compressed image with the original in the filesystem. But I would love to see an option to import images as originals (in fact, compression should be an opt-in). Really, transfer rates and storage grow so rapidly that they are not people’s primary concerns anymore. (For your information, OneDrive recently rolled out truly unlimited storage to Office 365 subscribers. Online storage is that cheap.) Thanks.</p></blockquote>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -456,64 +526,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/11/05/apple-is-pushing-yosemite-hard/">Apple Is Pushing Yosemite Hard</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-11-05T22:17:01-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:17 pm</span></time>
-        
-           | <a href="/blog/2014/11/05/apple-is-pushing-yosemite-hard/#disqus_thread"
-             data-disqus-identifier="http://zmwangx.github.io/blog/2014/11/05/apple-is-pushing-yosemite-hard/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Apple is pushing Yosemite hard and secretly Yosemitizing things. iTunes was updated to its shiny new look on Mavericks, day one upon Yosemite launch. I liked it. The only problems I had with the new iTunes are:</p>
-
-<ul>
-<li><p>It&rsquo;s no longer possible to go to the Artists view and Music Videos view with one click. Artists is now a drop-down menu option in My Music view; Music Videos is now a sidebar tab in Playlists view.</p></li>
-<li><p>The red icon doesn&rsquo;t look as good as the previous blue one, and it doesn&rsquo;t harmonize too well alongside the blue Finder and Mail. Maybe they will look better together in Yosemite.</p></li>
-</ul>
-
-
-<p>Just now I found that the Mac App Store in Mavericks is also Yosemitized:</p>
-
-<p><img src="http://i.imgur.com/T7KIo6s.png" alt="Yosemitized Mac App Store" /></p>
-
-<p>The chromeless UI certainly looks a bit weird, and the font seems a bit too small. However, I&rsquo;m sure I&rsquo;ll quickly get over these shortcomings, and might even grow to appreciate them. Even more so when I finally upgrade to Yosemite (I&rsquo;ll wait for Thanksgiving break or 10.10.1 this year, whichever comes first — looks like the former will come first, considering the first 10.10.1 developer beta was out <a href="http://www.macrumors.com/2014/11/03/first-yosemite-10-10-1-beta-now-available/">merely two days ago</a>, <a href="http://i.imgur.com/IVFV7E2.png">reportedly</a> focusing on WiFi, etc.).</p>
-
-<p>On the font side, unfortunately the small font size in the new Mac App Store does make text fuzzy on my non-Retina display. I didn&rsquo;t notice the fuzziness in the new iTunes. Anyway, everything is optimized for Retina — Apple is also secretly pushing Retina hard. In the Apple ecosystem, apparently you always want to stay at the top of the line. Due to Apple&rsquo;s nature, the degree of hardware-software integration is simply unparalleled, so only the latest hardware enjoys all the new features and love. Unfortunately, the typical lifespan of a Mac is much longer than the hardware/software release cycle.</p>
-
-<p>The truth is, we (or at least I) adapt to things much quicker and easier than we&rsquo;d imagined (or otherwise would be willing to admit). When iOS 7 was demo&#8217;ed on WWDC 2013, I was like &ldquo;no way! What&rsquo;s with those stupid flat crap?&rdquo; But when the update came, I hopped on and was happy ever since. (I reserve my opinion on the icon design.) Later when I installed an app that was not updated for the new UI, I was like &ldquo;OMG, what&rsquo;s with this clumsy UI?&rdquo; I guess legibility issues, WiFi issues (with Yosemite) and responsiveness issue (with iOS 8 on iPhone 4S — <em>AT&amp;T, where&rsquo;s my preordered 6 Plus?</em>) are harder to impossible to adapt to, but they will eventually be fixed, or support-dropped, or hardware-upgraded (with $$). So in the end (almost) everyone will be happy. And one day when we face the old thing again by chance, we&rsquo;ll flee as fast as we can: &ldquo;what&rsquo;s with that&hellip;&rdquo; (I did exaggerate. Also, I know, many people just don&rsquo;t care about design, or have ill tastes, or can&rsquo;t find the buttons after a minimal number of UI tweaks — I&rsquo;m not including them in the &ldquo;we&rdquo; here.) Those who claim that &ldquo;I won&rsquo;t upgrade until&hellip;&rdquo; are just kidding themselves, and certainly no one will wait for them or make their &ldquo;until&hellip;&rdquo; come true. Most of those &ldquo;won&rsquo;t upgrade&rdquo; folks will eventually upgrade and be happy. For those that really don&rsquo;t upgrade (like those still running Snow Leopard) either can&rsquo;t afford the new hardware, or suffer from senility (seen from the deep hostility towards new things). Or they have some important legacy software that would break with an upgrade; poor dudes.</p>
-
-<p>Same goes for newer, shinier, seemingly unnecessary deluxe hardware. I&rsquo;m still stuck on a Mid-2012 MBP 13&#8221; Non-Retina. Retina seems highly useless for me since I do most of my work on the 27&#8221; external display — the 13&#8221; internal LCD hosts a single maximized Activity Monitor window most of the time (and sometimes also a Transmission window). I expect my opinion about Retina to change after I upgrade to a Retina model next year. (It will be a pretty major purchase though — i7, 16 GB memory, and 512 GB SSD are musts, and there are like a million peripherals to buy — Thunderbolt to Ethernet, Super Drive, etc., etc.) This shift of opinion after upgrading to something unnecessarily good (and ending up not being able to tolerate anything inferior) is best described as &ldquo;<strong>sadly converted</strong>&rdquo;. Some folks are already sadly converted by the Retina iMac. See, for example, <a href="http://arstechnica.com/apple/2014/11/yes-the-5k-retina-imacs-screen-runs-at-60hz-at-5k-resolution/#p11">this article</a> on Ars Technica:</p>
-
-<blockquote><p>Prior to getting the Retina iMac on my desk, I would have said that &ldquo;retina&rdquo; isn’t necessarily something we need on the desktop. Most people don’t notice pixels on the desktop at a normal seating distance. However, after getting to A/B compare the Retina iMac with the standard one over the course of a week, I’m sadly converted. I just don’t know if my wallet can take the abuse.</p></blockquote>
-
-<p>And others are bitterly desiring one (me included — sadly two Mac are too much for a university dorm). See, for example, <a href="http://arstechnica.com/apple/2014/11/yes-the-5k-retina-imacs-screen-runs-at-60hz-at-5k-resolution/?comments=1&amp;post=27896871">this comment</a> on the aforementioned article:</p>
-
-<blockquote><p>I WISH APPLE TECHNICA WOULD STOP WITH ALL THESE ARTICLES ABOUT THE IMAC.</p>
-
-<p>It really makes me want one unjustifiably.</p></blockquote>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -529,6 +541,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/11/26/original-images-in-day-one-journal/">Original Images in Day One Journal</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/11/25/i-got-16-gigs-of-ram/">I Got 16 Gigs of RAM</a>
       </li>
     
@@ -542,10 +558,6 @@
     
       <li class="post">
         <a href="/blog/2014/11/20/dropbot-for-geeks(r)/">Dropbot for Geeks®</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/11/19/convolution-of-irreducible-characters/">Convolution of Irreducible Characters</a>
       </li>
     
   </ul>

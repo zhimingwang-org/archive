@@ -4,7 +4,7 @@
   <title><![CDATA[Daily (?) Complaints (?)]]></title>
   <link href="http://zmwangx.github.io/atom.xml" rel="self"/>
   <link href="http://zmwangx.github.io/"/>
-  <updated>2014-11-25T17:14:10-08:00</updated>
+  <updated>2014-11-26T01:04:09-08:00</updated>
   <id>http://zmwangx.github.io/</id>
   <author>
     <name><![CDATA[Zhiming Wang]]></name>
@@ -12,6 +12,53 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Original Images in Day One Journal]]></title>
+    <link href="http://zmwangx.github.io/blog/2014/11/26/original-images-in-day-one-journal/"/>
+    <updated>2014-11-26T00:22:16-08:00</updated>
+    <id>http://zmwangx.github.io/blog/2014/11/26/original-images-in-day-one-journal</id>
+    <content type="html"><![CDATA[<p><strong>TL; DR:</strong> Jump to the paragraph beginning with “workaround”.</p>
+
+<hr />
+
+<p>I started a Day One journal two days ago. I&rsquo;ve heard good things about Day One, but after using it for a dozen entries, I&rsquo;m not that satisfied. For one thing, the editor is pretty horrible — keybindings aside, I can’t even find and replace?! And the overview doesn’t look very pretty if you are a heavy Markdown user (i.e., you have a lot of markups, e.g., italics and inline links) — the markups are displayed as is. Moreover, I can’t even <code>#</code> my title: it kills the bold font rendering in the bird’s-eye view. What a let down. Anyway, it’s better than nothing, and I hope it will help me keep on track. (I used to manage a Markdown journal in an encrypted sparse bundle, and it was a pain in the ass — mentally. Maybe some GUI sugar is necessary, although Day One is certainly not as pretty as advertised.) Also a private journal means more privacy — I certainly don’t want to publish everything I write on this public blog.</p>
+
+<p>Too much irrelevant talking. Onto one of the most annoying “features”, and the subject of this post. Images are automatically JPEG-compressed when imported into Day One. See <a href="https://dayone.zendesk.com/hc/en-us/articles/200145875-Are-photos-resized-when-imported-into-Day-One-">this support article</a>, which says:</p>
+
+<blockquote><p>Every photo imported into Day One is converted to JPEG format and resized to a maximum resolution of 2100 x 2100 pixels. The aspect ratio is maintained. We resize photos for more efficient sync and storage. At this size the average photo is about 700KB which means you can store:
+* Dropbox: 2,500+ photos using the free 2GB account
+* iCloud: 6,000+ photos using the free 5GB account</p></blockquote>
+
+<p>What the heck. Dude, who cares about storage these days? And transfer rate? I have a gigabit Ethernet. I certainly have much more than 2GB in my Dropbox. Even for those underpriviledged folks with only 2GB, remember, Day One allows <em>only one photo per entry</em>. That’s 2,500+ entries. At any rate, this should be an opt-in rather than an uncustomizable “feature”. I’m about to submit a ticket, but I doubt the outcome (I’m sure many people have submitted tickets about the plain text format even when password-protected, but so far, no response).</p>
+
+<p>With photos, most of the time JPEG compression works pretty well (but people surely want to keep photos in highest quality). However, I’m a techie guy, and my images are often screenshots or precision images, where JPEG compression totally ruins the sharpness.</p>
+
+<p>Workaround? Simple (yet a bit annoying). Day One lets you show the photo in Finder. So just go ahead and replace that compressed image with the original using <code>cp</code> or <code>mv</code>. I shouldn’t have needed to do this, but every piece of software comes with some annoyances. Overall Day One’s pretty good — at least it does what it was designed for, albeit not perfectly.</p>
+
+<hr />
+
+<p>By the way, here is my support ticket:</p>
+
+<blockquote><p>I understand that Day One does JPEG compression to every imported photo, as written in the support article “Are photos resized when imported into Day One?” <a href="http://goo.gl/Rzi017">http://goo.gl/Rzi017</a> . Yet I beg an option. The reason is that the benefits outlined in the support article are virtually non-existent:</p>
+
+<ul>
+<li><p>“More efficient sync and storage”: these days transfer rates are really high with SSDs and gigabit Ethernet, so reducing a few hundred KBs won’t help me the slightest;</p></li>
+<li><p>“Dropbox: 2,500+ photos using the free 2GB account”: I have much more than 2GB in my Dropbox; even if I only have 2GB, Day One allows only one photo per entry, and that means 2,500+ entries with photos, which is more than enough for most users, I suppose. By the way, Dropbox storage shouldn’t be your concern; people will buy more when they need more.</p></li>
+</ul>
+
+
+<p>And some of the bad things about JPEG compression:</p>
+
+<ul>
+<li><p>JPEG compression usually works pretty well with photos, but when I import high precision images, the sharpness is totally ruined;</p></li>
+<li><p>People want to keep their photos in highest quality, which is defeated by forced compression.</p></li>
+</ul>
+
+
+<p>I know an ugly workaround, which is simply replace the compressed image with the original in the filesystem. But I would love to see an option to import images as originals (in fact, compression should be an opt-in). Really, transfer rates and storage grow so rapidly that they are not people’s primary concerns anymore. (For your information, OneDrive recently rolled out truly unlimited storage to Office 365 subscribers. Online storage is that cheap.) Thanks.</p></blockquote>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[I Got 16 Gigs of RAM]]></title>
@@ -611,33 +658,6 @@ Ravi: Yeah, Brian Conrad will give a lecture. Don&rsquo;t tell him, he don&rsquo
 <p>Note that the paths printed are always relative to <code>/</code>. See <code>man 1 lsbom</code> for detailed option listing.</p>
 
 <p>(Beware when you try to clean up unwanted packages using the <code>lsbom</code> listing. Packages might overwrite files, so make sure you review the listing first and know what you are doing. &ldquo;Knowing what you are doing&rdquo; is the prerequisite for using <code>sudo</code> anyway.)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Charles Munger Donated $65M to KITP]]></title>
-    <link href="http://zmwangx.github.io/blog/2014/10/24/charles-munger-donated-$65m-to-kitp/"/>
-    <updated>2014-10-24T16:41:36-07:00</updated>
-    <id>http://zmwangx.github.io/blog/2014/10/24/charles-munger-donated-$65m-to-kitp</id>
-    <content type="html"><![CDATA[<p>Today&rsquo;s news has it that Charles Munger made a $65 million donation to KITP at UCSB. See for instance <a href="http://nyti.ms/1D4zg24">this article</a> on NYT. Of course I didn&rsquo;t learn it from NYT (I&rsquo;m generally sick of any news other than math, physics, or IT-related ones). I learned it from <a href="http://www.math.columbia.edu/~woit/wordpress/?p=7247">Not Even Wrong</a> instead (of course I don&rsquo;t agree with Woit, but some of his links are nice).</p>
-
-<p>I have no interest whatsoever in the business world, so I have no idea about Warren Buffett&rsquo;s business partners (although I&rsquo;m still worldly enough to know Warren Buffett). However, the name Charles Munger sounded surprisingly familiar. After reading the sentence</p>
-
-<blockquote><p>Mr. Munger has frequently donated big sums to schools like Stanford and the Harvard-Westlake School.</p></blockquote>
-
-<p>from the NYT article linked above, it finally hit me that Mr. Munger is the donor of the Munger Graduate Residence here at Stanford. Munger is really nice, much better than our undergrad residences AFAIK (location-wise Roble is still unbeatable for mathematicians and physicists, although Munger still kicks EV&rsquo;s ass).</p>
-
-<p>I&rsquo;m glad to see more and more entrepreneurs funding physics, especially theoretical physics, whether they understand it or not. (<strong>Aside:</strong> Even for laypeople theoretical physics is cool isn&rsquo;t it, like the coolest kid in class. I won&rsquo;t comment on whether math is cooler, but breakthrough mathematical work certainly go largely unnoticed in the public, since theoretical physics is the last thing that laypeople can &ldquo;vaguely understand&rdquo;. Do some name searches on Google to see how math and physics play out in the limelight — hint:</p>
-
-<ul>
-<li>Gauss — 4,130,000 results;</li>
-<li>Euler — 855,000 results;</li>
-<li>Newton — 13,200,000 results;</li>
-<li>Einstein — 6,330,000 results.</li>
-</ul>
-
-
-<p>End of aside.) Engaging in physics is plain better than engaging in some questionable philanthropy. (Have you heard that Gates Foundation invested in G4S, the largest private military and security company in the world? I’m not sure about the details — I once read that off a bathroom flyer — but that’s definitely interesting philanthropy.)</p>
 ]]></content>
   </entry>
   
