@@ -9,7 +9,7 @@
   <meta name="author" content="Zhiming Wang">
 
   
-  <meta name="description" content="Recently I wrote an expository article, Convolution of irreducible characters, and posted it here. At first I intended to use MathJax, but in the end &hellip;">
+  <meta name="description" content="Today I upgraded the RAM of my MacBook Pro mid-2012 to 2x8GB. I purchased the Crucial 16GB Kit (8GBx2) DDR3/DDR3L 1600 MHz (PC3-12800) CL11 SODIMM &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,50 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/11/25/i-got-16-gigs-of-ram/">I Got 16 Gigs of RAM</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-11-25T16:28:30-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>4:28 pm</span></time>
+        
+           | <a href="/blog/2014/11/25/i-got-16-gigs-of-ram/#disqus_thread"
+             data-disqus-identifier="http://zmwangx.github.io/blog/2014/11/25/i-got-16-gigs-of-ram/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Today I upgraded the RAM of my MacBook Pro mid-2012 to 2x8GB. I purchased the <a href="http://smile.amazon.com/dp/B008LTBJFW">Crucial 16GB Kit (8GBx2) DDR3/DDR3L 1600 MHz (PC3-12800) CL11 SODIMM 204-Pin 1.35V/1.5V Memory for Mac CT2K8G3S160BM</a> from Amazon, which cose me $146.64 after tax. I followed the <a href="http://support.apple.com/en-us/HT201165">official guide</a> as well as the <a href="https://www.ifixit.com/Guide/MacBook+Pro+13-Inch+Unibody+Mid+2012+RAM+Replacement/10374">iFixit guide</a>. To finish the job I needed a Phillips #00 screwdriver and a spudger, so I purchased the <a href="https://www.ifixit.com/Store/Tools/Spudger/IF145-002">spudger</a> and the <a href="https://www.ifixit.com/Store/Tools/54-Bit-Driver-Kit/IF145-022-1">54 bit driver kit</a> from iFixit.</p>
+
+<p>The actual process was pretty simple. I had a little bit of hard time pulling out the bottom module and pushing in the top module, but overall it was smooth. The only stupid thing I did was that I forgot to push the battery connector back in before I closed the case; I only realized this when I was screwing in the eighth screw (that was a close one!), and had to unscrew everything again.</p>
+
+<p>After I replaced the RAM modules, booting was just normal. And now I&rsquo;ve got 16 gigs of RAM!</p>
+
+<p><img src="http://i.imgur.com/PGhdEGr.png" alt="" /></p>
+
+<p>Want to run multiple memory hoggers <em>along with a Windows VM</em> (with 4GB of RAM)? No problem.</p>
+
+<p><img src="http://i.imgur.com/czDcVaK.png" alt="" /></p>
+
+<p>By the way, Yosemite is indeed really aggressive at RAM usage. I reserve my opinion on whether there&rsquo;s a memory leak. But so far the performance has been fine, even with 8GB of RAM.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -470,132 +514,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/11/05/list-youtube-playlist-with-youtube-dl/">List YouTube Playlist With Youtube-dl</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-11-05T10:37:58-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:37 am</span></time>
-        
-           | <a href="/blog/2014/11/05/list-youtube-playlist-with-youtube-dl/#disqus_thread"
-             data-disqus-identifier="http://zmwangx.github.io/blog/2014/11/05/list-youtube-playlist-with-youtube-dl/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Of course you are always welcome to use the <a href="https://developers.google.com/api-client-library/python/">Google APIs Client Library for Python</a> to wrestle with YouTube, which is usually pretty simple. (As an added bonus, YouTube has some <a href="https://developers.google.com/youtube/v3/code_samples/">nice runnable sample scripts</a> to get you started.) With the client library, listing videos in a YouTube playlist is a breeze.</p>
-
-<p>However, if you don&rsquo;t feel like writing code yourself (I usually don&rsquo;t feel like writing code myself until I use something often enough and existing solutions are suboptimal), <code>youtube-dl</code> recently added the functionality to list videos in a playlist with the <code>--flat-playlist</code> option.</p>
-
-<p><a href="https://github.com/rg3/youtube-dl/issues/4003#issuecomment-60322630">According to one of the project collaborators</a>, currently <code>--flat-playlist</code> is only helpful with the <code>-j</code> option for dumping JSON (so I suppose this feature is subject to change). For instance, <code>--flat-playlist</code> alone would emit something like this:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>&gt; youtube-dl --flat-playlist <span class="s1">&#39;https://www.youtube.com/watch?v=gdOwwI0ngqQ&amp;list=PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F&#39;</span>
-</span><span class='line'><span class="o">[</span>youtube:playlist<span class="o">]</span> Downloading playlist PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F - add --no-playlist to just download video gdOwwI0ngqQ
-</span><span class='line'><span class="o">[</span>youtube:playlist<span class="o">]</span> PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F: Downloading webpage
-</span><span class='line'><span class="o">[</span>youtube:playlist<span class="o">]</span> PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F: Downloading page <span class="c">#1</span>
-</span><span class='line'><span class="o">[</span>download<span class="o">]</span> Downloading playlist: Cam By apinknomfan
-</span><span class='line'><span class="o">[</span>youtube:playlist<span class="o">]</span> playlist Cam By apinknomfan: Collected <span class="m">119</span> video ids <span class="o">(</span>downloading <span class="m">119</span> of them<span class="o">)</span>
-</span><span class='line'><span class="o">[</span>download<span class="o">]</span> Downloading video <span class="c">#1 of 119</span>
-</span><span class='line'><span class="o">[</span>download<span class="o">]</span> Downloading video <span class="c">#2 of 119</span>
-</span><span class='line'><span class="o">[</span>download<span class="o">]</span> Downloading video <span class="c">#3 of 119</span>
-</span><span class='line'><span class="o">[</span>download<span class="o">]</span> Downloading video <span class="c">#4 of 119</span>
-</span><span class='line'>...
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>which doesn&rsquo;t really make sense — it tells you that it collected 119 video ids, and no more. Once you have <code>-j</code> on, you get JSON data that you can parse with anything:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>&gt; youtube-dl -j --flat-playlist <span class="s1">&#39;https://www.youtube.com/watch?v=gdOwwI0ngqQ&amp;list=PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F&#39;</span>
-</span><span class='line'><span class="o">{</span><span class="s2">&quot;url&quot;</span>: <span class="s2">&quot;gdOwwI0ngqQ&quot;</span>, <span class="s2">&quot;_type&quot;</span>: <span class="s2">&quot;url&quot;</span>, <span class="s2">&quot;ie_key&quot;</span>: <span class="s2">&quot;Youtube&quot;</span>, <span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;gdOwwI0ngqQ&quot;</span><span class="o">}</span>
-</span><span class='line'><span class="o">{</span><span class="s2">&quot;url&quot;</span>: <span class="s2">&quot;j9l5nchv1Z8&quot;</span>, <span class="s2">&quot;_type&quot;</span>: <span class="s2">&quot;url&quot;</span>, <span class="s2">&quot;ie_key&quot;</span>: <span class="s2">&quot;Youtube&quot;</span>, <span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;j9l5nchv1Z8&quot;</span><span class="o">}</span>
-</span><span class='line'><span class="o">{</span><span class="s2">&quot;url&quot;</span>: <span class="s2">&quot;znW5ALwWNQw&quot;</span>, <span class="s2">&quot;_type&quot;</span>: <span class="s2">&quot;url&quot;</span>, <span class="s2">&quot;ie_key&quot;</span>: <span class="s2">&quot;Youtube&quot;</span>, <span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;znW5ALwWNQw&quot;</span><span class="o">}</span>
-</span><span class='line'><span class="o">{</span><span class="s2">&quot;url&quot;</span>: <span class="s2">&quot;qyE7-auTIcc&quot;</span>, <span class="s2">&quot;_type&quot;</span>: <span class="s2">&quot;url&quot;</span>, <span class="s2">&quot;ie_key&quot;</span>: <span class="s2">&quot;Youtube&quot;</span>, <span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;qyE7-auTIcc&quot;</span><span class="o">}</span>
-</span><span class='line'>...
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The most straightforward way to parse this is to use a command line JSON parser, the best one being <a href="https://github.com/stedolan/jq">jq</a>:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>&gt; youtube-dl -j --flat-playlist <span class="s1">&#39;https://www.youtube.com/watch?v=gdOwwI0ngqQ&amp;list=PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F&#39;</span> <span class="p">|</span> jq -r <span class="s1">&#39;.id&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;s_^_https://youtube.com/v/_&#39;</span>
-</span><span class='line'>https://youtube.com/v/gdOwwI0ngqQ
-</span><span class='line'>https://youtube.com/v/j9l5nchv1Z8
-</span><span class='line'>https://youtube.com/v/znW5ALwWNQw
-</span><span class='line'>https://youtube.com/v/qyE7-auTIcc
-</span><span class='line'>...
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>There you go, a list of URIs you can use. Of course you can put this in a script to save some typing:</p>
-
-<figure class='code'><figcaption><span>youtube-ls-playlist.sh</span><a href='https://gist.github.com/zmwangx/0245788475f963210ed9'>Gist</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/usr/bin/env bash</span>
-</span><span class='line'><span class="c"># Takes a YouTube URI to a playlist (fairly liberal, it&#39;s fine as long</span>
-</span><span class='line'><span class="c"># as the playlist id can be extracted), and prints a list of URIs in a</span>
-</span><span class='line'><span class="c"># YouTube playlist.</span>
-</span><span class='line'><span class="c">#</span>
-</span><span class='line'><span class="c"># Requires youtube-dl 2014.10.24, tested on youtube-dl</span>
-</span><span class='line'><span class="c"># 2014.11.02.1. Feature subject to change.</span>
-</span><span class='line'>youtube-dl -j --flat-playlist <span class="s2">&quot;$1&quot;</span> <span class="p">|</span> jq -r <span class="s1">&#39;.id&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;s_^_https://youtube.com/v/_&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><strong><em>Aside:</em></strong> I first embedded the gist here, but <a href="http://i.imgur.com/m3cr0Im.png">it looked a bit off</a>. See <a href="https://github.com/imathis/octopress/issues/1392">imathis/octopress#1392</a>.</p>
-
-<blockquote><p>In the next version of the Gist tag plugin we are just downloading the gists and embedding them upon generation so we don&rsquo;t have to worry about GitHub going down and breaking all your gists, or changing the HTML and breaking all the styles.</p>
-
-<p>For the time being I suggest embedding your code snippets directly if you want them to look good.</p></blockquote>
-
-<p>Okay. End of aside.</p>
-
-<p>By the way, <code>youtube-dl</code> supports playlist bulk download natively. The reason I need a list of video ids or URIs, however, is that among other things, <code>youtube-dl</code> doesn&rsquo;t download highest resolution DASH video by default, so I have to rely on something like <code>youtube-dl-dash</code> (<a href="https://github.com/zmwangx/sh/blob/master/youtube-dl-dash">link</a>) to download the best version.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -611,6 +529,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/11/25/i-got-16-gigs-of-ram/">I Got 16 Gigs of RAM</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/11/24/why-i-abandoned-mathjax-and-fell-back-to-pdf/">Why I Abandoned MathJax and Fell Back to PDF</a>
       </li>
     
@@ -624,10 +546,6 @@
     
       <li class="post">
         <a href="/blog/2014/11/19/convolution-of-irreducible-characters/">Convolution of Irreducible Characters</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/11/11/re-encoding-everything-for-iphone-6-plus/">Re-encoding Everything for iPhone 6 Plus</a>
       </li>
     
   </ul>
