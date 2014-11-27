@@ -3,7 +3,7 @@ layout: post
 title: "Convolution of irreducible characters"
 date: 2014-11-19 20:40:37 -0800
 comments: true
-categories: [math, expository, 'representation theory', algebra]
+categories:
 ---
 __*TL; DR:* The actual PDF write-up is [here](/pdf/20141119-convolution-of-irreducible-characters.pdf).__
 

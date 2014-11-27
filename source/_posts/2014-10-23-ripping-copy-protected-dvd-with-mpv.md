@@ -3,7 +3,7 @@ layout: post
 title: "Ripping copy-protected DVD with mpv"
 date: 2014-10-23 20:03:22 -0700
 comments: true
-categories:  [video, ffmpeg, mpv, mplayer, dvd, transcoding, copyright, drm]
+categories:
 ---
 **_11/02/2014 update:_**
 

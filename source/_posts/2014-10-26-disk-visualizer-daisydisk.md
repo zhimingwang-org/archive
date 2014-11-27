@@ -3,7 +3,7 @@ layout: post
 title: "Disk visualizer: DaisyDisk"
 date: 2014-10-26 00:02:22 -0700
 comments: true
-categories: [software, app, application, disk, diskutil, storage, drive, MAS, 'Mac App Store']
+categories:
 ---
 DaisyDisk is a pretty famous name. I’ve heard a lot that DaisyDisk is beautiful, but as a “power user” I always feel ashamed about using a disk analyzer or visualizer (although no one really cares). I’m pretty comfortable with doing most filesystem operations right in the shell, and for other tasks too tedious for the shell (like renaming a bunch of files with no obvious pattern), Finder (equipped with TotalFinder) works just fine.
 

@@ -3,7 +3,7 @@ layout: post
 title: "Average phone plan in the U.S. costs ten time as much as that in the U.K."
 date: 2014-11-10 11:11:46 -0800
 comments: true
-categories: [phone, mobile, data, pricing]
+categories:
 ---
 To quote [Opera News](http://blogs.opera.com/news/2014/11/mobile-data-anyway/),
 

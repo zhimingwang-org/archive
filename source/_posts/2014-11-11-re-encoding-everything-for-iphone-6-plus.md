@@ -3,6 +3,6 @@ layout: post
 title: "Re-encoding everything for iPhone 6 Plus"
 date: 2014-11-11 13:31:25 -0800
 comments: true
-categories: [phone, iphone, display, screen, retina, video, h.264, encode, ffmpeg]
+categories:
 ---
 AT&T finally delivered my iPhone 6 Plus (silver, 64 GB) after about fifty days since preorder… The 1080p Retina display is simply stunning. However, it turns out that my old videos don’t work so well on 6 Plus’s giant screen. My old mobile video collection was optimized for my 16 GB 4S, targeting the small screen and highly limited storage — you guessed it, they were resized to 960x540, and they looked great. But they’re not up to the task any more. 960x540 videos aren’t at all sharp on the stunning screen of 6 Plus, which is more than capable of handling 4x pixels. Therefore, I have no choice but to feed it more pixels. I’m left in a weird situation, where my 1080p desktop (or even HDTV) quality videos should fit the screen just fine, but H.264 profile stands in the way. iPhone 6 and 6 Plus are only capable of High Profile level 4.2, so anything encoded in level 5.1, for instance, needs to be re-encoded. Also there are still MPEG-2 and MPEG-4 videos out there (MPEG-4 should be obsolete by now, I assume, but some people still use it; and MPEG-2 is de facto in TV broadcasts), which have to be transcoded. Okay, it’s a daunting task to re-encode a fairly big collection, but I have to do it sooner or later. Presumably this weekend. I’ll also report whether 720p videos look sharp on the screen later.

@@ -3,7 +3,7 @@ layout: post
 title: "Convert Audio CD/DVD to ISO image on OS X"
 date: 2014-10-26 23:29:47 -0700
 comments: true
-categories: [cd, dvd, iso, image, disk, diskutil, hdiutil, 'os x', filesystem, music]
+categories:
 ---
 **_11/02/2014 update:_**
 

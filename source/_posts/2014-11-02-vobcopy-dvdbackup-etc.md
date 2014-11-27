@@ -3,7 +3,7 @@ layout: post
 title: "vobcopy, dvdbackup, etc."
 date: 2014-11-02 15:06:07 -0800
 comments: true
-categories: [cd, dvd, vob, video, filesystem, 'os x', music, hdiutil]
+categories:
 ---
 A few days ago, I was cloning my entire Audio CD and DVD collection, and reported some of the findings in [this post](/blog/2014/10/26/audio-cd-slash-dvd-to-iso-image-on-os-x/). As said, the most important commands are
 

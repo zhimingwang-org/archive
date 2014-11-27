@@ -3,7 +3,7 @@ layout: post
 title: "iPhone photography frustration"
 date: 2014-11-24 12:42:25 -0800
 comments: true
-categories: [iphone, apple, photo, photography, 'image editing', adobe, annoyance, 'os x', yosemite]
+categories:
 ---
 **TL; DR:** Jump to the paragraph “In the end…”
 
