@@ -9,7 +9,7 @@
   <meta name="author" content="Zhiming Wang">
 
   
-  <meta name="description" content="Today&rsquo;s news has it that Charles Munger made a $65 million donation to KITP at UCSB. See for instance this article on NYT. Of course I didn& &hellip;">
+  <meta name="description" content="I just learned something new. Whenever you install a pkg on OS X, OS X stores a receipt of what was installed in /var/db/receipts (I&rsquo;m running &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,51 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/10/25/os-x-package-receipts/">OS X Package Receipts</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-10-25T13:26:02-07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:26 pm</span></time>
+        
+           | <a href="/blog/2014/10/25/os-x-package-receipts/#disqus_thread"
+             data-disqus-identifier="http://zmwangx.github.io/blog/2014/10/25/os-x-package-receipts/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I just learned something new. Whenever you install a <code>pkg</code> on OS X, OS X stores a receipt of what was installed in <code>/var/db/receipts</code> (I&rsquo;m running OS X 10.9.5 at the time of writing), called a <strong>bom</strong> — bill of materials (I’d rather call it a manifest, whatever). This feature was introduced in NeXTSTEP. From <code>man 5 bom</code>:</p>
+
+<blockquote><p>The Mac OS X Installer uses a file system &ldquo;bill of materials&rdquo; to determine which files to install, remove, or upgrade. A bill of materials, <strong>bom</strong>, contains all the files within a directory, along with some information about each file. File information includes: the file&rsquo;s UNIX permissions, its owner and group, its size, its time of last modification, and so on.  Also included are a checksum of each file and information about hard links.</p></blockquote>
+
+<p><code>man 5 bom</code> is actually badly maintained, as it says &ldquo;The bill of materials for installed packages are found within the package receipts located in /Library/Receipts,&rdquo; whereas those have been migrated to <code>/var/db/receipts</code> a long time ago.</p>
+
+<p><code>.bom</code> files are binary, but you can access the contents via <code>lsbom</code>. For instance, to list the files installed,</p>
+
+<pre><code>lsbom -f /var/db/receipts/org.macports.MacPorts.bom
+</code></pre>
+
+<p>Note that the paths printed are always relative to <code>/</code>. See <code>man 1 lsbom</code> for detailed option listing.</p>
+
+<p>(Beware when you try to clean up unwanted packages using the <code>lsbom</code> listing. Packages might overwrite files, so make sure you review the listing first and know what you are doing. &ldquo;Knowing what you are doing&rdquo; is the prerequisite for using <code>sudo</code> anyway.)</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -563,6 +608,10 @@ echo -n &quot;${caveats}&quot; &gt;&amp;2
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/11/28/given-infinite-time/">Given Infinite Time</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/11/26/original-images-in-day-one-journal/">Original Images in Day One Journal</a>
       </li>
     
@@ -576,10 +625,6 @@ echo -n &quot;${caveats}&quot; &gt;&amp;2
     
       <li class="post">
         <a href="/blog/2014/11/24/iphone-photography-frustration/">iPhone Photography Frustration</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/11/20/dropbot-for-geeks(r)/">Dropbot for Geeks®</a>
       </li>
     
   </ul>

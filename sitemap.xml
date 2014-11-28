@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://zmwangx.github.io/blog/2014/11/28/given-infinite-time/</loc>
+    <lastmod>2014-11-28T00:18:19-08:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>http://zmwangx.github.io/blog/2014/11/26/original-images-in-day-one-journal/</loc>
     <lastmod>2014-11-26T00:22:16-08:00</lastmod>
     <priority>0.8</priority>
@@ -127,13 +132,13 @@
   </url>
   <url>
     <loc>http://zmwangx.github.io/blog/archives/</loc>
-    <lastmod>2014-11-26T19:40:09-08:00</lastmod>
+    <lastmod>2014-11-28T00:20:41-08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://zmwangx.github.io/</loc>
-    <lastmod>2014-11-26T19:40:09-08:00</lastmod>
+    <lastmod>2014-11-28T00:20:41-08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
