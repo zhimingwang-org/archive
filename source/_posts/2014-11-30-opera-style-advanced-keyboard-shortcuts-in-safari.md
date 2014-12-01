@@ -20,10 +20,10 @@ Lately, with the Yosemite release, Safari has become a much more competitive bro
 
 ```bash safari-advanced-keyboard-shortcuts.sh
 #!/usr/bin/env bash
-defaults write -app Safari NSUserKeyEquivalents '{
+defaults write com.apple.Safari NSUserKeyEquivalents '{
 "Actual Size"="6";
 "Back"="z";
-"Find"="/";
+"Find..."="/";
 "Forward"="x";
 "Show Previous Tab"="1";
 "Show Next Tab"="2";
@@ -32,4 +32,8 @@ defaults write -app Safari NSUserKeyEquivalents '{
 }'
 ```
 
-Relaunch Safari. You are all set! Enjoy the ultrafast single key navigating experience.
+Relaunch Safari. You are all set! Enjoy the ultrafast single key navigating experience. To reset,
+
+```bash
+defaults delete com.apple.Safari NSUserKeyEquivalents
+```
