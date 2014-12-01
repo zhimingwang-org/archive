@@ -4,7 +4,7 @@
   <title><![CDATA[Daily (?) Complaints (?)]]></title>
   <link href="http://zmwangx.github.io/atom.xml" rel="self"/>
   <link href="http://zmwangx.github.io/"/>
-  <updated>2014-11-30T17:36:32-08:00</updated>
+  <updated>2014-11-30T20:26:36-08:00</updated>
   <id>http://zmwangx.github.io/</id>
   <author>
     <name><![CDATA[Zhiming Wang]]></name>
@@ -46,10 +46,10 @@
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/usr/bin/env bash</span>
-</span><span class='line'>defaults write -app Safari NSUserKeyEquivalents <span class="s1">&#39;{</span>
+</span><span class='line'>defaults write com.apple.Safari NSUserKeyEquivalents <span class="s1">&#39;{</span>
 </span><span class='line'><span class="s1">&quot;Actual Size&quot;=&quot;6&quot;;</span>
 </span><span class='line'><span class="s1">&quot;Back&quot;=&quot;z&quot;;</span>
-</span><span class='line'><span class="s1">&quot;Find&quot;=&quot;/&quot;;</span>
+</span><span class='line'><span class="s1">&quot;Find...&quot;=&quot;/&quot;;</span>
 </span><span class='line'><span class="s1">&quot;Forward&quot;=&quot;x&quot;;</span>
 </span><span class='line'><span class="s1">&quot;Show Previous Tab&quot;=&quot;1&quot;;</span>
 </span><span class='line'><span class="s1">&quot;Show Next Tab&quot;=&quot;2&quot;;</span>
@@ -59,7 +59,12 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Relaunch Safari. You are all set! Enjoy the ultrafast single key navigating experience.</p>
+<p>Relaunch Safari. You are all set! Enjoy the ultrafast single key navigating experience. To reset,</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>defaults delete com.apple.Safari NSUserKeyEquivalents
+</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   
