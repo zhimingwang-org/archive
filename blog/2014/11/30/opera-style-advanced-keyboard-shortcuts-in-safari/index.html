@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Ripping Copy-protected DVD With Mpv - Daily (?) Complaints (?)</title>
+  <title>Opera-style Advanced Keyboard Shortcuts in Safari - Daily (?) Complaints (?)</title>
   <meta name="author" content="Zhiming Wang">
 
   
-  <meta name="description" content="11/02/2014 update: See this post for issues, explanations, and more. 10/25/2014 update: I&rsquo;m such an idiot. vobcopy is the real, hassel-free way &hellip;">
+  <meta name="description" content="I&rsquo;ve been using the Chromuim Opera for a long time, after Chrome&rsquo;s design went unbearably ugly around v32 (IIRC Opera stable channel was &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://zmwangx.github.io/blog/2014/10/23/ripping-copy-protected-dvd-with-mpv">
+  <link rel="canonical" href="http://zmwangx.github.io/blog/2014/11/30/opera-style-advanced-keyboard-shortcuts-in-safari">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Daily (?) Complaints (?)" type="application/atom+xml">
@@ -80,7 +80,7 @@
   
   <header>
     
-      <h1 class="entry-title">Ripping Copy-protected DVD With Mpv</h1>
+      <h1 class="entry-title">Opera-style Advanced Keyboard Shortcuts in Safari</h1>
     
     
       <p class="meta">
@@ -89,7 +89,7 @@
 
 
 
-<time class='entry-date' datetime='2014-10-23T20:03:22-07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>8:03 pm</span></time>
+<time class='entry-date' datetime='2014-11-30T17:20:20-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:20 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://zmwangx.github.io">Comments</a>
@@ -99,40 +99,48 @@
   </header>
 
 
-<div class="entry-content"><p><strong><em>11/02/2014 update:</em></strong></p>
+<div class="entry-content"><p>I&rsquo;ve been using the Chromuim Opera for a long time, after Chrome&rsquo;s design went unbearably ugly around v32 (IIRC Opera stable channel was on v19 when I switched, which was released on January 28, 2014). From then on, Opera&rsquo;s <a href="http://help.opera.com/opera/Mac/1583/en/fasterBrowsing.html#advanced">advanced keyboard shortcuts</a> has become an integral part of my browsing habit. In particular, the following are especially handy for me:</p>
 
-<p>See <a href="/blog/2014/11/02/vobcopy-dvdbackup-etc/">this post</a> for issues, explanations, and more.</p>
+<ul>
+<li><code>1</code>: Cycle left through tabs;</li>
+<li><code>2</code>: Cycle right through tabs;</li>
+<li><code>/</code>: Find on page;</li>
+<li><code>Z</code>: Go back one page;</li>
+<li><code>X</code>: Go forward one page;</li>
+<li><code>0</code>: Zoom in;</li>
+<li><code>9</code>: Zoom out;</li>
+<li><code>6</code>: Reset zoom to 100%.</li>
+</ul>
 
-<hr />
 
-<p><strong><em>10/25/2014 update:</em></strong></p>
+<p>Lately, with the Yosemite release, Safari has become a much more competitive browser. I won&rsquo;t say why, and I admit that it has major missing features that still prevents it from becoming my default — but I have to say I’m gradually moving more of more of my browsing, especially reading, to Safari. It would be nice if I could carry my power user shortcuts with me. Fortunately, this is possible. Just modify the plist in the following way:</p>
 
-<p>I&rsquo;m such an idiot. <code>vobcopy</code> is the real, hassel-free way to go.</p>
+<figure class='code'><figcaption><span>safari-advanced-keyboard-shortcuts.sh</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/usr/bin/env bash</span>
+</span><span class='line'>defaults write -app Safari NSUserKeyEquivalents <span class="s1">&#39;{</span>
+</span><span class='line'><span class="s1">&quot;Actual Size&quot;=&quot;6&quot;;</span>
+</span><span class='line'><span class="s1">&quot;Back&quot;=&quot;z&quot;;</span>
+</span><span class='line'><span class="s1">&quot;Find&quot;=&quot;/&quot;;</span>
+</span><span class='line'><span class="s1">&quot;Forward&quot;=&quot;x&quot;;</span>
+</span><span class='line'><span class="s1">&quot;Show Previous Tab&quot;=&quot;1&quot;;</span>
+</span><span class='line'><span class="s1">&quot;Show Next Tab&quot;=&quot;2&quot;;</span>
+</span><span class='line'><span class="s1">&quot;Zoom In&quot;=&quot;0&quot;;</span>
+</span><span class='line'><span class="s1">&quot;Zoom Out&quot;=&quot;9&quot;;</span>
+</span><span class='line'><span class="s1">}&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>brew install vobcopy
-</code></pre>
 
-<p>Then, with the DVD mounted,</p>
-
-<blockquote><p><strong>vobcopy</strong> without any options will copy the title with the most chapters into files of 2GB size into the current working directory.</p></blockquote>
-
-<p>Of course there are a ton of options, but I generally hate to browse through options unless I have to, so I&rsquo;m happy with calling without argument.</p>
-
-<hr />
-
-<p>Yesterday I was trying to rip a music video off a newly released DVD from Japan. I knew very little about how DRM (in this case, CSS) actually works and how to break it. I tried to operate directly on the VOB file with <code>ffmpeg</code> or <code>mpv</code> but both failed with a lot of header errors — I suppose more files than the VOB are required for authentication? Whatever, maybe I’ll learn the details in the future, but I don’t see the need since DVD is an outdated technology anyway.</p>
-
-<p>So, can we proceed from here? Most certainly. I noticed that although <code>mpv</code> won’t let me play a single VOB, I can simply hand it the DVD mount point, and it will play the whole DVD seamlessly. <strong>Caution:</strong> <code>mpv</code> needs to be compiled with <code>libdvdnav</code> and <code>libdvdread</code>! With brew you just do</p>
-
-<pre><code>brew install mpv --with-libdvdnav --with-libdvdread
-</code></pre>
-
-<p>For better performance and backup, I first cloned the DVD into a <code>.cdr</code> image (DVD/CD-R Master Image) using Disk Utility (I&rsquo;ve never tried creating/cloning image with <code>diskutil</code> CLI, so nothing to report on that). Then I mount the image, say the mount point is <code>/Volumes/UPBX_80165</code>. As said I can hand that mount point to <code>mpv</code> and it simply works, but how about extracting the MPEG-2 video stream? The <code>--stream-capture=&lt;filename&gt;</code> option is there just for you. In principle <code>--stream-dump=&lt;filename&gt;</code> should also work, but without monitoring the output and controlling where to end, I’m not sure if it will ever terminate itself when reading from a DVD (when I stream captured the DVD it just kept repeating itself until I explicitly quit with <code>q</code>). So that&rsquo;s it:</p>
-
-<pre><code>mpv --stream-capture=dump.mpg /Volumes/UPBX_80165
-</code></pre>
-
-<p>Then you can torture the <code>dump.mpg</code> with <code>ffmpeg</code> however you want. The most obvious thing is to cut out the music video part, and put into a new container like MPEG-TS. Or transcode it to H.264 for your iPhone. The nice thing about <code>dump.mpg</code> is that, unless I got it wrong, there&rsquo;s no quality loss here — the only thing you got rid of is that goddamn DRM.</p>
+<p>Relaunch Safari. You are all set! Enjoy the ultrafast single key navigating experience.</p>
 </div>
 
 
@@ -148,7 +156,7 @@
 
 
 
-<time class='entry-date' datetime='2014-10-23T20:03:22-07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>8:03 pm</span></time>
+<time class='entry-date' datetime='2014-11-30T17:20:20-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:20 pm</span></time>
       
 
 
@@ -156,7 +164,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://zmwangx.github.io/blog/2014/10/23/ripping-copy-protected-dvd-with-mpv/" data-via="" data-counturl="http://zmwangx.github.io/blog/2014/10/23/ripping-copy-protected-dvd-with-mpv/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://zmwangx.github.io/blog/2014/11/30/opera-style-advanced-keyboard-shortcuts-in-safari/" data-via="" data-counturl="http://zmwangx.github.io/blog/2014/11/30/opera-style-advanced-keyboard-shortcuts-in-safari/" >Tweet</a>
   
   
   
@@ -165,10 +173,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/10/21/get-rolling/" title="Previous Post: Get rolling">&laquo; Get rolling</a>
+        <a class="basic-alignment left" href="/blog/2014/11/28/going-diceware/" title="Previous Post: Going Diceware">&laquo; Going Diceware</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/10/24/charles-munger-donated-$65m-to-kitp/" title="Next Post: Charles Munger donated $65M to KITP">Charles Munger donated $65M to KITP &raquo;</a>
       
     </p>
   </footer>
@@ -263,8 +269,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://zmwangx.github.io/blog/2014/10/23/ripping-copy-protected-dvd-with-mpv/';
-        var disqus_url = 'http://zmwangx.github.io/blog/2014/10/23/ripping-copy-protected-dvd-with-mpv/';
+        var disqus_identifier = 'http://zmwangx.github.io/blog/2014/11/30/opera-style-advanced-keyboard-shortcuts-in-safari/';
+        var disqus_url = 'http://zmwangx.github.io/blog/2014/11/30/opera-style-advanced-keyboard-shortcuts-in-safari/';
         var disqus_script = 'embed.js';
       
     (function () {
