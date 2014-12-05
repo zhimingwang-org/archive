@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Convert Audio CD/DVD to ISO Image on OS X - Daily (?) Complaints (?)</title>
+  <title>Python 3 and Unicode - Daily (?) Complaints (?)</title>
   <meta name="author" content="Zhiming Wang">
 
   
-  <meta name="description" content="11/02/2014 update: See this post for issues, explanations, and more. Today it occurred to me that I should make clones of my audio CDs (as stand- &hellip;">
+  <meta name="description" content="I never realized that in Python 3 Unicode is the default; in particular, str in Python 3 is practically equivalent to unicode in Python 2. This might &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://zmwangx.github.io/blog/2014/10/26/audio-cd-slash-dvd-to-iso-image-on-os-x">
+  <link rel="canonical" href="http://zmwangx.github.io/blog/2014/12/05/python-3-and-unicode">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Daily (?) Complaints (?)" type="application/atom+xml">
@@ -80,7 +80,7 @@
   
   <header>
     
-      <h1 class="entry-title">Convert Audio CD/DVD to ISO Image on OS X</h1>
+      <h1 class="entry-title">Python 3 and Unicode</h1>
     
     
       <p class="meta">
@@ -89,7 +89,7 @@
 
 
 
-<time class='entry-date' datetime='2014-10-26T23:29:47-07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:29 pm</span></time>
+<time class='entry-date' datetime='2014-12-05T15:01:54-08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>3:01 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://zmwangx.github.io">Comments</a>
@@ -99,31 +99,7 @@
   </header>
 
 
-<div class="entry-content"><p><strong><em>11/02/2014 update:</em></strong></p>
-
-<p>See <a href="/blog/2014/11/02/vobcopy-dvdbackup-etc/">this post</a> for issues, explanations, and more.</p>
-
-<hr />
-
-<p>Today it occurred to me that I should make clones of my audio CDs (as stand-alone ISO images, I mean, not just rsyncing the AIFFs to subdirectories in <code>~/aud/lossless</code>). One can never have too many backups.</p>
-
-<p>Of course I could simply pack the aforementioned directories with AIFFs into ISOs — that’s not impressive. The end result might actually be the same, but I want to make the clones directly from the original CDs. It turns out that this is not so simple with the Disk Utility GUI — unlike DVDs, the “New Image” option is grayed out for Audio CDs. I’m not sure why, but maybe they want you to just use iTunes to deal with Audio CDs (which works well for all practical purposes — but theoretical curiosity never ends).</p>
-
-<p>So there comes <code>hdiutil</code>. <code>hdiutil</code> and <code>diskutil</code> are the utilities underlying Disk Utility. Unfortunately, so far I know little about them except for simplest things like <code>diskutil list</code>, <code>diskutil mount</code>, <code>hdiutil attach -stdinpass</code>, etc. (I&rsquo;m so ignorant about anything filesystem related!) The <code>hdiutil</code> verb that makes cross-platform CD or DVD is <code>makehybrid</code>, which supports the following filesystem options: <code>-hfs</code> (holy crap, no HFS+ please! Apple ought to replace this thirty-year-old filesystem — ZFS or something better please!), <code>-iso</code>, <code>-joliet</code>, and <code>-udf</code>. For Audio CDs you use <code>-iso</code> and with <code>-joliet</code> extension:</p>
-
-<pre><code>hdiutil makehybrid -iso -joliet -o AUDIO_CD_NAME.iso SOURCE
-</code></pre>
-
-<p>where <code>SOURCE</code> can be the mount point, the disk device file, etc. Similarly, although you can create <code>.cdr</code> images from DVDs via the Disk Utility GUI, you can also do it with <code>hdiutil</code> (which is potentially more portable — I’ve never heard a definitive answer of whether renaming <code>.cdr</code> to <code>.iso</code> really cross-platform):</p>
-
-<pre><code>hdiutil makehybrid -udf -o DVD_NAME.iso SOURCE
-</code></pre>
-
-<p>This way CSS keys <em>seem</em> to be cloned as well, since I was able to authenticate such a CSS-protected DVD with <code>libdvdread</code>.</p>
-
-<hr />
-
-<p>P.S. I sincerely hope that one day lossless music tracks are no longer distributed through CD-ROMs. So painful — even my Internet speed is more than ten times faster than the <a href="https://en.wikipedia.org/wiki/CD-ROM#Transfer_rates">highest transfer rate</a> available from any CD-ROM. (I’ve heard about some websites distributing lossless music digitally, but that won’t happen to the music I care about in the near future.) I still like physical albums though — a real sense of possession. Maybe they should contain the physical goodies and some sort of access codes?</p>
+<div class="entry-content"><p>I never realized that in Python 3 Unicode is the default; in particular, <code>str</code> in Python 3 is practically equivalent to <code>unicode</code> in Python 2. This might be the <em>one thing</em> that convince me to migrate. <code>str.encode()</code>, <code>str.decode()</code>, <code>unicode.encode()</code>, <code>unicode.decode()</code>, etc. are so confusing that I&rsquo;m never 100% sure what I&rsquo;m doing (only-occasionally-used-but-unavoidable-and-worst-of-all-very-confusing &ldquo;features&rdquo; are nightmares).</p>
 </div>
 
 
@@ -139,7 +115,7 @@
 
 
 
-<time class='entry-date' datetime='2014-10-26T23:29:47-07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:29 pm</span></time>
+<time class='entry-date' datetime='2014-12-05T15:01:54-08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>3:01 pm</span></time>
       
 
 
@@ -147,7 +123,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://zmwangx.github.io/blog/2014/10/26/audio-cd-slash-dvd-to-iso-image-on-os-x/" data-via="" data-counturl="http://zmwangx.github.io/blog/2014/10/26/audio-cd-slash-dvd-to-iso-image-on-os-x/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://zmwangx.github.io/blog/2014/12/05/python-3-and-unicode/" data-via="" data-counturl="http://zmwangx.github.io/blog/2014/12/05/python-3-and-unicode/" >Tweet</a>
   
   
   
@@ -156,10 +132,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/10/26/disk-visualizer-daisydisk/" title="Previous Post: Disk visualizer: DaisyDisk">&laquo; Disk visualizer: DaisyDisk</a>
+        <a class="basic-alignment left" href="/blog/2014/11/30/opera-style-advanced-keyboard-shortcuts-in-safari/" title="Previous Post: Opera-style advanced keyboard shortcuts in Safari">&laquo; Opera-style advanced keyboard shortcuts in Safari</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/10/27/onedrive-goes-unlimited/" title="Next Post: OneDrive goes unlimited">OneDrive goes unlimited &raquo;</a>
       
     </p>
   </footer>
@@ -254,8 +228,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://zmwangx.github.io/blog/2014/10/26/audio-cd-slash-dvd-to-iso-image-on-os-x/';
-        var disqus_url = 'http://zmwangx.github.io/blog/2014/10/26/audio-cd-slash-dvd-to-iso-image-on-os-x/';
+        var disqus_identifier = 'http://zmwangx.github.io/blog/2014/12/05/python-3-and-unicode/';
+        var disqus_url = 'http://zmwangx.github.io/blog/2014/12/05/python-3-and-unicode/';
         var disqus_script = 'embed.js';
       
     (function () {

@@ -9,7 +9,7 @@
   <meta name="author" content="Zhiming Wang">
 
   
-  <meta name="description" content="I&rsquo;ve been using the Chromuim Opera for a long time, after Chrome&rsquo;s design went unbearably ugly around v32 (IIRC Opera stable channel was &hellip;">
+  <meta name="description" content="I never realized that in Python 3 Unicode is the default; in particular, str in Python 3 is practically equivalent to unicode in Python 2. This might &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,38 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/05/python-3-and-unicode/">Python 3 and Unicode</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-12-05T15:01:54-08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>3:01 pm</span></time>
+        
+           | <a href="/blog/2014/12/05/python-3-and-unicode/#disqus_thread"
+             data-disqus-identifier="http://zmwangx.github.io/blog/2014/12/05/python-3-and-unicode/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I never realized that in Python 3 Unicode is the default; in particular, <code>str</code> in Python 3 is practically equivalent to <code>unicode</code> in Python 2. This might be the <em>one thing</em> that convince me to migrate. <code>str.encode()</code>, <code>str.decode()</code>, <code>unicode.encode()</code>, <code>unicode.decode()</code>, etc. are so confusing that I&rsquo;m never 100% sure what I&rsquo;m doing (only-occasionally-used-but-unavoidable-and-worst-of-all-very-confusing &ldquo;features&rdquo; are nightmares).</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -521,38 +553,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/11/11/re-encoding-everything-for-iphone-6-plus/">Re-encoding Everything for iPhone 6 Plus</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-11-11T13:31:25-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:31 pm</span></time>
-        
-           | <a href="/blog/2014/11/11/re-encoding-everything-for-iphone-6-plus/#disqus_thread"
-             data-disqus-identifier="http://zmwangx.github.io/blog/2014/11/11/re-encoding-everything-for-iphone-6-plus/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>AT&amp;T finally delivered my iPhone 6 Plus (silver, 64 GB) after about fifty days since preorder… The 1080p Retina display is simply stunning. However, it turns out that my old videos don’t work so well on 6 Plus’s giant screen. My old mobile video collection was optimized for my 16 GB 4S, targeting the small screen and highly limited storage — you guessed it, they were resized to 960x540, and they looked great. But they’re not up to the task any more. 960x540 videos aren’t at all sharp on the stunning screen of 6 Plus, which is more than capable of handling 4x pixels. Therefore, I have no choice but to feed it more pixels. I’m left in a weird situation, where my 1080p desktop (or even HDTV) quality videos should fit the screen just fine, but H.264 profile stands in the way. iPhone 6 and 6 Plus are only capable of High Profile level 4.2, so anything encoded in level 5.1, for instance, needs to be re-encoded. Also there are still MPEG-2 and MPEG-4 videos out there (MPEG-4 should be obsolete by now, I assume, but some people still use it; and MPEG-2 is de facto in TV broadcasts), which have to be transcoded. Okay, it’s a daunting task to re-encode a fairly big collection, but I have to do it sooner or later. Presumably this weekend. I’ll also report whether 720p videos look sharp on the screen later.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -568,6 +568,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/12/05/python-3-and-unicode/">Python 3 and Unicode</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/11/30/opera-style-advanced-keyboard-shortcuts-in-safari/">Opera-style Advanced Keyboard Shortcuts in Safari</a>
       </li>
     
@@ -581,10 +585,6 @@
     
       <li class="post">
         <a href="/blog/2014/11/26/original-images-in-day-one-journal/">Original Images in Day One Journal</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/11/25/i-got-16-gigs-of-ram/">I Got 16 Gigs of RAM</a>
       </li>
     
   </ul>
