@@ -4,7 +4,7 @@
   <title><![CDATA[Daily (?) Complaints (?)]]></title>
   <link href="http://zmwangx.github.io/atom.xml" rel="self"/>
   <link href="http://zmwangx.github.io/"/>
-  <updated>2014-12-05T15:15:23-08:00</updated>
+  <updated>2014-12-05T23:03:08-08:00</updated>
   <id>http://zmwangx.github.io/</id>
   <author>
     <name><![CDATA[Zhiming Wang]]></name>
@@ -12,6 +12,41 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Distraction Free Writing]]></title>
+    <link href="http://zmwangx.github.io/blog/2014/12/05/distraction-free-writing/"/>
+    <updated>2014-12-05T21:09:10-08:00</updated>
+    <id>http://zmwangx.github.io/blog/2014/12/05/distraction-free-writing</id>
+    <content type="html"><![CDATA[<p>This is not the first time that a distraction free writing app is featured on the Mac App Store. This time the candidate is <a href="https://itunes.apple.com/us/app/desk/id915839505?mt=12">Desk</a>. The official website is <a href="http://desk.pm">here</a>, but licensing is MAS-exclusive. The icon looks like this:</p>
+
+<p><img src="http://i.imgur.com/OprXSEU.png" alt="" /></p>
+
+<p>Skeuomorphism, oh man. And this is the only screenshot I can find on the official website.</p>
+
+<p><img src="http://i.imgur.com/WBaYzho.png" alt="" /></p>
+
+<p>There&rsquo;s also an intro video, but it &ldquo;focuses on writing&rdquo; and feeling rather than the app itself. I can also find a few other screenshots on MAS, but you know how shitty MAS screenshots are. Again, none of the screenshots are complete. So, after a bunch of research, I know almost nothing about this app, apart from the feature listing without details all stuffed on one single page along with the intro video, the single screenshot, and more. To do the app justice, there&rsquo;s an <a href="http://blog.desk.pm">accompanying blog</a>, with all kinds of noise though — like what a good blog should be, no complaint about that. So I guess anyone who wants to know more about this app should go digging there. Not me, so I didn&rsquo;t read.</p>
+
+<p>Strangely enough, acception is great, although the price tag is currently set at $30 — definitely a premium price. John Gruber <a href="http://daringfireball.net/linked/2014/11/22/desk">has a piece</a>, but I think &ldquo;My thanks to Johb Saddington for sponsoring this weeks&#8217; DF RSS feed to promote Desk, his blogging app for the Mac&rdquo; kind of defeats credability. MAS featuring is also a good sign (although not always). Out of the 55 MAS ratings at the time of writing (9:42 PM, Friday, December 5, 2014), 45 are five stars.</p>
+
+<p>That brings home my curiosity about &ldquo;distraction free writing apps&rdquo; in general. <em>Why would anyone pay $30 for a &ldquo;distraction free writing app&rdquo; (which basically justifies any lack of feature — &ldquo;we deliberately give you no choice for anything so you can focus on writing!&rdquo;), <strong>without even a trial</strong>?</em> MAS is such a bad model for utility and productivity software since you can&rsquo;t just look at five screenshots (seriously?) and decide &ldquo;this is for me!&rdquo; Yet I have the impression that more developers prefer this model nowadays, especially in this focused-writing business, another example being IA Writer. Sure it makes licensing and combating piracy simple, but again, I need to feel it to decide if it&rsquo;s the right tool for me, especially for a feature-deprived focused-writing app. (This is a general thought — in this case I don&rsquo;t need to feel it to tell that it&rsquo;s not for me.)</p>
+
+<p>More specifically, let&rsquo;s think about distraction free writing. What does IA Writer, or Desk, or other apps offer that&rsquo;s not already available to you with your OS? They support Markdown syntax highlighting, or even WYSYWYG (but only the very simple kind of WYSYWYG limited by the Markdown feature set), sure. They support some select-and-click type of formatting (by the way, Desk&rsquo;s formatting tools look a lot like those found on medium.com), which is good for some who are not competent enough to type simple markups, I guess. Desk supports drag-and-drop of media (although I&rsquo;m sure it&rsquo;s limited to certain platforms and not portable at all — I always upload images to Imgur and embed the Imgur links, which is super simple for me since I have several homemade scripts to take care of that). So are these features essential? Not at all. For the general public, plain Markdown without rendering should be more than enough, since Markdown was designed to be human-readable as plain text in the first place. Markdown only gets ugly when you have a lot of inline hyperlinks, or worse still, plain HTML tags, but that&rsquo;s not what I would expect from the general public. The technical population who do probably need the rendering, on the other hand, aren&rsquo;t the target audience of these apps; certain needs of the technical folks are hardly ever addressed by these feature-deprived focused-writing apps — e.g., where are my keybindings (full-featured, not just C-k, C-y, C-p, C-n, C-b, C-f, M-del, etc.; in particular, what about M-d, M-b, etc.)? What about custom Markdown engine? What about Jekyll integration (no need for that, actually — I&rsquo;m happy with my iTerm2)? So, to sum up, for the target audience, realtime rendering really isn&rsquo;t necessary, although I guess people with technophobia hate to see the markup like <code>**</code>. Second point, select-and-click type of formatting, is already dismissed. Third point, drag-and-drop media might be useful some people, but not all. After, Desk uses a typewriter as its icon, and there&rsquo;s no way you could throw photos into your typewriter. It&rsquo;s about writing, and most of the time writing is enough.</p>
+
+<p>I have dismissed the &ldquo;additional features&rdquo; of focused-writing apps as non-essential. And I can argue that they are actually sources of distraction — as soon as you have WYSYWYG and formatting and mouse, you could, in principle, begin to fiddle. But when I say &ldquo;additional features&rdquo;, you might ask, &ldquo;additional&rdquo; compared to what? Okay here&rsquo;s the magic. The magic is designed by Apple in California®, and it&rsquo;s present on every single Mac running OS X. It&rsquo;s called TextEdit.app. Distraction free? How can you be more distraction free then this:</p>
+
+<p><img src="http://i.imgur.com/z3LEu0U.png" alt="" /></p>
+
+<p>It&rsquo;s text, or white. Nothing else. It&rsquo;s more than capable of handling plain text, our best friend (and computer&rsquo;s best friend — the universal interface). You can customize the font once and live with that, never thinking about it again (or even live with the stock setting). That&rsquo;s better than having a font you don&rsquo;t like pressed onto you, as many of those focused-writing apps do. You can even auto save to iCloud if you&rsquo;d like to. Of course there&rsquo;s no one click publishing or management or whatever, but you could leave that to a publishing app (like Desk, when used as a publishing app). Better yet, you can use Jekyll or Octopress or whatever command line solution, where everything is at your fingertip, a few keystrokes away. No limitation whatsoever. But that&rsquo;s out of question for most people. (The easy-to-use command line interface, and not needing to worry about hosting myself, are two of the primary reasons that brought me to Octopress on GitHub Pages, rather than wordpress.com or self-hosted wordpress.org).</p>
+
+<p>Of course I&rsquo;m not saying TextEdit is enough as a text editor (it is enough for most people, though), or I use it myself as my text editor of choice. My editor has always been Emacs, which can be distraction free when I need it to be (I&rsquo;ve hidden everything I feel like to hide), and which can be an almost feature-complete operating system when I need it to be. Apart from a slightly frustrating loading time, there&rsquo;s no such bullshit as &ldquo;we deliberately leave no choice and no feature so you won&rsquo;t fiddle.&rdquo; Mostly importantly, it is extensible — I can start to write Elisp right away, and every single line of code I write can potentially save me thousands of keystrokes in the future; I don&rsquo;t need to submit a feature request to the developer and wait forever (usually power user&rsquo;s feature requests are ignored, unless the software concerned was built for power users to begin with or mainly popular within power users). Plus Emacs is free (both as in beer and in speech), rather than being proprietary and costing $30. At any rate, when I&rsquo;m writing in Emacs, most of the time I&rsquo;m just furiously typing away — no distraction whatsoever. That&rsquo;s the ideal state of writing, and I feel really good at those moments. That&rsquo;s the main charm of writing, at least to me.</p>
+
+<p><img src="http://i.imgur.com/2Jx9Mpv.png" alt="" /></p>
+
+<p>The whole command line experience is awesome (most of what I do with the computer are either done in the browser or in iTerm2 — well, plus some time spent with PDF in Preview.app and some with emails in Mail.app). And most of my tools either ship with the operating system (OS X is a great operating system), or are FOSS. Things that hardly ever die. Of course the command line experience is infeasible for laymen, but my argument is, <strong>most of the time the things you need are already there, e.g., TextEdit.</strong> I feel bad about those folks who are constantly on the lookout for distraction-free writing apps, and pay a ridiculous amount for them — only to distract themselves. Just open TextEdit and type away (or if you&rsquo;re capable of it, Emacs or Vim or SublimeText or TextMate or BBEdit or whatever). That&rsquo;s the most productive thing to do. <strong>Publishing is not the top priority; writing is, and it&rsquo;s really simple.</strong></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Python 3 and Unicode]]></title>
@@ -624,27 +659,6 @@ Ravi: Yeah, Brian Conrad will give a lecture. Don&rsquo;t tell him, he don&rsquo
 <hr />
 
 <p>Everything is broken in one way or another. Sigh. Let&rsquo;s hope that OneDrive improves a lot in the coming months; if it&rsquo;s stable enough and the speed gets some boost, I&rsquo;ll cancel my Google Drive subscription. I am a Google supporter and Microsoft hater, but a service that <em>works</em> is more important than ideology.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Mou 1.0 Fundraiser: Goal Reached]]></title>
-    <link href="http://zmwangx.github.io/blog/2014/10/28/mou-1-dot-0-fundraiser-goal-reached/"/>
-    <updated>2014-10-28T01:57:06-07:00</updated>
-    <id>http://zmwangx.github.io/blog/2014/10/28/mou-1-dot-0-fundraiser-goal-reached</id>
-    <content type="html"><![CDATA[<p>A week ago I wrote a post <a href="blog/2014/10/20/help-mou-hit-1-dot-0/"><em>Help Mou hit 1.0</em></a>. Today, I&rsquo;m delighted to find out that Mou has reached its goal, $20,000, half way into the fundraiser.</p>
-
-<p><img src="http://i.imgur.com/vM298t5.png" alt="Mou hit its goal on Indiegogo" /></p>
-
-<p>So what do I expect from 1.0? Most importantly,</p>
-
-<ul>
-<li>CommonMark support, especially GFM fenced code block and saner nested structures;</li>
-<li>Custom Markdown engine (I would like to call <a href="https://github.com/jgm/CommonMark"><code>stmd</code></a>).</li>
-</ul>
-
-
-<p>Whatever the case, Emacs is still my best friend.</p>
 ]]></content>
   </entry>
   
