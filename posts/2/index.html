@@ -9,7 +9,7 @@
   <meta name="author" content="Zhiming Wang">
 
   
-  <meta name="description" content="TL; DR: The actual PDF write-up is here. Yesterday I was trying to establish the formula for orthogonal primitive central idempotents of a group ring &hellip;">
+  <meta name="description" content="I propose the following cloud storage and syncing service model of the future. I call it Dropbot for Geeks®, and it totally rules. It&rsquo;s &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,54 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/11/20/dropbot-for-geeks(r)/">Dropbot for Geeks®</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-11-20T09:48:15-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:48 am</span></time>
+        
+           | <a href="/blog/2014/11/20/dropbot-for-geeks(r)/#disqus_thread"
+             data-disqus-identifier="http://zmwangx.github.io/blog/2014/11/20/dropbot-for-geeks(r)/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I propose the following cloud storage and syncing service model of the future. I call it <strong>Dropbot for Geeks®</strong>, and it totally rules. It&rsquo;s designed for geeks who are tired of the highly limited, miserably unproductive traditional services (based on clicking around). It has the following features:</p>
+
+<ul>
+<li><p>Standard Unix file system commands exposed as an API, e.g., <code>cat</code>, <code>cd</code>, <code>cp</code>, <code>du</code>, <code>df</code>, <code>file</code>, <code>find</code>, <code>head</code>, <code>ln</code>, <code>ls</code>, <code>mkdir</code>, <code>mv</code>, <code>pwd</code>, <code>rm</code>, <code>rmdir</code>, <code>tail</code>, <code>touch</code>, etc.</p></li>
+<li><p>A rudimentary shell emulator through the web interface exposing the commands above.</p></li>
+<li><p>Secure shell access to the file system, also exposing the commands above. Provide two-factor auth for SSH. Clearly, <code>scp</code> should also be supported.</p></li>
+<li><p>Checksums. Expose, for instance, <code>md5sum</code> or <code>sha1sum</code>, in the API. Provide checksums on download pages, probably on demand.</p></li>
+<li><p>Programmable selective syncing, down to per file level.</p></li>
+<li><p>Scriptability. Allow clients to run custom scheduled jobs or daemons with the API above. To prevent the service from becoming full-featured IaaS, though, clients might be limited in CPU time, memory, or command selection. This bullet point is arguable.</p></li>
+</ul>
+
+
+<hr />
+
+<p>With the level of command line integration illustrated above, we&rsquo;ll finally get rid of clicking around and not being able to automate chores. Navgating the remote file system will be a breeze — click, click, click, click, click (sometimes click should be replaced by double click, which is even more painful) just to navigate to a directory will be made a thing of the past. <code>ln</code>, in particular, saves disk space for duplicates — Dropbot for Geeks does <em>not</em> want to charge you extra for multiple copies of the same file in different directories. (To facilitate syncing hardlinks, clients should be able to specify hardlinked files in a config file. Or maybe some better mechanism. This might be hard.) At last, checksums are a must. I’ve had traumatic experiences like having downloaded an eight-part RAR, 1 GiB each, only to find that it wouldn’t unRAR. Without checksums, it was impossible to find which part was corrupted. As a result, I had to re-download everything — a nightmare. I never want to experience similar problems again. Hence the precious checksums.</p>
+
+<p>Dropbot for Geeks looks like a pretty good (well, not really, but at least pretty cool®) model. Maybe I should patent it before anyone else? Then if some similar service surfaces in the future, I can <a href="http://arstechnica.com/tech-policy/2014/11/jury-apple-must-pay-23-6m-for-old-pager-patents/">sue their ass off and enjoy some hot cash</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -614,86 +662,6 @@ Ravi: Yeah, Brian Conrad will give a lecture. Don&rsquo;t tell him, he don&rsquo
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/10/28/google-drive-no-selective-subfolder-sync/">Google Drive — No Selective Subfolder Sync?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-10-28T20:49:24-07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:49 pm</span></time>
-        
-           | <a href="/blog/2014/10/28/google-drive-no-selective-subfolder-sync/#disqus_thread"
-             data-disqus-identifier="http://zmwangx.github.io/blog/2014/10/28/google-drive-no-selective-subfolder-sync/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Up to this point I&rsquo;ve been using Google Drive as an online backup service, and uploads files mostly manually, although I do sync <code>~/img</code> with the client.</p>
-
-<p><strong>Aside.</strong> Google Drive, OneDrive, etc. don&rsquo;t work with symlinks. Wanna keep your stuff free and duplicate-free yet still synced to the servers? Use <code>rsync</code> to automatically reproduce your folder structure with hard links:</p>
-
-<pre><code>rsync -avzP --delete --link-dest=SOURCE/ SOURCE DESTINATION
-</code></pre>
-
-<p>e.g.,</p>
-
-<pre><code>rsync -avzP --delete --link-dest=~/img/ ~/img/ ~/sync/GoogleDrive/img/
-</code></pre>
-
-<p>automatically reproduces my <code>~/img</code> in the <code>img</code> directory under Google Drive&rsquo;s root, yet every file in the <code>~/img</code> tree is replaced by hard links to the original file, so the new structure within Google Drive takes little additional space — for the directories only.</p>
-
-<p>That doesn&rsquo;t solve every problem though, as you will see shortly. <em>End of aside.</em></p>
-
-<p>So, up to this point I’ve mostly used Google Drive as an online backup service by manually uploading (huge) stuff. But at some point I’m gonna automate parts of the uploading. As it turns out, I can keep some smaller video files on my hard drive; other bigger monsters (like movies, TV shows, etc., especially a lot of 1080i Transport Streams directly from TV broadcasts) are uploaded and then moved to external drives. Some of the smaller files, including things downloaded from YouTube, live in <code>~/vid/etc</code>, and I want to sync this folder to Google Drive. What&rsquo;s shocking is that this is not possible with the Google Drive client — it only allows selective syncing of the top level folders. Let me repeat this:</p>
-
-<p><strong>The Google Drive client only allows selective syncing of the <em>top level folders</em>.</strong></p>
-
-<p>This is <em>insane</em>. It’s almost 2015. Everyone supports this — Dropbox, Microsoft, Box, even Baidu. Google Drive launched on April 24, 2012, that’s 2.5 years ago. <a href="https://productforums.google.com/forum/#!topic/drive/Gs2w1BL-B9U">This thread</a> on Google Drive Forum, “Ability to sync only selected sub folders”, was posted on August 27, 2012, and has garnered 139 replies. They are ignored by the developers, and the accepted “answer” is to utilize Google Drive’s assign-one-file/folder-to-multiple-folders feature to create a special “sync” directory. Okay, that’s a stupid hard link solution on the server side. Okay, if that works… <em>No</em>. “Hard links on the server side” cannot bear different names; so what if I want to sync, say, both <code>vid/etc</code> and <code>aud/etc</code>? Whoops. So I also have to do all sorts of ugly renaming. NO, GOOGLE, NO, I won&rsquo;t accept that much trouble.</p>
-
-<p>This kind of insanity makes me wander:</p>
-
-<p><strong>Do the Google Drive developers use Google Drive themselves?</strong></p>
-
-<p>For now I&rsquo;m moving <code>vid/etc</code> to <code>vid_etc</code>. Sigh.</p>
-
-<hr />
-
-<p>There are other problems that I encountered with Google Drive sync today. For one thing, it rejects what I already have and insists on starting from scratch. I mean, say I have uploaded a folder via the web interface, and later wants to keep it in sync (of course that&rsquo;s only possible if it&rsquo;s top level), so I put what I already have there. Nope, Google Drive reports that as a conflict and insists on downloading all the stuff again. Apart from wasted traffic, that also ruins my hard links, so I have to either wipe everything clean on the server side and reupload, or redownload everything and redo all the hard-linking after the download finishes. Either way, very annoying. I opted for the first one. (I later empirically confirmed that OneDrive could handle this situation.)</p>
-
-<p>There are other problems that don&rsquo;t pop right off my mind. Anyway, the gist is,</p>
-
-<p><strong>Google Drive is not yet sync-ready for power users (maybe even laymen).</strong></p>
-
-<hr />
-
-<p>Then, is OneDrive perfect? No. I know it recently went unlimited, but there’s one major annoyance: the speed. Stanford’s Ethernet speed is almost 1 Gbps UL/DL, but the OneDrive client tops out at about 2 MBps. The web interface isn’t much better. Google Drive is a lot faster than that, which makes it a good backup service for manual uploading. Anyway, maybe OneDrive will improve over time; yesterday they delivered an update to OneDrive.app, and at least it finally works.</p>
-
-<p>OneDrive also boasts no file status indicators on OS X, which everyone else in the industry has. That’s not a show-stopper though, if you just use it as a backup service.</p>
-
-<hr />
-
-<p>What about Dropbox? Dropbox is a truly awesome sync-ready service, but it is at the same time pretty expensive compared to others. Also, since I use Dropbox as a sync service, it must be up at all times and constantly indexing, so I’m really cautious with what I put there to avoid unnecessary cycles and startup time.</p>
-
-<hr />
-
-<p>Everything is broken in one way or another. Sigh. Let&rsquo;s hope that OneDrive improves a lot in the coming months; if it&rsquo;s stable enough and the speed gets some boost, I&rsquo;ll cancel my Google Drive subscription. I am a Google supporter and Microsoft hater, but a service that <em>works</em> is more important than ideology.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -711,6 +679,10 @@ Ravi: Yeah, Brian Conrad will give a lecture. Don&rsquo;t tell him, he don&rsquo
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/12/10/james-watsons-nobel-prize-medal/">James Watson&#8217;s Nobel Prize Medal</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/05/distraction-free-writing/">Distraction Free Writing</a>
       </li>
     
@@ -724,10 +696,6 @@ Ravi: Yeah, Brian Conrad will give a lecture. Don&rsquo;t tell him, he don&rsquo
     
       <li class="post">
         <a href="/blog/2014/11/28/going-diceware/">Going Diceware</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/11/28/given-infinite-time/">Given Infinite Time</a>
       </li>
     
   </ul>
