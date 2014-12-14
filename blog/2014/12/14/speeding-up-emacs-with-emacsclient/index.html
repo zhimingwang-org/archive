@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Python 3 and Unicode - Daily (?) Complaints (?)</title>
+  <title>Speeding Up Emacs With Emacsclient - Daily (?) Complaints (?)</title>
   <meta name="author" content="Zhiming Wang">
 
   
-  <meta name="description" content="I never realized that in Python 3 Unicode is the default; in particular, str in Python 3 is practically equivalent to unicode in Python 2. This might &hellip;">
+  <meta name="description" content="Emacs is notorious for its loading time. For me, this is especially annoying when I&rsquo;m editing LaTeX files — AUCTeX takes about five seconds to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://zmwangx.github.io/blog/2014/12/05/python-3-and-unicode">
+  <link rel="canonical" href="http://zmwangx.github.io/blog/2014/12/14/speeding-up-emacs-with-emacsclient">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Daily (?) Complaints (?)" type="application/atom+xml">
@@ -80,7 +80,7 @@
   
   <header>
     
-      <h1 class="entry-title">Python 3 and Unicode</h1>
+      <h1 class="entry-title">Speeding Up Emacs With Emacsclient</h1>
     
     
       <p class="meta">
@@ -89,7 +89,7 @@
 
 
 
-<time class='entry-date' datetime='2014-12-05T15:01:54-08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>3:01 pm</span></time>
+<time class='entry-date' datetime='2014-12-14T10:06:02-08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:06 am</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://zmwangx.github.io">Comments</a>
@@ -99,7 +99,36 @@
   </header>
 
 
-<div class="entry-content"><p>I never realized that in Python 3 Unicode is the default; in particular, <code>str</code> in Python 3 is practically equivalent to <code>unicode</code> in Python 2. This might be the <em>one thing</em> that convince me to migrate. <code>str.encode()</code>, <code>str.decode()</code>, <code>unicode.encode()</code>, <code>unicode.decode()</code>, etc. are so confusing that I&rsquo;m never 100% sure what I&rsquo;m doing (only-occasionally-used-but-unavoidable-and-worst-of-all-very-confusing &ldquo;features&rdquo; are nightmares).</p>
+<div class="entry-content"><p>Emacs is notorious for its loading time. For me, this is especially annoying when I&rsquo;m editing LaTeX files — AUCTeX takes about five seconds to load, and once I exit Emacs (especially after a quick edit), all that work is wasted, and next time I want to do some quick editing with that same LaTeX file — sorry, another five seconds.</p>
+
+<p>This problem can be solved by &ldquo;using that same Emacs&rdquo;, i.e., running Emacs in server mode, then connecting to the server via <code>emacsclient</code>. Below is my script, which I call <code>emc</code>, to make <code>emacsclient</code> more user-friendly. <code>emc</code> opens a file (given as <code>$1</code>) on the server, launching one on its way if none is detected. Note that I used <code>-cqt</code> for <code>emacsclient</code>. The <code>-c</code> option is <code>--create-frame</code>, i.e., create a new frame (in the current tty, for instance) instead of using the existing frame (in another tty, for instance); this allows for multiple frames accross different ttys. The <code>-q</code> option is for <code>--quiet</code>, suppressing messages like &ldquo;Waiting for Emacs&hellip;&rdquo; The <code>-t</code> option is for <code>--tty</code>, or equivalently, the familiar <code>-nw</code> option of <code>emacs</code>. Note that <code>emacsclient</code> requires a filename, so my script prompts for one if <code>$1</code> is empty.</p>
+
+<figure class='code'><figcaption><span>emc</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">if</span> <span class="o">[[</span> -n <span class="nv">$1</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+</span><span class='line'>    <span class="nv">file</span><span class="o">=</span><span class="nv">$1</span>
+</span><span class='line'><span class="k">else</span>
+</span><span class='line'>    <span class="k">while</span> <span class="o">[[</span> -z <span class="k">${</span><span class="nv">file</span><span class="k">}</span> <span class="o">]]</span><span class="p">;</span> <span class="k">do</span>
+</span><span class='line'>        <span class="nb">read</span> -p <span class="s1">&#39;filename: &#39;</span> file
+</span><span class='line'>    <span class="k">done</span>
+</span><span class='line'><span class="k">fi</span>
+</span><span class='line'>emacsclient -cqt <span class="s2">&quot;${file}&quot;</span> 2&gt;/dev/null <span class="o">||</span> <span class="o">{</span> emacs --daemon<span class="p">;</span> emacsclient -cqt <span class="s2">&quot;${file}&quot;</span><span class="p">;</span> <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note that using <code>emacsclient</code> has the additional benefit that the same buffer is simultaneously updated accross different ttys (See screenshot, where I opened the current post in two different ttys). This way, you won&rsquo;t face the nasty &ldquo;file changed on disk&rdquo; problem when you accidentally edited the same file in another tty session.</p>
+
+<p><img src="http://i.imgur.com/9KxEWKq.png" alt="screen shot of multiple copies of the same buffer" /></p>
+
+<p>By the way, remember to re-configure your other programs that uses an external editor. For instance, change <code>$EDITOR</code> to <code>emacsclient -cqt</code> in your <code>env</code>, and <code>core.editor</code> to <code>emacsclient -cqt</code> in your <code>~/.gitconfig</code>.</p>
+
+<p>I just started using <code>emacsclient</code>, so the above script might be buggy in certain edge cases. I&rsquo;ll report when I run into issues.</p>
 </div>
 
 
@@ -115,7 +144,7 @@
 
 
 
-<time class='entry-date' datetime='2014-12-05T15:01:54-08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>3:01 pm</span></time>
+<time class='entry-date' datetime='2014-12-14T10:06:02-08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:06 am</span></time>
       
 
 
@@ -123,7 +152,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://zmwangx.github.io/blog/2014/12/05/python-3-and-unicode/" data-via="" data-counturl="http://zmwangx.github.io/blog/2014/12/05/python-3-and-unicode/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://zmwangx.github.io/blog/2014/12/14/speeding-up-emacs-with-emacsclient/" data-via="" data-counturl="http://zmwangx.github.io/blog/2014/12/14/speeding-up-emacs-with-emacsclient/" >Tweet</a>
   
   
   
@@ -132,10 +161,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/11/30/opera-style-advanced-keyboard-shortcuts-in-safari/" title="Previous Post: Opera-style advanced keyboard shortcuts in Safari">&laquo; Opera-style advanced keyboard shortcuts in Safari</a>
+        <a class="basic-alignment left" href="/blog/2014/12/13/the-mac-like-evernote/" title="Previous Post: The Mac-like Evernote">&laquo; The Mac-like Evernote</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/12/05/distraction-free-writing/" title="Next Post: Distraction free writing">Distraction free writing &raquo;</a>
       
     </p>
   </footer>
@@ -230,8 +257,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://zmwangx.github.io/blog/2014/12/05/python-3-and-unicode/';
-        var disqus_url = 'http://zmwangx.github.io/blog/2014/12/05/python-3-and-unicode/';
+        var disqus_identifier = 'http://zmwangx.github.io/blog/2014/12/14/speeding-up-emacs-with-emacsclient/';
+        var disqus_url = 'http://zmwangx.github.io/blog/2014/12/14/speeding-up-emacs-with-emacsclient/';
         var disqus_script = 'embed.js';
       
     (function () {

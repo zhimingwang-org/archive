@@ -4,7 +4,7 @@
   <title><![CDATA[Daily (?) Complaints (?)]]></title>
   <link href="http://zmwangx.github.io/atom.xml" rel="self"/>
   <link href="http://zmwangx.github.io/"/>
-  <updated>2014-12-13T22:14:04-08:00</updated>
+  <updated>2014-12-14T10:40:51-08:00</updated>
   <id>http://zmwangx.github.io/</id>
   <author>
     <name><![CDATA[Zhiming Wang]]></name>
@@ -12,6 +12,44 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Speeding Up Emacs With Emacsclient]]></title>
+    <link href="http://zmwangx.github.io/blog/2014/12/14/speeding-up-emacs-with-emacsclient/"/>
+    <updated>2014-12-14T10:06:02-08:00</updated>
+    <id>http://zmwangx.github.io/blog/2014/12/14/speeding-up-emacs-with-emacsclient</id>
+    <content type="html"><![CDATA[<p>Emacs is notorious for its loading time. For me, this is especially annoying when I&rsquo;m editing LaTeX files — AUCTeX takes about five seconds to load, and once I exit Emacs (especially after a quick edit), all that work is wasted, and next time I want to do some quick editing with that same LaTeX file — sorry, another five seconds.</p>
+
+<p>This problem can be solved by &ldquo;using that same Emacs&rdquo;, i.e., running Emacs in server mode, then connecting to the server via <code>emacsclient</code>. Below is my script, which I call <code>emc</code>, to make <code>emacsclient</code> more user-friendly. <code>emc</code> opens a file (given as <code>$1</code>) on the server, launching one on its way if none is detected. Note that I used <code>-cqt</code> for <code>emacsclient</code>. The <code>-c</code> option is <code>--create-frame</code>, i.e., create a new frame (in the current tty, for instance) instead of using the existing frame (in another tty, for instance); this allows for multiple frames accross different ttys. The <code>-q</code> option is for <code>--quiet</code>, suppressing messages like &ldquo;Waiting for Emacs&hellip;&rdquo; The <code>-t</code> option is for <code>--tty</code>, or equivalently, the familiar <code>-nw</code> option of <code>emacs</code>. Note that <code>emacsclient</code> requires a filename, so my script prompts for one if <code>$1</code> is empty.</p>
+
+<figure class='code'><figcaption><span>emc</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">if</span> <span class="o">[[</span> -n <span class="nv">$1</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+</span><span class='line'>    <span class="nv">file</span><span class="o">=</span><span class="nv">$1</span>
+</span><span class='line'><span class="k">else</span>
+</span><span class='line'>    <span class="k">while</span> <span class="o">[[</span> -z <span class="k">${</span><span class="nv">file</span><span class="k">}</span> <span class="o">]]</span><span class="p">;</span> <span class="k">do</span>
+</span><span class='line'>        <span class="nb">read</span> -p <span class="s1">&#39;filename: &#39;</span> file
+</span><span class='line'>    <span class="k">done</span>
+</span><span class='line'><span class="k">fi</span>
+</span><span class='line'>emacsclient -cqt <span class="s2">&quot;${file}&quot;</span> 2&gt;/dev/null <span class="o">||</span> <span class="o">{</span> emacs --daemon<span class="p">;</span> emacsclient -cqt <span class="s2">&quot;${file}&quot;</span><span class="p">;</span> <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note that using <code>emacsclient</code> has the additional benefit that the same buffer is simultaneously updated accross different ttys (See screenshot, where I opened the current post in two different ttys). This way, you won&rsquo;t face the nasty &ldquo;file changed on disk&rdquo; problem when you accidentally edited the same file in another tty session.</p>
+
+<p><img src="http://i.imgur.com/9KxEWKq.png" alt="screen shot of multiple copies of the same buffer" /></p>
+
+<p>By the way, remember to re-configure your other programs that uses an external editor. For instance, change <code>$EDITOR</code> to <code>emacsclient -cqt</code> in your <code>env</code>, and <code>core.editor</code> to <code>emacsclient -cqt</code> in your <code>~/.gitconfig</code>.</p>
+
+<p>I just started using <code>emacsclient</code>, so the above script might be buggy in certain edge cases. I&rsquo;ll report when I run into issues.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[The Mac-like Evernote]]></title>
@@ -443,109 +481,6 @@
 <blockquote><p>I WISH APPLE TECHNICA WOULD STOP WITH ALL THESE ARTICLES ABOUT THE IMAC.</p>
 
 <p>It really makes me want one unjustifiably.</p></blockquote>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[List YouTube Playlist With Youtube-dl]]></title>
-    <link href="http://zmwangx.github.io/blog/2014/11/05/list-youtube-playlist-with-youtube-dl/"/>
-    <updated>2014-11-05T10:37:58-08:00</updated>
-    <id>http://zmwangx.github.io/blog/2014/11/05/list-youtube-playlist-with-youtube-dl</id>
-    <content type="html"><![CDATA[<p>Of course you are always welcome to use the <a href="https://developers.google.com/api-client-library/python/">Google APIs Client Library for Python</a> to wrestle with YouTube, which is usually pretty simple. (As an added bonus, YouTube has some <a href="https://developers.google.com/youtube/v3/code_samples/">nice runnable sample scripts</a> to get you started.) With the client library, listing videos in a YouTube playlist is a breeze.</p>
-
-<p>However, if you don&rsquo;t feel like writing code yourself (I usually don&rsquo;t feel like writing code myself until I use something often enough and existing solutions are suboptimal), <code>youtube-dl</code> recently added the functionality to list videos in a playlist with the <code>--flat-playlist</code> option.</p>
-
-<p><a href="https://github.com/rg3/youtube-dl/issues/4003#issuecomment-60322630">According to one of the project collaborators</a>, currently <code>--flat-playlist</code> is only helpful with the <code>-j</code> option for dumping JSON (so I suppose this feature is subject to change). For instance, <code>--flat-playlist</code> alone would emit something like this:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>&gt; youtube-dl --flat-playlist <span class="s1">&#39;https://www.youtube.com/watch?v=gdOwwI0ngqQ&amp;list=PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F&#39;</span>
-</span><span class='line'><span class="o">[</span>youtube:playlist<span class="o">]</span> Downloading playlist PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F - add --no-playlist to just download video gdOwwI0ngqQ
-</span><span class='line'><span class="o">[</span>youtube:playlist<span class="o">]</span> PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F: Downloading webpage
-</span><span class='line'><span class="o">[</span>youtube:playlist<span class="o">]</span> PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F: Downloading page <span class="c">#1</span>
-</span><span class='line'><span class="o">[</span>download<span class="o">]</span> Downloading playlist: Cam By apinknomfan
-</span><span class='line'><span class="o">[</span>youtube:playlist<span class="o">]</span> playlist Cam By apinknomfan: Collected <span class="m">119</span> video ids <span class="o">(</span>downloading <span class="m">119</span> of them<span class="o">)</span>
-</span><span class='line'><span class="o">[</span>download<span class="o">]</span> Downloading video <span class="c">#1 of 119</span>
-</span><span class='line'><span class="o">[</span>download<span class="o">]</span> Downloading video <span class="c">#2 of 119</span>
-</span><span class='line'><span class="o">[</span>download<span class="o">]</span> Downloading video <span class="c">#3 of 119</span>
-</span><span class='line'><span class="o">[</span>download<span class="o">]</span> Downloading video <span class="c">#4 of 119</span>
-</span><span class='line'>...
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>which doesn&rsquo;t really make sense — it tells you that it collected 119 video ids, and no more. Once you have <code>-j</code> on, you get JSON data that you can parse with anything:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>&gt; youtube-dl -j --flat-playlist <span class="s1">&#39;https://www.youtube.com/watch?v=gdOwwI0ngqQ&amp;list=PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F&#39;</span>
-</span><span class='line'><span class="o">{</span><span class="s2">&quot;url&quot;</span>: <span class="s2">&quot;gdOwwI0ngqQ&quot;</span>, <span class="s2">&quot;_type&quot;</span>: <span class="s2">&quot;url&quot;</span>, <span class="s2">&quot;ie_key&quot;</span>: <span class="s2">&quot;Youtube&quot;</span>, <span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;gdOwwI0ngqQ&quot;</span><span class="o">}</span>
-</span><span class='line'><span class="o">{</span><span class="s2">&quot;url&quot;</span>: <span class="s2">&quot;j9l5nchv1Z8&quot;</span>, <span class="s2">&quot;_type&quot;</span>: <span class="s2">&quot;url&quot;</span>, <span class="s2">&quot;ie_key&quot;</span>: <span class="s2">&quot;Youtube&quot;</span>, <span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;j9l5nchv1Z8&quot;</span><span class="o">}</span>
-</span><span class='line'><span class="o">{</span><span class="s2">&quot;url&quot;</span>: <span class="s2">&quot;znW5ALwWNQw&quot;</span>, <span class="s2">&quot;_type&quot;</span>: <span class="s2">&quot;url&quot;</span>, <span class="s2">&quot;ie_key&quot;</span>: <span class="s2">&quot;Youtube&quot;</span>, <span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;znW5ALwWNQw&quot;</span><span class="o">}</span>
-</span><span class='line'><span class="o">{</span><span class="s2">&quot;url&quot;</span>: <span class="s2">&quot;qyE7-auTIcc&quot;</span>, <span class="s2">&quot;_type&quot;</span>: <span class="s2">&quot;url&quot;</span>, <span class="s2">&quot;ie_key&quot;</span>: <span class="s2">&quot;Youtube&quot;</span>, <span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;qyE7-auTIcc&quot;</span><span class="o">}</span>
-</span><span class='line'>...
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The most straightforward way to parse this is to use a command line JSON parser, the best one being <a href="https://github.com/stedolan/jq">jq</a>:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>&gt; youtube-dl -j --flat-playlist <span class="s1">&#39;https://www.youtube.com/watch?v=gdOwwI0ngqQ&amp;list=PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F&#39;</span> <span class="p">|</span> jq -r <span class="s1">&#39;.id&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;s_^_https://youtube.com/v/_&#39;</span>
-</span><span class='line'>https://youtube.com/v/gdOwwI0ngqQ
-</span><span class='line'>https://youtube.com/v/j9l5nchv1Z8
-</span><span class='line'>https://youtube.com/v/znW5ALwWNQw
-</span><span class='line'>https://youtube.com/v/qyE7-auTIcc
-</span><span class='line'>...
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>There you go, a list of URIs you can use. Of course you can put this in a script to save some typing:</p>
-
-<figure class='code'><figcaption><span>youtube-ls-playlist.sh</span><a href='https://gist.github.com/zmwangx/0245788475f963210ed9'>Gist</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/usr/bin/env bash</span>
-</span><span class='line'><span class="c"># Takes a YouTube URI to a playlist (fairly liberal, it&#39;s fine as long</span>
-</span><span class='line'><span class="c"># as the playlist id can be extracted), and prints a list of URIs in a</span>
-</span><span class='line'><span class="c"># YouTube playlist.</span>
-</span><span class='line'><span class="c">#</span>
-</span><span class='line'><span class="c"># Requires youtube-dl 2014.10.24, tested on youtube-dl</span>
-</span><span class='line'><span class="c"># 2014.11.02.1. Feature subject to change.</span>
-</span><span class='line'>youtube-dl -j --flat-playlist <span class="s2">&quot;$1&quot;</span> <span class="p">|</span> jq -r <span class="s1">&#39;.id&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;s_^_https://youtube.com/v/_&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><strong><em>Aside:</em></strong> I first embedded the gist here, but <a href="http://i.imgur.com/m3cr0Im.png">it looked a bit off</a>. See <a href="https://github.com/imathis/octopress/issues/1392">imathis/octopress#1392</a>.</p>
-
-<blockquote><p>In the next version of the Gist tag plugin we are just downloading the gists and embedding them upon generation so we don&rsquo;t have to worry about GitHub going down and breaking all your gists, or changing the HTML and breaking all the styles.</p>
-
-<p>For the time being I suggest embedding your code snippets directly if you want them to look good.</p></blockquote>
-
-<p>Okay. End of aside.</p>
-
-<p>By the way, <code>youtube-dl</code> supports playlist bulk download natively. The reason I need a list of video ids or URIs, however, is that among other things, <code>youtube-dl</code> doesn&rsquo;t download highest resolution DASH video by default, so I have to rely on something like <code>youtube-dl-dash</code> (<a href="https://github.com/zmwangx/sh/blob/master/youtube-dl-dash">link</a>) to download the best version.</p>
 ]]></content>
   </entry>
   

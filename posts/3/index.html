@@ -9,7 +9,7 @@
   <meta name="author" content="Zhiming Wang">
 
   
-  <meta name="description" content="A few days ago, I was cloning my entire Audio CD and DVD collection, and reported some of the findings in this post. As said, the most important &hellip;">
+  <meta name="description" content="Of course you are always welcome to use the Google APIs Client Library for Python to wrestle with YouTube, which is usually pretty simple. (As an &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,132 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/11/05/list-youtube-playlist-with-youtube-dl/">List YouTube Playlist With Youtube-dl</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-11-05T10:37:58-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:37 am</span></time>
+        
+           | <a href="/blog/2014/11/05/list-youtube-playlist-with-youtube-dl/#disqus_thread"
+             data-disqus-identifier="http://zmwangx.github.io/blog/2014/11/05/list-youtube-playlist-with-youtube-dl/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Of course you are always welcome to use the <a href="https://developers.google.com/api-client-library/python/">Google APIs Client Library for Python</a> to wrestle with YouTube, which is usually pretty simple. (As an added bonus, YouTube has some <a href="https://developers.google.com/youtube/v3/code_samples/">nice runnable sample scripts</a> to get you started.) With the client library, listing videos in a YouTube playlist is a breeze.</p>
+
+<p>However, if you don&rsquo;t feel like writing code yourself (I usually don&rsquo;t feel like writing code myself until I use something often enough and existing solutions are suboptimal), <code>youtube-dl</code> recently added the functionality to list videos in a playlist with the <code>--flat-playlist</code> option.</p>
+
+<p><a href="https://github.com/rg3/youtube-dl/issues/4003#issuecomment-60322630">According to one of the project collaborators</a>, currently <code>--flat-playlist</code> is only helpful with the <code>-j</code> option for dumping JSON (so I suppose this feature is subject to change). For instance, <code>--flat-playlist</code> alone would emit something like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&gt; youtube-dl --flat-playlist <span class="s1">&#39;https://www.youtube.com/watch?v=gdOwwI0ngqQ&amp;list=PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F&#39;</span>
+</span><span class='line'><span class="o">[</span>youtube:playlist<span class="o">]</span> Downloading playlist PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F - add --no-playlist to just download video gdOwwI0ngqQ
+</span><span class='line'><span class="o">[</span>youtube:playlist<span class="o">]</span> PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F: Downloading webpage
+</span><span class='line'><span class="o">[</span>youtube:playlist<span class="o">]</span> PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F: Downloading page <span class="c">#1</span>
+</span><span class='line'><span class="o">[</span>download<span class="o">]</span> Downloading playlist: Cam By apinknomfan
+</span><span class='line'><span class="o">[</span>youtube:playlist<span class="o">]</span> playlist Cam By apinknomfan: Collected <span class="m">119</span> video ids <span class="o">(</span>downloading <span class="m">119</span> of them<span class="o">)</span>
+</span><span class='line'><span class="o">[</span>download<span class="o">]</span> Downloading video <span class="c">#1 of 119</span>
+</span><span class='line'><span class="o">[</span>download<span class="o">]</span> Downloading video <span class="c">#2 of 119</span>
+</span><span class='line'><span class="o">[</span>download<span class="o">]</span> Downloading video <span class="c">#3 of 119</span>
+</span><span class='line'><span class="o">[</span>download<span class="o">]</span> Downloading video <span class="c">#4 of 119</span>
+</span><span class='line'>...
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>which doesn&rsquo;t really make sense — it tells you that it collected 119 video ids, and no more. Once you have <code>-j</code> on, you get JSON data that you can parse with anything:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&gt; youtube-dl -j --flat-playlist <span class="s1">&#39;https://www.youtube.com/watch?v=gdOwwI0ngqQ&amp;list=PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F&#39;</span>
+</span><span class='line'><span class="o">{</span><span class="s2">&quot;url&quot;</span>: <span class="s2">&quot;gdOwwI0ngqQ&quot;</span>, <span class="s2">&quot;_type&quot;</span>: <span class="s2">&quot;url&quot;</span>, <span class="s2">&quot;ie_key&quot;</span>: <span class="s2">&quot;Youtube&quot;</span>, <span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;gdOwwI0ngqQ&quot;</span><span class="o">}</span>
+</span><span class='line'><span class="o">{</span><span class="s2">&quot;url&quot;</span>: <span class="s2">&quot;j9l5nchv1Z8&quot;</span>, <span class="s2">&quot;_type&quot;</span>: <span class="s2">&quot;url&quot;</span>, <span class="s2">&quot;ie_key&quot;</span>: <span class="s2">&quot;Youtube&quot;</span>, <span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;j9l5nchv1Z8&quot;</span><span class="o">}</span>
+</span><span class='line'><span class="o">{</span><span class="s2">&quot;url&quot;</span>: <span class="s2">&quot;znW5ALwWNQw&quot;</span>, <span class="s2">&quot;_type&quot;</span>: <span class="s2">&quot;url&quot;</span>, <span class="s2">&quot;ie_key&quot;</span>: <span class="s2">&quot;Youtube&quot;</span>, <span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;znW5ALwWNQw&quot;</span><span class="o">}</span>
+</span><span class='line'><span class="o">{</span><span class="s2">&quot;url&quot;</span>: <span class="s2">&quot;qyE7-auTIcc&quot;</span>, <span class="s2">&quot;_type&quot;</span>: <span class="s2">&quot;url&quot;</span>, <span class="s2">&quot;ie_key&quot;</span>: <span class="s2">&quot;Youtube&quot;</span>, <span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;qyE7-auTIcc&quot;</span><span class="o">}</span>
+</span><span class='line'>...
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The most straightforward way to parse this is to use a command line JSON parser, the best one being <a href="https://github.com/stedolan/jq">jq</a>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&gt; youtube-dl -j --flat-playlist <span class="s1">&#39;https://www.youtube.com/watch?v=gdOwwI0ngqQ&amp;list=PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F&#39;</span> <span class="p">|</span> jq -r <span class="s1">&#39;.id&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;s_^_https://youtube.com/v/_&#39;</span>
+</span><span class='line'>https://youtube.com/v/gdOwwI0ngqQ
+</span><span class='line'>https://youtube.com/v/j9l5nchv1Z8
+</span><span class='line'>https://youtube.com/v/znW5ALwWNQw
+</span><span class='line'>https://youtube.com/v/qyE7-auTIcc
+</span><span class='line'>...
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>There you go, a list of URIs you can use. Of course you can put this in a script to save some typing:</p>
+
+<figure class='code'><figcaption><span>youtube-ls-playlist.sh</span><a href='https://gist.github.com/zmwangx/0245788475f963210ed9'>Gist</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/usr/bin/env bash</span>
+</span><span class='line'><span class="c"># Takes a YouTube URI to a playlist (fairly liberal, it&#39;s fine as long</span>
+</span><span class='line'><span class="c"># as the playlist id can be extracted), and prints a list of URIs in a</span>
+</span><span class='line'><span class="c"># YouTube playlist.</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c"># Requires youtube-dl 2014.10.24, tested on youtube-dl</span>
+</span><span class='line'><span class="c"># 2014.11.02.1. Feature subject to change.</span>
+</span><span class='line'>youtube-dl -j --flat-playlist <span class="s2">&quot;$1&quot;</span> <span class="p">|</span> jq -r <span class="s1">&#39;.id&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;s_^_https://youtube.com/v/_&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong><em>Aside:</em></strong> I first embedded the gist here, but <a href="http://i.imgur.com/m3cr0Im.png">it looked a bit off</a>. See <a href="https://github.com/imathis/octopress/issues/1392">imathis/octopress#1392</a>.</p>
+
+<blockquote><p>In the next version of the Gist tag plugin we are just downloading the gists and embedding them upon generation so we don&rsquo;t have to worry about GitHub going down and breaking all your gists, or changing the HTML and breaking all the styles.</p>
+
+<p>For the time being I suggest embedding your code snippets directly if you want them to look good.</p></blockquote>
+
+<p>Okay. End of aside.</p>
+
+<p>By the way, <code>youtube-dl</code> supports playlist bulk download natively. The reason I need a list of video ids or URIs, however, is that among other things, <code>youtube-dl</code> doesn&rsquo;t download highest resolution DASH video by default, so I have to rely on something like <code>youtube-dl-dash</code> (<a href="https://github.com/zmwangx/sh/blob/master/youtube-dl-dash">link</a>) to download the best version.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -604,71 +730,6 @@ Ravi: Yeah, Brian Conrad will give a lecture. Don&rsquo;t tell him, he don&rsquo
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/10/23/ripping-copy-protected-dvd-with-mpv/">Ripping Copy-protected DVD With Mpv</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-10-23T20:03:22-07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>8:03 pm</span></time>
-        
-           | <a href="/blog/2014/10/23/ripping-copy-protected-dvd-with-mpv/#disqus_thread"
-             data-disqus-identifier="http://zmwangx.github.io/blog/2014/10/23/ripping-copy-protected-dvd-with-mpv/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><strong><em>11/02/2014 update:</em></strong></p>
-
-<p>See <a href="/blog/2014/11/02/vobcopy-dvdbackup-etc/">this post</a> for issues, explanations, and more.</p>
-
-<hr />
-
-<p><strong><em>10/25/2014 update:</em></strong></p>
-
-<p>I&rsquo;m such an idiot. <code>vobcopy</code> is the real, hassel-free way to go.</p>
-
-<pre><code>brew install vobcopy
-</code></pre>
-
-<p>Then, with the DVD mounted,</p>
-
-<blockquote><p><strong>vobcopy</strong> without any options will copy the title with the most chapters into files of 2GB size into the current working directory.</p></blockquote>
-
-<p>Of course there are a ton of options, but I generally hate to browse through options unless I have to, so I&rsquo;m happy with calling without argument.</p>
-
-<hr />
-
-<p>Yesterday I was trying to rip a music video off a newly released DVD from Japan. I knew very little about how DRM (in this case, CSS) actually works and how to break it. I tried to operate directly on the VOB file with <code>ffmpeg</code> or <code>mpv</code> but both failed with a lot of header errors — I suppose more files than the VOB are required for authentication? Whatever, maybe I’ll learn the details in the future, but I don’t see the need since DVD is an outdated technology anyway.</p>
-
-<p>So, can we proceed from here? Most certainly. I noticed that although <code>mpv</code> won’t let me play a single VOB, I can simply hand it the DVD mount point, and it will play the whole DVD seamlessly. <strong>Caution:</strong> <code>mpv</code> needs to be compiled with <code>libdvdnav</code> and <code>libdvdread</code>! With brew you just do</p>
-
-<pre><code>brew install mpv --with-libdvdnav --with-libdvdread
-</code></pre>
-
-<p>For better performance and backup, I first cloned the DVD into a <code>.cdr</code> image (DVD/CD-R Master Image) using Disk Utility (I&rsquo;ve never tried creating/cloning image with <code>diskutil</code> CLI, so nothing to report on that). Then I mount the image, say the mount point is <code>/Volumes/UPBX_80165</code>. As said I can hand that mount point to <code>mpv</code> and it simply works, but how about extracting the MPEG-2 video stream? The <code>--stream-capture=&lt;filename&gt;</code> option is there just for you. In principle <code>--stream-dump=&lt;filename&gt;</code> should also work, but without monitoring the output and controlling where to end, I’m not sure if it will ever terminate itself when reading from a DVD (when I stream captured the DVD it just kept repeating itself until I explicitly quit with <code>q</code>). So that&rsquo;s it:</p>
-
-<pre><code>mpv --stream-capture=dump.mpg /Volumes/UPBX_80165
-</code></pre>
-
-<p>Then you can torture the <code>dump.mpg</code> with <code>ffmpeg</code> however you want. The most obvious thing is to cut out the music video part, and put into a new container like MPEG-TS. Or transcode it to H.264 for your iPhone. The nice thing about <code>dump.mpg</code> is that, unless I got it wrong, there&rsquo;s no quality loss here — the only thing you got rid of is that goddamn DRM.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/4">&larr; Older</a>
@@ -686,6 +747,10 @@ Ravi: Yeah, Brian Conrad will give a lecture. Don&rsquo;t tell him, he don&rsquo
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/12/14/speeding-up-emacs-with-emacsclient/">Speeding Up Emacs With Emacsclient</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/13/the-mac-like-evernote/">The Mac-like Evernote</a>
       </li>
     
@@ -699,10 +764,6 @@ Ravi: Yeah, Brian Conrad will give a lecture. Don&rsquo;t tell him, he don&rsquo
     
       <li class="post">
         <a href="/blog/2014/12/05/distraction-free-writing/">Distraction Free Writing</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/05/python-3-and-unicode/">Python 3 and Unicode</a>
       </li>
     
   </ul>
