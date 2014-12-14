@@ -22,7 +22,7 @@ else
         read -p 'filename: ' file
     done
 fi
-emacsclient -cqta= "${file}" 2>/dev/null
+emacsclient -cqta= "${file}"
 ```
 
 Note that using `emacsclient` has the additional benefit that the same buffer is simultaneously updated accross different ttys (See screenshot, where I opened the current post in two different ttys). This way, you won't face the nasty "file changed on disk" problem when you accidentally edited the same file in another tty session.
