@@ -10,6 +10,7 @@ Emacs is notorious for its loading time. For me, this is especially annoying whe
 This problem can be solved by "using that same Emacs", i.e., running Emacs in server mode, then connecting to the server via `emacsclient`. Below is my script, which I call `emc`, to make `emacsclient` more user-friendly. `emc` opens a file (given as `$1`) on the server, launching one on its way if none is detected. Note that I used `-cqt` for `emacsclient`. The `-c` option is `--create-frame`, i.e., create a new frame (in the current tty, for instance) instead of using the existing frame (in another tty, for instance); this allows for multiple frames accross different ttys. The `-q` option is for `--quiet`, suppressing messages like "Waiting for Emacs..." The `-t` option is for `--tty`, or equivalently, the familiar `-nw` option of `emacs`. Note that `emacsclient` requires a filename, so my script prompts for one if `$1` is empty.
 
 ``` bash emc
+#!/usr/bin/env bash
 if [[ -n $1 ]]; then
     file=$1
 else
