@@ -4,7 +4,7 @@
   <title><![CDATA[Daily (?) Complaints (?)]]></title>
   <link href="http://zmwangx.github.io/atom.xml" rel="self"/>
   <link href="http://zmwangx.github.io/"/>
-  <updated>2014-12-14T11:22:24-08:00</updated>
+  <updated>2014-12-14T11:27:04-08:00</updated>
   <id>http://zmwangx.github.io/</id>
   <author>
     <name><![CDATA[Zhiming Wang]]></name>
@@ -43,7 +43,7 @@
 </span><span class='line'>        <span class="nb">read</span> -p <span class="s1">&#39;filename: &#39;</span> file
 </span><span class='line'>    <span class="k">done</span>
 </span><span class='line'><span class="k">fi</span>
-</span><span class='line'>emacsclient -cqta<span class="o">=</span> <span class="s2">&quot;${file}&quot;</span> 2&gt;/dev/null
+</span><span class='line'>emacsclient -cqta<span class="o">=</span> <span class="s2">&quot;${file}&quot;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
