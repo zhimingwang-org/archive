@@ -9,8 +9,7 @@
   <meta name="author" content="Zhiming Wang">
 
   
-  <meta name="description" content="On OS X, the following URIs are relevant: omnifocus:///change-preference?MaximumTimeBetweenSync=30
-omnifocus:///change-preference? &hellip;">
+  <meta name="description" content="Once in a while (maybe a year, maybe several months — not set in stone), I give big name free services not in use a chance to convince me. Evernote &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +77,46 @@ omnifocus:///change-preference? &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/13/the-mac-like-evernote/">The Mac-like Evernote</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-12-13T21:47:31-08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:47 pm</span></time>
+        
+           | <a href="/blog/2014/12/13/the-mac-like-evernote/#disqus_thread"
+             data-disqus-identifier="http://zmwangx.github.io/blog/2014/12/13/the-mac-like-evernote/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Once in a while (maybe a year, maybe several months — not set in stone), I give big name free services not in use a chance to convince me. Evernote is one such service. The interface used to look very cheap and cluttered. I hated it. However, this time I&rsquo;m sold. Now everything Evernote, from its Mac app to its iOS app to its web design to its physical products, looks distinctively Mac-like. (I use Mac-like to refer to Apple&rsquo;s design philosophy, including iOS. Well, I guess the Android and Windows apps aren&rsquo;t Mac-like.) I mean, just look at the screenshots:</p>
+
+<p><img src="http://i.imgur.com/AZelofm.png" alt="Web UI, beta" />
+<img src="http://i.imgur.com/tZuWBlY.png" alt="Evernote Market, Pfeiffer Collection" />
+<img src="http://i.imgur.com/R4QF8OM.png" alt="Mac app" /></p>
+
+<p>Bright, simplistic, elegant, clutter-free. Mac-like. The Mac app takes advantage of the translucent material of Yosemite, and it looks gorgeous. The iOS app also feels great on a full HD Retina screen; I didn&rsquo;t bother to take a screenshot. Now it&rsquo;s much likely that I&rsquo;ll put it into good use — cluttered and cheap-looking interfaces give me nightmares and actually hinders my productivity, and now they are gone.</p>
+
+<p>No one can argue that Apple products make great screenshots. They are also much more intuitive, functional, and productive than most Windows folks are willing to believe. I hope our world is more Mac-like.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -517,42 +556,6 @@ omnifocus:///change-preference? &hellip;">
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/11/24/why-i-abandoned-mathjax-and-fell-back-to-pdf/">Why I Abandoned MathJax and Fell Back to PDF</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-11-24T20:54:36-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:54 pm</span></time>
-        
-           | <a href="/blog/2014/11/24/why-i-abandoned-mathjax-and-fell-back-to-pdf/#disqus_thread"
-             data-disqus-identifier="http://zmwangx.github.io/blog/2014/11/24/why-i-abandoned-mathjax-and-fell-back-to-pdf/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Recently I wrote an expository article, <a href="/pdf/20141119-convolution-of-irreducible-characters.pdf"><em>Convolution of irreducible characters</em></a>, and posted it <a href="/blog/2014/11/19/convolution-of-irreducible-characters/">here</a>. At first I intended to use MathJax, but in the end I fell back to good ol&#8217; PDF. Here&rsquo;s why.</p>
-
-<p>In short, I&rsquo;m a mathematician. I write math <em>articles</em>, not just standalone expressions or formulas. I use AMSLaTeX to its fullest (not really, but at least I use numbering and the <code>amsthm</code> package to its fullest). HTML simply wasn&rsquo;t designed for this. Here are two influential markup languages designed for totally different use cases, and bridging them is painful. I tried to use <code>pandoc</code>, but it doesn&rsquo;t support <code>\input</code>, doesn&rsquo;t support <code>\def</code>, and swallows <code>\begin{theorem} \end{theorem}</code>, among other things. I tried to use <code>htlatex</code>; even the MathML output is suboptimal, with many math symbols translated to non-math (apart from totally human-unreadable), and it uses its custom CSS files that don&rsquo;t play well with everything else. I tried other things. In the end I gave up. Maybe I don&rsquo;t know enough about MathJax, but I certainly don&rsquo;t want to write a translator myself. Leave LaTeX alone. Distribute as PDF. MathJax may be great for Wikis (like Wikipedia) and for math lite blogs, but it&rsquo;s no replacement for real, beefy LaTeX. It&rsquo;s not for mathematicians who want to distribute real articles.</p>
-
-<p>By the way, Terry Tao and others use <a href="http://lucatrevisan.wordpress.com/latex-to-wordpress/">Luca&rsquo;s LaTeX to WordPress, aka LaTeX2WP</a> for math blogging. From Terry&rsquo;s experience it works fairly well. I don&rsquo;t know if <code>amsthm</code> and <code>\def</code> are in the feature set, though. Anyway, since WordPress handles LaTeX as pre-compiled images (which is also the default on Wikipedia, and which looks poor in general and plays horribly with scaling), LaTeX2WP won&rsquo;t help MathJax users the slightest.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -568,6 +571,10 @@ omnifocus:///change-preference? &hellip;">
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/12/13/the-mac-like-evernote/">The Mac-like Evernote</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/10/omnifocus-change-sync-behavior-mac-and-ios/">OmniFocus: Change Sync Behavior, Mac and iOS</a>
       </li>
     
@@ -581,10 +588,6 @@ omnifocus:///change-preference? &hellip;">
     
       <li class="post">
         <a href="/blog/2014/12/05/python-3-and-unicode/">Python 3 and Unicode</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/11/30/opera-style-advanced-keyboard-shortcuts-in-safari/">Opera-style Advanced Keyboard Shortcuts in Safari</a>
       </li>
     
   </ul>
