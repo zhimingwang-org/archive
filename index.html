@@ -9,7 +9,7 @@
   <meta name="author" content="Zhiming Wang">
 
   
-  <meta name="description" content="Emacs is notorious for its loading time. For me, this is especially annoying when I&rsquo;m editing LaTeX files — AUCTeX takes about five seconds to &hellip;">
+  <meta name="description" content="I was cleaning up my Opera bookmarks just now — I&rsquo;m semi-officially leaving Opera for Safari. Of course, Safari still can&rsquo;t handle &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,52 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/14/the-google-chrome-comic-a-classic/">The Google Chrome Comic — a Classic</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-12-14T17:42:55-08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:42 pm</span></time>
+        
+           | <a href="/blog/2014/12/14/the-google-chrome-comic-a-classic/#disqus_thread"
+             data-disqus-identifier="http://zmwangx.github.io/blog/2014/12/14/the-google-chrome-comic-a-classic/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I was cleaning up my Opera bookmarks just now — I&rsquo;m semi-officially leaving Opera for Safari. Of course, Safari still can&rsquo;t handle everything (e.g., Adblock Plus is still not so good on Safari, YouTubeCenter lags behind and I don&rsquo;t bother to compile myself — yes, I have a certificate, and some power user features simply don&rsquo;t exist), so I&rsquo;m still going to Opera/Opera beta/Chrome/Firefox for certain tasks. But Safari is very nice. For the first time.</p>
+
+<p>I started out as a Chrome user (well, don&rsquo;t want to recall the IE days), branched out to the Chromium Opera, and now ended up in Safari. Not sure about the future. When I look back, something nostalgic pops up in mind — <a href="http://www.google.com/googlebooks/chrome/">the Google Chrome Comic</a>. I enjoyed it more than once, but I never seemed to have archived it. So here it is, combined into <a href="/pdf/2008-chrome-comic.pdf">one PDF</a>. In fact, you can create the PDF yourself:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>seq 0 39 | parallel wget -q http://www.google.com/googlebooks/chrome/images/big/{}.jpg
+</span><span class='line'>convert $(ls -v *.jpg) 2008-chrome-comic.pdf</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Here I was a bit lazy and used a GNU <code>ls</code> feature: <code>-v</code> for natural sorting of numbers (doesn&rsquo;t work for BSD <code>ls</code>).</p>
+
+<p>And here&rsquo;s page 1 of the comic as a teaser:</p>
+
+<p><img src="http://i.imgur.com/W5pJTjl.jpg" alt="" /></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -511,76 +557,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/11/26/original-images-in-day-one-journal/">Original Images in Day One Journal</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-11-26T00:22:16-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:22 am</span></time>
-        
-           | <a href="/blog/2014/11/26/original-images-in-day-one-journal/#disqus_thread"
-             data-disqus-identifier="http://zmwangx.github.io/blog/2014/11/26/original-images-in-day-one-journal/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><strong>TL; DR:</strong> Jump to the paragraph beginning with “workaround”.</p>
-
-<hr />
-
-<p>I started a Day One journal two days ago. I&rsquo;ve heard good things about Day One, but after using it for a dozen entries, I&rsquo;m not that satisfied. For one thing, the editor is pretty horrible — keybindings aside, I can’t even find and replace?! And the overview doesn’t look very pretty if you are a heavy Markdown user (i.e., you have a lot of markups, e.g., italics and inline links) — the markups are displayed as is. Moreover, I can’t even <code>#</code> my title: it kills the bold font rendering in the bird’s-eye view. What a let down. Anyway, it’s better than nothing, and I hope it will help me keep on track. (I used to manage a Markdown journal in an encrypted sparse bundle, and it was a pain in the ass — mentally. Maybe some GUI sugar is necessary, although Day One is certainly not as pretty as advertised.) Also a private journal means more privacy — I certainly don’t want to publish everything I write on this public blog.</p>
-
-<p>Too much irrelevant talking. Onto one of the most annoying “features”, and the subject of this post. Images are automatically JPEG-compressed when imported into Day One. See <a href="https://dayone.zendesk.com/hc/en-us/articles/200145875-Are-photos-resized-when-imported-into-Day-One-">this support article</a>, which says:</p>
-
-<blockquote><p>Every photo imported into Day One is converted to JPEG format and resized to a maximum resolution of 2100 x 2100 pixels. The aspect ratio is maintained. We resize photos for more efficient sync and storage. At this size the average photo is about 700KB which means you can store:
-* Dropbox: 2,500+ photos using the free 2GB account
-* iCloud: 6,000+ photos using the free 5GB account</p></blockquote>
-
-<p>What the heck. Dude, who cares about storage these days? And transfer rate? I have a gigabit Ethernet. I certainly have much more than 2GB in my Dropbox. Even for those underpriviledged folks with only 2GB, remember, Day One allows <em>only one photo per entry</em>. That’s 2,500+ entries. At any rate, this should be an opt-in rather than an uncustomizable “feature”. I’m about to submit a ticket, but I doubt the outcome (I’m sure many people have submitted tickets about the plain text format even when password-protected, but so far, no response).</p>
-
-<p>With photos, most of the time JPEG compression works pretty well (but people surely want to keep photos in highest quality). However, I’m a techie guy, and my images are often screenshots or precision images, where JPEG compression totally ruins the sharpness.</p>
-
-<p>Workaround? Simple (yet a bit annoying). Day One lets you show the photo in Finder. So just go ahead and replace that compressed image with the original using <code>cp</code> or <code>mv</code>. I shouldn’t have needed to do this, but every piece of software comes with some annoyances. Overall Day One’s pretty good — at least it does what it was designed for, albeit not perfectly.</p>
-
-<hr />
-
-<p>By the way, here is my support ticket:</p>
-
-<blockquote><p>I understand that Day One does JPEG compression to every imported photo, as written in the support article “Are photos resized when imported into Day One?” <a href="http://goo.gl/Rzi017">http://goo.gl/Rzi017</a> . Yet I beg an option. The reason is that the benefits outlined in the support article are virtually non-existent:</p>
-
-<ul>
-<li><p>“More efficient sync and storage”: these days transfer rates are really high with SSDs and gigabit Ethernet, so reducing a few hundred KBs won’t help me the slightest;</p></li>
-<li><p>“Dropbox: 2,500+ photos using the free 2GB account”: I have much more than 2GB in my Dropbox; even if I only have 2GB, Day One allows only one photo per entry, and that means 2,500+ entries with photos, which is more than enough for most users, I suppose. By the way, Dropbox storage shouldn’t be your concern; people will buy more when they need more.</p></li>
-</ul>
-
-
-<p>And some of the bad things about JPEG compression:</p>
-
-<ul>
-<li><p>JPEG compression usually works pretty well with photos, but when I import high precision images, the sharpness is totally ruined;</p></li>
-<li><p>People want to keep their photos in highest quality, which is defeated by forced compression.</p></li>
-</ul>
-
-
-<p>I know an ugly workaround, which is simply replace the compressed image with the original in the filesystem. But I would love to see an option to import images as originals (in fact, compression should be an opt-in). Really, transfer rates and storage grow so rapidly that they are not people’s primary concerns anymore. (For your information, OneDrive recently rolled out truly unlimited storage to Office 365 subscribers. Online storage is that cheap.) Thanks.</p></blockquote>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -596,6 +572,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/12/14/the-google-chrome-comic-a-classic/">The Google Chrome Comic — a Classic</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/14/speeding-up-emacs-with-emacsclient/">Speeding Up Emacs With Emacsclient</a>
       </li>
     
@@ -609,10 +589,6 @@
     
       <li class="post">
         <a href="/blog/2014/12/10/james-watsons-nobel-prize-medal/">James Watson&#8217;s Nobel Prize Medal</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/05/distraction-free-writing/">Distraction Free Writing</a>
       </li>
     
   </ul>
