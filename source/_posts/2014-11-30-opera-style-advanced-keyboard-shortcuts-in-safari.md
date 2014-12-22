@@ -37,3 +37,9 @@ Relaunch Safari. You are all set! Enjoy the ultrafast single key navigating expe
 ```bash
 defaults delete com.apple.Safari NSUserKeyEquivalents
 ```
+
+---
+
+**_2014/12/22 Update:_**
+
+There's one caveat to this approach — unlike in Opera, where the default layman shortcuts (e.g., ⌘F) are still available when advanced keyboard shorts are enabled, in Safari they are simply overwritten. This is annoying when the web page or web app binds certain keys, especially `/` to its own search bar (a notable example being google.com). In that case I have to admit defeat and click on the menu bar item, which takes a hundred times as long as a single `/` keystroke.
