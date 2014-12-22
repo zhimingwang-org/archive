@@ -4,7 +4,7 @@
   <title><![CDATA[Daily (?) Complaints (?)]]></title>
   <link href="http://zmwangx.github.io/atom.xml" rel="self"/>
   <link href="http://zmwangx.github.io/"/>
-  <updated>2014-12-19T14:39:45-08:00</updated>
+  <updated>2014-12-22T12:59:08-08:00</updated>
   <id>http://zmwangx.github.io/</id>
   <author>
     <name><![CDATA[Zhiming Wang]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[10k Images on Imgur]]></title>
+    <link href="http://zmwangx.github.io/blog/2014/12/22/10k-images-on-imgur/"/>
+    <updated>2014-12-22T12:42:16-08:00</updated>
+    <id>http://zmwangx.github.io/blog/2014/12/22/10k-images-on-imgur</id>
+    <content type="html"><![CDATA[<p>I happened to check my imgur account just now (haven&rsquo;t been to the web interface for ages), and you know what, I have uploaded 10,744 images since I created the account in February this year! (I&rsquo;ve been using imgur for longer than that; previously I uploaded images anonymously.) Most of the 10k images were uploaded via scripts using the API. This again demonstrates the importance of a good API — without the imgur API I wouldn&rsquo;t have been able to upload hundreds of images with a few keystrokes all in a snap, and getting links would be a huge pain in the ass. There are myriad image hosting services out there, but imgur rules &lsquo;em all, thanks to its decent API (and also its good CDN and direct image links, of course).</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[App Suggestion: Dropzone 3]]></title>
@@ -453,23 +462,6 @@
 <blockquote><p>According to research by the International Telecommunication Union, the average phone plan with 500MB of data costs $85 in the United States, compared to $24.10 in China and $8.80 in the United Kingdom.</p></blockquote>
 
 <p>Holy shit!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Interstellar]]></title>
-    <link href="http://zmwangx.github.io/blog/2014/11/07/interstellar/"/>
-    <updated>2014-11-07T23:56:31-08:00</updated>
-    <id>http://zmwangx.github.io/blog/2014/11/07/interstellar</id>
-    <content type="html"><![CDATA[<p>Today (I mean November 7, 2014 — it’s technically November 8 at the time of writing) I saw <a href="https://en.wikipedia.org/wiki/Interstellar_%28film%29"><em>Interstellar</em></a> (IMAX digital) at AMC Mercado 20. I rarely go to movie theaters, less on the release day (film formats of <em>Interstellar</em> were released on November 5, and digital formats followed on November 7). However, reviews of it were positive (from the physics community), and I really need a way to release stress these days — I wasn’t in the right condition for months. So I figured I’d just spend an afternoon in front of the big screen.</p>
-
-<p>I’ve heard good things about IMAX 70mm film, like no trailers, among other things. But I didn’t bother the extra seven miles’ drive to Hackworth IMAX Dome, so I landed on IMAX digital. Still a pretty stunning experience, although I ended up watching forty minutes worth of trailers before the real thing (arrived fifteen minutes early). In hindsight maybe I’d be better off spending some extra time on the road.</p>
-
-<p>Speaking of the movie itself, they tried to make it as plausible as possible from a physics viewpoint, by involving <a href="https://en.wikipedia.org/wiki/Kip_Thorne">Kip Thorne</a> of Caltech. (There’s even a book out, <em>The Science of Interstellar</em>.) For instance, the wormhole isn’t portrayed as a hole (I mean, imagine a ring in empty space, as you would picture in your mind when you hear the word “hole” out of nothing; that’s not how it looks like here, and there’s a nice explanation). Some of the physics still doesn’t work out quite well, though, like Cooper’s not crushed at the singularity… Also there are communications from within the horizon and breakdown of causality, explained in the movie as happening in four dimension slices of some five dimensional spacetime where time could be a physical dimension. Obviously these are needed to get the sci-fi story going, so no one should be blamed.</p>
-
-<p>I was there for the sci-fi and physics, but a nice surprise was that I was also touched by the humanity elements of story, I mean, family and stuff.</p>
-
-<p>The downside: Cooper’s accent was a bit hard on me ☹</p>
 ]]></content>
   </entry>
   
