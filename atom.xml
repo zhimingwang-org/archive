@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Daily (?) Complaints (?)]]></title>
+  <title><![CDATA[dl? cmplnts?]]></title>
   <link href="http://zmwangx.github.io/atom.xml" rel="self"/>
   <link href="http://zmwangx.github.io/"/>
-  <updated>2014-12-23T01:11:31-08:00</updated>
+  <updated>2014-12-23T10:25:43-08:00</updated>
   <id>http://zmwangx.github.io/</id>
   <author>
     <name><![CDATA[Zhiming Wang]]></name>
