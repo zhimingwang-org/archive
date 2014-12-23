@@ -4,7 +4,7 @@
   <title><![CDATA[Daily (?) Complaints (?)]]></title>
   <link href="http://zmwangx.github.io/atom.xml" rel="self"/>
   <link href="http://zmwangx.github.io/"/>
-  <updated>2014-12-22T17:52:03-08:00</updated>
+  <updated>2014-12-23T01:11:31-08:00</updated>
   <id>http://zmwangx.github.io/</id>
   <author>
     <name><![CDATA[Zhiming Wang]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Mpv Launcher]]></title>
+    <link href="http://zmwangx.github.io/blog/2014/12/23/mpv-launcher/"/>
+    <updated>2014-12-23T00:51:05-08:00</updated>
+    <id>http://zmwangx.github.io/blog/2014/12/23/mpv-launcher</id>
+    <content type="html"><![CDATA[<p><a href="http://mpv.io"><code>mpv</code></a> is a nice simplistic video player (fork of MPlayer and mplayer2). The CLI is flawless (and you can run as many instances as you want), but when it comes to the OS X application bundle, there&rsquo;s one major annoyance. Each app bundle could only have one running instance (unless <code>open -n</code>’ed, which is not how sane people use app bundles), and one instance of <code>mpv</code> only supports one video. So, say I&rsquo;m playing one video with the app bundle, and unsuspectingly opens another in Finder (which is associated to <code>mpv.app</code> by default), then the latter video immediately takes over, and the position in the first video is lost. That happens <em>a lot</em>.</p>
+
+<p>Today I finally gave this issue some serious thought (I&rsquo;ve been on a bug report/enhancement request spree these days so it&rsquo;s natural for me to start thinking about enhancements). Turns out that there&rsquo;s a pretty simple workaround. I created an automator app <code>mpv-launcher.app</code> that does one thing: &ldquo;Run Shell Script&rdquo; (pass input as arguments)</p>
+
+<pre><code>daemonize /usr/local/bin/mpv "$@"
+</code></pre>
+
+<p>in the shell of your choice (for me the shell of choice is <code>zsh</code> since the env would be readily available from my <code>zshenv</code>). <code>daemonize</code>, as the name suggests, daemonizes the process so that the process doesn&rsquo;t block; this way, <code>mpv-launcher.app</code> immediately quits after launching, making multiple &ldquo;instances&rdquo; possible. (<code>daemonize</code> can be installed via <code>brew install daemonize</code>; note that you need to specify the full path of the command to daemonize, which in my case is <code>/usr/local/bin/mpv</code>). And there you go. Associate your video files to <code>mpv-launcher.app</code>. Launch as many instances as you want. Enjoy.</p>
+
+<p>By the way, I also filed an <a href="https://github.com/mpv-player/mpv/issues/1377">enhancement request</a> with <code>mpv-player/mpv</code>. We&rsquo;ll see what the developers can do. Hopefully the app bundle will support multiple videos out of box in the future.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[10k Images on Imgur]]></title>
@@ -453,23 +471,6 @@
 <blockquote><p>According to research by the International Telecommunication Union, the average phone plan with 500MB of data costs $85 in the United States, compared to $24.10 in China and $8.80 in the United Kingdom.</p></blockquote>
 
 <p>Holy shit!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Interstellar]]></title>
-    <link href="http://zmwangx.github.io/blog/2014/11/07/interstellar/"/>
-    <updated>2014-11-07T23:56:31-08:00</updated>
-    <id>http://zmwangx.github.io/blog/2014/11/07/interstellar</id>
-    <content type="html"><![CDATA[<p>Today (I mean November 7, 2014 — it’s technically November 8 at the time of writing) I saw <a href="https://en.wikipedia.org/wiki/Interstellar_%28film%29"><em>Interstellar</em></a> (IMAX digital) at AMC Mercado 20. I rarely go to movie theaters, less on the release day (film formats of <em>Interstellar</em> were released on November 5, and digital formats followed on November 7). However, reviews of it were positive (from the physics community), and I really need a way to release stress these days — I wasn’t in the right condition for months. So I figured I’d just spend an afternoon in front of the big screen.</p>
-
-<p>I’ve heard good things about IMAX 70mm film, like no trailers, among other things. But I didn’t bother the extra seven miles’ drive to Hackworth IMAX Dome, so I landed on IMAX digital. Still a pretty stunning experience, although I ended up watching forty minutes worth of trailers before the real thing (arrived fifteen minutes early). In hindsight maybe I’d be better off spending some extra time on the road.</p>
-
-<p>Speaking of the movie itself, they tried to make it as plausible as possible from a physics viewpoint, by involving <a href="https://en.wikipedia.org/wiki/Kip_Thorne">Kip Thorne</a> of Caltech. (There’s even a book out, <em>The Science of Interstellar</em>.) For instance, the wormhole isn’t portrayed as a hole (I mean, imagine a ring in empty space, as you would picture in your mind when you hear the word “hole” out of nothing; that’s not how it looks like here, and there’s a nice explanation). Some of the physics still doesn’t work out quite well, though, like Cooper’s not crushed at the singularity… Also there are communications from within the horizon and breakdown of causality, explained in the movie as happening in four dimension slices of some five dimensional spacetime where time could be a physical dimension. Obviously these are needed to get the sci-fi story going, so no one should be blamed.</p>
-
-<p>I was there for the sci-fi and physics, but a nice surprise was that I was also touched by the humanity elements of story, I mean, family and stuff.</p>
-
-<p>The downside: Cooper’s accent was a bit hard on me ☹</p>
 ]]></content>
   </entry>
   

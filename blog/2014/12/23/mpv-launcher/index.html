@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>10k Images on Imgur - Daily (?) Complaints (?)</title>
+  <title>Mpv Launcher - Daily (?) Complaints (?)</title>
   <meta name="author" content="Zhiming Wang">
 
   
-  <meta name="description" content="I happened to check my imgur account just now (haven&rsquo;t been to the web interface for ages), and you know what, I have uploaded 10,744 images &hellip;">
+  <meta name="description" content="mpv is a nice simplistic video player (fork of MPlayer and mplayer2). The CLI is flawless (and you can run as many instances as you want), but when &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://zmwangx.github.io/blog/2014/12/22/10k-images-on-imgur">
+  <link rel="canonical" href="http://zmwangx.github.io/blog/2014/12/23/mpv-launcher">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Daily (?) Complaints (?)" type="application/atom+xml">
@@ -80,7 +80,7 @@
   
   <header>
     
-      <h1 class="entry-title">10k Images on Imgur</h1>
+      <h1 class="entry-title">Mpv Launcher</h1>
     
     
       <p class="meta">
@@ -89,7 +89,7 @@
 
 
 
-<time class='entry-date' datetime='2014-12-22T12:42:16-08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>12:42 pm</span></time>
+<time class='entry-date' datetime='2014-12-23T00:51:05-08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>12:51 am</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://zmwangx.github.io">Comments</a>
@@ -99,7 +99,16 @@
   </header>
 
 
-<div class="entry-content"><p>I happened to check my imgur account just now (haven&rsquo;t been to the web interface for ages), and you know what, I have uploaded 10,744 images since I created the account in February this year! (I&rsquo;ve been using imgur for longer than that; previously I uploaded images anonymously.) Most of the 10k images were uploaded via scripts using the API. This again demonstrates the importance of a good API — without the imgur API I wouldn&rsquo;t have been able to upload hundreds of images with a few keystrokes all in a snap, and getting links would be a huge pain in the ass. There are myriad image hosting services out there, but imgur rules &lsquo;em all, thanks to its decent API (and also its good CDN and direct image links, of course).</p>
+<div class="entry-content"><p><a href="http://mpv.io"><code>mpv</code></a> is a nice simplistic video player (fork of MPlayer and mplayer2). The CLI is flawless (and you can run as many instances as you want), but when it comes to the OS X application bundle, there&rsquo;s one major annoyance. Each app bundle could only have one running instance (unless <code>open -n</code>’ed, which is not how sane people use app bundles), and one instance of <code>mpv</code> only supports one video. So, say I&rsquo;m playing one video with the app bundle, and unsuspectingly opens another in Finder (which is associated to <code>mpv.app</code> by default), then the latter video immediately takes over, and the position in the first video is lost. That happens <em>a lot</em>.</p>
+
+<p>Today I finally gave this issue some serious thought (I&rsquo;ve been on a bug report/enhancement request spree these days so it&rsquo;s natural for me to start thinking about enhancements). Turns out that there&rsquo;s a pretty simple workaround. I created an automator app <code>mpv-launcher.app</code> that does one thing: &ldquo;Run Shell Script&rdquo; (pass input as arguments)</p>
+
+<pre><code>daemonize /usr/local/bin/mpv "$@"
+</code></pre>
+
+<p>in the shell of your choice (for me the shell of choice is <code>zsh</code> since the env would be readily available from my <code>zshenv</code>). <code>daemonize</code>, as the name suggests, daemonizes the process so that the process doesn&rsquo;t block; this way, <code>mpv-launcher.app</code> immediately quits after launching, making multiple &ldquo;instances&rdquo; possible. (<code>daemonize</code> can be installed via <code>brew install daemonize</code>; note that you need to specify the full path of the command to daemonize, which in my case is <code>/usr/local/bin/mpv</code>). And there you go. Associate your video files to <code>mpv-launcher.app</code>. Launch as many instances as you want. Enjoy.</p>
+
+<p>By the way, I also filed an <a href="https://github.com/mpv-player/mpv/issues/1377">enhancement request</a> with <code>mpv-player/mpv</code>. We&rsquo;ll see what the developers can do. Hopefully the app bundle will support multiple videos out of box in the future.</p>
 </div>
 
 
@@ -115,7 +124,7 @@
 
 
 
-<time class='entry-date' datetime='2014-12-22T12:42:16-08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>12:42 pm</span></time>
+<time class='entry-date' datetime='2014-12-23T00:51:05-08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>12:51 am</span></time>
       
 
 
@@ -123,7 +132,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://zmwangx.github.io/blog/2014/12/22/10k-images-on-imgur/" data-via="" data-counturl="http://zmwangx.github.io/blog/2014/12/22/10k-images-on-imgur/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://zmwangx.github.io/blog/2014/12/23/mpv-launcher/" data-via="" data-counturl="http://zmwangx.github.io/blog/2014/12/23/mpv-launcher/" >Tweet</a>
   
   
   
@@ -132,10 +141,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/12/19/app-suggestion-dropzone-3/" title="Previous Post: App suggestion: Dropzone 3">&laquo; App suggestion: Dropzone 3</a>
+        <a class="basic-alignment left" href="/blog/2014/12/22/10k-images-on-imgur/" title="Previous Post: 10k images on imgur">&laquo; 10k images on imgur</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/12/23/mpv-launcher/" title="Next Post: mpv launcher">mpv launcher &raquo;</a>
       
     </p>
   </footer>
@@ -230,8 +237,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://zmwangx.github.io/blog/2014/12/22/10k-images-on-imgur/';
-        var disqus_url = 'http://zmwangx.github.io/blog/2014/12/22/10k-images-on-imgur/';
+        var disqus_identifier = 'http://zmwangx.github.io/blog/2014/12/23/mpv-launcher/';
+        var disqus_url = 'http://zmwangx.github.io/blog/2014/12/23/mpv-launcher/';
         var disqus_script = 'embed.js';
       
     (function () {
