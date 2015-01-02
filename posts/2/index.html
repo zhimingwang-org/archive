@@ -9,7 +9,7 @@
   <meta name="author" content="Zhiming Wang">
 
   
-  <meta name="description" content="Today I&rsquo;m officially going Diceware. I published my simple C implementation of diceware on GitHub. I&rsquo;ve been using 1Password for a couple &hellip;">
+  <meta name="description" content="I&rsquo;ve been using the Chromuim Opera for a long time, after Chrome&rsquo;s design went unbearably ugly around v32 (IIRC Opera stable channel was &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,90 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/11/30/opera-style-advanced-keyboard-shortcuts-in-safari/">Opera-style Advanced Keyboard Shortcuts in Safari</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-11-30T17:20:20-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:20 pm</span></time>
+        
+           | <a href="/blog/2014/11/30/opera-style-advanced-keyboard-shortcuts-in-safari/#disqus_thread"
+             data-disqus-identifier="http://zmwangx.github.io/blog/2014/11/30/opera-style-advanced-keyboard-shortcuts-in-safari/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&rsquo;ve been using the Chromuim Opera for a long time, after Chrome&rsquo;s design went unbearably ugly around v32 (IIRC Opera stable channel was on v19 when I switched, which was released on January 28, 2014). From then on, Opera&rsquo;s <a href="http://help.opera.com/opera/Mac/1583/en/fasterBrowsing.html#advanced">advanced keyboard shortcuts</a> has become an integral part of my browsing habit. In particular, the following are especially handy for me:</p>
+
+<ul>
+<li><code>1</code>: Cycle left through tabs;</li>
+<li><code>2</code>: Cycle right through tabs;</li>
+<li><code>/</code>: Find on page;</li>
+<li><code>Z</code>: Go back one page;</li>
+<li><code>X</code>: Go forward one page;</li>
+<li><code>0</code>: Zoom in;</li>
+<li><code>9</code>: Zoom out;</li>
+<li><code>6</code>: Reset zoom to 100%.</li>
+</ul>
+
+
+<p>Lately, with the Yosemite release, Safari has become a much more competitive browser. I won&rsquo;t say why, and I admit that it has major missing features that still prevents it from becoming my default — but I have to say I’m gradually moving more of more of my browsing, especially reading, to Safari. It would be nice if I could carry my power user shortcuts with me. Fortunately, this is possible. Just modify the plist in the following way:</p>
+
+<figure class='code'><figcaption><span>safari-advanced-keyboard-shortcuts.sh</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/usr/bin/env bash</span>
+</span><span class='line'>defaults write com.apple.Safari NSUserKeyEquivalents <span class="s1">&#39;{</span>
+</span><span class='line'><span class="s1">&quot;Actual Size&quot;=&quot;6&quot;;</span>
+</span><span class='line'><span class="s1">&quot;Back&quot;=&quot;z&quot;;</span>
+</span><span class='line'><span class="s1">&quot;Find...&quot;=&quot;/&quot;;</span>
+</span><span class='line'><span class="s1">&quot;Forward&quot;=&quot;x&quot;;</span>
+</span><span class='line'><span class="s1">&quot;Show Previous Tab&quot;=&quot;1&quot;;</span>
+</span><span class='line'><span class="s1">&quot;Show Next Tab&quot;=&quot;2&quot;;</span>
+</span><span class='line'><span class="s1">&quot;Zoom In&quot;=&quot;0&quot;;</span>
+</span><span class='line'><span class="s1">&quot;Zoom Out&quot;=&quot;9&quot;;</span>
+</span><span class='line'><span class="s1">}&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Relaunch Safari. You are all set! Enjoy the ultrafast single key navigating experience. To reset,</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>defaults delete com.apple.Safari NSUserKeyEquivalents
+</span></code></pre></td></tr></table></div></figure>
+
+
+<hr />
+
+<p><strong><em>2014/12/22 Update:</em></strong></p>
+
+<p>There&rsquo;s one caveat to this approach — unlike in Opera, where the default layman shortcuts (e.g., ⌘F) are still available when advanced keyboard shorts are enabled, in Safari they are simply overwritten. This is annoying when the web page or web app binds certain keys, especially <code>/</code> to its own search bar (a notable example being google.com). In that case I have to admit defeat and click on the menu bar item, which takes a hundred times as long as a single <code>/</code> keystroke.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -475,42 +559,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/11/10/average-phone-plan-in-the-u-dot-s-costs-ten-time-as-much-as-that-in-the-u-dot-k/">Average Phone Plan in the U.S. Costs Ten Time as Much as That in the U.K.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-11-10T11:11:46-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:11 am</span></time>
-        
-           | <a href="/blog/2014/11/10/average-phone-plan-in-the-u-dot-s-costs-ten-time-as-much-as-that-in-the-u-dot-k/#disqus_thread"
-             data-disqus-identifier="http://zmwangx.github.io/blog/2014/11/10/average-phone-plan-in-the-u-dot-s-costs-ten-time-as-much-as-that-in-the-u-dot-k/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>To quote <a href="http://blogs.opera.com/news/2014/11/mobile-data-anyway/">Opera News</a>,</p>
-
-<blockquote><p>According to research by the International Telecommunication Union, the average phone plan with 500MB of data costs $85 in the United States, compared to $24.10 in China and $8.80 in the United Kingdom.</p></blockquote>
-
-<p>Holy shit!</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -528,6 +576,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/01/01/os-x-system-ruby-encoding-annoyance/">OS X System Ruby Encoding Annoyance</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/23/mpv-launcher/">Mpv Launcher</a>
       </li>
     
@@ -541,10 +593,6 @@
     
       <li class="post">
         <a href="/blog/2014/12/14/the-google-chrome-comic-a-classic/">The Google Chrome Comic — a Classic</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/14/speeding-up-emacs-with-emacsclient/">Speeding Up Emacs With Emacsclient</a>
       </li>
     
   </ul>
@@ -589,7 +637,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Zhiming Wang -
+  Copyright &copy; 2015 - Zhiming Wang -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

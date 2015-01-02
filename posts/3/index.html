@@ -9,7 +9,7 @@
   <meta name="author" content="Zhiming Wang">
 
   
-  <meta name="description" content="Today (I mean November 7, 2014 — it’s technically November 8 at the time of writing) I saw Interstellar (IMAX digital) at AMC Mercado 20. I rarely go &hellip;">
+  <meta name="description" content="To quote Opera News, According to research by the International Telecommunication Union, the average phone plan with 500MB of data costs $85 in the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,42 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/11/10/average-phone-plan-in-the-u-dot-s-costs-ten-time-as-much-as-that-in-the-u-dot-k/">Average Phone Plan in the U.S. Costs Ten Time as Much as That in the U.K.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-11-10T11:11:46-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:11 am</span></time>
+        
+           | <a href="/blog/2014/11/10/average-phone-plan-in-the-u-dot-s-costs-ten-time-as-much-as-that-in-the-u-dot-k/#disqus_thread"
+             data-disqus-identifier="http://zmwangx.github.io/blog/2014/11/10/average-phone-plan-in-the-u-dot-s-costs-ten-time-as-much-as-that-in-the-u-dot-k/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To quote <a href="http://blogs.opera.com/news/2014/11/mobile-data-anyway/">Opera News</a>,</p>
+
+<blockquote><p>According to research by the International Telecommunication Union, the average phone plan with 500MB of data costs $85 in the United States, compared to $24.10 in China and $8.80 in the United Kingdom.</p></blockquote>
+
+<p>Holy shit!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -678,62 +714,6 @@ Ravi: Yeah, Brian Conrad will give a lecture. Don&rsquo;t tell him, he don&rsquo
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/10/26/audio-cd-slash-dvd-to-iso-image-on-os-x/">Convert Audio CD/DVD to ISO Image on OS X</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-10-26T23:29:47-07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:29 pm</span></time>
-        
-           | <a href="/blog/2014/10/26/audio-cd-slash-dvd-to-iso-image-on-os-x/#disqus_thread"
-             data-disqus-identifier="http://zmwangx.github.io/blog/2014/10/26/audio-cd-slash-dvd-to-iso-image-on-os-x/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><strong><em>11/02/2014 update:</em></strong></p>
-
-<p>See <a href="/blog/2014/11/02/vobcopy-dvdbackup-etc/">this post</a> for issues, explanations, and more.</p>
-
-<hr />
-
-<p>Today it occurred to me that I should make clones of my audio CDs (as stand-alone ISO images, I mean, not just rsyncing the AIFFs to subdirectories in <code>~/aud/lossless</code>). One can never have too many backups.</p>
-
-<p>Of course I could simply pack the aforementioned directories with AIFFs into ISOs — that’s not impressive. The end result might actually be the same, but I want to make the clones directly from the original CDs. It turns out that this is not so simple with the Disk Utility GUI — unlike DVDs, the “New Image” option is grayed out for Audio CDs. I’m not sure why, but maybe they want you to just use iTunes to deal with Audio CDs (which works well for all practical purposes — but theoretical curiosity never ends).</p>
-
-<p>So there comes <code>hdiutil</code>. <code>hdiutil</code> and <code>diskutil</code> are the utilities underlying Disk Utility. Unfortunately, so far I know little about them except for simplest things like <code>diskutil list</code>, <code>diskutil mount</code>, <code>hdiutil attach -stdinpass</code>, etc. (I&rsquo;m so ignorant about anything filesystem related!) The <code>hdiutil</code> verb that makes cross-platform CD or DVD is <code>makehybrid</code>, which supports the following filesystem options: <code>-hfs</code> (holy crap, no HFS+ please! Apple ought to replace this thirty-year-old filesystem — ZFS or something better please!), <code>-iso</code>, <code>-joliet</code>, and <code>-udf</code>. For Audio CDs you use <code>-iso</code> and with <code>-joliet</code> extension:</p>
-
-<pre><code>hdiutil makehybrid -iso -joliet -o AUDIO_CD_NAME.iso SOURCE
-</code></pre>
-
-<p>where <code>SOURCE</code> can be the mount point, the disk device file, etc. Similarly, although you can create <code>.cdr</code> images from DVDs via the Disk Utility GUI, you can also do it with <code>hdiutil</code> (which is potentially more portable — I’ve never heard a definitive answer of whether renaming <code>.cdr</code> to <code>.iso</code> really cross-platform):</p>
-
-<pre><code>hdiutil makehybrid -udf -o DVD_NAME.iso SOURCE
-</code></pre>
-
-<p>This way CSS keys <em>seem</em> to be cloned as well, since I was able to authenticate such a CSS-protected DVD with <code>libdvdread</code>.</p>
-
-<hr />
-
-<p>P.S. I sincerely hope that one day lossless music tracks are no longer distributed through CD-ROMs. So painful — even my Internet speed is more than ten times faster than the <a href="https://en.wikipedia.org/wiki/CD-ROM#Transfer_rates">highest transfer rate</a> available from any CD-ROM. (I’ve heard about some websites distributing lossless music digitally, but that won’t happen to the music I care about in the near future.) I still like physical albums though — a real sense of possession. Maybe they should contain the physical goodies and some sort of access codes?</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/4">&larr; Older</a>
@@ -751,6 +731,10 @@ Ravi: Yeah, Brian Conrad will give a lecture. Don&rsquo;t tell him, he don&rsquo
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/01/01/os-x-system-ruby-encoding-annoyance/">OS X System Ruby Encoding Annoyance</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/23/mpv-launcher/">Mpv Launcher</a>
       </li>
     
@@ -764,10 +748,6 @@ Ravi: Yeah, Brian Conrad will give a lecture. Don&rsquo;t tell him, he don&rsquo
     
       <li class="post">
         <a href="/blog/2014/12/14/the-google-chrome-comic-a-classic/">The Google Chrome Comic — a Classic</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/14/speeding-up-emacs-with-emacsclient/">Speeding Up Emacs With Emacsclient</a>
       </li>
     
   </ul>
@@ -812,7 +792,7 @@ Ravi: Yeah, Brian Conrad will give a lecture. Don&rsquo;t tell him, he don&rsquo
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Zhiming Wang -
+  Copyright &copy; 2015 - Zhiming Wang -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
