@@ -1,0 +1,16 @@
+---
+layout: post
+title: "Fonts: why Chinese web design is hard"
+date: 2015-01-10 09:30:02 -0800
+comments: true
+categories: 
+---
+For years I've been complaining about Chinese websites' horrendous designs. Yesterday I tried to translate one of my simple project websites to Chinese, and finally realized that web design for the Chinese language is no simple task — much harder than for English. The problem is fonts. This might not be the only problem (and cannot take blame for all the horrendous designs), but it certainly seems to be a roadblock.
+
+The problem with fonts boils down to the fact that the Chinese writing system has too many glyphs. I still remember learning things about the GB 2312 charset when I was twelve — there are 3755 Level 1 characters (more commonly seen), 3008 Level 2 characters, and other symbols and foreign glyphs. Designing more than six thousand Chinese characters is so much harder than designing 26 letters. I'm not sure if many glyphs are auto-generated from parts, but that would certainly degrade the quality. The result? Availability of digital fonts suffers. There are simply not so many choices of Chinese fonts. Chinese writing is beautiful, but I've yet to see a font for screens (let alone the web) that conveys that beauty. This might be subjective, but I have the impression that fonts generally look worse on screen than in print, and more so for Chinese fonts (Retina doesn't help much). For the record, I checked Apple's font usage at the moment, and they are using a tailored font named "PingHei" ("平黑", I guess; see screenshot at the end); I'm not at all impressed. Compare that to the English counterpart (also at the end) — not on the same level. (I won't talk about Microsoft since it doesn't feature a design department, or that department is brain dead. Well, I'm a little opinionated.)
+
+Another problem triggered by the vast number of glyphs is that font files are large. I looked at a dozen OTF fonts with SC or TC glyphs, and none seems to be below 10 MB. That's clearly a no go on the web — not until everyone has a gigabit connection, I suppose. I tried to Google for Chinese webfonts and had little success, so I'm not sure if woff helps. I've heard that Apple is able to pack a reduced set of PingHei glyphs into woffs less than 1 MB (keep in mind that PingHei being sans serif is simpler than serif fonts like Songti); that's pretty remarkable. I don't know much about font technologies so I can't comment more on this matter, but from my observation all Chinese websites (with the exception of apple.com/cn, I guess) rely on locally installed fonts, and most don't even have a list of fallbacks, i.e., typefaces simply aren't part of their designs. Even if they do have a list of fallbacks, they won't be able to guarantee uniform experience across the board (as far as I know, the lowest common denominator of Chinese fonts across all platforms seem to be zero). Apple has taught us that design must be integrated and perfected (well, Apple wasn't the first to do design, but they did bring it to the digital world and to the masses). Any fragmented design is doomed to fail.
+
+![](http://i.imgur.com/MPmtSJI.png)
+
+![](http://i.imgur.com/hBpdv0B.png)
