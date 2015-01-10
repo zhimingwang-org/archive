@@ -9,7 +9,7 @@
   <meta name="author" content="Zhiming Wang">
 
   
-  <meta name="description" content="I&rsquo;ve been using RVM (with fairly up-to-date Rubies) and pry since my day one with Ruby (well, almost), so it actually surprises me today when I &hellip;">
+  <meta name="description" content="For years I&rsquo;ve been complaining about Chinese websites' horrendous designs. Yesterday I tried to translate one of my simple project websites to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,46 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/01/10/fonts-why-chinese-web-design-is-hard/">Fonts: Why Chinese Web Design Is Hard</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-01-10T09:30:02-08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:30 am</span></time>
+        
+           | <a href="/blog/2015/01/10/fonts-why-chinese-web-design-is-hard/#disqus_thread"
+             data-disqus-identifier="http://zmwangx.github.io/blog/2015/01/10/fonts-why-chinese-web-design-is-hard/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>For years I&rsquo;ve been complaining about Chinese websites&#8217; horrendous designs. Yesterday I tried to translate one of my simple project websites to Chinese, and finally realized that web design for the Chinese language is no simple task — much harder than for English. The problem is fonts. This might not be the only problem (and cannot take blame for all the horrendous designs), but it certainly seems to be a roadblock.</p>
+
+<p>The problem with fonts boils down to the fact that the Chinese writing system has too many glyphs. I still remember learning things about the GB 2312 charset when I was twelve — there are 3755 Level 1 characters (more commonly seen), 3008 Level 2 characters, and other symbols and foreign glyphs. Designing more than six thousand Chinese characters is so much harder than designing 26 letters. I&rsquo;m not sure if many glyphs are auto-generated from parts, but that would certainly degrade the quality. The result? Availability of digital fonts suffers. There are simply not so many choices of Chinese fonts. Chinese writing is beautiful, but I&rsquo;ve yet to see a font for screens (let alone the web) that conveys that beauty. This might be subjective, but I have the impression that fonts generally look worse on screen than in print, and more so for Chinese fonts (Retina doesn&rsquo;t help much). For the record, I checked Apple&rsquo;s font usage at the moment, and they are using a tailored font named &ldquo;PingHei&rdquo; (&ldquo;平黑&rdquo;, I guess; see screenshot at the end); I&rsquo;m not at all impressed. Compare that to the English counterpart (also at the end) — not on the same level. (I won&rsquo;t talk about Microsoft since it doesn&rsquo;t feature a design department, or that department is brain dead. Well, I&rsquo;m a little opinionated.)</p>
+
+<p>Another problem triggered by the vast number of glyphs is that font files are large. I looked at a dozen OTF fonts with SC or TC glyphs, and none seems to be below 10 MB. That&rsquo;s clearly a no go on the web — not until everyone has a gigabit connection, I suppose. I tried to Google for Chinese webfonts and had little success, so I&rsquo;m not sure if woff helps. I&rsquo;ve heard that Apple is able to pack a reduced set of PingHei glyphs into woffs less than 1 MB (keep in mind that PingHei being sans serif is simpler than serif fonts like Songti); that&rsquo;s pretty remarkable. I don&rsquo;t know much about font technologies so I can&rsquo;t comment more on this matter, but from my observation all Chinese websites (with the exception of apple.com/cn, I guess) rely on locally installed fonts, and most don&rsquo;t even have a list of fallbacks, i.e., typefaces simply aren&rsquo;t part of their designs. Even if they do have a list of fallbacks, they won&rsquo;t be able to guarantee uniform experience across the board (as far as I know, the lowest common denominator of Chinese fonts across all platforms seem to be zero). Apple has taught us that design must be integrated and perfected (well, Apple wasn&rsquo;t the first to do design, but they did bring it to the digital world and to the masses). Any fragmented design is doomed to fail.</p>
+
+<p><img src="http://i.imgur.com/MPmtSJI.png" alt="" /></p>
+
+<p><img src="http://i.imgur.com/hBpdv0B.png" alt="" /></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -533,38 +573,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/12/05/python-3-and-unicode/">Python 3 and Unicode</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-12-05T15:01:54-08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>3:01 pm</span></time>
-        
-           | <a href="/blog/2014/12/05/python-3-and-unicode/#disqus_thread"
-             data-disqus-identifier="http://zmwangx.github.io/blog/2014/12/05/python-3-and-unicode/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I never realized that in Python 3 Unicode is the default; in particular, <code>str</code> in Python 3 is practically equivalent to <code>unicode</code> in Python 2. This might be the <em>one thing</em> that convince me to migrate. <code>str.encode()</code>, <code>str.decode()</code>, <code>unicode.encode()</code>, <code>unicode.decode()</code>, etc. are so confusing that I&rsquo;m never 100% sure what I&rsquo;m doing (only-occasionally-used-but-unavoidable-and-worst-of-all-very-confusing &ldquo;features&rdquo; are nightmares).</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -580,6 +588,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/01/10/fonts-why-chinese-web-design-is-hard/">Fonts: Why Chinese Web Design Is Hard</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/01/01/os-x-system-ruby-encoding-annoyance/">OS X System Ruby Encoding Annoyance</a>
       </li>
     
@@ -593,10 +605,6 @@
     
       <li class="post">
         <a href="/blog/2014/12/19/app-suggestion-dropzone-3/">App Suggestion: Dropzone 3</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/14/the-google-chrome-comic-a-classic/">The Google Chrome Comic — a Classic</a>
       </li>
     
   </ul>

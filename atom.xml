@@ -4,7 +4,7 @@
   <title><![CDATA[dl? cmplnts?]]></title>
   <link href="http://zmwangx.github.io/atom.xml" rel="self"/>
   <link href="http://zmwangx.github.io/"/>
-  <updated>2015-01-01T23:46:33-08:00</updated>
+  <updated>2015-01-10T10:18:32-08:00</updated>
   <id>http://zmwangx.github.io/</id>
   <author>
     <name><![CDATA[Zhiming Wang]]></name>
@@ -12,6 +12,23 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Fonts: Why Chinese Web Design Is Hard]]></title>
+    <link href="http://zmwangx.github.io/blog/2015/01/10/fonts-why-chinese-web-design-is-hard/"/>
+    <updated>2015-01-10T09:30:02-08:00</updated>
+    <id>http://zmwangx.github.io/blog/2015/01/10/fonts-why-chinese-web-design-is-hard</id>
+    <content type="html"><![CDATA[<p>For years I&rsquo;ve been complaining about Chinese websites&#8217; horrendous designs. Yesterday I tried to translate one of my simple project websites to Chinese, and finally realized that web design for the Chinese language is no simple task — much harder than for English. The problem is fonts. This might not be the only problem (and cannot take blame for all the horrendous designs), but it certainly seems to be a roadblock.</p>
+
+<p>The problem with fonts boils down to the fact that the Chinese writing system has too many glyphs. I still remember learning things about the GB 2312 charset when I was twelve — there are 3755 Level 1 characters (more commonly seen), 3008 Level 2 characters, and other symbols and foreign glyphs. Designing more than six thousand Chinese characters is so much harder than designing 26 letters. I&rsquo;m not sure if many glyphs are auto-generated from parts, but that would certainly degrade the quality. The result? Availability of digital fonts suffers. There are simply not so many choices of Chinese fonts. Chinese writing is beautiful, but I&rsquo;ve yet to see a font for screens (let alone the web) that conveys that beauty. This might be subjective, but I have the impression that fonts generally look worse on screen than in print, and more so for Chinese fonts (Retina doesn&rsquo;t help much). For the record, I checked Apple&rsquo;s font usage at the moment, and they are using a tailored font named &ldquo;PingHei&rdquo; (&ldquo;平黑&rdquo;, I guess; see screenshot at the end); I&rsquo;m not at all impressed. Compare that to the English counterpart (also at the end) — not on the same level. (I won&rsquo;t talk about Microsoft since it doesn&rsquo;t feature a design department, or that department is brain dead. Well, I&rsquo;m a little opinionated.)</p>
+
+<p>Another problem triggered by the vast number of glyphs is that font files are large. I looked at a dozen OTF fonts with SC or TC glyphs, and none seems to be below 10 MB. That&rsquo;s clearly a no go on the web — not until everyone has a gigabit connection, I suppose. I tried to Google for Chinese webfonts and had little success, so I&rsquo;m not sure if woff helps. I&rsquo;ve heard that Apple is able to pack a reduced set of PingHei glyphs into woffs less than 1 MB (keep in mind that PingHei being sans serif is simpler than serif fonts like Songti); that&rsquo;s pretty remarkable. I don&rsquo;t know much about font technologies so I can&rsquo;t comment more on this matter, but from my observation all Chinese websites (with the exception of apple.com/cn, I guess) rely on locally installed fonts, and most don&rsquo;t even have a list of fallbacks, i.e., typefaces simply aren&rsquo;t part of their designs. Even if they do have a list of fallbacks, they won&rsquo;t be able to guarantee uniform experience across the board (as far as I know, the lowest common denominator of Chinese fonts across all platforms seem to be zero). Apple has taught us that design must be integrated and perfected (well, Apple wasn&rsquo;t the first to do design, but they did bring it to the digital world and to the masses). Any fragmented design is doomed to fail.</p>
+
+<p><img src="http://i.imgur.com/MPmtSJI.png" alt="" /></p>
+
+<p><img src="http://i.imgur.com/hBpdv0B.png" alt="" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[OS X System Ruby Encoding Annoyance]]></title>
@@ -509,15 +526,6 @@
 <p>It turns out that I really should have been working the other way round &mdash; first establish the orthogonal idempotents (the proof of which is really simple and elegant, I was just trapped in a single thread of thought), then use that to compute the convolution of irreducible characters.</p>
 
 <p>I feel like this is worth presenting (as the only proof I saw online is the really sad one above), so I TeX&#8217;ed it up. I tried to convert to MathJax HTML but eventually gave up (that&rsquo;s the story for another post). So, the write-up is in good ol&#8217; PDF, available <a href="http://zmwangx.github.io/pdf/20141119-convolution-of-irreducible-characters.pdf">here</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Re-encoding Everything for iPhone 6 Plus]]></title>
-    <link href="http://zmwangx.github.io/blog/2014/11/11/re-encoding-everything-for-iphone-6-plus/"/>
-    <updated>2014-11-11T13:31:25-08:00</updated>
-    <id>http://zmwangx.github.io/blog/2014/11/11/re-encoding-everything-for-iphone-6-plus</id>
-    <content type="html"><![CDATA[<p>AT&amp;T finally delivered my iPhone 6 Plus (silver, 64 GB) after about fifty days since preorder… The 1080p Retina display is simply stunning. However, it turns out that my old videos don’t work so well on 6 Plus’s giant screen. My old mobile video collection was optimized for my 16 GB 4S, targeting the small screen and highly limited storage — you guessed it, they were resized to 960x540, and they looked great. But they’re not up to the task any more. 960x540 videos aren’t at all sharp on the stunning screen of 6 Plus, which is more than capable of handling 4x pixels. Therefore, I have no choice but to feed it more pixels. I’m left in a weird situation, where my 1080p desktop (or even HDTV) quality videos should fit the screen just fine, but H.264 profile stands in the way. iPhone 6 and 6 Plus are only capable of High Profile level 4.2, so anything encoded in level 5.1, for instance, needs to be re-encoded. Also there are still MPEG-2 and MPEG-4 videos out there (MPEG-4 should be obsolete by now, I assume, but some people still use it; and MPEG-2 is de facto in TV broadcasts), which have to be transcoded. Okay, it’s a daunting task to re-encode a fairly big collection, but I have to do it sooner or later. Presumably this weekend. I’ll also report whether 720p videos look sharp on the screen later.</p>
 ]]></content>
   </entry>
   
