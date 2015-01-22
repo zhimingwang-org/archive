@@ -4,7 +4,7 @@
   <title><![CDATA[dl? cmplnts?]]></title>
   <link href="http://zmwangx.github.io/atom.xml" rel="self"/>
   <link href="http://zmwangx.github.io/"/>
-  <updated>2015-01-10T10:18:32-08:00</updated>
+  <updated>2015-01-21T17:24:08-08:00</updated>
   <id>http://zmwangx.github.io/</id>
   <author>
     <name><![CDATA[Zhiming Wang]]></name>
@@ -12,6 +12,26 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Web Design: Microsoft vs Apple]]></title>
+    <link href="http://zmwangx.github.io/blog/2015/01/21/web-design-microsoft-vs-apple/"/>
+    <updated>2015-01-21T16:30:51-08:00</updated>
+    <id>http://zmwangx.github.io/blog/2015/01/21/web-design-microsoft-vs-apple</id>
+    <content type="html"><![CDATA[<p>I just had a look at Ars&rsquo;s live blog on today&rsquo;s Windows 10 Event to acquire a sense of where Windows is heading. There&rsquo;s not much to report. Safari rip-off (Microsoft&rsquo;s new Spartan — wait, is this name also inspired by Safari? — features reading mode and offline reading list, Safari&rsquo;s killer features) aside, the focus seems to be virtual assistant, PC-tablet-phone integration, and gaming, none of which I&rsquo;m interested in. The hologram thing does look cool, but putting the hype aside, I doubt if it will be really useful for the masses (except probably in gaming, one of my most despised applications of computing). I&rsquo;m not a visionary so maybe I&rsquo;m underestimating this.</p>
+
+<p>(Another interesting development is &ldquo;Windows as a Service&rdquo; — WaaS? Microsoft isn&rsquo;t communiating it effectively. If it means paid subscription, am I ever going to subscribe to an OS? No. If it instead means free system updates for the lifetime of a device, then this WaaS thing is just a vacuous buzz phrase — Apple has already been doing it for two years. Longer if you count the cheap upgrades. However, if free system updates is indeed the case, then what about VMs? Not sure.)</p>
+
+<p>The only thing I would like to see Apple copy from Microsoft is the unlimited OneDrive — come on, we already paid enough for our hardware, why can&rsquo;t we have unlimited cloud storage? I would even pay $10 per month for that — Microsoft is offering Office 365 along with unlimited cloud storage, all for just $10, so it certainly won&rsquo;t hurt Apple. The current iCloud pricing is ridiculous.</p>
+
+<p>All the discussions above are not the main point of this post though. The point is, I went to the Windows website to learn more about Windows 10, and just can&rsquo;t believe my eyes in how awful it is designed. Just look at the font and the layout of <a href="http://windows.microsoft.com/en-us/windows-10/about">http://windows.microsoft.com/en-us/windows-10/about</a> (full web page screenshot courtesy of <a href="http://web-capture.net">web-capture.net</a>). And compare that to <a href="http://www.apple.com/osx/">http://www.apple.com/osx/</a> (scroll past the Windows screenshot). Holy crap, I even booted my Windows 8.1 VM just to make sure I&rsquo;m not lacking the necessary fonts available on Windows.</p>
+
+<p>Why Microsoft&rsquo;s web design is so shitty is always beyond my grasp. For OS X, a potential customer would be eager to set his hands on it just by looking at its beautifully-crafted homepage and a few screenshots there. For Windows it&rsquo;s exactly the opposite. I mean, apart from metro apps (worst and ugliest desktop experience ever), modern Windows actually looks pretty good. But their shitty advertising totally ruins it. I guess it doesn&rsquo;t matter much for Microsoft, for all design-savvy folks who are not stuck on Windows are already using OS X, and most of their customers just need a commodity OS.</p>
+
+<p><img src="http://i.imgur.com/0eIt4SR.png" alt="" />
+<img src="http://i.imgur.com/piUO0xY.png" alt="" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Fonts: Why Chinese Web Design Is Hard]]></title>
@@ -509,23 +529,6 @@
 <p>With the level of command line integration illustrated above, we&rsquo;ll finally get rid of clicking around and not being able to automate chores. Navgating the remote file system will be a breeze — click, click, click, click, click (sometimes click should be replaced by double click, which is even more painful) just to navigate to a directory will be made a thing of the past. <code>ln</code>, in particular, saves disk space for duplicates — Dropbot for Geeks does <em>not</em> want to charge you extra for multiple copies of the same file in different directories. (To facilitate syncing hardlinks, clients should be able to specify hardlinked files in a config file. Or maybe some better mechanism. This might be hard.) At last, checksums are a must. I’ve had traumatic experiences like having downloaded an eight-part RAR, 1 GiB each, only to find that it wouldn’t unRAR. Without checksums, it was impossible to find which part was corrupted. As a result, I had to re-download everything — a nightmare. I never want to experience similar problems again. Hence the precious checksums.</p>
 
 <p>Dropbot for Geeks looks like a pretty good (well, not really, but at least pretty cool®) model. Maybe I should patent it before anyone else? Then if some similar service surfaces in the future, I can <a href="http://arstechnica.com/tech-policy/2014/11/jury-apple-must-pay-23-6m-for-old-pager-patents/">sue their ass off and enjoy some hot cash</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Convolution of Irreducible Characters]]></title>
-    <link href="http://zmwangx.github.io/blog/2014/11/19/convolution-of-irreducible-characters/"/>
-    <updated>2014-11-19T20:40:37-08:00</updated>
-    <id>http://zmwangx.github.io/blog/2014/11/19/convolution-of-irreducible-characters</id>
-    <content type="html"><![CDATA[<p><strong><em>TL; DR:</em> The actual PDF write-up is <a href="http://zmwangx.github.io/pdf/20141119-convolution-of-irreducible-characters.pdf">here</a>.</strong></p>
-
-<hr />
-
-<p>Yesterday I was trying to establish the formula for orthogonal primitive central idempotents of a group ring. It is possible to establish the result through the convolution of irreducible characters. However, I stuck quite a while on trying to work out the convolutions themselves. For a formidable and unenlightening proof using &ldquo;matrix entry functions&rdquo; (i.e., fix a basis, induce a matrix representation, and explicitly expand everything in matrix elements), see <a href="http://drexel28.wordpress.com/2011/03/02/representation-theory-using-orthogonality-relations-to-compute-convolutions-of-characters-and-matrix-entry-functions/">this post</a> (in fact, this is just one in a series of posts that lead up to the result). That&rsquo;s a really sad proof.</p>
-
-<p>It turns out that I really should have been working the other way round &mdash; first establish the orthogonal idempotents (the proof of which is really simple and elegant, I was just trapped in a single thread of thought), then use that to compute the convolution of irreducible characters.</p>
-
-<p>I feel like this is worth presenting (as the only proof I saw online is the really sad one above), so I TeX&#8217;ed it up. I tried to convert to MathJax HTML but eventually gave up (that&rsquo;s the story for another post). So, the write-up is in good ol&#8217; PDF, available <a href="http://zmwangx.github.io/pdf/20141119-convolution-of-irreducible-characters.pdf">here</a>.</p>
 ]]></content>
   </entry>
   
