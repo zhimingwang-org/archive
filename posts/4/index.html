@@ -9,7 +9,7 @@
   <meta name="author" content="Zhiming Wang">
 
   
-  <meta name="description" content="A week ago I wrote a post Help Mou hit 1.0. Today, I&rsquo;m delighted to find out that Mou has reached its goal, $20,000, half way into the &hellip;">
+  <meta name="description" content="Up to this point I&rsquo;ve been using Google Drive as an online backup service, and uploads files mostly manually, although I do sync ~/img with the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,86 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/10/28/google-drive-no-selective-subfolder-sync/">Google Drive — No Selective Subfolder Sync?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-10-28T20:49:24-07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:49 pm</span></time>
+        
+           | <a href="/blog/2014/10/28/google-drive-no-selective-subfolder-sync/#disqus_thread"
+             data-disqus-identifier="http://zmwangx.github.io/blog/2014/10/28/google-drive-no-selective-subfolder-sync/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Up to this point I&rsquo;ve been using Google Drive as an online backup service, and uploads files mostly manually, although I do sync <code>~/img</code> with the client.</p>
+
+<p><strong>Aside.</strong> Google Drive, OneDrive, etc. don&rsquo;t work with symlinks. Wanna keep your stuff free and duplicate-free yet still synced to the servers? Use <code>rsync</code> to automatically reproduce your folder structure with hard links:</p>
+
+<pre><code>rsync -avzP --delete --link-dest=SOURCE/ SOURCE DESTINATION
+</code></pre>
+
+<p>e.g.,</p>
+
+<pre><code>rsync -avzP --delete --link-dest=~/img/ ~/img/ ~/sync/GoogleDrive/img/
+</code></pre>
+
+<p>automatically reproduces my <code>~/img</code> in the <code>img</code> directory under Google Drive&rsquo;s root, yet every file in the <code>~/img</code> tree is replaced by hard links to the original file, so the new structure within Google Drive takes little additional space — for the directories only.</p>
+
+<p>That doesn&rsquo;t solve every problem though, as you will see shortly. <em>End of aside.</em></p>
+
+<p>So, up to this point I’ve mostly used Google Drive as an online backup service by manually uploading (huge) stuff. But at some point I’m gonna automate parts of the uploading. As it turns out, I can keep some smaller video files on my hard drive; other bigger monsters (like movies, TV shows, etc., especially a lot of 1080i Transport Streams directly from TV broadcasts) are uploaded and then moved to external drives. Some of the smaller files, including things downloaded from YouTube, live in <code>~/vid/etc</code>, and I want to sync this folder to Google Drive. What&rsquo;s shocking is that this is not possible with the Google Drive client — it only allows selective syncing of the top level folders. Let me repeat this:</p>
+
+<p><strong>The Google Drive client only allows selective syncing of the <em>top level folders</em>.</strong></p>
+
+<p>This is <em>insane</em>. It’s almost 2015. Everyone supports this — Dropbox, Microsoft, Box, even Baidu. Google Drive launched on April 24, 2012, that’s 2.5 years ago. <a href="https://productforums.google.com/forum/#!topic/drive/Gs2w1BL-B9U">This thread</a> on Google Drive Forum, “Ability to sync only selected sub folders”, was posted on August 27, 2012, and has garnered 139 replies. They are ignored by the developers, and the accepted “answer” is to utilize Google Drive’s assign-one-file/folder-to-multiple-folders feature to create a special “sync” directory. Okay, that’s a stupid hard link solution on the server side. Okay, if that works… <em>No</em>. “Hard links on the server side” cannot bear different names; so what if I want to sync, say, both <code>vid/etc</code> and <code>aud/etc</code>? Whoops. So I also have to do all sorts of ugly renaming. NO, GOOGLE, NO, I won&rsquo;t accept that much trouble.</p>
+
+<p>This kind of insanity makes me wander:</p>
+
+<p><strong>Do the Google Drive developers use Google Drive themselves?</strong></p>
+
+<p>For now I&rsquo;m moving <code>vid/etc</code> to <code>vid_etc</code>. Sigh.</p>
+
+<hr />
+
+<p>There are other problems that I encountered with Google Drive sync today. For one thing, it rejects what I already have and insists on starting from scratch. I mean, say I have uploaded a folder via the web interface, and later wants to keep it in sync (of course that&rsquo;s only possible if it&rsquo;s top level), so I put what I already have there. Nope, Google Drive reports that as a conflict and insists on downloading all the stuff again. Apart from wasted traffic, that also ruins my hard links, so I have to either wipe everything clean on the server side and reupload, or redownload everything and redo all the hard-linking after the download finishes. Either way, very annoying. I opted for the first one. (I later empirically confirmed that OneDrive could handle this situation.)</p>
+
+<p>There are other problems that don&rsquo;t pop right off my mind. Anyway, the gist is,</p>
+
+<p><strong>Google Drive is not yet sync-ready for power users (maybe even laymen).</strong></p>
+
+<hr />
+
+<p>Then, is OneDrive perfect? No. I know it recently went unlimited, but there’s one major annoyance: the speed. Stanford’s Ethernet speed is almost 1 Gbps UL/DL, but the OneDrive client tops out at about 2 MBps. The web interface isn’t much better. Google Drive is a lot faster than that, which makes it a good backup service for manual uploading. Anyway, maybe OneDrive will improve over time; yesterday they delivered an update to OneDrive.app, and at least it finally works.</p>
+
+<p>OneDrive also boasts no file status indicators on OS X, which everyone else in the industry has. That’s not a show-stopper though, if you just use it as a backup service.</p>
+
+<hr />
+
+<p>What about Dropbox? Dropbox is a truly awesome sync-ready service, but it is at the same time pretty expensive compared to others. Also, since I use Dropbox as a sync service, it must be up at all times and constantly indexing, so I’m really cautious with what I put there to avoid unnecessary cycles and startup time.</p>
+
+<hr />
+
+<p>Everything is broken in one way or another. Sigh. Let&rsquo;s hope that OneDrive improves a lot in the coming months; if it&rsquo;s stable enough and the speed gets some boost, I&rsquo;ll cancel my Google Drive subscription. I am a Google supporter and Microsoft hater, but a service that <em>works</em> is more important than ideology.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -523,267 +603,9 @@ Although never is often better than <em>right</em> now.</p></blockquote>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/10/20/hello-octopress/">Hello, Octopress!</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-10-20T16:53:00-07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>4:53 pm</span></time>
-        
-           | <a href="/blog/2014/10/20/hello-octopress/#disqus_thread"
-             data-disqus-identifier="http://zmwangx.github.io/blog/2014/10/20/hello-octopress/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This post marks my transition from Tumblr to Octopress &amp; GitHub Pages.</p>
-
-<p>I&rsquo;ve been microblogging for a while at <a href="http://zshello3.tumblr.com">zshello3.tumblr.com</a> and I liked it. Not because of readers, which I suspect I have none; but there are certainly a huge amount of information I want to dump off my mind. Back in the days I <em>loved</em> my handwritten journals, and I really poured a lot into them. Peers were usually amazed when they saw my journals. These days typing seems to be a more robust solution to keeping my thoughts, especially when the thoughts are mostly technical.</p>
-
-<p>Tumblr is awesome. Compared to WordPress (.com for pedantic people), it is both lightweight and beautiful (you get all the customization for free), so you quickly get to the writing. However, it is not designed for geeks, so</p>
-
-<ul>
-<li>Customization is capped at some point;</li>
-<li>I had the impression that the Markdown parser is herrendous;</li>
-<li>Email publishing is a mightmare, by the way;</li>
-<li>Code rendering always falls short — unless I spend a lot of time customizing (I&rsquo;m pretty bad at HTML, CSS, and JS stuff).</li>
-</ul>
-
-
-<p>Speaking of the last point, I&rsquo;ve always been envious of the beautiful code blocks found on Octopress blogs. So here I come!</p>
-
-<p>(Let me give it a try first.)</p>
-
-<figure class='code'><figcaption><span>hello.c</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello, Octopress!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Gorgeous. I&rsquo;ll get to the theme customization later. I&rsquo;m actually busy as crazy this week.</p>
-
-<p>Before I close this post, let me also try to embed a random gist I authored yesterday (for brewing):</p>
-
-<div><script src='https://gist.github.com/828fd00bdecd6611cf40.js?file=brew.sh'></script>
-<noscript><pre><code>#!/usr/bin/env bash
-
-progname=$(basename &quot;$0&quot;)
-
-function handle_error
-{
-    if [[ $? != 0 ]]; then
-        echo -e &quot;\n${RED}${progname}: error: &#39;$1&#39; failed${RESET}&quot; &gt;&amp;2
-        read -s -p &quot;${GREEN}press ENTER to continue, or any other key to quit${RESET}
-&quot; -n1 key
-        if [[ ${key} != &#39;&#39; ]]; then
-            exit 1
-        fi
-    fi
-}
-
-function execute
-{
-    echo &quot;${GREEN}${BOLD}$1${RESET}&quot;
-    eval &quot;$1&quot;
-    handle_error &quot;$1&quot;
-    echo
-}
-
-function latest_bin
-{
-    ls -d /usr/local/Cellar/$1/*/bin | tail -n1
-}
-
-caveats=&quot;${GREEN}${BOLD}Caveats:${RESET}
-* Add ${BLUE}/usr/local/opt/coreutils/libexec/gnubin${RESET} to ${BLUE}\$PATH${RESET} for coreutils without g prefix;
-* Add ${BLUE}/usr/local/share/zsh/site-functions${RESET} to ${BLUE}\$fpath${RESET} for additional completions;
-* ${RED}${MAGENTA}htop${RED} from ${MAGENTA}htop-osx${RED} has been given root priviledge!${RESET}
-* See ${BLUE}brew info libmagic${RESET} for how to access its python api;
-* The python formula (for python2) also installs setuptools and pip. They can be upgraded without rebrewing python:
-      ${BLUE}pip install --upgrade setuptools${RESET}
-      ${BLUE}pip install --upgrade pip${RESET}
-  pip packages are installed in &#39;{BLUE}/usr/local/lib/python2.7/site-packages${RESET}&#39;. See ${GREEN}https://github.com/Homebrew/homebrew/wiki/Homebrew-and-Python${RESET} for details;
-* See ${BLUE}brew info zsh-completions${RESET} for usage and caveats;
-* Binaries added to ${BLUE}$HOME/bin${RESET} instead of /usr/local/bin:
-    * tar (gnu-tar)
-    * awk (gawk)
-    * getopt (gnu-getopt)
-    * curl (curl)
-
-Remember to drop ${BLUE}https://raw.githubusercontent.com/Homebrew/homebrew/master/Library/Contributions/brew_zsh_completion.zsh${RESET} to somewhere in ${BLUE}\${fpath}${RESET} as ${BLUE}_brew${RESET}!
-&quot;
-
-case $1 in
-    install)
-        ;;
-    caveats)
-        echo -n &quot;${caveats}&quot; &gt;&amp;2
-        exit 0
-        ;;
-    *)
-        echo &quot;${progname}: usage:
-${BOLD}${progname} install${RESET}
-    install brew and my formulas
-${BOLD}${progname} caveats${RESET}
-    print caveats&quot; &gt;&amp;2
-        exit 1
-        ;;
-esac
-
-# install brew
-execute &#39;ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;&#39;
-
-# make sure ~/bin exists
-execute &quot;mkdir -p ${HOME}/bin&quot;
-
-# tap dupes and binary
-execute &#39;brew tap homebrew/dupes&#39;
-execute &#39;brew tap homebrew/binary&#39;
-
-########## essential stuff ##########
-# emacs (a bare bones version first)
-execute &#39;brew install emacs&#39;
-# coreutils
-execute &#39;brew install coreutils&#39;
-# wget
-execute &#39;brew install wget&#39;
-# gsed
-execute &#39;brew install gnu-sed --default-names&#39;
-# grep
-execute &#39;brew install grep --default-names&#39;
-# gawk
-execute &#39;brew install gawk&#39;
-prefix=$(latest_bin gawk)
-execute &quot;ln -s ${prefix}/gawk ${HOME}/bin/awk&quot;
-# Linux getopt
-execute &#39;brew install gnu-getopt&#39;
-prefix=$(latest_bin gnu-getopt)
-execute &quot;ln -s ${prefix}/getopt ${HOME}/bin&quot;
-# python and pip
-execute &#39;brew install python&#39;
-
-########## cask ##########
-execute &#39;brew tap caskroom/cask&#39;
-execute &#39;brew install brew-cask&#39;
-execute &#39;brew cask&#39;
-# xquartz
-execute &#39;brew cask install xquartz&#39;
-
-########## semi-essential stuff ##########
-# gtar
-execute &#39;brew install gnu-tar&#39;
-execute &quot;ln -s /usr/local/opt/gnu-tar/libexec/gnubin/tar ${HOME}/bin&quot;
-# ffmpeg
-execute &#39;brew install ffmpeg --with-fdk-aac --with-ffplay --with-freetype --with-libass --with-libbluray --with-openjpeg --with-openssl --with-x265&#39;
-# mpv
-execute &#39;brew tap mpv-player/mpv&#39;
-execute &#39;brew install mpv&#39;
-# imagemagick
-execute &#39;brew install imagemagick --with-fontconfig --with-ghostscript--with-jp2 --with-librsvg --with-libtiff --with-webp&#39;
-# reinstall a more colorful emacs
-execute &#39;brew reinstall emacs --cocoa --srgb --with-d-bus --with-gnutls --with-imagemagick --with-librsvg --with-mailutils&#39;
-# bash
-execute &#39;brew install bash&#39;
-# curl
-execute &#39;brew install curl --with-gssapi --with-idn --with-ssh&#39;
-prefix=$(latest_bin curl)
-execute &quot;ln -s ${prefix}/curl ${HOME}/bin&quot;
-
-########## other stuff ##########
-# brew-desc
-execute &#39;brew tap telemachus/desc&#39;
-execute &#39;brew install brew-desc&#39;
-# bzr
-execute &#39;brew install bzr&#39;
-# chrome-cli
-execute &#39;brew install chrome-cli&#39;
-# dos2unix
-execute &#39;brew install dos2unix&#39;
-# exiftool
-execute &#39;brew install exiftool&#39;
-# fdupes
-execute &#39;brew install fdupes&#39;
-# htop
-execute &#39;brew install htop-osx&#39;
-# htop requires root priviledge; put it off to the end so that automatic install is not interrupted
-# jq
-execute &#39;brew install jq&#39;
-# libmagic
-execute &#39;brew install libmagic --with-python&#39;
-# man2html
-execute &#39;brew install man2html&#39;
-# mercurial
-execute &#39;brew install mercurial&#39;
-# moreutils
-execute &#39;brew install moreutils --without-parallel&#39;
-# most
-execute &#39;brew install most&#39;
-# npm
-execute &#39;brew install npm&#39;
-# p7zip
-execute &#39;brew install p7zip&#39;
-# parallel
-execute &#39;brew install parallel&#39;
-# rar
-execute &#39;brew install rar&#39;
-# re2c
-execute &#39;brew install re2c&#39;
-# rsync
-execute &#39;brew install rsync&#39;
-# terminal-notifier
-execute &#39;brew install terminal-notifier&#39;
-# tmux
-execute &#39;brew install tmux&#39;
-execute &#39;brew install reattach-to-user-namespace&#39;
-# vim
-execute &#39;brew install vim --override-system-vi&#39;
-# xz
-execute &#39;brew install xz&#39;
-# yasm
-execute &#39;brew install yasm&#39;
-# youtube-dl
-execute &#39;brew install youtube-dl&#39;
-# zsh-completions
-execute &#39;brew install zsh-completions&#39;
-
-# link apps
-execute &#39;brew linkapps&#39;
-
-# grant htop root priviledge
-prefix=$(latest_bin htop-osx)
-execute &quot;sudo chown root:wheel ${prefix}/htop &amp;&amp; sudo chmod u+s ${prefix}/htop&quot;
-
-echo -n &quot;${caveats}&quot; &gt;&amp;2
-</code></pre></noscript></div>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/posts/5">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -796,6 +618,10 @@ echo -n &quot;${caveats}&quot; &gt;&amp;2
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/02/10/monitor-progress-of-your-unix-pipes-with-pv/">Monitor Progress of Your Unix Pipes With Pv</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/01/21/web-design-microsoft-vs-apple/">Web Design: Microsoft vs Apple</a>
@@ -811,10 +637,6 @@ echo -n &quot;${caveats}&quot; &gt;&amp;2
     
       <li class="post">
         <a href="/blog/2014/12/23/mpv-launcher/">Mpv Launcher</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/22/10k-images-on-imgur/">10k Images on Imgur</a>
       </li>
     
   </ul>

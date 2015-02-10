@@ -1,0 +1,342 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Monitor Progress of Your Unix Pipes With Pv - dl? cmplnts?</title>
+  <meta name="author" content="Zhiming Wang">
+
+  
+  <meta name="description" content="Recently I found a very useful utility called pv (for &ldquo;pipe viewer&rdquo;). Here is its home page, and it can be easily installed with brew. &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zmwangx.github.io/blog/2015/02/10/monitor-progress-of-your-unix-pipes-with-pv">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="dl? cmplnts?" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-53908325-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">dl? cmplnts?</a></h1>
+  
+    <h2>Mostly technical stuff. Can you figure out what the title stands for?</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zmwangx.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Monitor Progress of Your Unix Pipes With Pv</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-10T02:18:30-08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:18 am</span></time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://zmwangx.github.io">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Recently I found a very useful utility called <code>pv</code> (for &ldquo;pipe viewer&rdquo;). <a href="http://www.ivarch.com/programs/pv.shtml">Here</a> is its home page, and it can be easily installed with <code>brew</code>. According to its man page,</p>
+
+<blockquote><p><code>pv</code> shows the progress of data through a pipeline by giving information such as time elapsed, percentage completed (with progress bar), current throughput rate, total data transferred, and ETA.</p></blockquote>
+
+<p>For more info, see its home page (linked above) and <a href="http://linux.die.net/man/1/pv">man page</a>.</p>
+
+<p>Why is it useful? Well, pretty obvious if you are in the right audience. For me, one particularly important use case is with <code>openssl sha1</code>. I deal with videos on a daily basis, and back up all of them to OneDrive (ever since OneDrive went unlimited). To ensure integrity of transfer (in future downloads), I append the first seven digits of each video to its filename. This should be more than enough to reveal any error in transfer expect for active attacks. One additional advantage is that I can now have multiple versions of a same show, event, or whatever and don&rsquo;t have to worry about naming conflicts (and don&rsquo;t have to artifically say <code>-ver1</code>, <code>-ver2</code>, etc.). This little merit turns out to be huge and saves me a lot of trouble, since naming things is intrincally hard:</p>
+
+<blockquote><p>There are only three hard things concurreny, in computer science: cache invalidation, naming things, and off-by-one errors.</p></blockquote>
+
+<p>(I learned this beefed up version of two hard things only recently.) Well, too much digression. So SHA-1 sum is useful. (By the way, I learned in my crypto class that SHA-1 is broken as a collision-resistant hash function — not HMAC, which doesn&rsquo;t assume collision-resistance — and SHA-256 should be used instead. However, I&rsquo;m not protecting against active attacks — I won&rsquo;t be able to without a shared secret key anyway — so the faster SHA-1 is good for my purpose.) But at the same time, SHA-1 is slow. Maybe what&rsquo;s actually slow is my HDD. Whatever the bottleneck, generating a SHA-1 digest for a 10 GB video file isn&rsquo;t fun at all; it&rsquo;s even more of a torture when there&rsquo;s no progress bar and ETA. But hopelessly waiting has become a thing of the past with the advent (well, discovery in my case) of <code>pv</code>. Now I have nice and informative progress bars, which reduces the anxiety of waiting by an order of magnitude.</p>
+
+<p>For the record, here&rsquo;s the current version of my ruby script that attaches the first seven digits of the SHA-1 digests of the given files to their filenames:</p>
+
+<figure class='code'><figcaption><span>7sha1</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;fileutils&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">rename</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">num_items</span> <span class="o">=</span> <span class="n">items</span><span class="o">.</span><span class="n">length</span>
+</span><span class='line'>  <span class="n">num_done</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">items</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="n">path</span><span class="o">|</span>
+</span><span class='line'>    <span class="nb">printf</span><span class="p">(</span><span class="vg">$stderr</span><span class="p">,</span> <span class="s2">&quot;%d/%d: %s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">num_done</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_items</span><span class="p">,</span> <span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">if</span> <span class="o">!</span> <span class="no">File</span><span class="o">.</span><span class="n">directory?</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">extname</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">extname</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">basename</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">extname</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">dirname</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">sha1sum</span> <span class="o">=</span> <span class="sb">`pv &#39;</span><span class="si">#{</span><span class="n">path</span><span class="si">}</span><span class="sb">&#39; | openssl sha1`</span>
+</span><span class='line'>      <span class="n">new_basename</span> <span class="o">=</span> <span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;__&quot;</span> <span class="o">+</span> <span class="n">sha1sum</span><span class="o">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="o">]</span>
+</span><span class='line'>      <span class="n">new_path</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="n">new_basename</span> <span class="o">+</span> <span class="n">extname</span><span class="p">)</span>
+</span><span class='line'>      <span class="no">FileUtils</span><span class="o">.</span><span class="n">mv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">new_path</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>      <span class="no">STDERR</span><span class="o">.</span><span class="n">puts</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">path</span><span class="si">}</span><span class="s2">: directory ignored&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">num_done</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">rename</span><span class="p">(</span><span class="no">ARGV</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You might ask why I used ruby (littered with bash) when it&rsquo;s obviously a job for bash or perl. Well, the reason is that I first wrote this thing in ruby as a <a href="https://gist.github.com/zmwangx/d6406fb8bf51ac768770">Dropzone 3 action</a>. I&rsquo;m lazy, so I just borrowed that script and modified its printout for shell use.</p>
+
+<hr />
+
+<p>By the way, I also found a project called <code>cv</code> (Coreutils Viewer), which is <a href="https://github.com/Xfennec/cv">officially described as</a></p>
+
+<blockquote><p>&hellip; a Tiny, Dirty, Linux-Only C command that looks for coreutils basic commands (cp, mv, dd, tar, gzip/gunzip, cat, etc.) currently running on your system and displays the percentage of copied data.</p></blockquote>
+
+<p>. I&rsquo;ll look into it when I have time, but it from its description, it seems to be limited to coreutils, and OS X support might not be too awesome (at this point).</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Zhiming Wang</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-02-10T02:18:30-08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:18 am</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://zmwangx.github.io/blog/2015/02/10/monitor-progress-of-your-unix-pipes-with-pv/" data-via="" data-counturl="http://zmwangx.github.io/blog/2015/02/10/monitor-progress-of-your-unix-pipes-with-pv/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/01/21/web-design-microsoft-vs-apple/" title="Previous Post: Web design: Microsoft vs Apple">&laquo; Web design: Microsoft vs Apple</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/02/10/monitor-progress-of-your-unix-pipes-with-pv/">Monitor Progress of Your Unix Pipes With Pv</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/21/web-design-microsoft-vs-apple/">Web Design: Microsoft vs Apple</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/10/fonts-why-chinese-web-design-is-hard/">Fonts: Why Chinese Web Design Is Hard</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/01/os-x-system-ruby-encoding-annoyance/">OS X System Ruby Encoding Annoyance</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/23/mpv-launcher/">Mpv Launcher</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/zmwangx">@zmwangx</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zmwangx',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Zhiming Wang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'zmwangx';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://zmwangx.github.io/blog/2015/02/10/monitor-progress-of-your-unix-pipes-with-pv/';
+        var disqus_url = 'http://zmwangx.github.io/blog/2015/02/10/monitor-progress-of-your-unix-pipes-with-pv/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

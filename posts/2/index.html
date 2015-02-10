@@ -9,7 +9,8 @@
   <meta name="author" content="Zhiming Wang">
 
   
-  <meta name="description" content="This is not the first time that a distraction free writing app is featured on the Mac App Store. This time the candidate is Desk. The official &hellip;">
+  <meta name="description" content="On OS X, the following URIs are relevant: omnifocus:///change-preference?MaximumTimeBetweenSync=30
+omnifocus:///change-preference? &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +78,56 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/10/omnifocus-change-sync-behavior-mac-and-ios/">OmniFocus: Change Sync Behavior, Mac and iOS</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-12-10T22:45:34-08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:45 pm</span></time>
+        
+           | <a href="/blog/2014/12/10/omnifocus-change-sync-behavior-mac-and-ios/#disqus_thread"
+             data-disqus-identifier="http://zmwangx.github.io/blog/2014/12/10/omnifocus-change-sync-behavior-mac-and-ios/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>On OS X, the following URIs are relevant:</p>
+
+<ul>
+<li><a href="omnifocus:///change-preference?MaximumTimeBetweenSync=30">omnifocus:///change-preference?MaximumTimeBetweenSync=30</a></li>
+<li><a href="omnifocus:///change-preference?TimeFromFirstEditToSync=2">omnifocus:///change-preference?TimeFromFirstEditToSync=2</a></li>
+</ul>
+
+
+<p>What they do are self-evident.</p>
+
+<p>On iOS, use the following URIs instead:</p>
+
+<ul>
+<li><a href="x-omnifocus-debug:set-default:MaximumTimeBetweenSync:60">x-omnifocus-debug:set-default:MaximumTimeBetweenSync:60</a></li>
+<li><a href="x-omnifocus-debug:set-default:TimeFromFirstEditToSync:2">x-omnifocus-debug:set-default:TimeFromFirstEditToSync:2</a></li>
+</ul>
+
+
+<p>Source: <a href="http://www.macstories.net/links/change-default-sync-times-of-omnifocus-for-mac-and-ios/">Change Default Sync Times of OmniFocus For Mac and iOS</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -529,54 +580,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/11/20/dropbot-for-geeks(r)/">Dropbot for Geeks®</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-11-20T09:48:15-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:48 am</span></time>
-        
-           | <a href="/blog/2014/11/20/dropbot-for-geeks(r)/#disqus_thread"
-             data-disqus-identifier="http://zmwangx.github.io/blog/2014/11/20/dropbot-for-geeks(r)/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I propose the following cloud storage and syncing service model of the future. I call it <strong>Dropbot for Geeks®</strong>, and it totally rules. It&rsquo;s designed for geeks who are tired of the highly limited, miserably unproductive traditional services (based on clicking around). It has the following features:</p>
-
-<ul>
-<li><p>Standard Unix file system commands exposed as an API, e.g., <code>cat</code>, <code>cd</code>, <code>cp</code>, <code>du</code>, <code>df</code>, <code>file</code>, <code>find</code>, <code>head</code>, <code>ln</code>, <code>ls</code>, <code>mkdir</code>, <code>mv</code>, <code>pwd</code>, <code>rm</code>, <code>rmdir</code>, <code>tail</code>, <code>touch</code>, etc.</p></li>
-<li><p>A rudimentary shell emulator through the web interface exposing the commands above.</p></li>
-<li><p>Secure shell access to the file system, also exposing the commands above. Provide two-factor auth for SSH. Clearly, <code>scp</code> should also be supported.</p></li>
-<li><p>Checksums. Expose, for instance, <code>md5sum</code> or <code>sha1sum</code>, in the API. Provide checksums on download pages, probably on demand.</p></li>
-<li><p>Programmable selective syncing, down to per file level.</p></li>
-<li><p>Scriptability. Allow clients to run custom scheduled jobs or daemons with the API above. To prevent the service from becoming full-featured IaaS, though, clients might be limited in CPU time, memory, or command selection. This bullet point is arguable.</p></li>
-</ul>
-
-
-<hr />
-
-<p>With the level of command line integration illustrated above, we&rsquo;ll finally get rid of clicking around and not being able to automate chores. Navgating the remote file system will be a breeze — click, click, click, click, click (sometimes click should be replaced by double click, which is even more painful) just to navigate to a directory will be made a thing of the past. <code>ln</code>, in particular, saves disk space for duplicates — Dropbot for Geeks does <em>not</em> want to charge you extra for multiple copies of the same file in different directories. (To facilitate syncing hardlinks, clients should be able to specify hardlinked files in a config file. Or maybe some better mechanism. This might be hard.) At last, checksums are a must. I’ve had traumatic experiences like having downloaded an eight-part RAR, 1 GiB each, only to find that it wouldn’t unRAR. Without checksums, it was impossible to find which part was corrupted. As a result, I had to re-download everything — a nightmare. I never want to experience similar problems again. Hence the precious checksums.</p>
-
-<p>Dropbot for Geeks looks like a pretty good (well, not really, but at least pretty cool®) model. Maybe I should patent it before anyone else? Then if some similar service surfaces in the future, I can <a href="http://arstechnica.com/tech-policy/2014/11/jury-apple-must-pay-23-6m-for-old-pager-patents/">sue their ass off and enjoy some hot cash</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -594,6 +597,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/10/monitor-progress-of-your-unix-pipes-with-pv/">Monitor Progress of Your Unix Pipes With Pv</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/01/21/web-design-microsoft-vs-apple/">Web Design: Microsoft vs Apple</a>
       </li>
     
@@ -607,10 +614,6 @@
     
       <li class="post">
         <a href="/blog/2014/12/23/mpv-launcher/">Mpv Launcher</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/22/10k-images-on-imgur/">10k Images on Imgur</a>
       </li>
     
   </ul>

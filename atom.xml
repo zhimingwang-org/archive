@@ -4,7 +4,7 @@
   <title><![CDATA[dl? cmplnts?]]></title>
   <link href="http://zmwangx.github.io/atom.xml" rel="self"/>
   <link href="http://zmwangx.github.io/"/>
-  <updated>2015-01-21T17:24:08-08:00</updated>
+  <updated>2015-02-10T03:19:51-08:00</updated>
   <id>http://zmwangx.github.io/</id>
   <author>
     <name><![CDATA[Zhiming Wang]]></name>
@@ -12,6 +12,94 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Monitor Progress of Your Unix Pipes With Pv]]></title>
+    <link href="http://zmwangx.github.io/blog/2015/02/10/monitor-progress-of-your-unix-pipes-with-pv/"/>
+    <updated>2015-02-10T02:18:30-08:00</updated>
+    <id>http://zmwangx.github.io/blog/2015/02/10/monitor-progress-of-your-unix-pipes-with-pv</id>
+    <content type="html"><![CDATA[<p>Recently I found a very useful utility called <code>pv</code> (for &ldquo;pipe viewer&rdquo;). <a href="http://www.ivarch.com/programs/pv.shtml">Here</a> is its home page, and it can be easily installed with <code>brew</code>. According to its man page,</p>
+
+<blockquote><p><code>pv</code> shows the progress of data through a pipeline by giving information such as time elapsed, percentage completed (with progress bar), current throughput rate, total data transferred, and ETA.</p></blockquote>
+
+<p>For more info, see its home page (linked above) and <a href="http://linux.die.net/man/1/pv">man page</a>.</p>
+
+<p>Why is it useful? Well, pretty obvious if you are in the right audience. For me, one particularly important use case is with <code>openssl sha1</code>. I deal with videos on a daily basis, and back up all of them to OneDrive (ever since OneDrive went unlimited). To ensure integrity of transfer (in future downloads), I append the first seven digits of each video to its filename. This should be more than enough to reveal any error in transfer expect for active attacks. One additional advantage is that I can now have multiple versions of a same show, event, or whatever and don&rsquo;t have to worry about naming conflicts (and don&rsquo;t have to artifically say <code>-ver1</code>, <code>-ver2</code>, etc.). This little merit turns out to be huge and saves me a lot of trouble, since naming things is intrincally hard:</p>
+
+<blockquote><p>There are only three hard things concurreny, in computer science: cache invalidation, naming things, and off-by-one errors.</p></blockquote>
+
+<p>(I learned this beefed up version of two hard things only recently.) Well, too much digression. So SHA-1 sum is useful. (By the way, I learned in my crypto class that SHA-1 is broken as a collision-resistant hash function — not HMAC, which doesn&rsquo;t assume collision-resistance — and SHA-256 should be used instead. However, I&rsquo;m not protecting against active attacks — I won&rsquo;t be able to without a shared secret key anyway — so the faster SHA-1 is good for my purpose.) But at the same time, SHA-1 is slow. Maybe what&rsquo;s actually slow is my HDD. Whatever the bottleneck, generating a SHA-1 digest for a 10 GB video file isn&rsquo;t fun at all; it&rsquo;s even more of a torture when there&rsquo;s no progress bar and ETA. But hopelessly waiting has become a thing of the past with the advent (well, discovery in my case) of <code>pv</code>. Now I have nice and informative progress bars, which reduces the anxiety of waiting by an order of magnitude.</p>
+
+<p>For the record, here&rsquo;s the current version of my ruby script that attaches the first seven digits of the SHA-1 digests of the given files to their filenames:</p>
+
+<figure class='code'><figcaption><span>7sha1</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;fileutils&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">rename</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">num_items</span> <span class="o">=</span> <span class="n">items</span><span class="o">.</span><span class="n">length</span>
+</span><span class='line'>  <span class="n">num_done</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">items</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="n">path</span><span class="o">|</span>
+</span><span class='line'>    <span class="nb">printf</span><span class="p">(</span><span class="vg">$stderr</span><span class="p">,</span> <span class="s2">&quot;%d/%d: %s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">num_done</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_items</span><span class="p">,</span> <span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">if</span> <span class="o">!</span> <span class="no">File</span><span class="o">.</span><span class="n">directory?</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">extname</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">extname</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">basename</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">extname</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">dirname</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">sha1sum</span> <span class="o">=</span> <span class="sb">`pv &#39;</span><span class="si">#{</span><span class="n">path</span><span class="si">}</span><span class="sb">&#39; | openssl sha1`</span>
+</span><span class='line'>      <span class="n">new_basename</span> <span class="o">=</span> <span class="n">basename</span> <span class="o">+</span> <span class="s2">&quot;__&quot;</span> <span class="o">+</span> <span class="n">sha1sum</span><span class="o">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="o">]</span>
+</span><span class='line'>      <span class="n">new_path</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="n">new_basename</span> <span class="o">+</span> <span class="n">extname</span><span class="p">)</span>
+</span><span class='line'>      <span class="no">FileUtils</span><span class="o">.</span><span class="n">mv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">new_path</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>      <span class="no">STDERR</span><span class="o">.</span><span class="n">puts</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">path</span><span class="si">}</span><span class="s2">: directory ignored&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">num_done</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">rename</span><span class="p">(</span><span class="no">ARGV</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You might ask why I used ruby (littered with bash) when it&rsquo;s obviously a job for bash or perl. Well, the reason is that I first wrote this thing in ruby as a <a href="https://gist.github.com/zmwangx/d6406fb8bf51ac768770">Dropzone 3 action</a>. I&rsquo;m lazy, so I just borrowed that script and modified its printout for shell use.</p>
+
+<hr />
+
+<p>By the way, I also found a project called <code>cv</code> (Coreutils Viewer), which is <a href="https://github.com/Xfennec/cv">officially described as</a></p>
+
+<blockquote><p>&hellip; a Tiny, Dirty, Linux-Only C command that looks for coreutils basic commands (cp, mv, dd, tar, gzip/gunzip, cat, etc.) currently running on your system and displays the percentage of copied data.</p></blockquote>
+
+<p>. I&rsquo;ll look into it when I have time, but it from its description, it seems to be limited to coreutils, and OS X support might not be too awesome (at this point).</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Web Design: Microsoft vs Apple]]></title>
@@ -504,31 +592,6 @@
 <p>I don’t know if iCloud Photo Library will solve the problem in the end. From my perspective, <em>Apple should train Preview and QuickLook to recognize their XMP technology.</em> Seriously, they talk about continuity, and I expect to enjoy my enhanced photos on my Mac without going through all the hessle and confusion. Photo enhancing is already such a breeze, thank you; now make sharing and archiving easy, at least within the Apple ecosystem. (Although I’m not familiar with photography and image editing in general, considering how tech-savvy I am, I bet most users can’t even figure out one annoying solution.)</p>
 
 <p>By the way, Continuity and Handoff only work intermittently for me, and AirDrop between my iPhone (6 Plus) and MacBook Pro (mid-2012, model 9,2) doesn’t work at all. Continuity and Handoff sometimes turn up when they are unexpected (and serve as kinda nice surprises), but when I try to nail them, they remain elusive. Not a big deal for me, but certainly not the most pleasant thing ever. I bet these have to do with the fact that my Mac is connected to Ethernet and sharing the Ethernet connection to my iPhone; these days they expect everyone to be on Wi-Fi (and ironically they messed up big in Yosemite), but Wi-Fi simply can’t beat the speed and stability of Ethernet. I didn’t bother to test whether the features work when my devices are connected to the same Wi-Fi network; even if they do, that’s not my production setup, so they’re still useless to me.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Dropbot for Geeks®]]></title>
-    <link href="http://zmwangx.github.io/blog/2014/11/20/dropbot-for-geeks(r)/"/>
-    <updated>2014-11-20T09:48:15-08:00</updated>
-    <id>http://zmwangx.github.io/blog/2014/11/20/dropbot-for-geeks(r)</id>
-    <content type="html"><![CDATA[<p>I propose the following cloud storage and syncing service model of the future. I call it <strong>Dropbot for Geeks®</strong>, and it totally rules. It&rsquo;s designed for geeks who are tired of the highly limited, miserably unproductive traditional services (based on clicking around). It has the following features:</p>
-
-<ul>
-<li><p>Standard Unix file system commands exposed as an API, e.g., <code>cat</code>, <code>cd</code>, <code>cp</code>, <code>du</code>, <code>df</code>, <code>file</code>, <code>find</code>, <code>head</code>, <code>ln</code>, <code>ls</code>, <code>mkdir</code>, <code>mv</code>, <code>pwd</code>, <code>rm</code>, <code>rmdir</code>, <code>tail</code>, <code>touch</code>, etc.</p></li>
-<li><p>A rudimentary shell emulator through the web interface exposing the commands above.</p></li>
-<li><p>Secure shell access to the file system, also exposing the commands above. Provide two-factor auth for SSH. Clearly, <code>scp</code> should also be supported.</p></li>
-<li><p>Checksums. Expose, for instance, <code>md5sum</code> or <code>sha1sum</code>, in the API. Provide checksums on download pages, probably on demand.</p></li>
-<li><p>Programmable selective syncing, down to per file level.</p></li>
-<li><p>Scriptability. Allow clients to run custom scheduled jobs or daemons with the API above. To prevent the service from becoming full-featured IaaS, though, clients might be limited in CPU time, memory, or command selection. This bullet point is arguable.</p></li>
-</ul>
-
-
-<hr />
-
-<p>With the level of command line integration illustrated above, we&rsquo;ll finally get rid of clicking around and not being able to automate chores. Navgating the remote file system will be a breeze — click, click, click, click, click (sometimes click should be replaced by double click, which is even more painful) just to navigate to a directory will be made a thing of the past. <code>ln</code>, in particular, saves disk space for duplicates — Dropbot for Geeks does <em>not</em> want to charge you extra for multiple copies of the same file in different directories. (To facilitate syncing hardlinks, clients should be able to specify hardlinked files in a config file. Or maybe some better mechanism. This might be hard.) At last, checksums are a must. I’ve had traumatic experiences like having downloaded an eight-part RAR, 1 GiB each, only to find that it wouldn’t unRAR. Without checksums, it was impossible to find which part was corrupted. As a result, I had to re-download everything — a nightmare. I never want to experience similar problems again. Hence the precious checksums.</p>
-
-<p>Dropbot for Geeks looks like a pretty good (well, not really, but at least pretty cool®) model. Maybe I should patent it before anyone else? Then if some similar service surfaces in the future, I can <a href="http://arstechnica.com/tech-policy/2014/11/jury-apple-must-pay-23-6m-for-old-pager-patents/">sue their ass off and enjoy some hot cash</a>.</p>
 ]]></content>
   </entry>
   
