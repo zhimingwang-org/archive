@@ -9,7 +9,7 @@
   <meta name="author" content="Zhiming Wang">
 
   
-  <meta name="description" content="Once in a while (maybe a year, maybe several months — not set in stone), I give big name free services not in use a chance to convince me. Evernote &hellip;">
+  <meta name="description" content="Emacs is notorious for its loading time. For me, this is especially annoying when I&rsquo;m editing LaTeX files — AUCTeX takes about five seconds to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,75 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/14/speeding-up-emacs-with-emacsclient/">Speeding Up Emacs With Emacsclient</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-12-14T10:06:02-08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:06 am</span></time>
+        
+           | <a href="/blog/2014/12/14/speeding-up-emacs-with-emacsclient/#disqus_thread"
+             data-disqus-identifier="http://zmwangx.github.io/blog/2014/12/14/speeding-up-emacs-with-emacsclient/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Emacs is notorious for its loading time. For me, this is especially annoying when I&rsquo;m editing LaTeX files — AUCTeX takes about five seconds to load, and once I exit Emacs (especially after a quick edit), all that work is wasted, and next time I want to do some quick editing with that same LaTeX file — sorry, another five seconds.</p>
+
+<p>This problem can be solved by &ldquo;using that same Emacs&rdquo;, i.e., running Emacs in server mode, then connecting to the server via <code>emacsclient</code>. Below is my script, which I call <code>emc</code>, to make <code>emacsclient</code> more user-friendly. <code>emc</code> opens a file (given as <code>$1</code>) on the server, launching one on its way if none is detected. Note that I used <code>-cqta=</code> for <code>emacsclient</code>. The <code>-c</code> option is <code>--create-frame</code>, i.e., create a new frame (in the current tty, for instance) instead of using the existing frame (in another tty, for instance); this allows for multiple frames accross different ttys. The <code>-q</code> option is for <code>--quiet</code>, suppressing messages like &ldquo;Waiting for Emacs&hellip;&rdquo; The <code>-t</code> option is for <code>--tty</code>, or equivalently, the familiar <code>-nw</code> option of <code>emacs</code>. The <code>-a=</code> options is <code>--alternate-editor=</code>; according to the manpage, <code>-a, --alternate-editor=EDITOR</code> has the following effect:</p>
+
+<blockquote><p>if the Emacs server is not running, run the specified editor instead. This can also be specified via the `ALTERNATE_EDITOR&#8217; environment variable. If the value of EDITOR is the empty string,  run `emacs &ndash;daemon&#8217; to start Emacs in daemon mode, and try to connect to it.</p></blockquote>
+
+<p>Note that <code>emacsclient</code> requires a filename, so my script prompts for one if <code>$1</code> is empty.</p>
+
+<figure class='code'><figcaption><span>emc</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/usr/bin/env bash</span>
+</span><span class='line'><span class="k">if</span> <span class="o">[[</span> -n <span class="nv">$1</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+</span><span class='line'>    <span class="nv">file</span><span class="o">=</span><span class="nv">$1</span>
+</span><span class='line'><span class="k">else</span>
+</span><span class='line'>    <span class="k">while</span> <span class="o">[[</span> -z <span class="k">${</span><span class="nv">file</span><span class="k">}</span> <span class="o">]]</span><span class="p">;</span> <span class="k">do</span>
+</span><span class='line'>        <span class="nb">read</span> -p <span class="s1">&#39;filename: &#39;</span> file
+</span><span class='line'>    <span class="k">done</span>
+</span><span class='line'><span class="k">fi</span>
+</span><span class='line'>emacsclient -cqta<span class="o">=</span> <span class="s2">&quot;${file}&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note that using <code>emacsclient</code> has the additional benefit that the same buffer is simultaneously updated accross different ttys (See screenshot, where I opened the current post in two different ttys). This way, you won&rsquo;t face the nasty &ldquo;file changed on disk&rdquo; problem when you accidentally edited the same file in another tty session.</p>
+
+<p><img src="http://i.imgur.com/9KxEWKq.png" alt="screen shot of multiple copies of the same buffer" /></p>
+
+<p>By the way, remember to re-configure your other programs that uses an external editor. For instance, change <code>$EDITOR</code> to <code>emacsclient -cqta=</code> in your <code>env</code>, and <code>core.editor</code> to <code>emacsclient -cqta=</code> in your <code>~/.gitconfig</code>.</p>
+
+<p><em>Note</em>: if you use <code>emacsclient</code> to edit git commit messages in Git Commit Mode, remember to use <code>C-c C-c</code> (<code>git-commit-commit</code>) to save the commit message rather than using <code>server-edit</code> or <code>C-x C-c</code> to exit Emacs. Otherwise, the <code>COMMIT_EDITMSG</code> buffer will persist in the Emacs server, and you&rsquo;ll be prompted to revert buffer the next time you edit another commit message, which is pretty annoying.</p>
+
+<p>I just started using <code>emacsclient</code>, so the above script might be buggy in certain edge cases. I&rsquo;ll report when I run into issues.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -524,42 +593,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/11/24/why-i-abandoned-mathjax-and-fell-back-to-pdf/">Why I Abandoned MathJax and Fell Back to PDF</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-11-24T20:54:36-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:54 pm</span></time>
-        
-           | <a href="/blog/2014/11/24/why-i-abandoned-mathjax-and-fell-back-to-pdf/#disqus_thread"
-             data-disqus-identifier="http://zmwangx.github.io/blog/2014/11/24/why-i-abandoned-mathjax-and-fell-back-to-pdf/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Recently I wrote an expository article, <a href="/pdf/20141119-convolution-of-irreducible-characters.pdf"><em>Convolution of irreducible characters</em></a>, and posted it <a href="/blog/2014/11/19/convolution-of-irreducible-characters/">here</a>. At first I intended to use MathJax, but in the end I fell back to good ol&#8217; PDF. Here&rsquo;s why.</p>
-
-<p>In short, I&rsquo;m a mathematician. I write math <em>articles</em>, not just standalone expressions or formulas. I use AMSLaTeX to its fullest (not really, but at least I use numbering and the <code>amsthm</code> package to its fullest). HTML simply wasn&rsquo;t designed for this. Here are two influential markup languages designed for totally different use cases, and bridging them is painful. I tried to use <code>pandoc</code>, but it doesn&rsquo;t support <code>\input</code>, doesn&rsquo;t support <code>\def</code>, and swallows <code>\begin{theorem} \end{theorem}</code>, among other things. I tried to use <code>htlatex</code>; even the MathML output is suboptimal, with many math symbols translated to non-math (apart from totally human-unreadable), and it uses its custom CSS files that don&rsquo;t play well with everything else. I tried other things. In the end I gave up. Maybe I don&rsquo;t know enough about MathJax, but I certainly don&rsquo;t want to write a translator myself. Leave LaTeX alone. Distribute as PDF. MathJax may be great for Wikis (like Wikipedia) and for math lite blogs, but it&rsquo;s no replacement for real, beefy LaTeX. It&rsquo;s not for mathematicians who want to distribute real articles.</p>
-
-<p>By the way, Terry Tao and others use <a href="http://lucatrevisan.wordpress.com/latex-to-wordpress/">Luca&rsquo;s LaTeX to WordPress, aka LaTeX2WP</a> for math blogging. From Terry&rsquo;s experience it works fairly well. I don&rsquo;t know if <code>amsthm</code> and <code>\def</code> are in the feature set, though. Anyway, since WordPress handles LaTeX as pre-compiled images (which is also the default on Wikipedia, and which looks poor in general and plays horribly with scaling), LaTeX2WP won&rsquo;t help MathJax users the slightest.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -577,6 +610,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/20/my-dock-and-updated-omnifocus/">My Dock and Updated OmniFocus</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/02/17/microsoft-is-getting-cool-but-not-its-website/">Microsoft Is Getting Cool (but Not Its Website)</a>
       </li>
     
@@ -590,10 +627,6 @@
     
       <li class="post">
         <a href="/blog/2015/01/10/fonts-why-chinese-web-design-is-hard/">Fonts: Why Chinese Web Design Is Hard</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/01/01/os-x-system-ruby-encoding-annoyance/">OS X System Ruby Encoding Annoyance</a>
       </li>
     
   </ul>

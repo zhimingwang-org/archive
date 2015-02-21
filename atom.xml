@@ -4,7 +4,7 @@
   <title><![CDATA[dl? cmplnts?]]></title>
   <link href="http://zmwangx.github.io/atom.xml" rel="self"/>
   <link href="http://zmwangx.github.io/"/>
-  <updated>2015-02-17T19:35:18-08:00</updated>
+  <updated>2015-02-20T16:54:25-08:00</updated>
   <id>http://zmwangx.github.io/</id>
   <author>
     <name><![CDATA[Zhiming Wang]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[My Dock and Updated OmniFocus]]></title>
+    <link href="http://zmwangx.github.io/blog/2015/02/20/my-dock-and-updated-omnifocus/"/>
+    <updated>2015-02-20T16:16:10-08:00</updated>
+    <id>http://zmwangx.github.io/blog/2015/02/20/my-dock-and-updated-omnifocus</id>
+    <content type="html"><![CDATA[<blockquote><p>Simplicity is the ultimate sophistication.</p></blockquote>
+
+<p>Here&rsquo;s a screenshot of my dock at the moment.</p>
+
+<p><img src="http://i.imgur.com/EhaJw57.png" title="My current dock. Left to right: Finder (TotalFinder), Mail, Safari, Chrome, iTunes, OmniFocus, iTerm2, Activity Monitor, and mpv. Everything except mpv is persistent." alt="My dock" /></p>
+
+<p>Left to right: Finder (TotalFinder), Mail, Safari, Chrome, iTunes, OmniFocus, iTerm2, Activity Monitor, and mpv. Everything except mpv is persistent; mpv is there because I happen to be looping a piece of music with mpv that I don&rsquo;t plan to add to the iTunes library. The point is that it never looked this good, mainly due to the updated OmniFocus icon. Finally they put some serious thought into graphics design! Just compare <a href="http://zmwangx.github.io/misc/omnifocus-v2.1.icns">the v2.1 icon</a> to <a href="http://zmwangx.github.io/misc/omnifocus-v2.0.icns">the v2.0 version</a>.</p>
+
+<p><img src="http://i.imgur.com/KeTz5wK.png" alt="" /></p>
+
+<p>Obviously the overpolished (and honestly, badly polished) 2.0 one belongs to the past. It &ldquo;stood out&rdquo; even among Mavericks dock icons (in terms of color), not to mention among the flattened-down Yosemite ones. Today, it finally becomes a native member of the dock. (Well, actually not today — I&rsquo;ve been using the beta for a while, so the new icon didn&rsquo;t come as a surprise.) In fact, this time the Omni Group seems to be on a graphics design streak these days, and today they have a really impressive App Store feature banner:</p>
+
+<p><img src="http://i.imgur.com/tILmveQ.png" alt="" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Microsoft Is Getting Cool (but Not Its Website)]]></title>
@@ -570,19 +591,6 @@
 <p><img src="http://i.imgur.com/czDcVaK.png" alt="" /></p>
 
 <p>By the way, Yosemite is indeed really aggressive at RAM usage. I reserve my opinion on whether there&rsquo;s a memory leak. But so far the performance has been fine, even with 8GB of RAM.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Why I Abandoned MathJax and Fell Back to PDF]]></title>
-    <link href="http://zmwangx.github.io/blog/2014/11/24/why-i-abandoned-mathjax-and-fell-back-to-pdf/"/>
-    <updated>2014-11-24T20:54:36-08:00</updated>
-    <id>http://zmwangx.github.io/blog/2014/11/24/why-i-abandoned-mathjax-and-fell-back-to-pdf</id>
-    <content type="html"><![CDATA[<p>Recently I wrote an expository article, <a href="http://zmwangx.github.io/pdf/20141119-convolution-of-irreducible-characters.pdf"><em>Convolution of irreducible characters</em></a>, and posted it <a href="http://zmwangx.github.io/blog/2014/11/19/convolution-of-irreducible-characters/">here</a>. At first I intended to use MathJax, but in the end I fell back to good ol&#8217; PDF. Here&rsquo;s why.</p>
-
-<p>In short, I&rsquo;m a mathematician. I write math <em>articles</em>, not just standalone expressions or formulas. I use AMSLaTeX to its fullest (not really, but at least I use numbering and the <code>amsthm</code> package to its fullest). HTML simply wasn&rsquo;t designed for this. Here are two influential markup languages designed for totally different use cases, and bridging them is painful. I tried to use <code>pandoc</code>, but it doesn&rsquo;t support <code>\input</code>, doesn&rsquo;t support <code>\def</code>, and swallows <code>\begin{theorem} \end{theorem}</code>, among other things. I tried to use <code>htlatex</code>; even the MathML output is suboptimal, with many math symbols translated to non-math (apart from totally human-unreadable), and it uses its custom CSS files that don&rsquo;t play well with everything else. I tried other things. In the end I gave up. Maybe I don&rsquo;t know enough about MathJax, but I certainly don&rsquo;t want to write a translator myself. Leave LaTeX alone. Distribute as PDF. MathJax may be great for Wikis (like Wikipedia) and for math lite blogs, but it&rsquo;s no replacement for real, beefy LaTeX. It&rsquo;s not for mathematicians who want to distribute real articles.</p>
-
-<p>By the way, Terry Tao and others use <a href="http://lucatrevisan.wordpress.com/latex-to-wordpress/">Luca&rsquo;s LaTeX to WordPress, aka LaTeX2WP</a> for math blogging. From Terry&rsquo;s experience it works fairly well. I don&rsquo;t know if <code>amsthm</code> and <code>\def</code> are in the feature set, though. Anyway, since WordPress handles LaTeX as pre-compiled images (which is also the default on Wikipedia, and which looks poor in general and plays horribly with scaling), LaTeX2WP won&rsquo;t help MathJax users the slightest.</p>
 ]]></content>
   </entry>
   

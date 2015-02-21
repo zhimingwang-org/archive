@@ -9,7 +9,7 @@
   <meta name="author" content="Zhiming Wang">
 
   
-  <meta name="description" content="TL; DR: Jump to the paragraph “In the end…” I&rsquo;m not a photo-savvy guy. I&rsquo;ve never taken a single selfie in my life, and my iPhone Photos &hellip;">
+  <meta name="description" content="Recently I wrote an expository article, Convolution of irreducible characters, and posted it here. At first I intended to use MathJax, but in the end &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,42 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/11/24/why-i-abandoned-mathjax-and-fell-back-to-pdf/">Why I Abandoned MathJax and Fell Back to PDF</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-11-24T20:54:36-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:54 pm</span></time>
+        
+           | <a href="/blog/2014/11/24/why-i-abandoned-mathjax-and-fell-back-to-pdf/#disqus_thread"
+             data-disqus-identifier="http://zmwangx.github.io/blog/2014/11/24/why-i-abandoned-mathjax-and-fell-back-to-pdf/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Recently I wrote an expository article, <a href="/pdf/20141119-convolution-of-irreducible-characters.pdf"><em>Convolution of irreducible characters</em></a>, and posted it <a href="/blog/2014/11/19/convolution-of-irreducible-characters/">here</a>. At first I intended to use MathJax, but in the end I fell back to good ol&#8217; PDF. Here&rsquo;s why.</p>
+
+<p>In short, I&rsquo;m a mathematician. I write math <em>articles</em>, not just standalone expressions or formulas. I use AMSLaTeX to its fullest (not really, but at least I use numbering and the <code>amsthm</code> package to its fullest). HTML simply wasn&rsquo;t designed for this. Here are two influential markup languages designed for totally different use cases, and bridging them is painful. I tried to use <code>pandoc</code>, but it doesn&rsquo;t support <code>\input</code>, doesn&rsquo;t support <code>\def</code>, and swallows <code>\begin{theorem} \end{theorem}</code>, among other things. I tried to use <code>htlatex</code>; even the MathML output is suboptimal, with many math symbols translated to non-math (apart from totally human-unreadable), and it uses its custom CSS files that don&rsquo;t play well with everything else. I tried other things. In the end I gave up. Maybe I don&rsquo;t know enough about MathJax, but I certainly don&rsquo;t want to write a translator myself. Leave LaTeX alone. Distribute as PDF. MathJax may be great for Wikis (like Wikipedia) and for math lite blogs, but it&rsquo;s no replacement for real, beefy LaTeX. It&rsquo;s not for mathematicians who want to distribute real articles.</p>
+
+<p>By the way, Terry Tao and others use <a href="http://lucatrevisan.wordpress.com/latex-to-wordpress/">Luca&rsquo;s LaTeX to WordPress, aka LaTeX2WP</a> for math blogging. From Terry&rsquo;s experience it works fairly well. I don&rsquo;t know if <code>amsthm</code> and <code>\def</code> are in the feature set, though. Anyway, since WordPress handles LaTeX as pre-compiled images (which is also the default on Wikipedia, and which looks poor in general and plays horribly with scaling), LaTeX2WP won&rsquo;t help MathJax users the slightest.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -560,129 +596,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/11/02/vobcopy-dvdbackup-etc/">Vobcopy, Dvdbackup, Etc.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-11-02T15:06:07-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>3:06 pm</span></time>
-        
-           | <a href="/blog/2014/11/02/vobcopy-dvdbackup-etc/#disqus_thread"
-             data-disqus-identifier="http://zmwangx.github.io/blog/2014/11/02/vobcopy-dvdbackup-etc/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>A few days ago, I was cloning my entire Audio CD and DVD collection, and reported some of the findings in <a href="/blog/2014/10/26/audio-cd-slash-dvd-to-iso-image-on-os-x/">this post</a>. As said, the most important commands are</p>
-
-<pre><code>hdiutil makehybrid -iso -joliet -o AUDIO_CD_NAME.iso SOURCE
-</code></pre>
-
-<p>for Audio CDs and</p>
-
-<pre><code>hdiutil makehybrid -udf -o DVD_NAME.iso SOURCE
-</code></pre>
-
-<p>for DVDs.</p>
-
-<p>Those alone don&rsquo;t finish the story. I also tried other things and unfortunately encountered problems. I was too busy to report back then, but now I&rsquo;ll summarize some of the findings.</p>
-
-<hr />
-
-<p>For one thing, <code>hdiutil makehybrid</code> might fail, issuing an &ldquo;Operation not permitted&rdquo; for no obvious reason. This could even happen when you work with the Disk Utility GUI (for which I once got a &ldquo;Permission denied&rdquo;). Even <code>sudo</code> didn&rsquo;t help in my case. However, I was able to <strong>circumvent the problem with the root shell</strong> (I won&rsquo;t tell you how to enter the root shell — you need to at least have that amount of knowledge about the root shell before you are given the key). Not sure why. Just keep in mind that the root shell might help (that&rsquo;s also a general, albeit dangerous, advice for life).</p>
-
-<hr />
-
-<p>Next onto grabbing the raw VOB.</p>
-
-<p><code>vobcopy</code> is pretty sweet, but at least for me it had one huge problem. When I tried to copy a single title, say title #2 with</p>
-
-<pre><code>vobcopy --title-number TITLE_NUMBER -i SOURCE
-</code></pre>
-
-<p>other titles got copied, too. I didn&rsquo;t have enough samples to test out, but presumably it&rsquo;s because the problematic DVD has a structure like this:</p>
-
-<p><img src="http://i.imgur.com/HTgmwQL.png" alt="problematic DVD title structure" /></p>
-
-<p>Anyway, no matter I <code>vobcopy</code> title 01, 02, or 03, the result was the same — the whole thing. That&rsquo;s pretty stupid. I don&rsquo;t know if it counts as a bug or unfinished feature. Definitely not cool.</p>
-
-<p>(One cool thing about <code>vobcopy</code>: as long as you complied with <code>libdvdread</code>, you can create a fully decrypted version of the DVD with</p>
-
-<pre><code>vobcopy --mirror -i SOURCE
-</code></pre>
-
-<p>Of course, to get an iso image out of the decrypted mirror, you run the <code>hdiutil makehybrid -udf</code> command given above.)</p>
-
-<hr />
-
-<p>So <code>vobcopy</code> is dead (for copying specific titles in unfortunate DVDs). What&rsquo;s next?</p>
-
-<p>There&rsquo;s <code>dvdbackup</code>. The man page is good, and <a href="https://wiki.archlinux.org/index.php/dvdbackup#A_single_title">ArchWiki</a> is even better (<em>ArchWiki is awesome!</em>), providing you cookbook solutions of combining the power of <code>dvdbackup</code> and <code>dvdauthor</code> (cookbooks are nice when dealing with unexciting technologies like DVD). In fact, <code>dvdbackup</code> alone is enough for extracting the VOBs of relatively small titles (&lt; 1GiB):</p>
-
-<pre><code>dvdbackup -i SOURCE -o VOB_TARGET_DIR -t TITLE_NUMBER -n TITLE_NAME
-</code></pre>
-
-<p>then grab your title-specific VOB in <code>VOB_TARGET_DIR/TITLE_NAME/VIDEO_TS</code>. Unlike <code>vobcopy</code>&rsquo;s <code>-n/--title-number</code> option, <code>dvdbackup</code>&rsquo;s <code>-t/--title</code> option does it right, trimming everything else. However, there&rsquo;s a problem when the title is larger than 1 GiB — then <code>dvdbackup</code> will split the VOB into several 1 GiB max pieces, and there&rsquo;s no way to disable this (since <code>dvdbackup</code> is targeting a DVD player — ancient technology — rather than <code>mpv</code> or whatever). What&rsquo;s sadder is that I can&rsquo;t seem to combine the split VOBs with FFmpeg stream copy — <code>pcm_dvd</code> audio always gets converted to <code>mp2</code> and fails when I use <code>-c copy</code>. I&rsquo;m not a codec expert, but I suppose this is due to the fact that <code>pcm_dvd</code> isn&rsquo;t a supported encoding codec of FFmpeg (at least not my FFmpeg):</p>
-
-<pre><code>&gt; ffmpeg -codecs | grep pcm_dvd
-D.A..S pcm_dvd              PCM signed 20|24-bit big-endian
-</code></pre>
-
-<p><code>D</code> is for &ldquo;Decoding supported&rdquo;, <code>A</code> is for &ldquo;Audio codec&rdquo;, <code>S</code> is for &ldquo;Lossless compression&rdquo; — no encoding support. By the way, my FFmpeg is <code>brew</code>ed with the options <code>--with-fdk-aac</code>, <code>--with-ffplay</code>, <code>--with-freetype</code>, <code>--with-libass</code>, <code>--with-libbluray</code>, <code>--with-openjpeg</code>, <code>--with-openssl</code>, <code>--with-x265</code>:</p>
-
-<pre><code>&gt; \ffmpeg -version
-ffmpeg version 2.4.2 Copyright (c) 2000-2014 the FFmpeg developers
-built on Oct 19 2014 14:09:36 with Apple LLVM version 6.0 (clang-600.0.51) (based on LLVM 3.5svn)
-configuration: --prefix=/usr/local/Cellar/ffmpeg/2.4.2 --enable-shared --enable-pthreads --enable-gpl --enable-version3 --enable-nonfree --enable-hardcoded-tables --enable-avresample --enable-vda --cc=clang --host-cflags= --host-ldflags= --enable-libx264 --enable-libfaac --enable-libmp3lame --enable-libxvid --enable-libfreetype --enable-libass --enable-ffplay --enable-libfdk-aac --enable-openssl --enable-libx265 --enable-libopenjpeg --disable-decoder=jpeg2000 --extra-cflags='-I/usr/local/Cellar/openjpeg/1.5.1_1/include/openjpeg-1.5 '
-libavutil      54.  7.100 / 54.  7.100
-libavcodec     56.  1.100 / 56.  1.100
-libavformat    56.  4.101 / 56.  4.101
-libavdevice    56.  0.100 / 56.  0.100
-libavfilter     5.  1.100 /  5.  1.100
-libavresample   2.  1.  0 /  2.  1.  0
-libswscale      3.  0.100 /  3.  0.100
-libswresample   1.  1.100 /  1.  1.100
-libpostproc    53.  0.100 / 53.  0.100
-</code></pre>
-
-<p>Maybe I missed some <code>--enable</code>.</p>
-
-<p>Sorry for the digression. So, it&rsquo;s not possible to stream-copy-concat the VOBs with FFmpeg. (In fact, since audio quality is not that important — you won&rsquo;t be able to tell 256k AAC from lossless anyway, especially when you are focusing on the video, so you can always transcode <code>pcm_dvd</code> into 256k AAC with <code>-c:a libfdk_aac -b:a 256k</code>. <code>mpeg2video</code> is an encoding supported codec so stream copy works fine. Or you may also use <code>flac</code> or whatever encoding-supported lossless codec.) However, if you insist on getting the original <code>pcm_dvd</code>, there is a way, an ugly way. You&rsquo;ve gotta be creative here. <a href="https://wiki.archlinux.org/index.php/dvdbackup#A_single_title">ArchWiki</a> already provides a cookbook solution on how to use <code>dvdbackup</code> and <code>dvdauthor</code> to create a DVD with a selected title. And <code>vobcopy</code> can copy the entire thing just fine, without the 1 GiB limit (make sure to use the <code>-l/--large-file</code> option if the size is greater than 2 GiB). Therefore, you can create a DVD with selected title from the original DVD, then <code>vobcopy</code> from the new DVD. This is insane, but it works, I&rsquo;ve tested that. <strong>Note, however, that timestamps might be wrong with <code>vobcopy</code>, so the VOB runs just fine linearly but might run into problems when you seek.</strong> Therefore, FFmpeg is still the way to go. Or maybe you can do it right with one click using some closed source software ☹ — I&rsquo;ve heard about success stories with the long ceased DVD Decrypter Windows project. In reality, I guess only people with theoretical interest or OCD will ever do this — FLAC or AAC should serve everyone just fine. It should have worked with <code>vobcopy</code> alone, but it doesn&rsquo;t. Hence the workaround.</p>
-
-<hr />
-
-<p>For future reference, I&rsquo;ll translate the ArchWiki cookbook solution here (it&rsquo;s too cookbook itself, specifying paths like <code>~/movie_name</code> and using unnecessary <code>cd</code>) about creating a title-specific DVD from a multi-title DVD (replace <code>SOURCE</code>, <code>VOB_TARGET_DIR</code>, <code>DVD_TARGET_DIR</code>, <code>TITLE_NUMBER</code>, and <code>TITLE_NAME</code> with sane values):</p>
-
-<pre><code>dvdbackup -i SOURCE -o VOB_TARGET_DIR -t TITLE_NUMBER -n TITLE_NAME
-dvdauthor -t -o DVD_TARGET_DIR VOB_TARGET_DIR/TITLE_NAME/VIDEO_TS/*.VOB
-export VIDEO_FORMAT=NTSC
-cd DVD_TARGET_DIR/VIDEO_TS &amp;&amp; dvdauthor -T -o DVD_TARGET_DIR
-</code></pre>
-
-<p><code>export VIDEO_FORMAT=NTSC</code> is to avoid the <code>dvdauthor</code> error of &ldquo;no default video format, must explicitly specify NTSC or PAL&rdquo; (I&rsquo;m not sure about the difference between NTSC and PAL, but I saw NTSC printed on my DVD, so I used it). And there you go, a shiny new DVD filesystem located in <code>DVD_TARGET_DIR</code>. (Note that unlike <code>vobcopy</code>, <code>dvdbackup</code> doesn&rsquo;t feature a nice progress bar even when <code>-v/--verbose</code> and <code>-p/--progress</code> are specified.) Then you can</p>
-
-<pre><code>vobcopy -l DVD_TARGET_DIR
-</code></pre>
-
-<p>if you&rsquo;d like to. Recall that timestamps might be wrong, sadly.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/4">&larr; Older</a>
@@ -700,6 +613,10 @@ cd DVD_TARGET_DIR/VIDEO_TS &amp;&amp; dvdauthor -T -o DVD_TARGET_DIR
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/20/my-dock-and-updated-omnifocus/">My Dock and Updated OmniFocus</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/02/17/microsoft-is-getting-cool-but-not-its-website/">Microsoft Is Getting Cool (but Not Its Website)</a>
       </li>
     
@@ -713,10 +630,6 @@ cd DVD_TARGET_DIR/VIDEO_TS &amp;&amp; dvdauthor -T -o DVD_TARGET_DIR
     
       <li class="post">
         <a href="/blog/2015/01/10/fonts-why-chinese-web-design-is-hard/">Fonts: Why Chinese Web Design Is Hard</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/01/01/os-x-system-ruby-encoding-annoyance/">OS X System Ruby Encoding Annoyance</a>
       </li>
     
   </ul>
