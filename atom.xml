@@ -4,7 +4,7 @@
   <title><![CDATA[dl? cmplnts?]]></title>
   <link href="http://zmwangx.github.io/atom.xml" rel="self"/>
   <link href="http://zmwangx.github.io/"/>
-  <updated>2015-02-20T16:54:25-08:00</updated>
+  <updated>2015-02-21T18:43:05-08:00</updated>
   <id>http://zmwangx.github.io/</id>
   <author>
     <name><![CDATA[Zhiming Wang]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[All Is Not Lost]]></title>
+    <link href="http://zmwangx.github.io/blog/2015/02/21/all-is-not-lost/"/>
+    <updated>2015-02-21T17:12:32-08:00</updated>
+    <id>http://zmwangx.github.io/blog/2015/02/21/all-is-not-lost</id>
+    <content type="html"><![CDATA[<p>Lubos Motl always attacks the Many-Worlds Interpretation as if it is on the same level as anti-scientific claims. He even went on to attack Hugh Everett (the guy who first formulated this interpretation) personally; <em>ad hominem</em> is of course typical Motl shit, and I don&rsquo;t bother to find those posts. Anyway, here&rsquo;s yet another one: <a href="http://motls.blogspot.com/2015/02/many-worlds-rozali-carroll-exchange.html">Many worlds: a Rozali-Carroll exchange</a>.</p>
+
+<p>Disclaimer: I&rsquo;m not really a proponent of Many-Worlds, at least not of the part of it that says history really <em>branches</em> into <em>many</em> worlds. Well, Lubos is at least right about one thing: &ldquo;many worlds&rdquo;, taken literally, can&rsquo;t even be well-defined. However, I do believe that the world is can be described by a &ldquo;universal wavefunction&rdquo; (I prefer to call it the &ldquo;universal state vector&rdquo;) in some gargantuan Hilbert space. And the universal state vector has to evolve deterministically. The reason is simple: <strong><em>all information is not lost</em></strong>. This principle is fundamental to physics and it&rsquo;s simply not on the same level as falsifiability, which is little more than a philosopher&rsquo;s toy and a nice thing to have. In quantum mechanics&#8217; terms, <em>unitarity must be respected</em>; this is why the Copenhagen Interpretation, or at least the wavefunction-collapsing part of it, cannot hold up to serious scrutiny — no operator can ever collapse the wavefunction and break unitarity. Those who hold the Copenhagen Interpretation are confusing <em>their</em> lack of knowledge (albeit a fundamental one, as they were entangled into the system when they make an observation) with the fundamental loss of information (which is not possible).</p>
+
+<p>One may question that if the universal state vector is <em>real</em>, then where&rsquo;s all the unavailable information stored (why is there a <em>fundamental</em> lack of knowledge)? Well, who told you that all information in this universe can be observed or written down? Everything outside our event horizon is also unavailable to us, yet modern physics knows for sure that some of those <em>do</em> exist. Of course we have a hierarchy of belief in the existence of different things, with the universal state vector being hard to believe (and very hard to not believe) or make sense of. But there&rsquo;s no hard cut, and we might some day be able to reason about it.</p>
+
+<p>I don&rsquo;t know how exactly the observed universe is the way it is (i.e., how exactly it fell — or &ldquo;collapsed&rdquo;, which is a convenient word for communication — into the eigenstate that we observed). I&rsquo;m not even sure if the observed universe is the way it is in the objective (ontological) sense — if there were no observers, would it just be an &ldquo;uncollapsed&rdquo; state vector? I suspect that this problem has something to do with consciousness, and I suspect that we are at least hundreds of years from understanding consciousness. (Of course this kind of predictions are all nonsense — no one can look thirty years into the future). At the very least, we may eliminate some possibilities when we know more about consciousness. At any rate, this is an interesting problem that might be outside the capability of human reason, or might not. One may hate it and refuse to talk about it, but one cannot dismiss it as unphysical.</p>
+
+<p>When Lubos dismisses <em>ontology</em> as &ldquo;exactly the same thing&rdquo; as classical physics, he&rsquo;s dismissing the problem above, and making a hard compromise. He&rsquo;s basically saying that we cannot and should not reason about anything outside of what we can observe (this is also a crude classification because obviously he reasons beyond black hole horizons every day). This compromise is very dangerous for physics — sometimes one has to reason beyond one&rsquo;s horizon to formulate a complete and consistent answer. Black holes are one good example of getting of the limit. If we can extend spacetime beyond our event horizon, then why can&rsquo;t we accept <strong><em>the possibility of existence</em></strong> outside our &ldquo;existence horizon&rdquo;, i.e., outside our perceived existence of the universal (and the first hand experience of our own existence inside it)? It&rsquo;s a wild and not well-defined idea, but all new physics starts out not well-defined.</p>
+
+<p>I still remember the last lecture of my first quantum mechanics course in my freshman year, taught by Prof. Michael Peskin. He discussed the interpretations of quantum mechanics. I forgot the exact arguments, but after rejecting other interpretations (including Copenhagen and hidden variable), he resorted to Many-Worlds, citing &ldquo;Once you eliminate the impossible, whatever remains, no matter how improbable, must be the truth.&rdquo; I was not particularly satisfied. To me, once you eliminate the impossible, if whatever remains is still improbable, then maybe your imagination is not wild enough. I also remember the second time I took QM I, this time the graduate version, taught by Prof. Lenny Susskind. He stressed unitarity so much and showed us how wavefunction-collapsing is unnecessary (it was never well-defined anyway, unless you impose it). Unitarity is so important that triggered his &ldquo;black hole war&rdquo;.</p>
+
+<p>The point of mentioning my two professors is that the interpretation problem of quantum mechanics has never been settled, and people who hold opinions contrary to Copenhagen should be respected. Lubos, on the other hand, tries to convince people that this problem has been settled, and actually settled for ninety years. He is either lying or delusional himself.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[My Dock and Updated OmniFocus]]></title>
@@ -570,27 +591,6 @@
 
 
 <p>I know an ugly workaround, which is simply replace the compressed image with the original in the filesystem. But I would love to see an option to import images as originals (in fact, compression should be an opt-in). Really, transfer rates and storage grow so rapidly that they are not people’s primary concerns anymore. (For your information, OneDrive recently rolled out truly unlimited storage to Office 365 subscribers. Online storage is that cheap.) Thanks.</p></blockquote>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[I Got 16 Gigs of RAM]]></title>
-    <link href="http://zmwangx.github.io/blog/2014/11/25/i-got-16-gigs-of-ram/"/>
-    <updated>2014-11-25T16:28:30-08:00</updated>
-    <id>http://zmwangx.github.io/blog/2014/11/25/i-got-16-gigs-of-ram</id>
-    <content type="html"><![CDATA[<p>Today I upgraded the RAM of my MacBook Pro mid-2012 to 2x8GB. I purchased the <a href="http://smile.amazon.com/dp/B008LTBJFW">Crucial 16GB Kit (8GBx2) DDR3/DDR3L 1600 MHz (PC3-12800) CL11 SODIMM 204-Pin 1.35V/1.5V Memory for Mac CT2K8G3S160BM</a> from Amazon, which cose me $146.64 after tax. I followed the <a href="http://support.apple.com/en-us/HT201165">official guide</a> as well as the <a href="https://www.ifixit.com/Guide/MacBook+Pro+13-Inch+Unibody+Mid+2012+RAM+Replacement/10374">iFixit guide</a>. To finish the job I needed a Phillips #00 screwdriver and a spudger, so I purchased the <a href="https://www.ifixit.com/Store/Tools/Spudger/IF145-002">spudger</a> and the <a href="https://www.ifixit.com/Store/Tools/54-Bit-Driver-Kit/IF145-022-1">54 bit driver kit</a> from iFixit.</p>
-
-<p>The actual process was pretty simple. I had a little bit of hard time pulling out the bottom module and pushing in the top module, but overall it was smooth. The only stupid thing I did was that I forgot to push the battery connector back in before I closed the case; I only realized this when I was screwing in the eighth screw (that was a close one!), and had to unscrew everything again.</p>
-
-<p>After I replaced the RAM modules, booting was just normal. And now I&rsquo;ve got 16 gigs of RAM!</p>
-
-<p><img src="http://i.imgur.com/PGhdEGr.png" alt="" /></p>
-
-<p>Want to run multiple memory hoggers <em>along with a Windows VM</em> (with 4GB of RAM)? No problem.</p>
-
-<p><img src="http://i.imgur.com/czDcVaK.png" alt="" /></p>
-
-<p>By the way, Yosemite is indeed really aggressive at RAM usage. I reserve my opinion on whether there&rsquo;s a memory leak. But so far the performance has been fine, even with 8GB of RAM.</p>
 ]]></content>
   </entry>
   
