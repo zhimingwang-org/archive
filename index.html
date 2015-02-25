@@ -9,7 +9,7 @@
   <meta name="author" content="Zhiming Wang">
 
   
-  <meta name="description" content="Lubos Motl always attacks the Many-Worlds Interpretation as if it is on the same level as anti-scientific claims. He even went on to attack Hugh &hellip;">
+  <meta name="description" content="Microsoft released the new OneDrive API today. See the blog post announcement here. One highlight is that large file upload is now officially &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,40 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/24/the-new-onedrive-api/">The New OneDrive API</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-24T18:31:19-08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:31 pm</span></time>
+        
+           | <a href="/blog/2015/02/24/the-new-onedrive-api/#disqus_thread"
+             data-disqus-identifier="http://zmwangx.github.io/blog/2015/02/24/the-new-onedrive-api/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Microsoft released the new OneDrive API today. See the blog post announcement <a href="https://blog.onedrive.com/the-new-onedrive-api/">here</a>. One highlight is that <a href="http://onedrive.github.io/items/upload_large_files.htm">large file upload</a> is now officially supported. Previously, large file upload was handled with a semi-official API using the BITS protocol; the only documentation was a <a href="https://gist.github.com/rgregg/37ba8929768a62131e85">gist</a>. Now it is handled through standard HTTP <code>POST</code>. With this major release, there&rsquo;s likely a lot of work to be done with <a href="https://github.com/mk-fg/python-onedrive">python-onedrive</a>. I have opened an issue: <code>mk-fg/python-onedrive#52</code> — <a href="https://github.com/mk-fg/python-onedrive/issues/52">New OneDrive API support</a>.</p>
+
+<p>Interestingly, the new OneDrive API doc is hosted on GitHub Pages — <a href="http://onedrive.github.io">onedrive.github.io</a>, rather than MSDN. Exactly a week ago I wrote a piece, &ldquo;<a href="http://zmwangx.github.io/blog/2015/02/17/microsoft-is-getting-cool-but-not-its-website/">Microsoft is getting cool (but not its website)</a>&rdquo;. Looks like they are doing something about their website (or better put, their online identity), too.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -566,42 +600,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/12/19/app-suggestion-dropzone-3/">App Suggestion: Dropzone 3</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-12-19T14:08:57-08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:08 pm</span></time>
-        
-           | <a href="/blog/2014/12/19/app-suggestion-dropzone-3/#disqus_thread"
-             data-disqus-identifier="http://zmwangx.github.io/blog/2014/12/19/app-suggestion-dropzone-3/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I recently tried and purchased <a href="https://aptonic.com/dropzone3/">Dropzone 3</a>. See a list of features on the linked official website. In short, Dropzone 3 provides an intermediate zone for drag-n-drop. You can use it as a stash (called &ldquo;Drop Bar&rdquo; — stacking is available), use it as a shortcut by putting frequently used folders and applications there, or trigger actions by dropping. There are a dozen builtin actions and <a href="https://aptonic.com/dropzone3/actions/">an additional list of readily available actions</a>, covering common web drives, SNS and file sharing sites. <strong>Better yet, you can develop your custom actions with the easy-to-use <a href="https://github.com/aptonic/dropzone3-actions/blob/master/README.md#dzalerttitle-message">Ruby API</a>.</strong> For instance, I wrote a simple Google Translate action, <code>Google Translate.dzbundle</code> (<a href="https://gist.github.com/zmwangx/b27f106a8ba47468a43d">link</a>), based on <a href="https://github.com/soimort/translate-shell">translate-shell</a>. (You know, it&rsquo;s Ruby, so calling external commands and concatenating strings feel at home, as if you are coding in Perl or directly in shell; unlike Python, where you at least need to <code>import subprocess</code> then <code>subprocess.check_output</code> to get the output of an external command, and have to use a bunch of stupid <code>+</code>&rsquo;s to get your goddamn message to print.)</p>
-
-<p>Although I use the terminal for most tasks, drag-n-drop is still useful and convenient at times, not to mention the custom actions. (And the stock drag-n-drop is kinda hit-and-miss, especially for people like me who are mostly working with windows maximized — except terminal windows.) After using Dropzone 3 for a while, I found it well worth $4.99.</p>
-
-<p>Wait, I didn&rsquo;t mention the pricing? Dropzone 3 is only <a href="https://itunes.apple.com/us/app/dropzone-3/id695406827?ls=1&amp;mt=12">$4.99 on MAS</a>, so get it while supplies last. (Somehow the license is $10 on the developer&rsquo;s online store, so definitely buy from MAS and change to the <a href="https://aptonic.com/dropzone3/sandboxing.php">unsandboxed version</a> later — de-sandboxing is free.) There&rsquo;s also a 15-day free trial.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -617,6 +615,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/24/the-new-onedrive-api/">The New OneDrive API</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/02/21/all-is-not-lost/">All Is Not Lost</a>
       </li>
     
@@ -630,10 +632,6 @@
     
       <li class="post">
         <a href="/blog/2015/02/10/monitor-progress-of-your-unix-pipes-with-pv/">Monitor Progress of Your Unix Pipes With Pv</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/01/21/web-design-microsoft-vs-apple/">Web Design: Microsoft vs Apple</a>
       </li>
     
   </ul>
