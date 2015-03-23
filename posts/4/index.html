@@ -9,7 +9,7 @@
   <meta name="author" content="Zhiming Wang">
 
   
-  <meta name="description" content="Apple is pushing Yosemite hard and secretly Yosemitizing things. iTunes was updated to its shiny new look on Mavericks, day one upon Yosemite launch &hellip;">
+  <meta name="description" content="For some reason, I only learned about this year’s laureates today, through the reference frame. The prize goes to the inventors of the LED. Not &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,49 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/11/06/2014-nobel-prize-in-physics-led-lights-seriously/">2014 Nobel Prize in Physics — LED Lights, Seriously?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-11-06T11:08:45-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:08 am</span></time>
+        
+           | <a href="/blog/2014/11/06/2014-nobel-prize-in-physics-led-lights-seriously/#disqus_thread"
+             data-disqus-identifier="http://zmwangx.github.io/blog/2014/11/06/2014-nobel-prize-in-physics-led-lights-seriously/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>For some reason, I only learned about this year’s laureates today, through <a href="http://motls.blogspot.com/2014/11/ex-employer-wont-meet-blue-led-nobel.html">the reference frame</a>. The prize goes to the inventors of the LED. Not exciting at all, so I don’t care if I’m ever informed. (Lubos has a good point on why applied physics — well, let’s even widen the concept of applied physics a bit — should not surprise anyone when they appear in a Nobel Prize announcement: “After all, Alfred Nobel might have very well considered his dynamite to be a discovery in physics, too.”)</p>
+
+<p>The Nobel Prize Physics Awards has been rather amusing in recent years. Partly due to controversy on the theoretical front and no breakthrough on the experimental front, I guess. (The discovery of Higgs was a breakthrough to some extent, but it was totally expected; little physics beyond SM at LHC before LS1 is sad. Since it was totally expected, the award went to theorists — some experimentalists might not be too thrilled.) Just look at the recent list: 2010, graphene (shouldn’t that be chemistry? if material science can be part of physics, then chemistry must surely encompass it, too); 2009, CCD sensor (whatever that means, maybe that’s important); 2008, fibers (okay, I love fast Internet connections). The list actually goes all the way down to early 20th century, but it’s much denser in recent decades. Now one more: 2014, LED.</p>
+
+<blockquote><p>“for the invention of efficient blue light-emitting diodes which has enabled bright and energy-saving white light sources”</p></blockquote>
+
+<p>Wow, energy-saving. I guess next year’s prize will go to the inventors of high efficiency urinals, for being resource-saving.
+<strong>I mean, LEDs are great, but not great as physics, much less a physics breakthrough.</strong></p>
+
+<p>Let’s compare the applied folks to other laureates: Lorentz, J. J. Thomson, Planck, Einstein, Bohr, Heisenberg, Schrödinger, Dirac, Fermi, Pauli, Born, Lee, Yang, Landau, Feynman, Schwinger, Gell-Mann, Weinberg, ’t Hooft, etc. Not on the same level.</p>
+
+<p>It’s good to see that a growing body of physicists are (or at least as it seems to me) increasingly reserved about the Nobel Prize, and prizes in general. Same goes for math, with the Nobel Prize replaced by something else. (Employers still love the big titles, I suppose — good to have some star faculty on board.)</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -693,51 +736,6 @@ Ravi: Yeah, Brian Conrad will give a lecture. Don&rsquo;t tell him, he don&rsquo
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/10/25/os-x-package-receipts/">OS X Package Receipts</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-10-25T13:26:02-07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:26 pm</span></time>
-        
-           | <a href="/blog/2014/10/25/os-x-package-receipts/#disqus_thread"
-             data-disqus-identifier="http://zmwangx.github.io/blog/2014/10/25/os-x-package-receipts/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I just learned something new. Whenever you install a <code>pkg</code> on OS X, OS X stores a receipt of what was installed in <code>/var/db/receipts</code> (I&rsquo;m running OS X 10.9.5 at the time of writing), called a <strong>bom</strong> — bill of materials (I’d rather call it a manifest, whatever). This feature was introduced in NeXTSTEP. From <code>man 5 bom</code>:</p>
-
-<blockquote><p>The Mac OS X Installer uses a file system &ldquo;bill of materials&rdquo; to determine which files to install, remove, or upgrade. A bill of materials, <strong>bom</strong>, contains all the files within a directory, along with some information about each file. File information includes: the file&rsquo;s UNIX permissions, its owner and group, its size, its time of last modification, and so on.  Also included are a checksum of each file and information about hard links.</p></blockquote>
-
-<p><code>man 5 bom</code> is actually badly maintained, as it says &ldquo;The bill of materials for installed packages are found within the package receipts located in /Library/Receipts,&rdquo; whereas those have been migrated to <code>/var/db/receipts</code> a long time ago.</p>
-
-<p><code>.bom</code> files are binary, but you can access the contents via <code>lsbom</code>. For instance, to list the files installed,</p>
-
-<pre><code>lsbom -f /var/db/receipts/org.macports.MacPorts.bom
-</code></pre>
-
-<p>Note that the paths printed are always relative to <code>/</code>. See <code>man 1 lsbom</code> for detailed option listing.</p>
-
-<p>(Beware when you try to clean up unwanted packages using the <code>lsbom</code> listing. Packages might overwrite files, so make sure you review the listing first and know what you are doing. &ldquo;Knowing what you are doing&rdquo; is the prerequisite for using <code>sudo</code> anyway.)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/5">&larr; Older</a>
@@ -755,6 +753,10 @@ Ravi: Yeah, Brian Conrad will give a lecture. Don&rsquo;t tell him, he don&rsquo
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/03/22/back-up-os-x-app-icons/">Back Up OS X App Icons</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/02/24/the-new-onedrive-api/">The New OneDrive API</a>
       </li>
     
@@ -768,10 +770,6 @@ Ravi: Yeah, Brian Conrad will give a lecture. Don&rsquo;t tell him, he don&rsquo
     
       <li class="post">
         <a href="/blog/2015/02/17/microsoft-is-getting-cool-but-not-its-website/">Microsoft Is Getting Cool (but Not Its Website)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/10/monitor-progress-of-your-unix-pipes-with-pv/">Monitor Progress of Your Unix Pipes With Pv</a>
       </li>
     
   </ul>

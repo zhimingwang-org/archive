@@ -4,7 +4,7 @@
   <title><![CDATA[dl? cmplnts?]]></title>
   <link href="http://zmwangx.github.io/atom.xml" rel="self"/>
   <link href="http://zmwangx.github.io/"/>
-  <updated>2015-02-24T18:45:05-08:00</updated>
+  <updated>2015-03-22T17:10:00-07:00</updated>
   <id>http://zmwangx.github.io/</id>
   <author>
     <name><![CDATA[Zhiming Wang]]></name>
@@ -12,6 +12,84 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Back Up OS X App Icons]]></title>
+    <link href="http://zmwangx.github.io/blog/2015/03/22/back-up-os-x-app-icons/"/>
+    <updated>2015-03-22T16:58:50-07:00</updated>
+    <id>http://zmwangx.github.io/blog/2015/03/22/back-up-os-x-app-icons</id>
+    <content type="html"><![CDATA[<p>OS X application icons are valuable assets, and it&rsquo;s interesting to see how they evolve over time. This is especially the case when we upgraded to OS X 10.10 Yosemite, when Apple and many design-aware third party developers overhauled (mainly flattened) their icons.</p>
+
+<p>However, we lose all the old icons when we do a major OS upgrade. Technically they still live in Time Machine backups, but those are a pain to pull out. Therefore, I wrote a script just now to back up app icons of all applications living in <code>/Applications</code> (including those symlinked to <code>/Applications</code>, e.g., apps installed through <code>brew cask</code>) and its level-one subdirectories, and <code>/System/Library/CoreServices</code> (for <code>Finder.app</code> and such). Here&rsquo;s the script:</p>
+
+<figure class='code'><figcaption><span>backup-app-icons</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/usr/bin/env bash</span>
+</span><span class='line'><span class="k">function</span> app_version
+</span><span class='line'><span class="o">{</span>
+</span><span class='line'>    <span class="c"># $1 is the path to the app</span>
+</span><span class='line'>    /usr/libexec/PlistBuddy -c <span class="s2">&quot;print CFBundleShortVersionString&quot;</span> <span class="s2">&quot;$1&quot;</span>/Contents/Info.plist 2&gt;/dev/null <span class="o">||</span> date +%Y%m%d
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">function</span> app_icon_path
+</span><span class='line'><span class="o">{</span>
+</span><span class='line'>    <span class="c"># $1 is the path to the app</span>
+</span><span class='line'>    <span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>/usr/libexec/PlistBuddy -c <span class="s2">&quot;print CFBundleIconFile&quot;</span> <span class="s2">&quot;$1&quot;</span>/Contents/Info.plist 2&gt;/dev/null<span class="k">)</span>
+</span><span class='line'>    <span class="o">[[</span> -n <span class="k">${</span><span class="nv">filename</span><span class="k">}</span> <span class="o">]]</span> <span class="o">||</span> <span class="k">return</span>
+</span><span class='line'>    <span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename <span class="s2">&quot;${filename}&quot;</span> .icns<span class="k">)</span>
+</span><span class='line'>    <span class="nb">echo</span> <span class="s2">&quot;$1/Contents/Resources/${filename}.icns&quot;</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">function</span> process_app
+</span><span class='line'><span class="o">{</span>
+</span><span class='line'>    <span class="c"># $1 is the path to the app</span>
+</span><span class='line'>    <span class="nv">name</span><span class="o">=</span><span class="k">$(</span>basename <span class="s2">&quot;$1&quot;</span> .app <span class="p">|</span> tr -d <span class="s1">&#39; &#39;</span><span class="k">)</span>
+</span><span class='line'>    <span class="nv">path</span><span class="o">=</span><span class="k">$(</span>realpath -e <span class="s2">&quot;$1&quot;</span><span class="k">)</span> <span class="o">||</span> <span class="o">{</span> <span class="nb">echo</span> <span class="s2">&quot;${RED}error: broken link &#39;${path}&#39;${RESET}&quot;</span> &gt;<span class="p">&amp;</span>2<span class="p">;</span> <span class="k">return</span> 1<span class="p">;</span> <span class="o">}</span>
+</span><span class='line'>    <span class="nv">version</span><span class="o">=</span><span class="k">$(</span>app_version <span class="s2">&quot;${path}&quot;</span><span class="k">)</span>
+</span><span class='line'>    <span class="nv">icon_path</span><span class="o">=</span><span class="k">$(</span>app_icon_path <span class="s2">&quot;${path}&quot;</span><span class="k">)</span>
+</span><span class='line'>    <span class="o">[[</span> -n <span class="k">${</span><span class="nv">icon_path</span><span class="k">}</span> <span class="o">]]</span> <span class="o">||</span> <span class="o">{</span> <span class="nb">echo</span> <span class="s2">&quot;${YELLOW}warning: &#39;$1&#39; has no app icon${RESET}&quot;</span><span class="p">;</span> <span class="k">return</span> 1<span class="p">;</span> <span class="o">}</span>
+</span><span class='line'>    <span class="o">[[</span> -f <span class="k">${</span><span class="nv">icon_path</span><span class="k">}</span> <span class="o">]]</span> <span class="o">||</span> <span class="o">{</span> <span class="nb">echo</span> <span class="s2">&quot;${RED}error: &#39;${icon_path}&#39; does not exist${RESET}&quot;</span> &gt;<span class="p">&amp;</span>2<span class="p">;</span> <span class="k">return</span> 1<span class="p">;</span> <span class="o">}</span>
+</span><span class='line'>    cp <span class="s2">&quot;${icon_path}&quot;</span> <span class="s2">&quot;${name}-${version}.icns&quot;</span>
+</span><span class='line'>    <span class="nb">echo</span> <span class="s2">&quot;${name}-${version}.icns&quot;</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>find /Applications -maxdepth <span class="m">2</span> -name <span class="s1">&#39;*.app&#39;</span> <span class="p">|</span> <span class="k">while</span> <span class="nb">read </span>app<span class="p">;</span> <span class="k">do</span> process_app <span class="s2">&quot;${app}&quot;</span><span class="p">;</span> <span class="k">done</span>
+</span><span class='line'>find /System/Library/CoreServices -maxdepth <span class="m">1</span> -name <span class="s1">&#39;*.app&#39;</span> <span class="p">|</span> <span class="k">while</span> <span class="nb">read </span>app<span class="p">;</span> <span class="k">do</span> process_app <span class="s2">&quot;${app}&quot;</span><span class="p">;</span> <span class="k">done</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The script is also available as a <a href="https://gist.github.com/zmwangx/fad97e085045a21ebc1d">gist</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[The New OneDrive API]]></title>
@@ -546,15 +624,6 @@
 <p>I&rsquo;ve been using 1Password for a couple years now, and I&rsquo;ve always been a bit worried about my master password. It&rsquo;s a ~30 byte monster with uppercase, lowercase letters, numbers, and special symbols. By any measure it is very safe. The problem is there are (extremely) personal things in there. I assembled several unrelated things that I (secretly) hold dearest to my heart, obfuscated them with rules not found in best64, and mixed with semi-gibberish. My daily login password is a combo similar in nature, with less obfuscation to facilitate typing. People who dig really deep into my identity might be able to compromise it (or not); I&rsquo;m afraid that I&rsquo;m more predictable than I thought I was. I know, the worry is pretty much unwarranted, as I’m not likely the target of a focused attack — I’m neither rich nor equipped with sensitive information or power, and for wide-range exploits, 99.9% of people are lower-hanging fruits. Even for a targeted attack, <a href="http://xkcd.com/538/">xkcd 538: Security</a> broke a crypto nerd’s imagination with a $5 wrench. However, a geek is a geek, you can’t block a geek’s imagination.</p>
 
 <p>Therefore, after worrying for so long, today I’m going Diceware. Eight diceware words give you at least 100 bits of true entropy. Unfortunately I don’t have a die, and don’t bother to get one. (Amazon Prime: get it Monday? No. Target, six miles away? No.) So I read my random bits from <code>/dev/urandom</code>. The C implementation is <a href="https://github.com/zmwangx/diceware">here</a>. By publishing this I’m announcing to the world that I’m using diceware. But I’m not afraid, since I’m now protected by true entropy that’s not compromised by publishing the scheme.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Given Infinite Time]]></title>
-    <link href="http://zmwangx.github.io/blog/2014/11/28/given-infinite-time/"/>
-    <updated>2014-11-28T00:18:19-08:00</updated>
-    <id>http://zmwangx.github.io/blog/2014/11/28/given-infinite-time</id>
-    <content type="html"><![CDATA[<p>Given infinite time. There&rsquo;s so much I can do <em>given infinite time</em>. I don&rsquo;t think I&rsquo;ll ever be bored. But sadly the time assigned to each human being is finite. Actually it&rsquo;s epsilon, epsilon approaching zero. Sadly.</p>
 ]]></content>
   </entry>
   
