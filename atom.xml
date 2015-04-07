@@ -4,7 +4,7 @@
   <title><![CDATA[dl? cmplnts?]]></title>
   <link href="http://zmwangx.github.io/atom.xml" rel="self"/>
   <link href="http://zmwangx.github.io/"/>
-  <updated>2015-03-22T17:10:00-07:00</updated>
+  <updated>2015-04-06T22:35:29-07:00</updated>
   <id>http://zmwangx.github.io/</id>
   <author>
     <name><![CDATA[Zhiming Wang]]></name>
@@ -361,7 +361,18 @@
     <link href="http://zmwangx.github.io/blog/2014/12/23/mpv-launcher/"/>
     <updated>2014-12-23T00:51:05-08:00</updated>
     <id>http://zmwangx.github.io/blog/2014/12/23/mpv-launcher</id>
-    <content type="html"><![CDATA[<p><a href="http://mpv.io"><code>mpv</code></a> is a nice simplistic video player (fork of MPlayer and mplayer2). The CLI is flawless (and you can run as many instances as you want), but when it comes to the OS X application bundle, there&rsquo;s one major annoyance. Each app bundle could only have one running instance (unless <code>open -n</code>’ed, which is not how sane people use app bundles), and one instance of <code>mpv</code> only supports one video. So, say I&rsquo;m playing one video with the app bundle, and unsuspectingly opens another in Finder (which is associated to <code>mpv.app</code> by default), then the latter video immediately takes over, and the position in the first video is lost. That happens <em>a lot</em>.</p>
+    <content type="html"><![CDATA[<p><strong><em>04/06/2015 update:</em></strong></p>
+
+<p>I just noticed that <code>daemonize</code> doesn&rsquo;t play too well with the OS; in particular, when you use dark menu bar on OS X Yosemite, apps launched with <code>daemonize</code> won&rsquo;t conform to that. So a native shell solution would be using <code>/bin/zsh</code> and run</p>
+
+<pre><code>mpv "$@" &gt;/dev/null 2&gt;&amp;1 &lt;/dev/null &amp;!
+</code></pre>
+
+<p>instead.</p>
+
+<hr />
+
+<p><a href="http://mpv.io"><code>mpv</code></a> is a nice simplistic video player (fork of MPlayer and mplayer2). The CLI is flawless (and you can run as many instances as you want), but when it comes to the OS X application bundle, there&rsquo;s one major annoyance. Each app bundle could only have one running instance (unless <code>open -n</code>’ed, which is not how sane people use app bundles), and one instance of <code>mpv</code> only supports one video. So, say I&rsquo;m playing one video with the app bundle, and unsuspectingly opens another in Finder (which is associated to <code>mpv.app</code> by default), then the latter video immediately takes over, and the position in the first video is lost. That happens <em>a lot</em>.</p>
 
 <p>Today I finally gave this issue some serious thought (I&rsquo;ve been on a bug report/enhancement request spree these days so it&rsquo;s natural for me to start thinking about enhancements). Turns out that there&rsquo;s a pretty simple workaround. I created an automator app <code>mpv-launcher.app</code> that does one thing: &ldquo;Run Shell Script&rdquo; (pass input as arguments)</p>
 
