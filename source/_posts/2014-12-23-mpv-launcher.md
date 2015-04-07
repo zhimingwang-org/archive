@@ -5,6 +5,16 @@ date: 2014-12-23 00:51:05 -0800
 comments: true
 categories: 
 ---
+**_04/06/2015 update:_**
+
+I just noticed that `daemonize` doesn't play too well with the OS; in particular, when you use dark menu bar on OS X Yosemite, apps launched with `daemonize` won't conform to that. So a native shell solution would be using `/bin/zsh` and run
+
+    mpv "$@" >/dev/null 2>&1 </dev/null &!
+
+instead.
+
+---
+
 [`mpv`](http://mpv.io) is a nice simplistic video player (fork of MPlayer and mplayer2). The CLI is flawless (and you can run as many instances as you want), but when it comes to the OS X application bundle, there's one major annoyance. Each app bundle could only have one running instance (unless `open -n`’ed, which is not how sane people use app bundles), and one instance of `mpv` only supports one video. So, say I'm playing one video with the app bundle, and unsuspectingly opens another in Finder (which is associated to `mpv.app` by default), then the latter video immediately takes over, and the position in the first video is lost. That happens *a lot*.
 
 Today I finally gave this issue some serious thought (I've been on a bug report/enhancement request spree these days so it's natural for me to start thinking about enhancements). Turns out that there's a pretty simple workaround. I created an automator app `mpv-launcher.app` that does one thing: "Run Shell Script" (pass input as arguments)
