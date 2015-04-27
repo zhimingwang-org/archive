@@ -9,7 +9,7 @@
   <meta name="author" content="Zhiming Wang">
 
   
-  <meta name="description" content="OS X application icons are valuable assets, and it&rsquo;s interesting to see how they evolve over time. This is especially the case when we upgraded &hellip;">
+  <meta name="description" content="Recently I&rsquo;m working on a hobby project in Python, which means editing Python source files a lot. I&rsquo;ve been using Emacs Jedi for almost &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,68 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/04/26/using-python-3-with-emacs-jedi/">Using Python 3 With Emacs Jedi</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-04-26T21:19:14-07:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:19 pm</span></time>
+        
+           | <a href="/blog/2015/04/26/using-python-3-with-emacs-jedi/#disqus_thread"
+             data-disqus-identifier="http://zmwangx.github.io/blog/2015/04/26/using-python-3-with-emacs-jedi/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Recently I&rsquo;m working on <a href="https://github.com/zmwangx/storyboard">a hobby project in Python</a>, which means editing Python source files a lot. I&rsquo;ve been using <a href="https://github.com/tkf/emacs-jedi">Emacs Jedi</a> for almost as long as I&rsquo;ve been writing Python, and it has been pretty helpful at completing away long names.</p>
+
+<p>However, Jedi uses <code>python</code> by default, which means <code>python2</code> on most of our systems at this point. Occasionally I&rsquo;m writing Python 3 specific code but Jedi completes to Python 2 or refuses to complete; for the record, I enjoy writing and debugging Python 3.3+ much better than 2.7 (I realized this after trying to create a code base that is backward compatible with 2.7, which means reinventing the wheel or introducing annoying branches from time to time). So naturally I&rsquo;m looking into using Python 3 in Jedi.</p>
+
+<p>The <a href="https://tkf.github.io/emacs-jedi/latest/#how-to-use-python-3-or-any-other-specific-version-of-python">official docs</a> has been confusing and unhelpful at least for me, since it insists on setting up the virtualenv from within Emacs, and it failed for me. Why can&rsquo;t I set up the virtualenv myself? Turns out I can, and it&rsquo;s incredibly simple. The commands below assume that you have installed Jedi and friends (well, dependencies) using <code>package.el</code>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>mkdir -p ~/.emacs.d/.python-environments
+</span><span class='line'>virtualenv -p /usr/local/bin/python3 ~/.emacs.d/.python-environments/jedi  <span class="c"># or whatever your python3 path is</span>
+</span><span class='line'><span class="c"># If you feel like installing the server with &#39;M-x jedi:install-server&#39;, also do the following</span>
+</span><span class='line'>~/.emacs.d/.python-environments/jedi/bin/pip install --upgrade ~/.emacs.d/elpa/jedi-20150109.2230/  <span class="c"># you might need to change the version number</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And that&rsquo;s it. Put the following in your <code>~/.emacs</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='emacs-lisp'><span class='line'><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;python-mode-hook</span> <span class="ss">&#39;jedi:setup</span><span class="p">)</span>
+</span><span class='line'><span class="p">(</span><span class="k">setq</span> <span class="nv">jedi:complete-on-dot</span> <span class="no">t</span><span class="p">)</span>
+</span><span class='line'><span class="p">(</span><span class="k">setq</span> <span class="nv">jedi:environment-root</span> <span class="s">&quot;jedi&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>where the first two lines should be there whether you want to use Python 3 or not — so only the third line is new, and its meaning is obvious.</p>
+
+<p>At last, start Emacs and do <code>M-x jedi:install-server</code> if you haven&rsquo;t run the <code>pip</code> command above yet. Restart Emacs (if necessary). That&rsquo;s it. Enjoy your Jedi with Python 3. (Type <code>import conf</code>, for instance, to be convinced that you&rsquo;re really autocompleting Python 3).</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -628,58 +690,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/12/23/mpv-launcher/">Mpv Launcher</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-12-23T00:51:05-08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>12:51 am</span></time>
-        
-           | <a href="/blog/2014/12/23/mpv-launcher/#disqus_thread"
-             data-disqus-identifier="http://zmwangx.github.io/blog/2014/12/23/mpv-launcher/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><strong><em>04/06/2015 update:</em></strong></p>
-
-<p>I just noticed that <code>daemonize</code> doesn&rsquo;t play too well with the OS; in particular, when you use dark menu bar on OS X Yosemite, apps launched with <code>daemonize</code> won&rsquo;t conform to that. So a native shell solution would be using <code>/bin/zsh</code> and run</p>
-
-<pre><code>mpv "$@" &gt;/dev/null 2&gt;&amp;1 &lt;/dev/null &amp;!
-</code></pre>
-
-<p>instead.</p>
-
-<hr />
-
-<p><a href="http://mpv.io"><code>mpv</code></a> is a nice simplistic video player (fork of MPlayer and mplayer2). The CLI is flawless (and you can run as many instances as you want), but when it comes to the OS X application bundle, there&rsquo;s one major annoyance. Each app bundle could only have one running instance (unless <code>open -n</code>’ed, which is not how sane people use app bundles), and one instance of <code>mpv</code> only supports one video. So, say I&rsquo;m playing one video with the app bundle, and unsuspectingly opens another in Finder (which is associated to <code>mpv.app</code> by default), then the latter video immediately takes over, and the position in the first video is lost. That happens <em>a lot</em>.</p>
-
-<p>Today I finally gave this issue some serious thought (I&rsquo;ve been on a bug report/enhancement request spree these days so it&rsquo;s natural for me to start thinking about enhancements). Turns out that there&rsquo;s a pretty simple workaround. I created an automator app <code>mpv-launcher.app</code> that does one thing: &ldquo;Run Shell Script&rdquo; (pass input as arguments)</p>
-
-<pre><code>daemonize /usr/local/bin/mpv "$@"
-</code></pre>
-
-<p>in the shell of your choice (for me the shell of choice is <code>zsh</code> since the env would be readily available from my <code>zshenv</code>). <code>daemonize</code>, as the name suggests, daemonizes the process so that the process doesn&rsquo;t block; this way, <code>mpv-launcher.app</code> immediately quits after launching, making multiple &ldquo;instances&rdquo; possible. (<code>daemonize</code> can be installed via <code>brew install daemonize</code>; note that you need to specify the full path of the command to daemonize, which in my case is <code>/usr/local/bin/mpv</code>). And there you go. Associate your video files to <code>mpv-launcher.app</code>. Launch as many instances as you want. Enjoy.</p>
-
-<p>By the way, I also filed an <a href="https://github.com/mpv-player/mpv/issues/1377">enhancement request</a> with <code>mpv-player/mpv</code>. We&rsquo;ll see what the developers can do. Hopefully the app bundle will support multiple videos out of box in the future.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -695,6 +705,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/04/26/using-python-3-with-emacs-jedi/">Using Python 3 With Emacs Jedi</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/03/22/back-up-os-x-app-icons/">Back Up OS X App Icons</a>
       </li>
     
@@ -708,10 +722,6 @@
     
       <li class="post">
         <a href="/blog/2015/02/20/my-dock-and-updated-omnifocus/">My Dock and Updated OmniFocus</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/17/microsoft-is-getting-cool-but-not-its-website/">Microsoft Is Getting Cool (but Not Its Website)</a>
       </li>
     
   </ul>

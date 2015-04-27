@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Ripping Copy-protected DVD With Mpv - dl? cmplnts?</title>
+  <title>Using Python 3 With Emacs Jedi - dl? cmplnts?</title>
   <meta name="author" content="Zhiming Wang">
 
   
-  <meta name="description" content="11/02/2014 update: See this post for issues, explanations, and more. 10/25/2014 update: I&rsquo;m such an idiot. vobcopy is the real, hassel-free way &hellip;">
+  <meta name="description" content="Recently I&rsquo;m working on a hobby project in Python, which means editing Python source files a lot. I&rsquo;ve been using Emacs Jedi for almost &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://zmwangx.github.io/blog/2014/10/23/ripping-copy-protected-dvd-with-mpv">
+  <link rel="canonical" href="http://zmwangx.github.io/blog/2015/04/26/using-python-3-with-emacs-jedi">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="dl? cmplnts?" type="application/atom+xml">
@@ -80,7 +80,7 @@
   
   <header>
     
-      <h1 class="entry-title">Ripping Copy-protected DVD With Mpv</h1>
+      <h1 class="entry-title">Using Python 3 With Emacs Jedi</h1>
     
     
       <p class="meta">
@@ -89,7 +89,7 @@
 
 
 
-<time class='entry-date' datetime='2014-10-23T20:03:22-07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>8:03 pm</span></time>
+<time class='entry-date' datetime='2015-04-26T21:19:14-07:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:19 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://zmwangx.github.io">Comments</a>
@@ -99,40 +99,37 @@
   </header>
 
 
-<div class="entry-content"><p><strong><em>11/02/2014 update:</em></strong></p>
+<div class="entry-content"><p>Recently I&rsquo;m working on <a href="https://github.com/zmwangx/storyboard">a hobby project in Python</a>, which means editing Python source files a lot. I&rsquo;ve been using <a href="https://github.com/tkf/emacs-jedi">Emacs Jedi</a> for almost as long as I&rsquo;ve been writing Python, and it has been pretty helpful at completing away long names.</p>
 
-<p>See <a href="/blog/2014/11/02/vobcopy-dvdbackup-etc/">this post</a> for issues, explanations, and more.</p>
+<p>However, Jedi uses <code>python</code> by default, which means <code>python2</code> on most of our systems at this point. Occasionally I&rsquo;m writing Python 3 specific code but Jedi completes to Python 2 or refuses to complete; for the record, I enjoy writing and debugging Python 3.3+ much better than 2.7 (I realized this after trying to create a code base that is backward compatible with 2.7, which means reinventing the wheel or introducing annoying branches from time to time). So naturally I&rsquo;m looking into using Python 3 in Jedi.</p>
 
-<hr />
+<p>The <a href="https://tkf.github.io/emacs-jedi/latest/#how-to-use-python-3-or-any-other-specific-version-of-python">official docs</a> has been confusing and unhelpful at least for me, since it insists on setting up the virtualenv from within Emacs, and it failed for me. Why can&rsquo;t I set up the virtualenv myself? Turns out I can, and it&rsquo;s incredibly simple. The commands below assume that you have installed Jedi and friends (well, dependencies) using <code>package.el</code>.</p>
 
-<p><strong><em>10/25/2014 update:</em></strong></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>mkdir -p ~/.emacs.d/.python-environments
+</span><span class='line'>virtualenv -p /usr/local/bin/python3 ~/.emacs.d/.python-environments/jedi  <span class="c"># or whatever your python3 path is</span>
+</span><span class='line'><span class="c"># If you feel like installing the server with &#39;M-x jedi:install-server&#39;, also do the following</span>
+</span><span class='line'>~/.emacs.d/.python-environments/jedi/bin/pip install --upgrade ~/.emacs.d/elpa/jedi-20150109.2230/  <span class="c"># you might need to change the version number</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>I&rsquo;m such an idiot. <code>vobcopy</code> is the real, hassel-free way to go.</p>
 
-<pre><code>brew install vobcopy
-</code></pre>
+<p>And that&rsquo;s it. Put the following in your <code>~/.emacs</code>:</p>
 
-<p>Then, with the DVD mounted,</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='emacs-lisp'><span class='line'><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;python-mode-hook</span> <span class="ss">&#39;jedi:setup</span><span class="p">)</span>
+</span><span class='line'><span class="p">(</span><span class="k">setq</span> <span class="nv">jedi:complete-on-dot</span> <span class="no">t</span><span class="p">)</span>
+</span><span class='line'><span class="p">(</span><span class="k">setq</span> <span class="nv">jedi:environment-root</span> <span class="s">&quot;jedi&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<blockquote><p><strong>vobcopy</strong> without any options will copy the title with the most chapters into files of 2GB size into the current working directory.</p></blockquote>
 
-<p>Of course there are a ton of options, but I generally hate to browse through options unless I have to, so I&rsquo;m happy with calling without argument.</p>
+<p>where the first two lines should be there whether you want to use Python 3 or not — so only the third line is new, and its meaning is obvious.</p>
 
-<hr />
-
-<p>Yesterday I was trying to rip a music video off a newly released DVD from Japan. I knew very little about how DRM (in this case, CSS) actually works and how to break it. I tried to operate directly on the VOB file with <code>ffmpeg</code> or <code>mpv</code> but both failed with a lot of header errors — I suppose more files than the VOB are required for authentication? Whatever, maybe I’ll learn the details in the future, but I don’t see the need since DVD is an outdated technology anyway.</p>
-
-<p>So, can we proceed from here? Most certainly. I noticed that although <code>mpv</code> won’t let me play a single VOB, I can simply hand it the DVD mount point, and it will play the whole DVD seamlessly. <strong>Caution:</strong> <code>mpv</code> needs to be compiled with <code>libdvdnav</code> and <code>libdvdread</code>! With brew you just do</p>
-
-<pre><code>brew install mpv --with-libdvdnav --with-libdvdread
-</code></pre>
-
-<p>For better performance and backup, I first cloned the DVD into a <code>.cdr</code> image (DVD/CD-R Master Image) using Disk Utility (I&rsquo;ve never tried creating/cloning image with <code>diskutil</code> CLI, so nothing to report on that). Then I mount the image, say the mount point is <code>/Volumes/UPBX_80165</code>. As said I can hand that mount point to <code>mpv</code> and it simply works, but how about extracting the MPEG-2 video stream? The <code>--stream-capture=&lt;filename&gt;</code> option is there just for you. In principle <code>--stream-dump=&lt;filename&gt;</code> should also work, but without monitoring the output and controlling where to end, I’m not sure if it will ever terminate itself when reading from a DVD (when I stream captured the DVD it just kept repeating itself until I explicitly quit with <code>q</code>). So that&rsquo;s it:</p>
-
-<pre><code>mpv --stream-capture=dump.mpg /Volumes/UPBX_80165
-</code></pre>
-
-<p>Then you can torture the <code>dump.mpg</code> with <code>ffmpeg</code> however you want. The most obvious thing is to cut out the music video part, and put into a new container like MPEG-TS. Or transcode it to H.264 for your iPhone. The nice thing about <code>dump.mpg</code> is that, unless I got it wrong, there&rsquo;s no quality loss here — the only thing you got rid of is that goddamn DRM.</p>
+<p>At last, start Emacs and do <code>M-x jedi:install-server</code> if you haven&rsquo;t run the <code>pip</code> command above yet. Restart Emacs (if necessary). That&rsquo;s it. Enjoy your Jedi with Python 3. (Type <code>import conf</code>, for instance, to be convinced that you&rsquo;re really autocompleting Python 3).</p>
 </div>
 
 
@@ -148,7 +145,7 @@
 
 
 
-<time class='entry-date' datetime='2014-10-23T20:03:22-07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>8:03 pm</span></time>
+<time class='entry-date' datetime='2015-04-26T21:19:14-07:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:19 pm</span></time>
       
 
 
@@ -156,7 +153,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://zmwangx.github.io/blog/2014/10/23/ripping-copy-protected-dvd-with-mpv/" data-via="" data-counturl="http://zmwangx.github.io/blog/2014/10/23/ripping-copy-protected-dvd-with-mpv/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://zmwangx.github.io/blog/2015/04/26/using-python-3-with-emacs-jedi/" data-via="" data-counturl="http://zmwangx.github.io/blog/2015/04/26/using-python-3-with-emacs-jedi/" >Tweet</a>
   
   
   
@@ -165,10 +162,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/10/21/get-rolling/" title="Previous Post: Get rolling">&laquo; Get rolling</a>
+        <a class="basic-alignment left" href="/blog/2015/03/22/back-up-os-x-app-icons/" title="Previous Post: Back up OS X app icons">&laquo; Back up OS X app icons</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/10/24/charles-munger-donated-$65m-to-kitp/" title="Next Post: Charles Munger donated $65M to KITP">Charles Munger donated $65M to KITP &raquo;</a>
       
     </p>
   </footer>
@@ -263,8 +258,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://zmwangx.github.io/blog/2014/10/23/ripping-copy-protected-dvd-with-mpv/';
-        var disqus_url = 'http://zmwangx.github.io/blog/2014/10/23/ripping-copy-protected-dvd-with-mpv/';
+        var disqus_identifier = 'http://zmwangx.github.io/blog/2015/04/26/using-python-3-with-emacs-jedi/';
+        var disqus_url = 'http://zmwangx.github.io/blog/2015/04/26/using-python-3-with-emacs-jedi/';
         var disqus_script = 'embed.js';
       
     (function () {

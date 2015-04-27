@@ -4,7 +4,7 @@
   <title><![CDATA[dl? cmplnts?]]></title>
   <link href="http://zmwangx.github.io/atom.xml" rel="self"/>
   <link href="http://zmwangx.github.io/"/>
-  <updated>2015-04-06T22:35:29-07:00</updated>
+  <updated>2015-04-26T22:00:56-07:00</updated>
   <id>http://zmwangx.github.io/</id>
   <author>
     <name><![CDATA[Zhiming Wang]]></name>
@@ -12,6 +12,45 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Using Python 3 With Emacs Jedi]]></title>
+    <link href="http://zmwangx.github.io/blog/2015/04/26/using-python-3-with-emacs-jedi/"/>
+    <updated>2015-04-26T21:19:14-07:00</updated>
+    <id>http://zmwangx.github.io/blog/2015/04/26/using-python-3-with-emacs-jedi</id>
+    <content type="html"><![CDATA[<p>Recently I&rsquo;m working on <a href="https://github.com/zmwangx/storyboard">a hobby project in Python</a>, which means editing Python source files a lot. I&rsquo;ve been using <a href="https://github.com/tkf/emacs-jedi">Emacs Jedi</a> for almost as long as I&rsquo;ve been writing Python, and it has been pretty helpful at completing away long names.</p>
+
+<p>However, Jedi uses <code>python</code> by default, which means <code>python2</code> on most of our systems at this point. Occasionally I&rsquo;m writing Python 3 specific code but Jedi completes to Python 2 or refuses to complete; for the record, I enjoy writing and debugging Python 3.3+ much better than 2.7 (I realized this after trying to create a code base that is backward compatible with 2.7, which means reinventing the wheel or introducing annoying branches from time to time). So naturally I&rsquo;m looking into using Python 3 in Jedi.</p>
+
+<p>The <a href="https://tkf.github.io/emacs-jedi/latest/#how-to-use-python-3-or-any-other-specific-version-of-python">official docs</a> has been confusing and unhelpful at least for me, since it insists on setting up the virtualenv from within Emacs, and it failed for me. Why can&rsquo;t I set up the virtualenv myself? Turns out I can, and it&rsquo;s incredibly simple. The commands below assume that you have installed Jedi and friends (well, dependencies) using <code>package.el</code>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>mkdir -p ~/.emacs.d/.python-environments
+</span><span class='line'>virtualenv -p /usr/local/bin/python3 ~/.emacs.d/.python-environments/jedi  <span class="c"># or whatever your python3 path is</span>
+</span><span class='line'><span class="c"># If you feel like installing the server with &#39;M-x jedi:install-server&#39;, also do the following</span>
+</span><span class='line'>~/.emacs.d/.python-environments/jedi/bin/pip install --upgrade ~/.emacs.d/elpa/jedi-20150109.2230/  <span class="c"># you might need to change the version number</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And that&rsquo;s it. Put the following in your <code>~/.emacs</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='emacs-lisp'><span class='line'><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;python-mode-hook</span> <span class="ss">&#39;jedi:setup</span><span class="p">)</span>
+</span><span class='line'><span class="p">(</span><span class="k">setq</span> <span class="nv">jedi:complete-on-dot</span> <span class="no">t</span><span class="p">)</span>
+</span><span class='line'><span class="p">(</span><span class="k">setq</span> <span class="nv">jedi:environment-root</span> <span class="s">&quot;jedi&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>where the first two lines should be there whether you want to use Python 3 or not — so only the third line is new, and its meaning is obvious.</p>
+
+<p>At last, start Emacs and do <code>M-x jedi:install-server</code> if you haven&rsquo;t run the <code>pip</code> command above yet. Restart Emacs (if necessary). That&rsquo;s it. Enjoy your Jedi with Python 3. (Type <code>import conf</code>, for instance, to be convinced that you&rsquo;re really autocompleting Python 3).</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Back Up OS X App Icons]]></title>
@@ -622,19 +661,6 @@
 <p><strong><em>2014/12/22 Update:</em></strong></p>
 
 <p>There&rsquo;s one caveat to this approach — unlike in Opera, where the default layman shortcuts (e.g., ⌘F) are still available when advanced keyboard shorts are enabled, in Safari they are simply overwritten. This is annoying when the web page or web app binds certain keys, especially <code>/</code> to its own search bar (a notable example being google.com). In that case I have to admit defeat and click on the menu bar item, which takes a hundred times as long as a single <code>/</code> keystroke.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Going Diceware]]></title>
-    <link href="http://zmwangx.github.io/blog/2014/11/28/going-diceware/"/>
-    <updated>2014-11-28T19:05:59-08:00</updated>
-    <id>http://zmwangx.github.io/blog/2014/11/28/going-diceware</id>
-    <content type="html"><![CDATA[<p>Today I&rsquo;m officially going <a href="http://world.std.com/~reinhold/diceware.html">Diceware</a>. I published my simple C implementation of diceware on <a href="https://github.com/zmwangx/diceware">GitHub</a>.</p>
-
-<p>I&rsquo;ve been using 1Password for a couple years now, and I&rsquo;ve always been a bit worried about my master password. It&rsquo;s a ~30 byte monster with uppercase, lowercase letters, numbers, and special symbols. By any measure it is very safe. The problem is there are (extremely) personal things in there. I assembled several unrelated things that I (secretly) hold dearest to my heart, obfuscated them with rules not found in best64, and mixed with semi-gibberish. My daily login password is a combo similar in nature, with less obfuscation to facilitate typing. People who dig really deep into my identity might be able to compromise it (or not); I&rsquo;m afraid that I&rsquo;m more predictable than I thought I was. I know, the worry is pretty much unwarranted, as I’m not likely the target of a focused attack — I’m neither rich nor equipped with sensitive information or power, and for wide-range exploits, 99.9% of people are lower-hanging fruits. Even for a targeted attack, <a href="http://xkcd.com/538/">xkcd 538: Security</a> broke a crypto nerd’s imagination with a $5 wrench. However, a geek is a geek, you can’t block a geek’s imagination.</p>
-
-<p>Therefore, after worrying for so long, today I’m going Diceware. Eight diceware words give you at least 100 bits of true entropy. Unfortunately I don’t have a die, and don’t bother to get one. (Amazon Prime: get it Monday? No. Target, six miles away? No.) So I read my random bits from <code>/dev/urandom</code>. The C implementation is <a href="https://github.com/zmwangx/diceware">here</a>. By publishing this I’m announcing to the world that I’m using diceware. But I’m not afraid, since I’m now protected by true entropy that’s not compromised by publishing the scheme.</p>
 ]]></content>
   </entry>
   
