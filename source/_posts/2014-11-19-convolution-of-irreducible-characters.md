@@ -5,7 +5,7 @@ date: 2014-11-19 20:40:37 -0800
 comments: true
 categories:
 ---
-__*TL; DR:* The actual PDF write-up is [here](/pdf/20141119-convolution-of-irreducible-characters.pdf).__
+__*TL; DR:* The actual PDF write-up is [here](https://dl.bintray.com/zmwangx/generic/20141119-convolution-of-irreducible-characters.pdf).__
 
 ---
 
@@ -13,4 +13,4 @@ Yesterday I was trying to establish the formula for orthogonal primitive central
 
 It turns out that I really should have been working the other way round --- first establish the orthogonal idempotents (the proof of which is really simple and elegant, I was just trapped in a single thread of thought), then use that to compute the convolution of irreducible characters.
 
-I feel like this is worth presenting (as the only proof I saw online is the really sad one above), so I TeX'ed it up. I tried to convert to MathJax HTML but eventually gave up (that's the story for another post). So, the write-up is in good ol' PDF, available [here](/pdf/20141119-convolution-of-irreducible-characters.pdf).
+I feel like this is worth presenting (as the only proof I saw online is the really sad one above), so I TeX'ed it up. I tried to convert to MathJax HTML but eventually gave up (that's the story for another post). So, the write-up is in good ol' PDF, available [here](https://dl.bintray.com/zmwangx/generic/20141119-convolution-of-irreducible-characters.pdf).

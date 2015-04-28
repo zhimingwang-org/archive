@@ -12,7 +12,7 @@ Here's a screenshot of my dock at the moment.
 
 ![My dock](http://i.imgur.com/EhaJw57.png "My current dock. Left to right: Finder (TotalFinder), Mail, Safari, Chrome, iTunes, OmniFocus, iTerm2, Activity Monitor, and mpv. Everything except mpv is persistent.")
 
-Left to right: Finder (TotalFinder), Mail, Safari, Chrome, iTunes, OmniFocus, iTerm2, Activity Monitor, and mpv. Everything except mpv is persistent; mpv is there because I happen to be looping a piece of music with mpv that I don't plan to add to the iTunes library. The point is that it never looked this good, mainly due to the updated OmniFocus icon. Finally they put some serious thought into graphics design! Just compare [the v2.1 icon](/misc/omnifocus-v2.1.icns) to [the v2.0 version](/misc/omnifocus-v2.0.icns).
+Left to right: Finder (TotalFinder), Mail, Safari, Chrome, iTunes, OmniFocus, iTerm2, Activity Monitor, and mpv. Everything except mpv is persistent; mpv is there because I happen to be looping a piece of music with mpv that I don't plan to add to the iTunes library. The point is that it never looked this good, mainly due to the updated OmniFocus icon. Finally they put some serious thought into graphics design! Just compare [the v2.1 icon](https://dl.bintray.com/zmwangx/generic/omnifocus-v2.1.icns) to [the v2.0 version](https://dl.bintray.com/zmwangx/generic/omnifocus-v2.0.icns).
 
 ![](http://i.imgur.com/KeTz5wK.png)
 
