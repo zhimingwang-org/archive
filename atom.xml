@@ -4,7 +4,7 @@
   <title><![CDATA[dl? cmplnts?]]></title>
   <link href="http://zmwangx.github.io/atom.xml" rel="self"/>
   <link href="http://zmwangx.github.io/"/>
-  <updated>2015-04-26T22:00:56-07:00</updated>
+  <updated>2015-04-27T18:34:58-07:00</updated>
   <id>http://zmwangx.github.io/</id>
   <author>
     <name><![CDATA[Zhiming Wang]]></name>
@@ -173,7 +173,7 @@
 
 <p><img src="http://i.imgur.com/EhaJw57.png" title="My current dock. Left to right: Finder (TotalFinder), Mail, Safari, Chrome, iTunes, OmniFocus, iTerm2, Activity Monitor, and mpv. Everything except mpv is persistent." alt="My dock" /></p>
 
-<p>Left to right: Finder (TotalFinder), Mail, Safari, Chrome, iTunes, OmniFocus, iTerm2, Activity Monitor, and mpv. Everything except mpv is persistent; mpv is there because I happen to be looping a piece of music with mpv that I don&rsquo;t plan to add to the iTunes library. The point is that it never looked this good, mainly due to the updated OmniFocus icon. Finally they put some serious thought into graphics design! Just compare <a href="http://zmwangx.github.io/misc/omnifocus-v2.1.icns">the v2.1 icon</a> to <a href="http://zmwangx.github.io/misc/omnifocus-v2.0.icns">the v2.0 version</a>.</p>
+<p>Left to right: Finder (TotalFinder), Mail, Safari, Chrome, iTunes, OmniFocus, iTerm2, Activity Monitor, and mpv. Everything except mpv is persistent; mpv is there because I happen to be looping a piece of music with mpv that I don&rsquo;t plan to add to the iTunes library. The point is that it never looked this good, mainly due to the updated OmniFocus icon. Finally they put some serious thought into graphics design! Just compare <a href="https://dl.bintray.com/zmwangx/generic/omnifocus-v2.1.icns">the v2.1 icon</a> to <a href="https://dl.bintray.com/zmwangx/generic/omnifocus-v2.0.icns">the v2.0 version</a>.</p>
 
 <p><img src="http://i.imgur.com/KeTz5wK.png" alt="" /></p>
 
@@ -453,7 +453,7 @@
     <id>http://zmwangx.github.io/blog/2014/12/14/the-google-chrome-comic-a-classic</id>
     <content type="html"><![CDATA[<p>I was cleaning up my Opera bookmarks just now — I&rsquo;m semi-officially leaving Opera for Safari. Of course, Safari still can&rsquo;t handle everything (e.g., Adblock Plus is still not so good on Safari, YouTubeCenter lags behind and I don&rsquo;t bother to compile myself — yes, I have a certificate, and some power user features simply don&rsquo;t exist), so I&rsquo;m still going to Opera/Opera beta/Chrome/Firefox for certain tasks. But Safari is very nice. For the first time.</p>
 
-<p>I started out as a Chrome user (well, don&rsquo;t want to recall the IE days), branched out to the Chromium Opera, and now ended up in Safari. Not sure about the future. When I look back, something nostalgic pops up in mind — <a href="http://www.google.com/googlebooks/chrome/">the Google Chrome Comic</a>. I enjoyed it more than once, but I never seemed to have archived it. So here it is, combined into <a href="http://zmwangx.github.io/pdf/2008-chrome-comic.pdf">one PDF</a>. In fact, you can create the PDF yourself:</p>
+<p>I started out as a Chrome user (well, don&rsquo;t want to recall the IE days), branched out to the Chromium Opera, and now ended up in Safari. Not sure about the future. When I look back, something nostalgic pops up in mind — <a href="http://www.google.com/googlebooks/chrome/">the Google Chrome Comic</a>. I enjoyed it more than once, but I never seemed to have archived it. So here it is, combined into <a href="https://dl.bintray.com/zmwangx/generic/2008-chrome-comic.pdf">one PDF</a>. In fact, you can create the PDF yourself:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
