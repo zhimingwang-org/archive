@@ -1,9 +1,7 @@
 ---
-layout: post
 title: "Speeding up Emacs with emacsclient"
 date: 2014-12-14 10:06:02 -0800
-comments: true
-categories: 
+date-display: December 14, 2014
 ---
 Emacs is notorious for its loading time. For me, this is especially annoying when I'm editing LaTeX files — AUCTeX takes about five seconds to load, and once I exit Emacs (especially after a quick edit), all that work is wasted, and next time I want to do some quick editing with that same LaTeX file — sorry, another five seconds.
 
@@ -13,7 +11,7 @@ This problem can be solved by "using that same Emacs", i.e., running Emacs in se
 
 Note that `emacsclient` requires a filename, so my script prompts for one if `$1` is empty.
 
-``` bash emc
+``` bash
 #!/usr/bin/env bash
 if [[ -n $1 ]]; then
     file=$1

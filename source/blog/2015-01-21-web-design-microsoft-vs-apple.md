@@ -1,9 +1,7 @@
 ---
-layout: post
 title: "Web design: Microsoft vs Apple"
 date: 2015-01-21 16:30:51 -0800
-comments: true
-categories: 
+date-display: January 21, 2015
 ---
 I just had a look at Ars's live blog on today's Windows 10 Event to acquire a sense of where Windows is heading. There's not much to report. Safari rip-off (Microsoft's new Spartan — wait, is this name also inspired by Safari? — features reading mode and offline reading list, Safari's killer features) aside, the focus seems to be virtual assistant, PC-tablet-phone integration, and gaming, none of which I'm interested in. The hologram thing does look cool, but putting the hype aside, I doubt if it will be really useful for the masses (except probably in gaming, one of my most despised applications of computing). I'm not a visionary so maybe I'm underestimating this.
 

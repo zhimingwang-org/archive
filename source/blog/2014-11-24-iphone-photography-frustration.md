@@ -1,9 +1,7 @@
 ---
-layout: post
 title: "iPhone photography frustration"
 date: 2014-11-24 12:42:25 -0800
-comments: true
-categories:
+date-display: November 24, 2014
 ---
 **TL; DR:** Jump to the paragraph “In the end…”
 

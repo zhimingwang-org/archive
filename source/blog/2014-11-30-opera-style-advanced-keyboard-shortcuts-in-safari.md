@@ -1,9 +1,7 @@
 ---
-layout: post
 title: "Opera-style advanced keyboard shortcuts in Safari"
 date: 2014-11-30 17:20:20 -0800
-comments: true
-categories: 
+date-display: November 30, 2014
 ---
 I've been using the Chromuim Opera for a long time, after Chrome's design went unbearably ugly around v32 (IIRC Opera stable channel was on v19 when I switched, which was released on January 28, 2014). From then on, Opera's [advanced keyboard shortcuts](http://help.opera.com/opera/Mac/1583/en/fasterBrowsing.html#advanced) has become an integral part of my browsing habit. In particular, the following are especially handy for me:
 
@@ -18,7 +16,7 @@ I've been using the Chromuim Opera for a long time, after Chrome's design went u
 
 Lately, with the Yosemite release, Safari has become a much more competitive browser. I won't say why, and I admit that it has major missing features that still prevents it from becoming my default — but I have to say I’m gradually moving more of more of my browsing, especially reading, to Safari. It would be nice if I could carry my power user shortcuts with me. Fortunately, this is possible. Just modify the plist in the following way:
 
-```bash safari-advanced-keyboard-shortcuts.sh
+```bash
 #!/usr/bin/env bash
 defaults write com.apple.Safari NSUserKeyEquivalents '{
 "Actual Size"="6";

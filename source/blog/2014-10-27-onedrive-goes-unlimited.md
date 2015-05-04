@@ -1,9 +1,7 @@
 ---
-layout: post
 title: "OneDrive goes unlimited"
 date: 2014-10-27 09:44:51 -0700
-comments: true
-categories:
+date-display: October 27, 2014
 ---
 **10/28/2014 Update:**
 

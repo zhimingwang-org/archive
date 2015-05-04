@@ -1,15 +1,13 @@
 ---
-layout: post
 title: "Back up OS X app icons"
 date: 2015-03-22 16:58:50 -0700
-comments: true
-categories: 
+date-display: March 22, 2015
 ---
 OS X application icons are valuable assets, and it's interesting to see how they evolve over time. This is especially the case when we upgraded to OS X 10.10 Yosemite, when Apple and many design-aware third party developers overhauled (mainly flattened) their icons.
 
 However, we lose all the old icons when we do a major OS upgrade. Technically they still live in Time Machine backups, but those are a pain to pull out. Therefore, I wrote a script just now to back up app icons of all applications living in `/Applications` (including those symlinked to `/Applications`, e.g., apps installed through `brew cask`) and its level-one subdirectories, and `/System/Library/CoreServices` (for `Finder.app` and such). Here's the script:
 
-```bash backup-app-icons
+```bash
 #!/usr/bin/env bash
 function app_version
 {

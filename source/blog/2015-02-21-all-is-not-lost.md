@@ -1,9 +1,7 @@
 ---
-layout: post
 title: "All is not lost"
 date: 2015-02-21 17:12:32 -0800
-comments: true
-categories: 
+date-display: February 21, 2015
 ---
 Lubos Motl always attacks the Many-Worlds Interpretation as if it is on the same level as anti-scientific claims. He even went on to attack Hugh Everett (the guy who first formulated this interpretation) personally; *ad hominem* is of course typical Motl shit, and I don't bother to find those posts. Anyway, here's yet another one: [Many worlds: a Rozali-Carroll exchange](http://motls.blogspot.com/2015/02/many-worlds-rozali-carroll-exchange.html).
 

@@ -1,9 +1,7 @@
 ---
-layout: post
 title: "Original images in Day One journal"
 date: 2014-11-26 00:22:16 -0800
-comments: true
-categories:
+date-display: November 26, 2014
 ---
 **TL; DR:** Jump to the paragraph beginning with “workaround”.
 

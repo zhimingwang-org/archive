@@ -1,9 +1,7 @@
 ---
-layout: post
 title: "Hello, Octopress!"
 date: 2014-10-20 16:53:00 -0700
-comments: true
-categories:
+date-display: October 20, 2014
 ---
 This post marks my transition from Tumblr to Octopress & GitHub Pages.
 
@@ -20,7 +18,7 @@ Speaking of the last point, I've always been envious of the beautiful code block
 
 (Let me give it a try first.)
 
-``` C hello.c
+``` C
 #include <stdio.h>
 
 int main(int argc, char **argv) {
@@ -32,4 +30,6 @@ Gorgeous. I'll get to the theme customization later. I'm actually busy as crazy 
 
 Before I close this post, let me also try to embed a random gist I authored yesterday (for brewing):
 
+```
 {% gist 828fd00bdecd6611cf40 brew.sh %}
+```

@@ -1,9 +1,7 @@
 ---
-layout: post
 title: "App suggestion: Dropzone 3"
 date: 2014-12-19 14:08:57 -0800
-comments: true
-categories: 
+date-display: December 19, 2014
 ---
 I recently tried and purchased [Dropzone 3](https://aptonic.com/dropzone3/). See a list of features on the linked official website. In short, Dropzone 3 provides an intermediate zone for drag-n-drop. You can use it as a stash (called "Drop Bar" — stacking is available), use it as a shortcut by putting frequently used folders and applications there, or trigger actions by dropping. There are a dozen builtin actions and [an additional list of readily available actions](https://aptonic.com/dropzone3/actions/), covering common web drives, SNS and file sharing sites. **Better yet, you can develop your custom actions with the easy-to-use [Ruby API](https://github.com/aptonic/dropzone3-actions/blob/master/README.md#dzalerttitle-message).** For instance, I wrote a simple Google Translate action, `Google Translate.dzbundle` ([link](https://gist.github.com/zmwangx/b27f106a8ba47468a43d)), based on [translate-shell](https://github.com/soimort/translate-shell). (You know, it's Ruby, so calling external commands and concatenating strings feel at home, as if you are coding in Perl or directly in shell; unlike Python, where you at least need to `import subprocess` then `subprocess.check_output` to get the output of an external command, and have to use a bunch of stupid `+`'s to get your goddamn message to print.)
 

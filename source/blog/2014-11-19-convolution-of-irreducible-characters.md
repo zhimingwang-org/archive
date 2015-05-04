@@ -1,9 +1,7 @@
 ---
-layout: post
 title: "Convolution of irreducible characters"
 date: 2014-11-19 20:40:37 -0800
-comments: true
-categories:
+date-display: November 19, 2014
 ---
 __*TL; DR:* The actual PDF write-up is [here](https://dl.bintray.com/zmwangx/generic/20141119-convolution-of-irreducible-characters.pdf).__
 

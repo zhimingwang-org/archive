@@ -1,9 +1,7 @@
 ---
-layout: post
 title: "Why Oh My Zsh is completely broken"
 date: 2015-05-03 17:15:49 -0700
-comments: true
-categories: 
+date-display: May  3, 2015
 ---
 Today I moved from [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh) from [Prezto](https://github.com/sorin-ionescu/prezto), after using Oh My Zsh for about three years since 2012. I'll try to shed some light on the reasons in this post.
 
@@ -25,7 +23,7 @@ Wait, why do I see `bzr.zsh`, `git.zsh`, and even `nvm.zsh` in the core lib? The
 
 Meanwhile, Prezto does it right. Prezto is highly modular, with the `pmodload` function defined in [`init.zsh`](https://github.com/sorin-ionescu/prezto/blob/08676a273eba1781ddcb63c4f89cfff9bd62eac4/init.zsh) to load modules. That's about the entirety of Prezto's core; everything else are in optional [modules](https://github.com/sorin-ionescu/prezto/blob/08676a273eba1781ddcb63c4f89cfff9bd62eac4/modules), including essential configs like `editor` (ZLE configs), `completion`, and `prompt`. Note that module loading order matters in some cases, but still, working with Prezto's modular structure is a joy. Apart from `init.zsh` and `modules/`, Prezto repo does contain a [`runcoms`](https://github.com/sorin-ionescu/prezto/tree/08676a273eba1781ddcb63c4f89cfff9bd62eac4/runcoms) directory with the rc files, but those are just recommendations that one may disregard. In fact, there are a total of eight lines related to Prezto in my `.zshrc`, and nowhere else (note that I only switched to Prezto today, so this freshly baked `.zshrc` is subject to change):
 
-```sh Excerpt of .zshrc
+```sh
 # prezto
 zstyle ':prezto:*:*' color 'yes'
 zstyle ':prezto:environment:termcap' color 'no' # disable coloring of less, which is insanely ugly

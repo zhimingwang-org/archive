@@ -1,9 +1,7 @@
 ---
-layout: post
 title: "Monitor progress of your Unix pipes with pv"
 date: 2015-02-10 02:18:30 -0800
-comments: true
-categories: 
+date-display: February 10, 2015
 ---
 Recently I found a very useful utility called `pv` (for "pipe viewer"). [Here](http://www.ivarch.com/programs/pv.shtml) is its home page, and it can be easily installed with `brew`. According to its man page,
 
@@ -19,7 +17,7 @@ Why is it useful? Well, pretty obvious if you are in the right audience. For me,
 
 For the record, here's the current version of my ruby script that attaches the first seven digits of the SHA-1 digests of the given files to their filenames:
 
-```ruby 7sha1
+```ruby
 #!/usr/bin/env ruby
 
 require 'fileutils'

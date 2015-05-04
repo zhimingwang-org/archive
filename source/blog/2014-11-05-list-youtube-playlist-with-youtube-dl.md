@@ -1,9 +1,7 @@
 ---
-layout: post
 title: "List YouTube playlist with youtube-dl"
 date: 2014-11-05 10:37:58 -0800
-comments: true
-categories:
+date-display: November  5, 2014
 ---
 Of course you are always welcome to use the [Google APIs Client Library for Python](https://developers.google.com/api-client-library/python/) to wrestle with YouTube, which is usually pretty simple. (As an added bonus, YouTube has some [nice runnable sample scripts](https://developers.google.com/youtube/v3/code_samples/) to get you started.) With the client library, listing videos in a YouTube playlist is a breeze.
 
@@ -49,7 +47,7 @@ https://youtube.com/v/qyE7-auTIcc
 
 There you go, a list of URIs you can use. Of course you can put this in a script to save some typing:
 
-```bash youtube-ls-playlist.sh https://gist.github.com/zmwangx/0245788475f963210ed9 Gist
+```bash
 #!/usr/bin/env bash
 # Takes a YouTube URI to a playlist (fairly liberal, it's fine as long
 # as the playlist id can be extracted), and prints a list of URIs in a

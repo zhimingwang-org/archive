@@ -1,9 +1,7 @@
 ---
-layout: post
 title: "Going Diceware"
 date: 2014-11-28 19:05:59 -0800
-comments: true
-categories: 
+date-display: November 28, 2014
 ---
 Today I'm officially going [Diceware](http://world.std.com/~reinhold/diceware.html). I published my simple C implementation of diceware on [GitHub](https://github.com/zmwangx/diceware).
 

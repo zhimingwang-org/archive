@@ -1,9 +1,7 @@
 ---
-layout: post
 title: "vobcopy, dvdbackup, etc."
 date: 2014-11-02 15:06:07 -0800
-comments: true
-categories:
+date-display: November  2, 2014
 ---
 A few days ago, I was cloning my entire Audio CD and DVD collection, and reported some of the findings in [this post](/blog/2014/10/26/audio-cd-slash-dvd-to-iso-image-on-os-x/). As said, the most important commands are
 
