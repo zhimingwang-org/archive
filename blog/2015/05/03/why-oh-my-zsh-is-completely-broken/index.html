@@ -1,0 +1,467 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Why Oh My Zsh Is Completely Broken - dl? cmplnts?</title>
+  <meta name="author" content="Zhiming Wang">
+
+  
+  <meta name="description" content="Today I moved from Oh My Zsh from Prezto, after using Oh My Zsh for about three years since 2012. I&rsquo;ll try to shed some light on the reasons in &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zmwangx.github.io/blog/2015/05/03/why-oh-my-zsh-is-completely-broken">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="dl? cmplnts?" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-53908325-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">dl? cmplnts?</a></h1>
+  
+    <h2>Mostly technical stuff. Can you figure out what the title stands for?</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:zmwangx.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Why Oh My Zsh Is Completely Broken</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-05-03T17:15:49-07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>5:15 pm</span></time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://zmwangx.github.io">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Today I moved from <a href="https://github.com/robbyrussell/oh-my-zsh">Oh My Zsh</a> from <a href="https://github.com/sorin-ionescu/prezto">Prezto</a>, after using Oh My Zsh for about three years since 2012. I&rsquo;ll try to shed some light on the reasons in this post.</p>
+
+<p>Z shell is a rather complicated shell (compared to Bash), with a hell lot of builtins and a complex completion system. The complexity makes it powerful, but also makes it intimidating to the mortal; moreover, it doesn&rsquo;t look as sweet as it could be out of box. Most mortals, me included, want a interactive shell that&rsquo;s sweet and &ldquo;just works&rdquo;, so we need wizards to guide us in configuring this beast. Oh My Zsh and Prezto are just two of such configuration frameworks. Oh My Zsh is slightly older: the first commit of Oh My Zsh dates back to <a href="https://github.com/robbyrussell/oh-my-zsh/commit/e20401e04e057a39c228dbb99dda68ec7fa4235a">August 2009</a>, while Prezto was forked from Oh My Zsh in <a href="https://github.com/sorin-ionescu/prezto/commit/8d487d4f6c2d38cb108d7c8c0c2de9f0385da402">February 2011</a>, and has since been completely rewritten. <code>robbyrussell/oh-my-zsh</code> as of today has 23,610 stars on GitHub, while <code>sorin-ionescu/prezto</code> has 4,069. This doesn&rsquo;t imply Oh My Zsh is any better — I guess the fancy name of Oh My Zsh earned it a lot of undeserved stars; you&rsquo;ll see why soon.</p>
+
+<p>I was hardly involved in Oh My Zsh development, and I haven&rsquo;t even carefully inspected Oh My Zsh&rsquo;s source code until yesterday, so my soon-to-come complaints about oh-my-zsh might not be completely true. But here it is: <strong>Oh My Zsh brings the worst of community-driven development, where the &ldquo;community&rdquo; knows not of what it is doing, and just wants to get things done in the sloppiest way possible.</strong> Let&rsquo;s look at some examples. All discussions are based on <a href="https://github.com/robbyrussell/oh-my-zsh/commit/140034605edd0f72c548685d39e49687a44c1b23"><code>1400346</code></a>, the latest commit at the time of writing.</p>
+
+<h2>The core lib hodgepodge</h2>
+
+<p>First, look at Oh My Zsh&rsquo;s core <a href="https://github.com/robbyrussell/oh-my-zsh/tree/140034605edd0f72c548685d39e49687a44c1b23/lib">lib</a>:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>bzr.zsh         directories.zsh  grep.zsh          misc.zsh                   spectrum.zsh
+</span><span class='line'>completion.zsh  functions.zsh    history.zsh       nvm.zsh                    termsupport.zsh
+</span><span class='line'>correction.zsh  git.zsh          key-bindings.zsh  prompt_info_functions.zsh  theme-and-appearance.zsh</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Wait, why do I see <code>bzr.zsh</code>, <code>git.zsh</code>, and even <code>nvm.zsh</code> in the core lib? The answer is that they are here because they define functions (<code>bzr_prompt_info</code>, <code>git_prompt_info</code>, <code>nvm_prompt_info</code>, etc.) that are called from many themes. But why are all of these mandatory (all files in <code>lib</code> are sourced from <code>oh-my-zsh.sh</code>)? Why should I load <code>bzr.sh</code> and <code>nvm.zsh</code> when I don&rsquo;t use Bazaar and NVM at all (well not really, I use <a href="https://github.com/felipec/git-remote-bzr">git-remote-bzr</a> when I have to clone a Bazaar repo)? And since we already have <code>bzr.sh</code>, <code>git.zsh</code> and <code>nvm.zsh</code> in the core library, why don&rsquo;t we also have <code>hg.zsh</code>, <code>rvm.zsh</code>, <code>svn.zsh</code>, <code>virtualenv.zsh</code>, just to name a few? Apparently, Oh My Zsh put these marginal things in the core because there&rsquo;s no easy way to load a plugin from a theme, except an ugly <code>source</code> with the full path of the plugin, which is also how plugins are loaded in <code>oh-my-zsh.sh</code>.</p>
+
+<p>Meanwhile, Prezto does it right. Prezto is highly modular, with the <code>pmodload</code> function defined in <a href="https://github.com/sorin-ionescu/prezto/blob/08676a273eba1781ddcb63c4f89cfff9bd62eac4/init.zsh"><code>init.zsh</code></a> to load modules. That&rsquo;s about the entirety of Prezto&rsquo;s core; everything else are in optional <a href="https://github.com/sorin-ionescu/prezto/blob/08676a273eba1781ddcb63c4f89cfff9bd62eac4/modules">modules</a>, including essential configs like <code>editor</code> (ZLE configs), <code>completion</code>, and <code>prompt</code>. Note that module loading order matters in some cases, but still, working with Prezto&rsquo;s modular structure is a joy. Apart from <code>init.zsh</code> and <code>modules/</code>, Prezto repo does contain a <a href="https://github.com/sorin-ionescu/prezto/tree/08676a273eba1781ddcb63c4f89cfff9bd62eac4/runcoms"><code>runcoms</code></a> directory with the rc files, but those are just recommendations that one may disregard. In fact, there are a total of eight lines related to Prezto in my <code>.zshrc</code>, and nowhere else (note that I only switched to Prezto today, so this freshly baked <code>.zshrc</code> is subject to change):</p>
+
+<figure class='code'><figcaption><span>Excerpt of .zshrc</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c"># prezto</span>
+</span><span class='line'>zstyle <span class="s1">&#39;:prezto:*:*&#39;</span> color <span class="s1">&#39;yes&#39;</span>
+</span><span class='line'>zstyle <span class="s1">&#39;:prezto:environment:termcap&#39;</span> color <span class="s1">&#39;no&#39;</span> <span class="c"># disable coloring of less, which is insanely ugly</span>
+</span><span class='line'>zstyle <span class="s1">&#39;:prezto:load&#39;</span> pmodule environment editor <span class="nb">history </span>directory utility colors spectrum git completion prompt ruby
+</span><span class='line'>zstyle <span class="s1">&#39;:prezto:module:editor&#39;</span> key-bindings <span class="s1">&#39;emacs&#39;</span>
+</span><span class='line'>zstyle <span class="s1">&#39;:prezto:module:prompt&#39;</span> theme <span class="s1">&#39;zmwangx&#39;</span>
+</span><span class='line'><span class="o">[[</span> <span class="s2">&quot;$OSTYPE&quot;</span> <span class="o">==</span> darwin* <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nb">export </span><span class="nv">BROWSER</span><span class="o">=</span><span class="s1">&#39;open&#39;</span>
+</span><span class='line'><span class="nb">source</span> ~/.zprezto/init.zsh
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Here <code>zmwangx</code> is my <a href="https://github.com/zmwangx/prezto/blob/master/modules/prompt/functions/prompt_zmwangx_setup">personal theme</a> that looks like <a href="https://i.imgur.com/nCBK8ZB.png">this</a>.</p>
+
+<h2>Incredibly poor code quality</h2>
+
+<p>Oh My Zsh&rsquo;s code quality is incredibly poor. Even within the core library. Pick any file from <code>lib/</code>, and you&rsquo;ll be amazed by the hot mess in front of your eyes. There&rsquo;s no coding standard whatsoever:</p>
+
+<ul>
+<li>You can find four-space indents and two-space indents mixed <a href="https://github.com/robbyrussell/oh-my-zsh/blob/140034605edd0f72c548685d39e49687a44c1b23/lib/functions.zsh">in the same file</a>;</li>
+<li>You can find function definitions with the <code>function</code> keyword and without <a href="https://github.com/robbyrussell/oh-my-zsh/blob/140034605edd0f72c548685d39e49687a44c1b23/lib/git.zsh">in the same file</a>;</li>
+<li>You can find <a href="https://github.com/robbyrussell/oh-my-zsh/blob/140034605edd0f72c548685d39e49687a44c1b23/lib/functions.zsh#L2">167-character-long lines</a> mixed with early-broken lines (yes, sometimes <a href="https://github.com/robbyrussell/oh-my-zsh/blob/140034605edd0f72c548685d39e49687a44c1b23/lib/git.zsh#L69">within the same file</a>);</li>
+<li>You can find completely commented out blocks of code <a href="https://github.com/robbyrussell/oh-my-zsh/blob/140034605edd0f72c548685d39e49687a44c1b23/lib/key-bindings.zsh#L70-L87">in the core lib</a>, where the average user is not supposed to touch;</li>
+</ul>
+
+
+<p>I guess the list could go on; I didn&rsquo;t spend more time inspecting this crap.</p>
+
+<p>We were discussing styles, but obviously style isn&rsquo;t the only problem with this code base. Next onto a case study of how Oh My Zsh does something in the most inefficient way possible. Let&rsquo;s have a look at <a href="https://github.com/robbyrussell/oh-my-zsh/blob/140034605edd0f72c548685d39e49687a44c1b23/lib/git.zsh">the <code>git.zsh</code> file</a>. It suffers from almost all problems we have talked about so far, but let&rsquo;s focus specifically on <a href="https://github.com/robbyrussell/oh-my-zsh/blob/140034605edd0f72c548685d39e49687a44c1b23/lib/git.zsh#L78-L122">the <code>git_prompt_status</code> function</a>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>git_prompt_status<span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="nv">INDEX</span><span class="o">=</span><span class="k">$(</span><span class="nb">command </span>git status --porcelain -b 2&gt; /dev/null<span class="k">)</span>
+</span><span class='line'>  <span class="nv">STATUS</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+</span><span class='line'>  <span class="k">if</span> <span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;$INDEX&quot;</span> <span class="p">|</span> <span class="nb">command </span>grep -E <span class="s1">&#39;^\?\? &#39;</span> <span class="p">&amp;</span>&gt; /dev/null<span class="k">)</span><span class="p">;</span> <span class="k">then</span>
+</span><span class='line'>    <span class="nv">STATUS</span><span class="o">=</span><span class="s2">&quot;$ZSH_THEME_GIT_PROMPT_UNTRACKED$STATUS&quot;</span>
+</span><span class='line'>  <span class="k">fi</span>
+</span><span class='line'>  <span class="k">if</span> <span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;$INDEX&quot;</span> <span class="p">|</span> grep <span class="s1">&#39;^A  &#39;</span> <span class="p">&amp;</span>&gt; /dev/null<span class="k">)</span><span class="p">;</span> <span class="k">then</span>
+</span><span class='line'>    <span class="nv">STATUS</span><span class="o">=</span><span class="s2">&quot;$ZSH_THEME_GIT_PROMPT_ADDED$STATUS&quot;</span>
+</span><span class='line'>  <span class="k">elif</span> <span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;$INDEX&quot;</span> <span class="p">|</span> grep <span class="s1">&#39;^M  &#39;</span> <span class="p">&amp;</span>&gt; /dev/null<span class="k">)</span><span class="p">;</span> <span class="k">then</span>
+</span><span class='line'>    <span class="nv">STATUS</span><span class="o">=</span><span class="s2">&quot;$ZSH_THEME_GIT_PROMPT_ADDED$STATUS&quot;</span>
+</span><span class='line'>  <span class="k">fi</span>
+</span><span class='line'>  <span class="k">if</span> <span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;$INDEX&quot;</span> <span class="p">|</span> grep <span class="s1">&#39;^ M &#39;</span> <span class="p">&amp;</span>&gt; /dev/null<span class="k">)</span><span class="p">;</span> <span class="k">then</span>
+</span><span class='line'>    <span class="nv">STATUS</span><span class="o">=</span><span class="s2">&quot;$ZSH_THEME_GIT_PROMPT_MODIFIED$STATUS&quot;</span>
+</span><span class='line'>  <span class="k">elif</span> <span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;$INDEX&quot;</span> <span class="p">|</span> grep <span class="s1">&#39;^AM &#39;</span> <span class="p">&amp;</span>&gt; /dev/null<span class="k">)</span><span class="p">;</span> <span class="k">then</span>
+</span><span class='line'>    <span class="nv">STATUS</span><span class="o">=</span><span class="s2">&quot;$ZSH_THEME_GIT_PROMPT_MODIFIED$STATUS&quot;</span>
+</span><span class='line'>  <span class="k">elif</span> <span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;$INDEX&quot;</span> <span class="p">|</span> grep <span class="s1">&#39;^ T &#39;</span> <span class="p">&amp;</span>&gt; /dev/null<span class="k">)</span><span class="p">;</span> <span class="k">then</span>
+</span><span class='line'>    <span class="nv">STATUS</span><span class="o">=</span><span class="s2">&quot;$ZSH_THEME_GIT_PROMPT_MODIFIED$STATUS&quot;</span>
+</span><span class='line'>  <span class="k">fi</span>
+</span><span class='line'>  <span class="k">if</span> <span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;$INDEX&quot;</span> <span class="p">|</span> grep <span class="s1">&#39;^R  &#39;</span> <span class="p">&amp;</span>&gt; /dev/null<span class="k">)</span><span class="p">;</span> <span class="k">then</span>
+</span><span class='line'>    <span class="nv">STATUS</span><span class="o">=</span><span class="s2">&quot;$ZSH_THEME_GIT_PROMPT_RENAMED$STATUS&quot;</span>
+</span><span class='line'>  <span class="k">fi</span>
+</span><span class='line'>  <span class="k">if</span> <span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;$INDEX&quot;</span> <span class="p">|</span> grep <span class="s1">&#39;^ D &#39;</span> <span class="p">&amp;</span>&gt; /dev/null<span class="k">)</span><span class="p">;</span> <span class="k">then</span>
+</span><span class='line'>    <span class="nv">STATUS</span><span class="o">=</span><span class="s2">&quot;$ZSH_THEME_GIT_PROMPT_DELETED$STATUS&quot;</span>
+</span><span class='line'>  <span class="k">elif</span> <span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;$INDEX&quot;</span> <span class="p">|</span> grep <span class="s1">&#39;^D  &#39;</span> <span class="p">&amp;</span>&gt; /dev/null<span class="k">)</span><span class="p">;</span> <span class="k">then</span>
+</span><span class='line'>    <span class="nv">STATUS</span><span class="o">=</span><span class="s2">&quot;$ZSH_THEME_GIT_PROMPT_DELETED$STATUS&quot;</span>
+</span><span class='line'>  <span class="k">elif</span> <span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;$INDEX&quot;</span> <span class="p">|</span> grep <span class="s1">&#39;^AD &#39;</span> <span class="p">&amp;</span>&gt; /dev/null<span class="k">)</span><span class="p">;</span> <span class="k">then</span>
+</span><span class='line'>    <span class="nv">STATUS</span><span class="o">=</span><span class="s2">&quot;$ZSH_THEME_GIT_PROMPT_DELETED$STATUS&quot;</span>
+</span><span class='line'>  <span class="k">fi</span>
+</span><span class='line'>  <span class="k">if</span> <span class="k">$(</span><span class="nb">command </span>git rev-parse --verify refs/stash &gt;/dev/null 2&gt;<span class="p">&amp;</span>1<span class="k">)</span><span class="p">;</span> <span class="k">then</span>
+</span><span class='line'>    <span class="nv">STATUS</span><span class="o">=</span><span class="s2">&quot;$ZSH_THEME_GIT_PROMPT_STASHED$STATUS&quot;</span>
+</span><span class='line'>  <span class="k">fi</span>
+</span><span class='line'>  <span class="k">if</span> <span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;$INDEX&quot;</span> <span class="p">|</span> grep <span class="s1">&#39;^UU &#39;</span> <span class="p">&amp;</span>&gt; /dev/null<span class="k">)</span><span class="p">;</span> <span class="k">then</span>
+</span><span class='line'>    <span class="nv">STATUS</span><span class="o">=</span><span class="s2">&quot;$ZSH_THEME_GIT_PROMPT_UNMERGED$STATUS&quot;</span>
+</span><span class='line'>  <span class="k">fi</span>
+</span><span class='line'>  <span class="k">if</span> <span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;$INDEX&quot;</span> <span class="p">|</span> grep <span class="s1">&#39;^## .*ahead&#39;</span> <span class="p">&amp;</span>&gt; /dev/null<span class="k">)</span><span class="p">;</span> <span class="k">then</span>
+</span><span class='line'>    <span class="nv">STATUS</span><span class="o">=</span><span class="s2">&quot;$ZSH_THEME_GIT_PROMPT_AHEAD$STATUS&quot;</span>
+</span><span class='line'>  <span class="k">fi</span>
+</span><span class='line'>  <span class="k">if</span> <span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;$INDEX&quot;</span> <span class="p">|</span> grep <span class="s1">&#39;^## .*behind&#39;</span> <span class="p">&amp;</span>&gt; /dev/null<span class="k">)</span><span class="p">;</span> <span class="k">then</span>
+</span><span class='line'>    <span class="nv">STATUS</span><span class="o">=</span><span class="s2">&quot;$ZSH_THEME_GIT_PROMPT_BEHIND$STATUS&quot;</span>
+</span><span class='line'>  <span class="k">fi</span>
+</span><span class='line'>  <span class="k">if</span> <span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;$INDEX&quot;</span> <span class="p">|</span> grep <span class="s1">&#39;^## .*diverged&#39;</span> <span class="p">&amp;</span>&gt; /dev/null<span class="k">)</span><span class="p">;</span> <span class="k">then</span>
+</span><span class='line'>    <span class="nv">STATUS</span><span class="o">=</span><span class="s2">&quot;$ZSH_THEME_GIT_PROMPT_DIVERGED$STATUS&quot;</span>
+</span><span class='line'>  <span class="k">fi</span>
+</span><span class='line'>  <span class="nb">echo</span> <span class="nv">$STATUS</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>This one single function intended to be invoked from a precmd hook (basically excuted every time the prompt is printed), calls <code>grep</code> a staggering 14 times inside command substitutions, forking the process 28 times — while all the greps can be replaced with pattern/regex matching right within the shell.</strong> Keep in mind that forking is the most expensive operation of the shell. For instance, <code>$(echo "$INDEX" | grep '^A  ' &amp;&gt; /dev/null)</code> may well be replaced with</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="o">[[</span> <span class="nv">$INDEX</span> <span class="o">==</span> *<span class="s1">$&#39;\nA  &#39;</span>* <span class="o">]]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>or</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="o">[[</span> <span class="nv">$INDEX</span> <span class="o">=</span>~ <span class="s1">$&#39;\nA  &#39;</span> <span class="o">]]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>(Note that the <code>git status --porcelain -b</code> call always prints the branch info such as <code>## master...origin/master</code> in the first line, so <code>A </code> — that is, A followed by two spaces, if present at the beginning of any line, must be preceded by a newline; that&rsquo;s why the above works.) All other grep calls can be similarly replaced with pattern/regex matching. No forking.</p>
+
+<p>By the way, whoever wrote this function seems to be unaware of the <code>-q,--quite,--silent</code> switch of <code>grep</code> (which should be available in all implementations), and every call is littered with <code>&amp;&gt; /dev/null</code>. In fact, using the <code>-q</code> switch is even (slightly) faster: a reasonable implementation of <code>-q</code> exits immediately when a match is found, while what is written here waits until all input is processed.</p>
+
+<p>I haven&rsquo;t exhausted the problems with this function just yet. As a bonus: despite being awfully inefficient, <strong>this function <em>can&rsquo;t even be used</em> in many cases for which it is designed.</strong> You might have noticed that the order of different status bits is completely fixed by whoever wrote this function (by the way, all those <code>$ZSH_THEME_GIT_PROMPT_*</code> variables are documented nowhere, so one who wants to write a theme has to dig into the source — only to find the function useless expect for polluting the namespace). If one wants to use a different order, or put some of the bits in <code>RPROMPT</code>, one has to roll his own (or good luck parsing its output). In fact, even a <a href="https://github.com/robbyrussell/oh-my-zsh/blob/140034605edd0f72c548685d39e49687a44c1b23/lib/git.zsh#L2-L8">dumbed down function <code>git_prompt_info</code></a>, which only prints the branch name and whether it&rsquo;s dirty, is similarly uncustomizable; <a href="https://github.com/robbyrussell/oh-my-zsh/blob/140034605edd0f72c548685d39e49687a44c1b23/themes/gallois.zsh-theme">the <code>gallois</code> theme</a>, my first theme and on which I later based my own theme, needs to define a <code>git_custom_status</code> function to achieve what it needs — otherwise something as simple as adding a pair of brackets around the branch name is super painful.</p>
+
+<p><strong>One might wonder how Prezto solves the same problem. The answer is in <a href="https://github.com/sorin-ionescu/prezto/blob/08676a273eba1781ddcb63c4f89cfff9bd62eac4/modules/git/functions/git-info">the file <code>modules/git/functions/git-info</code></a>. The <code>git-info</code> function does more, and again in a highly modular way (without grep calls, for God&rsquo;s sake): status bits or their combinations are <a href="https://github.com/sorin-ionescu/prezto/blob/08676a273eba1781ddcb63c4f89cfff9bd62eac4/modules/git/functions/git-info#L393-L416">formatted on demand with <code>zformat</code> and stored in an associative array <code>git_info</code></a>, where users specify format strings via <code>zstyle</code> with <a href="https://github.com/sorin-ionescu/prezto/tree/08676a273eba1781ddcb63c4f89cfff9bd62eac4/modules/git#theming">thoroughly documented escape sequences</a>. Very beautiful solution.</strong></p>
+
+<h2>The completely broken community contribution process</h2>
+
+<p>I&rsquo;m not sure if the project maintainers are Zsh wizards (I&rsquo;m afraid not). I&rsquo;ll just assume that most of the code with incredibly poor quality comes from community contribution. Okay, community. But even the community contribution process is completely broken.</p>
+
+<p>At the time of writing there are 159 open issues and 446 open pull requests in <code>robbyrussell/oh-my-zsh</code> (the stats are 13/35 in <code>sorin-ionescu/prezto</code> — not proportional to the stars or forks). There&rsquo;s even <a href="https://github.com/robbyrussell/oh-my-zsh/pull/3809">a PR called &ldquo;Easy-to-Merge&rdquo;</a> that is said to collect PRs that are either extremely simple fixes or have been discussed–tested–and–signed-off (wait, then why aren&rsquo;t they already merged?). This makes it almost impossible to open new, substantial PRs (like fixing the <code>git_prompt_status</code> above) — God knows whether other people have already proposed the same fix, or a different fix for the same problem, whether it&rsquo;s been discussed–tested–and–signed-off, and how much discussion will be needed for a new PR.</p>
+
+<p>You might infer from the above that the actually merged PRs are discussed–tested–and–signed-off. Well, of course not (think about the code quality), and here&rsquo;s one more case study.</p>
+
+<p>The only time I <a href="https://github.com/robbyrussell/oh-my-zsh/pull/3591">submitted a PR</a> is when <a href="https://github.com/robbyrussell/oh-my-zsh/pull/3564">a previous PR</a> broke aliases of the <code>ls</code> family, which most of us run tens to hundreds of times every day. The <code>-h</code> option was stripped from all aliases but one (which was ridiculous since the option seemed to be lost during copy/paste), and anyone who used the affected aliases regularly and lived with the PR for ten minutes should notice. Apparently nobody looked at the diffs before merging, or nobody cared (before I and one other guy jumped in). My PR was merged three days later; the delay was okay.</p>
+
+<p><a href="https://github.com/robbyrussell/oh-my-zsh/pull/3341">In another instance</a>, the delay was totally unbearable. <a href="https://savannah.gnu.org/forum/forum.php?forum_id=8152">grep 2.21</a> was released on November 23, 2014, and it deprecated <code>GREP_OPTIONS</code>. Oh My Zsh was using <code>GREP_OPTIONS</code> back then, so anyone who upgraded to grep 2.21 and used grep regularly was getting a lot of deprecation warnings (oh, before you ask, <code>grep.zsh</code> is the core lib). Core lib stuff spitting deprecation warnings on all platforms all the time is a pretty big thing, right? There were multiple ways to fix this problem, and all of them were trivial to anyone with a reasonable amount of knowledge of Zsh. However, there were quite a bit of discussions spanning multiple issues and PRs (most notably <a href="https://github.com/robbyrussell/oh-my-zsh/pull/3341">this one</a>). And despite all the discussions, not a single maintainer or collaborator joined or showed any interest, and <a href="https://github.com/robbyrussell/oh-my-zsh/pull/3403">a fix was merged not until December 14, 2014</a>. Of course there are temporary fixes (remember, the issue was trivial to begin with), but the problem must be confusing for the less-proficient Zsh users during the twenty day window.</p>
+
+<h2>Easter egg</h2>
+
+<p>One more thing, among countless other problems: the recommended way to install Oh My Zsh is either</p>
+
+<pre><code>curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+</code></pre>
+
+<p>or</p>
+
+<pre><code>wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh
+</code></pre>
+
+<p>Cool, huh? How many of you have the <code>--no-check-certificate</code> option of <code>wget</code> automatically turned on? Thankfully there&rsquo;s no <code>sudo</code> in front.</p>
+
+<h2>Summary</h2>
+
+<p>Oh My Zsh was a great idea when it took off. Over the years however, through low-quality community contributions from people who barely understand Zsh (and the right approaches to shell scripting), it evolved into a beast that no one except the maintainers could seriously contribute to; yet the maintainers seem to be pretty satisfied with it.</p>
+
+<p>Therefore, I&rsquo;m moving to Prezto, the project with far better modularity and code quality. In fact, this rant all began from yesterday, when I was about to embark on a stripped down Zsh configuration system for myself. I was thinking about borrowing code from both Oh My Zsh and Prezto; but after reading some code from both projects, I soon realized that Oh My Zsh is totally crap and Prezto can be taken almost unmodified. I hope that more people will take a look at Prezto, realize that it&rsquo;s infinitely better than the famed Oh My Zsh, fork it, and possibly submit patches.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Zhiming Wang</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-05-03T17:15:49-07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>5:15 pm</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://zmwangx.github.io/blog/2015/05/03/why-oh-my-zsh-is-completely-broken/" data-via="" data-counturl="http://zmwangx.github.io/blog/2015/05/03/why-oh-my-zsh-is-completely-broken/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/04/26/using-python-3-with-emacs-jedi/" title="Previous Post: Using Python 3 with Emacs Jedi">&laquo; Using Python 3 with Emacs Jedi</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/05/03/why-oh-my-zsh-is-completely-broken/">Why Oh My Zsh Is Completely Broken</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/26/using-python-3-with-emacs-jedi/">Using Python 3 With Emacs Jedi</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/03/22/back-up-os-x-app-icons/">Back Up OS X App Icons</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/24/the-new-onedrive-api/">The New OneDrive API</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/21/all-is-not-lost/">All Is Not Lost</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/zmwangx">@zmwangx</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'zmwangx',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Zhiming Wang -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'zmwangx';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://zmwangx.github.io/blog/2015/05/03/why-oh-my-zsh-is-completely-broken/';
+        var disqus_url = 'http://zmwangx.github.io/blog/2015/05/03/why-oh-my-zsh-is-completely-broken/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
