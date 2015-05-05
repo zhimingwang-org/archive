@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="pandoc" />
+<meta name="author" content="Zhiming Wang" />
+<meta name="date" content="2014-12-23T00:51:05-0800" />
+<title>mpv launcher</title>
+<link rel="apple-touch-icon-precomposed" href="/img/favicon-152.png">
+<meta name="msapplication-TileColor" content="#FFFFFF">
+<meta name="msapplication-TileImage" content="/img/favicon-144.png">
+<style type="text/css">code{white-space: pre;}</style>
+<link href='/css/normalize.css' media="all" rel="stylesheet" type="text/css">
+<link href='/css/theme.css' media="all" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+</head>
+<body>
+<nav>
+<div style="height:150px; width:100px; text-align:center;">
+<a href="/"><embed src="/img/icon.svg" type="image/svg+xml" height="100" width="100" style="padding: 2px 0;"></a>
+<div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
+<div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</div>
+</nav>
+<article>
+<header>
+<h1 class="title">mpv launcher</h1>
+<h2 class="meta">
+<time class="timestamp" datetime="2014-12-23T00:51:05-0800">December 23, 2014,</time>
+by <span class="author">Zhiming Wang</span>
+</h2>
+</header>
+<p><strong><em>04/06/2015 update:</em></strong></p>
+<p>I just noticed that <code>daemonize</code> doesn't play too well with the OS; in particular, when you use dark menu bar on OS X Yosemite, apps launched with <code>daemonize</code> won't conform to that. So a native shell solution would be using <code>/bin/zsh</code> and run</p>
+<pre><code>mpv &quot;$@&quot; &gt;/dev/null 2&gt;&amp;1 &lt;/dev/null &amp;!</code></pre>
+<p>instead.</p>
+<hr />
+<p><a href="http://mpv.io"><code>mpv</code></a> is a nice simplistic video player (fork of MPlayer and mplayer2). The CLI is flawless (and you can run as many instances as you want), but when it comes to the OS X application bundle, there's one major annoyance. Each app bundle could only have one running instance (unless <code>open -n</code>’ed, which is not how sane people use app bundles), and one instance of <code>mpv</code> only supports one video. So, say I'm playing one video with the app bundle, and unsuspectingly opens another in Finder (which is associated to <code>mpv.app</code> by default), then the latter video immediately takes over, and the position in the first video is lost. That happens <em>a lot</em>.</p>
+<p>Today I finally gave this issue some serious thought (I've been on a bug report/enhancement request spree these days so it's natural for me to start thinking about enhancements). Turns out that there's a pretty simple workaround. I created an automator app <code>mpv-launcher.app</code> that does one thing: &quot;Run Shell Script&quot; (pass input as arguments)</p>
+<pre><code>daemonize /usr/local/bin/mpv &quot;$@&quot;</code></pre>
+<p>in the shell of your choice (for me the shell of choice is <code>zsh</code> since the env would be readily available from my <code>zshenv</code>). <code>daemonize</code>, as the name suggests, daemonizes the process so that the process doesn't block; this way, <code>mpv-launcher.app</code> immediately quits after launching, making multiple &quot;instances&quot; possible. (<code>daemonize</code> can be installed via <code>brew install daemonize</code>; note that you need to specify the full path of the command to daemonize, which in my case is <code>/usr/local/bin/mpv</code>). And there you go. Associate your video files to <code>mpv-launcher.app</code>. Launch as many instances as you want. Enjoy.</p>
+<p>By the way, I also filed an <a href="https://github.com/mpv-player/mpv/issues/1377">enhancement request</a> with <code>mpv-player/mpv</code>. We'll see what the developers can do. Hopefully the app bundle will support multiple videos out of box in the future.</p>
+<footer>
+<hr>
+<a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</footer>
+</article>
+</body>
+</html>

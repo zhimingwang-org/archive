@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="pandoc" />
+<meta name="author" content="Zhiming Wang" />
+<meta name="date" content="2014-11-28T19:05:59-0800" />
+<title>Going Diceware</title>
+<link rel="apple-touch-icon-precomposed" href="/img/favicon-152.png">
+<meta name="msapplication-TileColor" content="#FFFFFF">
+<meta name="msapplication-TileImage" content="/img/favicon-144.png">
+<style type="text/css">code{white-space: pre;}</style>
+<link href='/css/normalize.css' media="all" rel="stylesheet" type="text/css">
+<link href='/css/theme.css' media="all" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+</head>
+<body>
+<nav>
+<div style="height:150px; width:100px; text-align:center;">
+<a href="/"><embed src="/img/icon.svg" type="image/svg+xml" height="100" width="100" style="padding: 2px 0;"></a>
+<div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
+<div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</div>
+</nav>
+<article>
+<header>
+<h1 class="title">Going Diceware</h1>
+<h2 class="meta">
+<time class="timestamp" datetime="2014-11-28T19:05:59-0800">November 28, 2014,</time>
+by <span class="author">Zhiming Wang</span>
+</h2>
+</header>
+<p>Today I'm officially going <a href="http://world.std.com/~reinhold/diceware.html">Diceware</a>. I published my simple C implementation of diceware on <a href="https://github.com/zmwangx/diceware">GitHub</a>.</p>
+<p>I've been using 1Password for a couple years now, and I've always been a bit worried about my master password. It's a ~30 byte monster with uppercase, lowercase letters, numbers, and special symbols. By any measure it is very safe. The problem is there are (extremely) personal things in there. I assembled several unrelated things that I (secretly) hold dearest to my heart, obfuscated them with rules not found in best64, and mixed with semi-gibberish. My daily login password is a combo similar in nature, with less obfuscation to facilitate typing. People who dig really deep into my identity might be able to compromise it (or not); I'm afraid that I'm more predictable than I thought I was. I know, the worry is pretty much unwarranted, as I’m not likely the target of a focused attack — I’m neither rich nor equipped with sensitive information or power, and for wide-range exploits, 99.9% of people are lower-hanging fruits. Even for a targeted attack, <a href="http://xkcd.com/538/">xkcd 538: Security</a> broke a crypto nerd’s imagination with a $5 wrench. However, a geek is a geek, you can’t block a geek’s imagination.</p>
+<p>Therefore, after worrying for so long, today I’m going Diceware. Eight diceware words give you at least 100 bits of true entropy. Unfortunately I don’t have a die, and don’t bother to get one. (Amazon Prime: get it Monday? No. Target, six miles away? No.) So I read my random bits from <code>/dev/urandom</code>. The C implementation is <a href="https://github.com/zmwangx/diceware">here</a>. By publishing this I’m announcing to the world that I’m using diceware. But I’m not afraid, since I’m now protected by true entropy that’s not compromised by publishing the scheme.</p>
+<footer>
+<hr>
+<a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</footer>
+</article>
+</body>
+</html>

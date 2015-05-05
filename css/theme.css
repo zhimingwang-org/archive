@@ -1,0 +1,108 @@
+body {
+    color: #333;
+    font-family: "PT Serif", serif
+}
+
+nav {
+    position: fixed;
+    left: 5%;
+    top: 10%;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+article {
+    position: absolute;
+    width: 50%;
+    left: 20%;
+    padding: 5%;
+    font-size: 11pt;
+    text-align: justify;
+}
+
+h1.title {
+    text-align: center;
+    font-size: 18pt;
+}
+
+h2 {
+    text-align: center;
+    font-size: 14pt;
+}
+
+h2.meta {
+    font-size: 11pt;
+    font-weight: normal;
+    font-style: italic;
+}
+
+h2.toc {
+    text-align: left;
+}
+
+h3 {
+    font-size: 12pt;
+}
+
+code {
+    font-family: 'Courier', monospace;
+    font-size: 10.5pt;
+}
+
+pre {
+    margin: 0 2em;
+}
+
+pre code {
+    font-size: 10pt;
+}
+
+blockquote {
+    margin: 0 2em;
+    font-style: italic;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.figure .caption {
+    text-align: center;
+    font-size: 10pt;
+}
+
+a {
+    color: #333;
+}
+
+footer {
+    text-align: right;
+}
+
+footer .cc-icon {
+    width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    display: inline-block;
+    background-image: url("http://mirrors.creativecommons.org/presskit/icons/cc.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px;
+    vertical-align: middle;
+}
+
+div.indextoc ul {
+    list-style-type: none;
+    padding-left: 2em;
+}
+
+div.indextoc ul li time.tocdate {
+    float: left;
+    width: 8em;
+}

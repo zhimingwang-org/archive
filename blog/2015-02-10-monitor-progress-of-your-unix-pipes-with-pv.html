@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="pandoc" />
+<meta name="author" content="Zhiming Wang" />
+<meta name="date" content="2015-02-10T02:18:30-0800" />
+<title>Monitor progress of your Unix pipes with pv</title>
+<link rel="apple-touch-icon-precomposed" href="/img/favicon-152.png">
+<meta name="msapplication-TileColor" content="#FFFFFF">
+<meta name="msapplication-TileImage" content="/img/favicon-144.png">
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+</style>
+<link href='/css/normalize.css' media="all" rel="stylesheet" type="text/css">
+<link href='/css/theme.css' media="all" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+</head>
+<body>
+<nav>
+<div style="height:150px; width:100px; text-align:center;">
+<a href="/"><embed src="/img/icon.svg" type="image/svg+xml" height="100" width="100" style="padding: 2px 0;"></a>
+<div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
+<div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</div>
+</nav>
+<article>
+<header>
+<h1 class="title">Monitor progress of your Unix pipes with pv</h1>
+<h2 class="meta">
+<time class="timestamp" datetime="2015-02-10T02:18:30-0800">February 10, 2015,</time>
+by <span class="author">Zhiming Wang</span>
+</h2>
+</header>
+<p>Recently I found a very useful utility called <code>pv</code> (for &quot;pipe viewer&quot;). <a href="http://www.ivarch.com/programs/pv.shtml">Here</a> is its home page, and it can be easily installed with <code>brew</code>. According to its man page,</p>
+<blockquote>
+<p><code>pv</code> shows the progress of data through a pipeline by giving information such as time elapsed, percentage completed (with progress bar), current throughput rate, total data transferred, and ETA.</p>
+</blockquote>
+<p>For more info, see its home page (linked above) and <a href="http://linux.die.net/man/1/pv">man page</a>.</p>
+<p>Why is it useful? Well, pretty obvious if you are in the right audience. For me, one particularly important use case is with <code>openssl sha1</code>. I deal with videos on a daily basis, and back up all of them to OneDrive (ever since OneDrive went unlimited). To ensure integrity of transfer (in future downloads), I append the first seven digits of each video to its filename. This should be more than enough to reveal any error in transfer except for active attacks. One additional advantage is that I can now have multiple versions of a same show, event, or whatever and don't have to worry about naming conflicts (and don't have to artificially say <code>-ver1</code>, <code>-ver2</code>, etc.). This little merit turns out to be huge and saves me a lot of trouble, since naming things is intrinsically hard:</p>
+<blockquote>
+<p>There are only three hard things concurrency, in computer science: cache invalidation, naming things, and off-by-one errors.</p>
+</blockquote>
+<p>(I learned this beefed up version of two hard things only recently.) Well, too much digression. So SHA-1 sum is useful. (By the way, I learned in my crypto class that SHA-1 is broken as a collision-resistant hash function — not HMAC, which doesn't assume collision-resistance — and SHA-256 should be used instead. However, I'm not protecting against active attacks — I won't be able to without a shared secret key anyway — so the faster SHA-1 is good for my purpose.) But at the same time, SHA-1 is slow. Maybe what's actually slow is my HDD. Whatever the bottleneck, generating a SHA-1 digest for a 10 GB video file isn't fun at all; it's even more of a torture when there's no progress bar and ETA. But hopelessly waiting has become a thing of the past with the advent (well, discovery in my case) of <code>pv</code>. Now I have nice and informative progress bars, which reduces the anxiety of waiting by an order of magnitude.</p>
+<p>For the record, here's the current version of my ruby script that attaches the first seven digits of the SHA-1 digests of the given files to their filenames:</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="kw">#!/usr/bin/env ruby</span>
+
+require <span class="st">&#39;fileutils&#39;</span>
+
+<span class="kw">def</span> rename(items)
+  num_items = items.length
+  num_done = <span class="dv">0</span>
+  items.each {|path|
+    printf(<span class="dt">$stderr</span>, <span class="st">&quot;%d/%d: %s\n&quot;</span>, num_done + <span class="dv">1</span>, num_items, <span class="dt">File</span>.basename(path))
+
+    <span class="kw">if</span> ! <span class="dt">File</span>.directory?(path)
+      extname = <span class="dt">File</span>.extname(path)
+      basename = <span class="dt">File</span>.basename(path, extname)
+      dirname = <span class="dt">File</span>.dirname(path)
+      sha1sum = <span class="st">`pv &#39;</span><span class="ot">#{</span>path<span class="ot">}</span><span class="st">&#39; | openssl sha1`</span>
+      new_basename = basename + <span class="st">&quot;__&quot;</span> + sha1sum[<span class="dv">0</span>,<span class="dv">7</span>]
+      new_path = <span class="dt">File</span>.join(dirname, new_basename + extname)
+      <span class="dt">FileUtils</span>.mv(path, new_path)
+    <span class="kw">else</span>
+      <span class="dt">STDERR</span>.puts(<span class="st">&quot;</span><span class="ot">#{</span>path<span class="ot">}</span><span class="st">: directory ignored&quot;</span>)
+    <span class="kw">end</span>
+    
+    num_done += <span class="dv">1</span>
+  }
+<span class="kw">end</span>
+
+rename(<span class="dt">ARGV</span>)</code></pre></div>
+<p>You might ask why I used ruby (littered with bash) when it's obviously a job for bash or perl. Well, the reason is that I first wrote this thing in ruby as a <a href="https://gist.github.com/zmwangx/d6406fb8bf51ac768770">Dropzone 3 action</a>. I'm lazy, so I just borrowed that script and modified its printout for shell use.</p>
+<hr />
+<p>By the way, I also found a project called <code>cv</code> (Coreutils Viewer), which is <a href="https://github.com/Xfennec/cv">officially described as</a></p>
+<blockquote>
+<p>... a Tiny, Dirty, Linux-Only C command that looks for coreutils basic commands (cp, mv, dd, tar, gzip/gunzip, cat, etc.) currently running on your system and displays the percentage of copied data.</p>
+</blockquote>
+<p>I'll look into it when I have time, but it from its description, it seems to be limited to coreutils, and OS X support might not be too awesome (at this point).</p>
+<footer>
+<hr>
+<a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</footer>
+</article>
+</body>
+</html>

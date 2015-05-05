@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="pandoc" />
+<meta name="author" content="Zhiming Wang" />
+<meta name="date" content="2014-12-14T10:06:02-0800" />
+<title>Speeding up Emacs with emacsclient</title>
+<link rel="apple-touch-icon-precomposed" href="/img/favicon-152.png">
+<meta name="msapplication-TileColor" content="#FFFFFF">
+<meta name="msapplication-TileImage" content="/img/favicon-144.png">
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+</style>
+<link href='/css/normalize.css' media="all" rel="stylesheet" type="text/css">
+<link href='/css/theme.css' media="all" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+</head>
+<body>
+<nav>
+<div style="height:150px; width:100px; text-align:center;">
+<a href="/"><embed src="/img/icon.svg" type="image/svg+xml" height="100" width="100" style="padding: 2px 0;"></a>
+<div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
+<div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</div>
+</nav>
+<article>
+<header>
+<h1 class="title">Speeding up Emacs with emacsclient</h1>
+<h2 class="meta">
+<time class="timestamp" datetime="2014-12-14T10:06:02-0800">December 14, 2014,</time>
+by <span class="author">Zhiming Wang</span>
+</h2>
+</header>
+<p>Emacs is notorious for its loading time. For me, this is especially annoying when I'm editing LaTeX files — AUCTeX takes about five seconds to load, and once I exit Emacs (especially after a quick edit), all that work is wasted, and next time I want to do some quick editing with that same LaTeX file — sorry, another five seconds.</p>
+<p>This problem can be solved by &quot;using that same Emacs&quot;, i.e., running Emacs in server mode, then connecting to the server via <code>emacsclient</code>. Below is my script, which I call <code>emc</code>, to make <code>emacsclient</code> more user-friendly. <code>emc</code> opens a file (given as <code>$1</code>) on the server, launching one on its way if none is detected. Note that I used <code>-cqta=</code> for <code>emacsclient</code>. The <code>-c</code> option is <code>--create-frame</code>, i.e., create a new frame (in the current tty, for instance) instead of using the existing frame (in another tty, for instance); this allows for multiple frames accross different ttys. The <code>-q</code> option is for <code>--quiet</code>, suppressing messages like &quot;Waiting for Emacs...&quot; The <code>-t</code> option is for <code>--tty</code>, or equivalently, the familiar <code>-nw</code> option of <code>emacs</code>. The <code>-a=</code> options is <code>--alternate-editor=</code>; according to the manpage, <code>-a, --alternate-editor=EDITOR</code> has the following effect:</p>
+<blockquote>
+<p>if the Emacs server is not running, run the specified editor instead. This can also be specified via the `ALTERNATE_EDITOR' environment variable. If the value of EDITOR is the empty string, run `emacs --daemon' to start Emacs in daemon mode, and try to connect to it.</p>
+</blockquote>
+<p>Note that <code>emacsclient</code> requires a filename, so my script prompts for one if <code>$1</code> is empty.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co">#!/usr/bin/env bash</span>
+<span class="kw">if [[</span> <span class="ot">-n</span> <span class="ot">$1</span><span class="kw"> ]]</span>; <span class="kw">then</span>
+    <span class="ot">file=$1</span>
+<span class="kw">else</span>
+    <span class="kw">while [[</span> <span class="ot">-z</span> <span class="ot">${file}</span><span class="kw"> ]]</span>; <span class="kw">do</span>
+        <span class="kw">read</span> -p <span class="st">&#39;filename: &#39;</span> <span class="ot">file</span>
+    <span class="kw">done</span>
+<span class="kw">fi</span>
+<span class="kw">emacsclient</span> -cqta= <span class="st">&quot;</span><span class="ot">${file}</span><span class="st">&quot;</span></code></pre></div>
+<p>Note that using <code>emacsclient</code> has the additional benefit that the same buffer is simultaneously updated accross different ttys (See screenshot, where I opened the current post in two different ttys). This way, you won't face the nasty &quot;file changed on disk&quot; problem when you accidentally edited the same file in another tty session.</p>
+<div class="figure">
+<img src="http://i.imgur.com/9KxEWKq.png" alt="screen shot of multiple copies of the same buffer" />
+<p class="caption">screen shot of multiple copies of the same buffer</p>
+</div>
+<p>By the way, remember to re-configure your other programs that uses an external editor. For instance, change <code>$EDITOR</code> to <code>emacsclient -cqta=</code> in your <code>env</code>, and <code>core.editor</code> to <code>emacsclient -cqta=</code> in your <code>~/.gitconfig</code>.</p>
+<p><em>Note</em>: if you use <code>emacsclient</code> to edit git commit messages in Git Commit Mode, remember to use <code>C-c C-c</code> (<code>git-commit-commit</code>) to save the commit message rather than using <code>server-edit</code> or <code>C-x C-c</code> to exit Emacs. Otherwise, the <code>COMMIT_EDITMSG</code> buffer will persist in the Emacs server, and you'll be prompted to revert buffer the next time you edit another commit message, which is pretty annoying.</p>
+<p>I just started using <code>emacsclient</code>, so the above script might be buggy in certain edge cases. I'll report when I run into issues.</p>
+<footer>
+<hr>
+<a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</footer>
+</article>
+</body>
+</html>

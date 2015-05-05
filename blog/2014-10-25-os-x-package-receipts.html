@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="pandoc" />
+<meta name="author" content="Zhiming Wang" />
+<meta name="date" content="2014-10-25T13:26:02-0700" />
+<title>OS X package receipts</title>
+<link rel="apple-touch-icon-precomposed" href="/img/favicon-152.png">
+<meta name="msapplication-TileColor" content="#FFFFFF">
+<meta name="msapplication-TileImage" content="/img/favicon-144.png">
+<style type="text/css">code{white-space: pre;}</style>
+<link href='/css/normalize.css' media="all" rel="stylesheet" type="text/css">
+<link href='/css/theme.css' media="all" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+</head>
+<body>
+<nav>
+<div style="height:150px; width:100px; text-align:center;">
+<a href="/"><embed src="/img/icon.svg" type="image/svg+xml" height="100" width="100" style="padding: 2px 0;"></a>
+<div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
+<div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</div>
+</nav>
+<article>
+<header>
+<h1 class="title">OS X package receipts</h1>
+<h2 class="meta">
+<time class="timestamp" datetime="2014-10-25T13:26:02-0700">October 25, 2014,</time>
+by <span class="author">Zhiming Wang</span>
+</h2>
+</header>
+<p>I just learned something new. Whenever you install a <code>pkg</code> on OS X, OS X stores a receipt of what was installed in <code>/var/db/receipts</code> (I'm running OS X 10.9.5 at the time of writing), called a <strong>bom</strong> — bill of materials (I’d rather call it a manifest, whatever). This feature was introduced in NeXTSTEP. From <code>man 5 bom</code>:</p>
+<blockquote>
+<p>The Mac OS X Installer uses a file system &quot;bill of materials&quot; to determine which files to install, remove, or upgrade. A bill of materials, <strong>bom</strong>, contains all the files within a directory, along with some information about each file. File information includes: the file's UNIX permissions, its owner and group, its size, its time of last modification, and so on. Also included are a checksum of each file and information about hard links.</p>
+</blockquote>
+<p><code>man 5 bom</code> is actually badly maintained, as it says &quot;The bill of materials for installed packages are found within the package receipts located in /Library/Receipts,&quot; whereas those have been migrated to <code>/var/db/receipts</code> a long time ago.</p>
+<p><code>.bom</code> files are binary, but you can access the contents via <code>lsbom</code>. For instance, to list the files installed,</p>
+<pre><code>lsbom -f /var/db/receipts/org.macports.MacPorts.bom</code></pre>
+<p>Note that the paths printed are always relative to <code>/</code>. See <code>man 1 lsbom</code> for detailed option listing.</p>
+<p>(Beware when you try to clean up unwanted packages using the <code>lsbom</code> listing. Packages might overwrite files, so make sure you review the listing first and know what you are doing. &quot;Knowing what you are doing&quot; is the prerequisite for using <code>sudo</code> anyway.)</p>
+<footer>
+<hr>
+<a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</footer>
+</article>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="pandoc" />
+<meta name="author" content="Zhiming Wang" />
+<meta name="date" content="2014-12-10T22:45:34-0800" />
+<title>OmniFocus: change sync behavior, Mac and iOS</title>
+<link rel="apple-touch-icon-precomposed" href="/img/favicon-152.png">
+<meta name="msapplication-TileColor" content="#FFFFFF">
+<meta name="msapplication-TileImage" content="/img/favicon-144.png">
+<style type="text/css">code{white-space: pre;}</style>
+<link href='/css/normalize.css' media="all" rel="stylesheet" type="text/css">
+<link href='/css/theme.css' media="all" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+</head>
+<body>
+<nav>
+<div style="height:150px; width:100px; text-align:center;">
+<a href="/"><embed src="/img/icon.svg" type="image/svg+xml" height="100" width="100" style="padding: 2px 0;"></a>
+<div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
+<div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</div>
+</nav>
+<article>
+<header>
+<h1 class="title">OmniFocus: change sync behavior, Mac and iOS</h1>
+<h2 class="meta">
+<time class="timestamp" datetime="2014-12-10T22:45:34-0800">December 10, 2014,</time>
+by <span class="author">Zhiming Wang</span>
+</h2>
+</header>
+<p>On OS X, the following URIs are relevant:</p>
+<ul>
+<li><a href="omnifocus:///change-preference?MaximumTimeBetweenSync=30">omnifocus:///change-preference?MaximumTimeBetweenSync=30</a></li>
+<li><a href="omnifocus:///change-preference?TimeFromFirstEditToSync=2">omnifocus:///change-preference?TimeFromFirstEditToSync=2</a></li>
+</ul>
+<p>What they do are self-evident.</p>
+<p>On iOS, use the following URIs instead:</p>
+<ul>
+<li><a href="x-omnifocus-debug:set-default:MaximumTimeBetweenSync:60">x-omnifocus-debug:set-default:MaximumTimeBetweenSync:60</a></li>
+<li><a href="x-omnifocus-debug:set-default:TimeFromFirstEditToSync:2">x-omnifocus-debug:set-default:TimeFromFirstEditToSync:2</a></li>
+</ul>
+<p>Source: <a href="http://www.macstories.net/links/change-default-sync-times-of-omnifocus-for-mac-and-ios/">Change Default Sync Times of OmniFocus For Mac and iOS</a>.</p>
+<footer>
+<hr>
+<a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</footer>
+</article>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="pandoc" />
+<meta name="author" content="Zhiming Wang" />
+<meta name="date" content="2015-04-26T21:19:14-0700" />
+<title>Using Python 3 with Emacs Jedi</title>
+<link rel="apple-touch-icon-precomposed" href="/img/favicon-152.png">
+<meta name="msapplication-TileColor" content="#FFFFFF">
+<meta name="msapplication-TileImage" content="/img/favicon-144.png">
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+</style>
+<link href='/css/normalize.css' media="all" rel="stylesheet" type="text/css">
+<link href='/css/theme.css' media="all" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+</head>
+<body>
+<nav>
+<div style="height:150px; width:100px; text-align:center;">
+<a href="/"><embed src="/img/icon.svg" type="image/svg+xml" height="100" width="100" style="padding: 2px 0;"></a>
+<div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
+<div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</div>
+</nav>
+<article>
+<header>
+<h1 class="title">Using Python 3 with Emacs Jedi</h1>
+<h2 class="meta">
+<time class="timestamp" datetime="2015-04-26T21:19:14-0700">April 26, 2015,</time>
+by <span class="author">Zhiming Wang</span>
+</h2>
+</header>
+<p>Recently I'm working on <a href="https://github.com/zmwangx/storyboard">a hobby project in Python</a>, which means editing Python source files a lot. I've been using <a href="https://github.com/tkf/emacs-jedi">Emacs Jedi</a> for almost as long as I've been writing Python, and it has been pretty helpful at completing away long names.</p>
+<p>However, Jedi uses <code>python</code> by default, which means <code>python2</code> on most of our systems at this point. Occasionally I'm writing Python 3 specific code but Jedi completes to Python 2 or refuses to complete; for the record, I enjoy writing and debugging Python 3.3+ much better than 2.7 (I realized this after trying to create a code base that is backward compatible with 2.7, which means reinventing the wheel or introducing annoying branches from time to time). So naturally I'm looking into using Python 3 in Jedi.</p>
+<p>The <a href="https://tkf.github.io/emacs-jedi/latest/#how-to-use-python-3-or-any-other-specific-version-of-python">official docs</a> has been confusing and unhelpful at least for me, since it insists on setting up the virtualenv from within Emacs, and it failed for me. Why can't I set up the virtualenv myself? Turns out I can, and it's incredibly simple. The commands below assume that you have installed Jedi and friends (well, dependencies) using <code>package.el</code>.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">mkdir</span> -p ~/.emacs.d/.python-environments
+<span class="kw">virtualenv</span> -p /usr/local/bin/python3 ~/.emacs.d/.python-environments/jedi  <span class="co"># or whatever your python3 path is</span>
+<span class="co"># If you feel like installing the server with &#39;M-x jedi:install-server&#39;, also do the following</span>
+<span class="kw">~/.emacs.d/.python-environments/jedi/bin/pip</span> install --upgrade ~/.emacs.d/elpa/jedi-20150109.2230/  <span class="co"># you might need to change the version number</span></code></pre></div>
+<p>And that's it. Put the following in your <code>~/.emacs</code>:</p>
+<pre class="emacs-lisp"><code>(add-hook &#39;python-mode-hook &#39;jedi:setup)
+(setq jedi:complete-on-dot t)
+(setq jedi:environment-root &quot;jedi&quot;)</code></pre>
+<p>where the first two lines should be there whether you want to use Python 3 or not — so only the third line is new, and its meaning is obvious.</p>
+<p>At last, start Emacs and do <code>M-x jedi:install-server</code> if you haven't run the <code>pip</code> command above yet. Restart Emacs (if necessary). That's it. Enjoy your Jedi with Python 3. (Type <code>import conf</code>, for instance, to be convinced that you're really autocompleting Python 3).</p>
+<footer>
+<hr>
+<a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</footer>
+</article>
+</body>
+</html>

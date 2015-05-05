@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="pandoc" />
+<meta name="author" content="Zhiming Wang" />
+<meta name="date" content="2015-01-01T22:49:39-0800" />
+<title>OS X system ruby encoding annoyance</title>
+<link rel="apple-touch-icon-precomposed" href="/img/favicon-152.png">
+<meta name="msapplication-TileColor" content="#FFFFFF">
+<meta name="msapplication-TileImage" content="/img/favicon-144.png">
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+</style>
+<link href='/css/normalize.css' media="all" rel="stylesheet" type="text/css">
+<link href='/css/theme.css' media="all" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+</head>
+<body>
+<nav>
+<div style="height:150px; width:100px; text-align:center;">
+<a href="/"><embed src="/img/icon.svg" type="image/svg+xml" height="100" width="100" style="padding: 2px 0;"></a>
+<div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
+<div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</div>
+</nav>
+<article>
+<header>
+<h1 class="title">OS X system ruby encoding annoyance</h1>
+<h2 class="meta">
+<time class="timestamp" datetime="2015-01-01T22:49:39-0800">January 1, 2015,</time>
+by <span class="author">Zhiming Wang</span>
+</h2>
+</header>
+<p>I've been using RVM (with fairly up-to-date Rubies) and pry since my day one with Ruby (well, almost), so it actually surprises me today when I found out by chance how poorly the system Ruby behaves when it comes to encoding.</p>
+<p>The major annoyance with the current system Ruby (2.0.0p481) is that it can't convert <code>UTF8-MAC</code> to <code>UTF-8</code> (namely, NFD to NFC, as far as I can tell), at least not with Korean characters. Consider the following script:</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="co"># coding: utf-8</span>
+require <span class="st">&#39;hex_string&#39;</span>
+str = <span class="st">&quot;에이핑크&quot;</span>
+puts str.to_hex_string
+puts str.encode(<span class="st">&quot;UTF-8&quot;</span>, <span class="st">&quot;UTF8-MAC&quot;</span>).to_hex_string</code></pre></div>
+<p>Here are what I get with the system Ruby and the latested brewed Ruby:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">&gt;</span> <span class="kw">/usr/bin/ruby</span> --version
+<span class="kw">ruby</span> 2.0.0p481 (2014-05-08 revision 45883) [<span class="kw">universal.x86_64-darwin14</span>]
+<span class="kw">&gt;</span> <span class="kw">/usr/local/bin/ruby</span> --version
+<span class="kw">ruby</span> 2.2.0p0 (2014-12-25 revision 49005) [<span class="kw">x86_64-darwin14</span>]
+<span class="kw">&gt;</span> <span class="kw">/usr/bin/ruby</span> utf8-mac.rb
+<span class="kw">e1</span> 84 8b e1 85 a6 e1 84 8b e1 85 b5 e1 84 91 e1 85 b5 e1 86 bc e1 84 8f e1 85 b3
+<span class="kw">e1</span> 84 8b e1 85 a6 e1 84 8b e1 85 b5 e1 84 91 e1 85 b5 e1 86 bc e1 84 8f e1 85 b3
+<span class="kw">&gt;</span> <span class="kw">/usr/local/bin/ruby</span> utf8-mac.rb
+<span class="kw">e1</span> 84 8b e1 85 a6 e1 84 8b e1 85 b5 e1 84 91 e1 85 b5 e1 86 bc e1 84 8f e1 85 b3
+<span class="kw">ec</span> 97 90 ec 9d b4 ed 95 91 ed 81 ac</code></pre></div>
+<p>As you can see, in the case of the system Ruby, NFD is left untouched. This leads to problems with, for instance, Google Translate. One obvious solution is to outsource the task to <code>iconv</code>, but I have the impression that outsourcing language features to shell commands is a generally despised practice.</p>
+<p>There's one more surprise. While <code>pry</code> with latest Rubies tend to handle Unicode very well (unlike <code>irb</code>), I tried <code>pry</code> with the current system Ruby, and it doesn't work; due to this annoying limitation, I couldn't even test the above problem interactively, and had to resort to a script. Maybe the problem can be resolved by compiling Ruby with <code>readline</code> or whatever; I didn't bother. The bottom line is, the system Ruby is not very pleasant for men in the 21st century — good Unicode support ought to be a must. (By the way, NFD in HFS+ is maddening. It breaks Terminal, iTerm, Google Translate, scp with Linux hosts, and the list goes on.)</p>
+<p>P.S. In Dropzone 3 custom actions you can select a custom Ruby with the <code>RubyPath</code> meta field, e.g.,</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="co"># RubyPath: /usr/local/bin/ruby</span></code></pre></div>
+<footer>
+<hr>
+<a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</footer>
+</article>
+</body>
+</html>

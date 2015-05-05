@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="pandoc" />
+<meta name="author" content="Zhiming Wang" />
+<meta name="date" content="2014-11-24T20:54:36-0800" />
+<title>Why I abandoned MathJax and fell back to PDF</title>
+<link rel="apple-touch-icon-precomposed" href="/img/favicon-152.png">
+<meta name="msapplication-TileColor" content="#FFFFFF">
+<meta name="msapplication-TileImage" content="/img/favicon-144.png">
+<style type="text/css">code{white-space: pre;}</style>
+<link href='/css/normalize.css' media="all" rel="stylesheet" type="text/css">
+<link href='/css/theme.css' media="all" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+</head>
+<body>
+<nav>
+<div style="height:150px; width:100px; text-align:center;">
+<a href="/"><embed src="/img/icon.svg" type="image/svg+xml" height="100" width="100" style="padding: 2px 0;"></a>
+<div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
+<div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</div>
+</nav>
+<article>
+<header>
+<h1 class="title">Why I abandoned MathJax and fell back to PDF</h1>
+<h2 class="meta">
+<time class="timestamp" datetime="2014-11-24T20:54:36-0800">November 24, 2014,</time>
+by <span class="author">Zhiming Wang</span>
+</h2>
+</header>
+<p>Recently I wrote an expository article, <a href="/pdf/20141119-convolution-of-irreducible-characters.pdf"><em>Convolution of irreducible characters</em></a>, and posted it <a href="/blog/2014-11-19-convolution-of-irreducible-characters.html">here</a>. At first I intended to use MathJax, but in the end I fell back to good ol' PDF. Here's why.</p>
+<p>In short, I'm a mathematician. I write math <em>articles</em>, not just standalone expressions or formulas. I use AMSLaTeX to its fullest (not really, but at least I use numbering and the <code>amsthm</code> package to its fullest). HTML simply wasn't designed for this. Here are two influential markup languages designed for totally different use cases, and bridging them is painful. I tried to use <code>pandoc</code>, but it doesn't support <code>\input</code>, doesn't support <code>\def</code>, and swallows <code>\begin{theorem} \end{theorem}</code>, among other things. I tried to use <code>htlatex</code>; even the MathML output is suboptimal, with many math symbols translated to non-math (apart from totally human-unreadable), and it uses its custom CSS files that don't play well with everything else. I tried other things. In the end I gave up. Maybe I don't know enough about MathJax, but I certainly don't want to write a translator myself. Leave LaTeX alone. Distribute as PDF. MathJax may be great for Wikis (like Wikipedia) and for math lite blogs, but it's no replacement for real, beefy LaTeX. It's not for mathematicians who want to distribute real articles.</p>
+<p>By the way, Terry Tao and others use <a href="http://lucatrevisan.wordpress.com/latex-to-wordpress/">Luca's LaTeX to WordPress, aka LaTeX2WP</a> for math blogging. From Terry's experience it works fairly well. I don't know if <code>amsthm</code> and <code>\def</code> are in the feature set, though. Anyway, since WordPress handles LaTeX as pre-compiled images (which is also the default on Wikipedia, and which looks poor in general and plays horribly with scaling), LaTeX2WP won't help MathJax users the slightest.</p>
+<footer>
+<hr>
+<a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</footer>
+</article>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="pandoc" />
+<meta name="author" content="Zhiming Wang" />
+<meta name="date" content="2015-03-22T16:58:50-0700" />
+<title>Back up OS X app icons</title>
+<link rel="apple-touch-icon-precomposed" href="/img/favicon-152.png">
+<meta name="msapplication-TileColor" content="#FFFFFF">
+<meta name="msapplication-TileImage" content="/img/favicon-144.png">
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+</style>
+<link href='/css/normalize.css' media="all" rel="stylesheet" type="text/css">
+<link href='/css/theme.css' media="all" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+</head>
+<body>
+<nav>
+<div style="height:150px; width:100px; text-align:center;">
+<a href="/"><embed src="/img/icon.svg" type="image/svg+xml" height="100" width="100" style="padding: 2px 0;"></a>
+<div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
+<div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</div>
+</nav>
+<article>
+<header>
+<h1 class="title">Back up OS X app icons</h1>
+<h2 class="meta">
+<time class="timestamp" datetime="2015-03-22T16:58:50-0700">March 22, 2015,</time>
+by <span class="author">Zhiming Wang</span>
+</h2>
+</header>
+<p>OS X application icons are valuable assets, and it's interesting to see how they evolve over time. This is especially the case when we upgraded to OS X 10.10 Yosemite, when Apple and many design-aware third party developers overhauled (mainly flattened) their icons.</p>
+<p>However, we lose all the old icons when we do a major OS upgrade. Technically they still live in Time Machine backups, but those are a pain to pull out. Therefore, I wrote a script just now to back up app icons of all applications living in <code>/Applications</code> (including those symlinked to <code>/Applications</code>, e.g., apps installed through <code>brew cask</code>) and its level-one subdirectories, and <code>/System/Library/CoreServices</code> (for <code>Finder.app</code> and such). Here's the script:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co">#!/usr/bin/env bash</span>
+<span class="kw">function</span><span class="fu"> app_version</span>
+<span class="kw">{</span>
+    <span class="co"># $1 is the path to the app</span>
+    <span class="kw">/usr/libexec/PlistBuddy</span> -c <span class="st">&quot;print CFBundleShortVersionString&quot;</span> <span class="st">&quot;</span><span class="ot">$1</span><span class="st">&quot;</span>/Contents/Info.plist <span class="kw">2&gt;</span>/dev/null <span class="kw">||</span> <span class="kw">date</span> +%Y%m%d
+<span class="kw">}</span>
+ 
+<span class="kw">function</span><span class="fu"> app_icon_path</span>
+<span class="kw">{</span>
+    <span class="co"># $1 is the path to the app</span>
+    <span class="ot">filename=$(</span><span class="kw">/usr/libexec/PlistBuddy</span> -c <span class="st">&quot;print CFBundleIconFile&quot;</span> <span class="st">&quot;</span><span class="ot">$1</span><span class="st">&quot;</span>/Contents/Info.plist <span class="kw">2&gt;</span>/dev/null<span class="ot">)</span>
+   <span class="kw"> [[</span> <span class="ot">-n</span> <span class="ot">${filename}</span><span class="kw"> ]]</span> <span class="kw">||</span> <span class="kw">return</span>
+    <span class="ot">filename=$(</span><span class="kw">basename</span> <span class="st">&quot;</span><span class="ot">${filename}</span><span class="st">&quot;</span> .icns<span class="ot">)</span>
+    <span class="kw">echo</span> <span class="st">&quot;</span><span class="ot">$1</span><span class="st">/Contents/Resources/</span><span class="ot">${filename}</span><span class="st">.icns&quot;</span>
+<span class="kw">}</span>
+ 
+<span class="kw">function</span><span class="fu"> process_app</span>
+<span class="kw">{</span>
+    <span class="co"># $1 is the path to the app</span>
+    <span class="ot">name=$(</span><span class="kw">basename</span> <span class="st">&quot;</span><span class="ot">$1</span><span class="st">&quot;</span> .app <span class="kw">|</span> <span class="kw">tr</span> -d <span class="st">&#39; &#39;</span><span class="ot">)</span>
+    <span class="ot">path=$(</span><span class="kw">realpath</span> -e <span class="st">&quot;</span><span class="ot">$1</span><span class="st">&quot;</span><span class="ot">)</span> <span class="kw">||</span> <span class="kw">{</span> <span class="kw">echo</span> <span class="st">&quot;</span><span class="ot">${RED}</span><span class="st">error: broken link &#39;</span><span class="ot">${path}</span><span class="st">&#39;</span><span class="ot">${RESET}</span><span class="st">&quot;</span> <span class="kw">&gt;&amp;2;</span> <span class="kw">return</span> 1<span class="kw">;</span> <span class="kw">}</span>
+    <span class="ot">version=$(</span><span class="kw">app_version</span> <span class="st">&quot;</span><span class="ot">${path}</span><span class="st">&quot;</span><span class="ot">)</span>
+    <span class="ot">icon_path=$(</span><span class="kw">app_icon_path</span> <span class="st">&quot;</span><span class="ot">${path}</span><span class="st">&quot;</span><span class="ot">)</span>
+   <span class="kw"> [[</span> <span class="ot">-n</span> <span class="ot">${icon_path}</span><span class="kw"> ]]</span> <span class="kw">||</span> <span class="kw">{</span> <span class="kw">echo</span> <span class="st">&quot;</span><span class="ot">${YELLOW}</span><span class="st">warning: &#39;</span><span class="ot">$1</span><span class="st">&#39; has no app icon</span><span class="ot">${RESET}</span><span class="st">&quot;</span><span class="kw">;</span> <span class="kw">return</span> 1<span class="kw">;</span> <span class="kw">}</span>
+   <span class="kw"> [[</span> <span class="ot">-f</span> <span class="ot">${icon_path}</span><span class="kw"> ]]</span> <span class="kw">||</span> <span class="kw">{</span> <span class="kw">echo</span> <span class="st">&quot;</span><span class="ot">${RED}</span><span class="st">error: &#39;</span><span class="ot">${icon_path}</span><span class="st">&#39; does not exist</span><span class="ot">${RESET}</span><span class="st">&quot;</span> <span class="kw">&gt;&amp;2;</span> <span class="kw">return</span> 1<span class="kw">;</span> <span class="kw">}</span>
+    <span class="kw">cp</span> <span class="st">&quot;</span><span class="ot">${icon_path}</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="ot">${name}</span><span class="st">-</span><span class="ot">${version}</span><span class="st">.icns&quot;</span>
+    <span class="kw">echo</span> <span class="st">&quot;</span><span class="ot">${name}</span><span class="st">-</span><span class="ot">${version}</span><span class="st">.icns&quot;</span>
+<span class="kw">}</span>
+ 
+<span class="kw">find</span> /Applications -maxdepth 2 -name <span class="st">&#39;*.app&#39;</span> <span class="kw">|</span> <span class="kw">while</span> <span class="kw">read</span> <span class="ot">app</span>; <span class="kw">do</span> <span class="kw">process_app</span> <span class="st">&quot;</span><span class="ot">${app}</span><span class="st">&quot;</span><span class="kw">;</span> <span class="kw">done</span>
+<span class="kw">find</span> /System/Library/CoreServices -maxdepth 1 -name <span class="st">&#39;*.app&#39;</span> <span class="kw">|</span> <span class="kw">while</span> <span class="kw">read</span> <span class="ot">app</span>; <span class="kw">do</span> <span class="kw">process_app</span> <span class="st">&quot;</span><span class="ot">${app}</span><span class="st">&quot;</span><span class="kw">;</span> <span class="kw">done</span></code></pre></div>
+<p>The script is also available as a <a href="https://gist.github.com/zmwangx/fad97e085045a21ebc1d">gist</a>.</p>
+<footer>
+<hr>
+<a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</footer>
+</article>
+</body>
+</html>
