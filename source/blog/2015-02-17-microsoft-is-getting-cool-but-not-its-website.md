@@ -13,6 +13,6 @@ Meanwhile,
 
 ![](http://i.imgur.com/CNv76zw.png)
 
-* Microsoft's UI design is still shit, [as well as their website](/blog/2015/01/21/web-design-microsoft-vs-apple/); I mean, seriously:
+* Microsoft's UI design is still shit, [as well as their website](/blog/2015-01-21-web-design-microsoft-vs-apple.html); I mean, seriously:
 
 ![](http://i.imgur.com/wu66zZc.png)

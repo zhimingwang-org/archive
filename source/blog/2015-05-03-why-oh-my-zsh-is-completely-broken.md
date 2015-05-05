@@ -13,7 +13,8 @@ I was hardly involved in Oh My Zsh development, and I haven't even carefully ins
 
 First, look at Oh My Zsh's core [lib](https://github.com/robbyrussell/oh-my-zsh/tree/140034605edd0f72c548685d39e49687a44c1b23/lib):
 
-```
+```zsh
+> ls lib
 bzr.zsh         directories.zsh  grep.zsh          misc.zsh                   spectrum.zsh
 completion.zsh  functions.zsh    history.zsh       nvm.zsh                    termsupport.zsh
 correction.zsh  git.zsh          key-bindings.zsh  prompt_info_functions.zsh  theme-and-appearance.zsh
@@ -23,7 +24,7 @@ Wait, why do I see `bzr.zsh`, `git.zsh`, and even `nvm.zsh` in the core lib? The
 
 Meanwhile, Prezto does it right. Prezto is highly modular, with the `pmodload` function defined in [`init.zsh`](https://github.com/sorin-ionescu/prezto/blob/08676a273eba1781ddcb63c4f89cfff9bd62eac4/init.zsh) to load modules. That's about the entirety of Prezto's core; everything else are in optional [modules](https://github.com/sorin-ionescu/prezto/blob/08676a273eba1781ddcb63c4f89cfff9bd62eac4/modules), including essential configs like `editor` (ZLE configs), `completion`, and `prompt`. Note that module loading order matters in some cases, but still, working with Prezto's modular structure is a joy. Apart from `init.zsh` and `modules/`, Prezto repo does contain a [`runcoms`](https://github.com/sorin-ionescu/prezto/tree/08676a273eba1781ddcb63c4f89cfff9bd62eac4/runcoms) directory with the rc files, but those are just recommendations that one may disregard. In fact, there are a total of eight lines related to Prezto in my `.zshrc`, and nowhere else (note that I only switched to Prezto today, so this freshly baked `.zshrc` is subject to change):
 
-```sh
+```zsh
 # prezto
 zstyle ':prezto:*:*' color 'yes'
 zstyle ':prezto:environment:termcap' color 'no' # disable coloring of less, which is insanely ugly
@@ -49,7 +50,7 @@ I guess the list could go on; I didn't spend more time inspecting this crap.
 
 We were discussing styles, but obviously style isn't the only problem with this code base. Next onto a case study of how Oh My Zsh does something in the most inefficient way possible. Let's have a look at [the `git.zsh` file](https://github.com/robbyrussell/oh-my-zsh/blob/140034605edd0f72c548685d39e49687a44c1b23/lib/git.zsh). It suffers from almost all problems we have talked about so far, but let's focus specifically on [the `git_prompt_status` function](https://github.com/robbyrussell/oh-my-zsh/blob/140034605edd0f72c548685d39e49687a44c1b23/lib/git.zsh#L78-L122):
 
-```sh
+```zsh
 git_prompt_status() {
   INDEX=$(command git status --porcelain -b 2> /dev/null)
   STATUS=""
@@ -99,13 +100,13 @@ git_prompt_status() {
 
 **This one single function intended to be invoked from a precmd hook (basically excuted every time the prompt is printed), calls `grep` a staggering 14 times inside command substitutions, forking the process 28 times — while all the greps can be replaced with pattern/regex matching right within the shell.** Keep in mind that forking is the most expensive operation of the shell. For instance, `$(echo "$INDEX" | grep '^A  ' &> /dev/null)` may well be replaced with
 
-```sh
+```zsh
 [[ $INDEX == *$'\nA  '* ]]
 ```
 
 or
 
-```sh
+```zsh
 [[ $INDEX =~ $'\nA  ' ]]
 ```
 
@@ -133,11 +134,15 @@ The only time I [submitted a PR](https://github.com/robbyrussell/oh-my-zsh/pull/
 
 One more thing, among countless other problems: the recommended way to install Oh My Zsh is either
 
-    curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+```zsh
+curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+```
 
 or
 
-    wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh
+```zsh
+wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh
+```
 
 Cool, huh? How many of you have the `--no-check-certificate` option of `wget` automatically turned on? Thankfully there's no `sudo` in front.
 

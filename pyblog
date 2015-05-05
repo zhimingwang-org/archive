@@ -1,0 +1,145 @@
+#!/usr/bin/env python3
+
+"""A simple blog generator with Pandoc as backend."""
+
+import argparse
+import os
+import re
+import shutil
+import subprocess
+import sys
+
+
+ROOTDIR = os.path.dirname(os.path.realpath(__file__))
+SOURCEDIR = os.path.join(ROOTDIR, "source")
+INDEX = os.path.join(SOURCEDIR, "index.md")
+TEMPLATEDIR = os.path.join(ROOTDIR, "templates")
+HTMLTEMPLATE = os.path.join(TEMPLATEDIR, "template.html")
+BUILDDIR = os.path.join(ROOTDIR, "build")
+
+
+# TODO:
+def new_post():
+    pass
+
+
+# TODO:
+def generate_index():
+    pass
+
+
+def generate(fresh=False):
+    """Generate the blog in BUILDDIR.
+
+    Parameters
+    ----------
+    fresh : bool
+        If True, remove all existing build artifects and start afresh;
+        otherwise, only copy or build new or modified files. Default is
+        False.
+
+    Returns
+    -------
+    failed_builds : int
+        Number of build failures.
+
+    """
+
+    # pylint: disable=too-many-branches
+
+    if not os.path.isdir(SOURCEDIR):
+        raise OSError("source directory %s does not exist" % SOURCEDIR)
+    if not os.path.exists(HTMLTEMPLATE):
+        raise OSError("HTML template %s not found" % HTMLTEMPLATE)
+
+    if not os.path.isdir(BUILDDIR):
+        if os.path.exists(BUILDDIR):
+            os.remove(BUILDDIR)
+        os.mkdir(BUILDDIR, mode=0o755)
+    if fresh:
+        for name in os.listdir(BUILDDIR):
+            if name == ".git":
+                continue
+            obj = os.path.join(BUILDDIR, name)
+            if os.path.isdir(obj):
+                shutil.rmtree(obj)
+            else:
+                os.remove(obj)
+
+    failed_builds = 0
+
+    for root, _, files in os.walk(SOURCEDIR):
+        relroot = os.path.relpath(root, start=SOURCEDIR)
+        dstroot = os.path.join(BUILDDIR, relroot)
+        if not os.path.isdir(dstroot):
+            if os.path.exists(dstroot):
+                os.remove(dstroot)
+            os.mkdir(dstroot, mode=0o755)
+
+        for name in files:
+            extension = name.split(".")[-1]
+            if extension not in ["css", "md"]:
+                continue
+
+            relpath = os.path.join(relroot, name)
+            srcpath = os.path.join(root, name)
+            if extension == "md":
+                dstpath = os.path.join(dstroot, re.sub(r'\.md$', '.html', name))
+            else:
+                dstpath = os.path.join(dstroot, name)
+            if ((not os.path.exists(dstpath) or
+                 os.path.getmtime(dstpath) <= os.path.getmtime(srcpath))):
+                if extension == "css":
+                    sys.stderr.write("copying %s\n" % relpath)
+                    shutil.copy(srcpath, dstpath)
+                elif extension == "md":
+                    sys.stderr.write("generating %s\n" % relpath)
+                    pandoc_args = [
+                        "pandoc", srcpath,
+                        "--template", HTMLTEMPLATE,
+                        "--highlight-style=pygments",
+                        "-o", dstpath,
+                    ]
+                    try:
+                        subprocess.check_call(pandoc_args)
+                    except subprocess.CalledProcessError:
+                        failed_builds += 1
+                        sys.stderr.write("error: failed to generate %s" %
+                                         relpath)
+
+    sys.stderr.write("build finished with %d errors\n" % failed_builds)
+    return failed_builds
+
+
+# TODO:
+def deploy():
+    pass
+
+
+# TODO: regenerate and deploy
+def gen_deploy():
+    pass
+
+
+# TODO: start HTTP server in another process and watch for changes
+def preview():
+    pass
+
+
+def main():
+    """CLI interface."""
+    description = "Simple blog generator in Python with Pandoc as backend."
+    parser = argparse.ArgumentParser(description=description)
+    parser.add_argument('action', choices=[
+        'generate', 'regenerate',
+    ])
+    args = parser.parse_args()
+
+    if args.action == 'generate':
+        exit(generate(fresh=False))
+    elif args.action == 'regenerate':
+        exit(generate(fresh=True))
+
+
+if __name__ == '__main__':
+    main()

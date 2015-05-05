@@ -5,7 +5,7 @@ date-display: October 26, 2014
 ---
 **_11/02/2014 update:_**
 
-See [this post](/blog/2014/11/02/vobcopy-dvdbackup-etc/) for issues, explanations, and more.
+See [this post](/blog/2014-11-02-vobcopy-dvdbackup-etc.html) for issues, explanations, and more.
 
 ---
 

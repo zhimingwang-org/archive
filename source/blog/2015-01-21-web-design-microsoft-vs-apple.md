@@ -9,9 +9,10 @@ I just had a look at Ars's live blog on today's Windows 10 Event to acquire a se
 
 The only thing I would like to see Apple copy from Microsoft is the unlimited OneDrive — come on, we already paid enough for our hardware, why can't we have unlimited cloud storage? I would even pay $10 per month for that — Microsoft is offering Office 365 along with unlimited cloud storage, all for just $10, so it certainly won't hurt Apple. The current iCloud pricing is ridiculous.
 
-All the discussions above are not the main point of this post though. The point is, I went to the Windows website to learn more about Windows 10, and just can't believe my eyes in how awful it is designed. Just look at the font and the layout of <http://windows.microsoft.com/en-us/windows-10/about> (full web page screenshot courtesy of [web-capture.net](http://web-capture.net)). And compare that to <http://www.apple.com/osx/> (scroll past the Windows screenshot). Holy crap, I even booted my Windows 8.1 VM just to make sure I'm not lacking the necessary fonts available on Windows.
+All the discussions above are not the main point of this post though. The point is, I went to the Windows website to learn more about Windows 10, and just can't believe my eyes in how awful it is designed. Just look at the font and the layout of [windows.microsoft.com/en-us/windows-10/about](http://windows.microsoft.com/en-us/windows-10/about) (full web page screenshot courtesy of [web-capture.net](http://web-capture.net)). And compare that to [www.apple.com/osx/](http://www.apple.com/osx/) (scroll past the Windows screenshot). Holy crap, I even booted my Windows 8.1 VM just to make sure I'm not lacking the necessary fonts available on Windows.
 
 Why Microsoft's web design is so shitty is always beyond my grasp. For OS X, a potential customer would be eager to set his hands on it just by looking at its beautifully-crafted homepage and a few screenshots there. For Windows it's exactly the opposite. I mean, apart from metro apps (worst and ugliest desktop experience ever), modern Windows actually looks pretty good. But their shitty advertising totally ruins it. I guess it doesn't matter much for Microsoft, for all design-savvy folks who are not stuck on Windows are already using OS X, and most of their customers just need a commodity OS.
 
-![](http://i.imgur.com/0eIt4SR.png)
-![](http://i.imgur.com/piUO0xY.png)
+![Full height screenshot of [windows.microsoft.com/en-us/windows-10/about](http://windows.microsoft.com/en-us/windows-10/about).](http://i.imgur.com/0eIt4SR.png)
+
+![Full height screenshot of [www.apple.com/osx/](http://www.apple.com/osx/).](http://i.imgur.com/piUO0xY.png)
