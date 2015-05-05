@@ -8,6 +8,9 @@ $if(date)$
 <meta name="date" content="$date$" />
 $endif$
 <title>$pagetitle$</title>
+<link rel="apple-touch-icon-precomposed" href="/img/favicon-152.png">
+<meta name="msapplication-TileColor" content="#FFFFFF">
+<meta name="msapplication-TileImage" content="/img/favicon-144.png">
 <style type="text/css">code{white-space: pre;}</style>
 $if(quotes)$
 <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
@@ -31,6 +34,13 @@ $endfor$
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 </head>
 <body>
+<nav>
+<div style="height:150px; width:100px; text-align:center;">
+<a href="/"><embed src="/img/icon.svg" type="image/svg+xml" height="100" width="100" style="padding: 2px 0;"></a>
+<div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
+<div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</div>
+</nav>
 <article>
 $if(title)$
 <header>
@@ -55,7 +65,7 @@ $body$
 <footer>
 <hr>
 <a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">
-<a href="https://github.com/zmwangx">Zhiming Wang</a>
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
 </footer>
 </article>
 </body>

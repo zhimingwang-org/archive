@@ -304,7 +304,7 @@ def generate(fresh=False):
 
         for name in files:
             extension = name.split(".")[-1]
-            if extension not in ["css", "jpg", "md", "png", "svg"]:
+            if extension not in ["css", "jpg", "md", "png", "svg", "ico"]:
                 continue
 
             relpath = os.path.join(relroot, name)
@@ -320,7 +320,7 @@ def generate(fresh=False):
                 anything_modified = True
                 if srcpath == INDEXMD:
                     continue # index will be processed separately
-                if extension in ["css", "jpg", "png", "svg"]:
+                if extension in ["css", "jpg", "png", "svg", "ico"]:
                     sys.stderr.write("copying %s\n" % relpath)
                     shutil.copy(srcpath, dstpath)
                 elif extension == "md":

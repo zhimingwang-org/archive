@@ -9,6 +9,10 @@ nav {
     top: 10%;
 }
 
+nav a {
+    text-decoration: none;
+}
+
 article {
     position: absolute;
     width: 50%;

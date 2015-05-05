@@ -1,0 +1,21 @@
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-engine: xetex
+%%% End:
+
+\documentclass{standalone}
+\usepackage{xltxtra}
+\usepackage{tikz}
+
+\setmainfont{Helvetica Neue}
+
+\begin{document}
+
+\tikz {
+  \fill[fill=none](0,0) circle (10);
+  \draw[draw=none,fill=black!20!white] (0,0) circle (10);
+  \node[text=white,scale=20.0] at (0,0) {ZW};
+}
+
+\end{document}
