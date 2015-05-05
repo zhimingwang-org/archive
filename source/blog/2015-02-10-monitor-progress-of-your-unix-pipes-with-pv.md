@@ -1,6 +1,6 @@
 ---
 title: "Monitor progress of your Unix pipes with pv"
-date: 2015-02-10 02:18:30 -0800
+date: 2015-02-10T02:18:30-0800
 date-display: February 10, 2015
 ---
 Recently I found a very useful utility called `pv` (for "pipe viewer"). [Here](http://www.ivarch.com/programs/pv.shtml) is its home page, and it can be easily installed with `brew`. According to its man page,

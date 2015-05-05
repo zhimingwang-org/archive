@@ -1,6 +1,6 @@
 ---
 title: "Get rolling"
-date: 2014-10-21 11:40:14 -0700
+date: 2014-10-21T11:40:14-0700
 date-display: October 21, 2014
 ---
 Yesterday, on an internet forum, I saw someone’s signature, which translates to

@@ -1,6 +1,6 @@
 ---
 title: "Opera-style advanced keyboard shortcuts in Safari"
-date: 2014-11-30 17:20:20 -0800
+date: 2014-11-30T17:20:20-0800
 date-display: November 30, 2014
 ---
 I've been using the Chromuim Opera for a long time, after Chrome's design went unbearably ugly around v32 (IIRC Opera stable channel was on v19 when I switched, which was released on January 28, 2014). From then on, Opera's [advanced keyboard shortcuts](http://help.opera.com/opera/Mac/1583/en/fasterBrowsing.html#advanced) has become an integral part of my browsing habit. In particular, the following are especially handy for me:

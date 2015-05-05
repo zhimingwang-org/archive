@@ -26,9 +26,18 @@
     } else if ($1 == "layout:" || $1 == "comments:" || $1 == "categories:") {
         next
     } else if ($1 == "date:") {
-        print
+        # Convert
+        #
+        #     date: 2015-05-03 17:15:49 -0700
+        #
+        # to
+        #
+        #     date: 2015-05-03T17:15:49-0700
+        #     date-display: May  3, 2015
+        #
+        # Requires date from coreutils; BSD date doesn't work.
+        printf "date: %sT%s%s\n", $2, $3, $4
         printf "date-display: "
-        # requires date from coreutils; BSD date doesn't work
         system("date -d "$2" +'%B %_d, %Y'")
     } else {
         print

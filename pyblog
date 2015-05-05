@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-# TODO: timestamp to ISO
-
 """A simple blog generator with Pandoc as backend."""
 
 import argparse

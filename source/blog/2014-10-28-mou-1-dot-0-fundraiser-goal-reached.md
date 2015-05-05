@@ -1,6 +1,6 @@
 ---
 title: "Mou 1.0 fundraiser: goal reached"
-date: 2014-10-28 01:57:06 -0700
+date: 2014-10-28T01:57:06-0700
 date-display: October 28, 2014
 ---
 A week ago I wrote a post [*Help Mou hit 1.0*](blog/2014/10/20/help-mou-hit-1-dot-0/). Today, I'm delighted to find out that Mou has reached its goal, $20,000, half way into the fundraiser.

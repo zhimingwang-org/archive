@@ -1,6 +1,6 @@
 ---
 title: "List YouTube playlist with youtube-dl"
-date: 2014-11-05 10:37:58 -0800
+date: 2014-11-05T10:37:58-0800
 date-display: November  5, 2014
 ---
 Of course you are always welcome to use the [Google APIs Client Library for Python](https://developers.google.com/api-client-library/python/) to wrestle with YouTube, which is usually pretty simple. (As an added bonus, YouTube has some [nice runnable sample scripts](https://developers.google.com/youtube/v3/code_samples/) to get you started.) With the client library, listing videos in a YouTube playlist is a breeze.

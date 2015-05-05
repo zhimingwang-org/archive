@@ -1,6 +1,6 @@
 ---
 title: "2014 Nobel Prize in Physics — LED lights, seriously?"
-date: 2014-11-06 11:08:45 -0800
+date: 2014-11-06T11:08:45-0800
 date-display: November  6, 2014
 ---
 For some reason, I only learned about this year’s laureates today, through [the reference frame](http://motls.blogspot.com/2014/11/ex-employer-wont-meet-blue-led-nobel.html). The prize goes to the inventors of the LED. Not exciting at all, so I don’t care if I’m ever informed. (Lubos has a good point on why applied physics — well, let’s even widen the concept of applied physics a bit — should not surprise anyone when they appear in a Nobel Prize announcement: “After all, Alfred Nobel might have very well considered his dynamite to be a discovery in physics, too.”)

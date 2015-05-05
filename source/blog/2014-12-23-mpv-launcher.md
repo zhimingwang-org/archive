@@ -1,6 +1,6 @@
 ---
 title: "mpv launcher"
-date: 2014-12-23 00:51:05 -0800
+date: 2014-12-23T00:51:05-0800
 date-display: December 23, 2014
 ---
 **_04/06/2015 update:_**

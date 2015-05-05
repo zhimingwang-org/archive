@@ -1,6 +1,6 @@
 ---
 title: "Charles Munger donated $65M to KITP"
-date: 2014-10-24 16:41:36 -0700
+date: 2014-10-24T16:41:36-0700
 date-display: October 24, 2014
 ---
 Today's news has it that Charles Munger made a $65 million donation to KITP at UCSB. See for instance [this article](http://nyti.ms/1D4zg24) on NYT. Of course I didn't learn it from NYT (I'm generally sick of any news other than math, physics, or IT-related ones). I learned it from [Not Even Wrong](http://www.math.columbia.edu/~woit/wordpress/?p=7247) instead (of course I don't agree with Woit, but some of his links are nice).
