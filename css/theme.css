@@ -64,6 +64,14 @@ blockquote {
     font-style: italic;
 }
 
+div.footnotes {
+    font-size: 10pt;
+}
+
+div.footnotes code {
+    font-size: 9.5pt;
+}
+
 img {
     display: block;
     max-width: 100%;
