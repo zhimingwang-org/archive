@@ -2,6 +2,8 @@
 
 """A simple blog generator with Pandoc as backend."""
 
+# TODO: Feed icon next to the CC icon.
+
 import argparse
 import datetime
 import io
@@ -12,6 +14,7 @@ import subprocess
 import sys
 import tempfile
 import time
+import urllib.parse
 import xml.etree.ElementTree as ET
 
 import bs4
@@ -133,11 +136,6 @@ class AtomEntry(object):
         return ET.tostring(self.entry).decode('utf-8')
 
 
-# TODO:
-def new_post():
-    pass
-
-
 def generate_index(feed):
     """Generate index.html from index.md and a TOC."""
 
@@ -252,7 +250,7 @@ def generate_index_and_feed():
         sys.stderr.write("wrote atom.xml\n")
 
 
-def generate(fresh=False):
+def generate_blog(fresh=False):
     """Generate the blog in BUILDDIR.
 
     Parameters
@@ -344,6 +342,55 @@ def generate(fresh=False):
     return failed_builds
 
 
+def generate(args):
+    """Wrapper for generate_blog(fresh=False)."""
+    exit(generate_blog(fresh=False))
+
+
+def regenerate(args):
+    """Wrapper for generate_blog(fresh=True)."""
+    exit(generate_blog(fresh=True))
+
+
+def sanitize(string):
+    """Sanitize string (title) for URI consumption."""
+    if isinstance(string, bytes):
+        string = string.decode('utf-8')
+    # to lowercase
+    string = string.lower()
+    # strip all non-word, non-hyphen and non-whitespace characters
+    string = re.sub(r"[^\w\s-]", "", string)
+    # replace consecutive whitespaces with a single hyphen
+    string = re.sub(r"\s+", "-", string)
+    # percent encode the result
+    return urllib.parse.quote(string)
+
+
+def new_post(args):
+    title = args.title
+    date = datetime.datetime.fromtimestamp(round(time.time()),
+                                           dateutil.tz.tzlocal())
+    filename_date = date.strftime("%Y-%m-%d")
+    iso_date = date.isoformat()
+    display_date = "%s %d, %d" % (date.strftime("%B"), date.day, date.year)
+    title_sanitized = sanitize(title)
+    filename = "%s-%s.md" % (filename_date, title_sanitized)
+    postdir = os.path.join(SOURCEDIR, "blog")
+    fullpath = os.path.join(postdir, filename)
+    if not os.path.isdir(postdir):
+        if os.path.exists(postdir):
+            os.remove(postdir)
+        os.mkdir(postdir, mode=0o755)
+    with open(fullpath, 'w', encoding='utf-8') as fd:
+        fd.write("---\n")
+        fd.write('title: "%s"\n' % title)
+        fd.write("date: %s\n" % iso_date)
+        fd.write("date-display: %s\n" % display_date)
+        fd.write("---\n")
+    sys.stderr.write("New post created in:\n")
+    print(fullpath)
+
+
 # TODO:
 def deploy():
     pass
@@ -363,15 +410,26 @@ def main():
     """CLI interface."""
     description = "Simple blog generator in Python with Pandoc as backend."
     parser = argparse.ArgumentParser(description=description)
-    parser.add_argument('action', choices=[
-        'generate', 'regenerate',
-    ])
-    args = parser.parse_args()
+    subparsers = parser.add_subparsers()
 
-    if args.action == 'generate':
-        exit(generate(fresh=False))
-    elif args.action == 'regenerate':
-        exit(generate(fresh=True))
+    parser_generate = subparsers.add_parser(
+        "generate", aliases=["g", "gen"],
+        description="Generate new or changed objects.")
+    parser_generate.set_defaults(func=generate)
+
+    parser_regenerate = subparsers.add_parser(
+        "regenerate", aliases=["r", "regen"],
+        description="Regenerate the entire blog afresh.")
+    parser_regenerate.set_defaults(func=regenerate)
+
+    parser_new_post = subparsers.add_parser(
+        "new_post", aliases=["n", "new"],
+        description="Create a new post with metadata pre-filled.")
+    parser_new_post.add_argument("title", help="title of the new post")
+    parser_new_post.set_defaults(func=new_post)
+
+    args = parser.parse_args()
+    exit(args.func(args))
 
 
 if __name__ == '__main__':
