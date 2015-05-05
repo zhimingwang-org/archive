@@ -1,31 +1,30 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"$if(lang)$ lang="$lang$" xml:lang="$lang$"$endif$>
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
-  <meta name="generator" content="pandoc" />
-  <meta name="author" content="Zhiming Wang" />
+<meta charset="UTF-8">
+<meta name="generator" content="pandoc" />
+<meta name="author" content="Zhiming Wang" />
 $if(date)$
-  <meta name="date" content="$date$" />
+<meta name="date" content="$date$" />
 $endif$
-  <title>$pagetitle$ — dl? cmplnts?</title>
-  <style type="text/css">code{white-space: pre;}</style>
+<title>$pagetitle$</title>
+<style type="text/css">code{white-space: pre;}</style>
 $if(quotes)$
-  <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
+<style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
 $endif$
 $if(highlighting-css)$
-  <style type="text/css">
+<style type="text/css">
 $highlighting-css$
-  </style>
+</style>
 $endif$
 $for(css)$
-  <link rel="stylesheet" href="$css$" $if(html5)$$else$type="text/css" $endif$/>
+<link rel="stylesheet" href="$css$" $if(html5)$$else$type="text/css" $endif$/>
 $endfor$
 $if(math)$
-  $math$
+$math$
 $endif$
 $for(header-includes)$
-  $header-includes$
+$header-includes$
 $endfor$
 <link href='/css/normalize.css' media="all" rel="stylesheet" type="text/css">
 <link href='/css/theme.css' media="all" rel="stylesheet" type="text/css">
@@ -41,7 +40,7 @@ $if(subtitle)$
 $endif$
 <h2 class="meta">
 $if(date-display)$
-<time class="timestamp" $if(date)$timestamp="$date$"$endif$>$date-display$,</time>
+<time class="timestamp" $if(date)$datetime="$date$"$endif$>$date-display$,</time>
 $endif$
 by <span class="author">Zhiming Wang</span>
 </h2>
@@ -53,8 +52,8 @@ $toc$
 </div>
 $endif$
 $body$
-<hr>
 <footer>
+<hr>
 <a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">
 <a href="https://github.com/zmwangx">Zhiming Wang</a>
 </footer>

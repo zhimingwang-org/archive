@@ -34,6 +34,10 @@ h2.meta {
     font-style: italic;
 }
 
+h2.toc {
+    text-align: left;
+}
+
 h3 {
     font-size: 12pt;
 }
@@ -87,4 +91,14 @@ footer .cc-icon {
     background-position: center;
     background-size: 16px;
     vertical-align: middle;
+}
+
+div.indextoc ul {
+    list-style-type: none;
+    padding-left: 2em;
+}
+
+div.indextoc ul li time.tocdate {
+    float: left;
+    width: 8em;
 }
