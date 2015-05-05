@@ -5,6 +5,7 @@
 # TODO: Feed icon next to the CC icon.
 
 import argparse
+from contextlib import contextmanager
 import datetime
 import io
 import os
@@ -18,6 +19,7 @@ import urllib.parse
 import xml.etree.ElementTree as ET
 
 import bs4
+import colorama
 import dateutil.parser
 import dateutil.tz
 
@@ -45,16 +47,43 @@ def CDATA(text=None):
 
 ET._original_serialize_xml = ET._serialize_xml
 
-def _serialize_xml(write, elem, qnames, namespaces,short_empty_elements, **kwargs):
+def _serialize_xml(write, elem, qnames, namespaces,short_empty_elements,
+                   **kwargs):
 
     if elem.tag == '![CDATA[':
         write("\n<{}{}]]>\n".format(elem.tag, elem.text))
         if elem.tail:
             write(_escape_cdata(elem.tail))
     else:
-        return ET._original_serialize_xml(write, elem, qnames, namespaces,short_empty_elements, **kwargs)
+        return ET._original_serialize_xml(write, elem, qnames, namespaces,
+                                          short_empty_elements, **kwargs)
 
 ET._serialize_xml = ET._serialize['xml'] = _serialize_xml
+
+# declare the global foreground ANSI codes
+BLACK = ""
+BLUE = ""
+CYAN = ""
+GREEN = ""
+MAGENTA = ""
+RED = ""
+WHITE = ""
+YELLOW = ""
+RESET = ""
+
+@contextmanager
+def init_colorama():
+    """Set global foreground modifying ANSI codes.
+
+    BLACK, BLUE, CYAN, GREEN, MAGENTA, RED, WHITE, YELLOW, and RESET.
+
+    """
+
+    colorama.init()
+    for color, ansi in colorama.Fore.__dict__.items():
+        exec("global {0}; {0} = '{1}'".format(color, ansi))
+    yield
+    colorama.deinit()
 
 
 class AtomFeed(object):
@@ -156,7 +185,7 @@ def generate_index(feed):
         # write a new <li> entry (<ul>) in Markdown, in the format:
         # * <time class="tocdate" datetime="2015-05-05T00:06:04-0700">May 5</time>
         #   [Blah blah](/blog/2015-05-04-blah-blah.html)
-        monthday = date.strftime("%B %d")
+        monthday = date.strftime("%b %d")
         tocbuff.write(u'* <time class="tocdate" datetime="%s">%s</time> [%s](%s)\n' %
                       (date.isoformat(), monthday, entry.title_text, entry.relpath))
     tocbuff.write('</div>')
@@ -367,6 +396,16 @@ def sanitize(string):
 
 
 def new_post(args):
+    """Create a new post with metadata pre-filled.
+
+    The path to the new post is printed to stdout.
+
+    Returns
+    -------
+    0
+        On success.
+
+    """
     title = args.title
     date = datetime.datetime.fromtimestamp(round(time.time()),
                                            dateutil.tz.tzlocal())
@@ -389,16 +428,104 @@ def new_post(args):
         fd.write("---\n")
     sys.stderr.write("New post created in:\n")
     print(fullpath)
+    return 0
 
 
-# TODO:
-def deploy():
-    pass
+def deploy(args):
+    """Deploys build directory to origin/master without regenerating.
+
+    Returns
+    -------
+    0
+        On success. Exit early with nonzero status otherwise.
+
+    """
+
+    # check whether root is dirty
+    os.chdir(ROOTDIR)
+    dirty = subprocess.check_output(["git", "status", "--porcelain"])
+    if dirty:
+        sys.stderr.write(YELLOW)
+        sys.stderr.write("Project root is dirty.\n")
+        sys.stderr.write("You may want to commit in your changes "
+                         "to the source branch, since the SHA and title "
+                         "of the latest commit on the source branch will be "
+                         "incorporated into the commit message on "
+                         "the deployment branch.\n")
+        sys.stderr.write(RESET)
+        while True:
+            sys.stderr.write("Continue? [yN] ")
+            answer = input()
+            if not answer:
+                # default
+                abort = True
+                break
+            elif answer.startswith(('y', 'Y')):
+                abort = False
+                break
+            elif answer.startswith(('n', 'N')):
+                abort = True
+                break
+            else:
+                sys.stderr.write("Please answer yes or no.\n")
+        if abort:
+            sys.stderr.write("%saborting deployment%s\n" % (RED, RESET))
+            exit(1)
+
+    # extract latest commit on the source branch
+    source_commit = subprocess.check_output(
+        ["git", "log", "-1", "--pretty=oneline", "source", "--"]).decode('utf-8').strip()
+
+    # cd into BUILDDIR and assemble commit message
+    sys.stderr.write("%scommand: cd '%s'%s\n" % (BLUE, BUILDDIR, RESET))
+    os.chdir(BUILDDIR)
+
+    # extract updated time from atom.xml
+    if not os.path.exists("atom.xml"):
+        sys.stderr.write("atom.xml not found, cannot deploy\naborting\n")
+        exit(1)
+    atomxml = ET.parse("atom.xml").getroot()
+    updated = atomxml.find('{http://www.w3.org/2005/Atom}updated').text
+
+    commit_message = ("site updated %s\n\nsource branch was at:\n%s\n" %
+                      (updated, source_commit))
+
+    # commit changes in BUILDDIR
+    sys.stderr.write("%scommand: git add --all%s\n" % (BLUE, RESET))
+    subprocess.check_call(["git", "add", "--all"])
+    sys.stderr.write("%scommand: git commit --gpg-sign --message='%s'%s\n" %
+                     (BLUE, commit_message, RESET))
+    try:
+        subprocess.check_call(["git", "commit", "--gpg-sign",
+                               "--message=%s" % commit_message])
+    except subprocess.CalledProcessError:
+        sys.stderr.write("\n%serror: git commit failed%s\n" % (RED, RESET))
+        exit(1)
+
+    # check dirty status
+    dirty = subprocess.check_output(["git", "status", "--porcelain"])
+    if dirty:
+        sys.stderr.write(RED)
+        sys.stderr.write("error: failed to commit all changes; "
+                         "build directory still dirty\n")
+        sys.stderr.write("error: please manually inspect what was left out\n")
+        sys.stderr.write(RESET)
+        exit(1)
+
+    # push to origin/master
+    sys.stderr.write("%scommand: git push origin master%s\n" % (BLUE, RESET))
+    try:
+        subprocess.check_call(["git", "push", "origin", "master"])
+    except subprocess.CalledProcessError:
+        sys.stderr.write("\n%serror: git push failed%s\n" % (RED, RESET))
+        exit(1)
+    return 0
 
 
-# TODO: regenerate and deploy
-def gen_deploy():
-    pass
+def gen_deploy(args):
+    """Regenerate and deploy."""
+    generate_blog(fresh=True)
+    deploy(None)
 
 
 # TODO: start HTTP server in another process and watch for changes
@@ -428,8 +555,20 @@ def main():
     parser_new_post.add_argument("title", help="title of the new post")
     parser_new_post.set_defaults(func=new_post)
 
-    args = parser.parse_args()
-    exit(args.func(args))
+    parser_new_post = subparsers.add_parser(
+        "deploy", aliases=["d", "dep"],
+        description="Deploy build/ to origin/master without regenerating.")
+    parser_new_post.set_defaults(func=deploy)
+
+    parser_new_post = subparsers.add_parser(
+        "gen_deploy", aliases=["gd", "gendep"],
+        description="Rebuild entire blog and deploy build/ to origin/master.")
+    parser_new_post.set_defaults(func=gen_deploy)
+
+    with init_colorama():
+        args = parser.parse_args()
+        returncode = args.func(args)
+    exit(returncode)
 
 
 if __name__ == '__main__':
