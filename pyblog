@@ -12,9 +12,9 @@ import http.client
 import http.server
 import multiprocessing
 import os
-import random
 import re
 import shutil
+import signal
 import subprocess
 import sys
 import tempfile
@@ -564,118 +564,73 @@ def gen_deploy(args):
     deploy(None)
 
 
-# courtesy: https://code.activestate.com/recipes/336012-stoppable-http-server/
-class StoppableHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
-    """HTTP request handler with an additional STOP request.
-
-    The STOP request sets the server's stop attribute.
-
-    """
-
-    # pylint: disable=invalid-name
-
-    def do_STOP(self):
-        """Send 200 and set the server's stop attribute."""
-        self.send_response(200)
-        self.end_headers()
-        self.server.stop = None
-
-class StoppableHTTPServer(http.server.HTTPServer):
-    """Stoppable HTTP server (by monitoring the stop attribute)."""
-
-    def serve_forever(self, poll_interval=0.5):
-        """Handle one request at a time until the stop attribute is set."""
-        while not hasattr(self, "stop"):
-            self.handle_request()
-        del self.stop
-
-    def shutdown(self):
-        """Tell the server to shutdown by setting the stop attribute.
-
-        Although this is not very useful when serve_forever blocks.
-        """
-        # pylint: disable=attribute-defined-outside-init
-        self.stop = None
-
-
-def stop_server(port):
-    """Send STOP to an HTTP Server listening on the specified port."""
-    conn = http.client.HTTPConnection("localhost:%d" % port)
-    conn.request("STOP", "/")
-    conn.getresponse()
-
-
 class HTTPServerProcess(multiprocessing.Process):
-    """This class can be used to run a StoppableHTTPServer."""
+    """This class can be used to run an HTTP server."""
 
-    def __init__(self, rootdir, conn):
+    def __init__(self, rootdir):
         """Initialize the HTTPServerProcess class.
 
         Parameters
         ----------
         rootdir : str
             The root directory to serve from.
-        conn : multiprocessing.Connection
-            A sender used to communicate with the mother process.
 
         """
 
         super().__init__()
         self.rootdir = rootdir
-        self.conn = conn
 
     def run(self):
-        """Create a StoppableHTTPServer instance and serve forever.
+        """Create an HTTP server and serve forever.
 
-        The port number will be sent to mother process via self.conn
-        once a free port is found and the server is running. Use the
-        stop_server function to stop the server (and as a result, finish
-        this process).
-
-        The default port is 8000. If it is in use, randomize ports
-        between 1024 and 65535 until an available one is found.
-
+        Runs on localhost. The default port is 8000; if it is not
+        available, a random port is used instead.
         """
 
         os.chdir(self.rootdir)
-        portnumber = 8000
-        handler = StoppableHTTPRequestHandler
-        while True:
-            try:
-                httpd = StoppableHTTPServer(("", portnumber), handler)
-                break
-            except OSError:
-                # port in use, randomize a port
-                portnumber = random.randint(1024, 65535)
-        self.conn.send(portnumber)
-        httpd.serve_forever()
+        HandlerClass = http.server.SimpleHTTPRequestHandler
+        try:
+            httpd = http.server.HTTPServer(("", 8000), HandlerClass)
+        except OSError:
+            httpd = http.server.HTTPServer(("", 0), HandlerClass)
+        _, portnumber = httpd.socket.getsockname()
+        sys.stderr.write("server serving on http://localhost:%d\n" % portnumber)
+        try:
+            httpd.serve_forever()
+        except KeyboardInterrupt:
+            httpd.shutdown()
 
 
 def preview(args):
     """Serve the blog and auto regenerate upon changes."""
+
     # pylint: disable=unused-argument
-    sender, receiver = multiprocessing.Pipe()
-    server_process = HTTPServerProcess(BUILDDIR, sender)
+
+    server_process = HTTPServerProcess(BUILDDIR)
     server_process.start()
-    portnumber = receiver.recv()
-    sys.stderr.write("server listening on http://localhost:%d\n" % portnumber)
     sys.stderr.write("watching for changes\n")
-    sys.stderr.write("send Ctrl-C to stop\n")
+    sys.stderr.write("send SIGINT to stop\n")
+
+    # install a SIGINT handler only for this process
+    sigint_raised = False
+
+    def sigint_mitigator(signum, frame):
+        nonlocal sigint_raised
+        sigint_raised = True
+
+    signal.signal(signal.SIGINT, sigint_mitigator)
 
     # Watch and auto-regen.
     # No need to actually implement watch separately, since
     # generate_blog(fresh=False, report_total_errors=False) already
     # watches for modifications and only regens upon changes, and it is
     # completely silent when there's no change.
-    while True:
-        try:
-            generate_blog(fresh=False, report_total_errors=False)
-            time.sleep(0.5)
-        except KeyboardInterrupt:
-            sys.stderr.write("keyboard interrupt received, cleaning up\n")
-            stop_server(portnumber)
-            time.sleep(1.0)  # wait a second for whatever is running
-            break
+    while not sigint_raised:
+        generate_blog(fresh=False, report_total_errors=False)
+        time.sleep(0.5)
+
+    sys.stderr.write("\nSIGINT received, cleaning up...\n")
+    server_process.join()
     return 0
 
 
