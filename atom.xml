@@ -1,4 +1,75 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><link href="http://zmwangx.github.io/atom.xml" rel="self" /><link href="http://zmwangx.github.io/" /><updated>2015-05-05T19:33:09-07:00</updated><id>http://zmwangx.github.io</id><author><name>Zhiming Wang</name><uri>https://github.com/zmwangx</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">New blog, new start</title><link href="http://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html" /><updated>2015-05-05T02:42:44-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html</id><author><name>Zhiming Wang</name><uri>https://github.com/zmwangx</uri><email>zmwangx@gmail.com</email></author><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><link href="http://zmwangx.github.io/atom.xml" rel="self" /><link href="http://zmwangx.github.io/" /><updated>2015-05-05T22:10:53-07:00</updated><id>http://zmwangx.github.io</id><author><name>Zhiming Wang</name><uri>https://github.com/zmwangx</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">Graceful handling of SIGINT when using Python's multiprocessing.Process</title><link href="http://zmwangx.github.io/blog/2015-05-05-graceful-handling-of-sigint-when-using-pythons-multiprocessingprocess.html" /><updated>2015-05-05T22:03:39-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-05-graceful-handling-of-sigint-when-using-pythons-multiprocessingprocess.html</id><author><name>Zhiming Wang</name><uri>https://github.com/zmwangx</uri><email>zmwangx@gmail.com</email></author><content type="html">
+<![CDATA[
+
+<p>Today I learned something about Python's (at least CPython's) multiprocessing and signal handling, and I would like to share it here. Basically my situation was such (when developing <a href="https://github.com/zmwangx/zmwangx.github.io/blob/source/pyblog"><code>pydoc</code></a> that powers this blog):</p>
+<ul>
+<li>I would like to serve the blog with an HTTP server while auto-regenerating for changes;</li>
+<li>The auto-regeneration is handled in the main process with a while loop, whereas the HTTP server (requiring little human intervention) is put in a <code>multiprocessing.Process</code> and launched with <code>http.server.HTTPServer.serve_forever()</code>;</li>
+<li>Upon sending <code>SIGINT</code>, both processes need to clean up and quit; in particular, the server needs to exit its <code>serve_forever()</code> loop (which can be done via <code>shutdown()</code>, but how to invoke the method is a problem, since <code>serve_forever()</code> blocks);</li>
+<li>Handling of <code>SIGINT</code> must be graceful in the main process &#8212; there might be an ongoing build that must not be interrupted until finishing.</li>
+</ul>
+<p>Given this context, I learned the following two critical concepts (at least true in the current version of CPython) through trial and error:</p>
+<ol style="list-style-type: decimal">
+<li><strong>A user-triggered <code>SIGINT</code> is sent to both processes</strong> &#8212; the main process and the <code>multiprocessing.Process</code> instance;</li>
+<li><strong>Except for the defined interfaces, a <code>multiprocessing.Process</code> instance is almost completely separated from the main process, sharing as little resources as possible</strong>; by "defined interfaces" I mean the defined attributes and methods of a <code>Process</code> instance, as well as defined communication channels like <code>multiprocessing.Pipe</code> or <code>multiprocessing.Queue</code>. And to expand on resource sharing: yes, the two processes have their own copies of global variables, so using global variables as state registers is a no-go.</li>
+</ol>
+<p>Both concepts can be used to one's benefit or detriment. Below is how I solved my problem, using the two concepts. Observe that without a custom handler, Python translates a <code>SIGINT</code> to a <code>KeyboardInterrupt</code> exception; therefore, I use the default <code>KeyboardInterrupt</code> to interrupt the HTTP server in its own process (through handling the exception and calling <code>shutdown()</code>), but instead install a custom <code>SIGINT</code> handler in the main process that translates <code>SIGINT</code> to setting a <code>sigint_raised</code> flag that can be picked up by the while loop once the current build (if any) is finished. The proof of concept script is as follows (the production code is <a href="https://github.com/zmwangx/zmwangx.github.io/blob/a7a0b2073f30b1d0214c3152998d95e40a39b438/pyblog#L567-L635">here</a>):</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co">#!/usr/bin/env python3</span>
+
+<span class="ch">import</span> http.server
+<span class="ch">import</span> multiprocessing
+<span class="ch">import</span> signal
+<span class="ch">import</span> sys
+<span class="ch">import</span> time
+
+<span class="kw">class</span> HTTPServerProcess(multiprocessing.Process):
+    <span class="kw">def</span> run(<span class="ot">self</span>):
+        httpd = http.server.HTTPServer(
+            (<span class="st">""</span>, <span class="dv">8000</span>), http.server.SimpleHTTPRequestHandler)
+        <span class="kw">try</span>:
+            httpd.serve_forever()
+        <span class="kw">except</span> <span class="ot">KeyboardInterrupt</span>:
+            httpd.shutdown()
+
+<span class="kw">def</span> do_things():
+    <span class="kw">for</span> i in <span class="dt">range</span>(<span class="dv">10</span>):
+        sys.stderr.write(<span class="st">"."</span>)
+        sys.stderr.flush()
+        time.sleep(<span class="dv">1</span>)
+    sys.stderr.write(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)
+
+<span class="kw">def</span> main():
+    server_process = HTTPServerProcess()
+    server_process.start()
+
+    <span class="co"># define and install custom SIGINT handler</span>
+    sigint_raised = <span class="ot">False</span>
+
+    <span class="kw">def</span> sigint_mitigator(signum, frame):
+        <span class="kw">nonlocal</span> sigint_raised
+        sigint_raised = <span class="ot">True</span>
+
+    signal.signal(signal.SIGINT, sigint_mitigator)
+
+    <span class="kw">while</span> not sigint_raised:
+        do_things()
+
+    server_process.join()
+
+<span class="kw">if</span> <span class="ot">__name__</span> == <span class="st">"__main__"</span>:
+    main()</code></pre></div>
+<p>Beware that with this solution, if there are external programs or OS level operations happening in the main process, then the operation at the time of <code>SIGINT</code> will still be interrupted<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a> (for example, in the script above, the <code>time.sleep(1)</code> at the exact point of <code>SIGINT</code> is still interrupted, but otherwise <code>do_things</code> is carried on to its completion). I'm not sure how to explain this &#8212; maybe the handler isn't capturing the signal fast enough?<a class="footnoteRef" href="#fn2" id="fnref2"><sup>2</sup></a> Anyway, one single early interruption is at least more acceptable than a completely corrupted build<a class="footnoteRef" href="#fn3" id="fnref3"><sup>3</sup></a>, and certainly more graceful.</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p><a href="https://hg.python.org/cpython/file/1320ec1b24af/Modules/_multiprocessing">CPython's <code>multiprocessing</code> is written in C</a>, so the behavior might depend on the OS. I'm talking about OS X here. I haven't inspected and won't inspect the C source code.<a href="#fnref1">&#8617;</a></p></li>
+<li id="fn2"><p>That's awfully naive and layman-sounding, I know, but I <em>am</em> almost a layman when it comes to system-level programming.<a href="#fnref2">&#8617;</a></p></li>
+<li id="fn3"><p>That's assuming your build isn't interdependent in which any single failure corrupts everything. In that case, what can we do? I honestly see no way of injecting signal handling in <code>subprocess.Popen</code>.<a href="#fnref3">&#8617;</a></p></li>
+</ol>
+</div>
+
+]]>
+</content></entry><entry><title type="html">New blog, new start</title><link href="http://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html" /><updated>2015-05-05T02:42:44-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html</id><author><name>Zhiming Wang</name><uri>https://github.com/zmwangx</uri><email>zmwangx@gmail.com</email></author><content type="html">
 <![CDATA[
 
 <p>Octopress has been serving me for the past six months, during which even Octopress itself underwent major changes &#8212; in fact, <a href="https://github.com/octopress/octopress/releases/tag/v3.0.0">Octopress 3.0.0</a> was only released 3 days ago, which I never got to try. Anyway, Octopress's heavily colored interface grew old on me fairly quickly. I'm especially unhappy with the inline <code>&lt;code&gt;</code> tag, which is always wrapped in a white box and stands out too much (worse still, there's no visual difference when such a <code>&lt;code&gt;</code> tag is placed inside an <code>&lt;a&gt;</code> tag). Since I use inline code/verbatim a lot, many of my articles were littered with arbitrary boxes everywhere.</p>
@@ -464,33 +535,6 @@ convert $(ls -v *.jpg) 2008-chrome-comic.pdf</code></pre>
 <li><a href="x-omnifocus-debug:set-default:TimeFromFirstEditToSync:2">x-omnifocus-debug:set-default:TimeFromFirstEditToSync:2</a></li>
 </ul>
 <p>Source: <a href="http://www.macstories.net/links/change-default-sync-times-of-omnifocus-for-mac-and-ios/">Change Default Sync Times of OmniFocus For Mac and iOS</a>.</p>
-
-]]>
-</content></entry><entry><title type="html">Distraction free writing</title><link href="http://zmwangx.github.io/blog/2014-12-05-distraction-free-writing.html" /><updated>2014-12-05T21:09:10-08:00</updated><id>http://zmwangx.github.io/blog/2014-12-05-distraction-free-writing.html</id><author><name>Zhiming Wang</name><uri>https://github.com/zmwangx</uri><email>zmwangx@gmail.com</email></author><content type="html">
-<![CDATA[
-
-<p>This is not the first time that a distraction free writing app is featured on the Mac App Store. This time the candidate is <a href="https://itunes.apple.com/us/app/desk/id915839505?mt=12">Desk</a>. The official website is <a href="http://desk.pm">here</a>, but licensing is MAS-exclusive. The icon looks like this:</p>
-<div class="figure">
-<img src="http://i.imgur.com/OprXSEU.png"/>
-</div>
-<p>Skeuomorphism, oh man. And this is the only screenshot I can find on the official website:</p>
-<div class="figure">
-<img src="http://i.imgur.com/WBaYzho.png"/>
-</div>
-<p>I can find a few other screenshots on MAS, but you know how shitty MAS screenshots are, plus the screenshots of this app only focus on specific UI elements. The official website also features an intro video (which provides no information at all) and a brief feature list with no further details, all on one page. The MAS description is somewhat more comprehensive, but again, "WordPress integration" and the like are not so informative. So, after a certain amount of research, I have to say I know little about this app. To do the app justice, there's an <a href="http://blog.desk.pm">accompanying blog</a>, with all kinds of noise though &#8212; like what a good blog should be, no complaint about that. So I guess anyone who wants to know more about this app should go digging there. Not me, so I didn't read.</p>
-<p>Strangely enough, reception is great, although the price tag is currently set at $30 &#8212; definitely a premium price. John Gruber <a href="http://daringfireball.net/linked/2014/11/22/desk">has a piece</a>, but I think "My thanks to Johb Saddington for sponsoring this weeks' DF RSS feed to promote Desk, his blogging app for the Mac" kind of defeats credability. MAS featuring is also a good sign (although not always). Out of the 55 MAS ratings at the time of writing (9:42 PM, Friday, December 5, 2014), 45 are five stars.</p>
-<p>That brings home my curiosity about "distraction free writing apps" in general. <em>Why would anyone pay $30 for a "distraction free writing app" (which basically justifies any lack of feature &#8212; "we deliberately give you no choice for anything so you can focus on writing!"), <strong>without even a trial</strong>?</em> MAS is such a bad model for utility and productivity software since you can't just look at five screenshots (seriously?) and decide "this is for me!" Yet I have the impression that more developers prefer this model nowadays, especially in this focused-writing business, another example being IA Writer. Sure it makes licensing and combating piracy simple, but again, I need to feel it to decide if it's the right tool for me, especially for a feature-deprived focused-writing app. (This is a general thought &#8212; in this case I don't need to feel it to tell that it's not for me.)</p>
-<p>More specifically, let's think about distraction free writing. What does IA Writer, or Desk, or other apps offer that's not already available to you with your OS? They support Markdown syntax highlighting, or even WYSYWYG (but only the very simple kind of WYSYWYG limited by the Markdown feature set), sure. They support some select-and-click type of formatting (by the way, Desk's formatting tools look a lot like those found on medium.com), which is good for some who are not competent enough to type simple markups, I guess. Desk supports drag-and-drop of media (although I'm sure it's limited to certain platforms and not portable at all &#8212; I always upload images to Imgur and embed the Imgur links, which is super simple for me since I have several homemade scripts to take care of that). So are these features essential? Not at all. For the general public, plain Markdown without rendering should be more than enough, since Markdown was designed to be human-readable as plain text in the first place. Markdown only gets ugly when you have a lot of inline hyperlinks, or worse still, plain HTML tags, but that's not what I would expect from the general public. The technical population who do probably need the rendering, on the other hand, aren't the target audience of these apps; certain needs of the technical folks are hardly ever addressed by these feature-deprived focused-writing apps &#8212; e.g., where are my keybindings (full-featured, not just C-k, C-y, C-p, C-n, C-b, C-f, M-del, etc.; in particular, what about M-d, M-b, etc.)? What about custom Markdown engine? What about Jekyll integration (no need for that, actually &#8212; I'm happy with tty)? So, to sum up, for the target audience, realtime rendering isn't necessary, although I guess people with technophobia hate to see markups like <code>**</code> so no rendering will kill them. Second point, select-and-click type of formatting, is already dismissed. Third point, drag-and-drop of media might be useful for some people, but not all. After all, Desk uses a typewriter as its icon, and there's no way you could throw photos into your typewriter. It's about writing, and most of the time writing is enough.</p>
-<p>I have dismissed the "additional features" of focused-writing apps as non-essential. And I can argue that they are actually sources of distraction &#8212; as soon as you have WYSYWYG and formatting and mouse, you could, in principle, begin to fiddle. But when I say "additional features", you might ask, "additional" compared to what? Okay here's the magic. The magic is designed by Apple in California&#174;, and it's present on every single Mac running OS X. It's called TextEdit.app. Distraction free? How can you be more distraction free than this:</p>
-<div class="figure">
-<img src="http://i.imgur.com/z3LEu0U.png"/>
-</div>
-<p>It's either text or blank. Nothing else. It's more than capable of handling plain text, our best friend (and computer's best friend &#8212; the universal interface). You can customize the font once and for all, or you can even live with the factory setting. That's better than having a font you don't like forced upon you, as many of those focused-writing apps do. You can even auto save to iCloud if you'd like to. Of course there's no one click publishing or timeline management or whatever, but you could leave that to a publishing app (like Desk, when used as a publishing app). Better yet, you can use Jekyll or Octopress or whatever command line solution, where everything is at your fingertip, a few keystrokes away. No limitation whatsoever. But that's out of question for most people. (The easy-to-use command line interface, and not needing to worry about hosting myself, are two of the primary reasons that brought me to Octopress on GitHub Pages, rather than wordpress.com or self-hosted wordpress.org).</p>
-<p>Of course I'm not saying TextEdit is good enough as a text editor (it is good enough for most people, though), or it is my text editor of choice. My text editor has always been Emacs, which can be distraction free when I need it to be (I've hidden everything I feel like to hide), and which can be an almost feature-complete operating system when I need it to be. Apart from a slightly frustrating loading time, there's no such bullshit as "we deliberately left no feature and no choice to you so you won't fiddle." Mostly importantly, it is extensible &#8212; I can start writing Elisp right away, and every single line of code I write can potentially save me thousands of keystrokes in the future; I don't need to submit a feature request to the developer and wait forever (usually power users' feature requests are ignored, unless the software was built for power users to begin with or mainly popular within power users). Plus Emacs is free (both as in beer and in speech), rather than being proprietary and costing $30. At any rate, when I'm writing in Emacs, most of the time I'm just furiously typing away &#8212; no distraction whatsoever. That's the ideal state of writing, and I feel really good at those moments. That's the main charm of writing, at least to me.</p>
-<div class="figure">
-<img src="http://i.imgur.com/2Jx9Mpv.png"/>
-</div>
-<p>The whole command line experience is awesome (most of what I do with the computer are either done in the browser or in iTerm2 &#8212; well, plus some time spent with PDF in Preview.app and some with emails in Mail.app). And most of my tools either ship with the operating system (OS X is a great operating system), or are FOSS. Things that hardly ever die. Of course the command line experience is infeasible for laymen, but my argument is, <strong>most of the time the things you need are already there, e.g., TextEdit.</strong> I feel bad about those folks who are constantly on the lookout for distraction-free writing apps, and pay a ridiculous amount for them &#8212; only to distract themselves. Just open TextEdit and type away (or if you're capable of it, Emacs or Vim or SublimeText or TextMate or BBEdit or whatever). That's the most productive thing to do. <strong>Publishing is not the top priority; writing is, and it's really simple.</strong></p>
 
 ]]>
 </content></entry></feed>
