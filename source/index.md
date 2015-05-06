@@ -7,4 +7,4 @@ I am an undergrad at Stanford (junior as of May 2015) studying mathematics and t
 
 My first programming language was Pascal and I consider C my mother tongue, but recently I write my code in Python or Bash (non-interactive) most of the time. My operating system is OS X, my text editor is Emacs, my interactive shell is Zsh, my package manager is Homebrew, and my default browser (at the moment — it changes a lot) is Google Chrome. I use four-space indents. What else is there to tell?
 
-This blog could be about anything, but most of the stuff should be technical.
+This blog could be about anything, but most of the stuff should be technical. Oh yes, this blog is fully open source, down to how image assets were generated. All tools necessary for reproducing this blog are either in or documented in [the source branch](https://github.com/zmwangx/zmwangx.github.io/tree/source) of [zmwangx/zmwangx.github.io](https://github.com/zmwangx/zmwangx.github.io).

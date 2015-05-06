@@ -2,8 +2,6 @@
 
 """A simple blog generator with Pandoc as backend."""
 
-# TODO: Feed icon next to the CC icon.
-
 import argparse
 from contextlib import contextmanager
 import datetime
@@ -360,6 +358,8 @@ def generate_blog(fresh=False, report_total_errors=True):
             os.mkdir(dstroot, mode=0o755)
 
         for name in files:
+            if name.startswith('.'):
+                continue
             extension = name.split(".")[-1]
             if extension not in ["css", "jpg", "md", "png", "svg", "ico"]:
                 continue
@@ -588,6 +588,7 @@ class HTTPServerProcess(multiprocessing.Process):
         """
 
         os.chdir(self.rootdir)
+        # pylint: disable=invalid-name
         HandlerClass = http.server.SimpleHTTPRequestHandler
         try:
             httpd = http.server.HTTPServer(("", 8000), HandlerClass)

@@ -9,3 +9,8 @@ The icon and favicon files are generated via the following commands: ::
   rm favicon-16.png favicon-32.png favicon-48.png
 
 Credit to `audreyr/favicon-cheat-sheet <https://github.com/audreyr/favicon-cheat-sheet>`_ for favicon handling tips.
+
+The feed icon isn't so easy to create with TikZ (I don't know the necessary parameters), so I downloaed one (256x256) from `IconFinder <https://www.iconfinder.com/icons/49861/feed_rss_icon>`_. The original PNG can be found `here <http://i.imgur.com/4XE3iL3.png>`_. Then I processed the PNG with ``optipng``, the result of which is ``feed-256.png``. The smaller ``feed-14.png`` is generated through::
+
+  convert feed-256.png -resize 14x14 feed-14.png
+  optipng feed-14.png
