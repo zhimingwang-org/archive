@@ -239,6 +239,48 @@ def generate_index(feed):
     os.remove(tmppath)
 
 
+def make_sitemap_url_element(atomlink, atomupdated, changefreq, priority):
+    """Make a sitemap <url> element.
+
+    Parameters
+    ----------
+    atomlink : xml.etree.ElementTree.Element
+        atom:link element, e.g., <link href="http://zmwangx.github.io/"/>
+    atomupdated : xml.etree.ElementTree.Element
+        atom:updated element, e.g., <updated>2015-05-05T22:38:42-07:00</updated>
+    changefreq : {"always", "hourly", "daily", "weekly", "monthly", "yearly", "never"}
+    priority : {1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1}
+
+    """
+
+    urlelem = ET.Element("url")
+    loc = ET.Element("loc")
+    loc.text = atomlink.attrib["href"]
+    lastmod = ET.Element("lastmod")
+    lastmod.text = atomupdated.text
+    changefreq_elem = ET.Element("changefreq")
+    changefreq_elem.text = changefreq
+    priority_elem = ET.Element("priority")
+    priority_elem.text = "%.1f" % priority
+    urlelem.append(loc)
+    urlelem.append(lastmod)
+    urlelem.append(changefreq_elem)
+    urlelem.append(priority_elem)
+    return urlelem
+
+
+def generate_sitemap(feed):
+    """Generate sitemap.xml."""
+    sitemap = ET.Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
+    sitemap.append(make_sitemap_url_element(feed.links[1], feed.updated, "daily", 1.0))
+    for entry in feed.entries:
+        sitemap.append(make_sitemap_url_element(entry.link, entry.updated, "monthly", 0.9))
+    sitemappath = os.path.join(BUILDDIR, "sitemap.xml")
+    with open(sitemappath, "w", encoding="utf-8") as sitemapfile:
+        sitemapfile.write('<?xml version="1.0" encoding="UTF-8"?>\n%s\n' %
+                          ET.tostring(sitemap).decode('utf-8'))
+
+
 def generate_index_and_feed():
     """Generate index.html and atom feed."""
     sys.stderr.write("generating atom feed\n")
@@ -309,6 +351,8 @@ def generate_index_and_feed():
         atom.write("%s\n" % feed.dump_feed())
         sys.stderr.write("wrote atom.xml\n")
 
+    generate_sitemap(feed)
+
 
 def generate_blog(fresh=False, report_total_errors=True):
     """Generate the blog in BUILDDIR.
@@ -371,7 +415,7 @@ def generate_blog(fresh=False, report_total_errors=True):
             if name.startswith('.'):
                 continue
             extension = name.split(".")[-1]
-            if extension not in ["css", "jpg", "md", "png", "svg", "ico"]:
+            if extension not in ["css", "jpg", "md", "png", "svg", "ico", "txt"]:
                 continue
 
             relpath = os.path.join(relroot, name)
@@ -387,7 +431,7 @@ def generate_blog(fresh=False, report_total_errors=True):
                 anything_modified = True
                 if srcpath == INDEXMD:
                     continue # index will be processed separately
-                if extension in ["css", "jpg", "png", "svg", "ico"]:
+                if extension in ["css", "jpg", "png", "svg", "ico", "txt"]:
                     sys.stderr.write("copying %s\n" % relpath)
                     shutil.copy(srcpath, dstpath)
                 elif extension == "md":
