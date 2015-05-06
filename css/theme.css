@@ -105,6 +105,17 @@ footer .cc-icon {
     vertical-align: middle;
 }
 
+footer .feed-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background-image: url("/img/feed-14.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    vertical-align: middle;
+}
+
 div.indextoc ul {
     list-style-type: none;
     padding-left: 2em;
