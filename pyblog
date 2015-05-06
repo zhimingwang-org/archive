@@ -730,6 +730,7 @@ def preview(args):
     sigint_raised = False
 
     def sigint_mitigator(signum, frame):
+        """Translate SIGINT to setting the sigint_raised flag."""
         nonlocal sigint_raised
         sigint_raised = True
 
@@ -772,7 +773,8 @@ def main():
         1am). Therefore, one may want to retouch the timestamp before
         publishing.""")
     parser_new_post.add_argument("filename",
-        help="path or basename of the source file, e.g., 2015-05-05-new-blog-new-start.md")
+                                 help="path or basename of the source file, "
+                                 "e.g., 2015-05-05-new-blog-new-start.md")
     parser_new_post.set_defaults(func=touch)
 
     parser_generate = subparsers.add_parser(
