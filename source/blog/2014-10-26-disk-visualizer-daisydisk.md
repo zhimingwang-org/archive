@@ -9,7 +9,7 @@ Today I was trying clean up my drive a bit, as there were only 22GB left. I knew
 
 The result is not disappointing at all. Look at this:
 
-![DaisyDisk screen shot](http://i.imgur.com/vyIwSNQ.png)
+![DaisyDisk screen shot](https://i.imgur.com/vyIwSNQ.png)
 
 Beautiful. Moreover, functional. It indeed gives me a detailed breakdown on any level, within any directory (given enough priviledge). I can also collect items I don’t want and let DaisyDisk clean up for me at once (not surprising for a disk analyzer); this feature isn’t that useful for me since I know exactly where my queues of unorganized items are — `~/Downloads`, `~/aud/staging`, `~/img/staging`, and `~/vid/staging`.
 

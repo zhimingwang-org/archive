@@ -58,7 +58,7 @@ There you go, a list of URIs you can use. Of course you can put this in a script
 youtube-dl -j --flat-playlist "$1" | jq -r '.id' | sed 's_^_https://youtube.com/v/_'
 ```
 
-**_Aside:_** I first embedded the gist here, but [it looked a bit off](http://i.imgur.com/m3cr0Im.png). See [imathis/octopress#1392](https://github.com/imathis/octopress/issues/1392).
+**_Aside:_** I first embedded the gist here, but [it looked a bit off](https://i.imgur.com/m3cr0Im.png). See [imathis/octopress#1392](https://github.com/imathis/octopress/issues/1392).
 
 > In the next version of the Gist tag plugin we are just downloading the gists and embedding them upon generation so we don't have to worry about GitHub going down and breaking all your gists, or changing the HTML and breaking all the styles.
 >

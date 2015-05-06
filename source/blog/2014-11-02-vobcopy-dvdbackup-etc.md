@@ -29,7 +29,7 @@ Next onto grabbing the raw VOB.
 
 other titles got copied, too. I didn't have enough samples to test out, but presumably it's because the problematic DVD has a structure like this:
 
-![problematic DVD title structure](http://i.imgur.com/HTgmwQL.png)
+![problematic DVD title structure](https://i.imgur.com/HTgmwQL.png)
 
 Anyway, no matter I `vobcopy` title 01, 02, or 03, the result was the same — the whole thing. That's pretty stupid. I don't know if it counts as a bug or unfinished feature. Definitely not cool.
 

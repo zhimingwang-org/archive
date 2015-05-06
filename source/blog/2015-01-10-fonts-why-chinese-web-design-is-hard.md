@@ -9,6 +9,6 @@ The problem with fonts boils down to the fact that the Chinese writing system ha
 
 Another problem triggered by the vast number of glyphs is that font files are large. I looked at a dozen OTF fonts with SC or TC glyphs, and none seems to be below 10 MB. That's clearly a no go on the web — not until everyone has a gigabit connection, I suppose. I tried to Google for Chinese webfonts and had little success, so I'm not sure if woff helps. I've heard that Apple is able to pack a reduced set of PingHei glyphs into woffs less than 1 MB (keep in mind that PingHei being sans serif is simpler than serif fonts like Songti); that's pretty remarkable. I don't know much about font technologies so I can't comment more on this matter, but from my observation all Chinese websites (with the exception of apple.com/cn, I guess) rely on locally installed fonts, and most don't even have a list of fallbacks, i.e., typefaces simply aren't part of their designs. Even if they do have a list of fallbacks, they won't be able to guarantee uniform experience across the board (as far as I know, the lowest common denominator of Chinese fonts across all platforms seem to be zero). Apple has taught us that design must be integrated and perfected (well, Apple wasn't the first to do design, but they did bring it to the digital world and to the masses). Any fragmented design is doomed to fail.
 
-![A section of [apple.com/cn/iphone-6](https://www.apple.com/cn/iphone-6/).](http://i.imgur.com/MPmtSJI.png)
+![A section of [apple.com/cn/iphone-6](https://www.apple.com/cn/iphone-6/).](https://i.imgur.com/MPmtSJI.png)
 
-![The English equivalent.](http://i.imgur.com/hBpdv0B.png)
+![The English equivalent.](https://i.imgur.com/hBpdv0B.png)

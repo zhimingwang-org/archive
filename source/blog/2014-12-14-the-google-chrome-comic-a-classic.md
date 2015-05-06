@@ -16,4 +16,4 @@ Here I was a bit lazy and used a GNU `ls` feature: `-v` for natural sorting of n
 
 And here's page 1 of the comic as a teaser:
 
-![](http://i.imgur.com/W5pJTjl.jpg)
+![](https://i.imgur.com/W5pJTjl.jpg)

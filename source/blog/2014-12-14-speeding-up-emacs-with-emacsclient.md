@@ -25,7 +25,7 @@ emacsclient -cqta= "${file}"
 
 Note that using `emacsclient` has the additional benefit that the same buffer is simultaneously updated accross different ttys (See screenshot, where I opened the current post in two different ttys). This way, you won't face the nasty "file changed on disk" problem when you accidentally edited the same file in another tty session.
 
-![screen shot of multiple copies of the same buffer](http://i.imgur.com/9KxEWKq.png)
+![screen shot of multiple copies of the same buffer](https://i.imgur.com/9KxEWKq.png)
 
 By the way, remember to re-configure your other programs that uses an external editor. For instance, change `$EDITOR` to `emacsclient -cqta=` in your `env`, and `core.editor` to `emacsclient -cqta=` in your `~/.gitconfig`.
 

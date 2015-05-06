@@ -13,6 +13,6 @@ All the discussions above are not the main point of this post though. The point 
 
 Why Microsoft's web design is so shitty is always beyond my grasp. For OS X, a potential customer would be eager to set his hands on it just by looking at its beautifully-crafted homepage and a few screenshots there. For Windows it's exactly the opposite. I mean, apart from metro apps (worst and ugliest desktop experience ever), modern Windows actually looks pretty good. But their shitty advertising totally ruins it. I guess it doesn't matter much for Microsoft, for all design-savvy folks who are not stuck on Windows are already using OS X, and most of their customers just need a commodity OS.
 
-![Full height screenshot of [windows.microsoft.com/en-us/windows-10/about](http://windows.microsoft.com/en-us/windows-10/about).](http://i.imgur.com/0eIt4SR.png)
+![Full height screenshot of [windows.microsoft.com/en-us/windows-10/about](http://windows.microsoft.com/en-us/windows-10/about).](https://i.imgur.com/0eIt4SR.png)
 
-![Full height screenshot of [www.apple.com/osx/](http://www.apple.com/osx/).](http://i.imgur.com/piUO0xY.png)
+![Full height screenshot of [www.apple.com/osx/](http://www.apple.com/osx/).](https://i.imgur.com/piUO0xY.png)

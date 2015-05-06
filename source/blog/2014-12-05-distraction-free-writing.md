@@ -5,11 +5,11 @@ date-display: December  5, 2014
 ---
 This is not the first time that a distraction free writing app is featured on the Mac App Store. This time the candidate is [Desk](https://itunes.apple.com/us/app/desk/id915839505?mt=12). The official website is [here](http://desk.pm), but licensing is MAS-exclusive. The icon looks like this:
 
-![](http://i.imgur.com/OprXSEU.png)
+![](https://i.imgur.com/OprXSEU.png)
 
 Skeuomorphism, oh man. And this is the only screenshot I can find on the official website:
 
-![](http://i.imgur.com/WBaYzho.png)
+![](https://i.imgur.com/WBaYzho.png)
 
 I can find a few other screenshots on MAS, but you know how shitty MAS screenshots are, plus the screenshots of this app only focus on specific UI elements. The official website also features an intro video (which provides no information at all) and a brief feature list with no further details, all on one page. The MAS description is somewhat more comprehensive, but again, "WordPress integration" and the like are not so informative. So, after a certain amount of research, I have to say I know little about this app. To do the app justice, there's an [accompanying blog](http://blog.desk.pm), with all kinds of noise though — like what a good blog should be, no complaint about that. So I guess anyone who wants to know more about this app should go digging there. Not me, so I didn't read.
 
@@ -21,12 +21,12 @@ More specifically, let's think about distraction free writing. What does IA Writ
 
 I have dismissed the "additional features" of focused-writing apps as non-essential. And I can argue that they are actually sources of distraction — as soon as you have WYSYWYG and formatting and mouse, you could, in principle, begin to fiddle. But when I say "additional features", you might ask, "additional" compared to what? Okay here's the magic. The magic is designed by Apple in California®, and it's present on every single Mac running OS X. It's called TextEdit.app. Distraction free? How can you be more distraction free than this:
 
-![](http://i.imgur.com/z3LEu0U.png)
+![](https://i.imgur.com/z3LEu0U.png)
 
 It's either text or blank. Nothing else. It's more than capable of handling plain text, our best friend (and computer's best friend — the universal interface). You can customize the font once and for all, or you can even live with the factory setting. That's better than having a font you don't like forced upon you, as many of those focused-writing apps do. You can even auto save to iCloud if you'd like to. Of course there's no one click publishing or timeline management or whatever, but you could leave that to a publishing app (like Desk, when used as a publishing app). Better yet, you can use Jekyll or Octopress or whatever command line solution, where everything is at your fingertip, a few keystrokes away. No limitation whatsoever. But that's out of question for most people. (The easy-to-use command line interface, and not needing to worry about hosting myself, are two of the primary reasons that brought me to Octopress on GitHub Pages, rather than wordpress.com or self-hosted wordpress.org).
 
 Of course I'm not saying TextEdit is good enough as a text editor (it is good enough for most people, though), or it is my text editor of choice. My text editor has always been Emacs, which can be distraction free when I need it to be (I've hidden everything I feel like to hide), and which can be an almost feature-complete operating system when I need it to be. Apart from a slightly frustrating loading time, there's no such bullshit as "we deliberately left no feature and no choice to you so you won't fiddle." Mostly importantly, it is extensible — I can start writing Elisp right away, and every single line of code I write can potentially save me thousands of keystrokes in the future; I don't need to submit a feature request to the developer and wait forever (usually power users' feature requests are ignored, unless the software was built for power users to begin with or mainly popular within power users). Plus Emacs is free (both as in beer and in speech), rather than being proprietary and costing $30. At any rate, when I'm writing in Emacs, most of the time I'm just furiously typing away — no distraction whatsoever. That's the ideal state of writing, and I feel really good at those moments. That's the main charm of writing, at least to me.
 
-![](http://i.imgur.com/2Jx9Mpv.png)
+![](https://i.imgur.com/2Jx9Mpv.png)
 
 The whole command line experience is awesome (most of what I do with the computer are either done in the browser or in iTerm2 — well, plus some time spent with PDF in Preview.app and some with emails in Mail.app). And most of my tools either ship with the operating system (OS X is a great operating system), or are FOSS. Things that hardly ever die. Of course the command line experience is infeasible for laymen, but my argument is, **most of the time the things you need are already there, e.g., TextEdit.** I feel bad about those folks who are constantly on the lookout for distraction-free writing apps, and pay a ridiculous amount for them — only to distract themselves. Just open TextEdit and type away (or if you're capable of it, Emacs or Vim or SublimeText or TextMate or BBEdit or whatever). That's the most productive thing to do. **Publishing is not the top priority; writing is, and it's really simple.**
