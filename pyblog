@@ -8,7 +8,11 @@ import argparse
 from contextlib import contextmanager
 import datetime
 import io
+import http.client
+import http.server
+import multiprocessing
 import os
+import random
 import re
 import shutil
 import subprocess
@@ -37,19 +41,24 @@ FEED_MAX_ENTRIES = 20
 
 
 # Hack ET to support CDATA.
+# I know _escape_cdata pops out of nowhere but I won't investigate until
+# it breaks.
 # XML suuuuuucks.
 # http://stackoverflow.com/a/30019607/1944784
 
-def CDATA(text=None):
+def cdata(text=None):
+    """Generate an XML CDATA element (ET.Element)."""
     element = ET.Element('![CDATA[')
     element.text = text
     return element
 
+# pylint: disable=protected-access,undefined-variable
+
 ET._original_serialize_xml = ET._serialize_xml
 
-def _serialize_xml(write, elem, qnames, namespaces,short_empty_elements,
+def _serialize_xml(write, elem, qnames, namespaces, short_empty_elements,
                    **kwargs):
-
+    """Hacked _serialize_xml, tested to work in Python 3.4.3."""
     if elem.tag == '![CDATA[':
         write("\n<{}{}]]>\n".format(elem.tag, elem.text))
         if elem.tail:
@@ -59,6 +68,7 @@ def _serialize_xml(write, elem, qnames, namespaces,short_empty_elements,
                                           short_empty_elements, **kwargs)
 
 ET._serialize_xml = ET._serialize['xml'] = _serialize_xml
+
 
 # declare the global foreground ANSI codes
 BLACK = ""
@@ -79,6 +89,8 @@ def init_colorama():
 
     """
 
+    # pylint: disable=exec-used,invalid-name
+
     colorama.init()
     for color, ansi in colorama.Fore.__dict__.items():
         exec("global {0}; {0} = '{1}'".format(color, ansi))
@@ -89,6 +101,8 @@ def init_colorama():
 class AtomFeed(object):
     """Class for storing atom:feed date and metadata."""
 
+    # pylint: disable=invalid-name,too-many-instance-attributes
+
     def __init__(self):
         """Define available attributes."""
         self.author = None  # atom:author
@@ -98,6 +112,7 @@ class AtomFeed(object):
         self.id_text = None  # atom:id, just use URI
         self.id = None  # atom:id
         self.links = []  # list of atom:link
+        self.title_text = None  # the text of atom:title
         self.title = None  # atom:title
         self.updated_datetime = None  # update time as a datetime object
         self.updated = None  # atom:updated
@@ -132,6 +147,8 @@ class AtomFeed(object):
 
 class AtomEntry(object):
     """Class for storing atom:entry data and metadata."""
+
+    # pylint: disable=invalid-name,too-many-instance-attributes
 
     def __init__(self):
         """Define available attributes."""
@@ -191,6 +208,7 @@ def generate_index(feed):
     tocbuff.write('</div>')
 
     # create tempfile with index.md and the TOC concatenated, and generate index.html from that
+    # pylint: disable=invalid-name
     fd, tmppath = tempfile.mkstemp()
     os.close(fd)
     with open(tmppath, 'w', encoding='utf-8') as tmpfile:
@@ -209,7 +227,6 @@ def generate_index(feed):
     try:
         subprocess.check_call(pandoc_args)
     except subprocess.CalledProcessError:
-        failed_builds += 1
         sys.stderr.write("error: failed to generate index.html\n")
     os.remove(tmppath)
 
@@ -220,10 +237,15 @@ def generate_index_and_feed():
     # initialize feed
     feed = AtomFeed()
     # TODO: Put hard-coded values in a config file
-    feed.author = ET.fromstring('<author><name>Zhiming Wang</name><uri>https://github.com/zmwangx</uri><email>zmwangx@gmail.com</email></author>')
+    feed.author = ET.fromstring("<author>"
+                                "<name>Zhiming Wang</name>"
+                                "<uri>https://github.com/zmwangx</uri>"
+                                "<email>zmwangx@gmail.com</email>"
+                                "</author>")
     feed.generator = ET.Element("generator", uri="https://github.com/zmwangx/zmwangx.github.io")
     feed.generator.text = "pyblog"
-    # TODO: feed.icon
+    feed.icon = ET.Element("icon")
+    feed.icon.text = "http://zmwangx.github.io/img/icon-400.png"
     feed.id_text = "http://zmwangx.github.io"
     feed.id = ET.Element("id")
     feed.id.text = feed.id_text
@@ -255,6 +277,7 @@ def generate_index_and_feed():
                 post_date = soup.find("meta", attrs={"name": "date"})["content"]
                 entry.updated_datetime = dateutil.parser.parse(post_date)
                 entry.updated = ET.Element("updated")
+                # pylint: disable=no-member
                 entry.updated.text = entry.updated_datetime.isoformat()
                 # extract the article content without header and footer
                 article = soup.article
@@ -263,7 +286,7 @@ def generate_index_and_feed():
                 entry.content_html = ''.join([str(content)
                                               for content in article.contents])
                 entry.content = ET.Element("content", type="html")
-                entry.content.append(CDATA(entry.content_html))
+                entry.content.append(cdata(entry.content_html))
                 entry.assemble_entry()
                 feed.entries.append(entry)
 
@@ -279,7 +302,7 @@ def generate_index_and_feed():
         sys.stderr.write("wrote atom.xml\n")
 
 
-def generate_blog(fresh=False):
+def generate_blog(fresh=False, report_total_errors=True):
     """Generate the blog in BUILDDIR.
 
     Parameters
@@ -288,6 +311,13 @@ def generate_blog(fresh=False):
         If True, remove all existing build artifects and start afresh;
         otherwise, only copy or build new or modified files. Default is
         False.
+    report_total_errors : bool
+        If True, a line will be printed to stderr at the end of build
+        (assuming the function doesn't raise early) reporting the total
+        number of errors, e.g., "build finished with 0 errors". This is
+        turned on by default, but pass False to turn it off, which will
+        result in a completely silent session if nothing changed. This
+        is useful for auto-regen, for instance.
 
     Returns
     -------
@@ -296,7 +326,7 @@ def generate_blog(fresh=False):
 
     """
 
-    # pylint: disable=too-many-branches
+    # pylint: disable=too-many-branches,too-many-locals,too-many-statements
 
     if not os.path.isdir(SOURCEDIR):
         raise OSError("source directory %s does not exist" % SOURCEDIR)
@@ -367,17 +397,20 @@ def generate_blog(fresh=False):
     if anything_modified:
         generate_index_and_feed()
 
-    sys.stderr.write("build finished with %d errors\n" % failed_builds)
+    if report_total_errors:
+        sys.stderr.write("build finished with %d errors\n" % failed_builds)
     return failed_builds
 
 
 def generate(args):
     """Wrapper for generate_blog(fresh=False)."""
+    # pylint: disable=unused-argument
     exit(generate_blog(fresh=False))
 
 
 def regenerate(args):
     """Wrapper for generate_blog(fresh=True)."""
+    # pylint: disable=unused-argument
     exit(generate_blog(fresh=True))
 
 
@@ -420,12 +453,12 @@ def new_post(args):
         if os.path.exists(postdir):
             os.remove(postdir)
         os.mkdir(postdir, mode=0o755)
-    with open(fullpath, 'w', encoding='utf-8') as fd:
-        fd.write("---\n")
-        fd.write('title: "%s"\n' % title)
-        fd.write("date: %s\n" % iso_date)
-        fd.write("date-display: %s\n" % display_date)
-        fd.write("---\n")
+    with open(fullpath, 'w', encoding='utf-8') as newpost:
+        newpost.write("---\n")
+        newpost.write('title: "%s"\n' % title)
+        newpost.write("date: %s\n" % iso_date)
+        newpost.write("date-display: %s\n" % display_date)
+        newpost.write("---\n")
     sys.stderr.write("New post created in:\n")
     print(fullpath)
     return 0
@@ -440,6 +473,8 @@ def deploy(args):
         On success. Exit early with nonzero status otherwise.
 
     """
+
+    # pylint: disable=unused-argument,too-many-statements
 
     # check whether root is dirty
     os.chdir(ROOTDIR)
@@ -524,13 +559,124 @@ def deploy(args):
 
 def gen_deploy(args):
     """Regenerate and deploy."""
+    # pylint: disable=unused-argument
     generate_blog(fresh=True)
     deploy(None)
 
 
-# TODO: start HTTP server in another process and watch for changes
-def preview():
-    pass
+# courtesy: https://code.activestate.com/recipes/336012-stoppable-http-server/
+class StoppableHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
+    """HTTP request handler with an additional STOP request.
+
+    The STOP request sets the server's stop attribute.
+
+    """
+
+    # pylint: disable=invalid-name
+
+    def do_STOP(self):
+        """Send 200 and set the server's stop attribute."""
+        self.send_response(200)
+        self.end_headers()
+        self.server.stop = None
+
+class StoppableHTTPServer(http.server.HTTPServer):
+    """Stoppable HTTP server (by monitoring the stop attribute)."""
+
+    def serve_forever(self, poll_interval=0.5):
+        """Handle one request at a time until the stop attribute is set."""
+        while not hasattr(self, "stop"):
+            self.handle_request()
+        del self.stop
+
+    def shutdown(self):
+        """Tell the server to shutdown by setting the stop attribute.
+
+        Although this is not very useful when serve_forever blocks.
+        """
+        # pylint: disable=attribute-defined-outside-init
+        self.stop = None
+
+
+def stop_server(port):
+    """Send STOP to an HTTP Server listening on the specified port."""
+    conn = http.client.HTTPConnection("localhost:%d" % port)
+    conn.request("STOP", "/")
+    conn.getresponse()
+
+
+class HTTPServerProcess(multiprocessing.Process):
+    """This class can be used to run a StoppableHTTPServer."""
+
+    def __init__(self, rootdir, conn):
+        """Initialize the HTTPServerProcess class.
+
+        Parameters
+        ----------
+        rootdir : str
+            The root directory to serve from.
+        conn : multiprocessing.Connection
+            A sender used to communicate with the mother process.
+
+        """
+
+        super().__init__()
+        self.rootdir = rootdir
+        self.conn = conn
+
+    def run(self):
+        """Create a StoppableHTTPServer instance and serve forever.
+
+        The port number will be sent to mother process via self.conn
+        once a free port is found and the server is running. Use the
+        stop_server function to stop the server (and as a result, finish
+        this process).
+
+        The default port is 8000. If it is in use, randomize ports
+        between 1024 and 65535 until an available one is found.
+
+        """
+
+        os.chdir(self.rootdir)
+        portnumber = 8000
+        handler = StoppableHTTPRequestHandler
+        while True:
+            try:
+                httpd = StoppableHTTPServer(("", portnumber), handler)
+                break
+            except OSError:
+                # port in use, randomize a port
+                portnumber = random.randint(1024, 65535)
+        self.conn.send(portnumber)
+        httpd.serve_forever()
+
+
+def preview(args):
+    """Serve the blog and auto regenerate upon changes."""
+    # pylint: disable=unused-argument
+    sender, receiver = multiprocessing.Pipe()
+    server_process = HTTPServerProcess(BUILDDIR, sender)
+    server_process.start()
+    portnumber = receiver.recv()
+    sys.stderr.write("server listening on http://localhost:%d\n" % portnumber)
+    sys.stderr.write("watching for changes\n")
+    sys.stderr.write("send Ctrl-C to stop\n")
+
+    # Watch and auto-regen.
+    # No need to actually implement watch separately, since
+    # generate_blog(fresh=False, report_total_errors=False) already
+    # watches for modifications and only regens upon changes, and it is
+    # completely silent when there's no change.
+    while True:
+        try:
+            generate_blog(fresh=False, report_total_errors=False)
+            time.sleep(0.5)
+        except KeyboardInterrupt:
+            sys.stderr.write("keyboard interrupt received, cleaning up\n")
+            stop_server(portnumber)
+            time.sleep(1.0)  # wait a second for whatever is running
+            break
+    return 0
 
 
 def main():
@@ -564,6 +710,11 @@ def main():
         "gen_deploy", aliases=["gd", "gendep"],
         description="Rebuild entire blog and deploy build/ to origin/master.")
     parser_new_post.set_defaults(func=gen_deploy)
+
+    parser_new_post = subparsers.add_parser(
+        "preview", aliases=["p", "pre"],
+        description="Serve the blog locally and auto regenerate upon changes.")
+    parser_new_post.set_defaults(func=preview)
 
     with init_colorama():
         args = parser.parse_args()
