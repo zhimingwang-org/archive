@@ -27,6 +27,10 @@ h1.title {
     font-size: 18pt;
 }
 
+h1.title code {
+    font-size: 18pt;
+}
+
 h2 {
     text-align: center;
     font-size: 14pt;
