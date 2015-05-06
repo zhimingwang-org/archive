@@ -205,7 +205,7 @@ def generate_index(feed):
         if date.year < year:
             # write a new <h2 class="toc"> tag with the smaller year
             year = date.year
-            tocbuff.write(u'\n<h2 class="toc" id="{0}" datetime="{0}">{0}</h2>\n\n'.format(year))
+            tocbuff.write(u'\n<h2 class="toc" id="{0}">{0}</h2>\n\n'.format(year))
 
         # write a new <li> entry (<ul>) in Markdown, in the format:
         # * <time class="tocdate" datetime="2015-05-05T00:06:04-0700">May 5</time>

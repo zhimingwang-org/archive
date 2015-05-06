@@ -107,6 +107,7 @@ footer .cc-icon {
     background-position: center;
     background-size: 16px;
     vertical-align: middle;
+    font-size: 0;
 }
 
 footer .feed-icon {
@@ -118,6 +119,7 @@ footer .feed-icon {
     background-position: center;
     background-size: 14px;
     vertical-align: middle;
+    font-size: 0;
 }
 
 div.indextoc ul {
