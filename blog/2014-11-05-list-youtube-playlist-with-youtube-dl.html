@@ -96,7 +96,7 @@ by <span class="author">Zhiming Wang</span>
 <span class="co"># Requires youtube-dl 2014.10.24, tested on youtube-dl</span>
 <span class="co"># 2014.11.02.1. Feature subject to change.</span>
 <span class="kw">youtube-dl</span> -j --flat-playlist <span class="st">&quot;</span><span class="ot">$1</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="kw">jq</span> -r <span class="st">&#39;.id&#39;</span> <span class="kw">|</span> <span class="kw">sed</span> <span class="st">&#39;s_^_https://youtube.com/v/_&#39;</span></code></pre></div>
-<p><strong><em>Aside:</em></strong> I first embedded the gist here, but <a href="http://i.imgur.com/m3cr0Im.png">it looked a bit off</a>. See <a href="https://github.com/imathis/octopress/issues/1392">imathis/octopress#1392</a>.</p>
+<p><strong><em>Aside:</em></strong> I first embedded the gist here, but <a href="https://i.imgur.com/m3cr0Im.png">it looked a bit off</a>. See <a href="https://github.com/imathis/octopress/issues/1392">imathis/octopress#1392</a>.</p>
 <blockquote>
 <p>In the next version of the Gist tag plugin we are just downloading the gists and embedding them upon generation so we don't have to worry about GitHub going down and breaking all your gists, or changing the HTML and breaking all the styles.</p>
 <p>For the time being I suggest embedding your code snippets directly if you want them to look good.</p>

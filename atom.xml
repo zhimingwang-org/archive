@@ -1,4 +1,4 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><link href="http://zmwangx.github.io/atom.xml" rel="self" /><link href="http://zmwangx.github.io/" /><updated>2015-05-05T23:25:51-07:00</updated><id>http://zmwangx.github.io</id><author><name>Zhiming Wang</name><uri>https://github.com/zmwangx</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">Graceful handling of SIGINT when using Python's multiprocessing.Process</title><link href="http://zmwangx.github.io/blog/2015-05-05-graceful-handling-of-sigint-when-using-pythons-multiprocessingprocess.html" /><updated>2015-05-05T22:03:39-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-05-graceful-handling-of-sigint-when-using-pythons-multiprocessingprocess.html</id><author><name>Zhiming Wang</name><uri>https://github.com/zmwangx</uri><email>zmwangx@gmail.com</email></author><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><link href="http://zmwangx.github.io/atom.xml" rel="self" /><link href="http://zmwangx.github.io/" /><updated>2015-05-06T00:04:44-07:00</updated><id>http://zmwangx.github.io</id><author><name>Zhiming Wang</name><uri>https://github.com/zmwangx</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">Graceful handling of SIGINT when using Python's multiprocessing.Process</title><link href="http://zmwangx.github.io/blog/2015-05-05-graceful-handling-of-sigint-when-using-pythons-multiprocessingprocess.html" /><updated>2015-05-05T22:03:39-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-05-graceful-handling-of-sigint-when-using-pythons-multiprocessingprocess.html</id><author><name>Zhiming Wang</name><uri>https://github.com/zmwangx</uri><email>zmwangx@gmail.com</email></author><content type="html">
 <![CDATA[
 
 <p>Today I learned something about Python's (at least CPython's) multiprocessing and signal handling, and I would like to share it here. Basically my situation was such (when developing <a href="https://github.com/zmwangx/zmwangx.github.io/blob/source/pyblog"><code>pydoc</code></a> that powers this blog):</p>
@@ -74,7 +74,7 @@
 
 <p>Octopress has been serving me for the past six months, during which even Octopress itself underwent major changes &#8212; in fact, <a href="https://github.com/octopress/octopress/releases/tag/v3.0.0">Octopress 3.0.0</a> was only released 3 days ago, which I never got to try. Anyway, Octopress's heavily colored interface grew old on me fairly quickly. I'm especially unhappy with the inline <code>&lt;code&gt;</code> tag, which is always wrapped in a white box and stands out too much (worse still, there's no visual difference when such a <code>&lt;code&gt;</code> tag is placed inside an <code>&lt;a&gt;</code> tag). Since I use inline code/verbatim a lot, many of my articles were littered with arbitrary boxes everywhere.</p>
 <div class="figure">
-<img alt="Farewell, Octopress." src="http://i.imgur.com/hxfSnOk.png"/>
+<img alt="Farewell, Octopress." src="https://i.imgur.com/hxfSnOk.png"/>
 <p class="caption">Farewell, Octopress.</p>
 </div>
 <p>Apparently I need something simpler. Because</p>
@@ -95,7 +95,7 @@
 <p>Sigh.</p>
 <p>Anyway, here is my new shiny blog.</p>
 <div class="figure">
-<img alt="Welcome to the completely revamped dl? cmplnts?" src="http://i.imgur.com/VS5f9eJ.png"/>
+<img alt="Welcome to the completely revamped dl? cmplnts?" src="https://i.imgur.com/VS5f9eJ.png"/>
 <p class="caption">Welcome to the completely revamped dl? cmplnts?</p>
 </div>
 <p>It looks ten times better than Octopress, and ever builds much faster than Octopress<a class="footnoteRef" href="#fn3" id="fnref3"><sup>3</sup></a>. As a bonus, the codebase is so small that it's super trivial to hack (no, not <em>that</em> hack).</p>
@@ -296,16 +296,16 @@ correction.zsh  git.zsh          key-bindings.zsh  prompt_info_functions.zsh  th
 </blockquote>
 <p>Here's a screenshot of my dock at the moment.</p>
 <div class="figure">
-<img alt="My dock" src="http://i.imgur.com/EhaJw57.png" title="My current dock. Left to right: Finder (TotalFinder), Mail, Safari, Chrome, iTunes, OmniFocus, iTerm2, Activity Monitor, and mpv. Everything except mpv is persistent."/>
+<img alt="My dock" src="https://i.imgur.com/EhaJw57.png" title="My current dock. Left to right: Finder (TotalFinder), Mail, Safari, Chrome, iTunes, OmniFocus, iTerm2, Activity Monitor, and mpv. Everything except mpv is persistent."/>
 <p class="caption">My dock</p>
 </div>
 <p>Left to right: Finder (TotalFinder), Mail, Safari, Chrome, iTunes, OmniFocus, iTerm2, Activity Monitor, and mpv. Everything except mpv is persistent; mpv is there because I happen to be looping a piece of music with mpv that I don't plan to add to the iTunes library. The point is that it never looked this good, mainly due to the updated OmniFocus icon. Finally they put some serious thought into graphics design! Just compare <a href="https://dl.bintray.com/zmwangx/generic/omnifocus-v2.1.icns">the v2.1 icon</a> to <a href="https://dl.bintray.com/zmwangx/generic/omnifocus-v2.0.icns">the v2.0 version</a>.</p>
 <div class="figure">
-<img src="http://i.imgur.com/KeTz5wK.png"/>
+<img src="https://i.imgur.com/KeTz5wK.png"/>
 </div>
 <p>Obviously the overpolished (and honestly, badly polished) 2.0 one belongs to the past. It "stood out" even among Mavericks dock icons (in terms of color), not to mention among the flattened-down Yosemite ones. Today, it finally becomes a native member of the dock. (Well, actually not today &#8212; I've been using the beta for a while, so the new icon didn't come as a surprise.) In fact, this time the Omni Group seems to be on a graphics design streak these days, and today they have a really impressive App Store feature banner:</p>
 <div class="figure">
-<img src="http://i.imgur.com/tILmveQ.png"/>
+<img src="https://i.imgur.com/tILmveQ.png"/>
 </div>
 
 ]]>
@@ -319,13 +319,13 @@ correction.zsh  git.zsh          key-bindings.zsh  prompt_info_functions.zsh  th
 <li>Microsoft still won't let us use our password managers to its fullest (of course we can't blame it on the OneDrive folks): 16 characters max in this day and age (screenshot taken today)? Hmm. And I remember Microsoft recently said password length isn't the main source of vulnerability of its customers. WTF. Who cares about <em>your</em> stupid customers. I just want to protect <em>my own</em> data, and make sure that in case of a breach on <em>your</em> side, I won't face the same loss as your technologically illiterate customers. But that's not currently possible with Microsoft.</li>
 </ul>
 <div class="figure">
-<img src="http://i.imgur.com/CNv76zw.png"/>
+<img src="https://i.imgur.com/CNv76zw.png"/>
 </div>
 <ul>
 <li>Microsoft's UI design is still shit, <a href="/blog/2015-01-21-web-design-microsoft-vs-apple.html">as well as their website</a>; I mean, seriously:</li>
 </ul>
 <div class="figure">
-<img src="http://i.imgur.com/wu66zZc.png"/>
+<img src="https://i.imgur.com/wu66zZc.png"/>
 </div>
 
 ]]>
@@ -388,11 +388,11 @@ rename(<span class="dt">ARGV</span>)</code></pre></div>
 <p>All the discussions above are not the main point of this post though. The point is, I went to the Windows website to learn more about Windows 10, and just can't believe my eyes in how awful it is designed. Just look at the font and the layout of <a href="http://windows.microsoft.com/en-us/windows-10/about">windows.microsoft.com/en-us/windows-10/about</a> (full web page screenshot courtesy of <a href="http://web-capture.net">web-capture.net</a>). And compare that to <a href="http://www.apple.com/osx/">www.apple.com/osx/</a> (scroll past the Windows screenshot). Holy crap, I even booted my Windows 8.1 VM just to make sure I'm not lacking the necessary fonts available on Windows.</p>
 <p>Why Microsoft's web design is so shitty is always beyond my grasp. For OS X, a potential customer would be eager to set his hands on it just by looking at its beautifully-crafted homepage and a few screenshots there. For Windows it's exactly the opposite. I mean, apart from metro apps (worst and ugliest desktop experience ever), modern Windows actually looks pretty good. But their shitty advertising totally ruins it. I guess it doesn't matter much for Microsoft, for all design-savvy folks who are not stuck on Windows are already using OS X, and most of their customers just need a commodity OS.</p>
 <div class="figure">
-<img alt="Full height screenshot of windows.microsoft.com/en-us/windows-10/about." src="http://i.imgur.com/0eIt4SR.png"/>
+<img alt="Full height screenshot of windows.microsoft.com/en-us/windows-10/about." src="https://i.imgur.com/0eIt4SR.png"/>
 <p class="caption">Full height screenshot of <a href="http://windows.microsoft.com/en-us/windows-10/about">windows.microsoft.com/en-us/windows-10/about</a>.</p>
 </div>
 <div class="figure">
-<img alt="Full height screenshot of www.apple.com/osx/." src="http://i.imgur.com/piUO0xY.png"/>
+<img alt="Full height screenshot of www.apple.com/osx/." src="https://i.imgur.com/piUO0xY.png"/>
 <p class="caption">Full height screenshot of <a href="http://www.apple.com/osx/">www.apple.com/osx/</a>.</p>
 </div>
 
@@ -404,11 +404,11 @@ rename(<span class="dt">ARGV</span>)</code></pre></div>
 <p>The problem with fonts boils down to the fact that the Chinese writing system has too many glyphs. I still remember learning things about the GB 2312 charset when I was twelve &#8212; there are 3755 Level 1 characters (more commonly seen), 3008 Level 2 characters, and other symbols and foreign glyphs. Designing more than six thousand Chinese characters is so much harder than designing 26 letters. I'm not sure if many glyphs are auto-generated from parts, but that would certainly degrade the quality. The result? Availability of digital fonts suffers. There are simply not so many choices of Chinese fonts. Chinese writing is beautiful, but I've yet to see a font for screens (let alone the web) that conveys that beauty. This might be subjective, but I have the impression that fonts generally look worse on screen than in print, and more so for Chinese fonts (Retina doesn't help much). For the record, I checked Apple's font usage at the moment, and they are using a tailored font named "PingHei" ("&#24179;&#40657;", I guess; see screenshot at the end); I'm not at all impressed. Compare that to the English counterpart (also at the end) &#8212; not on the same level. (I won't talk about Microsoft since it doesn't feature a design department, or that department is brain dead. Well, I'm a little opinionated.)</p>
 <p>Another problem triggered by the vast number of glyphs is that font files are large. I looked at a dozen OTF fonts with SC or TC glyphs, and none seems to be below 10 MB. That's clearly a no go on the web &#8212; not until everyone has a gigabit connection, I suppose. I tried to Google for Chinese webfonts and had little success, so I'm not sure if woff helps. I've heard that Apple is able to pack a reduced set of PingHei glyphs into woffs less than 1 MB (keep in mind that PingHei being sans serif is simpler than serif fonts like Songti); that's pretty remarkable. I don't know much about font technologies so I can't comment more on this matter, but from my observation all Chinese websites (with the exception of apple.com/cn, I guess) rely on locally installed fonts, and most don't even have a list of fallbacks, i.e., typefaces simply aren't part of their designs. Even if they do have a list of fallbacks, they won't be able to guarantee uniform experience across the board (as far as I know, the lowest common denominator of Chinese fonts across all platforms seem to be zero). Apple has taught us that design must be integrated and perfected (well, Apple wasn't the first to do design, but they did bring it to the digital world and to the masses). Any fragmented design is doomed to fail.</p>
 <div class="figure">
-<img alt="A section of apple.com/cn/iphone-6." src="http://i.imgur.com/MPmtSJI.png"/>
+<img alt="A section of apple.com/cn/iphone-6." src="https://i.imgur.com/MPmtSJI.png"/>
 <p class="caption">A section of <a href="https://www.apple.com/cn/iphone-6/">apple.com/cn/iphone-6</a>.</p>
 </div>
 <div class="figure">
-<img alt="The English equivalent." src="http://i.imgur.com/hBpdv0B.png"/>
+<img alt="The English equivalent." src="https://i.imgur.com/hBpdv0B.png"/>
 <p class="caption">The English equivalent.</p>
 </div>
 
@@ -479,7 +479,7 @@ convert $(ls -v *.jpg) 2008-chrome-comic.pdf</code></pre>
 <p>Here I was a bit lazy and used a GNU <code>ls</code> feature: <code>-v</code> for natural sorting of numbers (doesn't work for BSD <code>ls</code>).</p>
 <p>And here's page 1 of the comic as a teaser:</p>
 <div class="figure">
-<img src="http://i.imgur.com/W5pJTjl.jpg"/>
+<img src="https://i.imgur.com/W5pJTjl.jpg"/>
 </div>
 
 ]]>
@@ -503,7 +503,7 @@ convert $(ls -v *.jpg) 2008-chrome-comic.pdf</code></pre>
 <span class="kw">emacsclient</span> -cqta= <span class="st">"</span><span class="ot">${file}</span><span class="st">"</span></code></pre></div>
 <p>Note that using <code>emacsclient</code> has the additional benefit that the same buffer is simultaneously updated accross different ttys (See screenshot, where I opened the current post in two different ttys). This way, you won't face the nasty "file changed on disk" problem when you accidentally edited the same file in another tty session.</p>
 <div class="figure">
-<img alt="screen shot of multiple copies of the same buffer" src="http://i.imgur.com/9KxEWKq.png"/>
+<img alt="screen shot of multiple copies of the same buffer" src="https://i.imgur.com/9KxEWKq.png"/>
 <p class="caption">screen shot of multiple copies of the same buffer</p>
 </div>
 <p>By the way, remember to re-configure your other programs that uses an external editor. For instance, change <code>$EDITOR</code> to <code>emacsclient -cqta=</code> in your <code>env</code>, and <code>core.editor</code> to <code>emacsclient -cqta=</code> in your <code>~/.gitconfig</code>.</p>
@@ -515,7 +515,7 @@ convert $(ls -v *.jpg) 2008-chrome-comic.pdf</code></pre>
 <![CDATA[
 
 <p>Once in a while (maybe a year, maybe several months &#8212; not set in stone), I give big name free services not in use a chance to convince me. Evernote is one such service. The interface used to look very cheap and cluttered. I hated it. However, this time I'm sold. Now everything Evernote, from its Mac app to its iOS app to its web design to its physical products, looks distinctively Mac-like. (I use Mac-like to refer to Apple's design philosophy, including iOS. Well, I guess the Android and Windows apps aren't Mac-like.) I mean, just look at the screenshots:</p>
-<p><img alt="Web UI, beta" src="http://i.imgur.com/AZelofm.png"/> <img alt="Evernote Market, Pfeiffer Collection" src="http://i.imgur.com/tZuWBlY.png"/> <img alt="Mac app" src="http://i.imgur.com/R4QF8OM.png"/></p>
+<p><img alt="Web UI, beta" src="https://i.imgur.com/AZelofm.png"/> <img alt="Evernote Market, Pfeiffer Collection" src="https://i.imgur.com/tZuWBlY.png"/> <img alt="Mac app" src="https://i.imgur.com/R4QF8OM.png"/></p>
 <p>Bright, simplistic, elegant, clutter-free. Mac-like. The Mac app takes advantage of the translucent material of Yosemite, and it looks gorgeous. The iOS app also feels great on a full HD Retina screen; I didn't bother to take a screenshot. Now it's much likely that I'll put it into good use &#8212; cluttered and cheap-looking interfaces give me nightmares and actually hinders my productivity, and now they are gone.</p>
 <p>No one can argue that Apple products make great screenshots. They are also much more intuitive, functional, and productive than most Windows folks are willing to believe. I hope our world is more Mac-like.</p>
 

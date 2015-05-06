@@ -76,7 +76,7 @@ by <span class="author">Zhiming Wang</span>
 <span class="kw">emacsclient</span> -cqta= <span class="st">&quot;</span><span class="ot">${file}</span><span class="st">&quot;</span></code></pre></div>
 <p>Note that using <code>emacsclient</code> has the additional benefit that the same buffer is simultaneously updated accross different ttys (See screenshot, where I opened the current post in two different ttys). This way, you won't face the nasty &quot;file changed on disk&quot; problem when you accidentally edited the same file in another tty session.</p>
 <div class="figure">
-<img src="http://i.imgur.com/9KxEWKq.png" alt="screen shot of multiple copies of the same buffer" />
+<img src="https://i.imgur.com/9KxEWKq.png" alt="screen shot of multiple copies of the same buffer" />
 <p class="caption">screen shot of multiple copies of the same buffer</p>
 </div>
 <p>By the way, remember to re-configure your other programs that uses an external editor. For instance, change <code>$EDITOR</code> to <code>emacsclient -cqta=</code> in your <code>env</code>, and <code>core.editor</code> to <code>emacsclient -cqta=</code> in your <code>~/.gitconfig</code>.</p>
