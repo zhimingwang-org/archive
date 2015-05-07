@@ -1,0 +1,11 @@
+branches:
+  only:
+    - source
+language: python
+python:
+  - "3.4"
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install pandoc
+script:
+  - python pyblog generate
