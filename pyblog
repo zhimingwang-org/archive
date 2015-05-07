@@ -29,6 +29,7 @@ import dateutil.tz
 
 ROOTDIR = os.path.dirname(os.path.realpath(__file__))
 SOURCEDIR = os.path.join(ROOTDIR, "source")
+POSTSDIR = os.path.join(SOURCEDIR, "blog")
 INDEXMD = os.path.join(SOURCEDIR, "index.md")
 TEMPLATEDIR = os.path.join(ROOTDIR, "templates")
 HTMLTEMPLATE = os.path.join(TEMPLATEDIR, "template.html")
@@ -94,6 +95,8 @@ def init_colorama():
     for color, ansi in colorama.Fore.__dict__.items():
         exec("global {0}; {0} = '{1}'".format(color, ansi))
     yield
+    for color in colorama.Fore.__dict__:
+        exec("global {0}; {0} = ''".format(color))
     colorama.deinit()
 
 
@@ -307,10 +310,9 @@ def generate_index_and_feed():
     feed.title = ET.fromstring("<title>%s</title>" % feed.title_text)
     # update time will be set after everthing finishes
 
-    postspath = os.path.join(BUILDDIR, "blog")
-    for name in os.listdir(postspath):
+    for name in os.listdir(POSTSDIR):
         if re.match(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}.*\.html", name):
-            htmlpath = os.path.join(postspath, name)
+            htmlpath = os.path.join(POSTSDIR, name)
             entry = AtomEntry()
             with open(htmlpath, encoding="utf-8") as htmlfile:
                 soup = bs4.BeautifulSoup(htmlfile.read())
@@ -482,7 +484,7 @@ def sanitize(string):
     return urllib.parse.quote(string)
 
 
-def new_post(args):
+def new_post(title):
     """Create a new post with metadata pre-filled.
 
     The path to the new post is printed to stdout.
@@ -493,19 +495,17 @@ def new_post(args):
         On success.
 
     """
-    title = args.title
     date = current_datetime()
     filename_date = date.strftime("%Y-%m-%d")
     iso_date = date.isoformat()
     display_date = "%s %d, %d" % (date.strftime("%B"), date.day, date.year)
     title_sanitized = sanitize(title)
     filename = "%s-%s.md" % (filename_date, title_sanitized)
-    postdir = os.path.join(SOURCEDIR, "blog")
     fullpath = os.path.join(postdir, filename)
-    if not os.path.isdir(postdir):
-        if os.path.exists(postdir):
-            os.remove(postdir)
-        os.mkdir(postdir, mode=0o755)
+    if not os.path.isdir(POSTSDIR):
+        if os.path.exists(POSTSDIR):
+            os.remove(POSTSDIR)
+        os.mkdir(POSTSDIR, mode=0o755)
     with open(fullpath, 'w', encoding='utf-8') as newpost:
         newpost.write("---\n")
         newpost.write('title: "%s"\n' % title)
@@ -517,10 +517,15 @@ def new_post(args):
     return 0
 
 
-def touch(args):
+def new_post_cli(args):
+    """CLI wrapper around new_post."""
+    new_post(args.title)
+
+
+def touch(filename):
     """Update the timestamp of a post to the current time."""
-    filename = os.path.basename(args.filename)
-    fullpath = os.path.join(SOURCEDIR, "blog", filename)
+    filename = os.path.basename(filename)
+    fullpath = os.path.join(POSTSDIR, filename)
     if not os.path.exists(fullpath):
         sys.stderr.write("%serror: post %s not found %s\n" %
                          (RED, fullpath, RESET))
@@ -566,16 +571,22 @@ def touch(args):
 
             sys.stdout.write(line)
 
-    sys.stderr.write("\nchangeset:\n\n%s" % whatchanged.getvalue())
+    sys.stderr.write("\n%schangeset:%s\n\n%s" %
+                     (YELLOW, RESET, whatchanged.getvalue()))
     whatchanged.close()
 
     # check if the file needs to be renamed
     new_filename = filename_prefix_re.sub(filename_date, filename)
     if new_filename != filename:
-        new_fullpath = os.path.join(SOURCEDIR, "blog", new_filename)
+        new_fullpath = os.path.join(POSTSDIR, new_filename)
         os.rename(fullpath, new_fullpath)
-        sys.stderr.write("renamed to %s\n" % new_fullpath)
+        sys.stderr.write("%srenamed to %s%s\n" % (YELLOW, new_filename, RESET))
     return 0
+
+
+def touch_cli(args):
+    """CLI wrapper around touch."""
+    touch(args.filename)
 
 
 def deploy(args):
@@ -674,6 +685,51 @@ def deploy(args):
 def gen_deploy(args):
     """Regenerate and deploy."""
     # pylint: disable=unused-argument
+
+    # try to smartly determine the latest post, and prompt to touch it
+    current_time = time.time()
+    latest_post = None
+    latest_mtime = 0
+    for name in os.listdir(POSTSDIR):
+        if not name.endswith(".md"):
+            continue
+        fullpath = os.path.join(POSTSDIR, name)
+        ctime = os.path.getctime(fullpath)
+        mtime = os.path.getmtime(fullpath)
+        # skip the post if it was created more than three days ago
+        if current_time - ctime > 3 * 24 * 3600:
+            continue
+        if mtime > latest_mtime:
+            latest_post = name
+            latest_mtime = mtime
+    # prompt for touching if the latest post determined above was
+    # modified within an hour
+    if latest_post is not None and current_time - latest_mtime < 3600:
+        sys.stderr.write("%sIt appears that %s might be a new post.\n"
+                         "Do you want to touch its timestamp?%s\n" %
+                         (GREEN, latest_post, RESET))
+        while True:
+            yesnoquit = input("[ynq]: ")
+            if yesnoquit.startswith(("Y", "y")):
+                yesno = True
+                break
+            elif yesnoquit.startswith(("N", "n")):
+                yesno = False
+                break
+            elif yesnoquit.startswith(("Q", "q")):
+                sys.stderr.write("%saborting gen_deploy%s\n" % (RED, RESET))
+                return 1
+            else:
+                sys.stderr.write("Please answer yes, no, or quit.\n")
+        if yesno:
+            sys.stderr.write("%stouching %s%s\n" % (BLUE, latest_post, RESET))
+            touch(latest_post)
+            sys.stderr.write("\n")
+
+    # TODO: remove temporary code
+    print("deploying...")
+    return 0
+
     generate_blog(fresh=True)
     deploy(None)
 
@@ -760,7 +816,7 @@ def main():
         "new_post", aliases=["n", "new"],
         description="Create a new post with metadata pre-filled.")
     parser_new_post.add_argument("title", help="title of the new post")
-    parser_new_post.set_defaults(func=new_post)
+    parser_new_post.set_defaults(func=new_post_cli)
 
     parser_new_post = subparsers.add_parser(
         "touch", aliases=["t", "tou"],
@@ -775,7 +831,7 @@ def main():
     parser_new_post.add_argument("filename",
                                  help="path or basename of the source file, "
                                  "e.g., 2015-05-05-new-blog-new-start.md")
-    parser_new_post.set_defaults(func=touch)
+    parser_new_post.set_defaults(func=touch_cli)
 
     parser_generate = subparsers.add_parser(
         "generate", aliases=["g", "gen"],
