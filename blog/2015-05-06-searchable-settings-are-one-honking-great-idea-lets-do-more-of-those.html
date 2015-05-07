@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="pandoc" />
+<meta name="author" content="Zhiming Wang" />
+<meta name="date" content="2015-05-06T19:29:46-07:00" />
+<title>Searchable settings are one honking great idea — let's do more of those!</title>
+<link rel="apple-touch-icon-precomposed" href="/img/favicon-152.png">
+<meta name="msapplication-TileColor" content="#FFFFFF">
+<meta name="msapplication-TileImage" content="/img/favicon-144.png">
+<style type="text/css">code{white-space: pre;}</style>
+<link href='/css/normalize.css' media="all" rel="stylesheet" type="text/css">
+<link href='/css/theme.css' media="all" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-53908325-1', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+</script>
+</head>
+<body>
+<nav>
+<div style="height:150px; width:100px; text-align:center;">
+<a href="/"><img src="/img/icon-100.png" alt="blog icon" height="100" width="100" style="padding: 2px 0;"></a>
+<div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
+<div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</div>
+</nav>
+<article>
+<header>
+<h1 class="title">Searchable settings are one honking great idea — let's do more of those!</h1>
+<h2 class="meta">
+<time class="timestamp" datetime="2015-05-06T19:29:46-07:00">May 6, 2015,</time>
+by <span class="author">Zhiming Wang</span>
+</h2>
+</header>
+<p>I had to tweak some iOS settings just now, which wasn't a delightful experience. Since I just renovated my blog inside out and am still in the hype mode, I'll write a post on the interface design of settings or preferences.</p>
+<p>The Zen of Python says,</p>
+<blockquote>
+<p>Namespaces are one honking great idea -- let's do more of those!</p>
+</blockquote>
+<p>Namespaces are in general great stuff for sure, and I love them a lot.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> But they are not so great when badly designed. One problem is that sometimes things belong to the unexpected namespace. There are already examples in Python's STL, e.g., <code>os.remove</code> and <code>shutil.rmtree</code> — for Unix guys they're just <code>rm</code> and <code>rm -r</code>, but in Python they live in two separate <del>universes</del> namespaces. The other problem is that if one takes namespaces too far and design several levels of nested namespaces, then either the names are super long and annoying to use, or one needs to leave out part of the hierarchy with <code>from .. import ..</code>, defeating the security of namespaces and making code harder to understand locally.</p>
+<p>When designing an interface for settings or preferences, there are also &quot;namespaces&quot;, or sections (and subsections), although sections are more about grouping preferences by kind than about avoiding name clashes. However, section structures more often than not suffer from the same problems as badly designed namespace structures. Take iOS Settings for example. There are both unintuitive groupings and very deep nestings.</p>
+<p>Regarding unintuitive groupings, there's this top-level section named &quot;General&quot; (among other unintuitive things), which contains many subsections: &quot;About&quot;, &quot;Software Update&quot;, &quot;Siri&quot;, &quot;Spotlight Search&quot;, &quot;Handoff &amp; Suggested App&quot; &quot;Accessibility&quot;, &quot;Usage&quot;, &quot;Background App Refresh&quot;... And others I'm too tired to list. But what does &quot;General&quot; even mean? How are other top level sections like &quot;Notifications&quot;, &quot;Control Center&quot;, &quot;Display &amp; Brightness&quot;, etc. less general than the subsections found in &quot;General&quot;? No clue. I think Apple just wants to put (what they perceive as) the most used sections in the top-level, but sometimes it's hard to remember what's in &quot;General&quot; and what's not without going through both lists one by one (and missing what you are looking for in the first three tries).</p>
+<p>Regarding deep nestings, try to find &quot;Frequent Locations&quot;. It's &quot;Privacy-&gt;Location Services-&gt;System Services-&gt;Frequent Locations&quot;, or if you locked down Location Services with Restrictions,<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> &quot;General-&gt;Restrictions-&gt;Location Services-&gt;System Services-&gt;Frequent Locations&quot;. Of course it's rarely used, but it still makes me gasp.<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a></p>
+<p>I think in general <strong>one should be really careful with subsections (i.e., two or more levels of nesting)</strong>, especially in designing a settings interface. There's a reason why most INI files have no hierarchy, just sections. I believe the reason is that <strong>our text processing capability is inherently linear.</strong> Hypertext and jumping interfaces disrupt the linear workflow, but even when faced with a network of stuff, we still process them one at a time, linearly. Linearity is even more important in designing a settings interface since unlike reading articles, one is typically looking for a specific item. <strong>Finding one item linearly in a list of irrelevant distractions is already annoying enough, and you certainly don't want to make it quadratic or even cubic, which is simply unbearable when coupled with unexpected groupings.</strong></p>
+<p>I can understand why designing a settings interface for a system as complicated as iOS (yet somehow has to keep all settings in a central place) is hard — there are too many atomic items, and often items do not fall nicely into categories. But I think it still important to try to reduce nesting. Maybe having long lists, but putting the most commonly used items on top is a good idea. Or maybe... Bypass the linear searching experience altogether?</p>
+<h2 id="searchable-settings">Searchable settings</h2>
+<p>I'm not sure who invented searchable setting pages, but I first noticed their great efficiency in Google Chrome many years ago, when one had to look for setting items tab after tab in all other major browsers. In fact, even to this day, the Chromium Opera (i.e., Opera 15+) is the only major browser other than Chrome that has adopted searchable settings. (I remember arguing with someone over whether this was a change for the good on <a href="http://blogs.opera.com/desktop/">blogs.opera.com/desktop</a>.) Searchable settings is also available in OS X's System Preferences, which is a joy to use. See screenshots below about how Google and Apple implement a searchable interface. Windows Control Panel is also searchable, and the search feature is capable of turning up deeply buried settings (e.g., &quot;Control Panel-&gt;System and Security-&gt;System-&gt;Advanced system settings-&gt;Environment Variables&quot;), so one point for them also.</p>
+<p>As I said above, looking for an item in a list of irrelevant stuff is really annoying. Searchable settings completely bypass this issue by bringing users right to the desired item. This way, unintuitive groupings or deep nestings are no longer that problematic. Just like Google will tell me whether <code>rmtree</code> is in <code>os</code> or <code>shutil</code><a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>, System Preferences' search will tell me whether &quot;Dark menu bar or Dock&quot; is in &quot;General&quot; or somewhere else.</p>
+<p>In fact, it is somewhat surprising to me that searchable settings are only available in a handful of applications. Seriously, these days we can search for almost anything on our computers and anything on the grand grand Internet, but we can't search the pool of available settings? If we have an INI, Plist XML, JSON, YAML, or whatever text configuration/preference file, then we can search it. Why not in GUI applications?</p>
+<p>Of course, designing clear structures (with the principles and pitfalls discussed in the first half of this post) pays. But searchable settings are one honking great idea, and they are just long due in most applications. Come on, let's do more of them.</p>
+<div class="figure">
+<img src="https://i.imgur.com/NazieEk.png" alt="How Google designed their award-winning searchable settings." />
+<p class="caption">How Google designed their award-winning searchable settings.</p>
+</div>
+<div class="figure">
+<img src="https://i.imgur.com/aKgW29W.png" alt="Apple." />
+<p class="caption">Apple.</p>
+</div>
+<div class="figure">
+<img src="https://i.imgur.com/7zJxr8P.png" alt="Microsoft." />
+<p class="caption">Microsoft.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Thinking about <a href="http://nshipster.com/namespacing/"><code>NSHell</code></a> and the like kinda creeps me out, although there are quite some reasonable pro-class prefix arguments.<a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>Which you should: what's the point of Find My iPhone when the thief can disable it in Location Services?<a href="#fnref2">↩</a></p></li>
+<li id="fn3"><p>This brings another problem of the interface design of iOS Settings. When restricted, one cannot make modifications to &quot;Privacy-&gt;Location Services&quot;, and instead has to go to &quot;General-&gt;Restrictions-&gt;Location Services&quot;. What's the point? &quot;Restrictions&quot; is about <em>setting restrictions</em>, not about <em>editing restricted items or sections in a central place exclusively&quot;</em>. Ideally one should be able to tap on a lock icon in &quot;Privacy-&gt;Location Services&quot; and enter the restrictions passcode to unlock it, like what we find in OS X's System Preferences.<a href="#fnref3">↩</a></p></li>
+<li id="fn4"><p>This is of course just a metaphor; I'm not dumb enough to be unable to remember <code>shutil.rmtree</code>.<a href="#fnref4">↩</a></p></li>
+</ol>
+</div>
+<footer>
+<hr>
+<a class="feed-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a>
+<a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</footer>
+</article>
+</body>
+</html>
