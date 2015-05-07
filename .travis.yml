@@ -1,11 +1,13 @@
 branches:
-  only:
-    - source
+  except:
+    - master
 language: python
 python:
   - "3.4"
 before_install:
   - sudo apt-get update
   - sudo apt-get install pandoc
+install:
+  - pip install -r requirements.txt
 script:
   - python pyblog generate

@@ -810,7 +810,8 @@ def main():
     """CLI interface."""
     description = "Simple blog generator in Python with Pandoc as backend."
     parser = argparse.ArgumentParser(description=description)
-    subparsers = parser.add_subparsers()
+    subparsers = parser.add_subparsers(dest="action")
+    subparsers.required = True
 
     parser_new_post = subparsers.add_parser(
         "new_post", aliases=["n", "new"],
