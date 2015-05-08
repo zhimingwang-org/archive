@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/zmwangx/zmwangx.github.io.svg)](https://travis-ci.org/zmwangx/zmwangx.github.io)
+[![Build Status](https://travis-ci.org/zmwangx/zmwangx.github.io.svg?branch=source)](https://travis-ci.org/zmwangx/zmwangx.github.io)
 
 This blog can be built with the `pyblog` script. The `pyblog` script currently provides the following actions:
 
