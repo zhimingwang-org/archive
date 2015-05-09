@@ -5,8 +5,8 @@ language: python
 python:
   - "3.4"
 before_install:
-  - sudo apt-get update
-  - sudo apt-get install pandoc
+  - wget https://github.com/jgm/pandoc/releases/download/1.13.2/pandoc-1.13.2-1-amd64.deb
+  - sudo dpkg -i pandoc-1.13.2-1-amd64.deb
 install:
   - pip install -r requirements.txt
 script:
