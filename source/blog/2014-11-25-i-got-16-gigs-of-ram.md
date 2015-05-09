@@ -9,10 +9,10 @@ The actual process was pretty simple. I had a little bit of hard time pulling ou
 
 After I replaced the RAM modules, booting was just normal. And now I've got 16 gigs of RAM!
 
-![](https://i.imgur.com/PGhdEGr.png)
+![About This Mac->Memory](https://i.imgur.com/PGhdEGr.png)
 
 Want to run multiple memory hoggers *along with a Windows VM* (with 4GB of RAM)? No problem.
 
-![](https://i.imgur.com/czDcVaK.png)
+![Activity Monitor->Memory](https://i.imgur.com/czDcVaK.png)
 
 By the way, Yosemite is indeed really aggressive at RAM usage. I reserve my opinion on whether there's a memory leak. But so far the performance has been fine, even with 8GB of RAM.

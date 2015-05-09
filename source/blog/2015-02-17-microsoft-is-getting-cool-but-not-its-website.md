@@ -11,8 +11,8 @@ Meanwhile,
 
 * Microsoft still won't let us use our password managers to its fullest (of course we can't blame it on the OneDrive folks): 16 characters max in this day and age (screenshot taken today)? Hmm. And I remember Microsoft recently said password length isn't the main source of vulnerability of its customers. WTF. Who cares about *your* stupid customers. I just want to protect *my own* data, and make sure that in case of a breach on *your* side, I won't face the same loss as your technologically illiterate customers. But that's not currently possible with Microsoft.
 
-![](https://i.imgur.com/CNv76zw.png)
+![It's 2015, yet "your password can't be longer than 16 characters".](https://i.imgur.com/CNv76zw.png)
 
 * Microsoft's UI design is still shit, [as well as their website](/blog/2015-01-21-web-design-microsoft-vs-apple.html); I mean, seriously:
 
-![](https://i.imgur.com/wu66zZc.png)
+![What the heck are those blue blocks?](https://i.imgur.com/wu66zZc.png)
