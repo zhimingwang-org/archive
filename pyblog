@@ -314,32 +314,38 @@ def generate_index_and_feed():
         if re.match(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}.*\.html", name):
             htmlpath = os.path.join(BUILDDIR, "blog", name)
             entry = AtomEntry()
-            with open(htmlpath, encoding="utf-8") as htmlfile:
-                soup = bs4.BeautifulSoup(htmlfile.read())
-                entry.author = feed.author  # assume it's always the same author
-                entry.id_text = "%s/blog/%s" % (feed.id_text, name)
-                entry.id = ET.Element("id")
-                entry.id.text = entry.id_text
-                entry.relpath = "/blog/%s" % name
-                entry.link = ET.Element("link", href=entry.id_text)
-                entry.title_text = soup.title.text
-                entry.title = ET.Element("title", type="html")
-                entry.title.text = entry.title_text
-                post_date = soup.find("meta", attrs={"name": "date"})["content"]
-                entry.updated_datetime = dateutil.parser.parse(post_date)
-                entry.updated = ET.Element("updated")
-                # pylint: disable=no-member
-                entry.updated.text = entry.updated_datetime.isoformat()
-                # extract the article content without header and footer
-                article = soup.article
-                article.header.extract()
-                article.footer.extract()
-                entry.content_html = ''.join([str(content)
-                                              for content in article.contents])
-                entry.content = ET.Element("content", type="html")
-                entry.content.append(cdata(entry.content_html))
-                entry.assemble_entry()
-                feed.entries.append(entry)
+            try:
+                with open(htmlpath, encoding="utf-8") as htmlfile:
+                    soup = bs4.BeautifulSoup(htmlfile.read())
+                    entry.author = feed.author  # assume it's always the same author
+                    entry.id_text = "%s/blog/%s" % (feed.id_text, name)
+                    entry.id = ET.Element("id")
+                    entry.id.text = entry.id_text
+                    entry.relpath = "/blog/%s" % name
+                    entry.link = ET.Element("link", href=entry.id_text)
+                    entry.title_text = soup.title.text
+                    entry.title = ET.Element("title", type="html")
+                    entry.title.text = entry.title_text
+                    post_date = soup.find("meta", attrs={"name": "date"})["content"]
+                    entry.updated_datetime = dateutil.parser.parse(post_date)
+                    entry.updated = ET.Element("updated")
+                    # pylint: disable=no-member
+                    entry.updated.text = entry.updated_datetime.isoformat()
+                    # extract the article content without header and footer
+                    article = soup.article
+                    article.header.extract()
+                    article.footer.extract()
+                    entry.content_html = ''.join([str(content)
+                                                  for content in article.contents])
+                    entry.content = ET.Element("content", type="html")
+                    entry.content.append(cdata(entry.content_html))
+                    entry.assemble_entry()
+                    feed.entries.append(entry)
+            except Exception:
+                sys.stderr.write("failed to generate feed entry from %s" % name)
+                with open(htmlpath, encoding="utf-8") as htmlfile:
+                    sys.stderr.write("dumping HTML:%s\n\n" % htmlfile.read())
+                raise
     # sort entries by reverse chronological order
     feed.entries.sort(key=lambda entry: entry.updated_datetime, reverse=True)
 
