@@ -1,4 +1,4 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><link href="http://zmwangx.github.io/atom.xml" rel="self" /><link href="http://zmwangx.github.io/" /><updated>2015-05-09T00:35:05-07:00</updated><id>http://zmwangx.github.io</id><author><name>Zhiming Wang</name><uri>https://github.com/zmwangx</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">storyboard reached 0.1</title><link href="http://zmwangx.github.io/blog/2015-05-09-storyboard-reached-01.html" /><updated>2015-05-09T00:32:28-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-09-storyboard-reached-01.html</id><author><name>Zhiming Wang</name><uri>https://github.com/zmwangx</uri><email>zmwangx@gmail.com</email></author><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><link href="http://zmwangx.github.io/atom.xml" rel="self" /><link href="http://zmwangx.github.io/" /><updated>2015-05-09T06:14:36-07:00</updated><id>http://zmwangx.github.io</id><author><name>Zhiming Wang</name><uri>https://github.com/zmwangx</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">storyboard reached 0.1</title><link href="http://zmwangx.github.io/blog/2015-05-09-storyboard-reached-01.html" /><updated>2015-05-09T00:32:28-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-09-storyboard-reached-01.html</id><author><name>Zhiming Wang</name><uri>https://github.com/zmwangx</uri><email>zmwangx@gmail.com</email></author><content type="html">
 <![CDATA[
 
 <p>For quite some time I've been working on a Python project called <a href="https://github.com/zmwangx/storyboard"><code>storyboard</code></a>, and today I finally released the 0.1 stable (or you can think of it as 1.0).</p>
@@ -436,11 +436,13 @@ correction.zsh  git.zsh          key-bindings.zsh  prompt_info_functions.zsh  th
 </div>
 <p>Left to right: Finder (TotalFinder), Mail, Safari, Chrome, iTunes, OmniFocus, iTerm2, Activity Monitor, and mpv. Everything except mpv is persistent; mpv is there because I happen to be looping a piece of music with mpv that I don't plan to add to the iTunes library. The point is that it never looked this good, mainly due to the updated OmniFocus icon. Finally they put some serious thought into graphics design! Just compare <a href="https://dl.bintray.com/zmwangx/generic/omnifocus-v2.1.icns">the v2.1 icon</a> to <a href="https://dl.bintray.com/zmwangx/generic/omnifocus-v2.0.icns">the v2.0 version</a>.</p>
 <div class="figure">
-<img src="https://i.imgur.com/KeTz5wK.png"/>
+<img alt="OmniFocus Mac app icon, v2.0 vs v2.1" src="https://i.imgur.com/KeTz5wK.png"/>
+<p class="caption">OmniFocus Mac app icon, v2.0 vs v2.1</p>
 </div>
 <p>Obviously the overpolished (and honestly, badly polished) 2.0 one belongs to the past. It "stood out" even among Mavericks dock icons (in terms of color), not to mention among the flattened-down Yosemite ones. Today, it finally becomes a native member of the dock. (Well, actually not today &#8212; I've been using the beta for a while, so the new icon didn't come as a surprise.) In fact, this time the Omni Group seems to be on a graphics design streak these days, and today they have a really impressive App Store feature banner:</p>
 <div class="figure">
-<img src="https://i.imgur.com/tILmveQ.png"/>
+<img alt="OmniFocus's MAS feature banner" src="https://i.imgur.com/tILmveQ.png"/>
+<p class="caption">OmniFocus's MAS feature banner</p>
 </div>
 
 ]]>
@@ -454,13 +456,15 @@ correction.zsh  git.zsh          key-bindings.zsh  prompt_info_functions.zsh  th
 <li>Microsoft still won't let us use our password managers to its fullest (of course we can't blame it on the OneDrive folks): 16 characters max in this day and age (screenshot taken today)? Hmm. And I remember Microsoft recently said password length isn't the main source of vulnerability of its customers. WTF. Who cares about <em>your</em> stupid customers. I just want to protect <em>my own</em> data, and make sure that in case of a breach on <em>your</em> side, I won't face the same loss as your technologically illiterate customers. But that's not currently possible with Microsoft.</li>
 </ul>
 <div class="figure">
-<img src="https://i.imgur.com/CNv76zw.png"/>
+<img alt="It's 2015, yet &quot;your password can't be longer than 16 characters&quot;." src="https://i.imgur.com/CNv76zw.png"/>
+<p class="caption">It's 2015, yet "your password can't be longer than 16 characters".</p>
 </div>
 <ul>
 <li>Microsoft's UI design is still shit, <a href="/blog/2015-01-21-web-design-microsoft-vs-apple.html">as well as their website</a>; I mean, seriously:</li>
 </ul>
 <div class="figure">
-<img src="https://i.imgur.com/wu66zZc.png"/>
+<img alt="What the heck are those blue blocks?" src="https://i.imgur.com/wu66zZc.png"/>
+<p class="caption">What the heck are those blue blocks?</p>
 </div>
 
 ]]>
@@ -614,7 +618,8 @@ convert $(ls -v *.jpg) 2008-chrome-comic.pdf</code></pre>
 <p>Here I was a bit lazy and used a GNU <code>ls</code> feature: <code>-v</code> for natural sorting of numbers (doesn't work for BSD <code>ls</code>).</p>
 <p>And here's page 1 of the comic as a teaser:</p>
 <div class="figure">
-<img src="https://i.imgur.com/W5pJTjl.jpg"/>
+<img alt="Google Chrome &#8212; Behind the Open Source Browser Project" src="https://i.imgur.com/W5pJTjl.jpg"/>
+<p class="caption">Google Chrome &#8212; Behind the Open Source Browser Project</p>
 </div>
 
 ]]>
