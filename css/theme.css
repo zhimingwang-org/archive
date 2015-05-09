@@ -89,6 +89,10 @@ img {
     font-size: 10pt;
 }
 
+.figure .caption code {
+    font-size: 9.5pt;
+}
+
 a {
     color: #333;
 }
