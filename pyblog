@@ -26,6 +26,22 @@ import colorama
 import dateutil.parser
 import dateutil.tz
 
+# TODO: put blog configurations in a config file
+
+############################# BLOG CONFIGURATIONS ##############################
+# Safe to customize
+BLOG_HOME = "http://zmwangx.github.io"
+BLOG_TITLE = "dl? cmplnts?"
+AUTHOR = "Zhiming Wang"
+AUTHOR_EMAIL = "zmwangx@gmail.com"
+ICON_PATH = "img/icon-400.png"  # set to None to leave it out
+########################## END OF BLOG CONFIGURATIONS ##########################
+
+
+########################### GENERATOR CONFIGURATIONS ###########################
+# Do not touch unless you know what you are doing.
+GENERATOR_NAME = "pyblog"
+GENERATOR_HOME_PAGE = "https://github.com/zmwangx/zmwangx.github.io"
 
 ROOTDIR = os.path.dirname(os.path.realpath(__file__))
 SOURCEDIR = os.path.join(ROOTDIR, "source")
@@ -38,6 +54,7 @@ ATOM = os.path.join(BUILDDIR, "atom.xml")
 INDEXHTML = os.path.join(BUILDDIR, "index.html")
 
 FEED_MAX_ENTRIES = 20
+####################### END OF GENERATOR CONFIGURATIONS ########################
 
 
 # Hack ET to support CDATA.
@@ -275,7 +292,9 @@ def make_sitemap_url_element(atomlink, atomupdated, changefreq, priority):
 def generate_sitemap(feed):
     """Generate sitemap.xml."""
     sitemap = ET.Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
-    sitemap.append(make_sitemap_url_element(feed.links[1], feed.updated, "daily", 1.0))
+    # index
+    sitemap.append(make_sitemap_url_element(BLOG_HOME, feed.updated, "daily", 1.0))
+    # blog entries
     for entry in feed.entries:
         sitemap.append(make_sitemap_url_element(entry.link, entry.updated, "monthly", 0.9))
     sitemappath = os.path.join(BUILDDIR, "sitemap.xml")
@@ -286,28 +305,30 @@ def generate_sitemap(feed):
 
 def generate_index_and_feed():
     """Generate index.html and atom feed."""
+    # pylint: disable=too-many-statements
     sys.stderr.write("generating atom feed\n")
     # initialize feed
     feed = AtomFeed()
-    # TODO: Put hard-coded values in a config file
-    feed.author = ET.fromstring("<author>"
-                                "<name>Zhiming Wang</name>"
-                                "<uri>https://github.com/zmwangx</uri>"
-                                "<email>zmwangx@gmail.com</email>"
-                                "</author>")
-    feed.generator = ET.Element("generator", uri="https://github.com/zmwangx/zmwangx.github.io")
-    feed.generator.text = "pyblog"
-    feed.icon = ET.Element("icon")
-    feed.icon.text = "http://zmwangx.github.io/img/icon-400.png"
-    feed.id_text = "http://zmwangx.github.io"
+    feed.author = ET.fromstring(
+        "<author>"
+        "<name>{author}</name>"
+        "<uri>{home}</uri>"
+        "<email>{email}</email>"
+        "</author>".format(author=AUTHOR, home=BLOG_HOME, email=AUTHOR_EMAIL))
+    feed.generator = ET.Element("generator", uri=GENERATOR_HOME_PAGE)
+    feed.generator.text = GENERATOR_NAME
+    if ICON_PATH is not None:
+        feed.icon = ET.Element("icon")
+        feed.icon.text = "{home}/{icon_path}".format(home=BLOG_HOME, icon_path=ICON_PATH)
+    feed.id_text = BLOG_HOME
     feed.id = ET.Element("id")
     feed.id.text = feed.id_text
     feed.links = [
-        ET.Element("link", href="http://zmwangx.github.io/atom.xml", rel="self"),
-        ET.Element("link", href="http://zmwangx.github.io/"),
+        ET.Element("link", href="{home}/atom.xml".format(home=BLOG_HOME), rel="self"),
+        ET.Element("link", href=BLOG_HOME),
     ]
-    feed.title_text = "dl? cmplnts?"
-    feed.title = ET.fromstring("<title>%s</title>" % feed.title_text)
+    feed.title_text = BLOG_TITLE
+    feed.title = ET.fromstring("<title>{title}</title>".format(title=BLOG_TITLE))
     # update time will be set after everthing finishes
 
     for name in os.listdir(os.path.join(BUILDDIR, "blog")):
@@ -318,7 +339,7 @@ def generate_index_and_feed():
                 with open(htmlpath, encoding="utf-8") as htmlfile:
                     soup = bs4.BeautifulSoup(htmlfile.read())
                     entry.author = feed.author  # assume it's always the same author
-                    entry.id_text = "%s/blog/%s" % (feed.id_text, name)
+                    entry.id_text = "%s/blog/%s" % (BLOG_HOME, name)
                     entry.id = ET.Element("id")
                     entry.id.text = entry.id_text
                     entry.relpath = "/blog/%s" % name
@@ -333,8 +354,10 @@ def generate_index_and_feed():
                     entry.updated.text = entry.updated_datetime.isoformat()
                     # extract the article content without header and footer
                     article = soup.article
-                    article.header.extract()
-                    article.footer.extract()
+                    if article.header is not None:
+                        article.header.extract()
+                    if article.footer is not None:
+                        article.footer.extract()
                     entry.content_html = ''.join([str(content)
                                                   for content in article.contents])
                     entry.content = ET.Element("content", type="html")
@@ -443,7 +466,7 @@ def generate_blog(fresh=False, report_total_errors=True):
                     sys.stderr.write("copying %s\n" % relpath)
                     shutil.copy(srcpath, dstpath)
                 elif extension == "md":
-                    sys.stderr.write("generating %s\n" % relpath)
+                    sys.stderr.write("compiling %s\n" % relpath)
                     pandoc_args = [
                         "pandoc", srcpath,
                         "--template", HTMLTEMPLATE,
