@@ -31,7 +31,7 @@ Anyway, here it is, the [0.1](https://github.com/zmwangx/storyboard/releases/tag
 
 ![`storyboard`'s got quite a few badges of honor](https://i.imgur.com/miOoX5Y.png)
 
-I created [an asciinema recording](https://asciinema.org/a/19782) to commemorate the release:[^solarized-dark]
+I created [an asciinema recording](https://asciinema.org/a/19782) to commemorate the release (the original asciicast is [here](https://dl.bintray.com/zmwangx/generic/storyboard-0.1-walkthrough-asciicast.json)):[^solarized-dark]
 
 [^solarized-dark]: The screencast's color scheme is actually off in some places, since in my iTerm2 bold font is displayed as bold, not bright.
 
