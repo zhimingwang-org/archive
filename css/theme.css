@@ -97,11 +97,19 @@ a {
     color: #333;
 }
 
-footer {
-    text-align: right;
+footer .lfooter {
+    float: left;
 }
 
-footer .cc-icon {
+footer .lfooter .updated:before {
+    content: "Last updated: "
+}
+
+footer .rfooter {
+    float: right;
+}
+
+footer .rfooter .cc-icon {
     width: 16px;
     height: 16px;
     padding: 0 4px;
@@ -114,7 +122,7 @@ footer .cc-icon {
     font-size: 0;
 }
 
-footer .feed-icon {
+footer .rfooter .feed-icon {
     width: 16px;
     height: 16px;
     display: inline-block;
