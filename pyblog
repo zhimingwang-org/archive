@@ -744,13 +744,23 @@ def gen_deploy(args):
     latest_post = None
     latest_mtime = 0
     for name in os.listdir(POSTSDIR):
-        if not name.endswith(".md"):
+        matchobj = re.match(r"^([0-9]{4})-([0-9]{2})-([0-9]{2})-.*\.md", name)
+        if not matchobj:
             continue
         fullpath = os.path.join(POSTSDIR, name)
         ctime = os.path.getctime(fullpath)
         mtime = os.path.getmtime(fullpath)
-        # skip the post if it was created more than three days ago
-        if current_time - ctime > 3 * 24 * 3600:
+        # get date registered in the filename, which has the format
+        # xxxx-xx-xx-blah-blah.md
+        cdate = datetime.datetime(year=int(matchobj[1]),
+                                  month=int(matchobj[2]),
+                                  day=int(matchobj[3]),
+                                  hour=23, minute=59, second=59,
+                                  tzinfo=dateutil.tz.tzlocal()).timestamp()
+        # skip the post if its source file was created more than three
+        # days ago, or the date registered in its filename is more than
+        # three days ago
+        if max(current_time - ctime, current_time - cdate) > 3 * 24 * 3600:
             continue
         if mtime > latest_mtime:
             latest_post = name
