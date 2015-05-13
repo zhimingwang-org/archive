@@ -1,4 +1,4 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><link href="http://zmwangx.github.io/atom.xml" rel="self" /><link href="http://zmwangx.github.io/" /><updated>2015-05-09T06:14:36-07:00</updated><id>http://zmwangx.github.io</id><author><name>Zhiming Wang</name><uri>https://github.com/zmwangx</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">storyboard reached 0.1</title><link href="http://zmwangx.github.io/blog/2015-05-09-storyboard-reached-01.html" /><updated>2015-05-09T00:32:28-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-09-storyboard-reached-01.html</id><author><name>Zhiming Wang</name><uri>https://github.com/zmwangx</uri><email>zmwangx@gmail.com</email></author><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><link href="http://zmwangx.github.io/atom.xml" rel="self" /><link href="http://zmwangx.github.io/" /><updated>2015-05-13T09:51:10-07:00</updated><id>http://zmwangx.github.io</id><author><name>Zhiming Wang</name><uri>https://github.com/zmwangx</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">storyboard reached 0.1</title><link href="http://zmwangx.github.io/blog/2015-05-09-storyboard-reached-01.html" /><updated>2015-05-09T00:32:28-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-09-storyboard-reached-01.html</id><author><name>Zhiming Wang</name><uri>https://github.com/zmwangx</uri><email>zmwangx@gmail.com</email></author><content type="html">
 <![CDATA[
 
 <p>For quite some time I've been working on a Python project called <a href="https://github.com/zmwangx/storyboard"><code>storyboard</code></a>, and today I finally released the 0.1 stable (or you can think of it as 1.0).</p>
@@ -25,7 +25,7 @@
 <img alt="storyboard's got quite a few badges of honor" src="https://i.imgur.com/miOoX5Y.png"/>
 <p class="caption"><code>storyboard</code>'s got quite a few badges of honor</p>
 </div>
-<p>I created <a href="https://asciinema.org/a/19782">an asciinema recording</a> to commemorate the release:<a class="footnoteRef" href="#fn2" id="fnref2"><sup>2</sup></a></p>
+<p>I created <a href="https://asciinema.org/a/19782">an asciinema recording</a> to commemorate the release (the original asciicast is <a href="https://dl.bintray.com/zmwangx/generic/storyboard-0.1-walkthrough-asciicast.json">here</a>):<a class="footnoteRef" href="#fn2" id="fnref2"><sup>2</sup></a></p>
 <div style="width: 672px; margin: auto;">
 <script async="" id="asciicast-19782" src="https://asciinema.org/a/19782.js" type="text/javascript"></script>
 </div>
