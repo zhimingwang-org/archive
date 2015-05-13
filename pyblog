@@ -267,7 +267,7 @@ def make_sitemap_url_element(link, updated=None, changefreq=None, priority=None)
     link : str or xml.etree.ElementTree.Element
         If using an xml.etree.ElementTree.Element element, then it shall
         be an atom:link element, e.g., <link href="http://zmwangx.github.io/"/>.
-    updated : str or xml.etree.ElementTree.Element, optional
+    updated : datetime or xml.etree.ElementTree.Element, optional
         If using an xml.etree.ElementTree.Element element, then it shall
         be an atom:updated element, e.g.,
         <updated>2015-05-05T22:38:42-07:00</updated>.
@@ -282,7 +282,8 @@ def make_sitemap_url_element(link, updated=None, changefreq=None, priority=None)
     urlelem.append(loc)
     if updated is not None:
         lastmod = ET.Element("lastmod")
-        lastmod.text = updated.text if isinstance(updated, ET.Element) else updated
+        lastmod.text = (updated.text if isinstance(updated, ET.Element)
+                        else updated.isoformat())
         urlelem.append(lastmod)
     if changefreq is not None:
         changefreq_elem = ET.Element("changefreq")
@@ -313,7 +314,7 @@ def generate_sitemap(feed):
             if soup.article.footer is not None:
                 updated_tag = soup.article.footer.find(attrs={"class": "updated"})
                 if updated_tag is not None:
-                    updated = updated_tag.text
+                    updated = dateutil.parser.parse(updated_tag.text)
         sitemap.append(make_sitemap_url_element(link, updated, "monthly", 0.9))
 
     # blog entries
@@ -323,6 +324,7 @@ def generate_sitemap(feed):
     with open(sitemappath, "w", encoding="utf-8") as sitemapfile:
         sitemapfile.write('<?xml version="1.0" encoding="UTF-8"?>\n%s\n' %
                           ET.tostring(sitemap).decode('utf-8'))
+        sys.stderr.write("wrote sitemap.xml\n")
 
 
 def generate_index_and_feed():
