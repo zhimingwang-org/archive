@@ -58,6 +58,5 @@ DfzWWr45PX+1JO3v2syPqeVn4O8FVg74JMiNLjcMR7p1iNSIAC+RQTIa9Z8YvS8S
 HNSeBk1A1wT9lfQ/V6nzcu+p2jdc2PjDop/eprGQbJuIqN38mhmjABMhtsvbgs5d
 01Ii48sdMukeqyHXqz5FQlyLxnlMtfUbhtw55OJHBsY0Brgv
 =0NyM
------END PGP PUBLIC KEY BLOCK-----
-</code>
+-----END PGP PUBLIC KEY BLOCK-----</code>
 </pre>

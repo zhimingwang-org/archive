@@ -54,6 +54,7 @@ ATOM = os.path.join(BUILDDIR, "atom.xml")
 INDEXHTML = os.path.join(BUILDDIR, "index.html")
 
 FEED_MAX_ENTRIES = 20
+CODE_LINE_HEIGHT = 18
 ####################### END OF GENERATOR CONFIGURATIONS ########################
 
 
@@ -409,6 +410,38 @@ def generate_index_and_feed():
     generate_sitemap(feed)
 
 
+def _pre_tag_insert_line_numbers(soup, pre_tag):
+    """Insert line numbers to a pre tag."""
+    num_lines = len(pre_tag.text.split("\n"))
+    for line_number in range(1, num_lines + 1):
+        # line number divs will look like:
+        # <span class="line-number" data-line="1" style="top: 0px"><!----></span>
+        # <span class="line-number" data-line="2" style="top: 18px"><!----></span>
+        ln_tag = soup.new_tag("span")
+        ln_tag["class"] = "line-number"
+        ln_tag["data-line"] = line_number
+        ln_tag["style"] = "top: %dpx" % ((line_number - 1) * CODE_LINE_HEIGHT)
+        ln_tag.append(soup.new_string("", bs4.Comment))
+        pre_tag.code.append(ln_tag)
+
+
+def number_code_lines(htmlfilepath):
+    """Insert line numbers to preformatted code blocks."""
+    with open(htmlfilepath, "r+", encoding="utf-8") as htmlfileobj:
+        soup = bs4.BeautifulSoup(htmlfileobj.read())
+        for pre_tag in soup.find_all("pre"):
+            if ((pre_tag.code is None or "class" not in pre_tag.attrs or
+                 not "sourceCode" in pre_tag["class"])):
+                # not really a block of source code
+                continue
+            _pre_tag_insert_line_numbers(soup, pre_tag)
+
+        # write back
+        htmlfileobj.seek(0)
+        htmlfileobj.write(str(soup))
+        htmlfileobj.truncate()
+
+
 def generate_blog(fresh=False, report_total_errors=True):
     """Generate the blog in BUILDDIR.
 
@@ -503,8 +536,11 @@ def generate_blog(fresh=False, report_total_errors=True):
                         failed_builds += 1
                         sys.stderr.write("error: failed to generate %s" %
                                          relpath)
+                    number_code_lines(dstpath)
+
     if anything_modified:
         generate_index_and_feed()
+        sys.stderr.write("done\n")
 
     if report_total_errors:
         sys.stderr.write("build finished with %d errors\n" % failed_builds)

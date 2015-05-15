@@ -51,16 +51,45 @@ h3 {
 }
 
 code {
-    font-family: 'Courier', monospace;
-    font-size: 10.5pt;
+    font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Courier', monospace;
+    font-weight: thin;
 }
 
 pre {
-    margin: 0 2em;
+    padding: 1em;
+    background: #fbfbfb;
+    border-left: 0.4em solid #ddd;
+}
+
+pre[class*=sourceCode] {
+    position: relative;
+    padding-left: 2em;
+    margin: 0;
 }
 
 pre code {
-    font-size: 10pt;
+    font-size: 10.5pt;
+}
+
+.line-number {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-top: 1em;
+    pointer-events: none;
+    white-space: pre;
+}
+
+.line-number:before {
+    content: attr(data-line);
+    position: absolute;
+    top: .4em;
+    left: .5em;
+    min-width: 2em;
+    color: #ccc;
+    font: 500 65%/1.5 sans-serif;
+    text-align: center;
+    vertical-align: .3em;
 }
 
 blockquote {
@@ -70,10 +99,6 @@ blockquote {
 
 div.footnotes {
     font-size: 10pt;
-}
-
-div.footnotes code {
-    font-size: 9.5pt;
 }
 
 img {

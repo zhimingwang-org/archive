@@ -18,7 +18,7 @@ virtualenv -p /usr/local/bin/python3 ~/.emacs.d/.python-environments/jedi  # or 
 
 And that's it. Put the following in your `~/.emacs`:
 
-```emacs-lisp
+```commonlisp
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)
 (setq jedi:environment-root "jedi")
