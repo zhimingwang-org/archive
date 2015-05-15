@@ -1,14 +1,15 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="generator" content="pandoc" />
-<meta name="author" content="Zhiming Wang" />
-<meta name="date" content="2014-11-05T10:37:58-0800" />
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2014-11-05T10:37:58-0800" name="date"/>
 <title>List YouTube playlist with youtube-dl</title>
-<link rel="apple-touch-icon-precomposed" href="/img/favicon-152.png">
-<meta name="msapplication-TileColor" content="#FFFFFF">
-<meta name="msapplication-TileImage" content="/img/favicon-144.png">
+<link href="/img/favicon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
 div.sourceCode { overflow-x: auto; }
@@ -30,9 +31,9 @@ code > span.al { color: #ff0000; font-weight: bold; }
 code > span.fu { color: #06287e; }
 code > span.er { color: #ff0000; font-weight: bold; }
 </style>
-<link href='/css/normalize.css' media="all" rel="stylesheet" type="text/css">
-<link href='/css/theme.css' media="all" rel="stylesheet" type="text/css">
-<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"/>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -46,7 +47,7 @@ ga('send', 'pageview');
 <body>
 <nav>
 <div style="height:150px; width:100px; text-align:center;">
-<a href="/"><img src="/img/icon-100.png" alt="blog icon" height="100" width="100" style="padding: 2px 0;"></a>
+<a href="/"><img alt="blog icon" height="100" src="/img/icon-100.png" style="padding: 2px 0;" width="100"/></a>
 <div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
 <div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
 </div>
@@ -62,7 +63,7 @@ by <span class="author">Zhiming Wang</span>
 <p>Of course you are always welcome to use the <a href="https://developers.google.com/api-client-library/python/">Google APIs Client Library for Python</a> to wrestle with YouTube, which is usually pretty simple. (As an added bonus, YouTube has some <a href="https://developers.google.com/youtube/v3/code_samples/">nice runnable sample scripts</a> to get you started.) With the client library, listing videos in a YouTube playlist is a breeze.</p>
 <p>However, if you don't feel like writing code yourself (I usually don't feel like writing code myself until I use something often enough and existing solutions are suboptimal), <code>youtube-dl</code> recently added the functionality to list videos in a playlist with the <code>--flat-playlist</code> option.</p>
 <p><a href="https://github.com/rg3/youtube-dl/issues/4003#issuecomment-60322630">According to one of the project collaborators</a>, currently <code>--flat-playlist</code> is only helpful with the <code>-j</code> option for dumping JSON (so I suppose this feature is subject to change). For instance, <code>--flat-playlist</code> alone would emit something like this:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">&gt;</span> <span class="kw">youtube-dl</span> --flat-playlist <span class="st">&#39;https://www.youtube.com/watch?v=gdOwwI0ngqQ&amp;list=PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F&#39;</span>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">&gt;</span> <span class="kw">youtube-dl</span> --flat-playlist <span class="st">'https://www.youtube.com/watch?v=gdOwwI0ngqQ&amp;list=PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F'</span>
 [<span class="kw">youtube</span>:playlist] Downloading playlist PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F - add --no-playlist to just download video gdOwwI0ngqQ
 [<span class="kw">youtube</span>:playlist] PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F: Downloading webpage
 [<span class="kw">youtube</span>:playlist] PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F: Downloading page <span class="co">#1</span>
@@ -72,30 +73,30 @@ by <span class="author">Zhiming Wang</span>
 [<span class="kw">download</span>] Downloading video <span class="co">#2 of 119</span>
 [<span class="kw">download</span>] Downloading video <span class="co">#3 of 119</span>
 [<span class="kw">download</span>] Downloading video <span class="co">#4 of 119</span>
-<span class="kw">...</span></code></pre></div>
+<span class="kw">...</span><span class="line-number" data-line="1" style="top: 0px"><!----></span><span class="line-number" data-line="2" style="top: 18px"><!----></span><span class="line-number" data-line="3" style="top: 36px"><!----></span><span class="line-number" data-line="4" style="top: 54px"><!----></span><span class="line-number" data-line="5" style="top: 72px"><!----></span><span class="line-number" data-line="6" style="top: 90px"><!----></span><span class="line-number" data-line="7" style="top: 108px"><!----></span><span class="line-number" data-line="8" style="top: 126px"><!----></span><span class="line-number" data-line="9" style="top: 144px"><!----></span><span class="line-number" data-line="10" style="top: 162px"><!----></span><span class="line-number" data-line="11" style="top: 180px"><!----></span></code></pre></div>
 <p>which doesn't really make sense — it tells you that it collected 119 video ids, and no more. Once you have <code>-j</code> on, you get JSON data that you can parse with anything:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">&gt;</span> <span class="kw">youtube-dl</span> -j --flat-playlist <span class="st">&#39;https://www.youtube.com/watch?v=gdOwwI0ngqQ&amp;list=PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F&#39;</span>
-{<span class="st">&quot;url&quot;</span>: <span class="st">&quot;gdOwwI0ngqQ&quot;</span>, <span class="st">&quot;_type&quot;</span>: <span class="st">&quot;url&quot;</span>, <span class="st">&quot;ie_key&quot;</span>: <span class="st">&quot;Youtube&quot;</span>, <span class="st">&quot;id&quot;</span>: <span class="st">&quot;gdOwwI0ngqQ&quot;</span>}
-{<span class="st">&quot;url&quot;</span>: <span class="st">&quot;j9l5nchv1Z8&quot;</span>, <span class="st">&quot;_type&quot;</span>: <span class="st">&quot;url&quot;</span>, <span class="st">&quot;ie_key&quot;</span>: <span class="st">&quot;Youtube&quot;</span>, <span class="st">&quot;id&quot;</span>: <span class="st">&quot;j9l5nchv1Z8&quot;</span>}
-{<span class="st">&quot;url&quot;</span>: <span class="st">&quot;znW5ALwWNQw&quot;</span>, <span class="st">&quot;_type&quot;</span>: <span class="st">&quot;url&quot;</span>, <span class="st">&quot;ie_key&quot;</span>: <span class="st">&quot;Youtube&quot;</span>, <span class="st">&quot;id&quot;</span>: <span class="st">&quot;znW5ALwWNQw&quot;</span>}
-{<span class="st">&quot;url&quot;</span>: <span class="st">&quot;qyE7-auTIcc&quot;</span>, <span class="st">&quot;_type&quot;</span>: <span class="st">&quot;url&quot;</span>, <span class="st">&quot;ie_key&quot;</span>: <span class="st">&quot;Youtube&quot;</span>, <span class="st">&quot;id&quot;</span>: <span class="st">&quot;qyE7-auTIcc&quot;</span>}
-<span class="kw">...</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">&gt;</span> <span class="kw">youtube-dl</span> -j --flat-playlist <span class="st">'https://www.youtube.com/watch?v=gdOwwI0ngqQ&amp;list=PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F'</span>
+{<span class="st">"url"</span>: <span class="st">"gdOwwI0ngqQ"</span>, <span class="st">"_type"</span>: <span class="st">"url"</span>, <span class="st">"ie_key"</span>: <span class="st">"Youtube"</span>, <span class="st">"id"</span>: <span class="st">"gdOwwI0ngqQ"</span>}
+{<span class="st">"url"</span>: <span class="st">"j9l5nchv1Z8"</span>, <span class="st">"_type"</span>: <span class="st">"url"</span>, <span class="st">"ie_key"</span>: <span class="st">"Youtube"</span>, <span class="st">"id"</span>: <span class="st">"j9l5nchv1Z8"</span>}
+{<span class="st">"url"</span>: <span class="st">"znW5ALwWNQw"</span>, <span class="st">"_type"</span>: <span class="st">"url"</span>, <span class="st">"ie_key"</span>: <span class="st">"Youtube"</span>, <span class="st">"id"</span>: <span class="st">"znW5ALwWNQw"</span>}
+{<span class="st">"url"</span>: <span class="st">"qyE7-auTIcc"</span>, <span class="st">"_type"</span>: <span class="st">"url"</span>, <span class="st">"ie_key"</span>: <span class="st">"Youtube"</span>, <span class="st">"id"</span>: <span class="st">"qyE7-auTIcc"</span>}
+<span class="kw">...</span><span class="line-number" data-line="1" style="top: 0px"><!----></span><span class="line-number" data-line="2" style="top: 18px"><!----></span><span class="line-number" data-line="3" style="top: 36px"><!----></span><span class="line-number" data-line="4" style="top: 54px"><!----></span><span class="line-number" data-line="5" style="top: 72px"><!----></span><span class="line-number" data-line="6" style="top: 90px"><!----></span></code></pre></div>
 <p>The most straightforward way to parse this is to use a command line JSON parser, the best one being <a href="https://github.com/stedolan/jq">jq</a>:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">&gt;</span> <span class="kw">youtube-dl</span> -j --flat-playlist <span class="st">&#39;https://www.youtube.com/watch?v=gdOwwI0ngqQ&amp;list=PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F&#39;</span> <span class="kw">|</span> <span class="kw">jq</span> -r <span class="st">&#39;.id&#39;</span> <span class="kw">|</span> <span class="kw">sed</span> <span class="st">&#39;s_^_https://youtube.com/v/_&#39;</span>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">&gt;</span> <span class="kw">youtube-dl</span> -j --flat-playlist <span class="st">'https://www.youtube.com/watch?v=gdOwwI0ngqQ&amp;list=PLPpZI8R1zUfrkDbmJMOBhEbJ9Td9vbV-F'</span> <span class="kw">|</span> <span class="kw">jq</span> -r <span class="st">'.id'</span> <span class="kw">|</span> <span class="kw">sed</span> <span class="st">'s_^_https://youtube.com/v/_'</span>
 <span class="kw">https</span>://youtube.com/v/gdOwwI0ngqQ
 <span class="kw">https</span>://youtube.com/v/j9l5nchv1Z8
 <span class="kw">https</span>://youtube.com/v/znW5ALwWNQw
 <span class="kw">https</span>://youtube.com/v/qyE7-auTIcc
-<span class="kw">...</span></code></pre></div>
+<span class="kw">...</span><span class="line-number" data-line="1" style="top: 0px"><!----></span><span class="line-number" data-line="2" style="top: 18px"><!----></span><span class="line-number" data-line="3" style="top: 36px"><!----></span><span class="line-number" data-line="4" style="top: 54px"><!----></span><span class="line-number" data-line="5" style="top: 72px"><!----></span><span class="line-number" data-line="6" style="top: 90px"><!----></span></code></pre></div>
 <p>There you go, a list of URIs you can use. Of course you can put this in a script to save some typing:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co">#!/usr/bin/env bash</span>
-<span class="co"># Takes a YouTube URI to a playlist (fairly liberal, it&#39;s fine as long</span>
+<span class="co"># Takes a YouTube URI to a playlist (fairly liberal, it's fine as long</span>
 <span class="co"># as the playlist id can be extracted), and prints a list of URIs in a</span>
 <span class="co"># YouTube playlist.</span>
 <span class="co">#</span>
 <span class="co"># Requires youtube-dl 2014.10.24, tested on youtube-dl</span>
 <span class="co"># 2014.11.02.1. Feature subject to change.</span>
-<span class="kw">youtube-dl</span> -j --flat-playlist <span class="st">&quot;</span><span class="ot">$1</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="kw">jq</span> -r <span class="st">&#39;.id&#39;</span> <span class="kw">|</span> <span class="kw">sed</span> <span class="st">&#39;s_^_https://youtube.com/v/_&#39;</span></code></pre></div>
+<span class="kw">youtube-dl</span> -j --flat-playlist <span class="st">"</span><span class="ot">$1</span><span class="st">"</span> <span class="kw">|</span> <span class="kw">jq</span> -r <span class="st">'.id'</span> <span class="kw">|</span> <span class="kw">sed</span> <span class="st">'s_^_https://youtube.com/v/_'</span><span class="line-number" data-line="1" style="top: 0px"><!----></span><span class="line-number" data-line="2" style="top: 18px"><!----></span><span class="line-number" data-line="3" style="top: 36px"><!----></span><span class="line-number" data-line="4" style="top: 54px"><!----></span><span class="line-number" data-line="5" style="top: 72px"><!----></span><span class="line-number" data-line="6" style="top: 90px"><!----></span><span class="line-number" data-line="7" style="top: 108px"><!----></span><span class="line-number" data-line="8" style="top: 126px"><!----></span></code></pre></div>
 <p><strong><em>Aside:</em></strong> I first embedded the gist here, but <a href="https://i.imgur.com/m3cr0Im.png">it looked a bit off</a>. See <a href="https://github.com/imathis/octopress/issues/1392">imathis/octopress#1392</a>.</p>
 <blockquote>
 <p>In the next version of the Gist tag plugin we are just downloading the gists and embedding them upon generation so we don't have to worry about GitHub going down and breaking all your gists, or changing the HTML and breaking all the styles.</p>
@@ -104,7 +105,7 @@ by <span class="author">Zhiming Wang</span>
 <p>Okay. End of aside.</p>
 <p>By the way, <code>youtube-dl</code> supports playlist bulk download natively. The reason I need a list of video ids or URIs, however, is that among other things, <code>youtube-dl</code> doesn't download highest resolution DASH video by default, so I have to rely on something like <code>youtube-dl-dash</code> (<a href="https://github.com/zmwangx/sh/blob/master/youtube-dl-dash">link</a>) to download the best version.</p>
 <footer>
-<hr>
+<hr/>
 <span class="rfooter">
 <a class="feed-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a>
 <a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>

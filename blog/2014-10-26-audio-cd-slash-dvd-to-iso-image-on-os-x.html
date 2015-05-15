@@ -1,18 +1,19 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="generator" content="pandoc" />
-<meta name="author" content="Zhiming Wang" />
-<meta name="date" content="2014-10-26T23:29:47-0700" />
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2014-10-26T23:29:47-0700" name="date"/>
 <title>Convert Audio CD/DVD to ISO image on OS X</title>
-<link rel="apple-touch-icon-precomposed" href="/img/favicon-152.png">
-<meta name="msapplication-TileColor" content="#FFFFFF">
-<meta name="msapplication-TileImage" content="/img/favicon-144.png">
+<link href="/img/favicon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
 <style type="text/css">code{white-space: pre;}</style>
-<link href='/css/normalize.css' media="all" rel="stylesheet" type="text/css">
-<link href='/css/theme.css' media="all" rel="stylesheet" type="text/css">
-<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"/>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -26,7 +27,7 @@ ga('send', 'pageview');
 <body>
 <nav>
 <div style="height:150px; width:100px; text-align:center;">
-<a href="/"><img src="/img/icon-100.png" alt="blog icon" height="100" width="100" style="padding: 2px 0;"></a>
+<a href="/"><img alt="blog icon" height="100" src="/img/icon-100.png" style="padding: 2px 0;" width="100"/></a>
 <div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
 <div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
 </div>
@@ -41,7 +42,7 @@ by <span class="author">Zhiming Wang</span>
 </header>
 <p><strong><em>11/02/2014 update:</em></strong></p>
 <p>See <a href="/blog/2014-11-02-vobcopy-dvdbackup-etc.html">this post</a> for issues, explanations, and more.</p>
-<hr />
+<hr/>
 <p>Today it occurred to me that I should make clones of my audio CDs (as stand-alone ISO images, I mean, not just rsyncing the AIFFs to subdirectories in <code>~/aud/lossless</code>). One can never have too many backups.</p>
 <p>Of course I could simply pack the aforementioned directories with AIFFs into ISOs — that’s not impressive. The end result might actually be the same, but I want to make the clones directly from the original CDs. It turns out that this is not so simple with the Disk Utility GUI — unlike DVDs, the “New Image” option is grayed out for Audio CDs. I’m not sure why, but maybe they want you to just use iTunes to deal with Audio CDs (which works well for all practical purposes — but theoretical curiosity never ends).</p>
 <p>So there comes <code>hdiutil</code>. <code>hdiutil</code> and <code>diskutil</code> are the utilities underlying Disk Utility. Unfortunately, so far I know little about them except for simplest things like <code>diskutil list</code>, <code>diskutil mount</code>, <code>hdiutil attach -stdinpass</code>, etc. (I'm so ignorant about anything filesystem related!) The <code>hdiutil</code> verb that makes cross-platform CD or DVD is <code>makehybrid</code>, which supports the following filesystem options: <code>-hfs</code> (holy crap, no HFS+ please! Apple ought to replace this thirty-year-old filesystem — ZFS or something better please!), <code>-iso</code>, <code>-joliet</code>, and <code>-udf</code>. For Audio CDs you use <code>-iso</code> and with <code>-joliet</code> extension:</p>
@@ -49,10 +50,10 @@ by <span class="author">Zhiming Wang</span>
 <p>where <code>SOURCE</code> can be the mount point, the disk device file, etc. Similarly, although you can create <code>.cdr</code> images from DVDs via the Disk Utility GUI, you can also do it with <code>hdiutil</code> (which is potentially more portable — I’ve never heard a definitive answer of whether renaming <code>.cdr</code> to <code>.iso</code> really cross-platform):</p>
 <pre><code>hdiutil makehybrid -udf -o DVD_NAME.iso SOURCE</code></pre>
 <p>This way CSS keys <em>seem</em> to be cloned as well, since I was able to authenticate such a CSS-protected DVD with <code>libdvdread</code>.</p>
-<hr />
+<hr/>
 <p>P.S. I sincerely hope that one day lossless music tracks are no longer distributed through CD-ROMs. So painful — even my Internet speed is more than ten times faster than the <a href="https://en.wikipedia.org/wiki/CD-ROM#Transfer_rates">highest transfer rate</a> available from any CD-ROM. (I’ve heard about some websites distributing lossless music digitally, but that won’t happen to the music I care about in the near future.) I still like physical albums though — a real sense of possession. Maybe they should contain the physical goodies and some sort of access codes?</p>
 <footer>
-<hr>
+<hr/>
 <span class="rfooter">
 <a class="feed-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a>
 <a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>

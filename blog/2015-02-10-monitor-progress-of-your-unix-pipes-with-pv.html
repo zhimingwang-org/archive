@@ -1,14 +1,15 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="generator" content="pandoc" />
-<meta name="author" content="Zhiming Wang" />
-<meta name="date" content="2015-02-10T02:18:30-0800" />
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2015-02-10T02:18:30-0800" name="date"/>
 <title>Monitor progress of your Unix pipes with pv</title>
-<link rel="apple-touch-icon-precomposed" href="/img/favicon-152.png">
-<meta name="msapplication-TileColor" content="#FFFFFF">
-<meta name="msapplication-TileImage" content="/img/favicon-144.png">
+<link href="/img/favicon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
 div.sourceCode { overflow-x: auto; }
@@ -30,9 +31,9 @@ code > span.al { color: #ff0000; font-weight: bold; }
 code > span.fu { color: #06287e; }
 code > span.er { color: #ff0000; font-weight: bold; }
 </style>
-<link href='/css/normalize.css' media="all" rel="stylesheet" type="text/css">
-<link href='/css/theme.css' media="all" rel="stylesheet" type="text/css">
-<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"/>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -46,7 +47,7 @@ ga('send', 'pageview');
 <body>
 <nav>
 <div style="height:150px; width:100px; text-align:center;">
-<a href="/"><img src="/img/icon-100.png" alt="blog icon" height="100" width="100" style="padding: 2px 0;"></a>
+<a href="/"><img alt="blog icon" height="100" src="/img/icon-100.png" style="padding: 2px 0;" width="100"/></a>
 <div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
 <div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
 </div>
@@ -59,7 +60,7 @@ ga('send', 'pageview');
 by <span class="author">Zhiming Wang</span>
 </h2>
 </header>
-<p>Recently I found a very useful utility called <code>pv</code> (for &quot;pipe viewer&quot;). <a href="http://www.ivarch.com/programs/pv.shtml">Here</a> is its home page, and it can be easily installed with <code>brew</code>. According to its man page,</p>
+<p>Recently I found a very useful utility called <code>pv</code> (for "pipe viewer"). <a href="http://www.ivarch.com/programs/pv.shtml">Here</a> is its home page, and it can be easily installed with <code>brew</code>. According to its man page,</p>
 <blockquote>
 <p><code>pv</code> shows the progress of data through a pipeline by giving information such as time elapsed, percentage completed (with progress bar), current throughput rate, total data transferred, and ETA.</p>
 </blockquote>
@@ -72,40 +73,40 @@ by <span class="author">Zhiming Wang</span>
 <p>For the record, here's the current version of my ruby script that attaches the first seven digits of the SHA-1 digests of the given files to their filenames:</p>
 <div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="kw">#!/usr/bin/env ruby</span>
 
-require <span class="st">&#39;fileutils&#39;</span>
+require <span class="st">'fileutils'</span>
 
 <span class="kw">def</span> rename(items)
   num_items = items.length
   num_done = <span class="dv">0</span>
   items.each {|path|
-    printf(<span class="dt">$stderr</span>, <span class="st">&quot;%d/%d: %s\n&quot;</span>, num_done + <span class="dv">1</span>, num_items, <span class="dt">File</span>.basename(path))
+    printf(<span class="dt">$stderr</span>, <span class="st">"%d/%d: %s\n"</span>, num_done + <span class="dv">1</span>, num_items, <span class="dt">File</span>.basename(path))
 
     <span class="kw">if</span> ! <span class="dt">File</span>.directory?(path)
       extname = <span class="dt">File</span>.extname(path)
       basename = <span class="dt">File</span>.basename(path, extname)
       dirname = <span class="dt">File</span>.dirname(path)
-      sha1sum = <span class="st">`pv &#39;</span><span class="ot">#{</span>path<span class="ot">}</span><span class="st">&#39; | openssl sha1`</span>
-      new_basename = basename + <span class="st">&quot;__&quot;</span> + sha1sum[<span class="dv">0</span>,<span class="dv">7</span>]
+      sha1sum = <span class="st">`pv '</span><span class="ot">#{</span>path<span class="ot">}</span><span class="st">' | openssl sha1`</span>
+      new_basename = basename + <span class="st">"__"</span> + sha1sum[<span class="dv">0</span>,<span class="dv">7</span>]
       new_path = <span class="dt">File</span>.join(dirname, new_basename + extname)
       <span class="dt">FileUtils</span>.mv(path, new_path)
     <span class="kw">else</span>
-      <span class="dt">STDERR</span>.puts(<span class="st">&quot;</span><span class="ot">#{</span>path<span class="ot">}</span><span class="st">: directory ignored&quot;</span>)
+      <span class="dt">STDERR</span>.puts(<span class="st">"</span><span class="ot">#{</span>path<span class="ot">}</span><span class="st">: directory ignored"</span>)
     <span class="kw">end</span>
     
     num_done += <span class="dv">1</span>
   }
 <span class="kw">end</span>
 
-rename(<span class="dt">ARGV</span>)</code></pre></div>
+rename(<span class="dt">ARGV</span>)<span class="line-number" data-line="1" style="top: 0px"><!----></span><span class="line-number" data-line="2" style="top: 18px"><!----></span><span class="line-number" data-line="3" style="top: 36px"><!----></span><span class="line-number" data-line="4" style="top: 54px"><!----></span><span class="line-number" data-line="5" style="top: 72px"><!----></span><span class="line-number" data-line="6" style="top: 90px"><!----></span><span class="line-number" data-line="7" style="top: 108px"><!----></span><span class="line-number" data-line="8" style="top: 126px"><!----></span><span class="line-number" data-line="9" style="top: 144px"><!----></span><span class="line-number" data-line="10" style="top: 162px"><!----></span><span class="line-number" data-line="11" style="top: 180px"><!----></span><span class="line-number" data-line="12" style="top: 198px"><!----></span><span class="line-number" data-line="13" style="top: 216px"><!----></span><span class="line-number" data-line="14" style="top: 234px"><!----></span><span class="line-number" data-line="15" style="top: 252px"><!----></span><span class="line-number" data-line="16" style="top: 270px"><!----></span><span class="line-number" data-line="17" style="top: 288px"><!----></span><span class="line-number" data-line="18" style="top: 306px"><!----></span><span class="line-number" data-line="19" style="top: 324px"><!----></span><span class="line-number" data-line="20" style="top: 342px"><!----></span><span class="line-number" data-line="21" style="top: 360px"><!----></span><span class="line-number" data-line="22" style="top: 378px"><!----></span><span class="line-number" data-line="23" style="top: 396px"><!----></span><span class="line-number" data-line="24" style="top: 414px"><!----></span><span class="line-number" data-line="25" style="top: 432px"><!----></span><span class="line-number" data-line="26" style="top: 450px"><!----></span><span class="line-number" data-line="27" style="top: 468px"><!----></span></code></pre></div>
 <p>You might ask why I used ruby (littered with bash) when it's obviously a job for bash or perl. Well, the reason is that I first wrote this thing in ruby as a <a href="https://gist.github.com/zmwangx/d6406fb8bf51ac768770">Dropzone 3 action</a>. I'm lazy, so I just borrowed that script and modified its printout for shell use.</p>
-<hr />
+<hr/>
 <p>By the way, I also found a project called <code>cv</code> (Coreutils Viewer), which is <a href="https://github.com/Xfennec/cv">officially described as</a></p>
 <blockquote>
 <p>... a Tiny, Dirty, Linux-Only C command that looks for coreutils basic commands (cp, mv, dd, tar, gzip/gunzip, cat, etc.) currently running on your system and displays the percentage of copied data.</p>
 </blockquote>
 <p>I'll look into it when I have time, but it from its description, it seems to be limited to coreutils, and OS X support might not be too awesome (at this point).</p>
 <footer>
-<hr>
+<hr/>
 <span class="rfooter">
 <a class="feed-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a>
 <a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>

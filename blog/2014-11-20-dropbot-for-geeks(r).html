@@ -1,18 +1,19 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="generator" content="pandoc" />
-<meta name="author" content="Zhiming Wang" />
-<meta name="date" content="2014-11-20T09:48:15-0800" />
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2014-11-20T09:48:15-0800" name="date"/>
 <title>Dropbot for Geeks®</title>
-<link rel="apple-touch-icon-precomposed" href="/img/favicon-152.png">
-<meta name="msapplication-TileColor" content="#FFFFFF">
-<meta name="msapplication-TileImage" content="/img/favicon-144.png">
+<link href="/img/favicon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
 <style type="text/css">code{white-space: pre;}</style>
-<link href='/css/normalize.css' media="all" rel="stylesheet" type="text/css">
-<link href='/css/theme.css' media="all" rel="stylesheet" type="text/css">
-<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"/>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -26,7 +27,7 @@ ga('send', 'pageview');
 <body>
 <nav>
 <div style="height:150px; width:100px; text-align:center;">
-<a href="/"><img src="/img/icon-100.png" alt="blog icon" height="100" width="100" style="padding: 2px 0;"></a>
+<a href="/"><img alt="blog icon" height="100" src="/img/icon-100.png" style="padding: 2px 0;" width="100"/></a>
 <div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
 <div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
 </div>
@@ -48,11 +49,11 @@ by <span class="author">Zhiming Wang</span>
 <li>Programmable selective syncing, down to per file level.</li>
 <li>Scriptability. Allow clients to run custom scheduled jobs or daemons with the API above. To prevent the service from becoming full-featured IaaS, though, clients might be limited in CPU time, memory, or command selection. This bullet point is arguable.</li>
 </ul>
-<hr />
+<hr/>
 <p>With the level of command line integration illustrated above, we'll finally get rid of clicking around and not being able to automate chores. Navgating the remote file system will be a breeze — click, click, click, click, click (sometimes click should be replaced by double click, which is even more painful) just to navigate to a directory will be made a thing of the past. <code>ln</code>, in particular, saves disk space for duplicates — Dropbot for Geeks does <em>not</em> want to charge you extra for multiple copies of the same file in different directories. (To facilitate syncing hardlinks, clients should be able to specify hardlinked files in a config file. Or maybe some better mechanism. This might be hard.) At last, checksums are a must. I’ve had traumatic experiences like having downloaded an eight-part RAR, 1 GiB each, only to find that it wouldn’t unRAR. Without checksums, it was impossible to find which part was corrupted. As a result, I had to re-download everything — a nightmare. I never want to experience similar problems again. Hence the precious checksums.</p>
 <p>Dropbot for Geeks looks like a pretty good (well, not really, but at least pretty cool®) model. Maybe I should patent it before anyone else? Then if some similar service surfaces in the future, I can <a href="http://arstechnica.com/tech-policy/2014/11/jury-apple-must-pay-23-6m-for-old-pager-patents/">sue their ass off and enjoy some hot cash</a>.</p>
 <footer>
-<hr>
+<hr/>
 <span class="rfooter">
 <a class="feed-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a>
 <a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>

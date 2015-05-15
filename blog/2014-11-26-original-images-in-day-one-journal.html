@@ -1,18 +1,19 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="generator" content="pandoc" />
-<meta name="author" content="Zhiming Wang" />
-<meta name="date" content="2014-11-26T00:22:16-0800" />
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2014-11-26T00:22:16-0800" name="date"/>
 <title>Original images in Day One journal</title>
-<link rel="apple-touch-icon-precomposed" href="/img/favicon-152.png">
-<meta name="msapplication-TileColor" content="#FFFFFF">
-<meta name="msapplication-TileImage" content="/img/favicon-144.png">
+<link href="/img/favicon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
 <style type="text/css">code{white-space: pre;}</style>
-<link href='/css/normalize.css' media="all" rel="stylesheet" type="text/css">
-<link href='/css/theme.css' media="all" rel="stylesheet" type="text/css">
-<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"/>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -26,7 +27,7 @@ ga('send', 'pageview');
 <body>
 <nav>
 <div style="height:150px; width:100px; text-align:center;">
-<a href="/"><img src="/img/icon-100.png" alt="blog icon" height="100" width="100" style="padding: 2px 0;"></a>
+<a href="/"><img alt="blog icon" height="100" src="/img/icon-100.png" style="padding: 2px 0;" width="100"/></a>
 <div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
 <div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
 </div>
@@ -40,7 +41,7 @@ by <span class="author">Zhiming Wang</span>
 </h2>
 </header>
 <p><strong>TL; DR:</strong> Jump to the paragraph beginning with “workaround”.</p>
-<hr />
+<hr/>
 <p>I started a Day One journal two days ago. I've heard good things about Day One, but after using it for a dozen entries, I'm not that satisfied. For one thing, the editor is pretty horrible — keybindings aside, I can’t even find and replace?! And the overview doesn’t look very pretty if you are a heavy Markdown user (i.e., you have a lot of markups, e.g., italics and inline links) — the markups are displayed as is. Moreover, I can’t even <code>#</code> my title: it kills the bold font rendering in the bird’s-eye view. What a let down. Anyway, it’s better than nothing, and I hope it will help me keep on track. (I used to manage a Markdown journal in an encrypted sparse bundle, and it was a pain in the ass — mentally. Maybe some GUI sugar is necessary, although Day One is certainly not as pretty as advertised.) Also a private journal means more privacy — I certainly don’t want to publish everything I write on this public blog.</p>
 <p>Too much irrelevant talking. Onto one of the most annoying “features”, and the subject of this post. Images are automatically JPEG-compressed when imported into Day One. See <a href="https://dayone.zendesk.com/hc/en-us/articles/200145875-Are-photos-resized-when-imported-into-Day-One-">this support article</a>, which says:</p>
 <blockquote>
@@ -49,7 +50,7 @@ by <span class="author">Zhiming Wang</span>
 <p>What the heck. Dude, who cares about storage these days? And transfer rate? I have a gigabit Ethernet. I certainly have much more than 2GB in my Dropbox. Even for those underpriviledged folks with only 2GB, remember, Day One allows <em>only one photo per entry</em>. That’s 2,500+ entries. At any rate, this should be an opt-in rather than an uncustomizable “feature”. I’m about to submit a ticket, but I doubt the outcome (I’m sure many people have submitted tickets about the plain text format even when password-protected, but so far, no response).</p>
 <p>With photos, most of the time JPEG compression works pretty well (but people surely want to keep photos in highest quality). However, I’m a techie guy, and my images are often screenshots or precision images, where JPEG compression totally ruins the sharpness.</p>
 <p>Workaround? Simple (yet a bit annoying). Day One lets you show the photo in Finder. So just go ahead and replace that compressed image with the original using <code>cp</code> or <code>mv</code>. I shouldn’t have needed to do this, but every piece of software comes with some annoyances. Overall Day One’s pretty good — at least it does what it was designed for, albeit not perfectly.</p>
-<hr />
+<hr/>
 <p>By the way, here is my support ticket:</p>
 <blockquote>
 <p>I understand that Day One does JPEG compression to every imported photo, as written in the support article “Are photos resized when imported into Day One?” http://goo.gl/Rzi017 . Yet I beg an option. The reason is that the benefits outlined in the support article are virtually non-existent:</p>
@@ -65,7 +66,7 @@ by <span class="author">Zhiming Wang</span>
 <p>I know an ugly workaround, which is simply replace the compressed image with the original in the filesystem. But I would love to see an option to import images as originals (in fact, compression should be an opt-in). Really, transfer rates and storage grow so rapidly that they are not people’s primary concerns anymore. (For your information, OneDrive recently rolled out truly unlimited storage to Office 365 subscribers. Online storage is that cheap.) Thanks.</p>
 </blockquote>
 <footer>
-<hr>
+<hr/>
 <span class="rfooter">
 <a class="feed-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a>
 <a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>

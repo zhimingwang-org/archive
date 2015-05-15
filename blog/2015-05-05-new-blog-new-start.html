@@ -1,18 +1,19 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="generator" content="pandoc" />
-<meta name="author" content="Zhiming Wang" />
-<meta name="date" content="2015-05-05T02:42:44-07:00" />
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2015-05-05T02:42:44-07:00" name="date"/>
 <title>New blog, new start</title>
-<link rel="apple-touch-icon-precomposed" href="/img/favicon-152.png">
-<meta name="msapplication-TileColor" content="#FFFFFF">
-<meta name="msapplication-TileImage" content="/img/favicon-144.png">
+<link href="/img/favicon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
 <style type="text/css">code{white-space: pre;}</style>
-<link href='/css/normalize.css' media="all" rel="stylesheet" type="text/css">
-<link href='/css/theme.css' media="all" rel="stylesheet" type="text/css">
-<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"/>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -26,7 +27,7 @@ ga('send', 'pageview');
 <body>
 <nav>
 <div style="height:150px; width:100px; text-align:center;">
-<a href="/"><img src="/img/icon-100.png" alt="blog icon" height="100" width="100" style="padding: 2px 0;"></a>
+<a href="/"><img alt="blog icon" height="100" src="/img/icon-100.png" style="padding: 2px 0;" width="100"/></a>
 <div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
 <div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
 </div>
@@ -41,17 +42,17 @@ by <span class="author">Zhiming Wang</span>
 </header>
 <p>Octopress has been serving me for the past six months, during which even Octopress itself underwent major changes — in fact, <a href="https://github.com/octopress/octopress/releases/tag/v3.0.0">Octopress 3.0.0</a> was only released 3 days ago, which I never got to try. Anyway, Octopress's heavily colored interface grew old on me fairly quickly. I'm especially unhappy with the inline <code>&lt;code&gt;</code> tag, which is always wrapped in a white box and stands out too much (worse still, there's no visual difference when such a <code>&lt;code&gt;</code> tag is placed inside an <code>&lt;a&gt;</code> tag). Since I use inline code/verbatim a lot, many of my articles were littered with arbitrary boxes everywhere.</p>
 <div class="figure">
-<img src="https://i.imgur.com/hxfSnOk.png" alt="Farewell, Octopress." />
+<img alt="Farewell, Octopress." src="https://i.imgur.com/hxfSnOk.png"/>
 <p class="caption">Farewell, Octopress.</p>
 </div>
 <p>Apparently I need something simpler. Because</p>
 <blockquote>
 <p>Simplicity is the ultimate sophistication.</p>
 </blockquote>
-<p>But how? Simiplicity 101: get rid of the &quot;platform&quot;. There's no reason why I need a blogging platform like Jekyll (let alone the WordPress monster). When I initially switched to Octopress, I thought code highlighting was something fancy that I need heavy machinery to achieve, but it turned out that Pandoc is battery-included when it comes to syntax highting,<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> so all I need is to specify a highlight style, e.g., Pygments:</p>
+<p>But how? Simiplicity 101: get rid of the "platform". There's no reason why I need a blogging platform like Jekyll (let alone the WordPress monster). When I initially switched to Octopress, I thought code highlighting was something fancy that I need heavy machinery to achieve, but it turned out that Pandoc is battery-included when it comes to syntax highting,<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a> so all I need is to specify a highlight style, e.g., Pygments:</p>
 <pre><code>pandoc input.md --highlight-style=pygments --template template.html --output output.html</code></pre>
 <p>That's it. Write the Markdown, compile with Pandoc, instantly awesome. So the HTML posts are there (assuming the HTML template is written, which is not hard to kick off).</p>
-<p>The rest of the job is to design the stylesheets and compile the posts into a coherent blog — basically, generate an index. I was able to realize both in several hours. For the former task, I borrowed a lot from <a href="http://mort.ninja/">mort.ninja</a> by <a href="https://github.com/soimort">Mort Yao</a>. Interestingly, we were born in the same city (Nanjing, China), and I benefit from at least two of his open source projects: <a href="https://github.com/soimort/you-get">you-get</a> and <a href="https://github.com/soimort/translate-shell">translate-shell</a>. The latter task is more interesting but also not hard. I'm rolling my own toolchain in Python, which you can find in <a href="https://github.com/zmwangx/zmwangx.github.io/blob/source/pyblog"><code>pyblog</code></a>. In fact, the complete source of this blog (down to how image assets are generated) are in the <a href="https://github.com/zmwangx/zmwangx.github.io/tree/source"><code>source</code> branch</a> of my GitHub Pages repo, so you may take a look if you're interested. <code>pyblog</code> is highly specialized<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> and is still a work in progress at the time of writing, but it's already well capable of generating the blog — currently missing are auto gen-deploy and preview (with auto-update), which will also come soon.</p>
+<p>The rest of the job is to design the stylesheets and compile the posts into a coherent blog — basically, generate an index. I was able to realize both in several hours. For the former task, I borrowed a lot from <a href="http://mort.ninja/">mort.ninja</a> by <a href="https://github.com/soimort">Mort Yao</a>. Interestingly, we were born in the same city (Nanjing, China), and I benefit from at least two of his open source projects: <a href="https://github.com/soimort/you-get">you-get</a> and <a href="https://github.com/soimort/translate-shell">translate-shell</a>. The latter task is more interesting but also not hard. I'm rolling my own toolchain in Python, which you can find in <a href="https://github.com/zmwangx/zmwangx.github.io/blob/source/pyblog"><code>pyblog</code></a>. In fact, the complete source of this blog (down to how image assets are generated) are in the <a href="https://github.com/zmwangx/zmwangx.github.io/tree/source"><code>source</code> branch</a> of my GitHub Pages repo, so you may take a look if you're interested. <code>pyblog</code> is highly specialized<a class="footnoteRef" href="#fn2" id="fnref2"><sup>2</sup></a> and is still a work in progress at the time of writing, but it's already well capable of generating the blog — currently missing are auto gen-deploy and preview (with auto-update), which will also come soon.</p>
 <p>By the way, the most annoying thing in the development process was working with XML and generating <a href="/atom.xml">the Atom feed</a>. Standard library <code>xml.etree.ElementTree</code> doesn't support the <code>![CDATA[</code> tag, and in the end I had to hack <a href="https://github.com/zmwangx/zmwangx.github.io/blob/source/pyblog#L34-L54">library internals</a>, which is likely to break in future versions. Remember the quotes?</p>
 <blockquote>
 <p>XML is a classic political compromise: it balances the needs of man and machine by being equally unreadable to both.</p>
@@ -62,12 +63,12 @@ by <span class="author">Zhiming Wang</span>
 <p>Sigh.</p>
 <p>Anyway, here is my new shiny blog.</p>
 <div class="figure">
-<img src="https://i.imgur.com/VS5f9eJ.png" alt="Welcome to the completely revamped dl? cmplnts?" />
+<img alt="Welcome to the completely revamped dl? cmplnts?" src="https://i.imgur.com/VS5f9eJ.png"/>
 <p class="caption">Welcome to the completely revamped dl? cmplnts?</p>
 </div>
-<p>It looks ten times better than Octopress, and ever builds much faster than Octopress<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>. As a bonus, the codebase is so small that it's super trivial to hack (no, not <em>that</em> hack).</p>
+<p>It looks ten times better than Octopress, and ever builds much faster than Octopress<a class="footnoteRef" href="#fn3" id="fnref3"><sup>3</sup></a>. As a bonus, the codebase is so small that it's super trivial to hack (no, not <em>that</em> hack).</p>
 <div class="footnotes">
-<hr />
+<hr/>
 <ol>
 <li id="fn1"><p>Well, Pandoc is heavy-machinery, but it's both generic and self-contained, unlike a specialized blogging platform.<a href="#fnref1">↩</a></p></li>
 <li id="fn2"><p>Which is fine since I don't expect anyone else to use it, anyway.<a href="#fnref2">↩</a></p></li>
@@ -75,7 +76,7 @@ by <span class="author">Zhiming Wang</span>
 </ol>
 </div>
 <footer>
-<hr>
+<hr/>
 <span class="rfooter">
 <a class="feed-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a>
 <a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>

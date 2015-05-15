@@ -1,14 +1,15 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="generator" content="pandoc" />
-<meta name="author" content="Zhiming Wang" />
-<meta name="date" content="2014-12-14T10:06:02-0800" />
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2014-12-14T10:06:02-0800" name="date"/>
 <title>Speeding up Emacs with emacsclient</title>
-<link rel="apple-touch-icon-precomposed" href="/img/favicon-152.png">
-<meta name="msapplication-TileColor" content="#FFFFFF">
-<meta name="msapplication-TileImage" content="/img/favicon-144.png">
+<link href="/img/favicon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
 div.sourceCode { overflow-x: auto; }
@@ -30,9 +31,9 @@ code > span.al { color: #ff0000; font-weight: bold; }
 code > span.fu { color: #06287e; }
 code > span.er { color: #ff0000; font-weight: bold; }
 </style>
-<link href='/css/normalize.css' media="all" rel="stylesheet" type="text/css">
-<link href='/css/theme.css' media="all" rel="stylesheet" type="text/css">
-<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"/>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -46,7 +47,7 @@ ga('send', 'pageview');
 <body>
 <nav>
 <div style="height:150px; width:100px; text-align:center;">
-<a href="/"><img src="/img/icon-100.png" alt="blog icon" height="100" width="100" style="padding: 2px 0;"></a>
+<a href="/"><img alt="blog icon" height="100" src="/img/icon-100.png" style="padding: 2px 0;" width="100"/></a>
 <div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
 <div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
 </div>
@@ -60,7 +61,7 @@ by <span class="author">Zhiming Wang</span>
 </h2>
 </header>
 <p>Emacs is notorious for its loading time. For me, this is especially annoying when I'm editing LaTeX files — AUCTeX takes about five seconds to load, and once I exit Emacs (especially after a quick edit), all that work is wasted, and next time I want to do some quick editing with that same LaTeX file — sorry, another five seconds.</p>
-<p>This problem can be solved by &quot;using that same Emacs&quot;, i.e., running Emacs in server mode, then connecting to the server via <code>emacsclient</code>. Below is my script, which I call <code>emc</code>, to make <code>emacsclient</code> more user-friendly. <code>emc</code> opens a file (given as <code>$1</code>) on the server, launching one on its way if none is detected. Note that I used <code>-cqta=</code> for <code>emacsclient</code>. The <code>-c</code> option is <code>--create-frame</code>, i.e., create a new frame (in the current tty, for instance) instead of using the existing frame (in another tty, for instance); this allows for multiple frames accross different ttys. The <code>-q</code> option is for <code>--quiet</code>, suppressing messages like &quot;Waiting for Emacs...&quot; The <code>-t</code> option is for <code>--tty</code>, or equivalently, the familiar <code>-nw</code> option of <code>emacs</code>. The <code>-a=</code> options is <code>--alternate-editor=</code>; according to the manpage, <code>-a, --alternate-editor=EDITOR</code> has the following effect:</p>
+<p>This problem can be solved by "using that same Emacs", i.e., running Emacs in server mode, then connecting to the server via <code>emacsclient</code>. Below is my script, which I call <code>emc</code>, to make <code>emacsclient</code> more user-friendly. <code>emc</code> opens a file (given as <code>$1</code>) on the server, launching one on its way if none is detected. Note that I used <code>-cqta=</code> for <code>emacsclient</code>. The <code>-c</code> option is <code>--create-frame</code>, i.e., create a new frame (in the current tty, for instance) instead of using the existing frame (in another tty, for instance); this allows for multiple frames accross different ttys. The <code>-q</code> option is for <code>--quiet</code>, suppressing messages like "Waiting for Emacs..." The <code>-t</code> option is for <code>--tty</code>, or equivalently, the familiar <code>-nw</code> option of <code>emacs</code>. The <code>-a=</code> options is <code>--alternate-editor=</code>; according to the manpage, <code>-a, --alternate-editor=EDITOR</code> has the following effect:</p>
 <blockquote>
 <p>if the Emacs server is not running, run the specified editor instead. This can also be specified via the `ALTERNATE_EDITOR' environment variable. If the value of EDITOR is the empty string, run `emacs --daemon' to start Emacs in daemon mode, and try to connect to it.</p>
 </blockquote>
@@ -70,20 +71,20 @@ by <span class="author">Zhiming Wang</span>
     <span class="ot">file=$1</span>
 <span class="kw">else</span>
     <span class="kw">while [[</span> <span class="ot">-z</span> <span class="ot">${file}</span><span class="kw"> ]]</span>; <span class="kw">do</span>
-        <span class="kw">read</span> -p <span class="st">&#39;filename: &#39;</span> <span class="ot">file</span>
+        <span class="kw">read</span> -p <span class="st">'filename: '</span> <span class="ot">file</span>
     <span class="kw">done</span>
 <span class="kw">fi</span>
-<span class="kw">emacsclient</span> -cqta= <span class="st">&quot;</span><span class="ot">${file}</span><span class="st">&quot;</span></code></pre></div>
-<p>Note that using <code>emacsclient</code> has the additional benefit that the same buffer is simultaneously updated accross different ttys (See screenshot, where I opened the current post in two different ttys). This way, you won't face the nasty &quot;file changed on disk&quot; problem when you accidentally edited the same file in another tty session.</p>
+<span class="kw">emacsclient</span> -cqta= <span class="st">"</span><span class="ot">${file}</span><span class="st">"</span><span class="line-number" data-line="1" style="top: 0px"><!----></span><span class="line-number" data-line="2" style="top: 18px"><!----></span><span class="line-number" data-line="3" style="top: 36px"><!----></span><span class="line-number" data-line="4" style="top: 54px"><!----></span><span class="line-number" data-line="5" style="top: 72px"><!----></span><span class="line-number" data-line="6" style="top: 90px"><!----></span><span class="line-number" data-line="7" style="top: 108px"><!----></span><span class="line-number" data-line="8" style="top: 126px"><!----></span><span class="line-number" data-line="9" style="top: 144px"><!----></span></code></pre></div>
+<p>Note that using <code>emacsclient</code> has the additional benefit that the same buffer is simultaneously updated accross different ttys (See screenshot, where I opened the current post in two different ttys). This way, you won't face the nasty "file changed on disk" problem when you accidentally edited the same file in another tty session.</p>
 <div class="figure">
-<img src="https://i.imgur.com/9KxEWKq.png" alt="screen shot of multiple copies of the same buffer" />
+<img alt="screen shot of multiple copies of the same buffer" src="https://i.imgur.com/9KxEWKq.png"/>
 <p class="caption">screen shot of multiple copies of the same buffer</p>
 </div>
 <p>By the way, remember to re-configure your other programs that uses an external editor. For instance, change <code>$EDITOR</code> to <code>emacsclient -cqta=</code> in your <code>env</code>, and <code>core.editor</code> to <code>emacsclient -cqta=</code> in your <code>~/.gitconfig</code>.</p>
 <p><em>Note</em>: if you use <code>emacsclient</code> to edit git commit messages in Git Commit Mode, remember to use <code>C-c C-c</code> (<code>git-commit-commit</code>) to save the commit message rather than using <code>server-edit</code> or <code>C-x C-c</code> to exit Emacs. Otherwise, the <code>COMMIT_EDITMSG</code> buffer will persist in the Emacs server, and you'll be prompted to revert buffer the next time you edit another commit message, which is pretty annoying.</p>
 <p>I just started using <code>emacsclient</code>, so the above script might be buggy in certain edge cases. I'll report when I run into issues.</p>
 <footer>
-<hr>
+<hr/>
 <span class="rfooter">
 <a class="feed-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a>
 <a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>

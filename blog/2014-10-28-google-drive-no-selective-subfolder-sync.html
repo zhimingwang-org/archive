@@ -1,18 +1,19 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="generator" content="pandoc" />
-<meta name="author" content="Zhiming Wang" />
-<meta name="date" content="2014-10-28T20:49:24-0700" />
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2014-10-28T20:49:24-0700" name="date"/>
 <title>Google Drive — no selective subfolder sync?</title>
-<link rel="apple-touch-icon-precomposed" href="/img/favicon-152.png">
-<meta name="msapplication-TileColor" content="#FFFFFF">
-<meta name="msapplication-TileImage" content="/img/favicon-144.png">
+<link href="/img/favicon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
 <style type="text/css">code{white-space: pre;}</style>
-<link href='/css/normalize.css' media="all" rel="stylesheet" type="text/css">
-<link href='/css/theme.css' media="all" rel="stylesheet" type="text/css">
-<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"/>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -26,7 +27,7 @@ ga('send', 'pageview');
 <body>
 <nav>
 <div style="height:150px; width:100px; text-align:center;">
-<a href="/"><img src="/img/icon-100.png" alt="blog icon" height="100" width="100" style="padding: 2px 0;"></a>
+<a href="/"><img alt="blog icon" height="100" src="/img/icon-100.png" style="padding: 2px 0;" width="100"/></a>
 <div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
 <div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
 </div>
@@ -52,19 +53,19 @@ by <span class="author">Zhiming Wang</span>
 <p>This kind of insanity makes me wander:</p>
 <p><strong>Do the Google Drive developers use Google Drive themselves?</strong></p>
 <p>For now I'm moving <code>vid/etc</code> to <code>vid_etc</code>. Sigh.</p>
-<hr />
+<hr/>
 <p>There are other problems that I encountered with Google Drive sync today. For one thing, it rejects what I already have and insists on starting from scratch. I mean, say I have uploaded a folder via the web interface, and later wants to keep it in sync (of course that's only possible if it's top level), so I put what I already have there. Nope, Google Drive reports that as a conflict and insists on downloading all the stuff again. Apart from wasted traffic, that also ruins my hard links, so I have to either wipe everything clean on the server side and reupload, or redownload everything and redo all the hard-linking after the download finishes. Either way, very annoying. I opted for the first one. (I later empirically confirmed that OneDrive could handle this situation.)</p>
 <p>There are other problems that don't pop right off my mind. Anyway, the gist is,</p>
 <p><strong>Google Drive is not yet sync-ready for power users (maybe even laymen).</strong></p>
-<hr />
+<hr/>
 <p>Then, is OneDrive perfect? No. I know it recently went unlimited, but there’s one major annoyance: the speed. Stanford’s Ethernet speed is almost 1 Gbps UL/DL, but the OneDrive client tops out at about 2 MBps. The web interface isn’t much better. Google Drive is a lot faster than that, which makes it a good backup service for manual uploading. Anyway, maybe OneDrive will improve over time; yesterday they delivered an update to OneDrive.app, and at least it finally works.</p>
 <p>OneDrive also boasts no file status indicators on OS X, which everyone else in the industry has. That’s not a show-stopper though, if you just use it as a backup service.</p>
-<hr />
+<hr/>
 <p>What about Dropbox? Dropbox is a truly awesome sync-ready service, but it is at the same time pretty expensive compared to others. Also, since I use Dropbox as a sync service, it must be up at all times and constantly indexing, so I’m really cautious with what I put there to avoid unnecessary cycles and startup time.</p>
-<hr />
+<hr/>
 <p>Everything is broken in one way or another. Sigh. Let's hope that OneDrive improves a lot in the coming months; if it's stable enough and the speed gets some boost, I'll cancel my Google Drive subscription. I am a Google supporter and Microsoft hater, but a service that <em>works</em> is more important than ideology.</p>
 <footer>
-<hr>
+<hr/>
 <span class="rfooter">
 <a class="feed-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a>
 <a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>

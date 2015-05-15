@@ -1,18 +1,19 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="generator" content="pandoc" />
-<meta name="author" content="Zhiming Wang" />
-<meta name="date" content="2014-11-19T20:40:37-0800" />
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2014-11-19T20:40:37-0800" name="date"/>
 <title>Convolution of irreducible characters</title>
-<link rel="apple-touch-icon-precomposed" href="/img/favicon-152.png">
-<meta name="msapplication-TileColor" content="#FFFFFF">
-<meta name="msapplication-TileImage" content="/img/favicon-144.png">
+<link href="/img/favicon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
 <style type="text/css">code{white-space: pre;}</style>
-<link href='/css/normalize.css' media="all" rel="stylesheet" type="text/css">
-<link href='/css/theme.css' media="all" rel="stylesheet" type="text/css">
-<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"/>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -26,7 +27,7 @@ ga('send', 'pageview');
 <body>
 <nav>
 <div style="height:150px; width:100px; text-align:center;">
-<a href="/"><img src="/img/icon-100.png" alt="blog icon" height="100" width="100" style="padding: 2px 0;"></a>
+<a href="/"><img alt="blog icon" height="100" src="/img/icon-100.png" style="padding: 2px 0;" width="100"/></a>
 <div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
 <div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
 </div>
@@ -40,12 +41,12 @@ by <span class="author">Zhiming Wang</span>
 </h2>
 </header>
 <p><strong><em>TL; DR:</em> The actual PDF write-up is <a href="https://dl.bintray.com/zmwangx/generic/20141119-convolution-of-irreducible-characters.pdf">here</a>.</strong></p>
-<hr />
-<p>Yesterday I was trying to establish the formula for orthogonal primitive central idempotents of a group ring. It is possible to establish the result through the convolution of irreducible characters. However, I stuck quite a while on trying to work out the convolutions themselves. For a formidable and unenlightening proof using &quot;matrix entry functions&quot; (i.e., fix a basis, induce a matrix representation, and explicitly expand everything in matrix elements), see <a href="http://drexel28.wordpress.com/2011/03/02/representation-theory-using-orthogonality-relations-to-compute-convolutions-of-characters-and-matrix-entry-functions/">this post</a> (in fact, this is just one in a series of posts that lead up to the result). That's a really sad proof.</p>
+<hr/>
+<p>Yesterday I was trying to establish the formula for orthogonal primitive central idempotents of a group ring. It is possible to establish the result through the convolution of irreducible characters. However, I stuck quite a while on trying to work out the convolutions themselves. For a formidable and unenlightening proof using "matrix entry functions" (i.e., fix a basis, induce a matrix representation, and explicitly expand everything in matrix elements), see <a href="http://drexel28.wordpress.com/2011/03/02/representation-theory-using-orthogonality-relations-to-compute-convolutions-of-characters-and-matrix-entry-functions/">this post</a> (in fact, this is just one in a series of posts that lead up to the result). That's a really sad proof.</p>
 <p>It turns out that I really should have been working the other way round — first establish the orthogonal idempotents (the proof of which is really simple and elegant, I was just trapped in a single thread of thought), then use that to compute the convolution of irreducible characters.</p>
 <p>I feel like this is worth presenting (as the only proof I saw online is the really sad one above), so I TeX'ed it up. I tried to convert to MathJax HTML but eventually gave up (that's the story for another post). So, the write-up is in good ol' PDF, available <a href="https://dl.bintray.com/zmwangx/generic/20141119-convolution-of-irreducible-characters.pdf">here</a>.</p>
 <footer>
-<hr>
+<hr/>
 <span class="rfooter">
 <a class="feed-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a>
 <a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>

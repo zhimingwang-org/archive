@@ -1,18 +1,19 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="generator" content="pandoc" />
-<meta name="author" content="Zhiming Wang" />
-<meta name="date" content="2014-11-28T19:05:59-0800" />
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2014-11-28T19:05:59-0800" name="date"/>
 <title>Going Diceware</title>
-<link rel="apple-touch-icon-precomposed" href="/img/favicon-152.png">
-<meta name="msapplication-TileColor" content="#FFFFFF">
-<meta name="msapplication-TileImage" content="/img/favicon-144.png">
+<link href="/img/favicon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
 <style type="text/css">code{white-space: pre;}</style>
-<link href='/css/normalize.css' media="all" rel="stylesheet" type="text/css">
-<link href='/css/theme.css' media="all" rel="stylesheet" type="text/css">
-<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"/>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -26,7 +27,7 @@ ga('send', 'pageview');
 <body>
 <nav>
 <div style="height:150px; width:100px; text-align:center;">
-<a href="/"><img src="/img/icon-100.png" alt="blog icon" height="100" width="100" style="padding: 2px 0;"></a>
+<a href="/"><img alt="blog icon" height="100" src="/img/icon-100.png" style="padding: 2px 0;" width="100"/></a>
 <div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
 <div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
 </div>
@@ -43,7 +44,7 @@ by <span class="author">Zhiming Wang</span>
 <p>I've been using 1Password for a couple years now, and I've always been a bit worried about my master password. It's a ~30 byte monster with uppercase, lowercase letters, numbers, and special symbols. By any measure it is very safe. The problem is there are (extremely) personal things in there. I assembled several unrelated things that I (secretly) hold dearest to my heart, obfuscated them with rules not found in best64, and mixed with semi-gibberish. My daily login password is a combo similar in nature, with less obfuscation to facilitate typing. People who dig really deep into my identity might be able to compromise it (or not); I'm afraid that I'm more predictable than I thought I was. I know, the worry is pretty much unwarranted, as I’m not likely the target of a focused attack — I’m neither rich nor equipped with sensitive information or power, and for wide-range exploits, 99.9% of people are lower-hanging fruits. Even for a targeted attack, <a href="http://xkcd.com/538/">xkcd 538: Security</a> broke a crypto nerd’s imagination with a $5 wrench. However, a geek is a geek, you can’t block a geek’s imagination.</p>
 <p>Therefore, after worrying for so long, today I’m going Diceware. Eight diceware words give you at least 100 bits of true entropy. Unfortunately I don’t have a die, and don’t bother to get one. (Amazon Prime: get it Monday? No. Target, six miles away? No.) So I read my random bits from <code>/dev/urandom</code>. The C implementation is <a href="https://github.com/zmwangx/diceware">here</a>. By publishing this I’m announcing to the world that I’m using diceware. But I’m not afraid, since I’m now protected by true entropy that’s not compromised by publishing the scheme.</p>
 <footer>
-<hr>
+<hr/>
 <span class="rfooter">
 <a class="feed-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a>
 <a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>
