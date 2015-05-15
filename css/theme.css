@@ -168,3 +168,11 @@ div.indextoc ul li time.tocdate {
     float: left;
     width: 5em;
 }
+
+noscript {
+    color: #aaa;
+}
+
+noscript a {
+    color: #aaa;
+}
