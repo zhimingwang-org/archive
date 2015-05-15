@@ -788,9 +788,9 @@ def gen_deploy(args):
         mtime = os.path.getmtime(fullpath)
         # get date registered in the filename, which has the format
         # xxxx-xx-xx-blah-blah.md
-        cdate = datetime.datetime(year=int(matchobj[1]),
-                                  month=int(matchobj[2]),
-                                  day=int(matchobj[3]),
+        cdate = datetime.datetime(year=int(matchobj.group(1)),
+                                  month=int(matchobj.group(2)),
+                                  day=int(matchobj.group(3)),
                                   hour=23, minute=59, second=59,
                                   tzinfo=dateutil.tz.tzlocal()).timestamp()
         # skip the post if its source file was created more than three
