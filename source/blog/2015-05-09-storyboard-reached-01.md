@@ -35,8 +35,11 @@ I created [an asciinema recording](https://asciinema.org/a/19782) to commemorate
 
 [^solarized-dark]: The screencast's color scheme is actually off in some places, since in my iTerm2 bold font is displayed as bold, not bright.
 
-<div style="width: 672px; margin: auto;">
+<div style="width: 672px; text-align: center; margin: auto;">
 <script type="text/javascript" src="https://asciinema.org/a/19782.js" id="asciicast-19782" async></script>
+<noscript>
+Javascript disabled. Check out the cast [here](https://asciinema.org/a/19782).
+</noscript>
 </div>
 
 And, just to demonstrate `storyboard`, I re-screen-recorded the asciinema screencast with QuickTime, saved to [an MOV file](https://dl.bintray.com/zmwangx/generic/storyboard-0.1-walkthrough.mov), and ran it through my `metadata` and `storyboard`:

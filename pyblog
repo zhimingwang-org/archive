@@ -421,6 +421,8 @@ def _pre_tag_insert_line_numbers(soup, pre_tag):
         ln_tag["class"] = "line-number"
         ln_tag["data-line"] = line_number
         ln_tag["style"] = "top: %dpx" % ((line_number - 1) * CODE_LINE_HEIGHT)
+        # add a comment to the content of the span to suppress tidy5
+        # empty <span> tag warning
         ln_tag.append(soup.new_string("", bs4.Comment))
         pre_tag.code.append(ln_tag)
 
