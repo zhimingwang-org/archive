@@ -1,4 +1,4 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><link href="http://zmwangx.github.io/atom.xml" rel="self" /><link href="http://zmwangx.github.io" /><updated>2015-05-14T21:36:29-07:00</updated><id>http://zmwangx.github.io</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">storyboard reached 0.1</title><link href="http://zmwangx.github.io/blog/2015-05-09-storyboard-reached-01.html" /><updated>2015-05-09T00:32:28-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-09-storyboard-reached-01.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io</uri><email>zmwangx@gmail.com</email></author><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><link href="http://zmwangx.github.io/atom.xml" rel="self" /><link href="http://zmwangx.github.io" /><updated>2015-05-16T22:47:03-07:00</updated><id>http://zmwangx.github.io</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">storyboard reached 0.1</title><link href="http://zmwangx.github.io/blog/2015-05-09-storyboard-reached-01.html" /><updated>2015-05-09T00:32:28-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-09-storyboard-reached-01.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io</uri><email>zmwangx@gmail.com</email></author><content type="html">
 <![CDATA[
 
 <p>For quite some time I've been working on a Python project called <a href="https://github.com/zmwangx/storyboard"><code>storyboard</code></a>, and today I finally released the 0.1 stable (or you can think of it as 1.0).</p>
@@ -108,6 +108,8 @@ storyboard saved to: /tmp/storyboard-se3fbiif.jpg
 <img alt="Microsoft." src="https://i.imgur.com/7zJxr8P.png"/>
 <p class="caption">Microsoft.</p>
 </div>
+<hr/>
+<p><strong>May 16, 2015 update:</strong> Ars Technica <a href="http://arstechnica.com/apple/2015/05/what-wed-like-to-see-in-ios-9-at-wwdc-next-month/">published an article today</a> listing "what we'd like to see in iOS 9 at WWDC next month", and "Settings page overhaul" is listed as the third item. Apparently I'm not the only one who's concerned about the iOS Settings maze. In addition, their proposed solution is similar to mine;<a class="footnoteRef" href="#fn5" id="fnref5"><sup>5</sup></a> the key, of course, is search.</p>
 <div class="footnotes">
 <hr/>
 <ol>
@@ -115,6 +117,7 @@ storyboard saved to: /tmp/storyboard-se3fbiif.jpg
 <li id="fn2"><p>Which you should: what's the point of Find My iPhone when the thief can disable it in Location Services?<a href="#fnref2">&#8617;</a></p></li>
 <li id="fn3"><p>This brings another problem of the interface design of iOS Settings. When restricted, one cannot make modifications to "Privacy-&gt;Location Services", and instead has to go to "General-&gt;Restrictions-&gt;Location Services". What's the point? "Restrictions" is about <em>setting restrictions</em>, not about <em>editing restricted items or sections in a central place exclusively"</em>. Ideally one should be able to tap on a lock icon in "Privacy-&gt;Location Services" and enter the restrictions passcode to unlock it, like what we find in OS X's System Preferences.<a href="#fnref3">&#8617;</a></p></li>
 <li id="fn4"><p>This is of course just a metaphor; I'm not dumb enough to be unable to remember <code>shutil.rmtree</code>.<a href="#fnref4">&#8617;</a></p></li>
+<li id="fn5"><p>Which is not at all surprising, since Apple's very own OS X has already set an example.<a href="#fnref5">&#8617;</a></p></li>
 </ol>
 </div>
 
