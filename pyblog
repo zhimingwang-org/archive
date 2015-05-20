@@ -775,7 +775,7 @@ def deploy(args):
 
 def gen_deploy(args):
     """Regenerate and deploy."""
-    # pylint: disable=unused-argument
+    # pylint: disable=unused-argument,too-many-branches
 
     # try to smartly determine the latest post, and prompt to touch it
     current_time = time.time()
@@ -786,26 +786,27 @@ def gen_deploy(args):
         if not matchobj:
             continue
         fullpath = os.path.join(POSTSDIR, name)
-        ctime = os.path.getctime(fullpath)
         mtime = os.path.getmtime(fullpath)
-        # get date registered in the filename, which has the format
-        # xxxx-xx-xx-blah-blah.md
-        cdate = datetime.datetime(year=int(matchobj.group(1)),
-                                  month=int(matchobj.group(2)),
-                                  day=int(matchobj.group(3)),
-                                  hour=23, minute=59, second=59,
-                                  tzinfo=dateutil.tz.tzlocal()).timestamp()
-        # skip the post if its source file was created more than three
-        # days ago, or the date registered in its filename is more than
-        # three days ago
-        if max(current_time - ctime, current_time - cdate) > 3 * 24 * 3600:
+        # get post date from the date metadata field of the post
+        postdate = datetime.datetime.fromtimestamp(0)
+        with open(fullpath) as postobj:
+            for line in postobj:
+                dateregex = r"^date: (\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}-\d{2}:\d{2})"
+                datematch = re.match(dateregex, line.rstrip())
+                if datematch:
+                    postdate = dateutil.parser.parse(datematch.group(1))
+                    break
+        # skip the post if it is dated more than three days ago
+        if current_time - posttime > 3 * 24 * 3600:
             continue
         if mtime > latest_mtime:
             latest_post = name
             latest_mtime = mtime
     # prompt for touching if the latest post determined above was
-    # modified within an hour
-    if latest_post is not None and current_time - latest_mtime < 3600:
+    # modified within the last hour but the date registered in the post
+    # isn't within the last ten minutes
+    if ((latest_post is not None and current_time - latest_mtime < 3600 and
+         current_time - postdate > 60)):
         sys.stderr.write("%sIt appears that %s might be a new post.\n"
                          "Do you want to touch its timestamp?%s\n" %
                          (GREEN, latest_post, RESET))
