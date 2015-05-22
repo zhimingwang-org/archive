@@ -2,6 +2,10 @@
 
 """A simple blog generator with Pandoc as backend."""
 
+# TODO: put blog configurations in a config file
+# TODO: auto retouch: prompt for git commit amend after touching
+# (display commit message to avoid amending the wrong commit)
+
 import argparse
 from contextlib import contextmanager
 import datetime
@@ -25,8 +29,6 @@ import bs4
 import colorama
 import dateutil.parser
 import dateutil.tz
-
-# TODO: put blog configurations in a config file
 
 ############################# BLOG CONFIGURATIONS ##############################
 # Safe to customize
@@ -780,6 +782,7 @@ def gen_deploy(args):
     # try to smartly determine the latest post, and prompt to touch it
     current_time = time.time()
     latest_post = None
+    latest_postdate = 0
     latest_mtime = 0
     for name in os.listdir(POSTSDIR):
         matchobj = re.match(r"^([0-9]{4})-([0-9]{2})-([0-9]{2})-.*\.md", name)
@@ -788,25 +791,26 @@ def gen_deploy(args):
         fullpath = os.path.join(POSTSDIR, name)
         mtime = os.path.getmtime(fullpath)
         # get post date from the date metadata field of the post
-        postdate = datetime.datetime.fromtimestamp(0)
+        postdate = 0
         with open(fullpath) as postobj:
             for line in postobj:
-                dateregex = r"^date: (\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}-\d{2}:\d{2})"
+                dateregex = r"^date: (\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}-\d{2}:?\d{2})"
                 datematch = re.match(dateregex, line.rstrip())
                 if datematch:
-                    postdate = dateutil.parser.parse(datematch.group(1))
+                    postdate = dateutil.parser.parse(datematch.group(1)).timestamp()
                     break
         # skip the post if it is dated more than three days ago
-        if current_time - posttime > 3 * 24 * 3600:
+        if current_time - postdate > 3 * 24 * 3600:
             continue
         if mtime > latest_mtime:
             latest_post = name
+            latest_postdate = postdate
             latest_mtime = mtime
     # prompt for touching if the latest post determined above was
     # modified within the last hour but the date registered in the post
     # isn't within the last ten minutes
     if ((latest_post is not None and current_time - latest_mtime < 3600 and
-         current_time - postdate > 60)):
+         current_time - latest_postdate > 600)):
         sys.stderr.write("%sIt appears that %s might be a new post.\n"
                          "Do you want to touch its timestamp?%s\n" %
                          (GREEN, latest_post, RESET))
