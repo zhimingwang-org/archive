@@ -8,7 +8,7 @@ date-display: December 23, 2014
 I just noticed that `daemonize` doesn't play too well with the OS; in particular, when you use dark menu bar on OS X Yosemite, apps launched with `daemonize` won't conform to that. So a native shell solution would be using `/bin/zsh` and run
 
 ```zsh
-mpv "$@" >/dev/null 2>&1 </dev/null &!
+mpv $@ &>/dev/null </dev/null &!
 ```
 
 instead.

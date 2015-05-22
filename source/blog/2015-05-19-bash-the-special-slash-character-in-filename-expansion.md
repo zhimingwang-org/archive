@@ -19,7 +19,7 @@ bash-4.3$ [[ /usr/bin == /usr@(/bin|/lib) ]] && echo matching
 matching
 ```
 
-As seen from this example, patterns with slash simply doesn't work (in filename expansion) when place in an extended glob pattern list, and there's no error whatsoever. I looked up the [Bash Reference Manual](https://www.gnu.org/software/bash/manual/html_node/Pattern-Matching.html#Pattern-Matching) and the [Bash Guide](http://mywiki.wooledge.org/BashGuide/Patterns) but neither mentioned this behavior. One might need to delve into the source code to say for sure what exactly is going on.
+As seen from this example, patterns with slash simply doesn't work (in filename expansion) when placed in an extended glob pattern list, and there's no error whatsoever. I looked up the [Bash Reference Manual](https://www.gnu.org/software/bash/manual/html_node/Pattern-Matching.html#Pattern-Matching) and the [Bash Guide](http://mywiki.wooledge.org/BashGuide/Patterns) but neither mentioned this behavior. One might need to delve into the source code to say for sure what exactly is going on.
 
 In comparison, Zsh and its [docs](http://zsh.sourceforge.net/Doc/Release/Expansion.html#Filename-Generation) are much more up front about this issue:
 
