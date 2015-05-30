@@ -12,7 +12,7 @@ To remind myself of which scripts are at my fingertip, I decided to use a comman
 [^shitty]: Yeah, I know it's a shitty script, so don't nitpick on style problems.
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """Generate command table."""
 
