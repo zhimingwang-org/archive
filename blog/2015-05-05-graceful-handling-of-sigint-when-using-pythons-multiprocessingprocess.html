@@ -18,18 +18,35 @@ table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
 table.sourceCode { width: 100%; line-height: 100%; }
 td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
 td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; }
-code > span.dt { color: #902000; }
-code > span.dv { color: #40a070; }
-code > span.bn { color: #40a070; }
-code > span.fl { color: #40a070; }
-code > span.ch { color: #4070a0; }
-code > span.st { color: #4070a0; }
-code > span.co { color: #60a0b0; font-style: italic; }
-code > span.ot { color: #007020; }
-code > span.al { color: #ff0000; font-weight: bold; }
-code > span.fu { color: #06287e; }
-code > span.er { color: #ff0000; font-weight: bold; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 <link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
 <link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
@@ -75,47 +92,47 @@ by <span class="author">Zhiming Wang</span>
 <p>Both concepts can be used to one's benefit or detriment. Below is how I solved my problem, using the two concepts. Observe that without a custom handler, Python translates a <code>SIGINT</code> to a <code>KeyboardInterrupt</code> exception; therefore, I use the default <code>KeyboardInterrupt</code> to interrupt the HTTP server in its own process (through handling the exception and calling <code>shutdown()</code>), but instead install a custom <code>SIGINT</code> handler in the main process that translates <code>SIGINT</code> to setting a <code>sigint_raised</code> flag that can be picked up by the while loop once the current build (if any) is finished. The proof of concept script is as follows (the production code is <a href="https://github.com/zmwangx/zmwangx.github.io/blob/a7a0b2073f30b1d0214c3152998d95e40a39b438/pyblog#L567-L635">here</a>):</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co">#!/usr/bin/env python3</span>
 
-<span class="ch">import</span> http.server
-<span class="ch">import</span> multiprocessing
-<span class="ch">import</span> signal
-<span class="ch">import</span> sys
-<span class="ch">import</span> time
+<span class="im">import</span> http.server
+<span class="im">import</span> multiprocessing
+<span class="im">import</span> signal
+<span class="im">import</span> sys
+<span class="im">import</span> time
 
 <span class="kw">class</span> HTTPServerProcess(multiprocessing.Process):
-    <span class="kw">def</span> run(<span class="ot">self</span>):
-        httpd = http.server.HTTPServer(
+    <span class="kw">def</span> run(<span class="va">self</span>):
+        httpd <span class="op">=</span> http.server.HTTPServer(
             (<span class="st">""</span>, <span class="dv">8000</span>), http.server.SimpleHTTPRequestHandler)
-        <span class="kw">try</span>:
+        <span class="cf">try</span>:
             httpd.serve_forever()
-        <span class="kw">except</span> <span class="ot">KeyboardInterrupt</span>:
+        <span class="cf">except</span> <span class="pp">KeyboardInterrupt</span>:
             httpd.shutdown()
 
 <span class="kw">def</span> do_things():
-    <span class="kw">for</span> i in <span class="dt">range</span>(<span class="dv">10</span>):
+    <span class="cf">for</span> i <span class="op">in</span> <span class="bu">range</span>(<span class="dv">10</span>):
         sys.stderr.write(<span class="st">"."</span>)
         sys.stderr.flush()
         time.sleep(<span class="dv">1</span>)
     sys.stderr.write(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)
 
 <span class="kw">def</span> main():
-    server_process = HTTPServerProcess()
+    server_process <span class="op">=</span> HTTPServerProcess()
     server_process.start()
 
     <span class="co"># define and install custom SIGINT handler</span>
-    sigint_raised = <span class="ot">False</span>
+    sigint_raised <span class="op">=</span> <span class="va">False</span>
 
     <span class="kw">def</span> sigint_mitigator(signum, frame):
         <span class="kw">nonlocal</span> sigint_raised
-        sigint_raised = <span class="ot">True</span>
+        sigint_raised <span class="op">=</span> <span class="va">True</span>
 
     signal.signal(signal.SIGINT, sigint_mitigator)
 
-    <span class="kw">while</span> not sigint_raised:
+    <span class="cf">while</span> <span class="op">not</span> sigint_raised:
         do_things()
 
     server_process.join()
 
-<span class="kw">if</span> <span class="ot">__name__</span> == <span class="st">"__main__"</span>:
+<span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:
     main()<span class="line-number" data-line="1" style="top: 0px"><!----></span><span class="line-number" data-line="2" style="top: 18px"><!----></span><span class="line-number" data-line="3" style="top: 36px"><!----></span><span class="line-number" data-line="4" style="top: 54px"><!----></span><span class="line-number" data-line="5" style="top: 72px"><!----></span><span class="line-number" data-line="6" style="top: 90px"><!----></span><span class="line-number" data-line="7" style="top: 108px"><!----></span><span class="line-number" data-line="8" style="top: 126px"><!----></span><span class="line-number" data-line="9" style="top: 144px"><!----></span><span class="line-number" data-line="10" style="top: 162px"><!----></span><span class="line-number" data-line="11" style="top: 180px"><!----></span><span class="line-number" data-line="12" style="top: 198px"><!----></span><span class="line-number" data-line="13" style="top: 216px"><!----></span><span class="line-number" data-line="14" style="top: 234px"><!----></span><span class="line-number" data-line="15" style="top: 252px"><!----></span><span class="line-number" data-line="16" style="top: 270px"><!----></span><span class="line-number" data-line="17" style="top: 288px"><!----></span><span class="line-number" data-line="18" style="top: 306px"><!----></span><span class="line-number" data-line="19" style="top: 324px"><!----></span><span class="line-number" data-line="20" style="top: 342px"><!----></span><span class="line-number" data-line="21" style="top: 360px"><!----></span><span class="line-number" data-line="22" style="top: 378px"><!----></span><span class="line-number" data-line="23" style="top: 396px"><!----></span><span class="line-number" data-line="24" style="top: 414px"><!----></span><span class="line-number" data-line="25" style="top: 432px"><!----></span><span class="line-number" data-line="26" style="top: 450px"><!----></span><span class="line-number" data-line="27" style="top: 468px"><!----></span><span class="line-number" data-line="28" style="top: 486px"><!----></span><span class="line-number" data-line="29" style="top: 504px"><!----></span><span class="line-number" data-line="30" style="top: 522px"><!----></span><span class="line-number" data-line="31" style="top: 540px"><!----></span><span class="line-number" data-line="32" style="top: 558px"><!----></span><span class="line-number" data-line="33" style="top: 576px"><!----></span><span class="line-number" data-line="34" style="top: 594px"><!----></span><span class="line-number" data-line="35" style="top: 612px"><!----></span><span class="line-number" data-line="36" style="top: 630px"><!----></span><span class="line-number" data-line="37" style="top: 648px"><!----></span><span class="line-number" data-line="38" style="top: 666px"><!----></span><span class="line-number" data-line="39" style="top: 684px"><!----></span><span class="line-number" data-line="40" style="top: 702px"><!----></span><span class="line-number" data-line="41" style="top: 720px"><!----></span><span class="line-number" data-line="42" style="top: 738px"><!----></span><span class="line-number" data-line="43" style="top: 756px"><!----></span><span class="line-number" data-line="44" style="top: 774px"><!----></span></code></pre></div>
 <p>Beware that with this solution, if there are external programs or OS level operations happening in the main process, then the operation at the time of <code>SIGINT</code> will still be interrupted<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a> (for example, in the script above, the <code>time.sleep(1)</code> at the exact point of <code>SIGINT</code> is still interrupted, but otherwise <code>do_things</code> is carried on to its completion). I'm not sure how to explain this — maybe the handler isn't capturing the signal fast enough?<a class="footnoteRef" href="#fn2" id="fnref2"><sup>2</sup></a> Anyway, one single early interruption is at least more acceptable than a completely corrupted build<a class="footnoteRef" href="#fn3" id="fnref3"><sup>3</sup></a>, and certainly more graceful.</p>
 <div class="footnotes">

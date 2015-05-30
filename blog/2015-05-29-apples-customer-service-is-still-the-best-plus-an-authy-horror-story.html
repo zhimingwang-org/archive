@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2015-05-29T20:40:05-07:00" name="date"/>
+<title>Apple's customer service is still the best (plus an Authy horror story)</title>
+<link href="/img/favicon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
+<style type="text/css">code{white-space: pre;}</style>
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"/>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-53908325-1', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+</script>
+</head>
+<body>
+<nav>
+<div style="height:150px; width:100px; text-align:center;">
+<a href="/"><img alt="blog icon" height="100" src="/img/icon-100.png" style="padding: 2px 0;" width="100"/></a>
+<div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
+<div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</div>
+</nav>
+<article>
+<header>
+<h1 class="title">Apple's customer service is still the best (plus an Authy horror story)</h1>
+<h2 class="meta">
+<time class="timestamp" datetime="2015-05-29T20:40:05-07:00">May 29, 2015,</time>
+by <span class="author">Zhiming Wang</span>
+</h2>
+</header>
+<p>Recently the mute switch (officially known as the Ring/Silent switch) on my little-more-than-half-a-year-old iPhone 6 Plus stopped working. It almost always bounced back to ON (ring) position upon turning, and even if I could keep it at the OFF position for five seconds, it would most likely bounce back when I thrust it into my pocket. I got bitten a few times — almost got heart attacks when the phone dinged loudly in class. Minor yet annoying problem.</p>
+<p>So I took my phone to the Genius Bar today, prepared to have it sent to a repair center<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a> and get a loan in the mean time — basically, I was prepared for all sorts of trouble. But nope. I demoed the problem for three seconds, my agent explained to me in five seconds that the switch alone was hard to replace and took fifteen seconds to verify my warranty status (I suppose), then off he went to retrieve a brand new replacement for me. No questions asked about the little dent on my old phone or whatever. <em>So I ended up with a brand new phone in less than five minutes.</em> (Of course, redoing setup and restoring backup took much longer than that.)</p>
+<p>This is <em>the</em> customer service we should receive everywhere. Unfortunately, Apple seems to be one of the very few tech giants (or the only one?) that take customers seriously. Yeah, Apple sells products at a premium; but hey, they also live up to what one would expect from a premium product.</p>
+<hr/>
+<p>By the way, my only gripe during the process wasn't with Apple; it's about setting up Authy on the new phone. I verified my phone number via SMS and signed into Authy. I entered my backup password, which must be correct since it came straight off 1Password. My Authenticator accounts were displayed (I didn't verify if they would produce TOTPs) but a weird error message along the line of "data is corrupted" was shown to me, asking me to verify my phone for a second time. Unsuspecting, I asked Authy to send me another SMS, and entered the code I got. Then boom! All of a sudden <em>all my Authenticator accounts were gone</em>, leaving me with merely an Authy dev and a Coinbase account, which were the only ones using Authy's native auth system. My heart almost sank for a second; I could foresee the hours that would go down the drain, recovering (dozens of) accounts and regenerating new keys for two-factor auth.</p>
+<p>That was before I immediately realized that all my secret keys were safe and sound in 1Password's database. In the past few months, AgileBits implemented TOTP support in both the iOS and OS X versions of 1Password. The day <a href="https://blog.agilebits.com/2015/04/06/1password-5-3-for-mac-the-bionic-edition-is-out/">OS X support came into stable 5.3</a>, I exported all my Authenticator secret keys from Authy to 1Password (with help from <a href="https://www.pommepause.com/2014/10/how-to-extract-your-totp-secrets-from-authy/">this blog post</a><a class="footnoteRef" href="#fn2" id="fnref2"><sup>2</sup></a>). At that time I didn't expect 1Password would save my day later. Overall, the $50 (OS X) plus $17 (iOS) I spent on 1Password was my most worthwhile spend on software, ever.</p>
+<p>The lesson to learn from my Authy horror story is that one should export and backup Authenticator secret keys from Authy before it's too late. Moreover, this one shitty experience with Authy is enough to keep me away from it for the ages to come, expect for services that are Authy-specific, e.g., Coinbase<a class="footnoteRef" href="#fn3" id="fnref3"><sup>3</sup></a>. 1Password is the way to go, and with the addition of TOTP, it is one more step towards a truly one password experience. If you don't own 1Password yet, you should really get it, now.</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>As I see no obvious way to replace the switch in store. My intuition was later confirmed.<a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>The first comment below that post is mine.<a href="#fnref2">↩</a></p></li>
+<li id="fn3"><p>I have a Coinbase account and probably around 0.01 BTC in my wallet, but I don't really use bitcoins. At the time I signed up for two-factor auth on Coinbase, Authy seemed to be only supported system; however, I just signed in again and it seems that Coinbase is now supporting Authenticator also. Whatever the case, Authy is practically dead for me.<a href="#fnref3">↩</a></p></li>
+</ol>
+</div>
+<footer>
+<hr/>
+<span class="rfooter">
+<a class="feed-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a>
+<a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</span>
+</footer>
+</article>
+</body>
+</html>
