@@ -1,4 +1,34 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><link href="http://zmwangx.github.io/atom.xml" rel="self" /><link href="http://zmwangx.github.io" /><updated>2015-05-29T20:54:28-07:00</updated><id>http://zmwangx.github.io</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">Apple's customer service is still the best (plus an Authy horror story)</title><link href="http://zmwangx.github.io/blog/2015-05-29-apples-customer-service-is-still-the-best-plus-an-authy-horror-story.html" /><updated>2015-05-29T20:40:05-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-29-apples-customer-service-is-still-the-best-plus-an-authy-horror-story.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io</uri><email>zmwangx@gmail.com</email></author><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><link href="http://zmwangx.github.io/atom.xml" rel="self" /><link href="http://zmwangx.github.io" /><updated>2015-05-30T22:49:03-07:00</updated><id>http://zmwangx.github.io</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">Using a personal helper package in everyday scripting</title><link href="http://zmwangx.github.io/blog/2015-05-30-using-a-personal-helper-package-in-everyday-scripting.html" /><updated>2015-05-30T22:48:57-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-30-using-a-personal-helper-package-in-everyday-scripting.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io</uri><email>zmwangx@gmail.com</email></author><content type="html">
+<![CDATA[
+
+<p>Recently I've been scripting (mostly in Python) quite a bit, and noticed that some functionalities get copied over or reimplemented over and over again. Examples include reading configuration files (mostly JSON, INI, and YAML), printing progress information to tty in color, displaying progress bar, and so on.</p>
+<p>In light of this, I came up with the idea of keeping a pool of helper modules in a personal helper package. I'm unimaginative at naming things, so I just named my package <code>zmwangx</code>. It is <a href="https://github.com/zmwangx/pyzmwangx">published on GitHub</a>, and the API docs are published on <a href="https://pyzmwangx.readthedocs.org">Read the Docs</a> for easy reference during scripting.<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a> At the time of writing the following helper modules are available in the package:</p>
+<ul>
+<li><code>colorout       -</code> colorized output to stdout and stderr, and much more.</li>
+<li><code>config         -</code> read and write config files of various common formats.</li>
+<li><code>hash           -</code> hash files in a memory-efficient manner.</li>
+<li><code>humansize      -</code> convert size in bytes to human readable string (IEC or SI).</li>
+<li><code>humantime      -</code> convert duration in seconds to human readable string.</li>
+<li><code>infrastructure -</code> testing infrastructure.</li>
+<li><code>pbar           -</code> display progress bar for the progress of processing a file or stream.</li>
+<li><code>urlgrep        -</code> parse and match URLs from HTML documents.</li>
+</ul>
+<p>With a personalized helper package, scripting has never been more enjoyable. Here are just some of the benefits:</p>
+<ul>
+<li>Stating the obvious: write once, use everywhere (without copy/paste);</li>
+<li>As always, factoring out small functional units make code more readable and easier to debug; and having a dedicated pool just for helper modules encourages one to think about factoring, <em>early</em>;</li>
+<li>Bug fixes and enhancements in the helper package are instantly effective accross the board.</li>
+</ul>
+<p>Of course, one cannot depend on such a package in a formally published package (say, one published to PyPI), so things like <code>tools.py</code> or whatever are still necessary from time to time. But for day-to-day scripting, having a personal helper package that is used accross the board is definitely a good idea.</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>I'm pretty paranoid about documenting things.<a href="#fnref1">&#8617;</a></p></li>
+</ol>
+</div>
+
+]]>
+</content></entry><entry><title type="html">Apple's customer service is still the best (plus an Authy horror story)</title><link href="http://zmwangx.github.io/blog/2015-05-29-apples-customer-service-is-still-the-best-plus-an-authy-horror-story.html" /><updated>2015-05-29T20:40:05-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-29-apples-customer-service-is-still-the-best-plus-an-authy-horror-story.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io</uri><email>zmwangx@gmail.com</email></author><content type="html">
 <![CDATA[
 
 <p>Recently the mute switch (officially known as the Ring/Silent switch) on my little-more-than-half-a-year-old iPhone 6 Plus stopped working. It almost always bounced back to ON (ring) position upon turning, and even if I could keep it at the OFF position for five seconds, it would most likely bounce back when I thrust it into my pocket. I got bitten a few times &#8212; almost got heart attacks when the phone dinged loudly in class. Minor yet annoying problem.</p>
@@ -811,12 +841,6 @@ puts str.encode(<span class="st">"UTF-8"</span>, <span class="st">"UTF8-MAC"</sp
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">daemonize</span> /usr/local/bin/mpv <span class="st">"</span><span class="ot">$@</span><span class="st">"</span><span class="line-number" data-line="1" style="top: 0px"><!----></span></code></pre></div>
 <p>in the shell of your choice (for me the shell of choice is <code>zsh</code> since the env would be readily available from my <code>zshenv</code>). <code>daemonize</code>, as the name suggests, daemonizes the process so that the process doesn't block; this way, <code>mpv-launcher.app</code> immediately quits after launching, making multiple "instances" possible. (<code>daemonize</code> can be installed via <code>brew install daemonize</code>; note that you need to specify the full path of the command to daemonize, which in my case is <code>/usr/local/bin/mpv</code>). And there you go. Associate your video files to <code>mpv-launcher.app</code>. Launch as many instances as you want. Enjoy.</p>
 <p>By the way, I also filed an <a href="https://github.com/mpv-player/mpv/issues/1377">enhancement request</a> with <code>mpv-player/mpv</code>. We'll see what the developers can do. Hopefully the app bundle will support multiple videos out of box in the future.</p>
-
-]]>
-</content></entry><entry><title type="html">10k images on imgur</title><link href="http://zmwangx.github.io/blog/2014-12-22-10k-images-on-imgur.html" /><updated>2014-12-22T12:42:16-08:00</updated><id>http://zmwangx.github.io/blog/2014-12-22-10k-images-on-imgur.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io</uri><email>zmwangx@gmail.com</email></author><content type="html">
-<![CDATA[
-
-<p>I happened to check my imgur account just now (haven't been to the web interface for ages), and you know what, I have uploaded 10,744 images since I created the account in February this year! (I've been using imgur for longer than that; previously I uploaded images anonymously.) Most of the 10k images were uploaded via scripts using the API. This again demonstrates the importance of a good API &#8212; without the imgur API I wouldn't have been able to upload hundreds of images with a few keystrokes all in a snap, and getting links would be a huge pain in the ass. There are myriad image hosting services out there, but imgur rules 'em all, thanks to its decent API (and also its good CDN and direct image links, of course).</p>
 
 ]]>
 </content></entry></feed>

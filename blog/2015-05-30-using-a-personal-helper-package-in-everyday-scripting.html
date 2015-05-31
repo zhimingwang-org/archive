@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2015-05-30T22:48:57-07:00" name="date"/>
+<title>Using a personal helper package in everyday scripting</title>
+<link href="/img/favicon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
+<style type="text/css">code{white-space: pre;}</style>
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"/>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-53908325-1', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+</script>
+</head>
+<body>
+<nav>
+<div style="height:150px; width:100px; text-align:center;">
+<a href="/"><img alt="blog icon" height="100" src="/img/icon-100.png" style="padding: 2px 0;" width="100"/></a>
+<div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
+<div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</div>
+</nav>
+<article>
+<header>
+<h1 class="title">Using a personal helper package in everyday scripting</h1>
+<h2 class="meta">
+<time class="timestamp" datetime="2015-05-30T22:48:57-07:00">May 30, 2015,</time>
+by <span class="author">Zhiming Wang</span>
+</h2>
+</header>
+<p>Recently I've been scripting (mostly in Python) quite a bit, and noticed that some functionalities get copied over or reimplemented over and over again. Examples include reading configuration files (mostly JSON, INI, and YAML), printing progress information to tty in color, displaying progress bar, and so on.</p>
+<p>In light of this, I came up with the idea of keeping a pool of helper modules in a personal helper package. I'm unimaginative at naming things, so I just named my package <code>zmwangx</code>. It is <a href="https://github.com/zmwangx/pyzmwangx">published on GitHub</a>, and the API docs are published on <a href="https://pyzmwangx.readthedocs.org">Read the Docs</a> for easy reference during scripting.<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a> At the time of writing the following helper modules are available in the package:</p>
+<ul>
+<li><code>colorout       -</code> colorized output to stdout and stderr, and much more.</li>
+<li><code>config         -</code> read and write config files of various common formats.</li>
+<li><code>hash           -</code> hash files in a memory-efficient manner.</li>
+<li><code>humansize      -</code> convert size in bytes to human readable string (IEC or SI).</li>
+<li><code>humantime      -</code> convert duration in seconds to human readable string.</li>
+<li><code>infrastructure -</code> testing infrastructure.</li>
+<li><code>pbar           -</code> display progress bar for the progress of processing a file or stream.</li>
+<li><code>urlgrep        -</code> parse and match URLs from HTML documents.</li>
+</ul>
+<p>With a personalized helper package, scripting has never been more enjoyable. Here are just some of the benefits:</p>
+<ul>
+<li>Stating the obvious: write once, use everywhere (without copy/paste);</li>
+<li>As always, factoring out small functional units make code more readable and easier to debug; and having a dedicated pool just for helper modules encourages one to think about factoring, <em>early</em>;</li>
+<li>Bug fixes and enhancements in the helper package are instantly effective accross the board.</li>
+</ul>
+<p>Of course, one cannot depend on such a package in a formally published package (say, one published to PyPI), so things like <code>tools.py</code> or whatever are still necessary from time to time. But for day-to-day scripting, having a personal helper package that is used accross the board is definitely a good idea.</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>I'm pretty paranoid about documenting things.<a href="#fnref1">↩</a></p></li>
+</ol>
+</div>
+<footer>
+<hr/>
+<span class="rfooter">
+<a class="feed-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a>
+<a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</span>
+</footer>
+</article>
+</body>
+</html>
