@@ -25,7 +25,7 @@ zle -N complete_pwd_items_on_empty_buffer
 
 This is all good stuff.
 
-However, at some point a [security architect and mobile security engineer](https://stackoverflow.com/users/608639/jww) jumped in and made the following comment:
+However, at some point a [security architect and mobile security engineer](https://stackoverflow.com/users/608639/jww) jumped in and made [the following comment](https://stackoverflow.com/questions/30699242/first-tab-completion-enhancement#comment49457640_30699242):
 
 > Stack Overflow is a site for programming and development questions. This question appears to be off-topic because it is not about programming or development. See [What topics can I ask about here](https://stackoverflow.com/help/on-topic) in the Help Center. Perhaps Super User or Unix & Linux Stack Exchange would be a better place to ask. Also see [Where do I post questions about Dev Ops](http://meta.stackexchange.com/q/134306)?
 
@@ -41,7 +41,7 @@ Maybe Zsh isn't used by those specific voters (I guess most of them are Windows 
 
 However, these are just specific lusers. Why do I generalize and insist that "StackOverflow review system is completely BS"? Well, just look at the voters' stats; I searched for their involvement in the `zsh` tag, and here are the results: [1](https://stackoverflow.com/search?q=user:2422776+[zsh]), [2](https://stackoverflow.com/search?q=user:683218+[zsh]), [3](https://stackoverflow.com/search?q=user:608639+[zsh]), [4](https://stackoverflow.com/search?q=user:3836229+[zsh]), [5](https://stackoverflow.com/search?q=user:2772643+[zsh]). Unsurprisingly, nothing, except one guy has answered a question about ASCII art, which shouldn't be placed under `zsh` in the first place. While someone knowlegeable of Zsh doesn't necessarily need to ask or answer questions about Zsh on SO, this quick search does reveal that these voters, rather than following the `zsh` tag, just popped out of nowhere, probably from the review queues. In this case it's pretty obvious that they're going after a new user (the OP just registered). And that is one of the main problems with SO's review system that makes it highly questionable in many cases:
 
-**The review tasks are handed to people who have no knowledge about the topics,[^approved-edit] and these people just operate under assumptions (e.g., new users will ask off-topic questions.)[^new]**
+**The review tasks are handed to people who have no knowledge of the topics,[^approved-edit] and these people just operate under assumptions (e.g., new users will ask off-topic questions.)[^new]**
 
 [^approved-edit]: This problem isn't limited to reviews; it also applies to, for instance, approved edits. My *tag edits* (with explanations) got rejected quite a few times because the reviewers clearly didn't understand the topic — e.g., some morons assume that command line problems equal Bash problems.
 
