@@ -52,6 +52,6 @@ Here are a few screenshots of today's liveblog. Unfortunately I only know some e
 
 By the way, here are the full-page screenshots of [OS X 10.11 El Capitan](http://www.apple.com/osx/elcapitan-preview/) and [iOS 9](http://www.apple.com/ios/ios9-preview/) previews. `pageres` recently [cannot render web fonts](https://github.com/sindresorhus/pageres/issues/174), which is rather annoying, so I used [Full Page Screen Capture](https://github.com/mrcoles/full-page-screen-capture-chrome-extension) to capture the shots. I then resized to 50% to reduce filesizes a bit.
 
-![[OS X El Capitan](http://www.apple.com/osx/elcapitan-preview/)](/img/20150608-osx-el-capitan-preview-1920x1080-50%.png)
+![[OS X El Capitan](http://www.apple.com/osx/elcapitan-preview/)](/img/20150608-osx-el-capitan-preview-1920x1080-50%25.png)
 
-![[iOS 9](http://www.apple.com/ios/ios9-preview/)](/img/20150608-ios-9-preview-1920x1080-50%.png)
+![[iOS 9](http://www.apple.com/ios/ios9-preview/)](/img/20150608-ios-9-preview-1920x1080-50%25.png)
