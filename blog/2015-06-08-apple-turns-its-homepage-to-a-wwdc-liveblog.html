@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2015-06-08T14:42:50-07:00" name="date"/>
+<title>Apple turns its homepage to a WWDC liveblog</title>
+<link href="/img/favicon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"/>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-53908325-1', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+</script>
+</head>
+<body>
+<nav>
+<div style="height:150px; width:100px; text-align:center;">
+<a href="/"><img alt="blog icon" height="100" src="/img/icon-100.png" style="padding: 2px 0;" width="100"/></a>
+<div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
+<div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</div>
+</nav>
+<article>
+<header>
+<h1 class="title">Apple turns its homepage to a WWDC liveblog</h1>
+<h2 class="meta">
+<time class="timestamp" datetime="2015-06-08T14:42:50-07:00">June 8, 2015,</time>
+by <span class="author">Zhiming Wang</span>
+</h2>
+</header>
+<p>WWDC is Apple's biggest event every year, and WWDC keynote always attracts tons of hype. Apple knows that. In the past years folks who can't (at work, in class, etc.) or don't want to watch the crappy live stream would follow the various WWDC liveblogs presented by tech sites like Gizmodo, TechCrunch, Ars Technica, etc. But this year the landscape has changed: Apple rolled its own card-based liveblog at <a href="http://www.apple.com/live/2015-june-event/">www.apple.com/live/2015-june-event</a>.<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a> Not only that; during the keynote, Apple redirected its homepage to the liveblog page, so it effectively turned its homepage to a liveblog:</p>
+<div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span class="kw">&gt;</span> curl -sSIL http://www.apple.com
+HTTP/1.1 302 Moved Temporarily
+Location: http://www.apple.com/live/
+Content-Length: 210
+Content-Type: text/html; <span class="ot">charset=</span>iso-8859-1
+Expires: Mon, 08 Jun 2015 19:16:41 GMT
+Cache-Control: max-age=0, no-cache, no-store
+Pragma: no-cache
+Date: Mon, 08 Jun 2015 19:16:41 GMT
+Connection: keep-alive
+Server: Apache
+
+HTTP/1.1 301 Moved Permanently
+Content-Length: 0
+Date: Mon, 08 Jun 2015 19:16:41 GMT
+Connection: keep-alive
+Server: Apache
+Location: http://www.apple.com/live/2015-june-event/
+
+HTTP/1.1 200 OK
+Last-Modified: Mon, 08 Jun 2015 15:45:30 GMT
+ETag: <span class="st">"0b7bcbfbd14c411e64e728ae4d644de7"</span>
+Content-Type: text/html
+Cache-Control: max-age=298
+Date: Mon, 08 Jun 2015 19:16:41 GMT
+Connection: keep-alive
+Server: Apache<span class="line-number" data-line="1" style="top: 0px"><!----></span><span class="line-number" data-line="2" style="top: 18px"><!----></span><span class="line-number" data-line="3" style="top: 36px"><!----></span><span class="line-number" data-line="4" style="top: 54px"><!----></span><span class="line-number" data-line="5" style="top: 72px"><!----></span><span class="line-number" data-line="6" style="top: 90px"><!----></span><span class="line-number" data-line="7" style="top: 108px"><!----></span><span class="line-number" data-line="8" style="top: 126px"><!----></span><span class="line-number" data-line="9" style="top: 144px"><!----></span><span class="line-number" data-line="10" style="top: 162px"><!----></span><span class="line-number" data-line="11" style="top: 180px"><!----></span><span class="line-number" data-line="12" style="top: 198px"><!----></span><span class="line-number" data-line="13" style="top: 216px"><!----></span><span class="line-number" data-line="14" style="top: 234px"><!----></span><span class="line-number" data-line="15" style="top: 252px"><!----></span><span class="line-number" data-line="16" style="top: 270px"><!----></span><span class="line-number" data-line="17" style="top: 288px"><!----></span><span class="line-number" data-line="18" style="top: 306px"><!----></span><span class="line-number" data-line="19" style="top: 324px"><!----></span><span class="line-number" data-line="20" style="top: 342px"><!----></span><span class="line-number" data-line="21" style="top: 360px"><!----></span><span class="line-number" data-line="22" style="top: 378px"><!----></span><span class="line-number" data-line="23" style="top: 396px"><!----></span><span class="line-number" data-line="24" style="top: 414px"><!----></span><span class="line-number" data-line="25" style="top: 432px"><!----></span><span class="line-number" data-line="26" style="top: 450px"><!----></span><span class="line-number" data-line="27" style="top: 468px"><!----></span></code></pre></div>
+<p>Of course, you miss a few jokes and random shots of Tim or Craig from the official liveblog, but hey, who don't like that official feel?<a class="footnoteRef" href="#fn2" id="fnref2"><sup>2</sup></a></p>
+<p>Here are a few screenshots of today's liveblog. Unfortunately I only know some entry level JS, so I wasn't able to capture the entire page, which uses dynamic DOM based on one's position in the page.</p>
+<div class="figure">
+<img alt="The banner on Chrome." src="/img/20150608-wwdc-2015-banner.png"/>
+<p class="caption">The banner on Chrome.</p>
+</div>
+<div class="figure">
+<img alt="OS X El Capitan, 960x981." src="/img/20150608-wwdc-2015-liveblog-960x981.png"/>
+<p class="caption">OS X El Capitan, 960x981.</p>
+</div>
+<div class="figure">
+<img alt="A fuller experience: 1920x1080." src="/img/20150608-wwdc-2015-liveblog-1920x1080.png"/>
+<p class="caption">A fuller experience: 1920x1080.</p>
+</div>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>The crappy live stream is still there, but thankfully you wouldn't see it if you're on a browser other than Safari. Just look the screenshot of the banner.<a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>Yeah, I know some people don't; but those people are not likely to be Apple fans either.<a href="#fnref2">↩</a></p></li>
+</ol>
+</div>
+<footer>
+<hr/>
+<span class="rfooter">
+<a class="feed-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a>
+<a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</span>
+</footer>
+</article>
+</body>
+</html>

@@ -1,4 +1,58 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><link href="http://zmwangx.github.io/atom.xml" rel="self" /><link href="http://zmwangx.github.io" /><updated>2015-06-08T03:26:56-07:00</updated><id>http://zmwangx.github.io</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">StackOverflow review system is completely BS</title><link href="http://zmwangx.github.io/blog/2015-06-07-stackoverflow-review-system-is-completely-bs.html" /><updated>2015-06-07T18:58:57-07:00</updated><id>http://zmwangx.github.io/blog/2015-06-07-stackoverflow-review-system-is-completely-bs.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io</uri><email>zmwangx@gmail.com</email></author><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><link href="http://zmwangx.github.io/atom.xml" rel="self" /><link href="http://zmwangx.github.io" /><updated>2015-06-08T14:42:56-07:00</updated><id>http://zmwangx.github.io</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">Apple turns its homepage to a WWDC liveblog</title><link href="http://zmwangx.github.io/blog/2015-06-08-apple-turns-its-homepage-to-a-wwdc-liveblog.html" /><updated>2015-06-08T14:42:50-07:00</updated><id>http://zmwangx.github.io/blog/2015-06-08-apple-turns-its-homepage-to-a-wwdc-liveblog.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io</uri><email>zmwangx@gmail.com</email></author><content type="html">
+<![CDATA[
+
+<p>WWDC is Apple's biggest event every year, and WWDC keynote always attracts tons of hype. Apple knows that. In the past years folks who can't (at work, in class, etc.) or don't want to watch the crappy live stream would follow the various WWDC liveblogs presented by tech sites like Gizmodo, TechCrunch, Ars Technica, etc. But this year the landscape has changed: Apple rolled its own card-based liveblog at <a href="http://www.apple.com/live/2015-june-event/">www.apple.com/live/2015-june-event</a>.<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a> Not only that; during the keynote, Apple redirected its homepage to the liveblog page, so it effectively turned its homepage to a liveblog:</p>
+<div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span class="kw">&gt;</span> curl -sSIL http://www.apple.com
+HTTP/1.1 302 Moved Temporarily
+Location: http://www.apple.com/live/
+Content-Length: 210
+Content-Type: text/html; <span class="ot">charset=</span>iso-8859-1
+Expires: Mon, 08 Jun 2015 19:16:41 GMT
+Cache-Control: max-age=0, no-cache, no-store
+Pragma: no-cache
+Date: Mon, 08 Jun 2015 19:16:41 GMT
+Connection: keep-alive
+Server: Apache
+
+HTTP/1.1 301 Moved Permanently
+Content-Length: 0
+Date: Mon, 08 Jun 2015 19:16:41 GMT
+Connection: keep-alive
+Server: Apache
+Location: http://www.apple.com/live/2015-june-event/
+
+HTTP/1.1 200 OK
+Last-Modified: Mon, 08 Jun 2015 15:45:30 GMT
+ETag: <span class="st">"0b7bcbfbd14c411e64e728ae4d644de7"</span>
+Content-Type: text/html
+Cache-Control: max-age=298
+Date: Mon, 08 Jun 2015 19:16:41 GMT
+Connection: keep-alive
+Server: Apache<span class="line-number" data-line="1" style="top: 0px"><!----></span><span class="line-number" data-line="2" style="top: 18px"><!----></span><span class="line-number" data-line="3" style="top: 36px"><!----></span><span class="line-number" data-line="4" style="top: 54px"><!----></span><span class="line-number" data-line="5" style="top: 72px"><!----></span><span class="line-number" data-line="6" style="top: 90px"><!----></span><span class="line-number" data-line="7" style="top: 108px"><!----></span><span class="line-number" data-line="8" style="top: 126px"><!----></span><span class="line-number" data-line="9" style="top: 144px"><!----></span><span class="line-number" data-line="10" style="top: 162px"><!----></span><span class="line-number" data-line="11" style="top: 180px"><!----></span><span class="line-number" data-line="12" style="top: 198px"><!----></span><span class="line-number" data-line="13" style="top: 216px"><!----></span><span class="line-number" data-line="14" style="top: 234px"><!----></span><span class="line-number" data-line="15" style="top: 252px"><!----></span><span class="line-number" data-line="16" style="top: 270px"><!----></span><span class="line-number" data-line="17" style="top: 288px"><!----></span><span class="line-number" data-line="18" style="top: 306px"><!----></span><span class="line-number" data-line="19" style="top: 324px"><!----></span><span class="line-number" data-line="20" style="top: 342px"><!----></span><span class="line-number" data-line="21" style="top: 360px"><!----></span><span class="line-number" data-line="22" style="top: 378px"><!----></span><span class="line-number" data-line="23" style="top: 396px"><!----></span><span class="line-number" data-line="24" style="top: 414px"><!----></span><span class="line-number" data-line="25" style="top: 432px"><!----></span><span class="line-number" data-line="26" style="top: 450px"><!----></span><span class="line-number" data-line="27" style="top: 468px"><!----></span></code></pre></div>
+<p>Of course, you miss a few jokes and random shots of Tim or Craig from the official liveblog, but hey, who don't like that official feel?<a class="footnoteRef" href="#fn2" id="fnref2"><sup>2</sup></a></p>
+<p>Here are a few screenshots of today's liveblog. Unfortunately I only know some entry level JS, so I wasn't able to capture the entire page, which uses dynamic DOM based on one's position in the page.</p>
+<div class="figure">
+<img alt="The banner on Chrome." src="/img/20150608-wwdc-2015-banner.png"/>
+<p class="caption">The banner on Chrome.</p>
+</div>
+<div class="figure">
+<img alt="OS X El Capitan, 960x981." src="/img/20150608-wwdc-2015-liveblog-960x981.png"/>
+<p class="caption">OS X El Capitan, 960x981.</p>
+</div>
+<div class="figure">
+<img alt="A fuller experience: 1920x1080." src="/img/20150608-wwdc-2015-liveblog-1920x1080.png"/>
+<p class="caption">A fuller experience: 1920x1080.</p>
+</div>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>The crappy live stream is still there, but thankfully you wouldn't see it if you're on a browser other than Safari. Just look the screenshot of the banner.<a href="#fnref1">&#8617;</a></p></li>
+<li id="fn2"><p>Yeah, I know some people don't; but those people are not likely to be Apple fans either.<a href="#fnref2">&#8617;</a></p></li>
+</ol>
+</div>
+
+]]>
+</content></entry><entry><title type="html">StackOverflow review system is completely BS</title><link href="http://zmwangx.github.io/blog/2015-06-07-stackoverflow-review-system-is-completely-bs.html" /><updated>2015-06-07T18:58:57-07:00</updated><id>http://zmwangx.github.io/blog/2015-06-07-stackoverflow-review-system-is-completely-bs.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io</uri><email>zmwangx@gmail.com</email></author><content type="html">
 <![CDATA[
 
 <p>I just answered an interesting question about ZLE <a href="http://stackoverflow.com/q/30699242/1944784">on StackOverflow</a>, and in the process I also improved my own toolchain. For the record, the OP asked for tab completion to present working directory items (executable files and directories) on an empty command line, which led to the following widget:</p>
@@ -846,33 +900,6 @@ rename(<span class="dt">ARGV</span>)<span class="line-number" data-line="1" styl
 <img alt="The English equivalent." src="https://i.imgur.com/hBpdv0B.png"/>
 <p class="caption">The English equivalent.</p>
 </div>
-
-]]>
-</content></entry><entry><title type="html">OS X system ruby encoding annoyance</title><link href="http://zmwangx.github.io/blog/2015-01-01-os-x-system-ruby-encoding-annoyance.html" /><updated>2015-01-01T22:49:39-08:00</updated><id>http://zmwangx.github.io/blog/2015-01-01-os-x-system-ruby-encoding-annoyance.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io</uri><email>zmwangx@gmail.com</email></author><content type="html">
-<![CDATA[
-
-<p>I've been using RVM (with fairly up-to-date Rubies) and pry since my day one with Ruby (well, almost), so it actually surprises me today when I found out by chance how poorly the system Ruby behaves when it comes to encoding.</p>
-<p>The major annoyance with the current system Ruby (2.0.0p481) is that it can't convert <code>UTF8-MAC</code> to <code>UTF-8</code> (namely, NFD to NFC, as far as I can tell), at least not with Korean characters. Consider the following script:</p>
-<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="co"># coding: utf-8</span>
-require <span class="st">'hex_string'</span>
-str = <span class="st">"&#4363;&#4454;&#4363;&#4469;&#4369;&#4469;&#4540;&#4367;&#4467;"</span>
-puts str.to_hex_string
-puts str.encode(<span class="st">"UTF-8"</span>, <span class="st">"UTF8-MAC"</span>).to_hex_string<span class="line-number" data-line="1" style="top: 0px"><!----></span><span class="line-number" data-line="2" style="top: 18px"><!----></span><span class="line-number" data-line="3" style="top: 36px"><!----></span><span class="line-number" data-line="4" style="top: 54px"><!----></span><span class="line-number" data-line="5" style="top: 72px"><!----></span></code></pre></div>
-<p>Here are what I get with the system Ruby and the latested brewed Ruby:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">&gt;</span> <span class="kw">/usr/bin/ruby</span> --version
-<span class="kw">ruby</span> 2.0.0p481 (2014-05-08 revision 45883) [<span class="kw">universal.x86_64-darwin14</span>]
-<span class="kw">&gt;</span> <span class="kw">/usr/local/bin/ruby</span> --version
-<span class="kw">ruby</span> 2.2.0p0 (2014-12-25 revision 49005) [<span class="kw">x86_64-darwin14</span>]
-<span class="kw">&gt;</span> <span class="kw">/usr/bin/ruby</span> utf8-mac.rb
-<span class="kw">e1</span> 84 8b e1 85 a6 e1 84 8b e1 85 b5 e1 84 91 e1 85 b5 e1 86 bc e1 84 8f e1 85 b3
-<span class="kw">e1</span> 84 8b e1 85 a6 e1 84 8b e1 85 b5 e1 84 91 e1 85 b5 e1 86 bc e1 84 8f e1 85 b3
-<span class="kw">&gt;</span> <span class="kw">/usr/local/bin/ruby</span> utf8-mac.rb
-<span class="kw">e1</span> 84 8b e1 85 a6 e1 84 8b e1 85 b5 e1 84 91 e1 85 b5 e1 86 bc e1 84 8f e1 85 b3
-<span class="kw">ec</span> 97 90 ec 9d b4 ed 95 91 ed 81 ac<span class="line-number" data-line="1" style="top: 0px"><!----></span><span class="line-number" data-line="2" style="top: 18px"><!----></span><span class="line-number" data-line="3" style="top: 36px"><!----></span><span class="line-number" data-line="4" style="top: 54px"><!----></span><span class="line-number" data-line="5" style="top: 72px"><!----></span><span class="line-number" data-line="6" style="top: 90px"><!----></span><span class="line-number" data-line="7" style="top: 108px"><!----></span><span class="line-number" data-line="8" style="top: 126px"><!----></span><span class="line-number" data-line="9" style="top: 144px"><!----></span><span class="line-number" data-line="10" style="top: 162px"><!----></span></code></pre></div>
-<p>As you can see, in the case of the system Ruby, NFD is left untouched. This leads to problems with, for instance, Google Translate. One obvious solution is to outsource the task to <code>iconv</code>, but I have the impression that outsourcing language features to shell commands is a generally despised practice.</p>
-<p>There's one more surprise. While <code>pry</code> with latest Rubies tend to handle Unicode very well (unlike <code>irb</code>), I tried <code>pry</code> with the current system Ruby, and it doesn't work; due to this annoying limitation, I couldn't even test the above problem interactively, and had to resort to a script. Maybe the problem can be resolved by compiling Ruby with <code>readline</code> or whatever; I didn't bother. The bottom line is, the system Ruby is not very pleasant for men in the 21st century &#8212; good Unicode support ought to be a must. (By the way, NFD in HFS+ is maddening. It breaks Terminal, iTerm, Google Translate, scp with Linux hosts, and the list goes on.)</p>
-<p>P.S. In Dropzone 3 custom actions you can select a custom Ruby with the <code>RubyPath</code> meta field, e.g.,</p>
-<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="co"># RubyPath: /usr/local/bin/ruby</span><span class="line-number" data-line="1" style="top: 0px"><!----></span></code></pre></div>
 
 ]]>
 </content></entry></feed>
