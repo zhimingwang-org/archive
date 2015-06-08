@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2015-06-07T18:58:57-07:00" name="date"/>
+<title>StackOverflow review system is completely BS</title>
+<link href="/img/favicon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"/>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-53908325-1', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+</script>
+</head>
+<body>
+<nav>
+<div style="height:150px; width:100px; text-align:center;">
+<a href="/"><img alt="blog icon" height="100" src="/img/icon-100.png" style="padding: 2px 0;" width="100"/></a>
+<div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
+<div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</div>
+</nav>
+<article>
+<header>
+<h1 class="title">StackOverflow review system is completely BS</h1>
+<h2 class="meta">
+<time class="timestamp" datetime="2015-06-07T18:58:57-07:00">June 7, 2015,</time>
+by <span class="author">Zhiming Wang</span>
+</h2>
+</header>
+<p>I just answered an interesting question about ZLE <a href="http://stackoverflow.com/q/30699242/1944784">on StackOverflow</a>, and in the process I also improved my own toolchain. For the record, the OP asked for tab completion to present working directory items (executable files and directories) on an empty command line, which led to the following widget:</p>
+<div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span class="co"># This widget inserts "./" to the buffer and list possible completions</span>
+<span class="co"># (executable files and directories in the present working directory) if the</span>
+<span class="co"># buffer is empty or only contains whitespace.</span>
+<span class="kw">function</span><span class="fu"> complete_pwd_items_on_empty_buffer</span>
+<span class="kw">{</span>
+    <span class="kw">if [[</span> <span class="ot">$BUFFER</span> =~ ^[[:space:]]*$<span class="kw"> ]]</span>; <span class="kw">then</span>
+        <span class="ot">BUFFER+=</span><span class="st">"./"</span>
+        <span class="ot">CURSOR+=</span>2
+        <span class="kw">zle</span> list-choices
+    <span class="kw">else</span>
+        <span class="kw">zle</span> expand-or-complete
+    <span class="kw">fi</span>
+<span class="kw">}</span>
+
+<span class="kw">zle</span> -N complete_pwd_items_on_empty_buffer<span class="line-number" data-line="1" style="top: 0px"><!----></span><span class="line-number" data-line="2" style="top: 18px"><!----></span><span class="line-number" data-line="3" style="top: 36px"><!----></span><span class="line-number" data-line="4" style="top: 54px"><!----></span><span class="line-number" data-line="5" style="top: 72px"><!----></span><span class="line-number" data-line="6" style="top: 90px"><!----></span><span class="line-number" data-line="7" style="top: 108px"><!----></span><span class="line-number" data-line="8" style="top: 126px"><!----></span><span class="line-number" data-line="9" style="top: 144px"><!----></span><span class="line-number" data-line="10" style="top: 162px"><!----></span><span class="line-number" data-line="11" style="top: 180px"><!----></span><span class="line-number" data-line="12" style="top: 198px"><!----></span><span class="line-number" data-line="13" style="top: 216px"><!----></span><span class="line-number" data-line="14" style="top: 234px"><!----></span><span class="line-number" data-line="15" style="top: 252px"><!----></span></code></pre></div>
+<p>This is all good stuff.</p>
+<p>However, at some point a <a href="https://stackoverflow.com/users/608639/jww">security architect and mobile security engineer</a> jumped in and made the following comment:</p>
+<blockquote>
+<p>Stack Overflow is a site for programming and development questions. This question appears to be off-topic because it is not about programming or development. See <a href="https://stackoverflow.com/help/on-topic">What topics can I ask about here</a> in the Help Center. Perhaps Super User or Unix &amp; Linux Stack Exchange would be a better place to ask. Also see <a href="http://meta.stackexchange.com/q/134306">Where do I post questions about Dev Ops</a>?</p>
+</blockquote>
+<p>Then the question was put on hold by several not-so-high-rep users as off-topic, and the reason given is</p>
+<blockquote>
+<p>Questions about general computing hardware and software are off-topic for Stack Overflow unless they directly involve tools used primarily for programming. You may be able to get help on Super User.</p>
+</blockquote>
+<p>WTF. First, <em>programming ZLE widgets is programming.</em> Hell, I even gave chunks of Zsh code in the answer (and they saw that, because the stupid comment and its upvotes came after my answer was put up). If writing an interactive Android crapp in Java for your Samsung counts as programming, why is writing an interactive widget for my Z shell any inferior? Second, even if you want to follow what the Help Center says, this question clearly falls under</p>
+<blockquote>
+<p>software tools commonly used by programmers.</p>
+</blockquote>
+<p>Maybe Zsh isn't used by those specific voters (I guess most of them are Windows lusers), but it has a very vibrant community, and it clearly rules. Maybe the specific voters don't realize that Zsh is a programming language; that alone shows how ignorant they are.</p>
+<p>However, these are just specific lusers. Why do I generalize and insist that "StackOverflow review system is completely BS"? Well, just look at the voters' stats; I searched for their involvement in the <code>zsh</code> tag, and here are the results: <a href="https://stackoverflow.com/search?q=user:2422776+[zsh]">1</a>, <a href="https://stackoverflow.com/search?q=user:683218+[zsh]">2</a>, <a href="https://stackoverflow.com/search?q=user:608639+[zsh]">3</a>, <a href="https://stackoverflow.com/search?q=user:3836229+[zsh]">4</a>, <a href="https://stackoverflow.com/search?q=user:2772643+[zsh]">5</a>. Unsurprisingly, nothing, except one guy has answered a question about ASCII art, which shouldn't be placed under <code>zsh</code> in the first place. While someone knowlegeable of Zsh doesn't necessarily need to ask or answer questions about Zsh on SO, this quick search does reveal that these voters, rather than following the <code>zsh</code> tag, just popped out of nowhere, probably from the review queues. In this case it's pretty obvious that they're going after a new user (the OP just registered). And that is one of the main problems with SO's review system that makes it highly questionable in many cases:</p>
+<p><strong>The review tasks are handed to people who have no knowledge about the topics,<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a> and these people just operate under assumptions (e.g., new users will ask off-topic questions.)<a class="footnoteRef" href="#fn2" id="fnref2"><sup>2</sup></a></strong></p>
+<p>The solution? I'm afraid <em>there's no solution as long as the system is in place</em>. Ideally one should skip questions from topics that they don't understand, but in reality people just do as they damned well please, whether because they are working toward a badge, or because they <em>think</em> they understand the topic but really don't, or because they are outright jerks. Also, there are tons of totally fucked-up questions lying in every corner of SO (like questions displaying such profound ignorance<a class="footnoteRef" href="#fn3" id="fnref3"><sup>3</sup></a> that no one would answer due to embarrassment, or those despicable "I can has code" questions) that no one cares about cleaning up, but instead they chose to target this well-meaning question that generated a pretty useful answer. By the way, this is the kind of thing I see all the time.</p>
+<p>I hope SO could abandon this questionable "review queue" practice altoghether. Let people who actually follow the tags do the reviewing and voting. Honestly, no one really cares about dangling low-quality questions anyway.</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>This problem isn't limited to reviews; it also applies to, for instance, approved edits. My <em>tag edits</em> (with explanations) got rejected quite a few times because the reviewers clearly didn't understand the topic — e.g., some morons assume that command line problems equal Bash problems.<a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>This is actually a good assumption, because this is the case at least 50% of the time from my limited experience. But one shouldn't operate under this assumption, especially if one doesn't understand the topic.<a href="#fnref2">↩</a></p></li>
+<li id="fn3"><p>I think I asked quite a few stupid questions back in the days, and now I'm totally ashamed of them. Insterestingly, some of those questions are my highest voted ones and got me quite some reps (compared to my total rep — I'm by no means a high rep user). See <a href="http://michael.richter.name/blogs/why-i-no-longer-contribute-to-stackoverflow"><em>Why I no longer contribute to StackOverflow</em></a> for a thorough discussion of the broken rep system and its disastrous effects.<a href="#fnref3">↩</a></p></li>
+</ol>
+</div>
+<footer>
+<hr/>
+<span class="rfooter">
+<a class="feed-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a>
+<a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</span>
+</footer>
+</article>
+</body>
+</html>
