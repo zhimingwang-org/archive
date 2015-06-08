@@ -1,4 +1,4 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><link href="http://zmwangx.github.io/atom.xml" rel="self" /><link href="http://zmwangx.github.io" /><updated>2015-06-08T15:26:46-07:00</updated><id>http://zmwangx.github.io</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">Apple turns its homepage to a WWDC liveblog</title><link href="http://zmwangx.github.io/blog/2015-06-08-apple-turns-its-homepage-to-a-wwdc-liveblog.html" /><updated>2015-06-08T14:42:50-07:00</updated><id>http://zmwangx.github.io/blog/2015-06-08-apple-turns-its-homepage-to-a-wwdc-liveblog.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io</uri><email>zmwangx@gmail.com</email></author><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><link href="http://zmwangx.github.io/atom.xml" rel="self" /><link href="http://zmwangx.github.io" /><updated>2015-06-08T15:34:17-07:00</updated><id>http://zmwangx.github.io</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">Apple turns its homepage to a WWDC liveblog</title><link href="http://zmwangx.github.io/blog/2015-06-08-apple-turns-its-homepage-to-a-wwdc-liveblog.html" /><updated>2015-06-08T14:42:50-07:00</updated><id>http://zmwangx.github.io/blog/2015-06-08-apple-turns-its-homepage-to-a-wwdc-liveblog.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io</uri><email>zmwangx@gmail.com</email></author><content type="html">
 <![CDATA[
 
 <p>WWDC is Apple's biggest event every year, and WWDC keynote always attracts tons of hype. Apple knows that. In the past years folks who can't (at work, in class, etc.) or don't want to watch the crappy live stream would follow the various WWDC liveblogs presented by tech sites like Gizmodo, TechCrunch, Ars Technica, etc. But this year the landscape has changed: Apple rolled its own card-based liveblog at <a href="http://www.apple.com/live/2015-june-event/">www.apple.com/live/2015-june-event</a>.<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a> Not only that; during the keynote, Apple redirected its homepage to the liveblog page, so it effectively turned its homepage to a liveblog:</p>
@@ -45,11 +45,11 @@ Server: Apache<span class="line-number" data-line="1" style="top: 0px"><!----></
 </div>
 <p>By the way, here are the full-page screenshots of <a href="http://www.apple.com/osx/elcapitan-preview/">OS X 10.11 El Capitan</a> and <a href="http://www.apple.com/ios/ios9-preview/">iOS 9</a> previews. <code>pageres</code> recently <a href="https://github.com/sindresorhus/pageres/issues/174">cannot render web fonts</a>, which is rather annoying, so I used <a href="https://github.com/mrcoles/full-page-screen-capture-chrome-extension">Full Page Screen Capture</a> to capture the shots. I then resized to 50% to reduce filesizes a bit.</p>
 <div class="figure">
-<img alt="OS X El Capitan" src="/img/20150608-osx-el-capitan-preview-1920x1080-50%.png"/>
+<img alt="OS X El Capitan" src="/img/20150608-osx-el-capitan-preview-1920x1080-50%25.png"/>
 <p class="caption"><a href="http://www.apple.com/osx/elcapitan-preview/">OS X El Capitan</a></p>
 </div>
 <div class="figure">
-<img alt="iOS 9" src="/img/20150608-ios-9-preview-1920x1080-50%.png"/>
+<img alt="iOS 9" src="/img/20150608-ios-9-preview-1920x1080-50%25.png"/>
 <p class="caption"><a href="http://www.apple.com/ios/ios9-preview/">iOS 9</a></p>
 </div>
 <div class="footnotes">
