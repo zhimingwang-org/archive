@@ -385,6 +385,9 @@ def generate_index_and_feed():
                         article.header.extract()
                     if article.footer is not None:
                         article.footer.extract()
+                    # remove line numbers
+                    for line_number_span in article.find_all("span", attrs={"class": "line-number"}):
+                        line_number_span.extract()
                     entry.content_html = ''.join([str(content)
                                                   for content in article.contents])
                     entry.content = ET.Element("content", type="html")
