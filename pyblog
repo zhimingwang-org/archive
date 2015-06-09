@@ -32,7 +32,7 @@ import dateutil.tz
 
 ############################# BLOG CONFIGURATIONS ##############################
 # Safe to customize
-BLOG_HOME = "http://zmwangx.github.io"
+BLOG_HOME = "http://zmwangx.github.io/"
 BLOG_TITLE = "dl? cmplnts?"
 AUTHOR = "Zhiming Wang"
 AUTHOR_EMAIL = "zmwangx@gmail.com"
@@ -308,7 +308,7 @@ def generate_sitemap(feed):
     for name in os.listdir(BUILDDIR):
         if not name.endswith(".html") or name == "index.html":
             continue
-        link = "{home}/{path}".format(home=BLOG_HOME, path=name)
+        link = urllib.parse.urljoin(BLOG_HOME, name)
         fullpath = os.path.join(BUILDDIR, name)
         # try to extract updated time
         updated = None
@@ -346,13 +346,15 @@ def generate_index_and_feed():
     feed.generator.text = GENERATOR_NAME
     if ICON_PATH is not None:
         feed.icon = ET.Element("icon")
-        feed.icon.text = "{home}/{icon_path}".format(home=BLOG_HOME, icon_path=ICON_PATH)
+        feed.icon.text = urllib.parse.urljoin(BLOG_HOME, ICON_PATH)
     feed.id_text = BLOG_HOME
     feed.id = ET.Element("id")
     feed.id.text = feed.id_text
     feed.links = [
-        ET.Element("link", href="{home}/atom.xml".format(home=BLOG_HOME), rel="self"),
-        ET.Element("link", href=BLOG_HOME),
+        ET.Element("link", href=urllib.parse.urljoin(BLOG_HOME, "atom.xml"), rel="self",
+                   type="application/atom+xml"),
+        ET.Element("link", href=BLOG_HOME, rel="alternate",
+                   type="text/html"),
     ]
     feed.title_text = BLOG_TITLE
     feed.title = ET.fromstring("<title>{title}</title>".format(title=BLOG_TITLE))
@@ -366,7 +368,7 @@ def generate_index_and_feed():
                 with open(htmlpath, encoding="utf-8") as htmlfile:
                     soup = bs4.BeautifulSoup(htmlfile.read())
                     entry.author = feed.author  # assume it's always the same author
-                    entry.id_text = "%s/blog/%s" % (BLOG_HOME, name)
+                    entry.id_text = urllib.parse.urljoin(BLOG_HOME, "blog/%s" % name)
                     entry.id = ET.Element("id")
                     entry.id.text = entry.id_text
                     entry.relpath = "/blog/%s" % name
