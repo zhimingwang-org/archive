@@ -390,6 +390,9 @@ def generate_index_and_feed():
                     # remove line numbers
                     for line_number_span in article.find_all("span", attrs={"class": "line-number"}):
                         line_number_span.extract()
+                    # remove script tags
+                    for script_tag in article.find_all("script"):
+                        script_tag.extract()
                     entry.content_html = ''.join([str(content)
                                                   for content in article.contents])
                     entry.content = ET.Element("content", type="html")
