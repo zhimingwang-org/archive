@@ -39,7 +39,7 @@ def rename(items)
     else
       STDERR.puts("#{path}: directory ignored")
     end
-    
+
     num_done += 1
   }
 end

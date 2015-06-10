@@ -14,7 +14,7 @@ function app_version
     # $1 is the path to the app
     /usr/libexec/PlistBuddy -c "print CFBundleShortVersionString" "$1"/Contents/Info.plist 2>/dev/null || date +%Y%m%d
 }
- 
+
 function app_icon_path
 {
     # $1 is the path to the app
@@ -23,7 +23,7 @@ function app_icon_path
     filename=$(basename "${filename}" .icns)
     echo "$1/Contents/Resources/${filename}.icns"
 }
- 
+
 function process_app
 {
     # $1 is the path to the app
@@ -36,7 +36,7 @@ function process_app
     cp "${icon_path}" "${name}-${version}.icns"
     echo "${name}-${version}.icns"
 }
- 
+
 find /Applications -maxdepth 2 -name '*.app' | while read app; do process_app "${app}"; done
 find /System/Library/CoreServices -maxdepth 1 -name '*.app' | while read app; do process_app "${app}"; done
 ```
