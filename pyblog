@@ -6,9 +6,13 @@
 # TODO: auto retouch: prompt for git commit amend after touching
 # (display commit message to avoid amending the wrong commit)
 
+# pylint: disable=too-many-lines
+
 import argparse
 from contextlib import contextmanager
+import copy
 import datetime
+import email.utils
 import fileinput
 import io
 import http.client
@@ -34,9 +38,14 @@ import dateutil.tz
 # Safe to customize
 BLOG_HOME = "http://zmwangx.github.io/"
 BLOG_TITLE = "dl? cmplnts?"
+BLOG_DESCRIPTION = "Zhiming Wang's personal blog"
+LANGUAGE = "en-us"
 AUTHOR = "Zhiming Wang"
 AUTHOR_EMAIL = "zmwangx@gmail.com"
-ICON_PATH = "img/icon-400.png"  # set to None to leave it out
+ATOM_ICON_PATH = "img/icon-400.png"  # set to None to leave it out
+RSS_ICON_PATH = "img/icon-100.png"  # set to None to leave it out
+RSS_ICON_WIDTH = 100
+RSS_ICON_HEIGHT = 100
 ########################## END OF BLOG CONFIGURATIONS ##########################
 
 
@@ -53,6 +62,7 @@ TEMPLATEDIR = os.path.join(ROOTDIR, "templates")
 HTMLTEMPLATE = os.path.join(TEMPLATEDIR, "template.html")
 BUILDDIR = os.path.join(ROOTDIR, "build")
 ATOM = os.path.join(BUILDDIR, "atom.xml")
+RSS = os.path.join(BUILDDIR, "rss.xml")
 INDEXHTML = os.path.join(BUILDDIR, "index.html")
 
 FEED_MAX_ENTRIES = 20
@@ -130,7 +140,11 @@ def current_datetime():
 
 
 class AtomFeed(object):
-    """Class for storing atom:feed date and metadata."""
+    """Class for storing atom:feed data and metadata.
+
+    https://tools.ietf.org/html/rfc4287.
+
+    """
 
     # pylint: disable=invalid-name,too-many-instance-attributes
 
@@ -145,6 +159,8 @@ class AtomFeed(object):
         self.links = []  # list of atom:link
         self.title_text = None  # the text of atom:title
         self.title = None  # atom:title
+        self.subtitle_text = None  # the text of atom:subtitle
+        self.subtitle = None  # atom:subtitle
         self.updated_datetime = None  # update time as a datetime object
         self.updated = None  # atom:updated
         self.entries = []  # list of atom:entry, in reverse time order
@@ -152,19 +168,18 @@ class AtomFeed(object):
 
     def assemble_feed(self):
         """Assemble atom:feed."""
+        # pylint: disable=multiple-statements
         self.feed = ET.Element("feed", xmlns="http://www.w3.org/2005/Atom")
         self.feed.append(self.title)
+        if self.subtitle is not None: self.feed.append(self.subtitle)
         for link in self.links:
             self.feed.append(link)
         self.feed.append(self.updated)
         self.feed.append(self.id)
         self.feed.append(self.author)
-        if self.icon is not None:
-            self.feed.append(self.icon)
-        if self.logo is not None:
-            self.feed.append(self.icon)
-        if self.generator is not None:
-            self.feed.append(self.generator)
+        if self.icon is not None: self.feed.append(self.icon)
+        if self.logo is not None: self.feed.append(self.icon)
+        if self.generator is not None: self.feed.append(self.generator)
         # include at most FEED_MAX_ENTRIES entries in the feed
         for entry in self.entries[:FEED_MAX_ENTRIES]:
             self.feed.append(entry.entry)
@@ -173,7 +188,7 @@ class AtomFeed(object):
         """Dump atom:feed XML."""
         if self.feed is None:
             self.assemble_feed()
-        return ET.tostring(self.feed).decode('utf-8')
+        return ET.tostring(self.feed).decode("utf-8")
 
 
 class AtomEntry(object):
@@ -210,7 +225,91 @@ class AtomEntry(object):
         """Dump atom:entry XML."""
         if self.entry is None:
             self.assemble_entry()
-        return ET.tostring(self.entry).decode('utf-8')
+        return ET.tostring(self.entry).decode("utf-8")
+
+
+class RssFeed(object):
+    """Class for storing an RSS 2.0 feed.
+
+    https://validator.w3.org/feed/docs/rss2.html.
+
+    """
+
+    # pylint: disable=too-many-instance-attributes
+
+    REQUIRED_ELEMENTS = ["title", "link", "description"]
+    OPTIONAL_ELEMENTS = ["language", "copyright", "managingEditor", "webMaster",
+                         "pubDate", "lastBuildDate", "category", "generator",
+                         "docs", "cloud", "ttl", "image", "textInput",
+                         "skipHours", "skipDays"]
+
+    def __init__(self):
+        """Define available attributes."""
+        self.rssurl = None  # the URL of the rss feed
+        self.atomlink = None
+        for element in self.REQUIRED_ELEMENTS:
+            setattr(self, element, None)
+        for element in self.OPTIONAL_ELEMENTS:
+            setattr(self, element, None)
+        self.docs = ET.Element("docs")
+        self.docs.text = "https://validator.w3.org/feed/docs/rss2.html"
+        self.author_text = None
+        self.update_timestamp = None
+        self.items = []
+        self.rss = None
+        self.channel = None
+
+    def assemble_rss(self):
+        """Assemble RSS 2.0 feed."""
+        self.rss = ET.Element("rss", version="2.0")
+        self.rss.set("xmlns:atom", "http://www.w3.org/2005/Atom")
+        self.channel = ET.SubElement(self.rss, "channel")
+        # https://validator.w3.org/feed/docs/warning/MissingAtomSelfLink.html
+        self.atomlink = ET.SubElement(self.channel, "atom:link",
+                                      href=self.rssurl, rel="self", type="application/rss+xml")
+        for element in self.REQUIRED_ELEMENTS:
+            self.channel.append(getattr(self, element))
+        for element in self.OPTIONAL_ELEMENTS:
+            attr = getattr(self, element)
+            if attr is not None:
+                self.channel.append(attr)
+        # include at most FEED_MAX_ENTRIES items in the RSS feed
+        for item in self.items[:FEED_MAX_ENTRIES]:
+            self.channel.append(item.item)
+
+    def dump_rss(self):
+        """Dump RSS feed XML."""
+        if self.rss is None:
+            self.assemble_rss()
+        return ET.tostring(self.rss).decode("utf-8")
+
+
+class RssItem(object):
+    """Class for storing an RSS 2.0 item."""
+
+    ELEMENTS = ["title", "link", "description", "author", "category", "comments",
+                "enclosure", "guid", "pubDate", "source"]
+
+    def __init__(self):
+        """Define available attributes."""
+        for element in self.ELEMENTS:
+            setattr(self, element, None)
+        self.timestamp = None
+        self.item = None
+
+    def assemble_item(self):
+        """Assemble an RSS 2.0 item."""
+        self.item = ET.Element("item")
+        for element in self.ELEMENTS:
+            attr = getattr(self, element)
+            if attr is not None:
+                self.item.append(attr)
+
+    def dump_item(self):
+        """Dump RSS item XML."""
+        if self.item is None:
+            self.assemble_item()
+        return ET.tostring(self.item).decode("utf-8")
 
 
 def generate_index(feed):
@@ -330,11 +429,26 @@ def generate_sitemap(feed):
         sys.stderr.write("wrote sitemap.xml\n")
 
 
+def abosolutify_links(soup, baseurl):
+    """Make links in an article absolute.
+
+    Parameters
+    ----------
+    soup : bs4.BeautifulSoup
+    baseurl : str
+
+    """
+    for tag in soup.find_all(lambda tag: tag.has_attr("href")):
+        tag["href"] = urllib.parse.urljoin(baseurl, tag["href"])
+    for tag in soup.find_all(lambda tag: tag.has_attr("src")):
+        tag["src"] = urllib.parse.urljoin(baseurl, tag["src"])
+
+
 def generate_index_and_feed():
-    """Generate index.html and atom feed."""
-    # pylint: disable=too-many-statements
-    sys.stderr.write("generating atom feed\n")
-    # initialize feed
+    """Generate index.html and feeds (atom and rss)."""
+    # pylint: disable=too-many-statements,attribute-defined-outside-init,invalid-name
+    sys.stderr.write("generating atom and rss feeds\n")
+    # initialize atom feed
     feed = AtomFeed()
     feed.author = ET.fromstring(
         "<author>"
@@ -344,9 +458,9 @@ def generate_index_and_feed():
         "</author>".format(author=AUTHOR, home=BLOG_HOME, email=AUTHOR_EMAIL))
     feed.generator = ET.Element("generator", uri=GENERATOR_HOME_PAGE)
     feed.generator.text = GENERATOR_NAME
-    if ICON_PATH is not None:
+    if ATOM_ICON_PATH is not None:
         feed.icon = ET.Element("icon")
-        feed.icon.text = urllib.parse.urljoin(BLOG_HOME, ICON_PATH)
+        feed.icon.text = urllib.parse.urljoin(BLOG_HOME, ATOM_ICON_PATH)
     feed.id_text = BLOG_HOME
     feed.id = ET.Element("id")
     feed.id.text = feed.id_text
@@ -358,21 +472,54 @@ def generate_index_and_feed():
     ]
     feed.title_text = BLOG_TITLE
     feed.title = ET.fromstring("<title>{title}</title>".format(title=BLOG_TITLE))
-    # update time will be set after everthing finishes
+    feed.subtitle_text = BLOG_DESCRIPTION
+    feed.subtitle = ET.fromstring("<title>{subtitle}</title>".format(subtitle=BLOG_DESCRIPTION))
+    # initialize rss feed
+    rss = RssFeed()
+    rss.rssurl = urllib.parse.urljoin(BLOG_HOME, "rss.xml")
+    rss.title = ET.Element("title")
+    rss.title.text = BLOG_TITLE
+    rss.link = ET.Element("link")
+    rss.link.text = BLOG_HOME
+    rss.description = ET.Element("description")
+    rss.description.text = BLOG_DESCRIPTION
+    rss.language = ET.Element("language")
+    rss.language.text = LANGUAGE
+    rss.author_text = "{email} ({name})".format(email=AUTHOR_EMAIL, name=AUTHOR)
+    rss.managingEditor = ET.Element("managingEditor")
+    rss.managingEditor.text = rss.author_text
+    rss.webMaster = ET.Element("webMaster")
+    rss.webMaster.text = rss.author_text
+    rss.generator = ET.Element("generator")
+    rss.generator.text = "{generator} ({url})".format(generator=GENERATOR_NAME,
+                                                      url=GENERATOR_HOME_PAGE)
+    rss.image = ET.Element("image")
+    if RSS_ICON_PATH is not None:
+        ET.SubElement(rss.image, "url").text = urllib.parse.urljoin(BLOG_HOME, RSS_ICON_PATH)
+        rss.image.append(copy.deepcopy(rss.title))
+        rss.image.append(copy.deepcopy(rss.link))
+        ET.SubElement(rss.image, "width").text = str(RSS_ICON_WIDTH)
+        ET.SubElement(rss.image, "height").text = str(RSS_ICON_HEIGHT)
+
+    # update times will be set after everthing finishes
 
     for name in os.listdir(os.path.join(BUILDDIR, "blog")):
         if re.match(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}.*\.html", name):
             htmlpath = os.path.join(BUILDDIR, "blog", name)
             entry = AtomEntry()
+            item = RssItem()
             try:
                 with open(htmlpath, encoding="utf-8") as htmlfile:
                     soup = bs4.BeautifulSoup(htmlfile.read())
-                    entry.author = feed.author  # assume it's always the same author
-                    entry.id_text = urllib.parse.urljoin(BLOG_HOME, "blog/%s" % name)
+
+                    # generate atom entry
+                    entry.author = copy.deepcopy(feed.author)  # assume it's always the same author
+                    entry_url = urllib.parse.urljoin(BLOG_HOME, "blog/%s" % name)
+                    entry.id_text = entry_url
                     entry.id = ET.Element("id")
-                    entry.id.text = entry.id_text
+                    entry.id.text = entry_url
                     entry.relpath = "/blog/%s" % name
-                    entry.link = ET.Element("link", href=entry.id_text)
+                    entry.link = ET.Element("link", href=entry_url)
                     entry.title_text = soup.title.text
                     entry.title = ET.Element("title", type="html")
                     entry.title.text = entry.title_text
@@ -381,6 +528,8 @@ def generate_index_and_feed():
                     entry.updated = ET.Element("updated")
                     # pylint: disable=no-member
                     entry.updated.text = entry.updated_datetime.isoformat()
+
+                    # process content
                     # extract the article content without header and footer
                     article = soup.article
                     if article.header is not None:
@@ -388,17 +537,38 @@ def generate_index_and_feed():
                     if article.footer is not None:
                         article.footer.extract()
                     # remove line numbers
-                    for line_number_span in article.find_all("span", attrs={"class": "line-number"}):
+                    for line_number_span in article.find_all("span",
+                                                             attrs={"class": "line-number"}):
                         line_number_span.extract()
                     # remove script tags
                     for script_tag in article.find_all("script"):
                         script_tag.extract()
+                    # make internal links absolute
+                    abosolutify_links(article, entry_url)
+
                     entry.content_html = ''.join([str(content)
                                                   for content in article.contents])
                     entry.content = ET.Element("content", type="html")
                     entry.content.append(cdata(entry.content_html))
                     entry.assemble_entry()
                     feed.entries.append(entry)
+
+                    # generate rss item
+                    item.title = ET.Element("title")
+                    item.title.text = entry.title_text
+                    item.link = ET.Element("link")
+                    item.link.text = entry_url
+                    item.description = ET.Element("description")
+                    item.description.append(cdata(entry.content_html))
+                    item.author = ET.Element("author")
+                    item.author.text = rss.author_text
+                    item.guid = ET.Element("guid", isPermaLink="true")
+                    item.guid.text = item.link.text
+                    item.timestamp = entry.updated_datetime.timestamp()
+                    item.pubDate = ET.Element("pubDate")
+                    item.pubDate.text = email.utils.formatdate(item.timestamp, usegmt=True)
+                    item.assemble_item()
+                    rss.items.append(item)
             except Exception:
                 sys.stderr.write("failed to generate feed entry from %s" % name)
                 with open(htmlpath, encoding="utf-8") as htmlfile:
@@ -406,6 +576,7 @@ def generate_index_and_feed():
                 raise
     # sort entries by reverse chronological order
     feed.entries.sort(key=lambda entry: entry.updated_datetime, reverse=True)
+    rss.items.sort(key=lambda item: item.timestamp, reverse=True)
 
     generate_index(feed)
 
@@ -413,9 +584,19 @@ def generate_index_and_feed():
     feed.updated = ET.Element("updated")
     feed.updated.text = feed.updated_datetime.isoformat()
 
-    with open(ATOM, 'w', encoding='utf-8') as atom:
+    rss.update_timestamp = time.time()
+    rss.pubDate = ET.Element("pubDate")
+    rss.pubDate.text = email.utils.formatdate(rss.update_timestamp, usegmt=True)
+    rss.lastBuildDate = ET.Element("lastBuildDate")
+    rss.lastBuildDate.text = email.utils.formatdate(rss.update_timestamp, usegmt=True)
+
+    with open(ATOM, "w", encoding="utf-8") as atom:
         atom.write("%s\n" % feed.dump_feed())
         sys.stderr.write("wrote atom.xml\n")
+
+    with open(RSS, "w", encoding="utf-8") as rssxml:
+        rssxml.write("%s\n" % rss.dump_rss())
+        sys.stderr.write("wrote rss.xml\n")
 
     generate_sitemap(feed)
 
