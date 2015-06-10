@@ -27,7 +27,7 @@ import sys
 import tempfile
 import time
 import urllib.parse
-import xml.etree.ElementTree as ET
+import lxml.etree as ET
 
 import bs4
 import colorama
@@ -68,36 +68,6 @@ INDEXHTML = os.path.join(BUILDDIR, "index.html")
 FEED_MAX_ENTRIES = 20
 CODE_LINE_HEIGHT = 18
 ####################### END OF GENERATOR CONFIGURATIONS ########################
-
-
-# Hack ET to support CDATA.
-# I know _escape_cdata pops out of nowhere but I won't investigate until
-# it breaks.
-# XML suuuuuucks.
-# http://stackoverflow.com/a/30019607/1944784
-
-def cdata(text=None):
-    """Generate an XML CDATA element (ET.Element)."""
-    element = ET.Element('![CDATA[')
-    element.text = text
-    return element
-
-# pylint: disable=protected-access,undefined-variable
-
-ET._original_serialize_xml = ET._serialize_xml
-
-def _serialize_xml(write, elem, qnames, namespaces, short_empty_elements,
-                   **kwargs):
-    """Hacked _serialize_xml, tested to work in Python 3.4.3."""
-    if elem.tag == '![CDATA[':
-        write("\n<{}{}]]>\n".format(elem.tag, elem.text))
-        if elem.tail:
-            write(_escape_cdata(elem.tail))
-    else:
-        return ET._original_serialize_xml(write, elem, qnames, namespaces,
-                                          short_empty_elements, **kwargs)
-
-ET._serialize_xml = ET._serialize['xml'] = _serialize_xml
 
 
 # declare the global foreground ANSI codes
@@ -261,11 +231,10 @@ class RssFeed(object):
 
     def assemble_rss(self):
         """Assemble RSS 2.0 feed."""
-        self.rss = ET.Element("rss", version="2.0")
-        self.rss.set("xmlns:atom", "http://www.w3.org/2005/Atom")
+        self.rss = ET.Element("rss", version="2.0", nsmap={"atom": "http://www.w3.org/2005/Atom"})
         self.channel = ET.SubElement(self.rss, "channel")
         # https://validator.w3.org/feed/docs/warning/MissingAtomSelfLink.html
-        self.atomlink = ET.SubElement(self.channel, "atom:link",
+        self.atomlink = ET.SubElement(self.channel, "{http://www.w3.org/2005/Atom}link",
                                       href=self.rssurl, rel="self", type="application/rss+xml")
         for element in self.REQUIRED_ELEMENTS:
             self.channel.append(getattr(self, element))
@@ -380,11 +349,11 @@ def make_sitemap_url_element(link, updated=None, changefreq=None, priority=None)
 
     urlelem = ET.Element("url")
     loc = ET.Element("loc")
-    loc.text = link.attrib["href"] if isinstance(link, ET.Element) else link
+    loc.text = link.attrib["href"] if isinstance(link, ET._Element) else link
     urlelem.append(loc)
     if updated is not None:
         lastmod = ET.Element("lastmod")
-        lastmod.text = (updated.text if isinstance(updated, ET.Element)
+        lastmod.text = (updated.text if isinstance(updated, ET._Element)
                         else updated.isoformat())
         urlelem.append(lastmod)
     if changefreq is not None:
@@ -550,7 +519,7 @@ def generate_index_and_feed():
                     entry.content_html = ''.join([str(content)
                                                   for content in article.contents])
                     entry.content = ET.Element("content", type="html")
-                    entry.content.append(cdata(entry.content_html))
+                    entry.content.text = ET.CDATA(entry.content_html)
                     entry.assemble_entry()
                     feed.entries.append(entry)
 
@@ -560,7 +529,7 @@ def generate_index_and_feed():
                     item.link = ET.Element("link")
                     item.link.text = entry_url
                     item.description = ET.Element("description")
-                    item.description.append(cdata(entry.content_html))
+                    item.description.text = entry.content.text
                     item.author = ET.Element("author")
                     item.author.text = rss.author_text
                     item.guid = ET.Element("guid", isPermaLink="true")
