@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 <head>
 <meta charset="utf-8"/>
@@ -85,7 +84,7 @@ by <span class="author">Zhiming Wang</span>
     <span class="co"># $1 is the path to the app</span>
     <span class="kw">/usr/libexec/PlistBuddy</span> -c <span class="st">"print CFBundleShortVersionString"</span> <span class="st">"</span><span class="ot">$1</span><span class="st">"</span>/Contents/Info.plist <span class="kw">2&gt;</span>/dev/null <span class="kw">||</span> <span class="kw">date</span> +%Y%m%d
 <span class="kw">}</span>
- 
+
 <span class="kw">function</span><span class="fu"> app_icon_path</span>
 <span class="kw">{</span>
     <span class="co"># $1 is the path to the app</span>
@@ -94,7 +93,7 @@ by <span class="author">Zhiming Wang</span>
     <span class="ot">filename=$(</span><span class="kw">basename</span> <span class="st">"</span><span class="ot">${filename}</span><span class="st">"</span> .icns<span class="ot">)</span>
     <span class="kw">echo</span> <span class="st">"</span><span class="ot">$1</span><span class="st">/Contents/Resources/</span><span class="ot">${filename}</span><span class="st">.icns"</span>
 <span class="kw">}</span>
- 
+
 <span class="kw">function</span><span class="fu"> process_app</span>
 <span class="kw">{</span>
     <span class="co"># $1 is the path to the app</span>
@@ -107,7 +106,7 @@ by <span class="author">Zhiming Wang</span>
     <span class="kw">cp</span> <span class="st">"</span><span class="ot">${icon_path}</span><span class="st">"</span> <span class="st">"</span><span class="ot">${name}</span><span class="st">-</span><span class="ot">${version}</span><span class="st">.icns"</span>
     <span class="kw">echo</span> <span class="st">"</span><span class="ot">${name}</span><span class="st">-</span><span class="ot">${version}</span><span class="st">.icns"</span>
 <span class="kw">}</span>
- 
+
 <span class="kw">find</span> /Applications -maxdepth 2 -name <span class="st">'*.app'</span> <span class="kw">|</span> <span class="kw">while</span> <span class="kw">read</span> <span class="ot">app</span>; <span class="kw">do</span> <span class="kw">process_app</span> <span class="st">"</span><span class="ot">${app}</span><span class="st">"</span><span class="kw">;</span> <span class="kw">done</span>
 <span class="kw">find</span> /System/Library/CoreServices -maxdepth 1 -name <span class="st">'*.app'</span> <span class="kw">|</span> <span class="kw">while</span> <span class="kw">read</span> <span class="ot">app</span>; <span class="kw">do</span> <span class="kw">process_app</span> <span class="st">"</span><span class="ot">${app}</span><span class="st">"</span><span class="kw">;</span> <span class="kw">done</span><span class="line-number" data-line="1" style="top: 0px"><!----></span><span class="line-number" data-line="2" style="top: 18px"><!----></span><span class="line-number" data-line="3" style="top: 36px"><!----></span><span class="line-number" data-line="4" style="top: 54px"><!----></span><span class="line-number" data-line="5" style="top: 72px"><!----></span><span class="line-number" data-line="6" style="top: 90px"><!----></span><span class="line-number" data-line="7" style="top: 108px"><!----></span><span class="line-number" data-line="8" style="top: 126px"><!----></span><span class="line-number" data-line="9" style="top: 144px"><!----></span><span class="line-number" data-line="10" style="top: 162px"><!----></span><span class="line-number" data-line="11" style="top: 180px"><!----></span><span class="line-number" data-line="12" style="top: 198px"><!----></span><span class="line-number" data-line="13" style="top: 216px"><!----></span><span class="line-number" data-line="14" style="top: 234px"><!----></span><span class="line-number" data-line="15" style="top: 252px"><!----></span><span class="line-number" data-line="16" style="top: 270px"><!----></span><span class="line-number" data-line="17" style="top: 288px"><!----></span><span class="line-number" data-line="18" style="top: 306px"><!----></span><span class="line-number" data-line="19" style="top: 324px"><!----></span><span class="line-number" data-line="20" style="top: 342px"><!----></span><span class="line-number" data-line="21" style="top: 360px"><!----></span><span class="line-number" data-line="22" style="top: 378px"><!----></span><span class="line-number" data-line="23" style="top: 396px"><!----></span><span class="line-number" data-line="24" style="top: 414px"><!----></span><span class="line-number" data-line="25" style="top: 432px"><!----></span><span class="line-number" data-line="26" style="top: 450px"><!----></span><span class="line-number" data-line="27" style="top: 468px"><!----></span><span class="line-number" data-line="28" style="top: 486px"><!----></span><span class="line-number" data-line="29" style="top: 504px"><!----></span><span class="line-number" data-line="30" style="top: 522px"><!----></span><span class="line-number" data-line="31" style="top: 540px"><!----></span></code></pre></div>
 <p>The script is also available as a <a href="https://gist.github.com/zmwangx/fad97e085045a21ebc1d">gist</a>.</p>
