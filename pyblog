@@ -473,7 +473,8 @@ def generate_index_and_feed():
     feed.title_text = BLOG_TITLE
     feed.title = ET.fromstring("<title>{title}</title>".format(title=BLOG_TITLE))
     feed.subtitle_text = BLOG_DESCRIPTION
-    feed.subtitle = ET.fromstring("<title>{subtitle}</title>".format(subtitle=BLOG_DESCRIPTION))
+    feed.subtitle = ET.fromstring("<subtitle>{subtitle}</subtitle>"
+                                  .format(subtitle=BLOG_DESCRIPTION))
     # initialize rss feed
     rss = RssFeed()
     rss.rssurl = urllib.parse.urljoin(BLOG_HOME, "rss.xml")
