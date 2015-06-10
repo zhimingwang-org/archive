@@ -137,7 +137,7 @@ footer .rfooter {
 footer .rfooter .cc-icon {
     width: 16px;
     height: 16px;
-    padding: 0 4px;
+    padding: 0 2px;
     display: inline-block;
     background-image: url("/img/cc-16.png");
     background-repeat: no-repeat;
@@ -147,11 +147,25 @@ footer .rfooter .cc-icon {
     font-size: 0;
 }
 
-footer .rfooter .feed-icon {
+footer .rfooter .atom-icon {
     width: 16px;
     height: 16px;
+    padding: 0 2px;
     display: inline-block;
     background-image: url("/img/feed-14.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px;
+    vertical-align: middle;
+    font-size: 0;
+}
+
+footer .rfooter .rss-icon {
+    width: 16px;
+    height: 16px;
+    padding: 0 2px;
+    display: inline-block;
+    background-image: url("/img/rss-14.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 14px;

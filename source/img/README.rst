@@ -15,6 +15,11 @@ The feed icon isn't so easy to create with TikZ (I don't know the necessary para
   convert feed-256.png -resize 14x14 feed-14.png
   optipng feed-14.png
 
+Next, the horizontal mirror ``rss-14.png`` is generated through::
+
+  convert feed-14.png -flop rss-14.png
+  optipng rss-14.png
+
 The CreativeCommons icon ``cc.svg`` is pulled from `the official downloads page <https://creativecommons.org/about/downloads>`_ and converted to 16x16 PNG through::
 
   convert cc.svg -resize 16x16 cc-16.png
