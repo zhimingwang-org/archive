@@ -1,5 +1,4 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zmwangx.github.io/atom.xml" rel="self" type="application/atom+xml" /><link href="http://zmwangx.github.io/" rel="alternate" type="text/html" /><updated>2015-06-10T00:42:57-07:00</updated><id>http://zmwangx.github.io/</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">Apple turns its homepage into a WWDC liveblog</title><link href="http://zmwangx.github.io/blog/2015-06-08-apple-turns-its-homepage-into-a-wwdc-liveblog.html" /><updated>2015-06-08T14:42:50-07:00</updated><id>http://zmwangx.github.io/blog/2015-06-08-apple-turns-its-homepage-into-a-wwdc-liveblog.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html">
-<![CDATA[
+<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zmwangx.github.io/atom.xml" rel="self" type="application/atom+xml"/><link href="http://zmwangx.github.io/" rel="alternate" type="text/html"/><updated>2015-06-10T01:21:46-07:00</updated><id>http://zmwangx.github.io/</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">Apple turns its homepage into a WWDC liveblog</title><link href="http://zmwangx.github.io/blog/2015-06-08-apple-turns-its-homepage-into-a-wwdc-liveblog.html"/><updated>2015-06-08T14:42:50-07:00</updated><id>http://zmwangx.github.io/blog/2015-06-08-apple-turns-its-homepage-into-a-wwdc-liveblog.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>WWDC is Apple's biggest event every year, and WWDC keynote always attracts tons of hype. Apple knows that. In the past years folks who can't (at work, in class, etc.) or don't want to watch the crappy live stream would follow the various WWDC liveblogs presented by tech sites like Gizmodo, TechCrunch, Ars Technica, etc. But this year the landscape has changed: Apple rolled its own card-based liveblog at <a href="http://www.apple.com/live/2015-june-event/">www.apple.com/live/2015-june-event</a>.<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-06-08-apple-turns-its-homepage-into-a-wwdc-liveblog.html#fn1" id="fnref1"><sup>1</sup></a> Not only that; during the keynote, Apple redirected its homepage to the liveblog page, so it effectively turned its homepage into a liveblog:</p>
 <div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span class="kw">&gt;</span> curl -sSIL http://www.apple.com
@@ -60,9 +59,7 @@ Server: Apache</code></pre></div>
 </ol>
 </div>
 
-]]>
-</content></entry><entry><title type="html">StackOverflow review system is completely BS</title><link href="http://zmwangx.github.io/blog/2015-06-07-stackoverflow-review-system-is-completely-bs.html" /><updated>2015-06-07T18:58:57-07:00</updated><id>http://zmwangx.github.io/blog/2015-06-07-stackoverflow-review-system-is-completely-bs.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html">
-<![CDATA[
+]]></content></entry><entry><title type="html">StackOverflow review system is completely BS</title><link href="http://zmwangx.github.io/blog/2015-06-07-stackoverflow-review-system-is-completely-bs.html"/><updated>2015-06-07T18:58:57-07:00</updated><id>http://zmwangx.github.io/blog/2015-06-07-stackoverflow-review-system-is-completely-bs.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>I just answered an interesting question about ZLE <a href="http://stackoverflow.com/q/30699242/1944784">on StackOverflow</a>, and in the process I also improved my own toolchain. For the record, the OP asked for tab completion to present working directory items (executable files and directories) on an empty command line, which led to the following widget:</p>
 <div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span class="co"># This widget inserts "./" to the buffer and list possible completions</span>
@@ -107,9 +104,7 @@ Server: Apache</code></pre></div>
 </ol>
 </div>
 
-]]>
-</content></entry><entry><title type="html">Using a personal helper package in everyday scripting</title><link href="http://zmwangx.github.io/blog/2015-05-30-using-a-personal-helper-package-in-everyday-scripting.html" /><updated>2015-05-30T22:48:57-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-30-using-a-personal-helper-package-in-everyday-scripting.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html">
-<![CDATA[
+]]></content></entry><entry><title type="html">Using a personal helper package in everyday scripting</title><link href="http://zmwangx.github.io/blog/2015-05-30-using-a-personal-helper-package-in-everyday-scripting.html"/><updated>2015-05-30T22:48:57-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-30-using-a-personal-helper-package-in-everyday-scripting.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>Recently I've been scripting (mostly in Python) quite a bit, and noticed that some functionalities get copied over or reimplemented over and over again. Examples include reading configuration files (mostly JSON, INI, and YAML), printing progress information to tty in color, displaying progress bar, and so on.</p>
 <p>In light of this, I came up with the idea of keeping a pool of helper modules in a personal helper package. I'm unimaginative at naming things, so I just named my package <code>zmwangx</code>. It is <a href="https://github.com/zmwangx/pyzmwangx">published on GitHub</a>, and the API docs are published on <a href="https://pyzmwangx.readthedocs.org">Read the Docs</a> for easy reference during scripting.<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-05-30-using-a-personal-helper-package-in-everyday-scripting.html#fn1" id="fnref1"><sup>1</sup></a> At the time of writing the following helper modules are available in the package:</p>
@@ -137,9 +132,7 @@ Server: Apache</code></pre></div>
 </ol>
 </div>
 
-]]>
-</content></entry><entry><title type="html">Apple's customer service is still the best (plus an Authy horror story)</title><link href="http://zmwangx.github.io/blog/2015-05-29-apples-customer-service-is-still-the-best-plus-an-authy-horror-story.html" /><updated>2015-05-29T20:40:05-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-29-apples-customer-service-is-still-the-best-plus-an-authy-horror-story.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html">
-<![CDATA[
+]]></content></entry><entry><title type="html">Apple's customer service is still the best (plus an Authy horror story)</title><link href="http://zmwangx.github.io/blog/2015-05-29-apples-customer-service-is-still-the-best-plus-an-authy-horror-story.html"/><updated>2015-05-29T20:40:05-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-29-apples-customer-service-is-still-the-best-plus-an-authy-horror-story.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>Recently the mute switch (officially known as the Ring/Silent switch) on my little-more-than-half-a-year-old iPhone 6 Plus stopped working. It almost always bounced back to ON (ring) position upon turning, and even if I could keep it at the OFF position for five seconds, it would most likely bounce back when I thrust it into my pocket. I got bitten a few times &#8212; almost got heart attacks when the phone dinged loudly in class. Minor yet annoying problem.</p>
 <p>So I took my phone to the Genius Bar today, prepared to have it sent to a repair center<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-05-29-apples-customer-service-is-still-the-best-plus-an-authy-horror-story.html#fn1" id="fnref1"><sup>1</sup></a> and get a loan in the mean time &#8212; basically, I was prepared for all sorts of trouble. But nope. I demoed the problem for three seconds, my agent explained to me in five seconds that the switch alone was hard to replace and took fifteen seconds to verify my warranty status (I suppose), then off he went to retrieve a brand new replacement for me. No questions asked about the little dent on my old phone or whatever. <em>So I ended up with a brand new phone in less than five minutes.</em> (Of course, redoing setup and restoring backup took much longer than that.)</p>
@@ -157,9 +150,7 @@ Server: Apache</code></pre></div>
 </ol>
 </div>
 
-]]>
-</content></entry><entry><title type="html">Using a command table as wallpaper</title><link href="http://zmwangx.github.io/blog/2015-05-22-using-a-command-table-as-wallpaper.html" /><updated>2015-05-22T00:48:19-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-22-using-a-command-table-as-wallpaper.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html">
-<![CDATA[
+]]></content></entry><entry><title type="html">Using a command table as wallpaper</title><link href="http://zmwangx.github.io/blog/2015-05-22-using-a-command-table-as-wallpaper.html"/><updated>2015-05-22T00:48:19-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-22-using-a-command-table-as-wallpaper.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>Recently I cleaned up my source code directory, removed a lot of rarely-used, dated scripts, and grouped the remaining standalone scripts into a central place (<code>~/dev/scripts</code>)<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-05-22-using-a-command-table-as-wallpaper.html#fn1" id="fnref1"><sup>1</sup></a>. One thing I learned in this process is that I tend to write a reusable script but rarely actually reuse it (even if it sits on <code>PATH</code>), sometimes implementing the same functionality twice or typing a long command line over and over again.</p>
 <p>To remind myself of which scripts are at my fingertip, I decided to use a command table as wallpaper on my secondary display. So I wrote a shitty Python script<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-05-22-using-a-command-table-as-wallpaper.html#fn2" id="fnref2"><sup>2</sup></a> (depending on XeLaTeX and ImageMagick) to automate the generation of such a wallpaper. It's pretty customizable, and anyone may grab it and do whatever they want to with it (also <a href="https://gist.github.com/zmwangx/b06aa923abf061b33fc9">available as a gist</a>):</p>
@@ -316,9 +307,7 @@ XELATEX_PROGRAM <span class="op">=</span> (<span class="vs">r"""</span>
 </ol>
 </div>
 
-]]>
-</content></entry><entry><title type="html">Bash: the special slash character in filename expansion</title><link href="http://zmwangx.github.io/blog/2015-05-19-bash-the-special-slash-character-in-filename-expansion.html" /><updated>2015-05-19T18:33:51-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-19-bash-the-special-slash-character-in-filename-expansion.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html">
-<![CDATA[
+]]></content></entry><entry><title type="html">Bash: the special slash character in filename expansion</title><link href="http://zmwangx.github.io/blog/2015-05-19-bash-the-special-slash-character-in-filename-expansion.html"/><updated>2015-05-19T18:33:51-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-19-bash-the-special-slash-character-in-filename-expansion.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>It is well-known and common sense that the slash character (<code>/</code>) serves a special role in Bash filename expansion. For instance, the asterisk <code>*</code> certainly won't match <code>/</code> or <code>.</code> when used in filename expansion; otherwise, a standalone <code>*</code> would match everything in the filesystem.</p>
 <p>However, it is less clear how a literal slash character<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-05-19-bash-the-special-slash-character-in-filename-expansion.html#fn1" id="fnref1"><sup>1</sup></a> is treated in extended glob patterns. Naively one would expect it to just match a literal slash, but the real situtation is more complicated than that. Consider the following examples:</p>
@@ -350,9 +339,7 @@ matching</code></pre></div>
 </ol>
 </div>
 
-]]>
-</content></entry><entry><title type="html">storyboard reached 0.1</title><link href="http://zmwangx.github.io/blog/2015-05-09-storyboard-reached-01.html" /><updated>2015-05-09T00:32:28-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-09-storyboard-reached-01.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html">
-<![CDATA[
+]]></content></entry><entry><title type="html">storyboard reached 0.1</title><link href="http://zmwangx.github.io/blog/2015-05-09-storyboard-reached-01.html"/><updated>2015-05-09T00:32:28-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-09-storyboard-reached-01.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>For quite some time I've been working on a Python project called <a href="https://github.com/zmwangx/storyboard"><code>storyboard</code></a>, and today I finally released the 0.1 stable (or you can think of it as 1.0).</p>
 <p>As described on <a href="https://storyboard.readthedocs.org/en/0.1/index.html">the index page</a>,</p>
@@ -429,9 +416,7 @@ storyboard saved to: /tmp/storyboard-se3fbiif.jpg
 </ol>
 </div>
 
-]]>
-</content></entry><entry><title type="html">Searchable settings are one honking great idea &#8212; let's do more of those!</title><link href="http://zmwangx.github.io/blog/2015-05-06-searchable-settings-are-one-honking-great-idea-lets-do-more-of-those.html" /><updated>2015-05-06T19:29:46-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-06-searchable-settings-are-one-honking-great-idea-lets-do-more-of-those.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html">
-<![CDATA[
+]]></content></entry><entry><title type="html">Searchable settings are one honking great idea &#8212; let's do more of those!</title><link href="http://zmwangx.github.io/blog/2015-05-06-searchable-settings-are-one-honking-great-idea-lets-do-more-of-those.html"/><updated>2015-05-06T19:29:46-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-06-searchable-settings-are-one-honking-great-idea-lets-do-more-of-those.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>I had to tweak some iOS settings just now, which wasn't a delightful experience. Since I just renovated my blog inside out and am still in the hype mode, I'll write a post on the interface design of settings or preferences.</p>
 <p>The Zen of Python says,</p>
@@ -474,9 +459,7 @@ storyboard saved to: /tmp/storyboard-se3fbiif.jpg
 </ol>
 </div>
 
-]]>
-</content></entry><entry><title type="html">Graceful handling of SIGINT when using Python's multiprocessing.Process</title><link href="http://zmwangx.github.io/blog/2015-05-05-graceful-handling-of-sigint-when-using-pythons-multiprocessingprocess.html" /><updated>2015-05-05T22:03:39-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-05-graceful-handling-of-sigint-when-using-pythons-multiprocessingprocess.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html">
-<![CDATA[
+]]></content></entry><entry><title type="html">Graceful handling of SIGINT when using Python's multiprocessing.Process</title><link href="http://zmwangx.github.io/blog/2015-05-05-graceful-handling-of-sigint-when-using-pythons-multiprocessingprocess.html"/><updated>2015-05-05T22:03:39-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-05-graceful-handling-of-sigint-when-using-pythons-multiprocessingprocess.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>Today I learned something about Python's (at least CPython's) multiprocessing and signal handling, and I would like to share it here. Basically my situation was such (when developing <a href="https://github.com/zmwangx/zmwangx.github.io/blob/source/pyblog"><code>pydoc</code></a> that powers this blog):</p>
 <ul>
@@ -545,9 +528,7 @@ storyboard saved to: /tmp/storyboard-se3fbiif.jpg
 </ol>
 </div>
 
-]]>
-</content></entry><entry><title type="html">New blog, new start</title><link href="http://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html" /><updated>2015-05-05T02:42:44-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html">
-<![CDATA[
+]]></content></entry><entry><title type="html">New blog, new start</title><link href="http://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html"/><updated>2015-05-05T02:42:44-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>Octopress has been serving me for the past six months, during which even Octopress itself underwent major changes &#8212; in fact, <a href="https://github.com/octopress/octopress/releases/tag/v3.0.0">Octopress 3.0.0</a> was only released 3 days ago, which I never got to try. Anyway, Octopress's heavily colored interface grew old on me fairly quickly. I'm especially unhappy with the inline <code>&lt;code&gt;</code> tag, which is always wrapped in a white box and stands out too much (worse still, there's no visual difference when such a <code>&lt;code&gt;</code> tag is placed inside an <code>&lt;a&gt;</code> tag). Since I use inline code/verbatim a lot, many of my articles were littered with arbitrary boxes everywhere.</p>
 <div class="figure">
@@ -585,9 +566,7 @@ storyboard saved to: /tmp/storyboard-se3fbiif.jpg
 </ol>
 </div>
 
-]]>
-</content></entry><entry><title type="html">Why Oh My Zsh is completely broken</title><link href="http://zmwangx.github.io/blog/2015-05-03-why-oh-my-zsh-is-completely-broken.html" /><updated>2015-05-03T17:15:49-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-03-why-oh-my-zsh-is-completely-broken.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html">
-<![CDATA[
+]]></content></entry><entry><title type="html">Why Oh My Zsh is completely broken</title><link href="http://zmwangx.github.io/blog/2015-05-03-why-oh-my-zsh-is-completely-broken.html"/><updated>2015-05-03T17:15:49-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-03-why-oh-my-zsh-is-completely-broken.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>Today I moved from <a href="https://github.com/robbyrussell/oh-my-zsh">Oh My Zsh</a> to <a href="https://github.com/sorin-ionescu/prezto">Prezto</a>, after using Oh My Zsh for about three years since 2012. I'll try to shed some light on the reasons in this post.</p>
 <p>Zsh is a rather complicated shell (compared to Bash), with a hell lot of builtins and a complex completion system. The complexity makes it powerful, but also makes it intimidating to mortals; moreover, it doesn't look as sweet as it could be out of box. Most mortals, me included, want an interactive shell that's sweet and "just works", so we need wizards to guide us in configuring this beast. Oh My Zsh and Prezto are just two of such configuration frameworks. Oh My Zsh is somewhat older: the first commit of Oh My Zsh dates back to <a href="https://github.com/robbyrussell/oh-my-zsh/commit/e20401e04e057a39c228dbb99dda68ec7fa4235a">August 2009</a>, while Prezto was forked from Oh My Zsh in <a href="https://github.com/sorin-ionescu/prezto/commit/8d487d4f6c2d38cb108d7c8c0c2de9f0385da402">February 2011</a>, and has since been completely rewritten. <code>robbyrussell/oh-my-zsh</code> as of today has 23,610 stars on GitHub, while <code>sorin-ionescu/prezto</code> has 4,069. This doesn't imply Oh My Zsh is any better &#8212; I guess the fancy name of Oh My Zsh earned it a lot more undeserved stars; you'll see why soon.</p>
@@ -705,9 +684,7 @@ correction.zsh  git.zsh          key-bindings.zsh  prompt_info_functions.zsh  th
 </ol>
 </div>
 
-]]>
-</content></entry><entry><title type="html">Using Python 3 with Emacs Jedi</title><link href="http://zmwangx.github.io/blog/2015-04-26-using-python-3-with-emacs-jedi.html" /><updated>2015-04-26T21:19:14-07:00</updated><id>http://zmwangx.github.io/blog/2015-04-26-using-python-3-with-emacs-jedi.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html">
-<![CDATA[
+]]></content></entry><entry><title type="html">Using Python 3 with Emacs Jedi</title><link href="http://zmwangx.github.io/blog/2015-04-26-using-python-3-with-emacs-jedi.html"/><updated>2015-04-26T21:19:14-07:00</updated><id>http://zmwangx.github.io/blog/2015-04-26-using-python-3-with-emacs-jedi.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>Recently I'm working on <a href="https://github.com/zmwangx/storyboard">a hobby project in Python</a>, which means editing Python source files a lot. I've been using <a href="https://github.com/tkf/emacs-jedi">Emacs Jedi</a> for almost as long as I've been writing Python, and it has been pretty helpful at completing away long names.</p>
 <p>However, Jedi uses <code>python</code> by default, which means <code>python2</code> on most of our systems at this point. Occasionally I'm writing Python 3 specific code but Jedi completes to Python 2 or refuses to complete; for the record, I enjoy writing and debugging Python 3.3+ much better than 2.7 (I realized this after trying to create a code base that is backward compatible with 2.7, which means reinventing the wheel or introducing annoying branches from time to time). So naturally I'm looking into using Python 3 in Jedi.</p>
@@ -723,9 +700,7 @@ correction.zsh  git.zsh          key-bindings.zsh  prompt_info_functions.zsh  th
 <p>where the first two lines should be there whether you want to use Python 3 or not &#8212; so only the third line is new, and its meaning is obvious.</p>
 <p>At last, start Emacs and do <code>M-x jedi:install-server</code> if you haven't run the <code>pip</code> command above yet. Restart Emacs (if necessary). That's it. Enjoy your Jedi with Python 3. (Type <code>import conf</code>, for instance, to be convinced that you're really autocompleting Python 3).</p>
 
-]]>
-</content></entry><entry><title type="html">Back up OS X app icons</title><link href="http://zmwangx.github.io/blog/2015-03-22-back-up-os-x-app-icons.html" /><updated>2015-03-22T16:58:50-07:00</updated><id>http://zmwangx.github.io/blog/2015-03-22-back-up-os-x-app-icons.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html">
-<![CDATA[
+]]></content></entry><entry><title type="html">Back up OS X app icons</title><link href="http://zmwangx.github.io/blog/2015-03-22-back-up-os-x-app-icons.html"/><updated>2015-03-22T16:58:50-07:00</updated><id>http://zmwangx.github.io/blog/2015-03-22-back-up-os-x-app-icons.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>OS X application icons are valuable assets, and it's interesting to see how they evolve over time. This is especially the case when we upgraded to OS X 10.10 Yosemite, when Apple and many design-aware third party developers overhauled (mainly flattened) their icons.</p>
 <p>However, we lose all the old icons when we do a major OS upgrade. Technically they still live in Time Machine backups, but those are a pain to pull out. Therefore, I wrote a script just now to back up app icons of all applications living in <code>/Applications</code> (including those symlinked to <code>/Applications</code>, e.g., apps installed through <code>brew cask</code>) and its level-one subdirectories, and <code>/System/Library/CoreServices</code> (for <code>Finder.app</code> and such). Here's the script:</p>
@@ -762,16 +737,12 @@ correction.zsh  git.zsh          key-bindings.zsh  prompt_info_functions.zsh  th
 <span class="kw">find</span> /System/Library/CoreServices -maxdepth 1 -name <span class="st">'*.app'</span> <span class="kw">|</span> <span class="kw">while</span> <span class="kw">read</span> <span class="ot">app</span>; <span class="kw">do</span> <span class="kw">process_app</span> <span class="st">"</span><span class="ot">${app}</span><span class="st">"</span><span class="kw">;</span> <span class="kw">done</span></code></pre></div>
 <p>The script is also available as a <a href="https://gist.github.com/zmwangx/fad97e085045a21ebc1d">gist</a>.</p>
 
-]]>
-</content></entry><entry><title type="html">The new OneDrive API</title><link href="http://zmwangx.github.io/blog/2015-02-24-the-new-onedrive-api.html" /><updated>2015-02-24T18:31:19-08:00</updated><id>http://zmwangx.github.io/blog/2015-02-24-the-new-onedrive-api.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html">
-<![CDATA[
+]]></content></entry><entry><title type="html">The new OneDrive API</title><link href="http://zmwangx.github.io/blog/2015-02-24-the-new-onedrive-api.html"/><updated>2015-02-24T18:31:19-08:00</updated><id>http://zmwangx.github.io/blog/2015-02-24-the-new-onedrive-api.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>Microsoft released the new OneDrive API today. See the blog post announcement <a href="https://blog.onedrive.com/the-new-onedrive-api/">here</a>. One highlight is that <a href="http://onedrive.github.io/items/upload_large_files.htm">large file upload</a> is now officially supported. Previously, large file upload was handled with a semi-official API using the BITS protocol; the only documentation was a <a href="https://gist.github.com/rgregg/37ba8929768a62131e85">gist</a>. Now it is handled through standard HTTP <code>POST</code>. With this major release, there's likely a lot of work to be done with <a href="https://github.com/mk-fg/python-onedrive">python-onedrive</a>. I have opened an issue: <a href="https://github.com/mk-fg/python-onedrive/issues/52">mk-fg/python-onedrive#52 &#8212; New OneDrive API support</a>.</p>
 <p>Interestingly, the new OneDrive API doc is hosted on GitHub Pages &#8212; <a href="http://onedrive.github.io">onedrive.github.io</a>, rather than MSDN. Exactly a week ago I wrote a piece, "<a href="http://zmwangx.github.io/blog/2015-02-17-microsoft-is-getting-cool-but-not-its-website.html">Microsoft is getting cool (but not its website)</a>". Looks like they are doing something about their website (or better put, their online identity), too.</p>
 
-]]>
-</content></entry><entry><title type="html">All is not lost</title><link href="http://zmwangx.github.io/blog/2015-02-21-all-is-not-lost.html" /><updated>2015-02-21T17:12:32-08:00</updated><id>http://zmwangx.github.io/blog/2015-02-21-all-is-not-lost.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html">
-<![CDATA[
+]]></content></entry><entry><title type="html">All is not lost</title><link href="http://zmwangx.github.io/blog/2015-02-21-all-is-not-lost.html"/><updated>2015-02-21T17:12:32-08:00</updated><id>http://zmwangx.github.io/blog/2015-02-21-all-is-not-lost.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>Lubos Motl always attacks the Many-Worlds Interpretation as if it is on the same level as anti-scientific claims. He even went on to attack Hugh Everett (the guy who first formulated this interpretation) personally; <em>ad hominem</em> is of course typical Motl shit, and I don't bother to find those posts. Anyway, here's yet another one: <a href="http://motls.blogspot.com/2015/02/many-worlds-rozali-carroll-exchange.html">Many worlds: a Rozali-Carroll exchange</a>.</p>
 <p>Disclaimer: I'm not really a proponent of Many-Worlds, at least not of the part of it that says history really <em>branches</em> into <em>many</em> worlds. Well, Lubos is at least right about one thing: "many worlds", taken literally, can't even be well-defined. However, I do believe that the world is can be described by a "universal wavefunction" (I prefer to call it the "universal state vector") in some gargantuan Hilbert space. And the universal state vector has to evolve deterministically. The reason is simple: <strong><em>all information is not lost</em></strong>. This principle is fundamental to physics and it's simply not on the same level as falsifiability, which is little more than a philosopher's toy and a nice thing to have. In quantum mechanics' terms, <em>unitarity must be respected</em>; this is why the Copenhagen Interpretation, or at least the wavefunction-collapsing part of it, cannot hold up to serious scrutiny &#8212; no operator can ever collapse the wavefunction and break unitarity. Those who hold the Copenhagen Interpretation are confusing <em>their</em> lack of knowledge (albeit a fundamental one, as they were entangled into the system when they make an observation) with the fundamental loss of information (which is not possible).</p>
@@ -781,9 +752,7 @@ correction.zsh  git.zsh          key-bindings.zsh  prompt_info_functions.zsh  th
 <p>I still remember the last lecture of my first quantum mechanics course in my freshman year, taught by Prof. Michael Peskin. He discussed the interpretations of quantum mechanics. I forgot the exact arguments, but after rejecting other interpretations (including Copenhagen and hidden variable), he resorted to Many-Worlds, citing "Once you eliminate the impossible, whatever remains, no matter how improbable, must be the truth." I was not particularly satisfied. To me, once you eliminate the impossible, if whatever remains is still improbable, then maybe your imagination is not wild enough. I also remember the second time I took QM I, this time the graduate version, taught by Prof. Lenny Susskind. He stressed unitarity so much and showed us how wavefunction-collapsing is unnecessary (it was never well-defined anyway, unless you impose it). Unitarity is so important that triggered his "black hole war".</p>
 <p>The point of mentioning my two professors is that the interpretation problem of quantum mechanics has never been settled, and people who hold opinions contrary to Copenhagen should be respected. Lubos, on the other hand, tries to convince people that this problem has been settled, and actually settled for ninety years. He is either lying or delusional himself.</p>
 
-]]>
-</content></entry><entry><title type="html">My dock and updated OmniFocus</title><link href="http://zmwangx.github.io/blog/2015-02-20-my-dock-and-updated-omnifocus.html" /><updated>2015-02-20T16:16:10-08:00</updated><id>http://zmwangx.github.io/blog/2015-02-20-my-dock-and-updated-omnifocus.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html">
-<![CDATA[
+]]></content></entry><entry><title type="html">My dock and updated OmniFocus</title><link href="http://zmwangx.github.io/blog/2015-02-20-my-dock-and-updated-omnifocus.html"/><updated>2015-02-20T16:16:10-08:00</updated><id>http://zmwangx.github.io/blog/2015-02-20-my-dock-and-updated-omnifocus.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <blockquote>
 <p>Simplicity is the ultimate sophistication.</p>
@@ -804,9 +773,7 @@ correction.zsh  git.zsh          key-bindings.zsh  prompt_info_functions.zsh  th
 <p class="caption">OmniFocus's MAS feature banner</p>
 </div>
 
-]]>
-</content></entry><entry><title type="html">Microsoft is getting cool (but not its website)</title><link href="http://zmwangx.github.io/blog/2015-02-17-microsoft-is-getting-cool-but-not-its-website.html" /><updated>2015-02-17T18:57:19-08:00</updated><id>http://zmwangx.github.io/blog/2015-02-17-microsoft-is-getting-cool-but-not-its-website.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html">
-<![CDATA[
+]]></content></entry><entry><title type="html">Microsoft is getting cool (but not its website)</title><link href="http://zmwangx.github.io/blog/2015-02-17-microsoft-is-getting-cool-but-not-its-website.html"/><updated>2015-02-17T18:57:19-08:00</updated><id>http://zmwangx.github.io/blog/2015-02-17-microsoft-is-getting-cool-but-not-its-website.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>Microsoft is getting kind of cool. For instance, open sourcing .NET last year caused quite a buzz. Ars has a good piece about this: <a href="http://arstechnica.com/information-technology/2015/02/microsofts-continuing-efforts-to-be-cool/">Microsoft&#8217;s continuing efforts to be cool</a>.</p>
 <p>Three weeks ago Microsoft made another minor but totally unexpected move: they integrated AgileBits' <code>onepassword-app-extension</code> (<a href="https://github.com/AgileBits/onepassword-app-extension">GitHub</a>) into the 5.0 release of the OneDrive iOS app. I didn't realize this until I read <a href="https://blog.onedrive.com/onedrive_secure_password/">yesterday's blog post on the OneDrive Blog</a>. This is really amazing when you put it in context: I mean, take a look at <a href="https://blog.agilebits.com/1password-apps/">Apps that love 1Password</a>, i.e., apps that have integrated that extension. Out of the ninety apps listed to date, there are only a dozen apps that I've heard of, and the only brands bigger than 1Password are Microsoft, Tumblr, Uber (infamous), and Walmart (what?). Microsoft embracing third party is surely an interesting phenomenon.</p>
@@ -826,9 +793,7 @@ correction.zsh  git.zsh          key-bindings.zsh  prompt_info_functions.zsh  th
 <p class="caption">What the heck are those blue blocks?</p>
 </div>
 
-]]>
-</content></entry><entry><title type="html">Monitor progress of your Unix pipes with pv</title><link href="http://zmwangx.github.io/blog/2015-02-10-monitor-progress-of-your-unix-pipes-with-pv.html" /><updated>2015-02-10T02:18:30-08:00</updated><id>http://zmwangx.github.io/blog/2015-02-10-monitor-progress-of-your-unix-pipes-with-pv.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html">
-<![CDATA[
+]]></content></entry><entry><title type="html">Monitor progress of your Unix pipes with pv</title><link href="http://zmwangx.github.io/blog/2015-02-10-monitor-progress-of-your-unix-pipes-with-pv.html"/><updated>2015-02-10T02:18:30-08:00</updated><id>http://zmwangx.github.io/blog/2015-02-10-monitor-progress-of-your-unix-pipes-with-pv.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>Recently I found a very useful utility called <code>pv</code> (for "pipe viewer"). <a href="http://www.ivarch.com/programs/pv.shtml">Here</a> is its home page, and it can be easily installed with <code>brew</code>. According to its man page,</p>
 <blockquote>
@@ -876,9 +841,7 @@ rename(<span class="dt">ARGV</span>)</code></pre></div>
 </blockquote>
 <p>I'll look into it when I have time, but it from its description, it seems to be limited to coreutils, and OS X support might not be too awesome (at this point).</p>
 
-]]>
-</content></entry><entry><title type="html">Web design: Microsoft vs Apple</title><link href="http://zmwangx.github.io/blog/2015-01-21-web-design-microsoft-vs-apple.html" /><updated>2015-01-21T16:30:51-08:00</updated><id>http://zmwangx.github.io/blog/2015-01-21-web-design-microsoft-vs-apple.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html">
-<![CDATA[
+]]></content></entry><entry><title type="html">Web design: Microsoft vs Apple</title><link href="http://zmwangx.github.io/blog/2015-01-21-web-design-microsoft-vs-apple.html"/><updated>2015-01-21T16:30:51-08:00</updated><id>http://zmwangx.github.io/blog/2015-01-21-web-design-microsoft-vs-apple.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>I just had a look at Ars's live blog on today's Windows 10 Event to acquire a sense of where Windows is heading. There's not much to report. Safari rip-off (Microsoft's new Spartan &#8212; wait, is this name also inspired by Safari? &#8212; features reading mode and offline reading list, Safari's killer features) aside, the focus seems to be virtual assistant, PC-tablet-phone integration, and gaming, none of which I'm interested in. The hologram thing does look cool, but putting the hype aside, I doubt if it will be really useful for the masses (except probably in gaming, one of my most despised applications of computing). I'm not a visionary so maybe I'm underestimating this.</p>
 <p>(Another interesting development is "Windows as a Service" &#8212; WaaS? Microsoft isn't communiating it effectively. If it means paid subscription, am I ever going to subscribe to an OS? No. If it instead means free system updates for the lifetime of a device, then this WaaS thing is just a vacuous buzz phrase &#8212; Apple has already been doing it for two years. Longer if you count the cheap upgrades. However, if free system updates is indeed the case, then what about VMs? Not sure.)</p>
@@ -894,9 +857,7 @@ rename(<span class="dt">ARGV</span>)</code></pre></div>
 <p class="caption">Full height screenshot of <a href="http://www.apple.com/osx/">www.apple.com/osx/</a>.</p>
 </div>
 
-]]>
-</content></entry><entry><title type="html">Fonts: why Chinese web design is hard</title><link href="http://zmwangx.github.io/blog/2015-01-10-fonts-why-chinese-web-design-is-hard.html" /><updated>2015-01-10T09:30:02-08:00</updated><id>http://zmwangx.github.io/blog/2015-01-10-fonts-why-chinese-web-design-is-hard.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html">
-<![CDATA[
+]]></content></entry><entry><title type="html">Fonts: why Chinese web design is hard</title><link href="http://zmwangx.github.io/blog/2015-01-10-fonts-why-chinese-web-design-is-hard.html"/><updated>2015-01-10T09:30:02-08:00</updated><id>http://zmwangx.github.io/blog/2015-01-10-fonts-why-chinese-web-design-is-hard.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>For years I've been complaining about Chinese websites' horrendous designs. Yesterday I tried to translate one of my simple project websites to Chinese, and finally realized that web design for the Chinese language is no simple task &#8212; much harder than for English. The problem is fonts. This might not be the only problem (and cannot take blame for all the horrendous designs), but it certainly seems to be a roadblock.</p>
 <p>The problem with fonts boils down to the fact that the Chinese writing system has too many glyphs. I still remember learning things about the GB 2312 charset when I was twelve &#8212; there are 3755 Level 1 characters (more commonly seen), 3008 Level 2 characters, and other symbols and foreign glyphs. Designing more than six thousand Chinese characters is so much harder than designing 26 letters. I'm not sure if many glyphs are auto-generated from parts, but that would certainly degrade the quality. The result? Availability of digital fonts suffers. There are simply not so many choices of Chinese fonts. Chinese writing is beautiful, but I've yet to see a font for screens (let alone the web) that conveys that beauty. This might be subjective, but I have the impression that fonts generally look worse on screen than in print, and more so for Chinese fonts (Retina doesn't help much). For the record, I checked Apple's font usage at the moment, and they are using a tailored font named "PingHei" ("&#24179;&#40657;", I guess; see screenshot at the end); I'm not at all impressed. Compare that to the English counterpart (also at the end) &#8212; not on the same level. (I won't talk about Microsoft since it doesn't feature a design department, or that department is brain dead. Well, I'm a little opinionated.)</p>
@@ -910,5 +871,4 @@ rename(<span class="dt">ARGV</span>)</code></pre></div>
 <p class="caption">The English equivalent.</p>
 </div>
 
-]]>
-</content></entry></feed>
+]]></content></entry></feed>
