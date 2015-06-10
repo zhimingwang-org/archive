@@ -529,7 +529,7 @@ def generate_index_and_feed():
                     item.link = ET.Element("link")
                     item.link.text = entry_url
                     item.description = ET.Element("description")
-                    item.description.text = entry.content.text
+                    item.description.text = ET.CDATA(entry.content_html)
                     item.author = ET.Element("author")
                     item.author.text = rss.author_text
                     item.guid = ET.Element("guid", isPermaLink="true")
