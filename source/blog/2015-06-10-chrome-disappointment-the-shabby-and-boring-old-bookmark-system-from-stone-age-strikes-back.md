@@ -5,7 +5,7 @@ date-display: June 10, 2015
 ---
 I just restarted my machine (in the process of planning a fresh OS re-install), and something in Chrome's UI immediately felt wrong. After a few moments I realized it was the star button (bookmark button) in the far right of the omnibox giving me the uneasy feeling — the old bookmark system is back. Broadcasting from stable channel, build 43.0.2357.124 on OS X.
 
-![What immediately caught my attention.](/img/20150610-omnibox-with-aged-star.png)
+![What caught my immediate attention.](/img/20150610-omnibox-with-aged-star.png)
 
 ![The heart sinking feeling when I saw this again.](/img/20150610-old-bookmark-manager.png)
 
