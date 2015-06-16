@@ -50,6 +50,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
 <link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
 <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css"/>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -84,7 +85,7 @@ by <span class="author">Zhiming Wang</span>
 <span class="kw">bash-4.3</span>$ echo /usr@(/bin<span class="kw">|/lib</span>)
 
 <span class="kw">bash-4.3</span>$ [[ /usr/bin == /usr@(/bin<span class="kw">|/lib</span>) ]] <span class="kw">&amp;&amp;</span> <span class="kw">echo</span> matching
-<span class="kw">matching</span><span class="line-number" data-line="1" style="top: 0px"><!----></span><span class="line-number" data-line="2" style="top: 18px"><!----></span><span class="line-number" data-line="3" style="top: 36px"><!----></span><span class="line-number" data-line="4" style="top: 54px"><!----></span><span class="line-number" data-line="5" style="top: 72px"><!----></span><span class="line-number" data-line="6" style="top: 90px"><!----></span><span class="line-number" data-line="7" style="top: 108px"><!----></span></code></pre></div>
+<span class="kw">matching</span><span class="line-number" data-line="1" style="top: 1px"><!----></span><span class="line-number" data-line="2" style="top: 19px"><!----></span><span class="line-number" data-line="3" style="top: 37px"><!----></span><span class="line-number" data-line="4" style="top: 55px"><!----></span><span class="line-number" data-line="5" style="top: 73px"><!----></span><span class="line-number" data-line="6" style="top: 91px"><!----></span><span class="line-number" data-line="7" style="top: 109px"><!----></span></code></pre></div>
 <p>As seen from this example, patterns with slash simply doesn't work (in filename expansion) when placed in an extended glob pattern list, and there's no error whatsoever. I looked up the <a href="https://www.gnu.org/software/bash/manual/html_node/Pattern-Matching.html#Pattern-Matching">Bash Reference Manual</a> and the <a href="http://mywiki.wooledge.org/BashGuide/Patterns">Bash Guide</a> but neither mentioned this behavior. One might need to delve into the source code to say for sure what exactly is going on.</p>
 <p>In comparison, Zsh and its <a href="http://zsh.sourceforge.net/Doc/Release/Expansion.html#Filename-Generation">docs</a> are much more up front about this issue:</p>
 <blockquote>
@@ -97,7 +98,7 @@ zsh-5.0.5$ <span class="kw">echo</span> /usr/<span class="kw">(</span>bin<span c
 zsh-5.0.5$ <span class="kw">echo</span> /usr<span class="kw">(</span>/bin<span class="kw">|</span>/lib<span class="kw">)</span>
 zsh: bad pattern: /usr<span class="kw">(</span>/bin<span class="kw">|</span>/lib<span class="kw">)</span>
 zsh-5.0.5$<span class="kw"> [[</span> /usr/bin <span class="ot">==</span> /usr(/bin|/lib)<span class="kw"> ]]</span> <span class="kw">&amp;&amp;</span> <span class="kw">echo</span> matching
-matching<span class="line-number" data-line="1" style="top: 0px"><!----></span><span class="line-number" data-line="2" style="top: 18px"><!----></span><span class="line-number" data-line="3" style="top: 36px"><!----></span><span class="line-number" data-line="4" style="top: 54px"><!----></span><span class="line-number" data-line="5" style="top: 72px"><!----></span><span class="line-number" data-line="6" style="top: 90px"><!----></span><span class="line-number" data-line="7" style="top: 108px"><!----></span></code></pre></div>
+matching<span class="line-number" data-line="1" style="top: 1px"><!----></span><span class="line-number" data-line="2" style="top: 19px"><!----></span><span class="line-number" data-line="3" style="top: 37px"><!----></span><span class="line-number" data-line="4" style="top: 55px"><!----></span><span class="line-number" data-line="5" style="top: 73px"><!----></span><span class="line-number" data-line="6" style="top: 91px"><!----></span><span class="line-number" data-line="7" style="top: 109px"><!----></span></code></pre></div>
 <p>The lesson? Be careful not to use a pattern like <code>@(path1|path2|path3)</code> in Bash when the paths are absolute, or relative but contain the slash. Unlike Zsh, Bash just silently fails on a pattern like this, which is rather dangerous in scripts.</p>
 <div class="footnotes">
 <hr/>

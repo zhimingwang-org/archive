@@ -50,6 +50,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
 <link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
 <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css"/>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -78,12 +79,12 @@ by <span class="author">Zhiming Wang</span>
 </header>
 <p><strong><em>04/06/2015 update:</em></strong></p>
 <p>I just noticed that <code>daemonize</code> doesn't play too well with the OS; in particular, when you use dark menu bar on OS X Yosemite, apps launched with <code>daemonize</code> won't conform to that. So a native shell solution would be using <code>/bin/zsh</code> and run</p>
-<div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh">mpv <span class="ot">$@</span> <span class="kw">&amp;&gt;</span>/dev/null <span class="kw">&lt;</span>/dev/null <span class="kw">&amp;</span>!<span class="line-number" data-line="1" style="top: 0px"><!----></span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh">mpv <span class="ot">$@</span> <span class="kw">&amp;&gt;</span>/dev/null <span class="kw">&lt;</span>/dev/null <span class="kw">&amp;</span>!<span class="line-number" data-line="1" style="top: 1px"><!----></span></code></pre></div>
 <p>instead.</p>
 <hr/>
 <p><a href="http://mpv.io"><code>mpv</code></a> is a nice simplistic video player (fork of MPlayer and mplayer2). The CLI is flawless (and you can run as many instances as you want), but when it comes to the OS X application bundle, there's one major annoyance. Each app bundle could only have one running instance (unless <code>open -n</code>’ed, which is not how sane people use app bundles), and one instance of <code>mpv</code> only supports one video. So, say I'm playing one video with the app bundle, and unsuspectingly opens another in Finder (which is associated to <code>mpv.app</code> by default), then the latter video immediately takes over, and the position in the first video is lost. That happens <em>a lot</em>.</p>
 <p>Today I finally gave this issue some serious thought (I've been on a bug report/enhancement request spree these days so it's natural for me to start thinking about enhancements). Turns out that there's a pretty simple workaround. I created an automator app <code>mpv-launcher.app</code> that does one thing: "Run Shell Script" (pass input as arguments)</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">daemonize</span> /usr/local/bin/mpv <span class="st">"</span><span class="ot">$@</span><span class="st">"</span><span class="line-number" data-line="1" style="top: 0px"><!----></span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">daemonize</span> /usr/local/bin/mpv <span class="st">"</span><span class="ot">$@</span><span class="st">"</span><span class="line-number" data-line="1" style="top: 1px"><!----></span></code></pre></div>
 <p>in the shell of your choice (for me the shell of choice is <code>zsh</code> since the env would be readily available from my <code>zshenv</code>). <code>daemonize</code>, as the name suggests, daemonizes the process so that the process doesn't block; this way, <code>mpv-launcher.app</code> immediately quits after launching, making multiple "instances" possible. (<code>daemonize</code> can be installed via <code>brew install daemonize</code>; note that you need to specify the full path of the command to daemonize, which in my case is <code>/usr/local/bin/mpv</code>). And there you go. Associate your video files to <code>mpv-launcher.app</code>. Launch as many instances as you want. Enjoy.</p>
 <p>By the way, I also filed an <a href="https://github.com/mpv-player/mpv/issues/1377">enhancement request</a> with <code>mpv-player/mpv</code>. We'll see what the developers can do. Hopefully the app bundle will support multiple videos out of box in the future.</p>
 <footer>
