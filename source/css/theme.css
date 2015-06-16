@@ -105,6 +105,10 @@ div.footnotes {
     font-size: 10pt;
 }
 
+div.footnotes p {
+    margin: 0.6em 0;
+}
+
 div.footnotes code {
     font-size: 9.5pt;
 }
