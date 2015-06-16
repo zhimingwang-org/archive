@@ -7,6 +7,8 @@ date-display: June 12, 2015
 
 *By the way, I'm not sure if I'm going to stand by this post when I wake up tomorrow morning. It will stay either way, though.*
 
+---
+
 [^not-shaming]: In this case the campaign is too civilized to be called a shaming campaign.
 
 [^judge]: And I question if most shamers did.
