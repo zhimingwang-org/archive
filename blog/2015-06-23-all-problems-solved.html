@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2015-06-23T21:47:07-07:00" name="date"/>
+<title>All problems solved!?</title>
+<link href="/img/favicon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
+<style type="text/css">code{white-space: pre;}</style>
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css"/>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-53908325-1', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+</script>
+</head>
+<body>
+<nav>
+<div style="height:150px; width:100px; text-align:center;">
+<a href="/"><img alt="blog icon" height="100" src="/img/icon-100.png" style="padding: 2px 0;" width="100"/></a>
+<div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
+<div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</div>
+</nav>
+<article>
+<header>
+<h1 class="title">All problems solved!?</h1>
+<h2 class="meta">
+<time class="timestamp" datetime="2015-06-23T21:47:07-07:00">June 23, 2015,</time>
+by <span class="author">Zhiming Wang</span>
+</h2>
+</header>
+<p>The project I've been working on intermittently over the past month, <a href="https://github.com/zmwangx/pyonedrive"><code>pyonedrive</code></a>, a OneDrive API v1.0 API/CLI client, is now quite satisfactory in terms of its feature set<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a>, so today I'm thinking about what I should work on next. Of course there's <a href="https://github.com/zmwangx/pyonedrive/labels/enhancement">a lot more I can do</a>, but what is done already encapsulates 95%+ of my daily usage; moreover, as everyone knows, refining an existing project is not as exciting as starting a new one and making something happen that is previously tedious or impossible.</p>
+<p>To my surprise, <em>I can't think of anything</em>. I now realized that I don't have many peculiar computing needs. I needed a storyboard generator which I couldn't find anywhere, <a href="https://github.com/zmwangx/storyboard">so I wrote one</a>, and got an <a href="https://storyboard.readthedocs.org/en/latest/metadata-cli.html">elegant FFprobe wrapper</a> for free. I hated the crappy CLI shipped with <a href="https://github.com/mk-fg/python-onedrive"><code>python-onedrive</code></a><a class="footnoteRef" href="#fn2" id="fnref2"><sup>2</sup></a> that constantly fails and dumps, so I <a href="https://github.com/zmwangx/pyonedrive">rolled my own</a> around the new API. In the process of coding up these two things, I learned quite a bit of Python — the kind of things I would never learn by reading tutorials or references alone. Other than these two, I need to interact with a few Web services and scrape a few Web sites, which are easily taken care of in bash/zsh/python (node might better serve some, but they ain't broke, so why rewrite). I also need some other CLI tools but those have been solved by existing projects, probably started by people with similar needs. Some of them need some clean-up and feature boost, e.g., <a href="https://github.com/soimort/you-get"><code>you-get</code></a>, but I'm not inclined to refactor or submit substantial PRs to other people's projects, so I usually just write my own wrappers to bypass their limitations.<a class="footnoteRef" href="#fn3" id="fnref3"><sup>3</sup></a> What else? Basically nothing.</p>
+<p>So I'm in a strange situation that I feel like writing software for fun and profit, but don't have anything exciting to lay my hands upon (other than improving existing things). Of course I could learn my next language, but language learning without real world usage is likely to be futile. For instance, I would like to learn some Go or Rust, but why do I need a compiled, C/C++ replacement these days, when scripting takes care of all my personal needs? Not clear. Maybe it's a good time to concentrate on the real important things in my career.</p>
+<hr/>
+<p>Update: Whilst writing this post, I came up with a project after all. I always had the idea of keeping an encrypted journal — real encryption, not the fake "password protection" of DayOne.<a class="footnoteRef" href="#fn4" id="fnref4"><sup>4</sup></a> The journal should be decrypted — probably only into memory — upon entry (after securely typing in password), and each text/image object should be encrypted separately to ease syncing (so using an encrypted sparseimage won't work).</p>
+<p>In principle an Emacs package should be able to do this, but going forward Elisp is a pretty horrible choice of language for anything substantial (think of, for example, threading, which there is none). Therefore, I'm inclined to write this in ObjC/Swift with Cocoa. This will be my first attempt at Cocoa programming, and my first serious involvement with Xcode (other than CLT, of course) after quite a few years<a class="footnoteRef" href="#fn5" id="fnref5"><sup>5</sup></a>. Actually I've always been looking for an excuse to learn some Swift.</p>
+<p>Oops, am I falling into <a href="https://sivers.org/zipit">prematurely announcing my plans</a>? Hopefully not.</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>In fact it already exceeded my original expectations — <code>pyonedrive</code> started out as a <a href="https://github.com/zmwangx/pyonedrive/blob/4d21308545ec1462c3892b9ca25300042f1ccb81/README.rst">bare bones batch uploader</a>.<a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>I never bothered to look at the API.<a href="#fnref2">↩</a></p></li>
+<li id="fn3"><p>E.g., for <code>you-get</code>, I wrote a wrapper with concurrency support and much more surrounding <code>you-get</code>'s <code>--url</code> option. (But honestly, for whatever reason, links provided by <code>flvcd.com</code> for Chinese video streaming sites are much better than those parsed by <code>you-get</code> in terms of download speed, so these days I almost use <code>flvcd.com</code>'s <code>BigRats</code> exclusively, except when it similarly can't pick up a reasonable speed, in which case I would grind with my <code>you-get</code> wrapper, which was designed exactly for grinding.)<a href="#fnref3">↩</a></p></li>
+<li id="fn4"><p>And DayOne's Markdown engine sucks, among other limitations, like the ridiculous one-image-per-entry.<a href="#fnref4">↩</a></p></li>
+<li id="fn5"><p>I used to use Xcode as a C++ IDE before I was introduced to the brave new world of command line wizardry.<a href="#fnref5">↩</a></p></li>
+</ol>
+</div>
+<footer>
+<hr/>
+<span class="rfooter">
+<a class="rss-icon" href="/rss.xml" target="_blank" title="RSS feed">RSS feed icon</a><a class="atom-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a><a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</span>
+</footer>
+</article>
+</body>
+</html>

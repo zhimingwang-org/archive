@@ -1,4 +1,24 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zmwangx.github.io/atom.xml" rel="self" type="application/atom+xml"/><link href="http://zmwangx.github.io/" rel="alternate" type="text/html"/><updated>2015-06-16T01:26:48-07:00</updated><id>http://zmwangx.github.io/</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">The tip of the iceberg</title><link href="http://zmwangx.github.io/blog/2015-06-12-the-tip-of-the-iceberg.html"/><updated>2015-06-12T14:24:18-07:00</updated><id>http://zmwangx.github.io/blog/2015-06-12-the-tip-of-the-iceberg.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
+<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zmwangx.github.io/atom.xml" rel="self" type="application/atom+xml"/><link href="http://zmwangx.github.io/" rel="alternate" type="text/html"/><updated>2015-06-23T21:47:15-07:00</updated><id>http://zmwangx.github.io/</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">All problems solved!?</title><link href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html"/><updated>2015-06-23T21:47:07-07:00</updated><id>http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
+
+<p>The project I've been working on intermittently over the past month, <a href="https://github.com/zmwangx/pyonedrive"><code>pyonedrive</code></a>, a OneDrive API v1.0 API/CLI client, is now quite satisfactory in terms of its feature set<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html#fn1" id="fnref1"><sup>1</sup></a>, so today I'm thinking about what I should work on next. Of course there's <a href="https://github.com/zmwangx/pyonedrive/labels/enhancement">a lot more I can do</a>, but what is done already encapsulates 95%+ of my daily usage; moreover, as everyone knows, refining an existing project is not as exciting as starting a new one and making something happen that is previously tedious or impossible.</p>
+<p>To my surprise, <em>I can't think of anything</em>. I now realized that I don't have many peculiar computing needs. I needed a storyboard generator which I couldn't find anywhere, <a href="https://github.com/zmwangx/storyboard">so I wrote one</a>, and got an <a href="https://storyboard.readthedocs.org/en/latest/metadata-cli.html">elegant FFprobe wrapper</a> for free. I hated the crappy CLI shipped with <a href="https://github.com/mk-fg/python-onedrive"><code>python-onedrive</code></a><a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html#fn2" id="fnref2"><sup>2</sup></a> that constantly fails and dumps, so I <a href="https://github.com/zmwangx/pyonedrive">rolled my own</a> around the new API. In the process of coding up these two things, I learned quite a bit of Python &#8212; the kind of things I would never learn by reading tutorials or references alone. Other than these two, I need to interact with a few Web services and scrape a few Web sites, which are easily taken care of in bash/zsh/python (node might better serve some, but they ain't broke, so why rewrite). I also need some other CLI tools but those have been solved by existing projects, probably started by people with similar needs. Some of them need some clean-up and feature boost, e.g., <a href="https://github.com/soimort/you-get"><code>you-get</code></a>, but I'm not inclined to refactor or submit substantial PRs to other people's projects, so I usually just write my own wrappers to bypass their limitations.<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html#fn3" id="fnref3"><sup>3</sup></a> What else? Basically nothing.</p>
+<p>So I'm in a strange situation that I feel like writing software for fun and profit, but don't have anything exciting to lay my hands upon (other than improving existing things). Of course I could learn my next language, but language learning without real world usage is likely to be futile. For instance, I would like to learn some Go or Rust, but why do I need a compiled, C/C++ replacement these days, when scripting takes care of all my personal needs? Not clear. Maybe it's a good time to concentrate on the real important things in my career.</p>
+<hr/>
+<p>Update: Whilst writing this post, I came up with a project after all. I always had the idea of keeping an encrypted journal &#8212; real encryption, not the fake "password protection" of DayOne.<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html#fn4" id="fnref4"><sup>4</sup></a> The journal should be decrypted &#8212; probably only into memory &#8212; upon entry (after securely typing in password), and each text/image object should be encrypted separately to ease syncing (so using an encrypted sparseimage won't work).</p>
+<p>In principle an Emacs package should be able to do this, but going forward Elisp is a pretty horrible choice of language for anything substantial (think of, for example, threading, which there is none). Therefore, I'm inclined to write this in ObjC/Swift with Cocoa. This will be my first attempt at Cocoa programming, and my first serious involvement with Xcode (other than CLT, of course) after quite a few years<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html#fn5" id="fnref5"><sup>5</sup></a>. Actually I've always been looking for an excuse to learn some Swift.</p>
+<p>Oops, am I falling into <a href="https://sivers.org/zipit">prematurely announcing my plans</a>? Hopefully not.</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>In fact it already exceeded my original expectations &#8212; <code>pyonedrive</code> started out as a <a href="https://github.com/zmwangx/pyonedrive/blob/4d21308545ec1462c3892b9ca25300042f1ccb81/README.rst">bare bones batch uploader</a>.<a href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html#fnref1">&#8617;</a></p></li>
+<li id="fn2"><p>I never bothered to look at the API.<a href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html#fnref2">&#8617;</a></p></li>
+<li id="fn3"><p>E.g., for <code>you-get</code>, I wrote a wrapper with concurrency support and much more surrounding <code>you-get</code>'s <code>--url</code> option. (But honestly, for whatever reason, links provided by <code>flvcd.com</code> for Chinese video streaming sites are much better than those parsed by <code>you-get</code> in terms of download speed, so these days I almost use <code>flvcd.com</code>'s <code>BigRats</code> exclusively, except when it similarly can't pick up a reasonable speed, in which case I would grind with my <code>you-get</code> wrapper, which was designed exactly for grinding.)<a href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html#fnref3">&#8617;</a></p></li>
+<li id="fn4"><p>And DayOne's Markdown engine sucks, among other limitations, like the ridiculous one-image-per-entry.<a href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html#fnref4">&#8617;</a></p></li>
+<li id="fn5"><p>I used to use Xcode as a C++ IDE before I was introduced to the brave new world of command line wizardry.<a href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html#fnref5">&#8617;</a></p></li>
+</ol>
+</div>
+
+]]></content></entry><entry><title type="html">The tip of the iceberg</title><link href="http://zmwangx.github.io/blog/2015-06-12-the-tip-of-the-iceberg.html"/><updated>2015-06-12T14:24:18-07:00</updated><id>http://zmwangx.github.io/blog/2015-06-12-the-tip-of-the-iceberg.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p><em><strong>Disclaimer</strong>: While this post might have been triggered by a <a href="https://twitter.com/search?q=%23distractinglysexy">specific</a><a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-06-12-the-tip-of-the-iceberg.html#fn1" id="fnref1"><sup>1</sup></a> campaign, I'm certainly not addressing any specific concern or siding with any party. I never bothered to learn enough about a specific campaign to form a judgement that I would stand by,<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-06-12-the-tip-of-the-iceberg.html#fn2" id="fnref2"><sup>2</sup></a> since I simply don't care. I'm writing this post because I'm just too tired to see them popping up in my feeds every once in a while.</em></p>
 <p><em>By the way, I'm not sure if I'm going to stand by this post when I wake up tomorrow morning. It will stay either way, though.</em></p>
@@ -854,53 +874,5 @@ correction.zsh  git.zsh          key-bindings.zsh  prompt_info_functions.zsh  th
 <img alt="What the heck are those blue blocks?" src="https://i.imgur.com/wu66zZc.png"/>
 <p class="caption">What the heck are those blue blocks?</p>
 </div>
-
-]]></content></entry><entry><title type="html">Monitor progress of your Unix pipes with pv</title><link href="http://zmwangx.github.io/blog/2015-02-10-monitor-progress-of-your-unix-pipes-with-pv.html"/><updated>2015-02-10T02:18:30-08:00</updated><id>http://zmwangx.github.io/blog/2015-02-10-monitor-progress-of-your-unix-pipes-with-pv.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
-
-<p>Recently I found a very useful utility called <code>pv</code> (for "pipe viewer"). <a href="http://www.ivarch.com/programs/pv.shtml">Here</a> is its home page, and it can be easily installed with <code>brew</code>. According to its man page,</p>
-<blockquote>
-<p><code>pv</code> shows the progress of data through a pipeline by giving information such as time elapsed, percentage completed (with progress bar), current throughput rate, total data transferred, and ETA.</p>
-</blockquote>
-<p>For more info, see its home page (linked above) and <a href="http://linux.die.net/man/1/pv">man page</a>.</p>
-<p>Why is it useful? Well, pretty obvious if you are in the right audience. For me, one particularly important use case is with <code>openssl sha1</code>. I deal with videos on a daily basis, and back up all of them to OneDrive (ever since OneDrive went unlimited). To ensure integrity of transfer (in future downloads), I append the first seven digits of each video to its filename. This should be more than enough to reveal any error in transfer except for active attacks. One additional advantage is that I can now have multiple versions of a same show, event, or whatever and don't have to worry about naming conflicts (and don't have to artificially say <code>-ver1</code>, <code>-ver2</code>, etc.). This little merit turns out to be huge and saves me a lot of trouble, since naming things is intrinsically hard:</p>
-<blockquote>
-<p>There are only three hard things concurrency, in computer science: cache invalidation, naming things, and off-by-one errors.</p>
-</blockquote>
-<p>(I learned this beefed up version of two hard things only recently.) Well, too much digression. So SHA-1 sum is useful. (By the way, I learned in my crypto class that SHA-1 is broken as a collision-resistant hash function &#8212; not HMAC, which doesn't assume collision-resistance &#8212; and SHA-256 should be used instead. However, I'm not protecting against active attacks &#8212; I won't be able to without a shared secret key anyway &#8212; so the faster SHA-1 is good for my purpose.) But at the same time, SHA-1 is slow. Maybe what's actually slow is my HDD. Whatever the bottleneck, generating a SHA-1 digest for a 10 GB video file isn't fun at all; it's even more of a torture when there's no progress bar and ETA. But hopelessly waiting has become a thing of the past with the advent (well, discovery in my case) of <code>pv</code>. Now I have nice and informative progress bars, which reduces the anxiety of waiting by an order of magnitude.</p>
-<p>For the record, here's the current version of my ruby script that attaches the first seven digits of the SHA-1 digests of the given files to their filenames:</p>
-<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="kw">#!/usr/bin/env ruby</span>
-
-require <span class="st">'fileutils'</span>
-
-<span class="kw">def</span> rename(items)
-  num_items = items.length
-  num_done = <span class="dv">0</span>
-  items.each {|path|
-    printf(<span class="dt">$stderr</span>, <span class="st">"%d/%d: %s\n"</span>, num_done + <span class="dv">1</span>, num_items, <span class="dt">File</span>.basename(path))
-
-    <span class="kw">if</span> ! <span class="dt">File</span>.directory?(path)
-      extname = <span class="dt">File</span>.extname(path)
-      basename = <span class="dt">File</span>.basename(path, extname)
-      dirname = <span class="dt">File</span>.dirname(path)
-      sha1sum = <span class="st">`pv '</span><span class="ot">#{</span>path<span class="ot">}</span><span class="st">' | openssl sha1`</span>
-      new_basename = basename + <span class="st">"__"</span> + sha1sum[<span class="dv">0</span>,<span class="dv">7</span>]
-      new_path = <span class="dt">File</span>.join(dirname, new_basename + extname)
-      <span class="dt">FileUtils</span>.mv(path, new_path)
-    <span class="kw">else</span>
-      <span class="dt">STDERR</span>.puts(<span class="st">"</span><span class="ot">#{</span>path<span class="ot">}</span><span class="st">: directory ignored"</span>)
-    <span class="kw">end</span>
-
-    num_done += <span class="dv">1</span>
-  }
-<span class="kw">end</span>
-
-rename(<span class="dt">ARGV</span>)</code></pre></div>
-<p>You might ask why I used ruby (littered with bash) when it's obviously a job for bash or perl. Well, the reason is that I first wrote this thing in ruby as a <a href="https://gist.github.com/zmwangx/d6406fb8bf51ac768770">Dropzone 3 action</a>. I'm lazy, so I just borrowed that script and modified its printout for shell use.</p>
-<hr/>
-<p>By the way, I also found a project called <code>cv</code> (Coreutils Viewer), which is <a href="https://github.com/Xfennec/cv">officially described as</a></p>
-<blockquote>
-<p>... a Tiny, Dirty, Linux-Only C command that looks for coreutils basic commands (cp, mv, dd, tar, gzip/gunzip, cat, etc.) currently running on your system and displays the percentage of copied data.</p>
-</blockquote>
-<p>I'll look into it when I have time, but it from its description, it seems to be limited to coreutils, and OS X support might not be too awesome (at this point).</p>
 
 ]]></content></entry></feed>
