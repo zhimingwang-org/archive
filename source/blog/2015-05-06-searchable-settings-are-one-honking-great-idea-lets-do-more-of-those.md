@@ -48,4 +48,6 @@ Of course, designing clear structures (with the principles and pitfalls discusse
 
 **May 16, 2015 update:** Ars Technica [published an article today](http://arstechnica.com/apple/2015/05/what-wed-like-to-see-in-ios-9-at-wwdc-next-month/) listing "what we'd like to see in iOS 9 at WWDC next month", and "Settings page overhaul" is listed as the third item. Apparently I'm not the only one who's concerned about the iOS Settings maze. In addition, their proposed solution is similar to mine;[^similarity] the key, of course, is search.
 
+**June 27, 2015 update:** [Wish granted in iOS 9](/blog/2015-06-26-ios-9-searchable-settings.html).
+
 [^similarity]: Which is not at all surprising, since Apple's very own OS X has already set an example.
