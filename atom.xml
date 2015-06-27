@@ -1,4 +1,16 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zmwangx.github.io/atom.xml" rel="self" type="application/atom+xml"/><link href="http://zmwangx.github.io/" rel="alternate" type="text/html"/><updated>2015-06-23T21:47:15-07:00</updated><id>http://zmwangx.github.io/</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">All problems solved!?</title><link href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html"/><updated>2015-06-23T21:47:07-07:00</updated><id>http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
+<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zmwangx.github.io/atom.xml" rel="self" type="application/atom+xml"/><link href="http://zmwangx.github.io/" rel="alternate" type="text/html"/><updated>2015-06-27T00:12:42-07:00</updated><id>http://zmwangx.github.io/</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">iOS 9: searchable Settings</title><link href="http://zmwangx.github.io/blog/2015-06-26-ios-9-searchable-settings.html"/><updated>2015-06-26T23:59:28-07:00</updated><id>http://zmwangx.github.io/blog/2015-06-26-ios-9-searchable-settings.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
+
+<p>Finally it's here. According to <a href="http://www.macrumors.com/2015/06/26/hidden-features-in-ios-9-and-os-x-el-capitan/">MacRumors</a>:</p>
+<blockquote>
+<p>Apple's introduced a wide range of feature additions and minor tweaks in iOS 9 that make some very useful improvements to iOS. For example, there's now a Notification Center widget that displays the battery life of connected devices like the Apple Watch, and <strong>there's a search bar in the Settings app that lets you find a specific setting very quickly.</strong></p>
+</blockquote>
+<p>Good to see <a href="http://zmwangx.github.io/blog/2015-05-06-searchable-settings-are-one-honking-great-idea-lets-do-more-of-those.html">my wish</a> granted.</p>
+<div class="figure">
+<img alt="A screenshot of iOS 9 Settings in action." src="http://zmwangx.github.io/img/20150627-macrumors-demo-ios9-searchable-settings.png"/>
+<p class="caption">A screenshot of iOS 9 Settings in action.</p>
+</div>
+
+]]></content></entry><entry><title type="html">All problems solved!?</title><link href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html"/><updated>2015-06-23T21:47:07-07:00</updated><id>http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>The project I've been working on intermittently over the past month, <a href="https://github.com/zmwangx/pyonedrive"><code>pyonedrive</code></a>, a OneDrive API v1.0 API/CLI client, is now quite satisfactory in terms of its feature set<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html#fn1" id="fnref1"><sup>1</sup></a>, so today I'm thinking about what I should work on next. Of course there's <a href="https://github.com/zmwangx/pyonedrive/labels/enhancement">a lot more I can do</a>, but what is done already encapsulates 95%+ of my daily usage; moreover, as everyone knows, refining an existing project is not as exciting as starting a new one and making something happen that is previously tedious or impossible.</p>
 <p>To my surprise, <em>I can't think of anything</em>. I now realized that I don't have many peculiar computing needs. I needed a storyboard generator which I couldn't find anywhere, <a href="https://github.com/zmwangx/storyboard">so I wrote one</a>, and got an <a href="https://storyboard.readthedocs.org/en/latest/metadata-cli.html">elegant FFprobe wrapper</a> for free. I hated the crappy CLI shipped with <a href="https://github.com/mk-fg/python-onedrive"><code>python-onedrive</code></a><a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html#fn2" id="fnref2"><sup>2</sup></a> that constantly fails and dumps, so I <a href="https://github.com/zmwangx/pyonedrive">rolled my own</a> around the new API. In the process of coding up these two things, I learned quite a bit of Python &#8212; the kind of things I would never learn by reading tutorials or references alone. Other than these two, I need to interact with a few Web services and scrape a few Web sites, which are easily taken care of in bash/zsh/python (node might better serve some, but they ain't broke, so why rewrite). I also need some other CLI tools but those have been solved by existing projects, probably started by people with similar needs. Some of them need some clean-up and feature boost, e.g., <a href="https://github.com/soimort/you-get"><code>you-get</code></a>, but I'm not inclined to refactor or submit substantial PRs to other people's projects, so I usually just write my own wrappers to bypass their limitations.<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html#fn3" id="fnref3"><sup>3</sup></a> What else? Basically nothing.</p>
@@ -530,6 +542,7 @@ storyboard saved to: /tmp/storyboard-se3fbiif.jpg
 </div>
 <hr/>
 <p><strong>May 16, 2015 update:</strong> Ars Technica <a href="http://arstechnica.com/apple/2015/05/what-wed-like-to-see-in-ios-9-at-wwdc-next-month/">published an article today</a> listing "what we'd like to see in iOS 9 at WWDC next month", and "Settings page overhaul" is listed as the third item. Apparently I'm not the only one who's concerned about the iOS Settings maze. In addition, their proposed solution is similar to mine;<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-05-06-searchable-settings-are-one-honking-great-idea-lets-do-more-of-those.html#fn5" id="fnref5"><sup>5</sup></a> the key, of course, is search.</p>
+<p><strong>June 27, 2015 update:</strong> <a href="http://zmwangx.github.io/blog/2015-06-26-ios-9-searchable-settings.html">Wish granted in iOS 9</a>.</p>
 <div class="footnotes">
 <hr/>
 <ol>
@@ -853,26 +866,6 @@ correction.zsh  git.zsh          key-bindings.zsh  prompt_info_functions.zsh  th
 <div class="figure">
 <img alt="OmniFocus's MAS feature banner" src="https://i.imgur.com/tILmveQ.png"/>
 <p class="caption">OmniFocus's MAS feature banner</p>
-</div>
-
-]]></content></entry><entry><title type="html">Microsoft is getting cool (but not its website)</title><link href="http://zmwangx.github.io/blog/2015-02-17-microsoft-is-getting-cool-but-not-its-website.html"/><updated>2015-02-17T18:57:19-08:00</updated><id>http://zmwangx.github.io/blog/2015-02-17-microsoft-is-getting-cool-but-not-its-website.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
-
-<p>Microsoft is getting kind of cool. For instance, open sourcing .NET last year caused quite a buzz. Ars has a good piece about this: <a href="http://arstechnica.com/information-technology/2015/02/microsofts-continuing-efforts-to-be-cool/">Microsoft&#8217;s continuing efforts to be cool</a>.</p>
-<p>Three weeks ago Microsoft made another minor but totally unexpected move: they integrated AgileBits' <code>onepassword-app-extension</code> (<a href="https://github.com/AgileBits/onepassword-app-extension">GitHub</a>) into the 5.0 release of the OneDrive iOS app. I didn't realize this until I read <a href="https://blog.onedrive.com/onedrive_secure_password/">yesterday's blog post on the OneDrive Blog</a>. This is really amazing when you put it in context: I mean, take a look at <a href="https://blog.agilebits.com/1password-apps/">Apps that love 1Password</a>, i.e., apps that have integrated that extension. Out of the ninety apps listed to date, there are only a dozen apps that I've heard of, and the only brands bigger than 1Password are Microsoft, Tumblr, Uber (infamous), and Walmart (what?). Microsoft embracing third party is surely an interesting phenomenon.</p>
-<p>Meanwhile,</p>
-<ul>
-<li>Microsoft still won't let us use our password managers to its fullest (of course we can't blame it on the OneDrive folks): 16 characters max in this day and age (screenshot taken today)? Hmm. And I remember Microsoft recently said password length isn't the main source of vulnerability of its customers. WTF. Who cares about <em>your</em> stupid customers. I just want to protect <em>my own</em> data, and make sure that in case of a breach on <em>your</em> side, I won't face the same loss as your technologically illiterate customers. But that's not currently possible with Microsoft.</li>
-</ul>
-<div class="figure">
-<img alt="It's 2015, yet &quot;your password can't be longer than 16 characters&quot;." src="https://i.imgur.com/CNv76zw.png"/>
-<p class="caption">It's 2015, yet "your password can't be longer than 16 characters".</p>
-</div>
-<ul>
-<li>Microsoft's UI design is still shit, <a href="http://zmwangx.github.io/blog/2015-01-21-web-design-microsoft-vs-apple.html">as well as their website</a>; I mean, seriously:</li>
-</ul>
-<div class="figure">
-<img alt="What the heck are those blue blocks?" src="https://i.imgur.com/wu66zZc.png"/>
-<p class="caption">What the heck are those blue blocks?</p>
 </div>
 
 ]]></content></entry></feed>
