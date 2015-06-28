@@ -1,4 +1,124 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zmwangx.github.io/atom.xml" rel="self" type="application/atom+xml"/><link href="http://zmwangx.github.io/" rel="alternate" type="text/html"/><updated>2015-06-27T00:12:42-07:00</updated><id>http://zmwangx.github.io/</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">iOS 9: searchable Settings</title><link href="http://zmwangx.github.io/blog/2015-06-26-ios-9-searchable-settings.html"/><updated>2015-06-26T23:59:28-07:00</updated><id>http://zmwangx.github.io/blog/2015-06-26-ios-9-searchable-settings.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
+<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zmwangx.github.io/atom.xml" rel="self" type="application/atom+xml"/><link href="http://zmwangx.github.io/" rel="alternate" type="text/html"/><updated>2015-06-27T21:20:28-07:00</updated><id>http://zmwangx.github.io/</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">Automatically clean up "Previous Mobile Applications"</title><link href="http://zmwangx.github.io/blog/2015-06-27-automatically-clean-up-previous-mobile-applications.html"/><updated>2015-06-27T21:19:59-07:00</updated><id>http://zmwangx.github.io/blog/2015-06-27-automatically-clean-up-previous-mobile-applications.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
+
+<p>iTunes keeps a "Previous Mobile Applications" folder of questionable value, which always annoys me. It eats into disk space and wastes syncing/backup cycles and bandwidth; you can easily find horror stories online about <a href="http://forums.macrumors.com/threads/5-years-of-deleted-iphone-apps-accumulated-in-my-itunes-library.1781676/#post-19749496">100GB+ PMA folders</a>. The value? You might be able to roll back to an earlier version, or restore an app pulled from the App Store. Really? I never had that need in my life<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-06-27-automatically-clean-up-previous-mobile-applications.html#fn1" id="fnref1"><sup>1</sup></a>; have you? Worst of all, there should be a periodic clean up option &#8212; just like how deleted mail are automatically purged after one month, but the option is missing.</p>
+<p>Therefore, I wrote a trivial Python script to do the periodic cleanup. Feel free to grab my script below (also available at <a class="uri" href="http://git.io/previous-mobile-applications">http://git.io/previous-mobile-applications</a>) to save a few minutes of hacking. It should be plugged into a daily or weekly or monthly cron job (or the equivalent), and it writes data to <code>~/.local/share/itunes/previous-mobile-applications.json</code> by default. To customize, just modify the global constants.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co">#!/usr/bin/env python3</span>
+
+<span class="co">"""Periodically clean up "Previous Mobile Applications" of iTunes."""</span>
+
+<span class="im">import</span> arrow
+<span class="im">import</span> datetime
+<span class="im">import</span> json
+<span class="im">import</span> os
+<span class="im">import</span> sys
+
+OFFENDING_DIR <span class="op">=</span> os.path.expanduser(<span class="st">"~/Music/iTunes/iTunes Media/Mobile Applications/Previous Mobile Applications"</span>)
+STORAGE_DIR <span class="op">=</span> os.path.expanduser(<span class="st">"~/.local/share/itunes"</span>)
+STORAGE_FILE <span class="op">=</span> os.path.join(STORAGE_DIR, <span class="st">"previous-mobile-applications.json"</span>)
+
+DELETE_AFTER <span class="op">=</span> datetime.timedelta(days<span class="op">=</span><span class="dv">7</span>)
+
+<span class="kw">def</span> load_storage():
+    <span class="co">"""Load stored dictionary of seen apps from STORAGE_FILE.</span>
+
+<span class="co">    Returns</span>
+<span class="co">    -------</span>
+<span class="co">    seen_app_dict : dict</span>
+<span class="co">        Dictionary of (app_filename, first_seen_date) key-value pairs,</span>
+<span class="co">        where app_filename is str, and last_seen_date is datetime.date.</span>
+
+<span class="co">    """</span>
+    os.makedirs(STORAGE_DIR, mode<span class="op">=</span><span class="bn">0o700</span>, exist_ok<span class="op">=</span><span class="va">True</span>)
+    <span class="cf">try</span>:
+        <span class="cf">with</span> <span class="bu">open</span>(STORAGE_FILE, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> fp:
+            serializable_seen_app_dict <span class="op">=</span> json.load(fp)
+            <span class="cf">return</span> {app_filename: arrow.get(serialized_first_seen_date).date()
+                    <span class="cf">for</span> app_filename, serialized_first_seen_date <span class="op">in</span> serializable_seen_app_dict.items()}
+    <span class="cf">except</span> <span class="pp">OSError</span>:
+        <span class="cf">return</span> {}
+
+<span class="kw">def</span> write_storage(seen_app_dict):
+    <span class="co">"""Write the dictionary of seen apps to STORAGE_FILE.</span>
+
+<span class="co">    Parameters</span>
+<span class="co">    ----------</span>
+<span class="co">    seen_app_dict : dict</span>
+<span class="co">        See the return format of load_storage().</span>
+
+<span class="co">    Returns</span>
+<span class="co">    -------</span>
+<span class="co">    0 or 1</span>
+<span class="co">        Return code indicating success or failure.</span>
+
+<span class="co">    """</span>
+    <span class="co"># convert datetime.time to str (ISO 8601)</span>
+    serializable_seen_app_dict <span class="op">=</span> {app_filename: first_seen_date.isoformat()
+                                  <span class="cf">for</span> app_filename, first_seen_date <span class="op">in</span> seen_app_dict.items()}
+    os.makedirs(STORAGE_DIR, mode<span class="op">=</span><span class="bn">0o700</span>, exist_ok<span class="op">=</span><span class="va">True</span>)
+    <span class="cf">try</span>:
+        <span class="cf">with</span> <span class="bu">open</span>(STORAGE_FILE, mode<span class="op">=</span><span class="st">"w"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> fp:
+            json.dump(serializable_seen_app_dict, fp, indent<span class="op">=</span><span class="dv">2</span>, sort_keys<span class="op">=</span><span class="va">True</span>)
+        <span class="cf">return</span> <span class="dv">0</span>
+    <span class="cf">except</span> <span class="pp">OSError</span> <span class="im">as</span> err:
+        sys.stderr.write(<span class="st">"error: failed to write to '</span><span class="sc">%s</span><span class="st">': </span><span class="sc">%s</span><span class="st">"</span> <span class="op">%</span> (STORAGE_FILE, <span class="bu">str</span>(err)))
+        <span class="cf">return</span> <span class="dv">1</span>
+
+<span class="kw">def</span> main():
+    <span class="co">"""Main.</span>
+
+<span class="co">    Returns</span>
+<span class="co">    -------</span>
+<span class="co">    0 or 1</span>
+<span class="co">        Return code indicating success or failure.</span>
+
+<span class="co">    """</span>
+    <span class="cf">if</span> <span class="op">not</span> os.path.isdir(OFFENDING_DIR):
+        <span class="co"># good, you don't have that junk</span>
+        <span class="cf">return</span> <span class="dv">0</span>
+
+    today <span class="op">=</span> datetime.date.today()
+    seen_app_dict <span class="op">=</span> load_storage()
+    current_app_list <span class="op">=</span> os.listdir(OFFENDING_DIR)
+
+    <span class="co"># boot already disappeared apps</span>
+    <span class="cf">for</span> app <span class="op">in</span> [app <span class="cf">for</span> app <span class="op">in</span> seen_app_dict <span class="cf">if</span> app <span class="op">not</span> <span class="op">in</span> current_app_list]:
+        seen_app_dict.pop(app)
+
+    <span class="co"># add newly appeared apps</span>
+    <span class="cf">for</span> app <span class="op">in</span> [app <span class="cf">for</span> app <span class="op">in</span> current_app_list <span class="cf">if</span> app <span class="op">not</span> <span class="op">in</span> seen_app_dict]:
+        seen_app_dict[app] <span class="op">=</span> today
+
+    <span class="co"># delete expired apps</span>
+    returncode <span class="op">=</span> <span class="dv">0</span>
+    newly_deleted_apps <span class="op">=</span> []
+    <span class="cf">for</span> app <span class="op">in</span> seen_app_dict:
+        <span class="cf">if</span> today <span class="op">&gt;=</span> seen_app_dict[app] <span class="op">+</span> DELETE_AFTER:
+            app_path <span class="op">=</span> os.path.join(OFFENDING_DIR, app)
+            <span class="cf">try</span>:
+                os.remove(app_path)
+                newly_deleted_apps.append(app)
+            <span class="cf">except</span> <span class="pp">OSError</span> <span class="im">as</span> err:
+                sys.stderr.write(<span class="st">"error: failed to remove '</span><span class="sc">%s</span><span class="st">': </span><span class="sc">%s</span><span class="st">"</span> <span class="op">%</span> (app_path, <span class="bu">str</span>(err)))
+                returncode <span class="op">=</span> <span class="dv">1</span>
+
+    <span class="cf">for</span> app <span class="op">in</span> newly_deleted_apps:
+        seen_app_dict.pop(app)
+
+    <span class="co"># write data to disk</span>
+    returncode <span class="op">|=</span> write_storage(seen_app_dict)
+
+    <span class="cf">return</span> returncode
+
+<span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:
+    exit(main())</code></pre></div>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>Full disclosure: unlike many people, I'm not very obsessed with my phone, and I only have about two dozen third-party apps.<a href="http://zmwangx.github.io/blog/2015-06-27-automatically-clean-up-previous-mobile-applications.html#fnref1">&#8617;</a></p></li>
+</ol>
+</div>
+
+]]></content></entry><entry><title type="html">iOS 9: searchable Settings</title><link href="http://zmwangx.github.io/blog/2015-06-26-ios-9-searchable-settings.html"/><updated>2015-06-26T23:59:28-07:00</updated><id>http://zmwangx.github.io/blog/2015-06-26-ios-9-searchable-settings.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>Finally it's here. According to <a href="http://www.macrumors.com/2015/06/26/hidden-features-in-ios-9-and-os-x-el-capitan/">MacRumors</a>:</p>
 <blockquote>
@@ -846,26 +966,5 @@ correction.zsh  git.zsh          key-bindings.zsh  prompt_info_functions.zsh  th
 <p>When Lubos dismisses <em>ontology</em> as "exactly the same thing" as classical physics, he's dismissing the problem above, and making a hard compromise. He's basically saying that we cannot and should not reason about anything outside of what we can observe (this is also a crude classification because obviously he reasons beyond black hole horizons every day). This compromise is very dangerous for physics &#8212; sometimes one has to reason beyond one's horizon to formulate a complete and consistent answer. Black holes are one good example of getting of the limit. If we can extend spacetime beyond our event horizon, then why can't we accept <strong><em>the possibility of existence</em></strong> outside our "existence horizon", i.e., outside our perceived existence of the universal (and the first hand experience of our own existence inside it)? It's a wild and not well-defined idea, but all new physics starts out not well-defined.</p>
 <p>I still remember the last lecture of my first quantum mechanics course in my freshman year, taught by Prof. Michael Peskin. He discussed the interpretations of quantum mechanics. I forgot the exact arguments, but after rejecting other interpretations (including Copenhagen and hidden variable), he resorted to Many-Worlds, citing "Once you eliminate the impossible, whatever remains, no matter how improbable, must be the truth." I was not particularly satisfied. To me, once you eliminate the impossible, if whatever remains is still improbable, then maybe your imagination is not wild enough. I also remember the second time I took QM I, this time the graduate version, taught by Prof. Lenny Susskind. He stressed unitarity so much and showed us how wavefunction-collapsing is unnecessary (it was never well-defined anyway, unless you impose it). Unitarity is so important that triggered his "black hole war".</p>
 <p>The point of mentioning my two professors is that the interpretation problem of quantum mechanics has never been settled, and people who hold opinions contrary to Copenhagen should be respected. Lubos, on the other hand, tries to convince people that this problem has been settled, and actually settled for ninety years. He is either lying or delusional himself.</p>
-
-]]></content></entry><entry><title type="html">My dock and updated OmniFocus</title><link href="http://zmwangx.github.io/blog/2015-02-20-my-dock-and-updated-omnifocus.html"/><updated>2015-02-20T16:16:10-08:00</updated><id>http://zmwangx.github.io/blog/2015-02-20-my-dock-and-updated-omnifocus.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
-
-<blockquote>
-<p>Simplicity is the ultimate sophistication.</p>
-</blockquote>
-<p>Here's a screenshot of my dock at the moment.</p>
-<div class="figure">
-<img alt="My dock" src="https://i.imgur.com/EhaJw57.png" title="My current dock. Left to right: Finder (TotalFinder), Mail, Safari, Chrome, iTunes, OmniFocus, iTerm2, Activity Monitor, and mpv. Everything except mpv is persistent."/>
-<p class="caption">My dock</p>
-</div>
-<p>Left to right: Finder (TotalFinder), Mail, Safari, Chrome, iTunes, OmniFocus, iTerm2, Activity Monitor, and mpv. Everything except mpv is persistent; mpv is there because I happen to be looping a piece of music with mpv that I don't plan to add to the iTunes library. The point is that it never looked this good, mainly due to the updated OmniFocus icon. Finally they put some serious thought into graphics design! Just compare <a href="https://dl.bintray.com/zmwangx/generic/omnifocus-v2.1.icns">the v2.1 icon</a> to <a href="https://dl.bintray.com/zmwangx/generic/omnifocus-v2.0.icns">the v2.0 version</a>.</p>
-<div class="figure">
-<img alt="OmniFocus Mac app icon, v2.0 vs v2.1" src="https://i.imgur.com/KeTz5wK.png"/>
-<p class="caption">OmniFocus Mac app icon, v2.0 vs v2.1</p>
-</div>
-<p>Obviously the overpolished (and honestly, badly polished) 2.0 one belongs to the past. It "stood out" even among Mavericks dock icons (in terms of color), not to mention among the flattened-down Yosemite ones. Today, it finally becomes a native member of the dock. (Well, actually not today &#8212; I've been using the beta for a while, so the new icon didn't come as a surprise.) In fact, this time the Omni Group seems to be on a graphics design streak these days, and today they have a really impressive App Store feature banner:</p>
-<div class="figure">
-<img alt="OmniFocus's MAS feature banner" src="https://i.imgur.com/tILmveQ.png"/>
-<p class="caption">OmniFocus's MAS feature banner</p>
-</div>
 
 ]]></content></entry></feed>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2015-06-27T21:19:59-07:00" name="date"/>
+<title>Automatically clean up "Previous Mobile Applications"</title>
+<link href="/img/favicon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css"/>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-53908325-1', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+</script>
+</head>
+<body>
+<nav>
+<div style="height:150px; width:100px; text-align:center;">
+<a href="/"><img alt="blog icon" height="100" src="/img/icon-100.png" style="padding: 2px 0;" width="100"/></a>
+<div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
+<div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</div>
+</nav>
+<article>
+<header>
+<h1 class="title">Automatically clean up "Previous Mobile Applications"</h1>
+<h2 class="meta">
+<time class="timestamp" datetime="2015-06-27T21:19:59-07:00">June 27, 2015,</time>
+by <span class="author">Zhiming Wang</span>
+</h2>
+</header>
+<p>iTunes keeps a "Previous Mobile Applications" folder of questionable value, which always annoys me. It eats into disk space and wastes syncing/backup cycles and bandwidth; you can easily find horror stories online about <a href="http://forums.macrumors.com/threads/5-years-of-deleted-iphone-apps-accumulated-in-my-itunes-library.1781676/#post-19749496">100GB+ PMA folders</a>. The value? You might be able to roll back to an earlier version, or restore an app pulled from the App Store. Really? I never had that need in my life<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a>; have you? Worst of all, there should be a periodic clean up option — just like how deleted mail are automatically purged after one month, but the option is missing.</p>
+<p>Therefore, I wrote a trivial Python script to do the periodic cleanup. Feel free to grab my script below (also available at <a class="uri" href="http://git.io/previous-mobile-applications">http://git.io/previous-mobile-applications</a>) to save a few minutes of hacking. It should be plugged into a daily or weekly or monthly cron job (or the equivalent), and it writes data to <code>~/.local/share/itunes/previous-mobile-applications.json</code> by default. To customize, just modify the global constants.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co">#!/usr/bin/env python3</span>
+
+<span class="co">"""Periodically clean up "Previous Mobile Applications" of iTunes."""</span>
+
+<span class="im">import</span> arrow
+<span class="im">import</span> datetime
+<span class="im">import</span> json
+<span class="im">import</span> os
+<span class="im">import</span> sys
+
+OFFENDING_DIR <span class="op">=</span> os.path.expanduser(<span class="st">"~/Music/iTunes/iTunes Media/Mobile Applications/Previous Mobile Applications"</span>)
+STORAGE_DIR <span class="op">=</span> os.path.expanduser(<span class="st">"~/.local/share/itunes"</span>)
+STORAGE_FILE <span class="op">=</span> os.path.join(STORAGE_DIR, <span class="st">"previous-mobile-applications.json"</span>)
+
+DELETE_AFTER <span class="op">=</span> datetime.timedelta(days<span class="op">=</span><span class="dv">7</span>)
+
+<span class="kw">def</span> load_storage():
+    <span class="co">"""Load stored dictionary of seen apps from STORAGE_FILE.</span>
+
+<span class="co">    Returns</span>
+<span class="co">    -------</span>
+<span class="co">    seen_app_dict : dict</span>
+<span class="co">        Dictionary of (app_filename, first_seen_date) key-value pairs,</span>
+<span class="co">        where app_filename is str, and last_seen_date is datetime.date.</span>
+
+<span class="co">    """</span>
+    os.makedirs(STORAGE_DIR, mode<span class="op">=</span><span class="bn">0o700</span>, exist_ok<span class="op">=</span><span class="va">True</span>)
+    <span class="cf">try</span>:
+        <span class="cf">with</span> <span class="bu">open</span>(STORAGE_FILE, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> fp:
+            serializable_seen_app_dict <span class="op">=</span> json.load(fp)
+            <span class="cf">return</span> {app_filename: arrow.get(serialized_first_seen_date).date()
+                    <span class="cf">for</span> app_filename, serialized_first_seen_date <span class="op">in</span> serializable_seen_app_dict.items()}
+    <span class="cf">except</span> <span class="pp">OSError</span>:
+        <span class="cf">return</span> {}
+
+<span class="kw">def</span> write_storage(seen_app_dict):
+    <span class="co">"""Write the dictionary of seen apps to STORAGE_FILE.</span>
+
+<span class="co">    Parameters</span>
+<span class="co">    ----------</span>
+<span class="co">    seen_app_dict : dict</span>
+<span class="co">        See the return format of load_storage().</span>
+
+<span class="co">    Returns</span>
+<span class="co">    -------</span>
+<span class="co">    0 or 1</span>
+<span class="co">        Return code indicating success or failure.</span>
+
+<span class="co">    """</span>
+    <span class="co"># convert datetime.time to str (ISO 8601)</span>
+    serializable_seen_app_dict <span class="op">=</span> {app_filename: first_seen_date.isoformat()
+                                  <span class="cf">for</span> app_filename, first_seen_date <span class="op">in</span> seen_app_dict.items()}
+    os.makedirs(STORAGE_DIR, mode<span class="op">=</span><span class="bn">0o700</span>, exist_ok<span class="op">=</span><span class="va">True</span>)
+    <span class="cf">try</span>:
+        <span class="cf">with</span> <span class="bu">open</span>(STORAGE_FILE, mode<span class="op">=</span><span class="st">"w"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> fp:
+            json.dump(serializable_seen_app_dict, fp, indent<span class="op">=</span><span class="dv">2</span>, sort_keys<span class="op">=</span><span class="va">True</span>)
+        <span class="cf">return</span> <span class="dv">0</span>
+    <span class="cf">except</span> <span class="pp">OSError</span> <span class="im">as</span> err:
+        sys.stderr.write(<span class="st">"error: failed to write to '</span><span class="sc">%s</span><span class="st">': </span><span class="sc">%s</span><span class="st">"</span> <span class="op">%</span> (STORAGE_FILE, <span class="bu">str</span>(err)))
+        <span class="cf">return</span> <span class="dv">1</span>
+
+<span class="kw">def</span> main():
+    <span class="co">"""Main.</span>
+
+<span class="co">    Returns</span>
+<span class="co">    -------</span>
+<span class="co">    0 or 1</span>
+<span class="co">        Return code indicating success or failure.</span>
+
+<span class="co">    """</span>
+    <span class="cf">if</span> <span class="op">not</span> os.path.isdir(OFFENDING_DIR):
+        <span class="co"># good, you don't have that junk</span>
+        <span class="cf">return</span> <span class="dv">0</span>
+
+    today <span class="op">=</span> datetime.date.today()
+    seen_app_dict <span class="op">=</span> load_storage()
+    current_app_list <span class="op">=</span> os.listdir(OFFENDING_DIR)
+
+    <span class="co"># boot already disappeared apps</span>
+    <span class="cf">for</span> app <span class="op">in</span> [app <span class="cf">for</span> app <span class="op">in</span> seen_app_dict <span class="cf">if</span> app <span class="op">not</span> <span class="op">in</span> current_app_list]:
+        seen_app_dict.pop(app)
+
+    <span class="co"># add newly appeared apps</span>
+    <span class="cf">for</span> app <span class="op">in</span> [app <span class="cf">for</span> app <span class="op">in</span> current_app_list <span class="cf">if</span> app <span class="op">not</span> <span class="op">in</span> seen_app_dict]:
+        seen_app_dict[app] <span class="op">=</span> today
+
+    <span class="co"># delete expired apps</span>
+    returncode <span class="op">=</span> <span class="dv">0</span>
+    newly_deleted_apps <span class="op">=</span> []
+    <span class="cf">for</span> app <span class="op">in</span> seen_app_dict:
+        <span class="cf">if</span> today <span class="op">&gt;=</span> seen_app_dict[app] <span class="op">+</span> DELETE_AFTER:
+            app_path <span class="op">=</span> os.path.join(OFFENDING_DIR, app)
+            <span class="cf">try</span>:
+                os.remove(app_path)
+                newly_deleted_apps.append(app)
+            <span class="cf">except</span> <span class="pp">OSError</span> <span class="im">as</span> err:
+                sys.stderr.write(<span class="st">"error: failed to remove '</span><span class="sc">%s</span><span class="st">': </span><span class="sc">%s</span><span class="st">"</span> <span class="op">%</span> (app_path, <span class="bu">str</span>(err)))
+                returncode <span class="op">=</span> <span class="dv">1</span>
+
+    <span class="cf">for</span> app <span class="op">in</span> newly_deleted_apps:
+        seen_app_dict.pop(app)
+
+    <span class="co"># write data to disk</span>
+    returncode <span class="op">|=</span> write_storage(seen_app_dict)
+
+    <span class="cf">return</span> returncode
+
+<span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:
+    exit(main())<span class="line-number" data-line="1" style="top: 1px"><!----></span><span class="line-number" data-line="2" style="top: 19px"><!----></span><span class="line-number" data-line="3" style="top: 37px"><!----></span><span class="line-number" data-line="4" style="top: 55px"><!----></span><span class="line-number" data-line="5" style="top: 73px"><!----></span><span class="line-number" data-line="6" style="top: 91px"><!----></span><span class="line-number" data-line="7" style="top: 109px"><!----></span><span class="line-number" data-line="8" style="top: 127px"><!----></span><span class="line-number" data-line="9" style="top: 145px"><!----></span><span class="line-number" data-line="10" style="top: 163px"><!----></span><span class="line-number" data-line="11" style="top: 181px"><!----></span><span class="line-number" data-line="12" style="top: 199px"><!----></span><span class="line-number" data-line="13" style="top: 217px"><!----></span><span class="line-number" data-line="14" style="top: 235px"><!----></span><span class="line-number" data-line="15" style="top: 253px"><!----></span><span class="line-number" data-line="16" style="top: 271px"><!----></span><span class="line-number" data-line="17" style="top: 289px"><!----></span><span class="line-number" data-line="18" style="top: 307px"><!----></span><span class="line-number" data-line="19" style="top: 325px"><!----></span><span class="line-number" data-line="20" style="top: 343px"><!----></span><span class="line-number" data-line="21" style="top: 361px"><!----></span><span class="line-number" data-line="22" style="top: 379px"><!----></span><span class="line-number" data-line="23" style="top: 397px"><!----></span><span class="line-number" data-line="24" style="top: 415px"><!----></span><span class="line-number" data-line="25" style="top: 433px"><!----></span><span class="line-number" data-line="26" style="top: 451px"><!----></span><span class="line-number" data-line="27" style="top: 469px"><!----></span><span class="line-number" data-line="28" style="top: 487px"><!----></span><span class="line-number" data-line="29" style="top: 505px"><!----></span><span class="line-number" data-line="30" style="top: 523px"><!----></span><span class="line-number" data-line="31" style="top: 541px"><!----></span><span class="line-number" data-line="32" style="top: 559px"><!----></span><span class="line-number" data-line="33" style="top: 577px"><!----></span><span class="line-number" data-line="34" style="top: 595px"><!----></span><span class="line-number" data-line="35" style="top: 613px"><!----></span><span class="line-number" data-line="36" style="top: 631px"><!----></span><span class="line-number" data-line="37" style="top: 649px"><!----></span><span class="line-number" data-line="38" style="top: 667px"><!----></span><span class="line-number" data-line="39" style="top: 685px"><!----></span><span class="line-number" data-line="40" style="top: 703px"><!----></span><span class="line-number" data-line="41" style="top: 721px"><!----></span><span class="line-number" data-line="42" style="top: 739px"><!----></span><span class="line-number" data-line="43" style="top: 757px"><!----></span><span class="line-number" data-line="44" style="top: 775px"><!----></span><span class="line-number" data-line="45" style="top: 793px"><!----></span><span class="line-number" data-line="46" style="top: 811px"><!----></span><span class="line-number" data-line="47" style="top: 829px"><!----></span><span class="line-number" data-line="48" style="top: 847px"><!----></span><span class="line-number" data-line="49" style="top: 865px"><!----></span><span class="line-number" data-line="50" style="top: 883px"><!----></span><span class="line-number" data-line="51" style="top: 901px"><!----></span><span class="line-number" data-line="52" style="top: 919px"><!----></span><span class="line-number" data-line="53" style="top: 937px"><!----></span><span class="line-number" data-line="54" style="top: 955px"><!----></span><span class="line-number" data-line="55" style="top: 973px"><!----></span><span class="line-number" data-line="56" style="top: 991px"><!----></span><span class="line-number" data-line="57" style="top: 1009px"><!----></span><span class="line-number" data-line="58" style="top: 1027px"><!----></span><span class="line-number" data-line="59" style="top: 1045px"><!----></span><span class="line-number" data-line="60" style="top: 1063px"><!----></span><span class="line-number" data-line="61" style="top: 1081px"><!----></span><span class="line-number" data-line="62" style="top: 1099px"><!----></span><span class="line-number" data-line="63" style="top: 1117px"><!----></span><span class="line-number" data-line="64" style="top: 1135px"><!----></span><span class="line-number" data-line="65" style="top: 1153px"><!----></span><span class="line-number" data-line="66" style="top: 1171px"><!----></span><span class="line-number" data-line="67" style="top: 1189px"><!----></span><span class="line-number" data-line="68" style="top: 1207px"><!----></span><span class="line-number" data-line="69" style="top: 1225px"><!----></span><span class="line-number" data-line="70" style="top: 1243px"><!----></span><span class="line-number" data-line="71" style="top: 1261px"><!----></span><span class="line-number" data-line="72" style="top: 1279px"><!----></span><span class="line-number" data-line="73" style="top: 1297px"><!----></span><span class="line-number" data-line="74" style="top: 1315px"><!----></span><span class="line-number" data-line="75" style="top: 1333px"><!----></span><span class="line-number" data-line="76" style="top: 1351px"><!----></span><span class="line-number" data-line="77" style="top: 1369px"><!----></span><span class="line-number" data-line="78" style="top: 1387px"><!----></span><span class="line-number" data-line="79" style="top: 1405px"><!----></span><span class="line-number" data-line="80" style="top: 1423px"><!----></span><span class="line-number" data-line="81" style="top: 1441px"><!----></span><span class="line-number" data-line="82" style="top: 1459px"><!----></span><span class="line-number" data-line="83" style="top: 1477px"><!----></span><span class="line-number" data-line="84" style="top: 1495px"><!----></span><span class="line-number" data-line="85" style="top: 1513px"><!----></span><span class="line-number" data-line="86" style="top: 1531px"><!----></span><span class="line-number" data-line="87" style="top: 1549px"><!----></span><span class="line-number" data-line="88" style="top: 1567px"><!----></span><span class="line-number" data-line="89" style="top: 1585px"><!----></span><span class="line-number" data-line="90" style="top: 1603px"><!----></span><span class="line-number" data-line="91" style="top: 1621px"><!----></span><span class="line-number" data-line="92" style="top: 1639px"><!----></span><span class="line-number" data-line="93" style="top: 1657px"><!----></span><span class="line-number" data-line="94" style="top: 1675px"><!----></span><span class="line-number" data-line="95" style="top: 1693px"><!----></span><span class="line-number" data-line="96" style="top: 1711px"><!----></span><span class="line-number" data-line="97" style="top: 1729px"><!----></span><span class="line-number" data-line="98" style="top: 1747px"><!----></span><span class="line-number" data-line="99" style="top: 1765px"><!----></span><span class="line-number" data-line="100" style="top: 1783px"><!----></span><span class="line-number" data-line="101" style="top: 1801px"><!----></span><span class="line-number" data-line="102" style="top: 1819px"><!----></span><span class="line-number" data-line="103" style="top: 1837px"><!----></span><span class="line-number" data-line="104" style="top: 1855px"><!----></span><span class="line-number" data-line="105" style="top: 1873px"><!----></span><span class="line-number" data-line="106" style="top: 1891px"><!----></span><span class="line-number" data-line="107" style="top: 1909px"><!----></span><span class="line-number" data-line="108" style="top: 1927px"><!----></span><span class="line-number" data-line="109" style="top: 1945px"><!----></span></code></pre></div>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>Full disclosure: unlike many people, I'm not very obsessed with my phone, and I only have about two dozen third-party apps.<a href="#fnref1">↩</a></p></li>
+</ol>
+</div>
+<footer>
+<hr/>
+<span class="rfooter">
+<a class="rss-icon" href="/rss.xml" target="_blank" title="RSS feed">RSS feed icon</a><a class="atom-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a><a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</span>
+</footer>
+</article>
+</body>
+</html>
