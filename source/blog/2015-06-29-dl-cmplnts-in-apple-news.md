@@ -18,3 +18,9 @@ The link to my channel appears to be
 But at the time of writing, trying to open this page just turns up a "sorry, this item isn't available in Apple News". Not sure if the page hasn't been updated, or if I really need an iOS 9 device to access. My current guess is the former — there's no reason Apple won't provide a channel preview in good ol' HTML.[^guess] I don't have an iOS 9 device yet, so I don't know how well my content, especially preformatted code blocks, will fare in News. Either way I won't adjust my content, but it would be fun to see the capabilities of Apple's official "RSS reader".
 
 [^guess]: Or maybe they will only open up regular browser traffic after iOS 9 stable is released.
+
+---
+
+*June 30, 2015 update:* The page has been updated, and now the message makes much more sense:
+
+![Apple News is coming soon. This channel or topic is only available in Apple News.](/img/20150630-dl-cmplnts-on-apple-news.png)
