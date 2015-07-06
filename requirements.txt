@@ -1,4 +1,4 @@
-beautifulsoup4
+beautifulsoup4>=4.4.0
 colorama
 lxml
 python-dateutil

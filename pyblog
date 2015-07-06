@@ -381,7 +381,7 @@ def generate_sitemap(feed):
         # try to extract updated time
         updated = None
         with open(fullpath, encoding="utf-8") as htmlobj:
-            soup = bs4.BeautifulSoup(htmlobj.read())
+            soup = bs4.BeautifulSoup(htmlobj.read(), "lxml")
             if soup.article.footer is not None:
                 updated_tag = soup.article.footer.find(attrs={"class": "updated"})
                 if updated_tag is not None:
@@ -480,7 +480,7 @@ def generate_index_and_feed():
             item = RssItem()
             try:
                 with open(htmlpath, encoding="utf-8") as htmlfile:
-                    soup = bs4.BeautifulSoup(htmlfile.read())
+                    soup = bs4.BeautifulSoup(htmlfile.read(), "lxml")
 
                     # generate atom entry
                     entry.author = copy.deepcopy(feed.author)  # assume it's always the same author
@@ -500,21 +500,25 @@ def generate_index_and_feed():
                     entry.updated.text = entry.updated_datetime.isoformat()
 
                     # process content
-                    # extract the article content without header and footer
+                    tags_to_remove = []
+                    # mark header and footer for removal
                     article = soup.article
                     if article.header is not None:
-                        article.header.extract()
+                        tags_to_remove.append(article.header)
                     if article.footer is not None:
-                        article.footer.extract()
-                    # remove line numbers
+                        tags_to_remove.append(article.footer)
+                    # mark line numbers for removal
                     for line_number_span in article.find_all("span",
                                                              attrs={"class": "line-number"}):
-                        line_number_span.extract()
-                    # remove script tags
+                        tags_to_remove.append(line_number_span)
+                    # mark script tags for removal
                     for script_tag in article.find_all("script"):
-                        script_tag.extract()
+                        tags_to_remove.append(script_tag)
                     # make internal links absolute
                     abosolutify_links(article, entry_url)
+                    # remove marked tags
+                    for tag in tags_to_remove:
+                        tag.extract()
 
                     entry.content_html = ''.join([str(content)
                                                   for content in article.contents])
@@ -540,7 +544,7 @@ def generate_index_and_feed():
                     item.assemble_item()
                     rss.items.append(item)
             except Exception:
-                sys.stderr.write("failed to generate feed entry from %s" % name)
+                sys.stderr.write("error: failed to generate feed entry from %s\n" % name)
                 with open(htmlpath, encoding="utf-8") as htmlfile:
                     sys.stderr.write("dumping HTML:%s\n\n" % htmlfile.read())
                 raise
@@ -591,7 +595,7 @@ def _pre_tag_insert_line_numbers(soup, pre_tag):
 def number_code_lines(htmlfilepath):
     """Insert line numbers to preformatted code blocks."""
     with open(htmlfilepath, "r+", encoding="utf-8") as htmlfileobj:
-        soup = bs4.BeautifulSoup(htmlfileobj.read())
+        soup = bs4.BeautifulSoup(htmlfileobj.read(), "lxml")
         for pre_tag in soup.find_all("pre"):
             if ((pre_tag.code is None or "class" not in pre_tag.attrs or
                  not "sourceCode" in pre_tag["class"])):
@@ -649,6 +653,10 @@ def generate_blog(fresh=False, report_total_errors=True):
                 shutil.rmtree(obj)
             else:
                 os.remove(obj)
+
+    # nojekyll: https://help.github.com/articles/files-that-start-with-an-underscore-are-missing/
+    with open(os.path.join(BUILDDIR, ".nojekyll"), "w") as fileobj:
+        pass
 
     failed_builds = 0
     template_mtime = os.path.getmtime(HTMLTEMPLATE)
