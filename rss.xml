@@ -1,4 +1,35 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><atom:link href="http://zmwangx.github.io/rss.xml" rel="self" type="application/rss+xml"/><title>dl? cmplnts?</title><link>http://zmwangx.github.io/</link><description>Zhiming Wang's personal blog</description><language>en-us</language><managingEditor>zmwangx@gmail.com (Zhiming Wang)</managingEditor><webMaster>zmwangx@gmail.com (Zhiming Wang)</webMaster><pubDate>Mon, 13 Jul 2015 03:57:10 GMT</pubDate><lastBuildDate>Mon, 13 Jul 2015 03:57:10 GMT</lastBuildDate><generator>pyblog (https://github.com/zmwangx/zmwangx.github.io)</generator><docs>https://validator.w3.org/feed/docs/rss2.html</docs><image><url>http://zmwangx.github.io/img/icon-100.png</url><title>dl? cmplnts?</title><link>http://zmwangx.github.io/</link><width>100</width><height>100</height></image><item><title>dl? cmplnts? in Apple News</title><link>http://zmwangx.github.io/blog/2015-06-29-dl-cmplnts-in-apple-news.html</link><description><![CDATA[
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><atom:link href="http://zmwangx.github.io/rss.xml" rel="self" type="application/rss+xml"/><title>dl? cmplnts?</title><link>http://zmwangx.github.io/</link><description>Zhiming Wang's personal blog</description><language>en-us</language><managingEditor>zmwangx@gmail.com (Zhiming Wang)</managingEditor><webMaster>zmwangx@gmail.com (Zhiming Wang)</webMaster><pubDate>Wed, 15 Jul 2015 16:53:41 GMT</pubDate><lastBuildDate>Wed, 15 Jul 2015 16:53:41 GMT</lastBuildDate><generator>pyblog (https://github.com/zmwangx/zmwangx.github.io)</generator><docs>https://validator.w3.org/feed/docs/rss2.html</docs><image><url>http://zmwangx.github.io/img/icon-100.png</url><title>dl? cmplnts?</title><link>http://zmwangx.github.io/</link><width>100</width><height>100</height></image><item><title>Zsh: save stdout, stderr, and return value of command to different variables (without temp file)</title><link>http://zmwangx.github.io/blog/2015-07-15-zsh-save-stdout-stderr-and-return-value-of-command-to-different-variables-without-temp-file.html</link><description><![CDATA[
+
+<p>This is something worth sharing. The idea was based on <a href="http://stackoverflow.com/a/18086548/1944784">this SO answer</a>, and I cooked up this particular implementation to remove potential race conditions, with input from Mathias Fredriksson<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-07-15-zsh-save-stdout-stderr-and-return-value-of-command-to-different-variables-without-temp-file.html#fn1" id="fnref1"><sup>1</sup></a>. See <a href="https://github.com/mafredri/zsh-async/issues/1">mafredri/zsh-async#1</a>, and in particular <a href="https://github.com/mafredri/zsh-async/issues/1#issuecomment-121468958">this comment</a> for explanation.</p>
+<div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span class="co"># The following construct evaluates "$@" and saves output on stdout in the</span>
+<span class="co"># parameter stdout, output on stderr in the parameter stderr, and return value</span>
+<span class="co"># in the parameter return.</span>
+<span class="co">#</span>
+<span class="co"># The idea was based on http://stackoverflow.com/a/18086548/1944784, but this</span>
+<span class="co"># implementation is completely race-condition-free. The implementation was</span>
+<span class="co"># refined during my exchange with Mathias Fredriksson @mafredri, in</span>
+<span class="co"># https://github.com/mafredri/zsh-async/issues/1. See mainly</span>
+<span class="co"># https://github.com/mafredri/zsh-async/issues/1#issuecomment-121468958, where</span>
+<span class="co"># the advantage of this implementation is explained.</span>
+
+<span class="kw">unset</span> stdout stderr ret
+<span class="kw">eval</span> <span class="st">"</span>
+<span class="ot">$(</span>
+    <span class="kw">{</span>
+        <span class="ot">stdout=$(</span><span class="kw">eval</span> <span class="st">"</span><span class="ot">$@</span><span class="st">"</span><span class="ot">)</span>
+        <span class="ot">ret=$?</span>
+        <span class="kw">typeset</span> -p <span class="ot">stdout</span> <span class="ot">ret</span>
+    <span class="kw">}</span> <span class="kw">2&gt;</span> <span class="kw">&gt;(</span><span class="ot">stderr=$(</span><span class="kw">cat</span><span class="ot">)</span>; <span class="kw">typeset</span> -p <span class="ot">stderr</span><span class="kw">)</span>
+<span class="ot">)</span><span class="st">"</span></code></pre></div>
+<p>Also available as <a href="https://gist.github.com/zmwangx/efababea6258cedea07a">a gist</a>.</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>Mathias (<a href="https://github.com/mafredri">@mafredri</a>) is the author of the lovely <a href="https://github.com/mafredri/zsh-async">zsh-async</a> library, and a maintainer of <a href="https://github.com/sindresorhus/pure">sindresorhus/pure</a>. He forever revolutionalized <a href="https://github.com/zmwangx/prezto/blob/master/modules/prompt/functions/prompt_zmwangx_setup">my prompt</a>.<a href="http://zmwangx.github.io/blog/2015-07-15-zsh-save-stdout-stderr-and-return-value-of-command-to-different-variables-without-temp-file.html#fnref1">&#8617;</a></p></li>
+</ol>
+</div>
+
+]]></description><author>zmwangx@gmail.com (Zhiming Wang)</author><guid isPermaLink="true">http://zmwangx.github.io/blog/2015-07-15-zsh-save-stdout-stderr-and-return-value-of-command-to-different-variables-without-temp-file.html</guid><pubDate>Wed, 15 Jul 2015 16:21:47 GMT</pubDate></item><item><title>dl? cmplnts? in Apple News</title><link>http://zmwangx.github.io/blog/2015-06-29-dl-cmplnts-in-apple-news.html</link><description><![CDATA[
 
 <p>I submitted this blog to Apple via <a href="https://developer.apple.com/news-publisher/">News Publisher</a> a few days after the WWDC keynote, just to get a feel for the submission process. It was easy; basically I just needed to provide an <a href="http://zmwangx.github.io/atom.xml">Atom 1.0</a> or <a href="http://zmwangx.github.io/rss.xml">RSS 2.0</a> feed, both of which I already have anyway.<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-06-29-dl-cmplnts-in-apple-news.html#fn1" id="fnref1"><sup>1</sup></a> I was told at the end of the submission process that my submission would be reviewed.</p>
 <p>Just now, quite surprisingly, I got the acceptance email from News Publisher:</p>
@@ -979,9 +1010,4 @@ correction.zsh  git.zsh          key-bindings.zsh  prompt_info_functions.zsh  th
 <span class="kw">find</span> /System/Library/CoreServices -maxdepth 1 -name <span class="st">'*.app'</span> <span class="kw">|</span> <span class="kw">while</span> <span class="kw">read</span> <span class="ot">app</span>; <span class="kw">do</span> <span class="kw">process_app</span> <span class="st">"</span><span class="ot">${app}</span><span class="st">"</span><span class="kw">;</span> <span class="kw">done</span></code></pre></div>
 <p>The script is also available as a <a href="https://gist.github.com/zmwangx/fad97e085045a21ebc1d">gist</a>.</p>
 
-]]></description><author>zmwangx@gmail.com (Zhiming Wang)</author><guid isPermaLink="true">http://zmwangx.github.io/blog/2015-03-22-back-up-os-x-app-icons.html</guid><pubDate>Sun, 22 Mar 2015 23:58:50 GMT</pubDate></item><item><title>The new OneDrive API</title><link>http://zmwangx.github.io/blog/2015-02-24-the-new-onedrive-api.html</link><description><![CDATA[
-
-<p>Microsoft released the new OneDrive API today. See the blog post announcement <a href="https://blog.onedrive.com/the-new-onedrive-api/">here</a>. One highlight is that <a href="http://onedrive.github.io/items/upload_large_files.htm">large file upload</a> is now officially supported. Previously, large file upload was handled with a semi-official API using the BITS protocol; the only documentation was a <a href="https://gist.github.com/rgregg/37ba8929768a62131e85">gist</a>. Now it is handled through standard HTTP <code>POST</code>. With this major release, there's likely a lot of work to be done with <a href="https://github.com/mk-fg/python-onedrive">python-onedrive</a>. I have opened an issue: <a href="https://github.com/mk-fg/python-onedrive/issues/52">mk-fg/python-onedrive#52 &#8212; New OneDrive API support</a>.</p>
-<p>Interestingly, the new OneDrive API doc is hosted on GitHub Pages &#8212; <a href="http://onedrive.github.io">onedrive.github.io</a>, rather than MSDN. Exactly a week ago I wrote a piece, "<a href="http://zmwangx.github.io/blog/2015-02-17-microsoft-is-getting-cool-but-not-its-website.html">Microsoft is getting cool (but not its website)</a>". Looks like they are doing something about their website (or better put, their online identity), too.</p>
-
-]]></description><author>zmwangx@gmail.com (Zhiming Wang)</author><guid isPermaLink="true">http://zmwangx.github.io/blog/2015-02-24-the-new-onedrive-api.html</guid><pubDate>Wed, 25 Feb 2015 02:31:19 GMT</pubDate></item></channel></rss>
+]]></description><author>zmwangx@gmail.com (Zhiming Wang)</author><guid isPermaLink="true">http://zmwangx.github.io/blog/2015-03-22-back-up-os-x-app-icons.html</guid><pubDate>Sun, 22 Mar 2015 23:58:50 GMT</pubDate></item></channel></rss>
