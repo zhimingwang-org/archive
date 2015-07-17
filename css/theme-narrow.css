@@ -27,5 +27,5 @@ nav div.title, div.author {
 article {
     position: static;
     width: 80%;
-    padding: 0 10%;
+    padding: 0 10% 10% 10%;
 }
