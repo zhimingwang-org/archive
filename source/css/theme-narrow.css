@@ -1,0 +1,31 @@
+nav {
+    position: static;
+    padding: 5% 0 0 0;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+}
+
+nav div {
+    text-align: center;
+    margin: auto;
+}
+
+nav div.logo {
+    height: 200px;
+    width: 200px;
+    padding: 2px 0;
+}
+
+nav div.title, div.author {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+article {
+    position: static;
+    width: 80%;
+    padding: 0 10%;
+}
