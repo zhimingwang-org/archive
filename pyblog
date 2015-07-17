@@ -58,6 +58,7 @@ ROOTDIR = os.path.dirname(os.path.realpath(__file__))
 SOURCEDIR = os.path.join(ROOTDIR, "source")
 POSTSDIR = os.path.join(SOURCEDIR, "blog")
 INDEXMD = os.path.join(SOURCEDIR, "index.md")
+GENERATORSOURCE = os.path.join(ROOTDIR, "pyblog")
 TEMPLATEDIR = os.path.join(ROOTDIR, "templates")
 HTMLTEMPLATE = os.path.join(TEMPLATEDIR, "template.html")
 BUILDDIR = os.path.join(ROOTDIR, "build")
@@ -659,7 +660,9 @@ def generate_blog(fresh=False, report_total_errors=True):
         pass
 
     failed_builds = 0
+    generator_mtime = os.path.getmtime(GENERATORSOURCE)
     template_mtime = os.path.getmtime(HTMLTEMPLATE)
+    fundamental_mtime = max(generator_mtime, template_mtime)
     anything_modified = False
 
     for root, _, files in os.walk(SOURCEDIR):
@@ -685,7 +688,7 @@ def generate_blog(fresh=False, report_total_errors=True):
                 dstpath = os.path.join(dstroot, name)
             if ((not os.path.exists(dstpath) or
                  os.path.getmtime(dstpath) <=
-                 max(template_mtime, os.path.getmtime(srcpath)))):
+                 max(fundamental_mtime, os.path.getmtime(srcpath)))):
                 # new post or modified post
                 anything_modified = True
                 if srcpath == INDEXMD:
