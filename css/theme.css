@@ -185,13 +185,15 @@ footer .rfooter .rss-icon {
     font-size: 0;
 }
 
-div.indextoc ul {
-    list-style-type: none;
-    padding-left: 2em;
+div.indextoc table {
+    margin-left: 1em;
 }
 
-div.indextoc ul li time.tocdate {
-    float: left;
+div.indextoc td {
+    vertical-align: top;
+}
+
+div.indextoc td.date {
     width: 5em;
 }
 
