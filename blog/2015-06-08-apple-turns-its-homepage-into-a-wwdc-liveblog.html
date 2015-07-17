@@ -48,7 +48,9 @@ code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* Com
 code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 <link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
-<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="only screen" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-narrow.css" media="only screen and (max-width: 980px)" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-enlarge.css" media="only screen and (max-width: 980px) and (orientation: portrait)" rel="stylesheet" type="text/css"/>
 <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"/>
 <link href="//fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css"/>
 <script>
@@ -63,11 +65,9 @@ ga('send', 'pageview');
 </head>
 <body>
 <nav>
-<div style="height:150px; width:100px; text-align:center;">
-<a href="/"><img alt="blog icon" height="100" src="/img/icon-100.png" style="padding: 2px 0;" width="100"/></a>
-<div style="padding: 1px 0;"><a href="/"><strong>dl? cmplnts?</strong></a></div>
-<div style="font-size: 9pt;">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
-</div>
+<div class="logo"><a href="/"><img alt="blog icon" src="/img/icon-400.png"/></a></div>
+<div class="title"><a href="/">dl? cmplnts?</a></div>
+<div class="author">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
 </nav>
 <article>
 <header>

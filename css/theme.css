@@ -1,12 +1,33 @@
 body {
     color: #333;
-    font-family: "PT Serif", serif
+    font-family: "PT Serif", serif;
+    font-size: 11pt;
 }
 
 nav {
     position: fixed;
     left: 5%;
     top: 10%;
+    height: 150px;
+    width: 100px;
+}
+
+nav div {
+    text-align: center;
+}
+
+nav div.logo {
+    padding: 2px 0;
+}
+
+nav div.title {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 1px 0;
+}
+
+nav div.author {
+    font-size: 12px;
 }
 
 nav a {
@@ -16,32 +37,28 @@ nav a {
 article {
     position: absolute;
     width: 50%;
-    left: 20%;
-    padding: 5%;
-    font-size: 11pt;
+    padding: 5% 0;
+    left: 25%;
+    font-size: 1em;
     text-align: justify;
 }
 
 article code {
-    font-size: 10.5pt;
+    font-size: 0.95em;
 }
 
 h1.title {
     text-align: center;
-    font-size: 18pt;
-}
-
-h1.title code {
-    font-size: 18pt;
+    font-size: 1.65em;
 }
 
 h2 {
     text-align: center;
-    font-size: 14pt;
+    font-size: 1.27em;
 }
 
 h2.meta {
-    font-size: 11pt;
+    font-size: 1em;
     font-weight: normal;
     font-style: italic;
 }
@@ -51,7 +68,7 @@ h2.toc {
 }
 
 h3 {
-    font-size: 12pt;
+    font-size: 1.1em;
 }
 
 code {
@@ -72,7 +89,7 @@ pre[class*=sourceCode] {
 }
 
 pre code {
-    font-size: 10pt;
+    font-size: 0.91em;
 }
 
 .line-number {
@@ -102,7 +119,7 @@ blockquote {
 }
 
 div.footnotes {
-    font-size: 10pt;
+    font-size: 0.91em;
 }
 
 div.footnotes p {
@@ -110,7 +127,7 @@ div.footnotes p {
 }
 
 div.footnotes code {
-    font-size: 9.5pt;
+    font-size: 0.87em;
 }
 
 img {
@@ -123,11 +140,11 @@ img {
 
 .figure .caption {
     text-align: center;
-    font-size: 10pt;
+    font-size: 0.91em;
 }
 
 .figure .caption code {
-    font-size: 9.5pt;
+    font-size: 0.87em;
 }
 
 a {
