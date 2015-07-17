@@ -292,19 +292,31 @@ def generate_index(feed):
     tocbuff.write('<div class="indextoc" id="toc">')
     year = 10000  # will be larger than the latest year for quite a while
     # recall that entries are in reverse chronological order
+    table_opened = False
     for entry in feed.entries:
         date = entry.updated_datetime
         if date.year < year:
+            # close the previous table if there is one
+            if table_opened:
+                tocbuff.write(u'</table>\n')
             # write a new <h2 class="toc"> tag with the smaller year
             year = date.year
             tocbuff.write(u'\n<h2 class="toc" id="{0}">{0}</h2>\n\n'.format(year))
+            tocbuff.write(u'<table>\n')
+            table_opened = True
 
-        # write a new <li> entry (<ul>) in Markdown, in the format:
-        # * <time class="tocdate" datetime="2015-05-05T00:06:04-0700">May 5</time>
-        #   [Blah blah](/blog/2015-05-04-blah-blah.html)
+        # write a new table row entry in Markdown, in the format:
+        #
+        #   <tr>
+        #     <td class="date"><time class="tocdate" datetime="2015-05-05T00:06:04-0700">May 5</time></td>
+        #     <td class="title">[Blah blah](/blog/2015-05-04-blah-blah.html)</td>
+        #   </tr>
         monthday = date.strftime("%b %d")
-        tocbuff.write(u'* <time class="tocdate" datetime="%s">%s</time> [%s](%s)\n' %
+        tocbuff.write(u'<tr><td class="date"><time class="tocdate" datetime="%s">%s</time></td>'
+                      '<td class="title">[%s](%s)</td></tr>\n' %
                       (date.isoformat(), monthday, entry.title_text, entry.relpath))
+    if table_opened:
+        tocbuff.write(u'</table>\n')
     tocbuff.write('</div>')
 
     # create tempfile with index.md and the TOC concatenated, and generate index.html from that
