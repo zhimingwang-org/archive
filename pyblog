@@ -593,12 +593,12 @@ def _pre_tag_insert_line_numbers(soup, pre_tag):
     num_lines = len(pre_tag.text.split("\n"))
     for line_number in range(1, num_lines + 1):
         # line number divs will look like:
-        # <span class="line-number" data-line="1" style="top: 1px"><!----></span>
-        # <span class="line-number" data-line="2" style="top: 19px"><!----></span>
+        # <span class="line-number" data-line="1" style="top: 0em"><!----></span>
+        # <span class="line-number" data-line="2" style="top: 1.35em"><!----></span>
         ln_tag = soup.new_tag("span")
         ln_tag["class"] = "line-number"
         ln_tag["data-line"] = line_number
-        ln_tag["style"] = "top: %dpx" % ((line_number - 1) * CODE_LINE_HEIGHT + 1)
+        ln_tag["style"] = "top: %.2fem" % ((line_number - 1) * 1.35)
         # add a comment to the content of the span to suppress tidy5
         # empty <span> tag warning
         ln_tag.append(soup.new_string("", bs4.Comment))
