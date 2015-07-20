@@ -54,21 +54,21 @@ My attitude towards Microsoft Office (mostly Word) is best described in a gist/t
 > 7.  (*05/04/2014* update) Apart from storage, transmission, and distribution, Microsoft Office &mdash; and word processors in general &mdash; are also bad for *writing*. To quote the [AsciiDoc official introduction](http://asciidoctor.org/docs/what-is-asciidoc/), the "Word processors, the real writer’s block" section,
 >
 >     > When you are in the writing (i.e., [typing](http://blog.stoyanstefanov.com/writing-vs-typing/)) phase, you want the words to flow onto the screen with minimal distractions and interruptions. Flow, not just time, is essential.
->
+>     >
 >     > Most word processor excel at distracting you from writing. The result: *you write less* (ironic, huh?).
->
+>     >
 >     > In a word processor, before you can type the first word on a blank screen, you're forced to think about what font family you want, what font size you want, what lines spacing you want and so on. Once you do get going, auto-correct, spelling and grammar suggestions entice you to backtrack and lose your next thought. "Smart" quotes and auto-linking messes with the text as fast as you can enter it. If you paste text, it likely gets added to the document with a different font family, size and even color.
->
+>     >
 >     > **Undo. Undo. Undo!**
->
+>     >
 >     > Let's not even talk about inserting source code. The designers of word processors clearly did not.
->
+>     >
 >     > **Format. Format. Format!**
->
+>     >
 >     > After burning time fighting with its interface, you rightfully conclude that the word processor is trying to *sabotage* your writing process.
->
+>     >
 >     > **We *need* an easier way to write!**
->
+>     >
 >     > But how?
 >
 >     It's kind of ironic to quote AsciiDoc in a document promoting Markdown, but at the very least, we are all against Word. This section is so well written that I can't resist the temptation to quote it out in full. Moreover, I actually typed it in myself to enjoy it to the fullest.
@@ -76,9 +76,9 @@ My attitude towards Microsoft Office (mostly Word) is best described in a gist/t
 > 8.  (*05/04/2014* update) By the way, there is more to quote against docx (and XML in general), this time from Linus Torvalds, in a [Google+ comment](https://plus.google.com/+LinusTorvalds/posts/X2XVf9Q7MfV):
 >
 >     > no [sic], XML isn't even good for document markup.
->
+>     >
 >     > Use 'asciidoc' for document markup. Really. It's actually **readable** by humans, and easier to parse and way more flexible than XML.
->
+>     >
 >     > XML is crap. Really. There are no excuses. XML is nasty to parse for humans, and it's a disaster to parse even for computers. There's just no reason for that horrible crap to exist.
 >
 >     If you don't believe in me, you certainly believe in Linus don't you, who is much better at this art than you and me. If you don't even believe in Linus, you are not my reader in mind anyway.
