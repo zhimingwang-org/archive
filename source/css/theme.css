@@ -115,8 +115,10 @@ pre code {
 }
 
 blockquote {
-    margin: 0 2em;
+    margin: 0;
+    padding: 0 1em;
     font-style: italic;
+    border-left: 0.4em solid #ddd;
 }
 
 div.footnotes {
