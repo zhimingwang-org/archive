@@ -83,4 +83,4 @@ My attitude towards Microsoft Office (mostly Word) is best described in a gist/t
 >
 >     If you don't believe in me, you certainly believe in Linus don't you, who is much better at this art than you and me. If you don't even believe in Linus, you are not my reader in mind anyway.
 >
-> 9.  There are infinitely many other reasons to hate Microsoft Office, **which grabs money from the most basic workflow — text editing**. The reasons to hate Microsoft Office occur infinitely often in the decimal expansion of \pi.
+> 9.  There are infinitely many other reasons to hate Microsoft Office, **which grabs money from the most basic workflow — text editing**. The reasons to hate Microsoft Office occur infinitely often in the decimal expansion of π.
