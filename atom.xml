@@ -1,4 +1,4 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zmwangx.github.io/atom.xml" rel="self" type="application/atom+xml"/><link href="http://zmwangx.github.io/" rel="alternate" type="text/html"/><updated>2015-07-19T21:58:08-07:00</updated><id>http://zmwangx.github.io/</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">GitHub experimental attachment formats: PDF, DOCX and PPTX!?!</title><link href="http://zmwangx.github.io/blog/2015-07-19-github-experimental-attachment-formats-pdf-docx-and-pptx.html"/><updated>2015-07-19T21:58:01-07:00</updated><id>http://zmwangx.github.io/blog/2015-07-19-github-experimental-attachment-formats-pdf-docx-and-pptx.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
+<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zmwangx.github.io/atom.xml" rel="self" type="application/atom+xml"/><link href="http://zmwangx.github.io/" rel="alternate" type="text/html"/><updated>2015-07-19T22:20:55-07:00</updated><id>http://zmwangx.github.io/</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">GitHub experimental attachment formats: PDF, DOCX and PPTX!?!</title><link href="http://zmwangx.github.io/blog/2015-07-19-github-experimental-attachment-formats-pdf-docx-and-pptx.html"/><updated>2015-07-19T21:58:01-07:00</updated><id>http://zmwangx.github.io/blog/2015-07-19-github-experimental-attachment-formats-pdf-docx-and-pptx.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>I was browsing <a href="https://github.com/github/hub">github/hub</a>, and noticed something funny in the issue tracker:</p>
 <blockquote>
@@ -36,40 +36,20 @@ Why I hate Microsoft Office
 <li><p>(<em>05/04/2014</em> update) Apart from storage, transmission, and distribution, Microsoft Office &#8212; and word processors in general &#8212; are also bad for <em>writing</em>. To quote the <a href="http://asciidoctor.org/docs/what-is-asciidoc/">AsciiDoc official introduction</a>, the "Word processors, the real writer&#8217;s block" section,</p>
 <blockquote>
 <p>When you are in the writing (i.e., <a href="http://blog.stoyanstefanov.com/writing-vs-typing/">typing</a>) phase, you want the words to flow onto the screen with minimal distractions and interruptions. Flow, not just time, is essential.</p>
-</blockquote>
-<blockquote>
 <p>Most word processor excel at distracting you from writing. The result: <em>you write less</em> (ironic, huh?).</p>
-</blockquote>
-<blockquote>
 <p>In a word processor, before you can type the first word on a blank screen, you're forced to think about what font family you want, what font size you want, what lines spacing you want and so on. Once you do get going, auto-correct, spelling and grammar suggestions entice you to backtrack and lose your next thought. "Smart" quotes and auto-linking messes with the text as fast as you can enter it. If you paste text, it likely gets added to the document with a different font family, size and even color.</p>
-</blockquote>
-<blockquote>
 <p><strong>Undo. Undo. Undo!</strong></p>
-</blockquote>
-<blockquote>
 <p>Let's not even talk about inserting source code. The designers of word processors clearly did not.</p>
-</blockquote>
-<blockquote>
 <p><strong>Format. Format. Format!</strong></p>
-</blockquote>
-<blockquote>
 <p>After burning time fighting with its interface, you rightfully conclude that the word processor is trying to <em>sabotage</em> your writing process.</p>
-</blockquote>
-<blockquote>
 <p><strong>We <em>need</em> an easier way to write!</strong></p>
-</blockquote>
-<blockquote>
 <p>But how?</p>
 </blockquote>
 <p>It's kind of ironic to quote AsciiDoc in a document promoting Markdown, but at the very least, we are all against Word. This section is so well written that I can't resist the temptation to quote it out in full. Moreover, I actually typed it in myself to enjoy it to the fullest.</p></li>
 <li><p>(<em>05/04/2014</em> update) By the way, there is more to quote against docx (and XML in general), this time from Linus Torvalds, in a <a href="https://plus.google.com/+LinusTorvalds/posts/X2XVf9Q7MfV">Google+ comment</a>:</p>
 <blockquote>
 <p>no [sic], XML isn't even good for document markup.</p>
-</blockquote>
-<blockquote>
 <p>Use 'asciidoc' for document markup. Really. It's actually <strong>readable</strong> by humans, and easier to parse and way more flexible than XML.</p>
-</blockquote>
-<blockquote>
 <p>XML is crap. Really. There are no excuses. XML is nasty to parse for humans, and it's a disaster to parse even for computers. There's just no reason for that horrible crap to exist.</p>
 </blockquote>
 <p>If you don't believe in me, you certainly believe in Linus don't you, who is much better at this art than you and me. If you don't even believe in Linus, you are not my reader in mind anyway.</p></li>
