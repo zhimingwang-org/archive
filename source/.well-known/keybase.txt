@@ -1,0 +1,76 @@
+==================================================================
+https://keybase.io/zmwangx
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://zmwangx.github.io
+  * I am zmwangx (https://keybase.io/zmwangx) on keybase.
+  * I have a public key with fingerprint 9FDC DBAD 5608 97B4 5051  5B7A BBD3 1D4D 1100 44B8
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "client": {
+            "name": "keybase.io node.js client",
+            "version": "0.8.11"
+        },
+        "key": {
+            "eldest_kid": "010143ade5970b5e797f0bb5235b11387f5892a198398f5ad96f06617070ab6f9a7d0a",
+            "fingerprint": "9fdcdbad560897b450515b7abbd31d4d110044b8",
+            "host": "keybase.io",
+            "key_id": "bbd31d4d110044b8",
+            "kid": "010143ade5970b5e797f0bb5235b11387f5892a198398f5ad96f06617070ab6f9a7d0a",
+            "uid": "ad8a2e7998a2a0c8847f8b3acf8cc200",
+            "username": "zmwangx"
+        },
+        "service": {
+            "hostname": "zmwangx.github.io",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1437606054,
+    "expire_in": 157680000,
+    "prev": "fe50050904a63ffb8cf04ee2dd8d80d378bd622777ea85d40f34cc6bbfa22f18",
+    "seqno": 11,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+
+owGtkntMHEUcx4+DowW0PNTUkiMea1sqodfZu30SjbwMxti0l0BJxXLdx+zdUrg9
+bo/HQXlVe2gTqNcGLTEVYrTGVCnSQKRXqIW0tAhiSrEIFSwiTRMoSBspQcRdxJgm
+/un8M5OZz+8739935r0nAzWhAf6hmN2RmrSvA769x2oyWwxnyhBW4j1IYhnC5YnQ
+4VZXDiYfIonIIehhGRkaRcngkHhozJUN60wCUgRdsig5FAoYKSOKIuUJKq9Wwzwe
+ym7rIZFXT1GAYmaGhzhNAhaHJE0KgGVxkxlnUdRMkQJO0SYGpSkzTQk4w9OEAAgC
+JQEJGJYQaIbkAaNcKIgOG3Q5XaJqEaEFnuNZhscJQNEki+EAR3GWZFiWN6M8xqMo
+ABjGUkqhXZLdjzWDrDm1rtn7D/5/9l24JsfwFGNSRGhlYgBHURgpUKyZ4QSK40wA
+qKAMXevBl+YXMw5biZqpslkkclDNVW3kccBoE932QvbvnpwuyS1xUp5ybHe7nXKi
+Wu72OFW+GLLWdSUrKzp4JUsk4fS/j4gqKOcWVW2la5IABMCxBASWOEUXtIoqgZME
+BZShXgSLFE0B4gDggAYYQ5gFgaU4AWAQmnie4inAm0mK5QmTiSRJyFA4jwHBjHEc
+wbICYzIJqBq1DAsckqKNKkYZm6IpizYH4y50QaT8Xa0+SBMQqgnWadVvqgkNifjn
+76Yw4ctBz3sfrkrJhW/80p7hf/n66+k5N6/mTIdu7zi2PWNf61cPxr/AStPvekYv
+lj3jbxmJOzjQUlo3uUEYenYEZplGGyaq/FvCkLdyNpLZuaMhjenH75xOWdB9GJhY
+1+bVWG71BDoWr+yQNna/n7G/YLhnsF43OHahlxwbTo2OxaQPslenrnSdvXVqG4sF
+HHZ4mw3LTn3lmV3ej3stjvGmutCR8OYqzRSwHIgcAm2zlt7lvXId/PLz5BN/hrUP
+2TPb/khyamO/i36xvyGjYndKGvdmVP5tW4s46p0Nq9A96jhZuem+cdqnHT9g3vpO
+MPaRgXlBFzW2Oaw/NtNvK5i/3hK1Ifc1eVtXfsxJs097u+vy77+dTWmPW6pveNS9
+aNtvWdnTlGdayt/0Wfl41o/RNeWt2q3dROdw2CXghg92RExfTU6Re8LLg/tuEjVx
+YHWgKt6Qdbf2KX/UT8WNT8+VWBr1byd4vUmXzy2tzBTFdNXcOBEy/9LR5opTqaUr
+kxpfRavuYFyqb69n/tfKbzK+76+qHwjqe6KmrkO/YKl9LrV6D0/MWX34z0J2X1Bw
+/92IvjvJqYWfxB/drE9r0mli4wMmqiftFz/d1d2ZEzkzc//88sxC52DFzuofrr0y
+Vwt8+sMXYmd3xh+ZOtJA981lem5Ik5ZX+8eFY0nnFy9d22c/95C/t2XiLw==
+=VI5f
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/zmwangx
+
+==================================================================
