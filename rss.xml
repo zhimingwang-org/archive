@@ -1,11 +1,11 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><atom:link href="http://zmwangx.github.io/rss.xml" rel="self" type="application/rss+xml"/><title>dl? cmplnts?</title><link>http://zmwangx.github.io/</link><description>Zhiming Wang's personal blog</description><language>en-us</language><managingEditor>zmwangx@gmail.com (Zhiming Wang)</managingEditor><webMaster>zmwangx@gmail.com (Zhiming Wang)</webMaster><pubDate>Wed, 22 Jul 2015 23:05:23 GMT</pubDate><lastBuildDate>Wed, 22 Jul 2015 23:05:23 GMT</lastBuildDate><generator>pyblog (https://github.com/zmwangx/zmwangx.github.io)</generator><docs>https://validator.w3.org/feed/docs/rss2.html</docs><image><url>http://zmwangx.github.io/img/icon-100.png</url><title>dl? cmplnts?</title><link>http://zmwangx.github.io/</link><width>100</width><height>100</height></image><item><title>GitHub experimental attachment formats: PDF, DOCX and PPTX!?!</title><link>http://zmwangx.github.io/blog/2015-07-19-github-experimental-attachment-formats-pdf-docx-and-pptx.html</link><description><![CDATA[
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><atom:link href="http://zmwangx.github.io/rss.xml" rel="self" type="application/rss+xml"/><title>dl? cmplnts?</title><link>http://zmwangx.github.io/</link><description>Zhiming Wang's personal blog</description><language>en-us</language><managingEditor>zmwangx@gmail.com (Zhiming Wang)</managingEditor><webMaster>zmwangx@gmail.com (Zhiming Wang)</webMaster><pubDate>Thu, 23 Jul 2015 17:41:31 GMT</pubDate><lastBuildDate>Thu, 23 Jul 2015 17:41:31 GMT</lastBuildDate><generator>pyblog (https://github.com/zmwangx/zmwangx.github.io)</generator><docs>https://validator.w3.org/feed/docs/rss2.html</docs><image><url>http://zmwangx.github.io/img/icon-100.png</url><title>dl? cmplnts?</title><link>http://zmwangx.github.io/</link><width>100</width><height>100</height></image><item><title>GitHub experimental attachment formats: PDF, DOCX and PPTX!?!</title><link>http://zmwangx.github.io/blog/2015-07-19-github-experimental-attachment-formats-pdf-docx-and-pptx.html</link><description><![CDATA[
 
 <p>I was browsing <a href="https://github.com/github/hub">github/hub</a>, and noticed something funny in the issue tracker:</p>
 <blockquote>
 <p>Attach more than just images: Now you can attach PDF, <strong>Word</strong>, and <strong>PowerPoint</strong> files to your comments on Issues and Pull Requests. This experimental feature is only available to some repositories.<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-07-19-github-experimental-attachment-formats-pdf-docx-and-pptx.html#fn1" id="fnref1"><sup>1</sup></a></p>
 </blockquote>
 <div class="figure">
-<img alt='"Attach more than just images: Now you can attach PDF, Word, and PowerPoint files to your comments on Issues and Pull Requests." WOW, JUST WOW.' src="http://zmwangx.github.io/img/20150719-github-attachment-new-formats.png"/>
+<a href="http://zmwangx.github.io/img/20150719-github-attachment-new-formats.png" target="_blank"><img alt='"Attach more than just images: Now you can attach PDF, Word, and PowerPoint files to your comments on Issues and Pull Requests." WOW, JUST WOW.' src="http://zmwangx.github.io/img/20150719-github-attachment-new-formats.png"/></a>
 <p class="caption">"Attach more than just images: Now you can attach PDF, Word, and PowerPoint files to your comments on Issues and Pull Requests." WOW, JUST WOW.</p>
 </div>
 <p>For a moment I wondered if today's April Fools', but apparently it isn't. Which makes me wonder: is GitHub expanding its customer base to grandparents? Or is this a heavily demanded feature on GitHub Enterprise by nontechnical managers and sales personnel? Attaching PDF to issues and PRs is already laughable enough; I just can't imagine any developer asking for Microsoft Office support. I mean, what should we do with those? Download those crap, wait ten minutes for Microsoft applications to launch, just to read a few pages of text? I know GitHub is expanding to designers by rolling out features like PSD diffing<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-07-19-github-experimental-attachment-formats-pdf-docx-and-pptx.html#fn2" id="fnref2"><sup>2</sup></a> and Large File Storage (<a href="https://git-lfs.github.com/"><code>git-lfs</code></a>) for assets, so is this feature also targeting nontechnical designers? Not sure. <strong>At any rate, this "feature" is simply ridiculous.</strong></p>
@@ -102,7 +102,7 @@ Why I hate Microsoft Office
 <p>I submitted this blog to Apple via <a href="https://developer.apple.com/news-publisher/">News Publisher</a> a few days after the WWDC keynote, just to get a feel for the submission process. It was easy; basically I just needed to provide an <a href="http://zmwangx.github.io/atom.xml">Atom 1.0</a> or <a href="http://zmwangx.github.io/rss.xml">RSS 2.0</a> feed, both of which I already have anyway.<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-06-29-dl-cmplnts-in-apple-news.html#fn1" id="fnref1"><sup>1</sup></a> I was told at the end of the submission process that my submission would be reviewed.</p>
 <p>Just now, quite surprisingly, I got the acceptance email from News Publisher:</p>
 <div class="figure">
-<img alt="Acceptance email from News Publisher." src="http://zmwangx.github.io/img/20150629-news-publisher-acceptance-email.png"/>
+<a href="http://zmwangx.github.io/img/20150629-news-publisher-acceptance-email.png" target="_blank"><img alt="Acceptance email from News Publisher." src="http://zmwangx.github.io/img/20150629-news-publisher-acceptance-email.png"/></a>
 <p class="caption">Acceptance email from News Publisher.</p>
 </div>
 <p>The link to my channel appears to be</p>
@@ -113,7 +113,7 @@ Why I hate Microsoft Office
 <hr/>
 <p><em>June 30, 2015 update:</em> The page has been updated, and now the message makes much more sense:</p>
 <div class="figure">
-<img alt="Apple News is coming soon. This channel or topic is only available in Apple News." src="http://zmwangx.github.io/img/20150630-dl-cmplnts-on-apple-news.png"/>
+<a href="http://zmwangx.github.io/img/20150630-dl-cmplnts-on-apple-news.png" target="_blank"><img alt="Apple News is coming soon. This channel or topic is only available in Apple News." src="http://zmwangx.github.io/img/20150630-dl-cmplnts-on-apple-news.png"/></a>
 <p class="caption">Apple News is coming soon. This channel or topic is only available in Apple News.</p>
 </div>
 <div class="footnotes">
@@ -252,7 +252,7 @@ DELETE_AFTER <span class="op">=</span> datetime.timedelta(days<span class="op">=
 </blockquote>
 <p>Good to see <a href="http://zmwangx.github.io/blog/2015-05-06-searchable-settings-are-one-honking-great-idea-lets-do-more-of-those.html">my wish</a> granted.</p>
 <div class="figure">
-<img alt="A screenshot of iOS 9 Settings in action." src="http://zmwangx.github.io/img/20150627-macrumors-demo-ios9-searchable-settings.png"/>
+<a href="http://zmwangx.github.io/img/20150627-macrumors-demo-ios9-searchable-settings.png" target="_blank"><img alt="A screenshot of iOS 9 Settings in action." src="http://zmwangx.github.io/img/20150627-macrumors-demo-ios9-searchable-settings.png"/></a>
 <p class="caption">A screenshot of iOS 9 Settings in action.</p>
 </div>
 
@@ -298,11 +298,11 @@ DELETE_AFTER <span class="op">=</span> datetime.timedelta(days<span class="op">=
 
 <p>I just restarted my machine (in the process of planning a fresh OS re-install), and something in Chrome's UI immediately felt wrong. After a few moments I realized it was the star button (bookmark button) in the far right of the omnibox giving me the uneasy feeling &#8212; the old bookmark system is back. Broadcasting from stable channel, build 43.0.2357.124 on OS X.</p>
 <div class="figure">
-<img alt="What caught my immediate attention." src="http://zmwangx.github.io/img/20150610-omnibox-with-aged-star.png"/>
+<a href="http://zmwangx.github.io/img/20150610-omnibox-with-aged-star.png" target="_blank"><img alt="What caught my immediate attention." src="http://zmwangx.github.io/img/20150610-omnibox-with-aged-star.png"/></a>
 <p class="caption">What caught my immediate attention.</p>
 </div>
 <div class="figure">
-<img alt="The heart sinking feeling when I saw this again." src="http://zmwangx.github.io/img/20150610-old-bookmark-manager.png"/>
+<a href="http://zmwangx.github.io/img/20150610-old-bookmark-manager.png" target="_blank"><img alt="The heart sinking feeling when I saw this again." src="http://zmwangx.github.io/img/20150610-old-bookmark-manager.png"/></a>
 <p class="caption">The heart sinking feeling when I saw this again.</p>
 </div>
 <p>I went to flags and made sure "Enable the new bookmark app system" wasn't tempered with. It wasn't. Anyway, I changed it to "Enabled" and restarted Chrome. No go, still the old crap. So I Googled my way to <a href="https://productforums.google.com/forum/#!topic/chrome/mhIX5LB23As">the announcement</a>:</p>
@@ -371,24 +371,24 @@ Server: Apache</code></pre></div>
 <p>Of course, you miss a few jokes and random shots of Tim or Craig from the official liveblog, but hey, who don't like that official feel?<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-06-08-apple-turns-its-homepage-into-a-wwdc-liveblog.html#fn2" id="fnref2"><sup>2</sup></a></p>
 <p>Here are a few screenshots of today's liveblog. Unfortunately I only know some entry level JS, so I wasn't able to capture the entire page, which uses dynamic DOM based on one's position in the page.</p>
 <div class="figure">
-<img alt="The banner on Chrome." src="http://zmwangx.github.io/img/20150608-wwdc-2015-banner.png"/>
+<a href="http://zmwangx.github.io/img/20150608-wwdc-2015-banner.png" target="_blank"><img alt="The banner on Chrome." src="http://zmwangx.github.io/img/20150608-wwdc-2015-banner.png"/></a>
 <p class="caption">The banner on Chrome.</p>
 </div>
 <div class="figure">
-<img alt="Introducing OS X El Capitan, 960x981." src="http://zmwangx.github.io/img/20150608-wwdc-2015-liveblog-960x981.png"/>
+<a href="http://zmwangx.github.io/img/20150608-wwdc-2015-liveblog-960x981.png" target="_blank"><img alt="Introducing OS X El Capitan, 960x981." src="http://zmwangx.github.io/img/20150608-wwdc-2015-liveblog-960x981.png"/></a>
 <p class="caption">Introducing OS X El Capitan, 960x981.</p>
 </div>
 <div class="figure">
-<img alt="A fuller experience: 1920x1080." src="http://zmwangx.github.io/img/20150608-wwdc-2015-liveblog-1920x1080.png"/>
+<a href="http://zmwangx.github.io/img/20150608-wwdc-2015-liveblog-1920x1080.png" target="_blank"><img alt="A fuller experience: 1920x1080." src="http://zmwangx.github.io/img/20150608-wwdc-2015-liveblog-1920x1080.png"/></a>
 <p class="caption">A fuller experience: 1920x1080.</p>
 </div>
 <p>By the way, here are the full-page screenshots of <a href="http://www.apple.com/osx/elcapitan-preview/">OS X 10.11 El Capitan</a> and <a href="http://www.apple.com/ios/ios9-preview/">iOS 9</a> previews. <code>pageres</code> recently <a href="https://github.com/sindresorhus/pageres/issues/174">cannot render web fonts</a>, which is rather annoying, so I used <a href="https://github.com/mrcoles/full-page-screen-capture-chrome-extension">Full Page Screen Capture</a> to capture the shots. I then resized to 50% to reduce filesizes a bit.</p>
 <div class="figure">
-<img alt="OS X El Capitan" src="http://zmwangx.github.io/img/20150608-osx-el-capitan-preview-1920x1080-50%25.png"/>
+<a href="http://zmwangx.github.io/img/20150608-osx-el-capitan-preview-1920x1080-50%25.png" target="_blank"><img alt="OS X El Capitan" src="http://zmwangx.github.io/img/20150608-osx-el-capitan-preview-1920x1080-50%25.png"/></a>
 <p class="caption"><a href="http://www.apple.com/osx/elcapitan-preview/">OS X El Capitan</a></p>
 </div>
 <div class="figure">
-<img alt="iOS 9" src="http://zmwangx.github.io/img/20150608-ios-9-preview-1920x1080-50%25.png"/>
+<a href="http://zmwangx.github.io/img/20150608-ios-9-preview-1920x1080-50%25.png" target="_blank"><img alt="iOS 9" src="http://zmwangx.github.io/img/20150608-ios-9-preview-1920x1080-50%25.png"/></a>
 <p class="caption"><a href="http://www.apple.com/ios/ios9-preview/">iOS 9</a></p>
 </div>
 <div class="footnotes">
@@ -636,7 +636,7 @@ XELATEX_PROGRAM <span class="op">=</span> (<span class="vs">r"""</span>
 <p>By the way, the <code>zmwangx.colorout</code> module is <a href="https://github.com/zmwangx/pyzmwangx/blob/41b0bffaad9439888d68097a85c7aed594240283/zmwangx/colorout.py">here</a>, just to ease the printing of progress and errors to tty. You may safely remove all the <code>ccommand</code>, <code>cerr*</code> and <code>cprogress</code> calls.</p>
 <p>Here is an example wallpaper reflecting my current <code>~/dev/scripts</code>:</p>
 <div class="figure">
-<img alt="Command table wallpaper for my secondary display (MBP 13'' builtin display)." src="https://i.imgur.com/mccQu1e.png"/>
+<a href="https://i.imgur.com/mccQu1e.png" target="_blank"><img alt="Command table wallpaper for my secondary display (MBP 13'' builtin display)." src="https://i.imgur.com/mccQu1e.png"/></a>
 <p class="caption">Command table wallpaper for my secondary display (MBP 13'' builtin display).</p>
 </div>
 <div class="footnotes">
@@ -702,7 +702,7 @@ matching</code></pre></div>
 </ol>
 <p>Anyway, here it is, the <a href="https://github.com/zmwangx/storyboard/releases/tag/0.1">0.1</a> <a href="https://pypi.python.org/pypi/storyboard/0.1">release</a>. The badges certainly weren't bad:</p>
 <div class="figure">
-<img alt="storyboard's got quite a few badges of honor" src="https://i.imgur.com/miOoX5Y.png"/>
+<a href="https://i.imgur.com/miOoX5Y.png" target="_blank"><img alt="storyboard's got quite a few badges of honor" src="https://i.imgur.com/miOoX5Y.png"/></a>
 <p class="caption"><code>storyboard</code>'s got quite a few badges of honor</p>
 </div>
 <p>I created <a href="https://asciinema.org/a/19782">an asciinema recording</a> to commemorate the release (the original asciicast is <a href="https://dl.bintray.com/zmwangx/generic/storyboard-0.1-walkthrough-asciicast.json">here</a>):<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-05-09-storyboard-reached-01.html#fn2" id="fnref2"><sup>2</sup></a></p>
@@ -744,7 +744,7 @@ storyboard saved to: /tmp/storyboard-se3fbiif.jpg
 </code></pre>
 <p>Here's the actual image:</p>
 <div class="figure">
-<img alt="storyboard of storyboard-0.1-walkthrough.mov (1964x2694), generated with the default settings by storyboard 0.1" src="https://i.imgur.com/c3E3M8R.jpg"/>
+<a href="https://i.imgur.com/c3E3M8R.jpg" target="_blank"><img alt="storyboard of storyboard-0.1-walkthrough.mov (1964x2694), generated with the default settings by storyboard 0.1" src="https://i.imgur.com/c3E3M8R.jpg"/></a>
 <p class="caption">storyboard of <code>storyboard-0.1-walkthrough.mov</code> (1964x2694), generated with the default settings by <code>storyboard 0.1</code></p>
 </div>
 <p>Credit to <code>lolcat</code> for making my storyboard colorful.</p>
@@ -775,15 +775,15 @@ storyboard saved to: /tmp/storyboard-se3fbiif.jpg
 <p>In fact, it is somewhat surprising to me that searchable settings are only available in a handful of applications. Seriously, these days we can search for almost anything on our computers and anything on the grand grand Internet, but we can't search the pool of available settings? If we have an INI, Plist XML, JSON, YAML, or whatever text configuration/preference file, then we can search it. Why not in GUI applications?</p>
 <p>Of course, designing clear structures (with the principles and pitfalls discussed in the first half of this post) pays. But searchable settings are one honking great idea, and they are just long due in most applications. Come on, let's do more of them.</p>
 <div class="figure">
-<img alt="How Google designed their award-winning searchable settings." src="https://i.imgur.com/NazieEk.png"/>
+<a href="https://i.imgur.com/NazieEk.png" target="_blank"><img alt="How Google designed their award-winning searchable settings." src="https://i.imgur.com/NazieEk.png"/></a>
 <p class="caption">How Google designed their award-winning searchable settings.</p>
 </div>
 <div class="figure">
-<img alt="Apple." src="https://i.imgur.com/aKgW29W.png"/>
+<a href="https://i.imgur.com/aKgW29W.png" target="_blank"><img alt="Apple." src="https://i.imgur.com/aKgW29W.png"/></a>
 <p class="caption">Apple.</p>
 </div>
 <div class="figure">
-<img alt="Microsoft." src="https://i.imgur.com/7zJxr8P.png"/>
+<a href="https://i.imgur.com/7zJxr8P.png" target="_blank"><img alt="Microsoft." src="https://i.imgur.com/7zJxr8P.png"/></a>
 <p class="caption">Microsoft.</p>
 </div>
 <hr/>
@@ -873,7 +873,7 @@ storyboard saved to: /tmp/storyboard-se3fbiif.jpg
 
 <p>Octopress has been serving me for the past six months, during which even Octopress itself underwent major changes &#8212; in fact, <a href="https://github.com/octopress/octopress/releases/tag/v3.0.0">Octopress 3.0.0</a> was only released 3 days ago, which I never got to try. Anyway, Octopress's heavily colored interface grew old on me fairly quickly. I'm especially unhappy with the inline <code>&lt;code&gt;</code> tag, which is always wrapped in a white box and stands out too much (worse still, there's no visual difference when such a <code>&lt;code&gt;</code> tag is placed inside an <code>&lt;a&gt;</code> tag). Since I use inline code/verbatim a lot, many of my articles were littered with arbitrary boxes everywhere.</p>
 <div class="figure">
-<img alt="Farewell, Octopress." src="https://i.imgur.com/hxfSnOk.png"/>
+<a href="https://i.imgur.com/hxfSnOk.png" target="_blank"><img alt="Farewell, Octopress." src="https://i.imgur.com/hxfSnOk.png"/></a>
 <p class="caption">Farewell, Octopress.</p>
 </div>
 <p>Apparently I need something simpler. Because</p>
@@ -894,7 +894,7 @@ storyboard saved to: /tmp/storyboard-se3fbiif.jpg
 <p>Sigh.</p>
 <p>Anyway, here is my new shiny blog.</p>
 <div class="figure">
-<img alt="Welcome to the completely revamped dl? cmplnts?" src="https://i.imgur.com/VS5f9eJ.png"/>
+<a href="https://i.imgur.com/VS5f9eJ.png" target="_blank"><img alt="Welcome to the completely revamped dl? cmplnts?" src="https://i.imgur.com/VS5f9eJ.png"/></a>
 <p class="caption">Welcome to the completely revamped dl? cmplnts?</p>
 </div>
 <p>It looks ten times better than Octopress, and ever builds much faster than Octopress<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html#fn3" id="fnref3"><sup>3</sup></a>. As a bonus, the codebase is so small that it's super trivial to hack (no, not <em>that</em> hack).</p>
