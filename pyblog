@@ -605,16 +605,23 @@ def _pre_tag_insert_line_numbers(soup, pre_tag):
         pre_tag.code.append(ln_tag)
 
 
-def number_code_lines(htmlfilepath):
+def number_code_lines(soup):
     """Insert line numbers to preformatted code blocks."""
+    for pre_tag in soup.find_all("pre"):
+        if ((pre_tag.code is None or "class" not in pre_tag.attrs or
+             not "sourceCode" in pre_tag["class"])):
+            # not really a block of source code
+            continue
+        _pre_tag_insert_line_numbers(soup, pre_tag)
+
+
+def postprocess_html_file(htmlfilepath):
+    """Perform a series of postprocessing to an HTML file."""
     with open(htmlfilepath, "r+", encoding="utf-8") as htmlfileobj:
         soup = bs4.BeautifulSoup(htmlfileobj.read(), "lxml")
-        for pre_tag in soup.find_all("pre"):
-            if ((pre_tag.code is None or "class" not in pre_tag.attrs or
-                 not "sourceCode" in pre_tag["class"])):
-                # not really a block of source code
-                continue
-            _pre_tag_insert_line_numbers(soup, pre_tag)
+
+        # a series of postprocessing (extensible)
+        number_code_lines(soup)
 
         # write back
         htmlfileobj.seek(0)
@@ -722,7 +729,8 @@ def generate_blog(fresh=False, report_total_errors=True):
                         failed_builds += 1
                         sys.stderr.write("error: failed to generate %s" %
                                          relpath)
-                    number_code_lines(dstpath)
+                    # postprocess generated HTML file
+                    postprocess_html_file(dstpath)
 
     if anything_modified:
         generate_index_and_feed()
