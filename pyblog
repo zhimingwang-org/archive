@@ -615,6 +615,16 @@ def number_code_lines(soup):
         _pre_tag_insert_line_numbers(soup, pre_tag)
 
 
+def link_img_tags(soup):
+    """Convert each <img> tag in <article> to a link to its original."""
+    if not soup.article:
+        return
+    for img_tag in soup.article.find_all("img"):
+        a_tag = soup.new_tag("a", href=img_tag["src"], target="_blank")
+        a_tag.insert(0, copy.copy(img_tag))
+        img_tag.replace_with(a_tag)
+
+
 def postprocess_html_file(htmlfilepath):
     """Perform a series of postprocessing to an HTML file."""
     with open(htmlfilepath, "r+", encoding="utf-8") as htmlfileobj:
@@ -622,6 +632,7 @@ def postprocess_html_file(htmlfilepath):
 
         # a series of postprocessing (extensible)
         number_code_lines(soup)
+        link_img_tags(soup)
 
         # write back
         htmlfileobj.seek(0)
