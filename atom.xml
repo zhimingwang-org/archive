@@ -1,4 +1,4 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zmwangx.github.io/atom.xml" rel="self" type="application/atom+xml"/><link href="http://zmwangx.github.io/" rel="alternate" type="text/html"/><updated>2015-07-23T23:51:21-07:00</updated><id>http://zmwangx.github.io/</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">GitHub experimental attachment formats: PDF, DOCX and PPTX!?!</title><link href="http://zmwangx.github.io/blog/2015-07-19-github-experimental-attachment-formats-pdf-docx-and-pptx.html"/><updated>2015-07-19T21:58:01-07:00</updated><id>http://zmwangx.github.io/blog/2015-07-19-github-experimental-attachment-formats-pdf-docx-and-pptx.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
+<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zmwangx.github.io/atom.xml" rel="self" type="application/atom+xml"/><link href="http://zmwangx.github.io/" rel="alternate" type="text/html"/><updated>2015-07-24T01:04:21-07:00</updated><id>http://zmwangx.github.io/</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">GitHub experimental attachment formats: PDF, DOCX and PPTX!?!</title><link href="http://zmwangx.github.io/blog/2015-07-19-github-experimental-attachment-formats-pdf-docx-and-pptx.html"/><updated>2015-07-19T21:58:01-07:00</updated><id>http://zmwangx.github.io/blog/2015-07-19-github-experimental-attachment-formats-pdf-docx-and-pptx.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>I was browsing <a href="https://github.com/github/hub">github/hub</a>, and noticed something funny in the issue tracker:</p>
 <blockquote>
@@ -59,10 +59,10 @@ Why I hate Microsoft Office
 <div class="footnotes">
 <hr/>
 <ol>
-<li id="fn1"><p>Bold by me.<a href="http://zmwangx.github.io/blog/2015-07-19-github-experimental-attachment-formats-pdf-docx-and-pptx.html#fnref1">&#8617;</a></p></li>
-<li id="fn2"><p>That's not even new; PSD viewing and diffing support has been around <a href="https://github.com/blog/1845-psd-viewing-diffing">for a year</a>.<a href="http://zmwangx.github.io/blog/2015-07-19-github-experimental-attachment-formats-pdf-docx-and-pptx.html#fnref2">&#8617;</a></p></li>
-<li id="fn3"><p>At least compared to Bugzilla, Trac, (the user-facing part of) Jira and FogBugz, SourceForge, Google Code (now closed), BitBucket, Savannah, GitLab, etc.<a href="http://zmwangx.github.io/blog/2015-07-19-github-experimental-attachment-formats-pdf-docx-and-pptx.html#fnref3">&#8617;</a></p></li>
-<li id="fn4"><p>Whether a file is plain text or binary is usually easy to check. Just look for the <code>NUL</code> character (<code>\000</code>).<a href="http://zmwangx.github.io/blog/2015-07-19-github-experimental-attachment-formats-pdf-docx-and-pptx.html#fnref4">&#8617;</a></p></li>
+<li id="fn1"><p>Bold by me.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-07-19-github-experimental-attachment-formats-pdf-docx-and-pptx.html#fnref1">&#8617;&#65038;</a></p></li>
+<li id="fn2"><p>That's not even new; PSD viewing and diffing support has been around <a href="https://github.com/blog/1845-psd-viewing-diffing">for a year</a>.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-07-19-github-experimental-attachment-formats-pdf-docx-and-pptx.html#fnref2">&#8617;&#65038;</a></p></li>
+<li id="fn3"><p>At least compared to Bugzilla, Trac, (the user-facing part of) Jira and FogBugz, SourceForge, Google Code (now closed), BitBucket, Savannah, GitLab, etc.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-07-19-github-experimental-attachment-formats-pdf-docx-and-pptx.html#fnref3">&#8617;&#65038;</a></p></li>
+<li id="fn4"><p>Whether a file is plain text or binary is usually easy to check. Just look for the <code>NUL</code> character (<code>\000</code>).<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-07-19-github-experimental-attachment-formats-pdf-docx-and-pptx.html#fnref4">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
 
@@ -93,7 +93,7 @@ Why I hate Microsoft Office
 <div class="footnotes">
 <hr/>
 <ol>
-<li id="fn1"><p>Mathias (<a href="https://github.com/mafredri">@mafredri</a>) is the author of the lovely <a href="https://github.com/mafredri/zsh-async">zsh-async</a> library, and a maintainer of <a href="https://github.com/sindresorhus/pure">sindresorhus/pure</a>. He forever revolutionalized <a href="https://github.com/zmwangx/prezto/blob/master/modules/prompt/functions/prompt_zmwangx_setup">my prompt</a>.<a href="http://zmwangx.github.io/blog/2015-07-15-zsh-save-stdout-stderr-and-return-value-of-command-to-different-variables-without-temp-file.html#fnref1">&#8617;</a></p></li>
+<li id="fn1"><p>Mathias (<a href="https://github.com/mafredri">@mafredri</a>) is the author of the lovely <a href="https://github.com/mafredri/zsh-async">zsh-async</a> library, and a maintainer of <a href="https://github.com/sindresorhus/pure">sindresorhus/pure</a>. He forever revolutionalized <a href="https://github.com/zmwangx/prezto/blob/master/modules/prompt/functions/prompt_zmwangx_setup">my prompt</a>.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-07-15-zsh-save-stdout-stderr-and-return-value-of-command-to-different-variables-without-temp-file.html#fnref1">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
 
@@ -119,8 +119,8 @@ Why I hate Microsoft Office
 <div class="footnotes">
 <hr/>
 <ol>
-<li id="fn1"><p>Of course my content isn't really optimized for the Apple News format, but why would I care.<a href="http://zmwangx.github.io/blog/2015-06-29-dl-cmplnts-in-apple-news.html#fnref1">&#8617;</a></p></li>
-<li id="fn2"><p>Or maybe they will only open up regular browser traffic after iOS 9 stable is released.<a href="http://zmwangx.github.io/blog/2015-06-29-dl-cmplnts-in-apple-news.html#fnref2">&#8617;</a></p></li>
+<li id="fn1"><p>Of course my content isn't really optimized for the Apple News format, but why would I care.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-29-dl-cmplnts-in-apple-news.html#fnref1">&#8617;&#65038;</a></p></li>
+<li id="fn2"><p>Or maybe they will only open up regular browser traffic after iOS 9 stable is released.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-29-dl-cmplnts-in-apple-news.html#fnref2">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
 
@@ -240,7 +240,7 @@ DELETE_AFTER <span class="op">=</span> datetime.timedelta(days<span class="op">=
 <div class="footnotes">
 <hr/>
 <ol>
-<li id="fn1"><p>Full disclosure: unlike many people, I'm not very obsessed with my phone, and I only have about two dozen third-party apps.<a href="http://zmwangx.github.io/blog/2015-06-27-automatically-clean-up-previous-mobile-applications.html#fnref1">&#8617;</a></p></li>
+<li id="fn1"><p>Full disclosure: unlike many people, I'm not very obsessed with my phone, and I only have about two dozen third-party apps.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-27-automatically-clean-up-previous-mobile-applications.html#fnref1">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
 
@@ -268,11 +268,11 @@ DELETE_AFTER <span class="op">=</span> datetime.timedelta(days<span class="op">=
 <div class="footnotes">
 <hr/>
 <ol>
-<li id="fn1"><p>In fact it already exceeded my original expectations &#8212; <code>pyonedrive</code> started out as a <a href="https://github.com/zmwangx/pyonedrive/blob/4d21308545ec1462c3892b9ca25300042f1ccb81/README.rst">bare bones batch uploader</a>.<a href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html#fnref1">&#8617;</a></p></li>
-<li id="fn2"><p>I never bothered to look at the API.<a href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html#fnref2">&#8617;</a></p></li>
-<li id="fn3"><p>E.g., for <code>you-get</code>, I wrote a wrapper with concurrency support and much more surrounding <code>you-get</code>'s <code>--url</code> option. (But honestly, for whatever reason, links provided by <code>flvcd.com</code> for Chinese video streaming sites are much better than those parsed by <code>you-get</code> in terms of download speed, so these days I almost use <code>flvcd.com</code>'s <code>BigRats</code> exclusively, except when it similarly can't pick up a reasonable speed, in which case I would grind with my <code>you-get</code> wrapper, which was designed exactly for grinding.)<a href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html#fnref3">&#8617;</a></p></li>
-<li id="fn4"><p>And DayOne's Markdown engine sucks, among other limitations, like the ridiculous one-image-per-entry.<a href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html#fnref4">&#8617;</a></p></li>
-<li id="fn5"><p>I used to use Xcode as a C++ IDE before I was introduced to the brave new world of command line wizardry.<a href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html#fnref5">&#8617;</a></p></li>
+<li id="fn1"><p>In fact it already exceeded my original expectations &#8212; <code>pyonedrive</code> started out as a <a href="https://github.com/zmwangx/pyonedrive/blob/4d21308545ec1462c3892b9ca25300042f1ccb81/README.rst">bare bones batch uploader</a>.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html#fnref1">&#8617;&#65038;</a></p></li>
+<li id="fn2"><p>I never bothered to look at the API.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html#fnref2">&#8617;&#65038;</a></p></li>
+<li id="fn3"><p>E.g., for <code>you-get</code>, I wrote a wrapper with concurrency support and much more surrounding <code>you-get</code>'s <code>--url</code> option. (But honestly, for whatever reason, links provided by <code>flvcd.com</code> for Chinese video streaming sites are much better than those parsed by <code>you-get</code> in terms of download speed, so these days I almost use <code>flvcd.com</code>'s <code>BigRats</code> exclusively, except when it similarly can't pick up a reasonable speed, in which case I would grind with my <code>you-get</code> wrapper, which was designed exactly for grinding.)<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html#fnref3">&#8617;&#65038;</a></p></li>
+<li id="fn4"><p>And DayOne's Markdown engine sucks, among other limitations, like the ridiculous one-image-per-entry.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html#fnref4">&#8617;&#65038;</a></p></li>
+<li id="fn5"><p>I used to use Xcode as a C++ IDE before I was introduced to the brave new world of command line wizardry.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html#fnref5">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
 
@@ -286,11 +286,11 @@ DELETE_AFTER <span class="op">=</span> datetime.timedelta(days<span class="op">=
 <div class="footnotes">
 <hr/>
 <ol>
-<li id="fn1"><p>In this case the campaign is too civilized to be called a shaming campaign.<a href="http://zmwangx.github.io/blog/2015-06-12-the-tip-of-the-iceberg.html#fnref1">&#8617;</a></p></li>
-<li id="fn2"><p>And I question if most shamers did.<a href="http://zmwangx.github.io/blog/2015-06-12-the-tip-of-the-iceberg.html#fnref2">&#8617;</a></p></li>
-<li id="fn3"><p>Note how I have to be distracted from writing to consider the wording that should have been subconscious, and eventually write in this style.<a href="http://zmwangx.github.io/blog/2015-06-12-the-tip-of-the-iceberg.html#fnref3">&#8617;</a></p></li>
-<li id="fn4"><p>Sometimes a certain group of people seek to redefine certain concepts or terms so that truths stated with older concepts or terms in mind are no longer true. That's fine. But before you label someone as an asshole, you have to realize that while you are free to embrace <em>your</em> modernity, some (if not most) people are just not as radical or as concerned about your topic, and they are just holding on to the truths and values they were taught.<a href="http://zmwangx.github.io/blog/2015-06-12-the-tip-of-the-iceberg.html#fnref4">&#8617;</a></p></li>
-<li id="fn5"><p>Yes, I'm among the one thousand.<a href="http://zmwangx.github.io/blog/2015-06-12-the-tip-of-the-iceberg.html#fnref5">&#8617;</a></p></li>
+<li id="fn1"><p>In this case the campaign is too civilized to be called a shaming campaign.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-12-the-tip-of-the-iceberg.html#fnref1">&#8617;&#65038;</a></p></li>
+<li id="fn2"><p>And I question if most shamers did.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-12-the-tip-of-the-iceberg.html#fnref2">&#8617;&#65038;</a></p></li>
+<li id="fn3"><p>Note how I have to be distracted from writing to consider the wording that should have been subconscious, and eventually write in this style.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-12-the-tip-of-the-iceberg.html#fnref3">&#8617;&#65038;</a></p></li>
+<li id="fn4"><p>Sometimes a certain group of people seek to redefine certain concepts or terms so that truths stated with older concepts or terms in mind are no longer true. That's fine. But before you label someone as an asshole, you have to realize that while you are free to embrace <em>your</em> modernity, some (if not most) people are just not as radical or as concerned about your topic, and they are just holding on to the truths and values they were taught.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-12-the-tip-of-the-iceberg.html#fnref4">&#8617;&#65038;</a></p></li>
+<li id="fn5"><p>Yes, I'm among the one thousand.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-12-the-tip-of-the-iceberg.html#fnref5">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
 
@@ -329,12 +329,12 @@ DELETE_AFTER <span class="op">=</span> datetime.timedelta(days<span class="op">=
 <div class="footnotes">
 <hr/>
 <ol>
-<li id="fn1"><p>There's actually a pretty big overlap between these two demographics.<a href="http://zmwangx.github.io/blog/2015-06-10-chrome-disappointment-the-shabby-and-boring-old-bookmark-system-from-stone-age-strikes-back.html#fnref1">&#8617;</a></p></li>
-<li id="fn2"><p>The giant blue search bar at the top is especially ridiculous.<a href="http://zmwangx.github.io/blog/2015-06-10-chrome-disappointment-the-shabby-and-boring-old-bookmark-system-from-stone-age-strikes-back.html#fnref2">&#8617;</a></p></li>
-<li id="fn3"><p>I didn't bother to switch to an earlier build just to take a screenshot of the visual system, so unfortunately there's no comparison here. But anyone who's been there knows what I'm saying.<a href="http://zmwangx.github.io/blog/2015-06-10-chrome-disappointment-the-shabby-and-boring-old-bookmark-system-from-stone-age-strikes-back.html#fnref3">&#8617;</a></p></li>
-<li id="fn4"><p>Unless one has hundreds of bookmarks in a single folder (which probably means some cleanup or refactoring is long overdue), the old layout is unlikely to be easier on the eyes or anything.<a href="http://zmwangx.github.io/blog/2015-06-10-chrome-disappointment-the-shabby-and-boring-old-bookmark-system-from-stone-age-strikes-back.html#fnref4">&#8617;</a></p></li>
-<li id="fn5"><p>Well, grandmas have one more thing to learn, I guess...<a href="http://zmwangx.github.io/blog/2015-06-10-chrome-disappointment-the-shabby-and-boring-old-bookmark-system-from-stone-age-strikes-back.html#fnref5">&#8617;</a></p></li>
-<li id="fn6"><p>In other news, Google dropped YouTube collections two weeks ago (<a href="https://support.google.com/youtube/answer/6233832?hl=en">May 26, 2015</a>), causing another round of agony. Also, subscriptions were all over the place once more, just like Google's project landscape.<a href="http://zmwangx.github.io/blog/2015-06-10-chrome-disappointment-the-shabby-and-boring-old-bookmark-system-from-stone-age-strikes-back.html#fnref6">&#8617;</a></p></li>
+<li id="fn1"><p>There's actually a pretty big overlap between these two demographics.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-10-chrome-disappointment-the-shabby-and-boring-old-bookmark-system-from-stone-age-strikes-back.html#fnref1">&#8617;&#65038;</a></p></li>
+<li id="fn2"><p>The giant blue search bar at the top is especially ridiculous.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-10-chrome-disappointment-the-shabby-and-boring-old-bookmark-system-from-stone-age-strikes-back.html#fnref2">&#8617;&#65038;</a></p></li>
+<li id="fn3"><p>I didn't bother to switch to an earlier build just to take a screenshot of the visual system, so unfortunately there's no comparison here. But anyone who's been there knows what I'm saying.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-10-chrome-disappointment-the-shabby-and-boring-old-bookmark-system-from-stone-age-strikes-back.html#fnref3">&#8617;&#65038;</a></p></li>
+<li id="fn4"><p>Unless one has hundreds of bookmarks in a single folder (which probably means some cleanup or refactoring is long overdue), the old layout is unlikely to be easier on the eyes or anything.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-10-chrome-disappointment-the-shabby-and-boring-old-bookmark-system-from-stone-age-strikes-back.html#fnref4">&#8617;&#65038;</a></p></li>
+<li id="fn5"><p>Well, grandmas have one more thing to learn, I guess...<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-10-chrome-disappointment-the-shabby-and-boring-old-bookmark-system-from-stone-age-strikes-back.html#fnref5">&#8617;&#65038;</a></p></li>
+<li id="fn6"><p>In other news, Google dropped YouTube collections two weeks ago (<a href="https://support.google.com/youtube/answer/6233832?hl=en">May 26, 2015</a>), causing another round of agony. Also, subscriptions were all over the place once more, just like Google's project landscape.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-10-chrome-disappointment-the-shabby-and-boring-old-bookmark-system-from-stone-age-strikes-back.html#fnref6">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
 
@@ -394,8 +394,8 @@ Server: Apache</code></pre></div>
 <div class="footnotes">
 <hr/>
 <ol>
-<li id="fn1"><p>The crappy live stream is still there, but thankfully you wouldn't see it if you're on a browser other than Safari. Just look the screenshot of the banner.<a href="http://zmwangx.github.io/blog/2015-06-08-apple-turns-its-homepage-into-a-wwdc-liveblog.html#fnref1">&#8617;</a></p></li>
-<li id="fn2"><p>Yeah, I know some people don't; but those people are not likely to be Apple fans either.<a href="http://zmwangx.github.io/blog/2015-06-08-apple-turns-its-homepage-into-a-wwdc-liveblog.html#fnref2">&#8617;</a></p></li>
+<li id="fn1"><p>The crappy live stream is still there, but thankfully you wouldn't see it if you're on a browser other than Safari. Just look the screenshot of the banner.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-08-apple-turns-its-homepage-into-a-wwdc-liveblog.html#fnref1">&#8617;&#65038;</a></p></li>
+<li id="fn2"><p>Yeah, I know some people don't; but those people are not likely to be Apple fans either.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-08-apple-turns-its-homepage-into-a-wwdc-liveblog.html#fnref2">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
 
@@ -438,9 +438,9 @@ Server: Apache</code></pre></div>
 <div class="footnotes">
 <hr/>
 <ol>
-<li id="fn1"><p>This problem isn't limited to reviews; it also applies to, for instance, approved edits. My <em>tag edits</em> (with explanations) got rejected quite a few times because the reviewers clearly didn't understand the topic &#8212; e.g., some morons assume that command line problems equal Bash problems.<a href="http://zmwangx.github.io/blog/2015-06-07-stackoverflow-review-system-is-completely-bs.html#fnref1">&#8617;</a></p></li>
-<li id="fn2"><p>This is actually a good assumption, because this is the case at least 50% of the time from my limited experience. But one shouldn't operate under this assumption, especially if one doesn't understand the topic.<a href="http://zmwangx.github.io/blog/2015-06-07-stackoverflow-review-system-is-completely-bs.html#fnref2">&#8617;</a></p></li>
-<li id="fn3"><p>I think I asked quite a few stupid questions back in the days, and now I'm totally ashamed of them. Insterestingly, some of those questions are my highest voted ones and got me quite some reps (compared to my total rep &#8212; I'm by no means a high rep user). See <a href="http://michael.richter.name/blogs/why-i-no-longer-contribute-to-stackoverflow"><em>Why I no longer contribute to StackOverflow</em></a> for a thorough discussion of the broken rep system and its disastrous effects.<a href="http://zmwangx.github.io/blog/2015-06-07-stackoverflow-review-system-is-completely-bs.html#fnref3">&#8617;</a></p></li>
+<li id="fn1"><p>This problem isn't limited to reviews; it also applies to, for instance, approved edits. My <em>tag edits</em> (with explanations) got rejected quite a few times because the reviewers clearly didn't understand the topic &#8212; e.g., some morons assume that command line problems equal Bash problems.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-07-stackoverflow-review-system-is-completely-bs.html#fnref1">&#8617;&#65038;</a></p></li>
+<li id="fn2"><p>This is actually a good assumption, because this is the case at least 50% of the time from my limited experience. But one shouldn't operate under this assumption, especially if one doesn't understand the topic.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-07-stackoverflow-review-system-is-completely-bs.html#fnref2">&#8617;&#65038;</a></p></li>
+<li id="fn3"><p>I think I asked quite a few stupid questions back in the days, and now I'm totally ashamed of them. Insterestingly, some of those questions are my highest voted ones and got me quite some reps (compared to my total rep &#8212; I'm by no means a high rep user). See <a href="http://michael.richter.name/blogs/why-i-no-longer-contribute-to-stackoverflow"><em>Why I no longer contribute to StackOverflow</em></a> for a thorough discussion of the broken rep system and its disastrous effects.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-07-stackoverflow-review-system-is-completely-bs.html#fnref3">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
 
@@ -468,7 +468,7 @@ Server: Apache</code></pre></div>
 <div class="footnotes">
 <hr/>
 <ol>
-<li id="fn1"><p>I'm pretty paranoid about documenting things.<a href="http://zmwangx.github.io/blog/2015-05-30-using-a-personal-helper-package-in-everyday-scripting.html#fnref1">&#8617;</a></p></li>
+<li id="fn1"><p>I'm pretty paranoid about documenting things.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-30-using-a-personal-helper-package-in-everyday-scripting.html#fnref1">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
 
@@ -484,9 +484,9 @@ Server: Apache</code></pre></div>
 <div class="footnotes">
 <hr/>
 <ol>
-<li id="fn1"><p>As I see no obvious way to replace the switch in store. My intuition was later confirmed.<a href="http://zmwangx.github.io/blog/2015-05-29-apples-customer-service-is-still-the-best-plus-an-authy-horror-story.html#fnref1">&#8617;</a></p></li>
-<li id="fn2"><p>The first comment below that post is mine.<a href="http://zmwangx.github.io/blog/2015-05-29-apples-customer-service-is-still-the-best-plus-an-authy-horror-story.html#fnref2">&#8617;</a></p></li>
-<li id="fn3"><p>I have a Coinbase account and probably around 0.01 BTC in my wallet, but I don't really use bitcoins. At the time I signed up for two-factor auth on Coinbase, Authy seemed to be only supported system; however, I just signed in again and it seems that Coinbase is now supporting Authenticator also. Whatever the case, Authy is practically dead for me.<a href="http://zmwangx.github.io/blog/2015-05-29-apples-customer-service-is-still-the-best-plus-an-authy-horror-story.html#fnref3">&#8617;</a></p></li>
+<li id="fn1"><p>As I see no obvious way to replace the switch in store. My intuition was later confirmed.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-29-apples-customer-service-is-still-the-best-plus-an-authy-horror-story.html#fnref1">&#8617;&#65038;</a></p></li>
+<li id="fn2"><p>The first comment below that post is mine.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-29-apples-customer-service-is-still-the-best-plus-an-authy-horror-story.html#fnref2">&#8617;&#65038;</a></p></li>
+<li id="fn3"><p>I have a Coinbase account and probably around 0.01 BTC in my wallet, but I don't really use bitcoins. At the time I signed up for two-factor auth on Coinbase, Authy seemed to be only supported system; however, I just signed in again and it seems that Coinbase is now supporting Authenticator also. Whatever the case, Authy is practically dead for me.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-29-apples-customer-service-is-still-the-best-plus-an-authy-horror-story.html#fnref3">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
 
@@ -642,8 +642,8 @@ XELATEX_PROGRAM <span class="op">=</span> (<span class="vs">r"""</span>
 <div class="footnotes">
 <hr/>
 <ol>
-<li id="fn1"><p>The <code>~/dev</code> directory stands for development, and contains all my source code and almost all local builds. The point is by having a <code>~/dev</code> directory, I no longer need to have <code>bin</code>, <code>include</code>, <code>lib</code>, and <code>share</code> in my <code>HOME</code>, thus saving a few slots. Backing up and restoring is also slightly easier.<a href="http://zmwangx.github.io/blog/2015-05-22-using-a-command-table-as-wallpaper.html#fnref1">&#8617;</a></p></li>
-<li id="fn2"><p>Yeah, I know it's a shitty script, so don't nitpick on style problems.<a href="http://zmwangx.github.io/blog/2015-05-22-using-a-command-table-as-wallpaper.html#fnref2">&#8617;</a></p></li>
+<li id="fn1"><p>The <code>~/dev</code> directory stands for development, and contains all my source code and almost all local builds. The point is by having a <code>~/dev</code> directory, I no longer need to have <code>bin</code>, <code>include</code>, <code>lib</code>, and <code>share</code> in my <code>HOME</code>, thus saving a few slots. Backing up and restoring is also slightly easier.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-22-using-a-command-table-as-wallpaper.html#fnref1">&#8617;&#65038;</a></p></li>
+<li id="fn2"><p>Yeah, I know it's a shitty script, so don't nitpick on style problems.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-22-using-a-command-table-as-wallpaper.html#fnref2">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
 
@@ -675,7 +675,7 @@ matching</code></pre></div>
 <div class="footnotes">
 <hr/>
 <ol>
-<li id="fn1"><p>Here, "a literal slash character" also applies to one that comes from tilde expansion, parameter expansion or command substitution, since they are performed before filename expansion in Bash.<a href="http://zmwangx.github.io/blog/2015-05-19-bash-the-special-slash-character-in-filename-expansion.html#fnref1">&#8617;</a></p></li>
+<li id="fn1"><p>Here, "a literal slash character" also applies to one that comes from tilde expansion, parameter expansion or command substitution, since they are performed before filename expansion in Bash.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-19-bash-the-special-slash-character-in-filename-expansion.html#fnref1">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
 
@@ -751,8 +751,8 @@ storyboard saved to: /tmp/storyboard-se3fbiif.jpg
 <div class="footnotes">
 <hr/>
 <ol>
-<li id="fn1"><p>I was implementing stuff that I wouldn't ever need myself &#8212; for completeness, and that was not rewarding in the slightest.<a href="http://zmwangx.github.io/blog/2015-05-09-storyboard-reached-01.html#fnref1">&#8617;</a></p></li>
-<li id="fn2"><p>The screencast's color scheme is actually off in some places, since in my iTerm2 bold font is displayed as bold, not bright.<a href="http://zmwangx.github.io/blog/2015-05-09-storyboard-reached-01.html#fnref2">&#8617;</a></p></li>
+<li id="fn1"><p>I was implementing stuff that I wouldn't ever need myself &#8212; for completeness, and that was not rewarding in the slightest.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-09-storyboard-reached-01.html#fnref1">&#8617;&#65038;</a></p></li>
+<li id="fn2"><p>The screencast's color scheme is actually off in some places, since in my iTerm2 bold font is displayed as bold, not bright.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-09-storyboard-reached-01.html#fnref2">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
 
@@ -792,11 +792,11 @@ storyboard saved to: /tmp/storyboard-se3fbiif.jpg
 <div class="footnotes">
 <hr/>
 <ol>
-<li id="fn1"><p>Thinking about <a href="http://nshipster.com/namespacing/"><code>NSHell</code></a> and the like kinda creeps me out, although there are quite some reasonable pro-class prefix arguments.<a href="http://zmwangx.github.io/blog/2015-05-06-searchable-settings-are-one-honking-great-idea-lets-do-more-of-those.html#fnref1">&#8617;</a></p></li>
-<li id="fn2"><p>Which you should: what's the point of Find My iPhone when the thief can disable it in Location Services?<a href="http://zmwangx.github.io/blog/2015-05-06-searchable-settings-are-one-honking-great-idea-lets-do-more-of-those.html#fnref2">&#8617;</a></p></li>
-<li id="fn3"><p>This brings another problem of the interface design of iOS Settings. When restricted, one cannot make modifications to "Privacy-&gt;Location Services", and instead has to go to "General-&gt;Restrictions-&gt;Location Services". What's the point? "Restrictions" is about <em>setting restrictions</em>, not about <em>editing restricted items or sections in a central place exclusively"</em>. Ideally one should be able to tap on a lock icon in "Privacy-&gt;Location Services" and enter the restrictions passcode to unlock it, like what we find in OS X's System Preferences.<a href="http://zmwangx.github.io/blog/2015-05-06-searchable-settings-are-one-honking-great-idea-lets-do-more-of-those.html#fnref3">&#8617;</a></p></li>
-<li id="fn4"><p>This is of course just a metaphor; I'm not dumb enough to be unable to remember <code>shutil.rmtree</code>.<a href="http://zmwangx.github.io/blog/2015-05-06-searchable-settings-are-one-honking-great-idea-lets-do-more-of-those.html#fnref4">&#8617;</a></p></li>
-<li id="fn5"><p>Which is not at all surprising, since Apple's very own OS X has already set an example.<a href="http://zmwangx.github.io/blog/2015-05-06-searchable-settings-are-one-honking-great-idea-lets-do-more-of-those.html#fnref5">&#8617;</a></p></li>
+<li id="fn1"><p>Thinking about <a href="http://nshipster.com/namespacing/"><code>NSHell</code></a> and the like kinda creeps me out, although there are quite some reasonable pro-class prefix arguments.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-06-searchable-settings-are-one-honking-great-idea-lets-do-more-of-those.html#fnref1">&#8617;&#65038;</a></p></li>
+<li id="fn2"><p>Which you should: what's the point of Find My iPhone when the thief can disable it in Location Services?<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-06-searchable-settings-are-one-honking-great-idea-lets-do-more-of-those.html#fnref2">&#8617;&#65038;</a></p></li>
+<li id="fn3"><p>This brings another problem of the interface design of iOS Settings. When restricted, one cannot make modifications to "Privacy-&gt;Location Services", and instead has to go to "General-&gt;Restrictions-&gt;Location Services". What's the point? "Restrictions" is about <em>setting restrictions</em>, not about <em>editing restricted items or sections in a central place exclusively"</em>. Ideally one should be able to tap on a lock icon in "Privacy-&gt;Location Services" and enter the restrictions passcode to unlock it, like what we find in OS X's System Preferences.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-06-searchable-settings-are-one-honking-great-idea-lets-do-more-of-those.html#fnref3">&#8617;&#65038;</a></p></li>
+<li id="fn4"><p>This is of course just a metaphor; I'm not dumb enough to be unable to remember <code>shutil.rmtree</code>.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-06-searchable-settings-are-one-honking-great-idea-lets-do-more-of-those.html#fnref4">&#8617;&#65038;</a></p></li>
+<li id="fn5"><p>Which is not at all surprising, since Apple's very own OS X has already set an example.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-06-searchable-settings-are-one-honking-great-idea-lets-do-more-of-those.html#fnref5">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
 
@@ -863,9 +863,9 @@ storyboard saved to: /tmp/storyboard-se3fbiif.jpg
 <div class="footnotes">
 <hr/>
 <ol>
-<li id="fn1"><p><a href="https://hg.python.org/cpython/file/1320ec1b24af/Modules/_multiprocessing">CPython's <code>multiprocessing</code> is written in C</a>, so the behavior might depend on the OS. I'm talking about OS X here. I haven't inspected and won't inspect the C source code.<a href="http://zmwangx.github.io/blog/2015-05-05-graceful-handling-of-sigint-when-using-pythons-multiprocessingprocess.html#fnref1">&#8617;</a></p></li>
-<li id="fn2"><p>That's awfully naive and layman-sounding, I know, but I <em>am</em> almost a layman when it comes to system-level programming.<a href="http://zmwangx.github.io/blog/2015-05-05-graceful-handling-of-sigint-when-using-pythons-multiprocessingprocess.html#fnref2">&#8617;</a></p></li>
-<li id="fn3"><p>That's assuming your build isn't interdependent in which any single failure corrupts everything. In that case, what can we do? I honestly see no way of injecting signal handling in <code>subprocess.Popen</code>.<a href="http://zmwangx.github.io/blog/2015-05-05-graceful-handling-of-sigint-when-using-pythons-multiprocessingprocess.html#fnref3">&#8617;</a></p></li>
+<li id="fn1"><p><a href="https://hg.python.org/cpython/file/1320ec1b24af/Modules/_multiprocessing">CPython's <code>multiprocessing</code> is written in C</a>, so the behavior might depend on the OS. I'm talking about OS X here. I haven't inspected and won't inspect the C source code.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-05-graceful-handling-of-sigint-when-using-pythons-multiprocessingprocess.html#fnref1">&#8617;&#65038;</a></p></li>
+<li id="fn2"><p>That's awfully naive and layman-sounding, I know, but I <em>am</em> almost a layman when it comes to system-level programming.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-05-graceful-handling-of-sigint-when-using-pythons-multiprocessingprocess.html#fnref2">&#8617;&#65038;</a></p></li>
+<li id="fn3"><p>That's assuming your build isn't interdependent in which any single failure corrupts everything. In that case, what can we do? I honestly see no way of injecting signal handling in <code>subprocess.Popen</code>.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-05-graceful-handling-of-sigint-when-using-pythons-multiprocessingprocess.html#fnref3">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
 
@@ -901,9 +901,9 @@ storyboard saved to: /tmp/storyboard-se3fbiif.jpg
 <div class="footnotes">
 <hr/>
 <ol>
-<li id="fn1"><p>Well, Pandoc is heavy-machinery, but it's both generic and self-contained, unlike a specialized blogging platform.<a href="http://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html#fnref1">&#8617;</a></p></li>
-<li id="fn2"><p>Which is fine since I don't expect anyone else to use it, anyway.<a href="http://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html#fnref2">&#8617;</a></p></li>
-<li id="fn3"><p>I have the impression that a complete build of all posts (about fifty of them) with <code>pyblog</code> is faster than regenerating for a single modified post in Octopress. That's in the context of absolutely no categories; when you have a dozen or more categories, Octopress slows down to a halt.<a href="http://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html#fnref3">&#8617;</a></p></li>
+<li id="fn1"><p>Well, Pandoc is heavy-machinery, but it's both generic and self-contained, unlike a specialized blogging platform.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html#fnref1">&#8617;&#65038;</a></p></li>
+<li id="fn2"><p>Which is fine since I don't expect anyone else to use it, anyway.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html#fnref2">&#8617;&#65038;</a></p></li>
+<li id="fn3"><p>I have the impression that a complete build of all posts (about fifty of them) with <code>pyblog</code> is faster than regenerating for a single modified post in Octopress. That's in the context of absolutely no categories; when you have a dozen or more categories, Octopress slows down to a halt.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html#fnref3">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
 
@@ -1019,9 +1019,9 @@ correction.zsh  git.zsh          key-bindings.zsh  prompt_info_functions.zsh  th
 <div class="footnotes">
 <hr/>
 <ol>
-<li id="fn1"><p>This is not entirely true. I use <a href="https://github.com/felipec/git-remote-bzr">git-remote-bzr</a> when I have to clone a Bazaar repo for some reason.<a href="http://zmwangx.github.io/blog/2015-05-03-why-oh-my-zsh-is-completely-broken.html#fnref1">&#8617;</a></p></li>
-<li id="fn2"><p>Note that outside the core, there are additional plugins for <code>git</code> and <code>nvm</code>. Oh well.<a href="http://zmwangx.github.io/blog/2015-05-03-why-oh-my-zsh-is-completely-broken.html#fnref2">&#8617;</a></p></li>
-<li id="fn3"><p>Whether aliases defined in a plugin (e.g. for <code>git</code>) should be loaded can be easily controlled via a switch.<a href="http://zmwangx.github.io/blog/2015-05-03-why-oh-my-zsh-is-completely-broken.html#fnref3">&#8617;</a></p></li>
+<li id="fn1"><p>This is not entirely true. I use <a href="https://github.com/felipec/git-remote-bzr">git-remote-bzr</a> when I have to clone a Bazaar repo for some reason.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-03-why-oh-my-zsh-is-completely-broken.html#fnref1">&#8617;&#65038;</a></p></li>
+<li id="fn2"><p>Note that outside the core, there are additional plugins for <code>git</code> and <code>nvm</code>. Oh well.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-03-why-oh-my-zsh-is-completely-broken.html#fnref2">&#8617;&#65038;</a></p></li>
+<li id="fn3"><p>Whether aliases defined in a plugin (e.g. for <code>git</code>) should be loaded can be easily controlled via a switch.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-03-why-oh-my-zsh-is-completely-broken.html#fnref3">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
 
