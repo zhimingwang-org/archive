@@ -625,6 +625,18 @@ def link_img_tags(soup):
         img_tag.replace_with(a_tag)
 
 
+def process_footnote_backlinks(soup):
+    """Add class attribute "footnotes-backlink" to each footnote backlink."""
+    for footnotes in soup.find_all("div", attrs={"class": "footnotes"}):
+        for fn_a_tag in footnotes.find_all(lambda tag:
+                                           tag.name == "a" and
+                                           tag.has_attr("href") and
+                                           tag["href"].startswith("#fnref") and
+                                           tag.string == "\u21A9"):  # U+21A9: LEFTWARDS ARROW WITH HOOK
+            fn_a_tag["class"] = "footnotes-backlink"
+            fn_a_tag.string = "\u21A9\uFE0E" # U+FE0E: VARIATION SELECTOR-15
+
+
 def postprocess_html_file(htmlfilepath):
     """Perform a series of postprocessing to an HTML file."""
     with open(htmlfilepath, "r+", encoding="utf-8") as htmlfileobj:
@@ -633,6 +645,7 @@ def postprocess_html_file(htmlfilepath):
         # a series of postprocessing (extensible)
         number_code_lines(soup)
         link_img_tags(soup)
+        process_footnote_backlinks(soup)
 
         # write back
         htmlfileobj.seek(0)

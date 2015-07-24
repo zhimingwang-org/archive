@@ -133,6 +133,19 @@ div.footnotes code {
     font-size: 0.87em;
 }
 
+a.footnotes-backlink {
+    margin-left: 0.2em;
+    font-size: 1.2em;
+    vertical-align: -0.2em;
+    color: #bbb;
+    text-decoration: none;
+}
+
+a.footnotes-backlink:hover {
+    background-color: #bbb;
+    color: #fff;
+}
+
 img {
     display: block;
     max-width: 100%;
