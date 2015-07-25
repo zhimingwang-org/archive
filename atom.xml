@@ -1,4 +1,26 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zmwangx.github.io/atom.xml" rel="self" type="application/atom+xml"/><link href="http://zmwangx.github.io/" rel="alternate" type="text/html"/><updated>2015-07-25T11:21:55-07:00</updated><id>http://zmwangx.github.io/</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">GitHub experimental attachment formats: PDF, DOCX and PPTX!?!</title><link href="http://zmwangx.github.io/blog/2015-07-19-github-experimental-attachment-formats-pdf-docx-and-pptx.html"/><updated>2015-07-19T21:58:01-07:00</updated><id>http://zmwangx.github.io/blog/2015-07-19-github-experimental-attachment-formats-pdf-docx-and-pptx.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
+<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zmwangx.github.io/atom.xml" rel="self" type="application/atom+xml"/><link href="http://zmwangx.github.io/" rel="alternate" type="text/html"/><updated>2015-07-25T11:51:20-07:00</updated><id>http://zmwangx.github.io/</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">dl? cmplnts?'s web doesn't suck</title><link href="http://zmwangx.github.io/blog/2015-07-25-dl-cmplntss-web-doesnt-suck.html"/><updated>2015-07-25T11:31:54-07:00</updated><id>http://zmwangx.github.io/blog/2015-07-25-dl-cmplntss-web-doesnt-suck.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
+
+<p>I was reading <a href="http://blog.lmorchard.com/2015/07/22/the-verge-web-sucks/">Les Orchard's <em>The Verge's web sucks</em></a> just now, and inspired by his dignostics of his various daily reads, I also ran the performance meter on my very own blog. Fortunately, it doesn't suck<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-07-25-dl-cmplntss-web-doesnt-suck.html#fn1" id="fnref1"><sup>1</sup></a>:</p>
+<blockquote>
+<p>13 requests, 77.88 KB, 0.84s.</p>
+</blockquote>
+<p>Moreover, apart from a Google Analytics snippet and the occasional embedding with a <code>&lt;script&gt;</code> tag, this site is entirely static.</p>
+<div class="figure">
+<a href="http://zmwangx.github.io/img/20150725-performance-of-my-blog-requests.png" target="_blank"><img alt="HTTP requests upon visiting https://zmwangx.github.io/ (commit 3af1eaf)." src="http://zmwangx.github.io/img/20150725-performance-of-my-blog-requests.png"/></a>
+<p class="caption">HTTP requests upon visiting <a class="uri" href="https://zmwangx.github.io/">https://zmwangx.github.io/</a> (commit <a href="https://github.com/zmwangx/zmwangx.github.io/tree/3af1eafde5afa9fbb4255135191d6d232cf81cee">3af1eaf</a>).</p>
+</div>
+<div class="figure">
+<a href="http://zmwangx.github.io/img/20150725-performance-of-my-blog-breakdown.png" target="_blank"><img alt="The breakdown." src="http://zmwangx.github.io/img/20150725-performance-of-my-blog-breakdown.png"/></a>
+<p class="caption">The breakdown.</p>
+</div>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>Diagnostics generated on Firefox Developer Edition 41.0a2.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-07-25-dl-cmplntss-web-doesnt-suck.html#fnref1">&#8617;&#65038;</a></p></li>
+</ol>
+</div>
+
+]]></content></entry><entry><title type="html">GitHub experimental attachment formats: PDF, DOCX and PPTX!?!</title><link href="http://zmwangx.github.io/blog/2015-07-19-github-experimental-attachment-formats-pdf-docx-and-pptx.html"/><updated>2015-07-19T21:58:01-07:00</updated><id>http://zmwangx.github.io/blog/2015-07-19-github-experimental-attachment-formats-pdf-docx-and-pptx.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>I was browsing <a href="https://github.com/github/hub">github/hub</a>, and noticed something funny in the issue tracker:</p>
 <blockquote>
@@ -1024,21 +1046,5 @@ correction.zsh  git.zsh          key-bindings.zsh  prompt_info_functions.zsh  th
 <li id="fn3"><p>Whether aliases defined in a plugin (e.g. for <code>git</code>) should be loaded can be easily controlled via a switch.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-03-why-oh-my-zsh-is-completely-broken.html#fnref3">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
-
-]]></content></entry><entry><title type="html">Using Python 3 with Emacs Jedi</title><link href="http://zmwangx.github.io/blog/2015-04-26-using-python-3-with-emacs-jedi.html"/><updated>2015-04-26T21:19:14-07:00</updated><id>http://zmwangx.github.io/blog/2015-04-26-using-python-3-with-emacs-jedi.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
-
-<p>Recently I'm working on <a href="https://github.com/zmwangx/storyboard">a hobby project in Python</a>, which means editing Python source files a lot. I've been using <a href="https://github.com/tkf/emacs-jedi">Emacs Jedi</a> for almost as long as I've been writing Python, and it has been pretty helpful at completing away long names.</p>
-<p>However, Jedi uses <code>python</code> by default, which means <code>python2</code> on most of our systems at this point. Occasionally I'm writing Python 3 specific code but Jedi completes to Python 2 or refuses to complete; for the record, I enjoy writing and debugging Python 3.3+ much better than 2.7 (I realized this after trying to create a code base that is backward compatible with 2.7, which means reinventing the wheel or introducing annoying branches from time to time). So naturally I'm looking into using Python 3 in Jedi.</p>
-<p>The <a href="https://tkf.github.io/emacs-jedi/latest/#how-to-use-python-3-or-any-other-specific-version-of-python">official docs</a> has been confusing and unhelpful at least for me, since it insists on setting up the virtualenv from within Emacs, and it failed for me. Why can't I set up the virtualenv myself? Turns out I can, and it's incredibly simple. The commands below assume that you have installed Jedi and friends (well, dependencies) using <code>package.el</code>.</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">mkdir</span> -p ~/.emacs.d/.python-environments
-<span class="kw">virtualenv</span> -p /usr/local/bin/python3 ~/.emacs.d/.python-environments/jedi  <span class="co"># or whatever your python3 path is</span>
-<span class="co"># If you feel like installing the server with 'M-x jedi:install-server', also do the following</span>
-<span class="kw">~/.emacs.d/.python-environments/jedi/bin/pip</span> install --upgrade ~/.emacs.d/elpa/jedi-20150109.2230/  <span class="co"># you might need to change the version number</span></code></pre></div>
-<p>And that's it. Put the following in your <code>~/.emacs</code>:</p>
-<div class="sourceCode"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp">(add-hook 'python-mode-hook 'jedi:setup)
-(<span class="kw">setq</span> jedi:complete-on-dot <span class="kw">t</span>)
-(<span class="kw">setq</span> jedi:environment-root <span class="st">"jedi"</span>)</code></pre></div>
-<p>where the first two lines should be there whether you want to use Python 3 or not &#8212; so only the third line is new, and its meaning is obvious.</p>
-<p>At last, start Emacs and do <code>M-x jedi:install-server</code> if you haven't run the <code>pip</code> command above yet. Restart Emacs (if necessary). That's it. Enjoy your Jedi with Python 3. (Type <code>import conf</code>, for instance, to be convinced that you're really autocompleting Python 3).</p>
 
 ]]></content></entry></feed>
