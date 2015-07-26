@@ -3,7 +3,7 @@ The icon and favicon files are generated via the following commands: ::
   cd source/img
   xelatex icon.tex
   xelatex icon-square.tex
-  for size in 100 200 400 2048; do convert icon.pdf -density 400 -resize $sizex$size icon-$size.png; done
+  for size in 100 150 200 300 400 2048; do convert icon.pdf -density 400 -resize $sizex$size icon-$size.png; done
   for size in 16 32 48 144; do convert icon.pdf -density 400 -resize $sizex$size favicon-$size.png; done
   convert icon-square.pdf -density 400 -resize 152x152 apple-touch-icon-152.png
   optipng favicon-*.png icon-*.png apple-touch-icon-152.png
