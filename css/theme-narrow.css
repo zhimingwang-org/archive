@@ -11,10 +11,13 @@ nav div {
     margin: auto;
 }
 
-nav div.logo {
-    height: 200px;
-    width: 200px;
-    padding: 2px 0;
+nav div .blog-icon {
+    padding: 0;
+    height: 150px;
+    width: 150px;
+    background-image: url("/img/icon-150.png");
+    background-image: -webkit-image-set( url("/img/icon-150.png") 1x, url("/img/icon-300.png") 2x );
+    background-size: 150px;
 }
 
 nav div.title, div.author {
