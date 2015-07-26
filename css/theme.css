@@ -192,9 +192,10 @@ footer .rfooter {
 footer .rfooter .cc-icon {
     width: 16px;
     height: 16px;
-    padding: 0 2px;
+    padding: 0 1px;
     display: inline-block;
     background-image: url("/img/cc-16.png");
+    background-image: -webkit-image-set( url("/img/cc-16.png") 1x, url("/img/cc-32.png") 2x );
     background-repeat: no-repeat;
     background-position: center;
     background-size: 16px;
@@ -207,7 +208,8 @@ footer .rfooter .atom-icon {
     height: 16px;
     padding: 0 2px;
     display: inline-block;
-    background-image: url("/img/feed-14.png");
+    background-image: url("/img/feed-16.png");
+    background-image: -webkit-image-set( url("/img/feed-16.png") 1x, url("/img/feed-32.png") 2x );
     background-repeat: no-repeat;
     background-position: center;
     background-size: 14px;
@@ -220,7 +222,8 @@ footer .rfooter .rss-icon {
     height: 16px;
     padding: 0 2px;
     display: inline-block;
-    background-image: url("/img/rss-14.png");
+    background-image: url("/img/rss-16.png");
+    background-image: -webkit-image-set( url("/img/rss-16.png") 1x, url("/img/rss-32.png") 2x );
     background-repeat: no-repeat;
     background-position: center;
     background-size: 14px;
