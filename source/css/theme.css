@@ -16,8 +16,17 @@ nav div {
     text-align: center;
 }
 
-nav div.logo {
+nav div .blog-icon {
     padding: 2px 0;
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    background-image: url("/img/icon-100.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100px;
+    vertical-align: middle;
+    font-size: 0;
 }
 
 nav div.title {

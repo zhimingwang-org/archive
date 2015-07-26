@@ -11,10 +11,11 @@ nav div {
     margin: auto;
 }
 
-nav div.logo {
+nav div .blog-icon {
     height: 200px;
     width: 200px;
-    padding: 2px 0;
+    background-image: url("/img/icon-200.png");
+    background-size: 200px;
 }
 
 nav div.title, div.author {
