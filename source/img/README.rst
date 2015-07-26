@@ -14,15 +14,15 @@ Credit to `audreyr/favicon-cheat-sheet <https://github.com/audreyr/favicon-cheat
 
 The feed icon isn't so easy to create with TikZ (I don't know the necessary parameters), so I downloaed one (256x256) from `IconFinder <https://www.iconfinder.com/icons/49861/feed_rss_icon>`_. The original PNG can be found `here <http://i.imgur.com/4XE3iL3.png>`_. Then I processed the PNG with ``optipng``, the result of which is ``feed-256.png``. The smaller ``feed-14.png`` is generated through::
 
-  convert feed-256.png -resize 14x14 feed-14.png
-  optipng feed-14.png
+  for size in 16 32; do convert feed-256.png -resize $sizex$size feed-$size.png; done
+  optipng feed-*.png
 
 Next, the horizontal mirror ``rss-14.png`` is generated through::
 
-  convert feed-14.png -flop rss-14.png
-  optipng rss-14.png
+  for size in 16 32; do convert feed-$size.png -flop rss-$size.png; done
+  optipng rss-*.png
 
 The CreativeCommons icon ``cc.svg`` is pulled from `the official downloads page <https://creativecommons.org/about/downloads>`_ and converted to 16x16 PNG through::
 
-  convert cc.svg -resize 16x16 cc-16.png
-  optipng cc-16.png
+  for size in 16 32; do convert cc.svg -resize $sizex$size cc-$size.png; done
+  optipng cc-*.png
