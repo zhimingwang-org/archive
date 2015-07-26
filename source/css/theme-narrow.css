@@ -15,6 +15,7 @@ nav div .blog-icon {
     height: 200px;
     width: 200px;
     background-image: url("/img/icon-200.png");
+    background-image: -webkit-image-set( url("/img/icon-200.png") 1x, url("/img/icon-400.png") 2x );
     background-size: 200px;
 }
 
