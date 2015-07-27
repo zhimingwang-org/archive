@@ -189,13 +189,11 @@ noscript a {
     float: right;
 }
 
-.cc-icon {
+.rss-icon, .atom-icon, .cc-icon {
     width: 16px;
     height: 16px;
     margin: 0 2px;
     display: inline-block;
-    background-image: url("/img/cc-16.png");
-    background-image: -webkit-image-set( url("/img/cc-16.png") 1x, url("/img/cc-32.png") 2x );
     background-repeat: no-repeat;
     background-position: center;
     background-size: 16px;
@@ -203,32 +201,21 @@ noscript a {
     font-size: 0;
 }
 
-.atom-icon {
-    width: 16px;
-    height: 16px;
-    margin: 0 2px;
-    display: inline-block;
-    background-image: url("/img/feed-16.png");
-    background-image: -webkit-image-set( url("/img/feed-16.png") 1x, url("/img/feed-32.png") 2x );
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 14px;
-    vertical-align: middle;
-    font-size: 0;
-}
-
 .rss-icon {
-    width: 16px;
-    height: 16px;
-    margin: 0 2px;
-    display: inline-block;
     background-image: url("/img/rss-16.png");
     background-image: -webkit-image-set( url("/img/rss-16.png") 1x, url("/img/rss-32.png") 2x );
-    background-repeat: no-repeat;
-    background-position: center;
     background-size: 14px;
-    vertical-align: middle;
-    font-size: 0;
+}
+
+.atom-icon {
+    background-image: url("/img/feed-16.png");
+    background-image: -webkit-image-set( url("/img/feed-16.png") 1x, url("/img/feed-32.png") 2x );
+    background-size: 14px;
+}
+
+.cc-icon {
+    background-image: url("/img/cc-16.png");
+    background-image: -webkit-image-set( url("/img/cc-16.png") 1x, url("/img/cc-32.png") 2x );
 }
 
 /* blog index */
