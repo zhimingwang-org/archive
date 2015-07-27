@@ -1,6 +1,6 @@
 nav {
     position: static;
-    padding: 5% 0 0 0;
+    margin: 5% 0 0 0;
     text-align: center;
     height: 100%;
     width: 100%;
@@ -12,7 +12,7 @@ nav div {
 }
 
 nav div .blog-icon {
-    padding: 0;
+    margin: 0;
     height: 150px;
     width: 150px;
     background-image: url("/img/icon-150.png");
@@ -30,5 +30,5 @@ nav div.title, div.author {
 article {
     position: static;
     width: 80%;
-    padding: 0 10% 10% 10%;
+    margin: 2% 10% 10% 10%;
 }
