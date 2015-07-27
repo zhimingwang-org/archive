@@ -46,9 +46,9 @@ nav a {
 
 article {
     position: absolute;
-    width: 50%;
+    width: 60%;
     padding: 5% 0;
-    left: 25%;
+    left: 20%;
     font-size: 1em;
     text-align: justify;
 }
