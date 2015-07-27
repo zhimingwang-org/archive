@@ -48,34 +48,30 @@ ga('send', 'pageview');
 </script>
 </head>
 <body>
-<nav>
-<div><a class="blog-icon" href="/">blog icon</a></div>
-<div class="title"><a href="/">dl? cmplnts?</a></div>
-<div class="author">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+<nav class="nav">
+<a class="nav-icon" href="/">blog icon</a>
+<div class="nav-title"><a href="/" class="nav-link">dl? cmplnts?</a></div>
+<div class="nav-author">by <a href="https://github.com/zmwangx" class="nav-link" target="_blank">Zhiming Wang</a></div>
 </nav>
-<article>
+<article class="content">
 $if(title)$
-<header>
-<h1 class="title">$title$</h1>
+<header class="article-header">
+<h1 class="article-title">$title$</h1>
 $if(subtitle)$
-<h1 class="subtitle">$subtitle$</h1>
+<h1 class="article-subtitle">$subtitle$</h1>
 $endif$
-<h2 class="meta">
+<h2 class="article-metadata">
 $if(date-display)$
-<time class="timestamp" $if(date)$datetime="$date$"$endif$>$date-display$,</time>
+<time class="article-timestamp" $if(date)$datetime="$date$"$endif$>$date-display$,</time>
 $endif$
-by <span class="author">Zhiming Wang</span>
+by <span class="article-author">Zhiming Wang</span>
 </h2>
 </header>
 $endif$
-$if(toc)$
-<div id="$idprefix$TOC">
-$toc$
-</div>
-$endif$
 $body$
-<footer>
-<hr/>
+</article>
+<hr class="content-separator"/>
+<footer class="footer">
 $if(updated)$
 <span class="lfooter">
 <time class="updated" datetime="$updated$"><code>$updated$</code></time>
@@ -86,6 +82,5 @@ $endif$
 <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
 </span>
 </footer>
-</article>
 </body>
 </html>

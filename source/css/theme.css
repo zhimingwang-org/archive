@@ -2,21 +2,19 @@ body {
     color: #333;
     font-family: "PT Serif", serif;
     font-size: 10.99pt;
+    margin: 100px 0;
 }
 
-nav {
+.nav {
     position: fixed;
     left: 5%;
-    top: 10%;
+    top: 90px;
     height: 150px;
     width: 100px;
-}
-
-nav div {
     text-align: center;
 }
 
-nav div .blog-icon {
+.nav-icon {
     margin: 2px 0;
     width: 100px;
     height: 100px;
@@ -30,60 +28,58 @@ nav div .blog-icon {
     font-size: 0;
 }
 
-nav div.title {
+.nav-title {
     font-size: 16px;
     font-weight: bold;
     margin: 1px 0;
 }
 
-nav div.author {
+.nav-author {
     font-size: 12px;
 }
 
-nav a {
+.nav-link {
     text-decoration: none;
 }
 
-article {
-    position: absolute;
+.content, .content-separator, .footer {
     width: 60%;
-    margin: 5% 0;
-    left: 20%;
-    font-size: 1em;
+    margin: 0 auto;
+}
+
+.content-separator {
+    margin: 15px auto 3px auto;
+}
+
+.content {
     text-align: justify;
 }
 
-article code {
-    font-size: 0.95em;
-}
-
-h1.title {
+h1 {
     text-align: center;
     font-size: 1.65em;
+    font-weight: bold;
 }
 
 h2 {
     text-align: center;
     font-size: 1.27em;
+    font-weight: bold;
 }
 
-h2.meta {
+.article-metadata {
     font-size: 1em;
     font-weight: normal;
     font-style: italic;
 }
 
-h2.toc {
-    text-align: left;
-}
-
-h3 {
-    font-size: 1.1em;
+a {
+    color: #333;
 }
 
 code {
+    font-size: 0.95em;
     font-family: 'Droid Sans Mono', 'Courier', monospace;
-    font-weight: thin;
 }
 
 pre {
@@ -101,6 +97,38 @@ pre[class*=sourceCode] {
 pre code {
     font-size: 0.91em;
     line-height: 135%;
+}
+
+blockquote {
+    margin: 0;
+    padding: 0 1em;
+    font-style: italic;
+    border-left: 0.4em solid #ddd;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.figure .caption {
+    text-align: center;
+    font-size: 0.91em;
+}
+
+.figure .caption code {
+    font-size: 0.87em;
+}
+
+noscript {
+    color: #ccc;
+}
+
+noscript a {
+    color: #ccc;
 }
 
 .line-number {
@@ -124,26 +152,19 @@ pre code {
     vertical-align: .3em;
 }
 
-blockquote {
-    margin: 0;
-    padding: 0 1em;
-    font-style: italic;
-    border-left: 0.4em solid #ddd;
-}
-
-div.footnotes {
+.footnotes {
     font-size: 0.91em;
 }
 
-div.footnotes p {
+.footnotes p {
     margin: 0.6em 0;
 }
 
-div.footnotes code {
+.footnotes code {
     font-size: 0.87em;
 }
 
-a.footnotes-backlink {
+.footnotes-backlink {
     margin-left: 0.2em;
     font-size: 1.2em;
     vertical-align: -0.2em;
@@ -151,45 +172,24 @@ a.footnotes-backlink {
     text-decoration: none;
 }
 
-a.footnotes-backlink:hover {
+.footnotes-backlink:hover {
     background-color: #bbb;
     color: #fff;
 }
 
-img {
-    display: block;
-    max-width: 100%;
-    max-height: 100%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.figure .caption {
-    text-align: center;
-    font-size: 0.91em;
-}
-
-.figure .caption code {
-    font-size: 0.87em;
-}
-
-a {
-    color: #333;
-}
-
-footer .lfooter {
+.lfooter {
     float: left;
 }
 
-footer .lfooter .updated:before {
+.lfooter .updated:before {
     content: "Last updated: "
 }
 
-footer .rfooter {
+.rfooter {
     float: right;
 }
 
-footer .rfooter .cc-icon {
+.cc-icon {
     width: 16px;
     height: 16px;
     margin: 0 2px;
@@ -203,7 +203,7 @@ footer .rfooter .cc-icon {
     font-size: 0;
 }
 
-footer .rfooter .atom-icon {
+.atom-icon {
     width: 16px;
     height: 16px;
     margin: 0 2px;
@@ -217,7 +217,7 @@ footer .rfooter .atom-icon {
     font-size: 0;
 }
 
-footer .rfooter .rss-icon {
+.rss-icon {
     width: 16px;
     height: 16px;
     margin: 0 2px;
@@ -231,22 +231,20 @@ footer .rfooter .rss-icon {
     font-size: 0;
 }
 
-div.indextoc table {
+/* blog index */
+
+.blog-index-year-title {
+    text-align: left;
+}
+
+.blog-index-yearly-index {
     margin-left: 1em;
 }
 
-div.indextoc td {
+.blog-index td {
     vertical-align: top;
 }
 
-div.indextoc td.date {
+.blog-index-post-date {
     width: 5em;
-}
-
-noscript {
-    color: #ccc;
-}
-
-noscript a {
-    color: #ccc;
 }

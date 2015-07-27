@@ -289,7 +289,7 @@ def generate_index(feed):
 
     # generate TOC
     tocbuff = io.StringIO()
-    tocbuff.write('<div class="indextoc" id="toc">')
+    tocbuff.write('<div class="blog-index" id="toc">')
     year = 10000  # will be larger than the latest year for quite a while
     # recall that entries are in reverse chronological order
     table_opened = False
@@ -299,21 +299,21 @@ def generate_index(feed):
             # close the previous table if there is one
             if table_opened:
                 tocbuff.write(u'</table>\n')
-            # write a new <h2 class="toc"> tag with the smaller year
+            # write a new <h2 class="blog-index-year-title"> tag with the smaller year
             year = date.year
-            tocbuff.write(u'\n<h2 class="toc" id="{0}">{0}</h2>\n\n'.format(year))
-            tocbuff.write(u'<table>\n')
+            tocbuff.write(u'\n<h2 class="blog-index-year-title" id="{0}">{0}</h2>\n\n'.format(year))
+            tocbuff.write(u'<table class="blog-index-yearly-index">\n')
             table_opened = True
 
         # write a new table row entry in Markdown, in the format:
         #
         #   <tr>
-        #     <td class="date"><time class="tocdate" datetime="2015-05-05T00:06:04-0700">May 5</time></td>
-        #     <td class="title">[Blah blah](/blog/2015-05-04-blah-blah.html)</td>
+        #     <td class="blog-index-post-date"><time class="date" datetime="2015-05-05T00:06:04-0700">May 5</time></td>
+        #     <td class="blog-index-post-title">[Blah blah](/blog/2015-05-04-blah-blah.html)</td>
         #   </tr>
         monthday = date.strftime("%b %d")
-        tocbuff.write(u'<tr><td class="date"><time class="tocdate" datetime="%s">%s</time></td>'
-                      '<td class="title">[%s](%s)</td></tr>\n' %
+        tocbuff.write(u'<tr><td class="blog-index-post-date"><time class="date" datetime="%s">%s</time></td>'
+                      '<td class="blog-index-post-title">[%s](%s)</td></tr>\n' %
                       (date.isoformat(), monthday, entry.title_text, entry.relpath))
     if table_opened:
         tocbuff.write(u'</table>\n')
@@ -395,8 +395,8 @@ def generate_sitemap(feed):
         updated = None
         with open(fullpath, encoding="utf-8") as htmlobj:
             soup = bs4.BeautifulSoup(htmlobj.read(), "lxml")
-            if soup.article.footer is not None:
-                updated_tag = soup.article.footer.find(attrs={"class": "updated"})
+            if soup.footer is not None:
+                updated_tag = soup.footer.find(attrs={"class": "updated"})
                 if updated_tag is not None:
                     updated = dateutil.parser.parse(updated_tag.text)
         sitemap.append(make_sitemap_url_element(link, updated, "monthly", 0.9))
@@ -518,8 +518,6 @@ def generate_index_and_feed():
                     article = soup.article
                     if article.header is not None:
                         tags_to_remove.append(article.header)
-                    if article.footer is not None:
-                        tags_to_remove.append(article.footer)
                     # mark line numbers for removal
                     for line_number_span in article.find_all("span",
                                                              attrs={"class": "line-number"}):
