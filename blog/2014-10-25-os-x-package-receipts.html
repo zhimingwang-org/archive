@@ -29,17 +29,17 @@ ga('send', 'pageview');
 </script>
 </head>
 <body>
-<nav>
-<div><a class="blog-icon" href="/">blog icon</a></div>
-<div class="title"><a href="/">dl? cmplnts?</a></div>
-<div class="author">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+<nav class="nav">
+<a class="nav-icon" href="/">blog icon</a>
+<div class="nav-title"><a class="nav-link" href="/">dl? cmplnts?</a></div>
+<div class="nav-author">by <a class="nav-link" href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
 </nav>
-<article>
-<header>
-<h1 class="title">OS X package receipts</h1>
-<h2 class="meta">
-<time class="timestamp" datetime="2014-10-25T13:26:02-0700">October 25, 2014,</time>
-by <span class="author">Zhiming Wang</span>
+<article class="content">
+<header class="article-header">
+<h1 class="article-title">OS X package receipts</h1>
+<h2 class="article-metadata">
+<time class="article-timestamp" datetime="2014-10-25T13:26:02-0700">October 25, 2014,</time>
+by <span class="article-author">Zhiming Wang</span>
 </h2>
 </header>
 <p>I just learned something new. Whenever you install a <code>pkg</code> on OS X, OS X stores a receipt of what was installed in <code>/var/db/receipts</code> (I'm running OS X 10.9.5 at the time of writing), called a <strong>bom</strong> — bill of materials (I’d rather call it a manifest, whatever). This feature was introduced in NeXTSTEP. From <code>man 5 bom</code>:</p>
@@ -51,13 +51,13 @@ by <span class="author">Zhiming Wang</span>
 <pre><code>lsbom -f /var/db/receipts/org.macports.MacPorts.bom</code></pre>
 <p>Note that the paths printed are always relative to <code>/</code>. See <code>man 1 lsbom</code> for detailed option listing.</p>
 <p>(Beware when you try to clean up unwanted packages using the <code>lsbom</code> listing. Packages might overwrite files, so make sure you review the listing first and know what you are doing. "Knowing what you are doing" is the prerequisite for using <code>sudo</code> anyway.)</p>
-<footer>
-<hr/>
+</article>
+<hr class="content-separator"/>
+<footer class="footer">
 <span class="rfooter">
 <a class="rss-icon" href="/rss.xml" target="_blank" title="RSS feed">RSS feed icon</a><a class="atom-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a><a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>
 <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
 </span>
 </footer>
-</article>
 </body>
 </html>

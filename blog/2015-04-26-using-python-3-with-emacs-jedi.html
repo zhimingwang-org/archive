@@ -66,17 +66,17 @@ ga('send', 'pageview');
 </script>
 </head>
 <body>
-<nav>
-<div><a class="blog-icon" href="/">blog icon</a></div>
-<div class="title"><a href="/">dl? cmplnts?</a></div>
-<div class="author">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+<nav class="nav">
+<a class="nav-icon" href="/">blog icon</a>
+<div class="nav-title"><a class="nav-link" href="/">dl? cmplnts?</a></div>
+<div class="nav-author">by <a class="nav-link" href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
 </nav>
-<article>
-<header>
-<h1 class="title">Using Python 3 with Emacs Jedi</h1>
-<h2 class="meta">
-<time class="timestamp" datetime="2015-04-26T21:19:14-0700">April 26, 2015,</time>
-by <span class="author">Zhiming Wang</span>
+<article class="content">
+<header class="article-header">
+<h1 class="article-title">Using Python 3 with Emacs Jedi</h1>
+<h2 class="article-metadata">
+<time class="article-timestamp" datetime="2015-04-26T21:19:14-0700">April 26, 2015,</time>
+by <span class="article-author">Zhiming Wang</span>
 </h2>
 </header>
 <p>Recently I'm working on <a href="https://github.com/zmwangx/storyboard">a hobby project in Python</a>, which means editing Python source files a lot. I've been using <a href="https://github.com/tkf/emacs-jedi">Emacs Jedi</a> for almost as long as I've been writing Python, and it has been pretty helpful at completing away long names.</p>
@@ -92,13 +92,13 @@ by <span class="author">Zhiming Wang</span>
 (<span class="kw">setq</span> jedi:environment-root <span class="st">"jedi"</span>)<span class="line-number" data-line="1" style="top: 0.00em"><!----></span><span class="line-number" data-line="2" style="top: 1.35em"><!----></span><span class="line-number" data-line="3" style="top: 2.70em"><!----></span></code></pre></div>
 <p>where the first two lines should be there whether you want to use Python 3 or not — so only the third line is new, and its meaning is obvious.</p>
 <p>At last, start Emacs and do <code>M-x jedi:install-server</code> if you haven't run the <code>pip</code> command above yet. Restart Emacs (if necessary). That's it. Enjoy your Jedi with Python 3. (Type <code>import conf</code>, for instance, to be convinced that you're really autocompleting Python 3).</p>
-<footer>
-<hr/>
+</article>
+<hr class="content-separator"/>
+<footer class="footer">
 <span class="rfooter">
 <a class="rss-icon" href="/rss.xml" target="_blank" title="RSS feed">RSS feed icon</a><a class="atom-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a><a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>
 <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
 </span>
 </footer>
-</article>
 </body>
 </html>

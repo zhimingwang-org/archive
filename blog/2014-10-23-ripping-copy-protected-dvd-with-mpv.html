@@ -29,17 +29,17 @@ ga('send', 'pageview');
 </script>
 </head>
 <body>
-<nav>
-<div><a class="blog-icon" href="/">blog icon</a></div>
-<div class="title"><a href="/">dl? cmplnts?</a></div>
-<div class="author">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+<nav class="nav">
+<a class="nav-icon" href="/">blog icon</a>
+<div class="nav-title"><a class="nav-link" href="/">dl? cmplnts?</a></div>
+<div class="nav-author">by <a class="nav-link" href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
 </nav>
-<article>
-<header>
-<h1 class="title">Ripping copy-protected DVD with mpv</h1>
-<h2 class="meta">
-<time class="timestamp" datetime="2014-10-23T20:03:22-0700">October 23, 2014,</time>
-by <span class="author">Zhiming Wang</span>
+<article class="content">
+<header class="article-header">
+<h1 class="article-title">Ripping copy-protected DVD with mpv</h1>
+<h2 class="article-metadata">
+<time class="article-timestamp" datetime="2014-10-23T20:03:22-0700">October 23, 2014,</time>
+by <span class="article-author">Zhiming Wang</span>
 </h2>
 </header>
 <p><strong><em>11/02/2014 update:</em></strong></p>
@@ -60,13 +60,13 @@ by <span class="author">Zhiming Wang</span>
 <p>For better performance and backup, I first cloned the DVD into a <code>.cdr</code> image (DVD/CD-R Master Image) using Disk Utility (I've never tried creating/cloning image with <code>diskutil</code> CLI, so nothing to report on that). Then I mount the image, say the mount point is <code>/Volumes/UPBX_80165</code>. As said I can hand that mount point to <code>mpv</code> and it simply works, but how about extracting the MPEG-2 video stream? The <code>--stream-capture=&lt;filename&gt;</code> option is there just for you. In principle <code>--stream-dump=&lt;filename&gt;</code> should also work, but without monitoring the output and controlling where to end, I’m not sure if it will ever terminate itself when reading from a DVD (when I stream captured the DVD it just kept repeating itself until I explicitly quit with <code>q</code>). So that's it:</p>
 <pre><code>mpv --stream-capture=dump.mpg /Volumes/UPBX_80165</code></pre>
 <p>Then you can torture the <code>dump.mpg</code> with <code>ffmpeg</code> however you want. The most obvious thing is to cut out the music video part, and put into a new container like MPEG-TS. Or transcode it to H.264 for your iPhone. The nice thing about <code>dump.mpg</code> is that, unless I got it wrong, there's no quality loss here — the only thing you got rid of is that goddamn DRM.</p>
-<footer>
-<hr/>
+</article>
+<hr class="content-separator"/>
+<footer class="footer">
 <span class="rfooter">
 <a class="rss-icon" href="/rss.xml" target="_blank" title="RSS feed">RSS feed icon</a><a class="atom-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a><a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>
 <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
 </span>
 </footer>
-</article>
 </body>
 </html>

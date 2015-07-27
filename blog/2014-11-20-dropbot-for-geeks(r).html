@@ -29,17 +29,17 @@ ga('send', 'pageview');
 </script>
 </head>
 <body>
-<nav>
-<div><a class="blog-icon" href="/">blog icon</a></div>
-<div class="title"><a href="/">dl? cmplnts?</a></div>
-<div class="author">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+<nav class="nav">
+<a class="nav-icon" href="/">blog icon</a>
+<div class="nav-title"><a class="nav-link" href="/">dl? cmplnts?</a></div>
+<div class="nav-author">by <a class="nav-link" href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
 </nav>
-<article>
-<header>
-<h1 class="title">Dropbot for Geeks®</h1>
-<h2 class="meta">
-<time class="timestamp" datetime="2014-11-20T09:48:15-0800">November 20, 2014,</time>
-by <span class="author">Zhiming Wang</span>
+<article class="content">
+<header class="article-header">
+<h1 class="article-title">Dropbot for Geeks®</h1>
+<h2 class="article-metadata">
+<time class="article-timestamp" datetime="2014-11-20T09:48:15-0800">November 20, 2014,</time>
+by <span class="article-author">Zhiming Wang</span>
 </h2>
 </header>
 <p>I propose the following cloud storage and syncing service model of the future. I call it <strong>Dropbot for Geeks®</strong>, and it totally rules. It's designed for geeks who are tired of the highly limited, miserably unproductive traditional services (based on clicking around). It has the following features:</p>
@@ -54,13 +54,13 @@ by <span class="author">Zhiming Wang</span>
 <hr/>
 <p>With the level of command line integration illustrated above, we'll finally get rid of clicking around and not being able to automate chores. Navgating the remote file system will be a breeze — click, click, click, click, click (sometimes click should be replaced by double click, which is even more painful) just to navigate to a directory will be made a thing of the past. <code>ln</code>, in particular, saves disk space for duplicates — Dropbot for Geeks does <em>not</em> want to charge you extra for multiple copies of the same file in different directories. (To facilitate syncing hardlinks, clients should be able to specify hardlinked files in a config file. Or maybe some better mechanism. This might be hard.) At last, checksums are a must. I’ve had traumatic experiences like having downloaded an eight-part RAR, 1 GiB each, only to find that it wouldn’t unRAR. Without checksums, it was impossible to find which part was corrupted. As a result, I had to re-download everything — a nightmare. I never want to experience similar problems again. Hence the precious checksums.</p>
 <p>Dropbot for Geeks looks like a pretty good (well, not really, but at least pretty cool®) model. Maybe I should patent it before anyone else? Then if some similar service surfaces in the future, I can <a href="http://arstechnica.com/tech-policy/2014/11/jury-apple-must-pay-23-6m-for-old-pager-patents/">sue their ass off and enjoy some hot cash</a>.</p>
-<footer>
-<hr/>
+</article>
+<hr class="content-separator"/>
+<footer class="footer">
 <span class="rfooter">
 <a class="rss-icon" href="/rss.xml" target="_blank" title="RSS feed">RSS feed icon</a><a class="atom-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a><a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>
 <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
 </span>
 </footer>
-</article>
 </body>
 </html>

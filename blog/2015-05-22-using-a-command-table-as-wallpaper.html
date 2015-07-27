@@ -66,17 +66,17 @@ ga('send', 'pageview');
 </script>
 </head>
 <body>
-<nav>
-<div><a class="blog-icon" href="/">blog icon</a></div>
-<div class="title"><a href="/">dl? cmplnts?</a></div>
-<div class="author">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+<nav class="nav">
+<a class="nav-icon" href="/">blog icon</a>
+<div class="nav-title"><a class="nav-link" href="/">dl? cmplnts?</a></div>
+<div class="nav-author">by <a class="nav-link" href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
 </nav>
-<article>
-<header>
-<h1 class="title">Using a command table as wallpaper</h1>
-<h2 class="meta">
-<time class="timestamp" datetime="2015-05-22T00:48:19-07:00">May 22, 2015,</time>
-by <span class="author">Zhiming Wang</span>
+<article class="content">
+<header class="article-header">
+<h1 class="article-title">Using a command table as wallpaper</h1>
+<h2 class="article-metadata">
+<time class="article-timestamp" datetime="2015-05-22T00:48:19-07:00">May 22, 2015,</time>
+by <span class="article-author">Zhiming Wang</span>
 </h2>
 </header>
 <p>Recently I cleaned up my source code directory, removed a lot of rarely-used, dated scripts, and grouped the remaining standalone scripts into a central place (<code>~/dev/scripts</code>)<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a>. One thing I learned in this process is that I tend to write a reusable script but rarely actually reuse it (even if it sits on <code>PATH</code>), sometimes implementing the same functionality twice or typing a long command line over and over again.</p>
@@ -233,13 +233,13 @@ XELATEX_PROGRAM <span class="op">=</span> (<span class="vs">r"""</span>
 <li id="fn2"><p>Yeah, I know it's a shitty script, so don't nitpick on style problems.<a class="footnotes-backlink" href="#fnref2">↩︎</a></p></li>
 </ol>
 </div>
-<footer>
-<hr/>
+</article>
+<hr class="content-separator"/>
+<footer class="footer">
 <span class="rfooter">
 <a class="rss-icon" href="/rss.xml" target="_blank" title="RSS feed">RSS feed icon</a><a class="atom-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a><a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>
 <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
 </span>
 </footer>
-</article>
 </body>
 </html>

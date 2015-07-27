@@ -66,17 +66,17 @@ ga('send', 'pageview');
 </script>
 </head>
 <body>
-<nav>
-<div><a class="blog-icon" href="/">blog icon</a></div>
-<div class="title"><a href="/">dl? cmplnts?</a></div>
-<div class="author">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+<nav class="nav">
+<a class="nav-icon" href="/">blog icon</a>
+<div class="nav-title"><a class="nav-link" href="/">dl? cmplnts?</a></div>
+<div class="nav-author">by <a class="nav-link" href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
 </nav>
-<article>
-<header>
-<h1 class="title">Automatically clean up "Previous Mobile Applications"</h1>
-<h2 class="meta">
-<time class="timestamp" datetime="2015-06-27T21:19:59-07:00">June 27, 2015,</time>
-by <span class="author">Zhiming Wang</span>
+<article class="content">
+<header class="article-header">
+<h1 class="article-title">Automatically clean up "Previous Mobile Applications"</h1>
+<h2 class="article-metadata">
+<time class="article-timestamp" datetime="2015-06-27T21:19:59-07:00">June 27, 2015,</time>
+by <span class="article-author">Zhiming Wang</span>
 </h2>
 </header>
 <p>iTunes keeps a "Previous Mobile Applications" folder of questionable value, which always annoys me. It eats into disk space and wastes syncing/backup cycles and bandwidth; you can easily find horror stories online about <a href="http://forums.macrumors.com/threads/5-years-of-deleted-iphone-apps-accumulated-in-my-itunes-library.1781676/#post-19749496">100GB+ PMA folders</a>. The value? You might be able to roll back to an earlier version, or restore an app pulled from the App Store. Really? I never had that need in my life<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a>; have you? Worst of all, there should be a periodic clean up option — just like how deleted mail are automatically purged after one month, but the option is missing.</p>
@@ -196,13 +196,13 @@ DELETE_AFTER <span class="op">=</span> datetime.timedelta(days<span class="op">=
 <li id="fn1"><p>Full disclosure: unlike many people, I'm not very obsessed with my phone, and I only have about two dozen third-party apps.<a class="footnotes-backlink" href="#fnref1">↩︎</a></p></li>
 </ol>
 </div>
-<footer>
-<hr/>
+</article>
+<hr class="content-separator"/>
+<footer class="footer">
 <span class="rfooter">
 <a class="rss-icon" href="/rss.xml" target="_blank" title="RSS feed">RSS feed icon</a><a class="atom-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a><a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>
 <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
 </span>
 </footer>
-</article>
 </body>
 </html>

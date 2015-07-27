@@ -1,34 +1,29 @@
-nav {
+body {
+    margin: 40px 0 100px 0;
+}
+
+.nav {
     position: static;
-    padding: 5% 0 0 0;
-    text-align: center;
-    height: 100%;
     width: 100%;
-}
-
-nav div {
-    text-align: center;
-    margin: auto;
-}
-
-nav div .blog-icon {
-    padding: 0;
     height: 150px;
+    margin: 20px 0;
+}
+
+.nav-icon {
     width: 150px;
+    height: 150px;
     background-image: url("/img/icon-150.png");
     background-image: -webkit-image-set( url("/img/icon-150.png") 1x, url("/img/icon-300.png") 2x );
     background-size: 150px;
 }
 
-nav div.title, div.author {
+.nav-title, .nav-author {
     height: 0;
     width: 0;
     visibility: hidden;
     pointer-events: none;
 }
 
-article {
-    position: static;
+.content, .content-separator, .footer {
     width: 80%;
-    padding: 0 10% 10% 10%;
 }

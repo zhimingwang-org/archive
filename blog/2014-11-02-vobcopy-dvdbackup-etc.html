@@ -29,17 +29,17 @@ ga('send', 'pageview');
 </script>
 </head>
 <body>
-<nav>
-<div><a class="blog-icon" href="/">blog icon</a></div>
-<div class="title"><a href="/">dl? cmplnts?</a></div>
-<div class="author">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+<nav class="nav">
+<a class="nav-icon" href="/">blog icon</a>
+<div class="nav-title"><a class="nav-link" href="/">dl? cmplnts?</a></div>
+<div class="nav-author">by <a class="nav-link" href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
 </nav>
-<article>
-<header>
-<h1 class="title">vobcopy, dvdbackup, etc.</h1>
-<h2 class="meta">
-<time class="timestamp" datetime="2014-11-02T15:06:07-0800">November 2, 2014,</time>
-by <span class="author">Zhiming Wang</span>
+<article class="content">
+<header class="article-header">
+<h1 class="article-title">vobcopy, dvdbackup, etc.</h1>
+<h2 class="article-metadata">
+<time class="article-timestamp" datetime="2014-11-02T15:06:07-0800">November 2, 2014,</time>
+by <span class="article-author">Zhiming Wang</span>
 </h2>
 </header>
 <p>A few days ago, I was cloning my entire Audio CD and DVD collection, and reported some of the findings in <a href="/blog/2014-10-26-audio-cd-slash-dvd-to-iso-image-on-os-x.html">this post</a>. As said, the most important commands are</p>
@@ -95,13 +95,13 @@ cd DVD_TARGET_DIR/VIDEO_TS &amp;&amp; dvdauthor -T -o DVD_TARGET_DIR</code></pre
 <p><code>export VIDEO_FORMAT=NTSC</code> is to avoid the <code>dvdauthor</code> error of "no default video format, must explicitly specify NTSC or PAL" (I'm not sure about the difference between NTSC and PAL, but I saw NTSC printed on my DVD, so I used it). And there you go, a shiny new DVD filesystem located in <code>DVD_TARGET_DIR</code>. (Note that unlike <code>vobcopy</code>, <code>dvdbackup</code> doesn't feature a nice progress bar even when <code>-v/--verbose</code> and <code>-p/--progress</code> are specified.) Then you can</p>
 <pre><code>vobcopy -l DVD_TARGET_DIR</code></pre>
 <p>if you'd like to. Recall that timestamps might be wrong, sadly.</p>
-<footer>
-<hr/>
+</article>
+<hr class="content-separator"/>
+<footer class="footer">
 <span class="rfooter">
 <a class="rss-icon" href="/rss.xml" target="_blank" title="RSS feed">RSS feed icon</a><a class="atom-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a><a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>
 <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
 </span>
 </footer>
-</article>
 </body>
 </html>

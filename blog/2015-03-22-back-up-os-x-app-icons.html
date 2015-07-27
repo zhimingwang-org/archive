@@ -66,17 +66,17 @@ ga('send', 'pageview');
 </script>
 </head>
 <body>
-<nav>
-<div><a class="blog-icon" href="/">blog icon</a></div>
-<div class="title"><a href="/">dl? cmplnts?</a></div>
-<div class="author">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+<nav class="nav">
+<a class="nav-icon" href="/">blog icon</a>
+<div class="nav-title"><a class="nav-link" href="/">dl? cmplnts?</a></div>
+<div class="nav-author">by <a class="nav-link" href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
 </nav>
-<article>
-<header>
-<h1 class="title">Back up OS X app icons</h1>
-<h2 class="meta">
-<time class="timestamp" datetime="2015-03-22T16:58:50-0700">March 22, 2015,</time>
-by <span class="author">Zhiming Wang</span>
+<article class="content">
+<header class="article-header">
+<h1 class="article-title">Back up OS X app icons</h1>
+<h2 class="article-metadata">
+<time class="article-timestamp" datetime="2015-03-22T16:58:50-0700">March 22, 2015,</time>
+by <span class="article-author">Zhiming Wang</span>
 </h2>
 </header>
 <p>OS X application icons are valuable assets, and it's interesting to see how they evolve over time. This is especially the case when we upgraded to OS X 10.10 Yosemite, when Apple and many design-aware third party developers overhauled (mainly flattened) their icons.</p>
@@ -113,13 +113,13 @@ by <span class="author">Zhiming Wang</span>
 <span class="kw">find</span> /Applications -maxdepth 2 -name <span class="st">'*.app'</span> <span class="kw">|</span> <span class="kw">while</span> <span class="kw">read</span> <span class="ot">app</span>; <span class="kw">do</span> <span class="kw">process_app</span> <span class="st">"</span><span class="ot">${app}</span><span class="st">"</span><span class="kw">;</span> <span class="kw">done</span>
 <span class="kw">find</span> /System/Library/CoreServices -maxdepth 1 -name <span class="st">'*.app'</span> <span class="kw">|</span> <span class="kw">while</span> <span class="kw">read</span> <span class="ot">app</span>; <span class="kw">do</span> <span class="kw">process_app</span> <span class="st">"</span><span class="ot">${app}</span><span class="st">"</span><span class="kw">;</span> <span class="kw">done</span><span class="line-number" data-line="1" style="top: 0.00em"><!----></span><span class="line-number" data-line="2" style="top: 1.35em"><!----></span><span class="line-number" data-line="3" style="top: 2.70em"><!----></span><span class="line-number" data-line="4" style="top: 4.05em"><!----></span><span class="line-number" data-line="5" style="top: 5.40em"><!----></span><span class="line-number" data-line="6" style="top: 6.75em"><!----></span><span class="line-number" data-line="7" style="top: 8.10em"><!----></span><span class="line-number" data-line="8" style="top: 9.45em"><!----></span><span class="line-number" data-line="9" style="top: 10.80em"><!----></span><span class="line-number" data-line="10" style="top: 12.15em"><!----></span><span class="line-number" data-line="11" style="top: 13.50em"><!----></span><span class="line-number" data-line="12" style="top: 14.85em"><!----></span><span class="line-number" data-line="13" style="top: 16.20em"><!----></span><span class="line-number" data-line="14" style="top: 17.55em"><!----></span><span class="line-number" data-line="15" style="top: 18.90em"><!----></span><span class="line-number" data-line="16" style="top: 20.25em"><!----></span><span class="line-number" data-line="17" style="top: 21.60em"><!----></span><span class="line-number" data-line="18" style="top: 22.95em"><!----></span><span class="line-number" data-line="19" style="top: 24.30em"><!----></span><span class="line-number" data-line="20" style="top: 25.65em"><!----></span><span class="line-number" data-line="21" style="top: 27.00em"><!----></span><span class="line-number" data-line="22" style="top: 28.35em"><!----></span><span class="line-number" data-line="23" style="top: 29.70em"><!----></span><span class="line-number" data-line="24" style="top: 31.05em"><!----></span><span class="line-number" data-line="25" style="top: 32.40em"><!----></span><span class="line-number" data-line="26" style="top: 33.75em"><!----></span><span class="line-number" data-line="27" style="top: 35.10em"><!----></span><span class="line-number" data-line="28" style="top: 36.45em"><!----></span><span class="line-number" data-line="29" style="top: 37.80em"><!----></span><span class="line-number" data-line="30" style="top: 39.15em"><!----></span><span class="line-number" data-line="31" style="top: 40.50em"><!----></span></code></pre></div>
 <p>The script is also available as a <a href="https://gist.github.com/zmwangx/fad97e085045a21ebc1d">gist</a>.</p>
-<footer>
-<hr/>
+</article>
+<hr class="content-separator"/>
+<footer class="footer">
 <span class="rfooter">
 <a class="rss-icon" href="/rss.xml" target="_blank" title="RSS feed">RSS feed icon</a><a class="atom-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a><a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>
 <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
 </span>
 </footer>
-</article>
 </body>
 </html>

@@ -29,17 +29,17 @@ ga('send', 'pageview');
 </script>
 </head>
 <body>
-<nav>
-<div><a class="blog-icon" href="/">blog icon</a></div>
-<div class="title"><a href="/">dl? cmplnts?</a></div>
-<div class="author">by <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+<nav class="nav">
+<a class="nav-icon" href="/">blog icon</a>
+<div class="nav-title"><a class="nav-link" href="/">dl? cmplnts?</a></div>
+<div class="nav-author">by <a class="nav-link" href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
 </nav>
-<article>
-<header>
-<h1 class="title">iPhone photography frustration</h1>
-<h2 class="meta">
-<time class="timestamp" datetime="2014-11-24T12:42:25-0800">November 24, 2014,</time>
-by <span class="author">Zhiming Wang</span>
+<article class="content">
+<header class="article-header">
+<h1 class="article-title">iPhone photography frustration</h1>
+<h2 class="article-metadata">
+<time class="article-timestamp" datetime="2014-11-24T12:42:25-0800">November 24, 2014,</time>
+by <span class="article-author">Zhiming Wang</span>
 </h2>
 </header>
 <p><strong>TL; DR:</strong> Jump to the paragraph “In the end…”</p>
@@ -61,13 +61,13 @@ by <span class="author">Zhiming Wang</span>
 <p>In the end, I came up with an ugly solution. Just email or iMessage the photo to yourself from the phone. If you use email though, be sure to use the builtin Mail, or you would likely lose Exif data (I sent from Mailbox and lost Exif; I then sent from Mail and didn’t). This is really annoying since setting up accounts in the builtin Mail app is not fun — Google 2FA is not supported, and I have to generate an app-specific password. Compare to Mailbox, where <em>I signed into Dropbox on the new phone and within five seconds all of my ten email accounts are ready to use</em>. The loss of Exif data is probably related to <a href="http://stackoverflow.com/questions/20763814">this thread on SO</a>, but I didn’t delve into it since I’m not a Cocoa Touch dev. What’s more confusing, sending the photo via different applications result in different filesizes. The one sent from Mail (I chose original size when I sent it) was a 2 MB JPEG; the one sent from Mailbox was a 4.5 MB JPEG (without the right Exif); and the one sent via iMessage and later opened from the Messages app on Yosemite could be saved as a 10 MB lossless PNG (Exif was there). I went with the 2 MB one in the end.</p>
 <p>I don’t know if iCloud Photo Library will solve the problem in the end. From my perspective, <em>Apple should train Preview and QuickLook to recognize their XMP technology.</em> Seriously, they talk about continuity, and I expect to enjoy my enhanced photos on my Mac without going through all the hessle and confusion. Photo enhancing is already such a breeze, thank you; now make sharing and archiving easy, at least within the Apple ecosystem. (Although I’m not familiar with photography and image editing in general, considering how tech-savvy I am, I bet most users can’t even figure out one annoying solution.)</p>
 <p>By the way, Continuity and Handoff only work intermittently for me, and AirDrop between my iPhone (6 Plus) and MacBook Pro (mid-2012, model 9,2) doesn’t work at all. Continuity and Handoff sometimes turn up when they are unexpected (and serve as kinda nice surprises), but when I try to nail them, they remain elusive. Not a big deal for me, but certainly not the most pleasant thing ever. I bet these have to do with the fact that my Mac is connected to Ethernet and sharing the Ethernet connection to my iPhone; these days they expect everyone to be on Wi-Fi (and ironically they messed up big in Yosemite), but Wi-Fi simply can’t beat the speed and stability of Ethernet. I didn’t bother to test whether the features work when my devices are connected to the same Wi-Fi network; even if they do, that’s not my production setup, so they’re still useless to me.</p>
-<footer>
-<hr/>
+</article>
+<hr class="content-separator"/>
+<footer class="footer">
 <span class="rfooter">
 <a class="rss-icon" href="/rss.xml" target="_blank" title="RSS feed">RSS feed icon</a><a class="atom-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a><a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>
 <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
 </span>
 </footer>
-</article>
 </body>
 </html>

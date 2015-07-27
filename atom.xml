@@ -1,4 +1,4 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zmwangx.github.io/atom.xml" rel="self" type="application/atom+xml"/><link href="http://zmwangx.github.io/" rel="alternate" type="text/html"/><updated>2015-07-26T18:58:29-07:00</updated><id>http://zmwangx.github.io/</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">dl? cmplnts?'s web doesn't suck</title><link href="http://zmwangx.github.io/blog/2015-07-25-dl-cmplntss-web-doesnt-suck.html"/><updated>2015-07-25T11:31:54-07:00</updated><id>http://zmwangx.github.io/blog/2015-07-25-dl-cmplntss-web-doesnt-suck.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
+<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zmwangx.github.io/atom.xml" rel="self" type="application/atom+xml"/><link href="http://zmwangx.github.io/" rel="alternate" type="text/html"/><updated>2015-07-26T22:19:47-07:00</updated><id>http://zmwangx.github.io/</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">dl? cmplnts?'s web doesn't suck</title><link href="http://zmwangx.github.io/blog/2015-07-25-dl-cmplntss-web-doesnt-suck.html"/><updated>2015-07-25T11:31:54-07:00</updated><id>http://zmwangx.github.io/blog/2015-07-25-dl-cmplntss-web-doesnt-suck.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>I was reading <a href="http://blog.lmorchard.com/2015/07/22/the-verge-web-sucks/">Les Orchard's <em>The Verge's web sucks</em></a> just now, and inspired by his dignostics of his various daily reads, I also ran the performance meter on my very own blog. Fortunately, it doesn't suck<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-07-25-dl-cmplntss-web-doesnt-suck.html#fn1" id="fnref1"><sup>1</sup></a>:</p>
 <blockquote>
@@ -19,7 +19,6 @@
 <li id="fn1"><p>Diagnostics generated on Firefox Developer Edition 41.0a2.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-07-25-dl-cmplntss-web-doesnt-suck.html#fnref1">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
-
 ]]></content></entry><entry><title type="html">GitHub experimental attachment formats: PDF, DOCX and PPTX!?!</title><link href="http://zmwangx.github.io/blog/2015-07-19-github-experimental-attachment-formats-pdf-docx-and-pptx.html"/><updated>2015-07-19T21:58:01-07:00</updated><id>http://zmwangx.github.io/blog/2015-07-19-github-experimental-attachment-formats-pdf-docx-and-pptx.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>I was browsing <a href="https://github.com/github/hub">github/hub</a>, and noticed something funny in the issue tracker:</p>
@@ -87,7 +86,6 @@ Why I hate Microsoft Office
 <li id="fn4"><p>Whether a file is plain text or binary is usually easy to check. Just look for the <code>NUL</code> character (<code>\000</code>).<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-07-19-github-experimental-attachment-formats-pdf-docx-and-pptx.html#fnref4">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
-
 ]]></content></entry><entry><title type="html">Zsh: save stdout, stderr, and return value of command to different variables (without temp file)</title><link href="http://zmwangx.github.io/blog/2015-07-15-zsh-save-stdout-stderr-and-return-value-of-command-to-different-variables-without-temp-file.html"/><updated>2015-07-15T09:21:47-07:00</updated><id>http://zmwangx.github.io/blog/2015-07-15-zsh-save-stdout-stderr-and-return-value-of-command-to-different-variables-without-temp-file.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>This is something worth sharing. The idea was based on <a href="http://stackoverflow.com/a/18086548/1944784">this SO answer</a>, and I cooked up this particular implementation to remove potential race conditions, with input from Mathias Fredriksson<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-07-15-zsh-save-stdout-stderr-and-return-value-of-command-to-different-variables-without-temp-file.html#fn1" id="fnref1"><sup>1</sup></a>. See <a href="https://github.com/mafredri/zsh-async/issues/1">mafredri/zsh-async#1</a>, and in particular <a href="https://github.com/mafredri/zsh-async/issues/1#issuecomment-121468958">this comment</a> for explanation.</p>
@@ -118,7 +116,6 @@ Why I hate Microsoft Office
 <li id="fn1"><p>Mathias (<a href="https://github.com/mafredri">@mafredri</a>) is the author of the lovely <a href="https://github.com/mafredri/zsh-async">zsh-async</a> library, and a maintainer of <a href="https://github.com/sindresorhus/pure">sindresorhus/pure</a>. He forever revolutionalized <a href="https://github.com/zmwangx/prezto/blob/master/modules/prompt/functions/prompt_zmwangx_setup">my prompt</a>.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-07-15-zsh-save-stdout-stderr-and-return-value-of-command-to-different-variables-without-temp-file.html#fnref1">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
-
 ]]></content></entry><entry><title type="html">dl? cmplnts? in Apple News</title><link href="http://zmwangx.github.io/blog/2015-06-29-dl-cmplnts-in-apple-news.html"/><updated>2015-06-29T23:14:42-07:00</updated><id>http://zmwangx.github.io/blog/2015-06-29-dl-cmplnts-in-apple-news.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>I submitted this blog to Apple via <a href="https://developer.apple.com/news-publisher/">News Publisher</a> a few days after the WWDC keynote, just to get a feel for the submission process. It was easy; basically I just needed to provide an <a href="http://zmwangx.github.io/atom.xml">Atom 1.0</a> or <a href="http://zmwangx.github.io/rss.xml">RSS 2.0</a> feed, both of which I already have anyway.<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-06-29-dl-cmplnts-in-apple-news.html#fn1" id="fnref1"><sup>1</sup></a> I was told at the end of the submission process that my submission would be reviewed.</p>
@@ -145,7 +142,6 @@ Why I hate Microsoft Office
 <li id="fn2"><p>Or maybe they will only open up regular browser traffic after iOS 9 stable is released.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-29-dl-cmplnts-in-apple-news.html#fnref2">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
-
 ]]></content></entry><entry><title type="html">Automatically clean up "Previous Mobile Applications"</title><link href="http://zmwangx.github.io/blog/2015-06-27-automatically-clean-up-previous-mobile-applications.html"/><updated>2015-06-27T21:19:59-07:00</updated><id>http://zmwangx.github.io/blog/2015-06-27-automatically-clean-up-previous-mobile-applications.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>iTunes keeps a "Previous Mobile Applications" folder of questionable value, which always annoys me. It eats into disk space and wastes syncing/backup cycles and bandwidth; you can easily find horror stories online about <a href="http://forums.macrumors.com/threads/5-years-of-deleted-iphone-apps-accumulated-in-my-itunes-library.1781676/#post-19749496">100GB+ PMA folders</a>. The value? You might be able to roll back to an earlier version, or restore an app pulled from the App Store. Really? I never had that need in my life<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-06-27-automatically-clean-up-previous-mobile-applications.html#fn1" id="fnref1"><sup>1</sup></a>; have you? Worst of all, there should be a periodic clean up option &#8212; just like how deleted mail are automatically purged after one month, but the option is missing.</p>
@@ -265,7 +261,6 @@ DELETE_AFTER <span class="op">=</span> datetime.timedelta(days<span class="op">=
 <li id="fn1"><p>Full disclosure: unlike many people, I'm not very obsessed with my phone, and I only have about two dozen third-party apps.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-27-automatically-clean-up-previous-mobile-applications.html#fnref1">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
-
 ]]></content></entry><entry><title type="html">iOS 9: searchable Settings</title><link href="http://zmwangx.github.io/blog/2015-06-26-ios-9-searchable-settings.html"/><updated>2015-06-26T23:59:28-07:00</updated><id>http://zmwangx.github.io/blog/2015-06-26-ios-9-searchable-settings.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>Finally it's here. According to <a href="http://www.macrumors.com/2015/06/26/hidden-features-in-ios-9-and-os-x-el-capitan/">MacRumors</a>:</p>
@@ -277,7 +272,6 @@ DELETE_AFTER <span class="op">=</span> datetime.timedelta(days<span class="op">=
 <a href="http://zmwangx.github.io/img/20150627-macrumors-demo-ios9-searchable-settings.png" target="_blank"><img alt="A screenshot of iOS 9 Settings in action." src="http://zmwangx.github.io/img/20150627-macrumors-demo-ios9-searchable-settings.png"/></a>
 <p class="caption">A screenshot of iOS 9 Settings in action.</p>
 </div>
-
 ]]></content></entry><entry><title type="html">All problems solved!?</title><link href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html"/><updated>2015-06-23T21:47:07-07:00</updated><id>http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>The project I've been working on intermittently over the past month, <a href="https://github.com/zmwangx/pyonedrive"><code>pyonedrive</code></a>, a OneDrive API v1.0 API/CLI client, is now quite satisfactory in terms of its feature set<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html#fn1" id="fnref1"><sup>1</sup></a>, so today I'm thinking about what I should work on next. Of course there's <a href="https://github.com/zmwangx/pyonedrive/labels/enhancement">a lot more I can do</a>, but what is done already encapsulates 95%+ of my daily usage; moreover, as everyone knows, refining an existing project is not as exciting as starting a new one and making something happen that is previously tedious or impossible.</p>
@@ -297,7 +291,6 @@ DELETE_AFTER <span class="op">=</span> datetime.timedelta(days<span class="op">=
 <li id="fn5"><p>I used to use Xcode as a C++ IDE before I was introduced to the brave new world of command line wizardry.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-23-all-problems-solved.html#fnref5">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
-
 ]]></content></entry><entry><title type="html">The tip of the iceberg</title><link href="http://zmwangx.github.io/blog/2015-06-12-the-tip-of-the-iceberg.html"/><updated>2015-06-12T14:24:18-07:00</updated><id>http://zmwangx.github.io/blog/2015-06-12-the-tip-of-the-iceberg.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p><em><strong>Disclaimer</strong>: While this post might have been triggered by a <a href="https://twitter.com/search?q=%23distractinglysexy">specific</a><a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-06-12-the-tip-of-the-iceberg.html#fn1" id="fnref1"><sup>1</sup></a> campaign, I'm certainly not addressing any specific concern or siding with any party. I never bothered to learn enough about a specific campaign to form a judgement that I would stand by,<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-06-12-the-tip-of-the-iceberg.html#fn2" id="fnref2"><sup>2</sup></a> since I simply don't care. I'm writing this post because I'm just too tired to see them popping up in my feeds every once in a while.</em></p>
@@ -315,7 +308,6 @@ DELETE_AFTER <span class="op">=</span> datetime.timedelta(days<span class="op">=
 <li id="fn5"><p>Yes, I'm among the one thousand.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-12-the-tip-of-the-iceberg.html#fnref5">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
-
 ]]></content></entry><entry><title type="html">Chrome disappointment: the shabby and boring old bookmark system from Stone Age strikes back</title><link href="http://zmwangx.github.io/blog/2015-06-10-chrome-disappointment-the-shabby-and-boring-old-bookmark-system-from-stone-age-strikes-back.html"/><updated>2015-06-10T23:17:05-07:00</updated><id>http://zmwangx.github.io/blog/2015-06-10-chrome-disappointment-the-shabby-and-boring-old-bookmark-system-from-stone-age-strikes-back.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>I just restarted my machine (in the process of planning a fresh OS re-install), and something in Chrome's UI immediately felt wrong. After a few moments I realized it was the star button (bookmark button) in the far right of the omnibox giving me the uneasy feeling &#8212; the old bookmark system is back. Broadcasting from stable channel, build 43.0.2357.124 on OS X.</p>
@@ -359,7 +351,6 @@ DELETE_AFTER <span class="op">=</span> datetime.timedelta(days<span class="op">=
 <li id="fn6"><p>In other news, Google dropped YouTube collections two weeks ago (<a href="https://support.google.com/youtube/answer/6233832?hl=en">May 26, 2015</a>), causing another round of agony. Also, subscriptions were all over the place once more, just like Google's project landscape.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-10-chrome-disappointment-the-shabby-and-boring-old-bookmark-system-from-stone-age-strikes-back.html#fnref6">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
-
 ]]></content></entry><entry><title type="html">Apple turns its homepage into a WWDC liveblog</title><link href="http://zmwangx.github.io/blog/2015-06-08-apple-turns-its-homepage-into-a-wwdc-liveblog.html"/><updated>2015-06-08T14:42:50-07:00</updated><id>http://zmwangx.github.io/blog/2015-06-08-apple-turns-its-homepage-into-a-wwdc-liveblog.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>WWDC is Apple's biggest event every year, and WWDC keynote always attracts tons of hype. Apple knows that. In the past years folks who can't (at work, in class, etc.) or don't want to watch the crappy live stream would follow the various WWDC liveblogs presented by tech sites like Gizmodo, TechCrunch, Ars Technica, etc. But this year the landscape has changed: Apple rolled its own card-based liveblog at <a href="http://www.apple.com/live/2015-june-event/">www.apple.com/live/2015-june-event</a>.<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-06-08-apple-turns-its-homepage-into-a-wwdc-liveblog.html#fn1" id="fnref1"><sup>1</sup></a> Not only that; during the keynote, Apple redirected its homepage to the liveblog page, so it effectively turned its homepage into a liveblog:</p>
@@ -420,7 +411,6 @@ Server: Apache</code></pre></div>
 <li id="fn2"><p>Yeah, I know some people don't; but those people are not likely to be Apple fans either.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-08-apple-turns-its-homepage-into-a-wwdc-liveblog.html#fnref2">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
-
 ]]></content></entry><entry><title type="html">StackOverflow review system is completely BS</title><link href="http://zmwangx.github.io/blog/2015-06-07-stackoverflow-review-system-is-completely-bs.html"/><updated>2015-06-07T18:58:57-07:00</updated><id>http://zmwangx.github.io/blog/2015-06-07-stackoverflow-review-system-is-completely-bs.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>I just answered an interesting question about ZLE <a href="http://stackoverflow.com/q/30699242/1944784">on StackOverflow</a>, and in the process I also improved my own toolchain. For the record, the OP asked for tab completion to present working directory items (executable files and directories) on an empty command line, which led to the following widget:</p>
@@ -465,7 +455,6 @@ Server: Apache</code></pre></div>
 <li id="fn3"><p>I think I asked quite a few stupid questions back in the days, and now I'm totally ashamed of them. Insterestingly, some of those questions are my highest voted ones and got me quite some reps (compared to my total rep &#8212; I'm by no means a high rep user). See <a href="http://michael.richter.name/blogs/why-i-no-longer-contribute-to-stackoverflow"><em>Why I no longer contribute to StackOverflow</em></a> for a thorough discussion of the broken rep system and its disastrous effects.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-07-stackoverflow-review-system-is-completely-bs.html#fnref3">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
-
 ]]></content></entry><entry><title type="html">Using a personal helper package in everyday scripting</title><link href="http://zmwangx.github.io/blog/2015-05-30-using-a-personal-helper-package-in-everyday-scripting.html"/><updated>2015-05-30T22:48:57-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-30-using-a-personal-helper-package-in-everyday-scripting.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>Recently I've been scripting (mostly in Python) quite a bit, and noticed that some functionalities get copied over or reimplemented over and over again. Examples include reading configuration files (mostly JSON, INI, and YAML), printing progress information to tty in color, displaying progress bar, and so on.</p>
@@ -493,7 +482,6 @@ Server: Apache</code></pre></div>
 <li id="fn1"><p>I'm pretty paranoid about documenting things.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-30-using-a-personal-helper-package-in-everyday-scripting.html#fnref1">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
-
 ]]></content></entry><entry><title type="html">Apple's customer service is still the best (plus an Authy horror story)</title><link href="http://zmwangx.github.io/blog/2015-05-29-apples-customer-service-is-still-the-best-plus-an-authy-horror-story.html"/><updated>2015-05-29T20:40:05-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-29-apples-customer-service-is-still-the-best-plus-an-authy-horror-story.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>Recently the mute switch (officially known as the Ring/Silent switch) on my little-more-than-half-a-year-old iPhone 6 Plus stopped working. It almost always bounced back to ON (ring) position upon turning, and even if I could keep it at the OFF position for five seconds, it would most likely bounce back when I thrust it into my pocket. I got bitten a few times &#8212; almost got heart attacks when the phone dinged loudly in class. Minor yet annoying problem.</p>
@@ -511,7 +499,6 @@ Server: Apache</code></pre></div>
 <li id="fn3"><p>I have a Coinbase account and probably around 0.01 BTC in my wallet, but I don't really use bitcoins. At the time I signed up for two-factor auth on Coinbase, Authy seemed to be only supported system; however, I just signed in again and it seems that Coinbase is now supporting Authenticator also. Whatever the case, Authy is practically dead for me.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-29-apples-customer-service-is-still-the-best-plus-an-authy-horror-story.html#fnref3">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
-
 ]]></content></entry><entry><title type="html">Using a command table as wallpaper</title><link href="http://zmwangx.github.io/blog/2015-05-22-using-a-command-table-as-wallpaper.html"/><updated>2015-05-22T00:48:19-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-22-using-a-command-table-as-wallpaper.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>Recently I cleaned up my source code directory, removed a lot of rarely-used, dated scripts, and grouped the remaining standalone scripts into a central place (<code>~/dev/scripts</code>)<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-05-22-using-a-command-table-as-wallpaper.html#fn1" id="fnref1"><sup>1</sup></a>. One thing I learned in this process is that I tend to write a reusable script but rarely actually reuse it (even if it sits on <code>PATH</code>), sometimes implementing the same functionality twice or typing a long command line over and over again.</p>
@@ -668,7 +655,6 @@ XELATEX_PROGRAM <span class="op">=</span> (<span class="vs">r"""</span>
 <li id="fn2"><p>Yeah, I know it's a shitty script, so don't nitpick on style problems.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-22-using-a-command-table-as-wallpaper.html#fnref2">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
-
 ]]></content></entry><entry><title type="html">Bash: the special slash character in filename expansion</title><link href="http://zmwangx.github.io/blog/2015-05-19-bash-the-special-slash-character-in-filename-expansion.html"/><updated>2015-05-19T18:33:51-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-19-bash-the-special-slash-character-in-filename-expansion.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>It is well-known and common sense that the slash character (<code>/</code>) serves a special role in Bash filename expansion. For instance, the asterisk <code>*</code> certainly won't match <code>/</code> or <code>.</code> when used in filename expansion; otherwise, a standalone <code>*</code> would match everything in the filesystem.</p>
@@ -700,7 +686,6 @@ matching</code></pre></div>
 <li id="fn1"><p>Here, "a literal slash character" also applies to one that comes from tilde expansion, parameter expansion or command substitution, since they are performed before filename expansion in Bash.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-19-bash-the-special-slash-character-in-filename-expansion.html#fnref1">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
-
 ]]></content></entry><entry><title type="html">storyboard reached 0.1</title><link href="http://zmwangx.github.io/blog/2015-05-09-storyboard-reached-01.html"/><updated>2015-05-09T00:32:28-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-09-storyboard-reached-01.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>For quite some time I've been working on a Python project called <a href="https://github.com/zmwangx/storyboard"><code>storyboard</code></a>, and today I finally released the 0.1 stable (or you can think of it as 1.0).</p>
@@ -777,7 +762,6 @@ storyboard saved to: /tmp/storyboard-se3fbiif.jpg
 <li id="fn2"><p>The screencast's color scheme is actually off in some places, since in my iTerm2 bold font is displayed as bold, not bright.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-09-storyboard-reached-01.html#fnref2">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
-
 ]]></content></entry><entry><title type="html">Searchable settings are one honking great idea &#8212; let's do more of those!</title><link href="http://zmwangx.github.io/blog/2015-05-06-searchable-settings-are-one-honking-great-idea-lets-do-more-of-those.html"/><updated>2015-05-06T19:29:46-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-06-searchable-settings-are-one-honking-great-idea-lets-do-more-of-those.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>I had to tweak some iOS settings just now, which wasn't a delightful experience. Since I just renovated my blog inside out and am still in the hype mode, I'll write a post on the interface design of settings or preferences.</p>
@@ -821,7 +805,6 @@ storyboard saved to: /tmp/storyboard-se3fbiif.jpg
 <li id="fn5"><p>Which is not at all surprising, since Apple's very own OS X has already set an example.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-06-searchable-settings-are-one-honking-great-idea-lets-do-more-of-those.html#fnref5">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
-
 ]]></content></entry><entry><title type="html">Graceful handling of SIGINT when using Python's multiprocessing.Process</title><link href="http://zmwangx.github.io/blog/2015-05-05-graceful-handling-of-sigint-when-using-pythons-multiprocessingprocess.html"/><updated>2015-05-05T22:03:39-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-05-graceful-handling-of-sigint-when-using-pythons-multiprocessingprocess.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>Today I learned something about Python's (at least CPython's) multiprocessing and signal handling, and I would like to share it here. Basically my situation was such (when developing <a href="https://github.com/zmwangx/zmwangx.github.io/blob/source/pyblog"><code>pydoc</code></a> that powers this blog):</p>
@@ -890,7 +873,6 @@ storyboard saved to: /tmp/storyboard-se3fbiif.jpg
 <li id="fn3"><p>That's assuming your build isn't interdependent in which any single failure corrupts everything. In that case, what can we do? I honestly see no way of injecting signal handling in <code>subprocess.Popen</code>.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-05-graceful-handling-of-sigint-when-using-pythons-multiprocessingprocess.html#fnref3">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
-
 ]]></content></entry><entry><title type="html">New blog, new start</title><link href="http://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html"/><updated>2015-05-05T02:42:44-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>Octopress has been serving me for the past six months, during which even Octopress itself underwent major changes &#8212; in fact, <a href="https://github.com/octopress/octopress/releases/tag/v3.0.0">Octopress 3.0.0</a> was only released 3 days ago, which I never got to try. Anyway, Octopress's heavily colored interface grew old on me fairly quickly. I'm especially unhappy with the inline <code>&lt;code&gt;</code> tag, which is always wrapped in a white box and stands out too much (worse still, there's no visual difference when such a <code>&lt;code&gt;</code> tag is placed inside an <code>&lt;a&gt;</code> tag). Since I use inline code/verbatim a lot, many of my articles were littered with arbitrary boxes everywhere.</p>
@@ -928,7 +910,6 @@ storyboard saved to: /tmp/storyboard-se3fbiif.jpg
 <li id="fn3"><p>I have the impression that a complete build of all posts (about fifty of them) with <code>pyblog</code> is faster than regenerating for a single modified post in Octopress. That's in the context of absolutely no categories; when you have a dozen or more categories, Octopress slows down to a halt.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html#fnref3">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
-
 ]]></content></entry><entry><title type="html">Why Oh My Zsh is completely broken</title><link href="http://zmwangx.github.io/blog/2015-05-03-why-oh-my-zsh-is-completely-broken.html"/><updated>2015-05-03T17:15:49-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-03-why-oh-my-zsh-is-completely-broken.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>Today I moved from <a href="https://github.com/robbyrussell/oh-my-zsh">Oh My Zsh</a> to <a href="https://github.com/sorin-ionescu/prezto">Prezto</a>, after using Oh My Zsh for about three years since 2012. I'll try to shed some light on the reasons in this post.</p>
@@ -1046,5 +1027,4 @@ correction.zsh  git.zsh          key-bindings.zsh  prompt_info_functions.zsh  th
 <li id="fn3"><p>Whether aliases defined in a plugin (e.g. for <code>git</code>) should be loaded can be easily controlled via a switch.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-03-why-oh-my-zsh-is-completely-broken.html#fnref3">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
-
 ]]></content></entry></feed>

@@ -5,7 +5,7 @@ body {
 article {
     position: static;
     width: 90%;
-    padding: 5%;
+    margin: 5%;
 }
 
 nav, footer .rfooter .cc-icon, footer .rfooter .atom-icon, footer .rfooter .rss-icon {

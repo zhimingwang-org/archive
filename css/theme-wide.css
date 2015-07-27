@@ -1,4 +1,3 @@
-article {
+.content, .content-separator, .footer {
     width: 50%;
-    left: 25%;
 }
