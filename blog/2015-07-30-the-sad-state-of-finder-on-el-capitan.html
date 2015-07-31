@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2015-07-30T23:59:09-07:00" name="date"/>
+<title>The sad state of Finder on El Capitan</title>
+<link href="/img/apple-touch-icon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<style type="text/css">code{white-space: pre;}</style>
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-wide.css" media="only screen and (min-width: 1441px)" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-narrow.css" media="only screen and (max-width: 1023px)" rel="stylesheet" type="text/css"/>
+<link href="/css/print.css" media="print" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css"/>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-53908325-1', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+</script>
+</head>
+<body>
+<nav class="nav">
+<a class="nav-icon" href="/">blog icon</a>
+<div class="nav-title"><a class="nav-link" href="/">dl? cmplnts?</a></div>
+<div class="nav-author">by <a class="nav-link" href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</nav>
+<article class="content">
+<header class="article-header">
+<h1 class="article-title">The sad state of Finder on El Capitan</h1>
+<h2 class="article-metadata">
+<time class="article-timestamp" datetime="2015-07-30T23:59:09-07:00">July 30, 2015,</time>
+by <span class="article-author">Zhiming Wang</span>
+</h2>
+</header>
+<p>I was listening to <a href="http://atp.fm/episodes/128">Accidental Tech Podcast E128</a> today, which discussed the implications of Rootless (i.e. System Integrity Protection) at quite some length.<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a> Which stirred up my old worries about the Finder — I was briefly concerned about TotalFinder immediately after Rootless was announced in WWDC, but was quickly reassured and forgot that concern after learning that Homebrew (i.e. <code>/usr/local</code>) isn't affected, which attracted more of my attention.</p>
+<p>Unfortunately, the concern is real. TotalFinder is dead on El Capitan: it has been monkey patching Finder.app all along, and that strategy apparently is killed by Rootless. BinaryAge has <a href="http://blog.binaryage.com/el-capitan-update/">announced</a> that TotalFinder won't be ported to El Capitan. It's a done deal.</p>
+<p>This is actually not the first time I felt threatened as a TotalFinder fan<a class="footnoteRef" href="#fn2" id="fnref2"><sup>2</sup></a>. Back in 2013, when Finder tabs was announced for Mavericks, there were <a href="http://discuss.binaryage.com/t/call-for-ideas-what-should-be-the-next-binaryage-product/243">hints from BinaryAge</a> that TotalFinder might be discontinued one day, because apparently Finder tabs is a "serious hit for our [BinaryAge's] business". However, it still survived all the way up till Yosemite. I had the hope that TotalFinder could die a peaceful, glorious death when Apple finally improved the stock Finder to a certain point; I didn't quite expect TotalFinder to die an abrupt death like this.</p>
+<p>Now that I think about it, my expectations for Finder isn't very high. Just provide the following and I'll be pretty happy:</p>
+<ol style="list-style-type: decimal">
+<li>Auto-resize each column (one can already "Right Size All Columns Individually" through the right-click context menu from the column dividers — is it that hard or unreasonable to make that automatic?);</li>
+<li>A way to quickly show and hide hidden files without leaving Finder;</li>
+<li>Finder on top (when not sorting by kind) is a nice addition, but not a must;</li>
+<li>Chrome-styled tab (instead of Safari-styled) would be a plus.</li>
+</ol>
+<p>Pretty simple, aren't they (except point 4, which won't happen in stock Finder for the forseeable future)? Especially point 1, which should be desirable for all users, power users and dummies alike. If TotalFinder (and the free alternative XtraFinder, for that matter) can do these just by monkey patching, then Apple with all the control and infinite resources definitely could do these.</p>
+<p>Anyway, complaints aren't going to get me anywhere. What's next?</p>
+<p>TotalFinder is dead.</p>
+<p>XtraFinder<a class="footnoteRef" href="#fn3" id="fnref3"><sup>3</sup></a> similarly monkey patches Finder, so it also won't work with Rootless enabled. The developer has no plan to drop its support though, and I've confirmed that so far the lastest version works well on El Capitan PB3 without Rootless, save for the auto-resize columns feature, which somehow has no effect. Hopefully it will be fixed.</p>
+<p>The only other well-known Finder alternative is probably Path Finder, but being a standalone program<a class="footnoteRef" href="#fn4" id="fnref4"><sup>4</sup></a> priced at $39.95, it seems both too full-blown and too expensive. Also, the "Path Finder 7" and "Upgrade — $19.95" on <a href="http://www.cocoatech.com/pathfinder/">the project's home page</a> aren't reassuring; it's probably a $20 per year program.<a class="footnoteRef" href="#fn5" id="fnref5"><sup>5</sup></a> Moreover, even if I end up paying the money, I'm not even sure if it is going to be able to fully replace the experience around Finder. For instance, does the <code>open</code> command open directories in PathFinder? I highly doubt that. Heck, I just want a nicer Finder; why am I forced to a full (and probably not fully integrated) replacement.</p>
+<p>Besides, Path Finder's roadmap is pretty ridiculous. A guy asked "<a href="http://support.cocoatech.com/discussions/problems/33611-will-path-finder-work-with-el-capitan">Will Path Finder work with El Capitan?</a>" on the support forum, and the reply was</p>
+<blockquote>
+<p>Unfortunately, I cannot provide you with any information regarding this at the moment. We will let you know once there will be an official release of Mac OS X El Capitan.</p>
+</blockquote>
+<p>Seriously? That sounds so last decade. Which developer is so tight-lipped today? And who waits for the final OS release only to announce the support schedule? If they can't keep up with the schedule (or haven't looked at the barriers yet), at least they can communicate honestly with customers. This kind of uncertainty will only drive people away. Hard to believe this is the support you get for $40 plus upgrade fees.</p>
+<p>I don't know what I'll do in the end. Path Finder is probably not what I'm looking for, but maybe I'll give it a spin if they release an El Capitan ready version in time. Most likely though, I'll stick to stock Finder for a while, and if it turns out too painful, I'll just disable Rootless and sport a copy of XtraFinder. I don't think Rootless will be that useful for me anyway; I still believe it's game over once malware sneaks into my system, whatever privilege it claims. Whether Apple will further lock down the system in a future version is another story.</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>It's interesting to listen to John Siracusa's take on the issue, by the way. I completely agree with him.<a class="footnotes-backlink" href="#fnref1">↩︎</a></p></li>
+<li id="fn2"><p>Well this time we're not really threatened; TotalFinder is just plain dead. Those "I run Snow Leopard and I won't upgrade" dudes are delusional, as I've pointed out more than once.<a class="footnotes-backlink" href="#fnref2">↩︎</a></p></li>
+<li id="fn3"><p><a href="http://www.trankynam.com/xtrafinder/">XtraFinder</a> is free, and it comes from the developer of <a href="https://www.trankynam.com/atext/">aText</a>, so I have good feelings about it. However, its annoucements and discussions take place on <a href="https://www.facebook.com/XtraFinder">Facebook</a>, which makes it awfully unprofessional...<a class="footnotes-backlink" href="#fnref3">↩︎</a></p></li>
+<li id="fn4"><p>From what I've heard.<a class="footnotes-backlink" href="#fnref4">↩︎</a></p></li>
+<li id="fn5"><p>Mind you, TotalFinder charges nothing except the initial $18 investment, despite a lot of rewrite for each major version of OS X.<a class="footnotes-backlink" href="#fnref5">↩︎</a></p></li>
+</ol>
+</div>
+</article>
+<hr class="content-separator"/>
+<footer class="footer">
+<span class="rfooter">
+<a class="rss-icon" href="/rss.xml" target="_blank" title="RSS feed">RSS feed icon</a><a class="atom-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a><a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</span>
+</footer>
+</body>
+</html>
