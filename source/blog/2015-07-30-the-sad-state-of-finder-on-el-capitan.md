@@ -17,7 +17,7 @@ Now that I think about it, my expectations for Finder isn't very high. Just prov
 
 1. Auto-resize each column (one can already "Right Size All Columns Individually" through the right-click context menu from the column dividers — is it that hard or unreasonable to make that automatic?);
 2. A way to quickly show and hide hidden files without leaving Finder;
-3. Finder on top (when not sorting by kind) is a nice addition, but not a must;
+3. Folders on top (when not sorting by kind) is a nice addition, but not a must;
 4. Chrome-styled tab (instead of Safari-styled) would be a plus.
 
 Pretty simple, aren't they (except point 4, which won't happen in stock Finder for the forseeable future)? Especially point 1, which should be desirable for all users, power users and dummies alike. If TotalFinder (and the free alternative XtraFinder, for that matter) can do these just by monkey patching, then Apple with all the control and infinite resources definitely could do these.
