@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2015-08-02T22:11:56-07:00" name="date"/>
+<title>Sync Chrome bookmarks with Safari on OS X</title>
+<link href="/img/apple-touch-icon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<style type="text/css">code{white-space: pre;}</style>
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-wide.css" media="only screen and (min-width: 1441px)" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-narrow.css" media="only screen and (max-width: 1023px)" rel="stylesheet" type="text/css"/>
+<link href="/css/print.css" media="print" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css"/>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-53908325-1', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+</script>
+</head>
+<body>
+<nav class="nav">
+<a class="nav-icon" href="/">blog icon</a>
+<div class="nav-title"><a class="nav-link" href="/">dl? cmplnts?</a></div>
+<div class="nav-author">by <a class="nav-link" href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</nav>
+<article class="content">
+<header class="article-header">
+<h1 class="article-title">Sync Chrome bookmarks with Safari on OS X</h1>
+<h2 class="article-metadata">
+<time class="article-timestamp" datetime="2015-08-02T22:11:56-07:00">August 2, 2015,</time>
+by <span class="article-author">Zhiming Wang</span>
+</h2>
+</header>
+<p>I've been reading quite a bit of stuff on my iPhone 6 Plus these days, especially since I got my Apple Watch (not quite sure why these two things are correlated, but they are). I used to read subscribed content in Feedly, but abandoned that a while ago since Feedly does an unbearably bad job at updating my one-subscriber feeds,<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a> e.g., Ars Premier feed, GitHub release feeds, etc. Ever since then, I've been rocking a local Leaf engine on my Mac but lost access on my phone,<a class="footnoteRef" href="#fn2" id="fnref2"><sup>2</sup></a> and had to rely on bookmarks.</p>
+<p>However, as a Chrome user on the desktop and only on the desktop (iOS Chrome sucks), I have trouble getting my Chrome bookmarks into mobile Safari. Apple developed an <a href="https://chrome.google.com/webstore/detail/icloud-bookmarks/fkepacicchenbjecpbpbclokcabebhah?hl=en">iCloud Bookmarks</a> extension for Chrome that allegedly syncs your bookmarks to iCloud<a class="footnoteRef" href="#fn3" id="fnref3"><sup>3</sup></a>, but upon installing the extension for Mac Chrome, an error message pops up:</p>
+<blockquote>
+<p>The extension you are trying to install is designed to run on Windows 7 or 8. If you are using a Mac, your Safari bookmarks will automatically sync with your iPhone, iPad, and Mac when you sign in to iCloud on all your devices.</p>
+</blockquote>
+<p>The message is pretty clear: you have access to our browser, so you either use our browser or go fuck yourself.</p>
+<p>So, what's next? Fortunately, recent versions of Safari (I'm currently running 8.0.7) has an import feature that comes in handy and does a pretty good job: "File -&gt; Import From -&gt; Google Chrome..." which lets you import either history or bookmarks or both. Once they are imported into desktop Safari, iCloud is pretty good at pushing it to mobile. I have no problem importing both, but the idea that I'll have to launch Safari and click click click click just to sync my bookmarks is beyond horrible.</p>
+<p>Okay, remember we have another nightmare called AppleScript? And remember we have another nightmare within nightmare called GUI scripting? Yes, here's what we could do:</p>
+<pre class="applescript"><code>#!/usr/bin/osascript
+tell application "Safari" to activate
+delay 1
+tell application "System Events"
+    tell process "Safari"
+        tell menu bar 1
+            tell menu bar item "File"
+                tell menu "File"
+                    tell menu item "Import From"
+                        tell menu "Import From"
+                            click menu item "Google Chrome…"
+                            delay 1
+                            keystroke return
+                        end tell
+                    end tell
+                end tell
+            end tell
+        end tell
+    end tell
+end tell
+delay 1
+tell application "Safari" to quit</code></pre>
+<p>Holy crap, look at that cascade.<a class="footnoteRef" href="#fn4" id="fnref4"><sup>4</sup></a> Anyway, in principle, this piece of crap works. In reality, well, it <em>sometimes</em> works. Because you know the nightmare called "assistive access", among other unreliabilities of poking around with system events:</p>
+<div class="figure">
+<a href="/img/20150802-assistive-access-nightmare.png" target="_blank"><img alt="Familiar?" src="/img/20150802-assistive-access-nightmare.png"/></a>
+<p class="caption">Familiar?</p>
+</div>
+<p>On Yosemite at least, the pane to grant assistive access in System Preferences is three levels deep ("Security &amp; Privacy -&gt; Privacy -&gt; Accessibility"), behind an admin password, and most unfortunately, there's no way to grant access to individual executables through that pane, unless you are explicitly prompted about one, which may not happen when it should.<a class="footnoteRef" href="#fn5" id="fnref5"><sup>5</sup></a> <a class="footnoteRef" href="#fn6" id="fnref6"><sup>6</sup></a> There's nothing I could do apart from granting access to both Terminal.app and iTerm.app and hope for the best. Not so surprisingly, just as demonstrated in my past encounters with GUI scripting, with access granted to the terminals, whether I'll get an "assitive access" error when running the script is completely hit-or-miss. This time it works, the next time it just stalls, and yet another time it emits the error... Oh god.</p>
+<p>In order to raise the rate of success, there's one other trick we could try: package the script into an Automator app. This way we can grant access to the standalone app, and that helps a bit. That's what I did in <a href="https://github.com/zmwangx/safari-sync-chrome-bookmarks">zmwangx/safari-sync-chrome-bookmarks</a>. It still occasionally get stuck, probably because I have a freaking slow spinning HDD and Safari would sometimes take forever to launch; but the accessibility problem does seem to go away (provided that you re-grant access every time you make the tiniest modification to the app).</p>
+<p>Now I can throw that into my crontab (launching Safari beforehand to avoid freezing up):</p>
+<pre class="crontab"><code>55 04 * * * open -g -a safari &amp;&amp; sleep 30 &amp;&amp; open -g -a safari-sync-chrome-bookmarks</code></pre>
+<p>or invoke on demand.</p>
+<p>Horrible solution, yes. Anything better? I would love to hear about it, but I highly doubt there's any, unless we directly work with <code>~/Library/Application Support/Google/Chrome/Default/Bookmarks</code> and <code>~/Library/Safari/Bookmarks.plist</code>. Probably a good problem to tackle though, provided that someone would sit down and understand the formats of the two files.</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>I can understand that to reduce server load, they can't refresh the one-subscriber feeds at a rate, say, once per minute, but not being able to manually update, especially when you have a so-called "refresh" feature? Not cool. (What the manual "refresh" seems to do is to fetch Feedly's cached content.) Anyway, it's a freemium service with me running the free tier, so I can't really blame them.<a class="footnotes-backlink" href="#fnref1">↩︎</a></p></li>
+<li id="fn2"><p>Which RSS reader/service I'll use next on iOS is a question; I haven't got time to compare the various options yet. So many readers, so many aggregation services!<a class="footnotes-backlink" href="#fnref2">↩︎</a></p></li>
+<li id="fn3"><p>And also one for Firefox, it seems<a class="footnotes-backlink" href="#fnref3">↩︎</a></p></li>
+<li id="fn4"><p>There's another annoyance: <code>"Google Chrome…"</code> cannot be replaced with <code>"Google Chrome..."</code>, or you won't ever find that menu item.<a class="footnotes-backlink" href="#fnref4">↩︎</a></p></li>
+<li id="fn5"><p>There might be a way round through poking with the system accessibility database as root; see <a href="https://github.com/jacobsalmela/tccutil">jacobsalmela/tccutil</a>. However, until I have time to carefully evaluate the code, I'll have to stay with System Preferences.<a class="footnotes-backlink" href="#fnref5">↩︎</a></p></li>
+<li id="fn6"><p>Yes, I can understand the security concerns, but having to jump through so many hoops just to get some damned GUI scripting to work is awfully frustrating — and that's when you assume that the damned thing would just work after you jump through the hoops.<a class="footnotes-backlink" href="#fnref6">↩︎</a></p></li>
+</ol>
+</div>
+</article>
+<hr class="content-separator"/>
+<footer class="footer">
+<span class="rfooter">
+<a class="rss-icon" href="/rss.xml" target="_blank" title="RSS feed">RSS feed icon</a><a class="atom-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a><a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</span>
+</footer>
+</body>
+</html>

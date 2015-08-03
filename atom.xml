@@ -1,4 +1,58 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zmwangx.github.io/atom.xml" rel="self" type="application/atom+xml"/><link href="http://zmwangx.github.io/" rel="alternate" type="text/html"/><updated>2015-08-02T17:16:17-07:00</updated><id>http://zmwangx.github.io/</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">The sad state of Finder on El Capitan</title><link href="http://zmwangx.github.io/blog/2015-07-30-the-sad-state-of-finder-on-el-capitan.html"/><updated>2015-07-30T23:59:09-07:00</updated><id>http://zmwangx.github.io/blog/2015-07-30-the-sad-state-of-finder-on-el-capitan.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
+<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zmwangx.github.io/atom.xml" rel="self" type="application/atom+xml"/><link href="http://zmwangx.github.io/" rel="alternate" type="text/html"/><updated>2015-08-02T22:12:05-07:00</updated><id>http://zmwangx.github.io/</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">Sync Chrome bookmarks with Safari on OS X</title><link href="http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html"/><updated>2015-08-02T22:11:56-07:00</updated><id>http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
+
+<p>I've been reading quite a bit of stuff on my iPhone 6 Plus these days, especially since I got my Apple Watch (not quite sure why these two things are correlated, but they are). I used to read subscribed content in Feedly, but abandoned that a while ago since Feedly does an unbearably bad job at updating my one-subscriber feeds,<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html#fn1" id="fnref1"><sup>1</sup></a> e.g., Ars Premier feed, GitHub release feeds, etc. Ever since then, I've been rocking a local Leaf engine on my Mac but lost access on my phone,<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html#fn2" id="fnref2"><sup>2</sup></a> and had to rely on bookmarks.</p>
+<p>However, as a Chrome user on the desktop and only on the desktop (iOS Chrome sucks), I have trouble getting my Chrome bookmarks into mobile Safari. Apple developed an <a href="https://chrome.google.com/webstore/detail/icloud-bookmarks/fkepacicchenbjecpbpbclokcabebhah?hl=en">iCloud Bookmarks</a> extension for Chrome that allegedly syncs your bookmarks to iCloud<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html#fn3" id="fnref3"><sup>3</sup></a>, but upon installing the extension for Mac Chrome, an error message pops up:</p>
+<blockquote>
+<p>The extension you are trying to install is designed to run on Windows 7 or 8. If you are using a Mac, your Safari bookmarks will automatically sync with your iPhone, iPad, and Mac when you sign in to iCloud on all your devices.</p>
+</blockquote>
+<p>The message is pretty clear: you have access to our browser, so you either use our browser or go fuck yourself.</p>
+<p>So, what's next? Fortunately, recent versions of Safari (I'm currently running 8.0.7) has an import feature that comes in handy and does a pretty good job: "File -&gt; Import From -&gt; Google Chrome..." which lets you import either history or bookmarks or both. Once they are imported into desktop Safari, iCloud is pretty good at pushing it to mobile. I have no problem importing both, but the idea that I'll have to launch Safari and click click click click just to sync my bookmarks is beyond horrible.</p>
+<p>Okay, remember we have another nightmare called AppleScript? And remember we have another nightmare within nightmare called GUI scripting? Yes, here's what we could do:</p>
+<pre class="applescript"><code>#!/usr/bin/osascript
+tell application "Safari" to activate
+delay 1
+tell application "System Events"
+    tell process "Safari"
+        tell menu bar 1
+            tell menu bar item "File"
+                tell menu "File"
+                    tell menu item "Import From"
+                        tell menu "Import From"
+                            click menu item "Google Chrome&#8230;"
+                            delay 1
+                            keystroke return
+                        end tell
+                    end tell
+                end tell
+            end tell
+        end tell
+    end tell
+end tell
+delay 1
+tell application "Safari" to quit</code></pre>
+<p>Holy crap, look at that cascade.<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html#fn4" id="fnref4"><sup>4</sup></a> Anyway, in principle, this piece of crap works. In reality, well, it <em>sometimes</em> works. Because you know the nightmare called "assistive access", among other unreliabilities of poking around with system events:</p>
+<div class="figure">
+<a href="http://zmwangx.github.io/img/20150802-assistive-access-nightmare.png" target="_blank"><img alt="Familiar?" src="http://zmwangx.github.io/img/20150802-assistive-access-nightmare.png"/></a>
+<p class="caption">Familiar?</p>
+</div>
+<p>On Yosemite at least, the pane to grant assistive access in System Preferences is three levels deep ("Security &amp; Privacy -&gt; Privacy -&gt; Accessibility"), behind an admin password, and most unfortunately, there's no way to grant access to individual executables through that pane, unless you are explicitly prompted about one, which may not happen when it should.<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html#fn5" id="fnref5"><sup>5</sup></a> <a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html#fn6" id="fnref6"><sup>6</sup></a> There's nothing I could do apart from granting access to both Terminal.app and iTerm.app and hope for the best. Not so surprisingly, just as demonstrated in my past encounters with GUI scripting, with access granted to the terminals, whether I'll get an "assitive access" error when running the script is completely hit-or-miss. This time it works, the next time it just stalls, and yet another time it emits the error... Oh god.</p>
+<p>In order to raise the rate of success, there's one other trick we could try: package the script into an Automator app. This way we can grant access to the standalone app, and that helps a bit. That's what I did in <a href="https://github.com/zmwangx/safari-sync-chrome-bookmarks">zmwangx/safari-sync-chrome-bookmarks</a>. It still occasionally get stuck, probably because I have a freaking slow spinning HDD and Safari would sometimes take forever to launch; but the accessibility problem does seem to go away (provided that you re-grant access every time you make the tiniest modification to the app).</p>
+<p>Now I can throw that into my crontab (launching Safari beforehand to avoid freezing up):</p>
+<pre class="crontab"><code>55 04 * * * open -g -a safari &amp;&amp; sleep 30 &amp;&amp; open -g -a safari-sync-chrome-bookmarks</code></pre>
+<p>or invoke on demand.</p>
+<p>Horrible solution, yes. Anything better? I would love to hear about it, but I highly doubt there's any, unless we directly work with <code>~/Library/Application Support/Google/Chrome/Default/Bookmarks</code> and <code>~/Library/Safari/Bookmarks.plist</code>. Probably a good problem to tackle though, provided that someone would sit down and understand the formats of the two files.</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>I can understand that to reduce server load, they can't refresh the one-subscriber feeds at a rate, say, once per minute, but not being able to manually update, especially when you have a so-called "refresh" feature? Not cool. (What the manual "refresh" seems to do is to fetch Feedly's cached content.) Anyway, it's a freemium service with me running the free tier, so I can't really blame them.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html#fnref1">&#8617;&#65038;</a></p></li>
+<li id="fn2"><p>Which RSS reader/service I'll use next on iOS is a question; I haven't got time to compare the various options yet. So many readers, so many aggregation services!<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html#fnref2">&#8617;&#65038;</a></p></li>
+<li id="fn3"><p>And also one for Firefox, it seems<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html#fnref3">&#8617;&#65038;</a></p></li>
+<li id="fn4"><p>There's another annoyance: <code>"Google Chrome&#8230;"</code> cannot be replaced with <code>"Google Chrome..."</code>, or you won't ever find that menu item.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html#fnref4">&#8617;&#65038;</a></p></li>
+<li id="fn5"><p>There might be a way round through poking with the system accessibility database as root; see <a href="https://github.com/jacobsalmela/tccutil">jacobsalmela/tccutil</a>. However, until I have time to carefully evaluate the code, I'll have to stay with System Preferences.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html#fnref5">&#8617;&#65038;</a></p></li>
+<li id="fn6"><p>Yes, I can understand the security concerns, but having to jump through so many hoops just to get some damned GUI scripting to work is awfully frustrating &#8212; and that's when you assume that the damned thing would just work after you jump through the hoops.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html#fnref6">&#8617;&#65038;</a></p></li>
+</ol>
+</div>
+]]></content></entry><entry><title type="html">The sad state of Finder on El Capitan</title><link href="http://zmwangx.github.io/blog/2015-07-30-the-sad-state-of-finder-on-el-capitan.html"/><updated>2015-07-30T23:59:09-07:00</updated><id>http://zmwangx.github.io/blog/2015-07-30-the-sad-state-of-finder-on-el-capitan.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>I was listening to <a href="http://atp.fm/episodes/128">Accidental Tech Podcast E128</a> today, which discussed the implications of Rootless (i.e. System Integrity Protection) at quite some length.<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-07-30-the-sad-state-of-finder-on-el-capitan.html#fn1" id="fnref1"><sup>1</sup></a> Which stirred up my old worries about the Finder &#8212; I was briefly concerned about TotalFinder immediately after Rootless was announced in WWDC, but was quickly reassured and forgot that concern after learning that Homebrew (i.e. <code>/usr/local</code>) isn't affected, which attracted more of my attention.</p>
 <p>Unfortunately, the concern is real. TotalFinder is dead on El Capitan: it has been monkey patching Finder.app all along, and that strategy apparently is killed by Rootless. BinaryAge has <a href="http://blog.binaryage.com/el-capitan-update/">announced</a> that TotalFinder won't be ported to El Capitan. It's a done deal.</p>
@@ -904,43 +958,6 @@ storyboard saved to: /tmp/storyboard-se3fbiif.jpg
 <li id="fn1"><p><a href="https://hg.python.org/cpython/file/1320ec1b24af/Modules/_multiprocessing">CPython's <code>multiprocessing</code> is written in C</a>, so the behavior might depend on the OS. I'm talking about OS X here. I haven't inspected and won't inspect the C source code.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-05-graceful-handling-of-sigint-when-using-pythons-multiprocessingprocess.html#fnref1">&#8617;&#65038;</a></p></li>
 <li id="fn2"><p>That's awfully naive and layman-sounding, I know, but I <em>am</em> almost a layman when it comes to system-level programming.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-05-graceful-handling-of-sigint-when-using-pythons-multiprocessingprocess.html#fnref2">&#8617;&#65038;</a></p></li>
 <li id="fn3"><p>That's assuming your build isn't interdependent in which any single failure corrupts everything. In that case, what can we do? I honestly see no way of injecting signal handling in <code>subprocess.Popen</code>.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-05-graceful-handling-of-sigint-when-using-pythons-multiprocessingprocess.html#fnref3">&#8617;&#65038;</a></p></li>
-</ol>
-</div>
-]]></content></entry><entry><title type="html">New blog, new start</title><link href="http://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html"/><updated>2015-05-05T02:42:44-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
-
-<p>Octopress has been serving me for the past six months, during which even Octopress itself underwent major changes &#8212; in fact, <a href="https://github.com/octopress/octopress/releases/tag/v3.0.0">Octopress 3.0.0</a> was only released 3 days ago, which I never got to try. Anyway, Octopress's heavily colored interface grew old on me fairly quickly. I'm especially unhappy with the inline <code>&lt;code&gt;</code> tag, which is always wrapped in a white box and stands out too much (worse still, there's no visual difference when such a <code>&lt;code&gt;</code> tag is placed inside an <code>&lt;a&gt;</code> tag). Since I use inline code/verbatim a lot, many of my articles were littered with arbitrary boxes everywhere.</p>
-<div class="figure">
-<a href="https://i.imgur.com/hxfSnOk.png" target="_blank"><img alt="Farewell, Octopress." src="https://i.imgur.com/hxfSnOk.png"/></a>
-<p class="caption">Farewell, Octopress.</p>
-</div>
-<p>Apparently I need something simpler. Because</p>
-<blockquote>
-<p>Simplicity is the ultimate sophistication.</p>
-</blockquote>
-<p>But how? Simiplicity 101: get rid of the "platform". There's no reason why I need a blogging platform like Jekyll (let alone the WordPress monster). When I initially switched to Octopress, I thought code highlighting was something fancy that I need heavy machinery to achieve, but it turned out that Pandoc is battery-included when it comes to syntax highting,<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html#fn1" id="fnref1"><sup>1</sup></a> so all I need is to specify a highlight style, e.g., Pygments:</p>
-<pre><code>pandoc input.md --highlight-style=pygments --template template.html --output output.html</code></pre>
-<p>That's it. Write the Markdown, compile with Pandoc, instantly awesome. So the HTML posts are there (assuming the HTML template is written, which is not hard to kick off).</p>
-<p>The rest of the job is to design the stylesheets and compile the posts into a coherent blog &#8212; basically, generate an index. I was able to realize both in several hours. For the former task, I borrowed a lot from <a href="http://mort.ninja/">mort.ninja</a> by <a href="https://github.com/soimort">Mort Yao</a>. Interestingly, we were born in the same city (Nanjing, China), and I benefit from at least two of his open source projects: <a href="https://github.com/soimort/you-get">you-get</a> and <a href="https://github.com/soimort/translate-shell">translate-shell</a>. The latter task is more interesting but also not hard. I'm rolling my own toolchain in Python, which you can find in <a href="https://github.com/zmwangx/zmwangx.github.io/blob/source/pyblog"><code>pyblog</code></a>. In fact, the complete source of this blog (down to how image assets are generated) are in the <a href="https://github.com/zmwangx/zmwangx.github.io/tree/source"><code>source</code> branch</a> of my GitHub Pages repo, so you may take a look if you're interested. <code>pyblog</code> is highly specialized<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html#fn2" id="fnref2"><sup>2</sup></a> and is still a work in progress at the time of writing, but it's already well capable of generating the blog &#8212; currently missing are auto gen-deploy and preview (with auto-update), which will also come soon.</p>
-<p>By the way, the most annoying thing in the development process was working with XML and generating <a href="http://zmwangx.github.io/atom.xml">the Atom feed</a>. Standard library <code>xml.etree.ElementTree</code> doesn't support the <code>![CDATA[</code> tag, and in the end I had to hack <a href="https://github.com/zmwangx/zmwangx.github.io/blob/source/pyblog#L34-L54">library internals</a>, which is likely to break in future versions. Remember the quotes?</p>
-<blockquote>
-<p>XML is a classic political compromise: it balances the needs of man and machine by being equally unreadable to both.</p>
-</blockquote>
-<blockquote>
-<p>XML combines the efficiency of text files with the readability of binary files.</p>
-</blockquote>
-<p>Sigh.</p>
-<p>Anyway, here is my new shiny blog.</p>
-<div class="figure">
-<a href="https://i.imgur.com/VS5f9eJ.png" target="_blank"><img alt="Welcome to the completely revamped dl? cmplnts?" src="https://i.imgur.com/VS5f9eJ.png"/></a>
-<p class="caption">Welcome to the completely revamped dl? cmplnts?</p>
-</div>
-<p>It looks ten times better than Octopress, and ever builds much faster than Octopress<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html#fn3" id="fnref3"><sup>3</sup></a>. As a bonus, the codebase is so small that it's super trivial to hack (no, not <em>that</em> hack).</p>
-<div class="footnotes">
-<hr/>
-<ol>
-<li id="fn1"><p>Well, Pandoc is heavy-machinery, but it's both generic and self-contained, unlike a specialized blogging platform.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html#fnref1">&#8617;&#65038;</a></p></li>
-<li id="fn2"><p>Which is fine since I don't expect anyone else to use it, anyway.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html#fnref2">&#8617;&#65038;</a></p></li>
-<li id="fn3"><p>I have the impression that a complete build of all posts (about fifty of them) with <code>pyblog</code> is faster than regenerating for a single modified post in Octopress. That's in the context of absolutely no categories; when you have a dozen or more categories, Octopress slows down to a halt.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html#fnref3">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
 ]]></content></entry></feed>
