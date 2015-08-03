@@ -3,6 +3,10 @@ title: "Sync Chrome bookmarks with Safari on OS X"
 date: 2015-08-02T22:11:56-07:00
 date-display: August 2, 2015
 ---
+**TL;DR**: [zmwangx/safari-sync-chrome-bookmarks](https://github.com/zmwangx/safari-sync-chrome-bookmarks).
+
+---
+
 I've been reading quite a bit of stuff on my iPhone 6 Plus these days, especially since I got my Apple Watch (not quite sure why these two things are correlated, but they are). I used to read subscribed content in Feedly, but abandoned that a while ago since Feedly does an unbearably bad job at updating my one-subscriber feeds,^[I can understand that to reduce server load, they can't refresh the one-subscriber feeds at a rate, say, once per minute, but not being able to manually update, especially when you have a so-called "refresh" feature? Not cool. (What the manual "refresh" seems to do is to fetch Feedly's cached content.) Anyway, it's a freemium service with me running the free tier, so I can't really blame them.] e.g., Ars Premier feed, GitHub release feeds, etc. Ever since then, I've been rocking a local Leaf engine on my Mac but lost access on my phone,^[Which RSS reader/service I'll use next on iOS is a question; I haven't got time to compare the various options yet. So many readers, so many aggregation services!] and had to rely on bookmarks.
 
 However, as a Chrome user on the desktop and only on the desktop (iOS Chrome sucks), I have trouble getting my Chrome bookmarks into mobile Safari. Apple developed an [iCloud Bookmarks](https://chrome.google.com/webstore/detail/icloud-bookmarks/fkepacicchenbjecpbpbclokcabebhah?hl=en) extension for Chrome that allegedly syncs your bookmarks to iCloud^[And also one for Firefox, it seems], but upon installing the extension for Mac Chrome, an error message pops up:
