@@ -697,8 +697,9 @@ def generate_blog(fresh=False, report_total_errors=True):
                 os.remove(obj)
 
     # nojekyll: https://help.github.com/articles/files-that-start-with-an-underscore-are-missing/
-    with open(os.path.join(BUILDDIR, ".nojekyll"), "w") as fileobj:
-        pass
+    if not os.path.exists(os.path.join(BUILDDIR, ".nojekyll")):
+        with open(os.path.join(BUILDDIR, ".nojekyll"), "w") as fileobj:
+            pass
 
     failed_builds = 0
     generator_mtime = os.path.getmtime(GENERATORSOURCE)
