@@ -115,6 +115,8 @@ img {
 }
 
 .figure .caption {
+    width: 80%;
+    margin: auto;
     text-align: center;
     font-size: 0.91em;
 }
