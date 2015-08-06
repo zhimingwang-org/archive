@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2015-08-05T19:38:37-07:00" name="date"/>
+<title>Switching to capitalized commit messages</title>
+<link href="/img/apple-touch-icon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<style type="text/css">code{white-space: pre;}</style>
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-wide.css" media="only screen and (min-width: 1441px)" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-narrow.css" media="only screen and (max-width: 1023px)" rel="stylesheet" type="text/css"/>
+<link href="/css/print.css" media="print" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css"/>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-53908325-1', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+</script>
+</head>
+<body>
+<nav class="nav">
+<a class="nav-icon" href="/">blog icon</a>
+<div class="nav-title"><a class="nav-link" href="/">dl? cmplnts?</a></div>
+<div class="nav-author">by <a class="nav-link" href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</nav>
+<article class="content">
+<header class="article-header">
+<h1 class="article-title">Switching to capitalized commit messages</h1>
+<h2 class="article-metadata">
+<time class="article-timestamp" datetime="2015-08-05T19:38:37-07:00">August 5, 2015,</time>
+by <span class="article-author">Zhiming Wang</span>
+</h2>
+</header>
+<p>This post is a note to self.</p>
+<p>As a long time git user, I've always used lowercase commit messages (in the subject line). I never quite liked the idea of capitalized commit messages, which are seldom complete sentences (and they are never period-terminated). Similarly, I avoid capilatization like hell in comments, unless when I write complete sentences. By the way, there's a technical advantage of writing lowercase commit messages: I can easily tell my human-made commits from auto commits like merge and revert commits, because they always begin with a capitalized "Merge", "Revert", etc.</p>
+<p>However, most of the projects I've contributed to seem to prefer capitalized commit messages, and by following my own habit, quite often I would go through the "oh crap I messed up the contribution guidelines" realization and had to amend my commits after the fact. Also, when I open a single-commit pull request on GitHub, the subject line of the commit message automatically becomes the subject line of the pull request, and I want my pull requests to have capitalized subject lines. Perhaps I come off as self-contradictory here: lowercase commit message, but capitalized PR subject? I don't know. Maybe a PR subject is more like a real "title". Also, I blame the font: lowercase subject lines don't look remotely as good in, say, Helvetica (which GitHub currently uses for PR and commit message subject lines), as in a good fixed width font, which is what I get when I run any <code>git-log</code> variant in a terminal.</p>
+<p>Anyway, lowercase commit messages isn't a particularly strong preference of mine, so I'm happy to change my habit from this day onward. Anyone can feel free to tease me if they see me write a lowercase commit message again (unless its in the format <code>component: changes</code>). In light of this, I've already <a href="https://github.com/zmwangx/zmwangx.github.io/commit/297225f2ab8a6db4fe75643f511f52499b052aa7">changed the message format</a> of <code>pyblog</code>'s auto commits, which is how I generate this blog.</p>
+<p>P.S. To be fair to me, <em>Pro Git</em>, the official git tutorial, <a href="https://github.com/progit/progit2/blob/6d9867ff2394cb8a08fa3e013b082a7ae547b8af/book/02-git-basics/sections/viewing-history.asc#viewing-the-commit-history">uses lowercase commit messages</a> (I guess that's just the personal preference of Scott Chacon — not mandated by anyone). To be fair to the other side, <a href="https://github.com/git/git/commit/e83c5163316f89bfbde7d9ab23ca2e25604af290"><code>git.git</code> mostly uses capitalized commit messages</a>.</p>
+</article>
+<hr class="content-separator"/>
+<footer class="footer">
+<span class="rfooter">
+<a class="rss-icon" href="/rss.xml" target="_blank" title="RSS feed">RSS feed icon</a><a class="atom-icon" href="/atom.xml" target="_blank" title="Atom feed">Atom feed icon</a><a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license.">Creative Commons icon</a>
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</span>
+</footer>
+</body>
+</html>
