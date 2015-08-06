@@ -1,14 +1,13 @@
 body {
+    margin: 5% 0;
     font-size: 7.936pt;
 }
 
-article {
-    position: static;
+.content, .content-separator, .footer {
     width: 90%;
-    margin: 5%;
 }
 
-nav, footer .rfooter .cc-icon, footer .rfooter .atom-icon, footer .rfooter .rss-icon {
+.nav, .rss-icon, .atom-icon, .cc-icon {
     width: 0;
     height: 0;
     visibility: hidden;
