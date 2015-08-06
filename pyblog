@@ -953,7 +953,7 @@ def deploy(args):
     atomxml = ET.parse("atom.xml").getroot()
     updated = atomxml.find('{http://www.w3.org/2005/Atom}updated').text
 
-    commit_message = ("site updated %s\n\nsource branch was at:\n%s\n" %
+    commit_message = ("Site updated at %s\n\nsource branch was at:\n%s\n" %
                       (updated, source_commit))
 
     # commit changes in BUILDDIR
