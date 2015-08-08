@@ -31,7 +31,9 @@ body {
     display: inline-block;
     font-family: "Open Sans";
     font-size: 36px;
-    font-weight: 300;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     color: #fff;
     text-decoration: none;
     /* stretch to mimic Helvetica Neue */
