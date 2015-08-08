@@ -15,17 +15,31 @@ body {
 }
 
 .nav-icon {
-    margin: 2px 0;
+    display: block;
+    margin: 2px auto;
     width: 100px;
     height: 100px;
-    display: inline-block;
-    background-image: url("/img/icon-100.png");
-    background-image: -webkit-image-set( url("/img/icon-100.png") 1x, url("/img/icon-200.png") 2x );
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100px;
-    vertical-align: middle;
+    border-radius: 50%;
+    background: #ddd;
+    line-height: 100px;
+    text-align: center;
     font-size: 0;
+}
+
+.nav-icon:before {
+    content: "ZW";
+    display: inline-block;
+    font-family: "Open Sans";
+    font-size: 36px;
+    font-weight: 300;
+    color: #fff;
+    text-decoration: none;
+    /* stretch to mimic Helvetica Neue */
+    transform: scale(1,0.9);
+    -webkit-transform: scale(1,0.9);
+    -moz-transform: scale(1,0.9);
+    -ms-transform: scale(1,0.9);
+    -o-transform: scale(1,0.9);
 }
 
 .nav-title {
