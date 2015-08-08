@@ -63,6 +63,12 @@ body {
     margin: 0 auto;
 }
 
+hr {
+    border: 0;
+    height: 1px;
+    background: #888;
+}
+
 .content-separator {
     margin: 15px auto 3px auto;
 }
