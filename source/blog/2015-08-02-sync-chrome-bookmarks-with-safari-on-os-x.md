@@ -3,7 +3,11 @@ title: "Sync Chrome bookmarks with Safari on OS X"
 date: 2015-08-02T22:11:56-07:00
 date-display: August 2, 2015
 ---
-**TL;DR**: [zmwangx/safari-sync-chrome-bookmarks](https://github.com/zmwangx/safari-sync-chrome-bookmarks).
+**08/11/2015 Update:** I have taken down the project from GitHub since it's way too flaky. Guess I'll stick with manually clicking around then...
+
+---
+
+**TL;DR**: [zmwangx/safari-sync-chrome-bookmarks](https://github.com/zmwangx/safari-sync-chrome-bookmarks) (now defunct; see update above).
 
 ---
 
