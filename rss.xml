@@ -1,4 +1,9 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><atom:link href="http://zmwangx.github.io/rss.xml" rel="self" type="application/rss+xml"/><title>dl? cmplnts?</title><link>http://zmwangx.github.io/</link><description>Zhiming Wang's personal blog</description><language>en-us</language><managingEditor>zmwangx@gmail.com (Zhiming Wang)</managingEditor><webMaster>zmwangx@gmail.com (Zhiming Wang)</webMaster><pubDate>Thu, 13 Aug 2015 09:10:34 GMT</pubDate><lastBuildDate>Thu, 13 Aug 2015 09:10:34 GMT</lastBuildDate><generator>pyblog (https://github.com/zmwangx/zmwangx.github.io)</generator><docs>https://validator.w3.org/feed/docs/rss2.html</docs><image><url>http://zmwangx.github.io/img/icon-100.png</url><title>dl? cmplnts?</title><link>http://zmwangx.github.io/</link><width>100</width><height>100</height></image><item><title>Other people's ___</title><link>http://zmwangx.github.io/blog/2015-08-13-other-peoples-___.html</link><description><![CDATA[
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><atom:link href="http://zmwangx.github.io/rss.xml" rel="self" type="application/rss+xml"/><title>dl? cmplnts?</title><link>http://zmwangx.github.io/</link><description>Zhiming Wang's personal blog</description><language>en-us</language><managingEditor>zmwangx@gmail.com (Zhiming Wang)</managingEditor><webMaster>zmwangx@gmail.com (Zhiming Wang)</webMaster><pubDate>Sat, 15 Aug 2015 01:56:39 GMT</pubDate><lastBuildDate>Sat, 15 Aug 2015 01:56:39 GMT</lastBuildDate><generator>pyblog (https://github.com/zmwangx/zmwangx.github.io)</generator><docs>https://validator.w3.org/feed/docs/rss2.html</docs><image><url>http://zmwangx.github.io/img/icon-100.png</url><title>dl? cmplnts?</title><link>http://zmwangx.github.io/</link><width>100</width><height>100</height></image><item><title>Laymen</title><link>http://zmwangx.github.io/blog/2015-08-14-laymen.html</link><description><![CDATA[
+
+<p>I always cringe when I see laymen discussing physics in comments sections of news websites. A typical situation: one commentator put together a sentence with all physics-sounding (kind of) terms he's ever heard of; the next commentator "agrees" with the previous one, adding something that sounds more reasonable (to folks who've never taken high school physics) but unfortunately violates the first law of thermodynamics; then yet another guy comes along and corrects both of the above in a pedagogic tone, with an argument that violates the second law of thermodymics...</p>
+<p>I cringe even more when laymen discuss mathematics, but that's much rarer compared to physics.</p>
+<p>Granted, mathematics (theoretical computer science included) and theoretical physics are probably the most abstract knowledge known to human beings, but I'm beginning to wonder if there are other professionals who would also cringe when I myself is discussing something outside my domain of expertise. Or when a better mathematician or physicist listens in on my baby talks with someone on the roughly same level.</p>
+]]></description><author>zmwangx@gmail.com (Zhiming Wang)</author><guid isPermaLink="true">http://zmwangx.github.io/blog/2015-08-14-laymen.html</guid><pubDate>Sat, 15 Aug 2015 01:32:13 GMT</pubDate></item><item><title>Other people's ___</title><link>http://zmwangx.github.io/blog/2015-08-13-other-peoples-___.html</link><description><![CDATA[
 
 <p>Often enough we look at other people's ___ (fill in the blank here) and say wow, but more often than not when we actually get to lay our hands on it, we find it less than impressive or even super annoying, and end up having nothing to say but meh. For Zsh geeks, examples include other people's Zsh prompts<a href="https://github.com/chauncey-garrett/zsh-prompt-garrett" style="text-decoration: none">,</a> zsh-syntax-highlighting, and zsh-autosuggestions.</p>
 ]]></description><author>zmwangx@gmail.com (Zhiming Wang)</author><guid isPermaLink="true">http://zmwangx.github.io/blog/2015-08-13-other-peoples-___.html</guid><pubDate>Thu, 13 Aug 2015 09:00:24 GMT</pubDate></item><item><title>Switching to capitalized commit messages</title><link>http://zmwangx.github.io/blog/2015-08-05-switching-to-capitalized-commit-messages.html</link><description><![CDATA[
@@ -782,35 +787,4 @@ XELATEX_PROGRAM <span class="op">=</span> (<span class="vs">r"""</span>
 <li id="fn2"><p>Yeah, I know it's a shitty script, so don't nitpick on style problems.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-22-using-a-command-table-as-wallpaper.html#fnref2">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
-]]></description><author>zmwangx@gmail.com (Zhiming Wang)</author><guid isPermaLink="true">http://zmwangx.github.io/blog/2015-05-22-using-a-command-table-as-wallpaper.html</guid><pubDate>Fri, 22 May 2015 07:48:19 GMT</pubDate></item><item><title>Bash: the special slash character in filename expansion</title><link>http://zmwangx.github.io/blog/2015-05-19-bash-the-special-slash-character-in-filename-expansion.html</link><description><![CDATA[
-
-<p>It is well-known and common sense that the slash character (<code>/</code>) serves a special role in Bash filename expansion. For instance, the asterisk <code>*</code> certainly won't match <code>/</code> or <code>.</code> when used in filename expansion; otherwise, a standalone <code>*</code> would match everything in the filesystem.</p>
-<p>However, it is less clear how a literal slash character<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-05-19-bash-the-special-slash-character-in-filename-expansion.html#fn1" id="fnref1"><sup>1</sup></a> is treated in extended glob patterns. Naively one would expect it to just match a literal slash, but the real situtation is more complicated than that. Consider the following examples:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">bash-4.3</span>$ shopt -s extglob nullglob
-<span class="kw">bash-4.3</span>$ echo /usr/@(bin<span class="kw">|lib</span>)
-<span class="kw">/usr/bin</span> /usr/lib
-<span class="kw">bash-4.3</span>$ echo /usr@(/bin<span class="kw">|/lib</span>)
-
-<span class="kw">bash-4.3</span>$ [[ /usr/bin == /usr@(/bin<span class="kw">|/lib</span>) ]] <span class="kw">&amp;&amp;</span> <span class="kw">echo</span> matching
-<span class="kw">matching</span></code></pre></div>
-<p>As seen from this example, patterns with slash simply doesn't work (in filename expansion) when placed in an extended glob pattern list, and there's no error whatsoever. I looked up the <a href="https://www.gnu.org/software/bash/manual/html_node/Pattern-Matching.html#Pattern-Matching">Bash Reference Manual</a> and the <a href="http://mywiki.wooledge.org/BashGuide/Patterns">Bash Guide</a> but neither mentioned this behavior. One might need to delve into the source code to say for sure what exactly is going on.</p>
-<p>In comparison, Zsh and its <a href="http://zsh.sourceforge.net/Doc/Release/Expansion.html#Filename-Generation">docs</a> are much more up front about this issue:</p>
-<blockquote>
-<p>Note that grouping cannot extend over multiple directories: it is an error to have a &#8216;/&#8217; within a group (this only applies for patterns used in filename generation). ...</p>
-</blockquote>
-<p>And when we run equivalent code in Zsh:</p>
-<div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh">zsh-5.0.5$ <span class="kw">setopt</span> NULL_GLOB
-zsh-5.0.5$ <span class="kw">echo</span> /usr/<span class="kw">(</span>bin<span class="kw">|</span>lib<span class="kw">)</span>
-/usr/bin /usr/lib
-zsh-5.0.5$ <span class="kw">echo</span> /usr<span class="kw">(</span>/bin<span class="kw">|</span>/lib<span class="kw">)</span>
-zsh: bad pattern: /usr<span class="kw">(</span>/bin<span class="kw">|</span>/lib<span class="kw">)</span>
-zsh-5.0.5$<span class="kw"> [[</span> /usr/bin <span class="ot">==</span> /usr(/bin|/lib)<span class="kw"> ]]</span> <span class="kw">&amp;&amp;</span> <span class="kw">echo</span> matching
-matching</code></pre></div>
-<p>The lesson? Be careful not to use a pattern like <code>@(path1|path2|path3)</code> in Bash when the paths are absolute, or relative but contain the slash. Unlike Zsh, Bash just silently fails on a pattern like this, which is rather dangerous in scripts.</p>
-<div class="footnotes">
-<hr/>
-<ol>
-<li id="fn1"><p>Here, "a literal slash character" also applies to one that comes from tilde expansion, parameter expansion or command substitution, since they are performed before filename expansion in Bash.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-19-bash-the-special-slash-character-in-filename-expansion.html#fnref1">&#8617;&#65038;</a></p></li>
-</ol>
-</div>
-]]></description><author>zmwangx@gmail.com (Zhiming Wang)</author><guid isPermaLink="true">http://zmwangx.github.io/blog/2015-05-19-bash-the-special-slash-character-in-filename-expansion.html</guid><pubDate>Wed, 20 May 2015 01:33:51 GMT</pubDate></item></channel></rss>
+]]></description><author>zmwangx@gmail.com (Zhiming Wang)</author><guid isPermaLink="true">http://zmwangx.github.io/blog/2015-05-22-using-a-command-table-as-wallpaper.html</guid><pubDate>Fri, 22 May 2015 07:48:19 GMT</pubDate></item></channel></rss>
