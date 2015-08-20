@@ -1,4 +1,30 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zmwangx.github.io/atom.xml" rel="self" type="application/atom+xml"/><link href="http://zmwangx.github.io/" rel="alternate" type="text/html"/><updated>2015-08-14T18:56:39-07:00</updated><id>http://zmwangx.github.io/</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">Laymen</title><link href="http://zmwangx.github.io/blog/2015-08-14-laymen.html"/><updated>2015-08-14T18:32:13-07:00</updated><id>http://zmwangx.github.io/blog/2015-08-14-laymen.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
+<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zmwangx.github.io/atom.xml" rel="self" type="application/atom+xml"/><link href="http://zmwangx.github.io/" rel="alternate" type="text/html"/><updated>2015-08-20T01:03:25-07:00</updated><id>http://zmwangx.github.io/</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">iOS 9: turn off Wi-Fi Assist!</title><link href="http://zmwangx.github.io/blog/2015-08-20-ios-9-turn-off-wi-fi-assist.html"/><updated>2015-08-20T01:01:57-07:00</updated><id>http://zmwangx.github.io/blog/2015-08-20-ios-9-turn-off-wi-fi-assist.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
+
+<p>Seriously. Go to Settings-&gt;Cellular, and scroll all the way down to reveal the "Wi-Fi Assist" switch. See screenshot at the end of the post. You'll see a description:</p>
+<blockquote>
+<p>Automatically use cellular data when Wi-Fi connectivity is poor.</p>
+</blockquote>
+<p>Switch that off, if you occasionally have shitty Wi-Fi (that kinda works anyway) and at all care about your cellular data usage.</p>
+<p>I'll tell my horror story now. Background info: I have unlimited voice and text plus 300 MB data per month, since I've got Wi-Fi almost everywhere I go. Granted, school Wi-Fi (especially dorm) is shitty and drops all the time, but I'm not a streaming-music-on-mobile person, so the Wi-Fi is mostly fine for checking emails, browsing the Web (yes, even <a href="http://murphyapps.co/blog/2015/6/24/an-hour-with-safari-content-blocker-in-ios-9">iMore</a> or <a href="http://blog.lmorchard.com/2015/07/22/the-verge-web-sucks/">The Verge</a> kind of Web), getting push notifications, or even downloading a few podcasts on the go. I usually end up using less than 200 MB of cellular data per month.</p>
+<p>However, at the beginning of August (on iOS 9 Public Beta 2 at that time), I somehow managed to burn through 200 MB in four or five days, with consistent daily stats, <em>while I did nothing special, at least not actively</em>. The timing overlaps with when I got my Apple Watch; I don't know if that's a coincidence. Anyway, more than 90% of that usage was under System Services-&gt;Documents &amp; Sync, which I could do nothing about. I had to turn off cellular data until almost the end of my billing cycle, when I stumbled upon the "Wi-Fi Assist" setting. Since then, I only used 4.8 MB &#8212; with 1.5 MB for System Services &#8212; in four days. Hardly a coincidence, I'd say.</p>
+<p>In fact, I was pretty delighted when I heard about the ability to auto fallback to LTE when one's on the fringe of Wi-Fi in WWDC '15 Session 719 ("Your App and the Next Generation Networks"). However, without another likely suspect, I guess what happened in reality was that when I was sitting in the center of a shitty Wi-Fi, with the system trying to do some background job involving a network connection, it just kept trying to connect via LTE, which probably beat the shitty Wi-Fi consistently. It would be nice if one day our phones would be aware of our data plans (realize that not every one is on a $100/mo 15 GB plan) and throttle its usage wisely.</p>
+<p>Anyway, I simply can't understand why the "Wi-Fi Assist" switch, a general system-wide option, appears at the end of Cellular settings, after all the per-app nickel-and-dime settings and statistics. It's nearly impossible to find. Generic settings should be at the top, period.</p>
+<p>By the way, I have a lot of gripes about iOS 9 Beta. Maybe I shouldn't whine about beta software &#8212; I never used another iOS beta before so maybe they were even worse &#8212; but I can't help it because this was supposed to be a stability release. Several things immediately jumped to my mind (all present in the latest Public Beta 3), without even trying:</p>
+<ul>
+<li><p><a href="http://zmwangx.github.io/blog/2015-06-26-ios-9-searchable-settings.html">Searchable settings</a> is a scam. Many items can't be found. For instance, good luck searching for "Wi-Fi Assist". I wonder if the search index is hand-crafted. Also, you can't pull down to search from any screen; you have to go back, back, back, back to the main settings screen, and even then it begins with your last search, even if you're done with it. Ewww.</p></li>
+<li><p>Scrolling and switching screens feels janky (system-wide) even on iPhone 6 Plus, supposedly a powerhouse.</p></li>
+<li><p>The Music app is indeed totally screwed up (this actually dates back to iOS 8.4). It's so much harder than previous versions.</p>
+<p>Dude, give me my old UI with selectable categories on the bottom bar if I've turned off Apple Music, okay? Do I have to put up with the Radio and Connect tabs, completely useless for me? Switching categories &#8212; by which I mean artists, albums, songs genres, etc. &#8212; is infinitely harder now, because you have to scroll all the way up to the top of a category in order to reveal the category selector, which has a dropdown arrow outside but isn't really a dropdown.</p>
+<p>And may I go straight to the artwork and playback control screen when I tap to play a song? Damn, when I select and play a song of course I want see the song front and center; don't treat me like an indecisive guy.</p>
+<p>And may I kindly request that the artwork does not protrude to the status bar &#8212; you do realize some artworks have white or light backgrounds, rendering the status bar unreadable?</p>
+<p>Recently I also noticed that all my old iTunes purchases are showing up and screwing my library. There used to be a switch in System Preferences, the right place for this kind of settings on iOS, but it's since be removed in favor of Apple Music stuff (not sure why they are mutually exclusive), and strangely put in the category switcher. Hell, this abomination is even documented in <a href="https://support.apple.com/en-us/HT204951">"Using the new Music app"</a>; here's <a href="https://i.imgur.com/RJKLqPo.jpg">Apple's official screenshot</a> showing off the stupid category switcher. For me without Apple Music, the switch says "Show iTunes Purchases" instead of "Show Music Available Offline". Pretty clear, huh, not bad. But don't bother, it does absolutely nothing for me.</p></li>
+</ul>
+<p>I could go on and on and on, but I don't want to waste more time on this crap. The gist is that I'm not impressed by iOS 9 at all at the moment (oh, one thing positive: San Fransico is nice). Hopefully the final release would be in much better shape; but I don't see any hope for the Music mess &#8212; it's not likely to be cleaned up any time soon. I mourn for the old Music app, which is likely gone forever.</p>
+<div class="figure">
+<a href="http://zmwangx.github.io/img/20150819-ios9-wifi-assist.png" target="_blank"><img alt='The "Wi-Fi Assist" switch, hidden below per-app settings.' src="http://zmwangx.github.io/img/20150819-ios9-wifi-assist.png"/></a>
+<p class="caption">The "Wi-Fi Assist" switch, hidden below per-app settings.</p>
+</div>
+]]></content></entry><entry><title type="html">Laymen</title><link href="http://zmwangx.github.io/blog/2015-08-14-laymen.html"/><updated>2015-08-14T18:32:13-07:00</updated><id>http://zmwangx.github.io/blog/2015-08-14-laymen.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>I always cringe when I see laymen discussing physics in comments sections of news websites. A typical situation: one commentator put together a sentence with all physics-sounding (kind of) terms he's ever heard of; the next commentator "agrees" with the previous one, adding something that sounds more reasonable (to folks who've never taken high school physics) but unfortunately violates the first law of thermodynamics; then yet another guy comes along and corrects both of the above in a pedagogic tone, with an argument that violates the second law of thermodymics...</p>
 <p>I cringe even more when laymen discuss mathematics, but that's much rarer compared to physics.</p>
@@ -629,162 +655,6 @@ Server: Apache</code></pre></div>
 <li id="fn1"><p>As I see no obvious way to replace the switch in store. My intuition was later confirmed.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-29-apples-customer-service-is-still-the-best-plus-an-authy-horror-story.html#fnref1">&#8617;&#65038;</a></p></li>
 <li id="fn2"><p>The first comment below that post is mine.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-29-apples-customer-service-is-still-the-best-plus-an-authy-horror-story.html#fnref2">&#8617;&#65038;</a></p></li>
 <li id="fn3"><p>I have a Coinbase account and probably around 0.01 BTC in my wallet, but I don't really use bitcoins. At the time I signed up for two-factor auth on Coinbase, Authy seemed to be only supported system; however, I just signed in again and it seems that Coinbase is now supporting Authenticator also. Whatever the case, Authy is practically dead for me.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-29-apples-customer-service-is-still-the-best-plus-an-authy-horror-story.html#fnref3">&#8617;&#65038;</a></p></li>
-</ol>
-</div>
-]]></content></entry><entry><title type="html">Using a command table as wallpaper</title><link href="http://zmwangx.github.io/blog/2015-05-22-using-a-command-table-as-wallpaper.html"/><updated>2015-05-22T00:48:19-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-22-using-a-command-table-as-wallpaper.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
-
-<p>Recently I cleaned up my source code directory, removed a lot of rarely-used, dated scripts, and grouped the remaining standalone scripts into a central place (<code>~/dev/scripts</code>)<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-05-22-using-a-command-table-as-wallpaper.html#fn1" id="fnref1"><sup>1</sup></a>. One thing I learned in this process is that I tend to write a reusable script but rarely actually reuse it (even if it sits on <code>PATH</code>), sometimes implementing the same functionality twice or typing a long command line over and over again.</p>
-<p>To remind myself of which scripts are at my fingertip, I decided to use a command table as wallpaper on my secondary display. So I wrote a shitty Python script<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-05-22-using-a-command-table-as-wallpaper.html#fn2" id="fnref2"><sup>2</sup></a> (depending on XeLaTeX and ImageMagick) to automate the generation of such a wallpaper. It's pretty customizable, and anyone may grab it and do whatever they want to with it (also <a href="https://gist.github.com/zmwangx/b06aa923abf061b33fc9">available as a gist</a>):</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co">#!/usr/bin/env python3</span>
-
-<span class="co">"""Generate command table."""</span>
-
-<span class="im">import</span> argparse
-<span class="im">import</span> os
-<span class="im">import</span> shlex
-<span class="im">import</span> subprocess
-<span class="im">import</span> sys
-<span class="im">import</span> tempfile
-
-<span class="co"># pylint: disable=wildcard-import,unused-wildcard-import</span>
-
-<span class="im">from</span> zmwangx.colorout <span class="im">import</span> <span class="op">*</span>
-
-DEFAULT_COLUMN_WIDTH <span class="op">=</span> <span class="dv">120</span>
-DEFAULT_FOREGROUND_COLOR <span class="op">=</span> <span class="st">"white"</span>
-DEFAULT_BACKGROUND_COLOR <span class="op">=</span> <span class="st">"black"</span>
-DEFAULT_FONT <span class="op">=</span> <span class="st">"Consolas"</span>
-DEFAULT_BORDER <span class="op">=</span> <span class="dv">20</span>
-DEFAULT_DENSITY <span class="op">=</span> <span class="dv">300</span>
-DEFAULT_SIZE <span class="op">=</span> <span class="st">"1280x800"</span>
-
-HERE <span class="op">=</span> os.path.dirname(os.path.realpath(sys.argv[<span class="dv">0</span>]))
-XELATEX_PROGRAM <span class="op">=</span> (<span class="vs">r"""</span>
-<span class="vs">\documentclass[varwidth=\maxdimen,border=</span><span class="sc">{border}</span><span class="vs">pt]</span><span class="sc">{{</span><span class="vs">standalone</span><span class="sc">}}</span>
-<span class="vs">\usepackage</span><span class="sc">{{</span><span class="vs">color</span><span class="sc">}}</span>
-<span class="vs">\pagecolor</span><span class="sc">{{{background}}}</span>
-<span class="vs">\color</span><span class="sc">{{{foreground}}}</span>
-<span class="vs">\usepackage</span><span class="sc">{{</span><span class="vs">fontspec</span><span class="sc">}}</span>
-<span class="vs">\setmonofont</span><span class="sc">{{{font}}}</span>
-
-<span class="vs">\begin</span><span class="sc">{{</span><span class="vs">document</span><span class="sc">}}</span>
-<span class="vs">\begin</span><span class="sc">{{</span><span class="vs">verbatim</span><span class="sc">}}</span>
-<span class="sc">{table}</span>
-<span class="vs">\end</span><span class="sc">{{</span><span class="vs">verbatim</span><span class="sc">}}</span>
-<span class="vs">\end</span><span class="sc">{{</span><span class="vs">document</span><span class="sc">}}</span>
-<span class="st">"""</span>)
-
-<span class="kw">def</span> text_table(<span class="op">**</span>kwargs):
-    <span class="co">"""Generate the text version of the table."""</span>
-    width <span class="op">=</span> kwargs[<span class="st">"width"</span>] <span class="cf">if</span> <span class="st">"width"</span> <span class="op">in</span> kwargs <span class="cf">else</span> DEFAULT_COLUMN_WIDTH
-    directory <span class="op">=</span> kwargs[<span class="st">"directory"</span>] <span class="cf">if</span> <span class="st">"directory"</span> <span class="op">in</span> kwargs <span class="cf">else</span> HERE
-    command_line <span class="op">=</span> (<span class="vs">r"find </span><span class="sc">{directory}</span><span class="vs"> -maxdepth 1 -type f -perm -u=x -exec basename </span><span class="sc">{{}}</span><span class="vs"> \; "</span>
-                    <span class="co">"| column -c {width} | expand"</span>.<span class="bu">format</span>(
-                        directory<span class="op">=</span>shlex.quote(directory), width<span class="op">=</span>width))
-    ccommand(command_line)
-    <span class="cf">return</span> subprocess.check_output(command_line, shell<span class="op">=</span><span class="va">True</span>).decode(<span class="st">"utf-8"</span>)
-
-<span class="kw">def</span> pdf_table(<span class="op">**</span>kwargs):
-    <span class="co">"""Generate the PDF version of the table.</span>
-
-<span class="co">    Returns 0 on success or 1 on failure. Generated PDF is "table.pdf"</span>
-<span class="co">    in the current working directory.</span>
-
-<span class="co">    """</span>
-    border <span class="op">=</span> kwargs[<span class="st">"border"</span>] <span class="cf">if</span> <span class="st">"border"</span> <span class="op">in</span> kwargs <span class="cf">else</span> DEFAULT_BORDER
-    foreground <span class="op">=</span> kwargs[<span class="st">"foreground"</span>] <span class="cf">if</span> <span class="st">"foreground"</span> <span class="op">in</span> kwargs <span class="cf">else</span> DEFAULT_FOREGROUND_COLOR
-    background <span class="op">=</span> kwargs[<span class="st">"background"</span>] <span class="cf">if</span> <span class="st">"background"</span> <span class="op">in</span> kwargs <span class="cf">else</span> DEFAULT_BACKGROUND_COLOR
-    font <span class="op">=</span> kwargs[<span class="st">"font"</span>] <span class="cf">if</span> <span class="st">"font"</span> <span class="op">in</span> kwargs <span class="cf">else</span> DEFAULT_FONT
-    program <span class="op">=</span> XELATEX_PROGRAM.<span class="bu">format</span>(table<span class="op">=</span>text_table(<span class="op">**</span>kwargs).strip(),
-                                     font<span class="op">=</span>font, border<span class="op">=</span>border,
-                                     foreground<span class="op">=</span>foreground, background<span class="op">=</span>background)
-    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"table.tex"</span>, <span class="st">"w"</span>) <span class="im">as</span> texfileobj:
-        texfileobj.write(program)
-    <span class="cf">try</span>:
-        ccommand(<span class="st">"xelatex table.tex"</span>)
-        subprocess.check_call([<span class="st">"xelatex"</span>, <span class="st">"table.tex"</span>],
-                              stdout<span class="op">=</span>subprocess.DEVNULL, stderr<span class="op">=</span>subprocess.DEVNULL)
-        <span class="cf">return</span> <span class="dv">0</span>
-    <span class="cf">except</span> subprocess.CalledProcessError:
-        cerror(<span class="st">"xelatex failed on the following program:"</span>)
-        cerrnewline()
-        cerrwrite(<span class="st">"default"</span>, program)
-        <span class="cf">return</span> <span class="dv">1</span>
-
-<span class="kw">def</span> png_table(<span class="op">**</span>kwargs):
-    <span class="co">"""Generate the PNG version of the table.</span>
-
-<span class="co">    Returns 0 on success or 1 on failure. Generated PNG is "table.png"</span>
-<span class="co">    in the current working directory.</span>
-
-<span class="co">    """</span>
-    <span class="cf">if</span> pdf_table(<span class="op">**</span>kwargs) <span class="op">==</span> <span class="dv">1</span>:
-        <span class="cf">return</span> <span class="dv">1</span>
-    density <span class="op">=</span> kwargs[<span class="st">"density"</span>] <span class="cf">if</span> <span class="st">"density"</span> <span class="op">in</span> kwargs <span class="cf">else</span> DEFAULT_DENSITY
-    size <span class="op">=</span> kwargs[<span class="st">"size"</span>] <span class="cf">if</span> <span class="st">"size"</span> <span class="op">in</span> kwargs <span class="cf">else</span> DEFAULT_SIZE
-    background <span class="op">=</span> kwargs[<span class="st">"background"</span>] <span class="cf">if</span> <span class="st">"background"</span> <span class="op">in</span> kwargs <span class="cf">else</span> DEFAULT_BACKGROUND_COLOR
-    command_line <span class="op">=</span> (<span class="st">"convert -density </span><span class="sc">{density}</span><span class="st"> table.pdf -resize </span><span class="sc">{size}</span><span class="st"> -size </span><span class="sc">{size}</span><span class="st"> "</span>
-                    <span class="co">"xc:{background} +swap -gravity center -composite table.png"</span>.<span class="bu">format</span>(
-                        density<span class="op">=</span>density, size<span class="op">=</span>size, background<span class="op">=</span>background))
-    <span class="cf">try</span>:
-        ccommand(command_line)
-        subprocess.check_call(shlex.split(command_line))
-        <span class="cf">return</span> <span class="dv">0</span>
-    <span class="cf">except</span> subprocess.CalledProcessError:
-        cerror(<span class="st">"the following ImageMagick command failed:"</span>)
-        cerrprint(<span class="st">"default"</span>, command_line)
-        <span class="cf">return</span> <span class="dv">1</span>
-
-<span class="kw">def</span> main():
-    <span class="co">"""CLI."""</span>
-    description <span class="op">=</span> <span class="st">"Generate a PNG table of all executable commands in a directory."</span>
-    parser <span class="op">=</span> argparse.ArgumentParser(description<span class="op">=</span>description)
-    parser.add_argument(<span class="st">"--width"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">int</span>, default<span class="op">=</span>DEFAULT_COLUMN_WIDTH,
-                        <span class="bu">help</span><span class="op">=</span><span class="st">"""line width, default is 120"""</span>)
-    parser.add_argument(<span class="st">"--directory"</span>,
-                        <span class="bu">help</span><span class="op">=</span><span class="st">"""directory containing executables, default is</span>
-<span class="st">                        the directory containing this command"""</span>)
-    parser.add_argument(<span class="st">"--border"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">int</span>, default<span class="op">=</span>DEFAULT_BORDER,
-                        <span class="bu">help</span><span class="op">=</span><span class="st">"""default is 20pt"""</span>)
-    parser.add_argument(<span class="st">"--foreground"</span>, default<span class="op">=</span>DEFAULT_FOREGROUND_COLOR,
-                        <span class="bu">help</span><span class="op">=</span><span class="st">"""foreground color, default is white"""</span>)
-    parser.add_argument(<span class="st">"--background"</span>, default<span class="op">=</span>DEFAULT_BACKGROUND_COLOR,
-                        <span class="bu">help</span><span class="op">=</span><span class="st">"""background color, default is black"""</span>)
-    parser.add_argument(<span class="st">"--font"</span>, default<span class="op">=</span>DEFAULT_FONT,
-                        <span class="bu">help</span><span class="op">=</span><span class="st">"""default is Consolas"""</span>)
-    parser.add_argument(<span class="st">"--density"</span>, default<span class="op">=</span>DEFAULT_DENSITY,
-                        <span class="bu">help</span><span class="op">=</span><span class="st">"""used for the -density argument of convert,</span>
-<span class="st">                        default is 300"""</span>)
-    parser.add_argument(<span class="st">"--size"</span>, default<span class="op">=</span>DEFAULT_SIZE,
-                        <span class="bu">help</span><span class="op">=</span><span class="st">"""size of image, default is 1280x800"""</span>)
-    args <span class="op">=</span> parser.parse_args()
-    kwargs <span class="op">=</span> {k: v <span class="cf">for</span> (k, v) <span class="op">in</span> args.__dict__.items() <span class="cf">if</span> v <span class="op">is</span> <span class="op">not</span> <span class="va">None</span>}
-
-    fd, tmpfilepath <span class="op">=</span> tempfile.mkstemp(suffix<span class="op">=</span><span class="st">".png"</span>, prefix<span class="op">=</span><span class="st">"table-"</span>)
-    os.close(fd)
-    <span class="cf">with</span> tempfile.TemporaryDirectory(prefix<span class="op">=</span><span class="st">"table-"</span>) <span class="im">as</span> working_directory:
-        os.chdir(working_directory)
-        <span class="cf">if</span> png_table(<span class="op">**</span>kwargs) <span class="op">==</span> <span class="dv">1</span>:
-            cerror(<span class="st">"execution failed"</span>)
-            os.remove(tmpfilepath)
-        <span class="cf">else</span>:
-            os.rename(<span class="st">"table.png"</span>, tmpfilepath)
-            cprogress(<span class="st">"saved to:"</span>)
-            <span class="bu">print</span>(tmpfilepath)
-
-<span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:
-    main()</code></pre></div>
-<p>By the way, the <code>zmwangx.colorout</code> module is <a href="https://github.com/zmwangx/pyzmwangx/blob/41b0bffaad9439888d68097a85c7aed594240283/zmwangx/colorout.py">here</a>, just to ease the printing of progress and errors to tty. You may safely remove all the <code>ccommand</code>, <code>cerr*</code> and <code>cprogress</code> calls.</p>
-<p>Here is an example wallpaper reflecting my current <code>~/dev/scripts</code>:</p>
-<div class="figure">
-<a href="https://i.imgur.com/mccQu1e.png" target="_blank"><img alt="Command table wallpaper for my secondary display (MBP 13'' builtin display)." src="https://i.imgur.com/mccQu1e.png"/></a>
-<p class="caption">Command table wallpaper for my secondary display (MBP 13'' builtin display).</p>
-</div>
-<div class="footnotes">
-<hr/>
-<ol>
-<li id="fn1"><p>The <code>~/dev</code> directory stands for development, and contains all my source code and almost all local builds. The point is by having a <code>~/dev</code> directory, I no longer need to have <code>bin</code>, <code>include</code>, <code>lib</code>, and <code>share</code> in my <code>HOME</code>, thus saving a few slots. Backing up and restoring is also slightly easier.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-22-using-a-command-table-as-wallpaper.html#fnref1">&#8617;&#65038;</a></p></li>
-<li id="fn2"><p>Yeah, I know it's a shitty script, so don't nitpick on style problems.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-22-using-a-command-table-as-wallpaper.html#fnref2">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
 ]]></content></entry></feed>
