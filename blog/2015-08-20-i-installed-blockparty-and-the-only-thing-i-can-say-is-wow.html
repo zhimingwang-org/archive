@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2015-08-20T20:58:55-07:00" name="date"/>
+<title>I installed BlockParty, and the only thing I can say is WOW</title>
+<link href="/img/apple-touch-icon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="//fonts.googleapis.com/css?family=Open+Sans:regular" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css"/>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-wide.css" media="only screen and (min-width: 1441px)" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-narrow.css" media="only screen and (max-width: 1023px)" rel="stylesheet" type="text/css"/>
+<link href="/css/print.css" media="print" rel="stylesheet" type="text/css"/>
+<style type="text/css">code{white-space: pre;}</style>
+<script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-53908325-1', 'auto');
+      ga('require', 'displayfeatures');
+      ga('send', 'pageview');
+    </script>
+</head>
+<body>
+<nav class="nav">
+<a class="nav-icon" href="/" title="Home"><!--blog icon--></a>
+<div class="nav-title"><a class="nav-link" href="/">dl? cmplnts?</a></div>
+<div class="nav-author">by <a class="nav-link" href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</nav>
+<article class="content">
+<header class="article-header">
+<h1 class="article-title">I installed BlockParty, and the only thing I can say is WOW</h1>
+<h2 class="article-metadata">
+<time class="article-timestamp" datetime="2015-08-20T20:58:55-07:00">August 20, 2015,</time>
+          by <span class="article-author">Zhiming Wang</span>
+</h2>
+</header>
+<p>I just let out <a href="/blog/2015-08-20-ios-9-turn-off-wi-fi-assist.html">a load of complaints about iOS 9 beta</a> last night, but apparently forgot about one nice thing: <a href="https://developer.apple.com/videos/wwdc/2015/?id=511">Safari content blocking</a>.</p>
+<p>In this day and age, not being iOS/OS X developers ourselves won't stop the rest of us from obtaining ObjC/Swift source code.<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a> I simply typed "Safari content blocker" into GitHub's search box, and there it popped, the most starred repo relevant to my search, <a href="https://github.com/krishkumar/BlockParty">krishkumar/BlockParty</a>. Thanks to Apple's new sideloading policy in Xcode 7, I was able to immediately test it out on my phone.</p>
+<p>The effect is just amazing. In my few minutes of browsing, I did not seem to encounter a single ad (on various consistently ad-laden news sites). You should definitely give it a shot. What's even more amazing is that BlockParty's <a href="https://github.com/krishkumar/BlockParty/blob/master/RediffBlock/blockerList.json"><code>blockList.json</code></a>, at the time of writing, is only 1578 lines long — a JSON array with 197 objects. <strong>Only 197 rules, blocking 197 domains.</strong> Compare that to <a href="https://easylist-downloads.adblockplus.org/easylist.txt">EasyList</a>, which at the moment is a <strong>48820 line monster</strong>. Of course, EasyList is much more fine-grained (<a href="https://adblockplus.org/blog/content-blocking-in-safari-9-and-ios-9-good-news-or-the-death-knell-of-ad-blocking-on-safari">as are AdBlockPlus's filtering mechanisms</a>); with BlockParty I can actually see some blank boxes that used to host ads. But still, very impressive. Many thanks to <a href="https://github.com/krishkumar">@krishkumar</a> for publishing BlockParty, and to <a href="https://medium.com/@searls/installing-a-content-blocker-on-ios-9-public-beta-a25b2b83848f">Justin Searls</a> for publishing a detailed tutorial.<a class="footnoteRef" href="#fn2" id="fnref2"><sup>2</sup></a></p>
+<p>197 domains made our online lives so miserable. Hmm.</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>Actually developing a Safari content blocker extension is as easy as writing a JSON blocker list, but I'm not sure if you need an app with a UI to support the extension. Anyway, there are professional iOS developers out there ready to share the code, so I'll just happily join for a ride.<a class="footnotes-backlink" href="#fnref1">↩︎</a></p></li>
+<li id="fn2"><p>Without which I would have been scratching my head, not knowing that I had to go to Settings-&gt;General-&gt;Profiles to trust my personal profile.<a class="footnotes-backlink" href="#fnref2">↩︎</a></p></li>
+</ol>
+</div>
+</article>
+<hr class="content-separator"/>
+<footer class="footer">
+<span class="rfooter">
+<a class="rss-icon fa fa-rss fa-flip-horizontal" href="/rss.xml" target="_blank" title="RSS feed"><!--RSS feed icon--></a><a class="atom-icon fa fa-rss" href="/atom.xml" target="_blank" title="Atom feed"><!--Atom feed icon--></a><a class="cc-icon fa fa-creative-commons" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license."><!--CC icon--></a>
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</span>
+</footer>
+</body>
+</html>
