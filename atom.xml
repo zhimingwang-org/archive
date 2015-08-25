@@ -1,4 +1,19 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zmwangx.github.io/atom.xml" rel="self" type="application/atom+xml"/><link href="http://zmwangx.github.io/" rel="alternate" type="text/html"/><updated>2015-08-22T12:47:04-07:00</updated><id>http://zmwangx.github.io/</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">I installed BlockParty, and the only thing I can say is WOW</title><link href="http://zmwangx.github.io/blog/2015-08-20-i-installed-blockparty-and-the-only-thing-i-can-say-is-wow.html"/><updated>2015-08-20T20:58:55-07:00</updated><id>http://zmwangx.github.io/blog/2015-08-20-i-installed-blockparty-and-the-only-thing-i-can-say-is-wow.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
+<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zmwangx.github.io/atom.xml" rel="self" type="application/atom+xml"/><link href="http://zmwangx.github.io/" rel="alternate" type="text/html"/><updated>2015-08-25T08:16:53-07:00</updated><id>http://zmwangx.github.io/</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">Automated OS X provisioning</title><link href="http://zmwangx.github.io/blog/2015-08-25-automated-os-x-provisioning.html"/><updated>2015-08-25T08:16:44-07:00</updated><id>http://zmwangx.github.io/blog/2015-08-25-automated-os-x-provisioning.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
+
+<p>After quite a bit of work, I finally have a decent OS X provisioning system, capable of provisioning a blank OS X install (with Xcode and CLT) for development and everyday life.</p>
+<p>Here it is: <a href="https://github.com/zmwangx/dotfiles/blob/master/provision"><code>zmwangx/dotfiles/provision</code></a>. In case the path changes in the future and invalidates the aforementioned URL, <a href="https://github.com/zmwangx/dotfiles/blob/d8e20b731583d69b380d422c8788f61cd4a4e211/provision">here</a> is the archived provisioning script at the current master. Of course the provisioning system is not a single script; it reads and executes modules from a <a href="https://github.com/zmwangx/dotfiles/tree/master/provision.d"><code>provision.d</code></a> directory, which in turn links into other specialized parts of the system.</p>
+<p>Selling points:</p>
+<ul>
+<li><p>Highly modular due to the <code>provision.d</code> structure. New provisioning scripts for specialized tools can be added at any time without complicating the rest of the system.</p></li>
+<li><p>Graceful failure and easy error recovery. For most failures, running the provision once more fixes the issues. This is especially helpful when GitHub get DDoS'ed and loads of downloads fail, e.g., <a href="https://web.archive.org/web/20150825150044/https://status.github.com/messages">last night</a>, when I was sleeping with the provisioning system hard at work.</p></li>
+<li><p>Very nice, colored console messages. Of course you'd expect that when half of the code is devoted to messaging...</p></li>
+</ul>
+<p>Thus far tested on OS X 10.10 and 10.11. Works pretty well. Of course OS X provisioning (with so many impossible-to-automate tasks) is still a hell lot harder than Linux provisioning, but hopefully this system will safe me a considerable amount of time and trouble during my at-least-twice-a-year clean OS installation and beta testing in VMs.</p>
+<div class="figure">
+<a href="http://zmwangx.github.io/img/20150825-osx-provisioning-system.png" target="_blank"><img alt="provision at work. Provisioning a blank machine is probably the only time I need Terminal.app." src="http://zmwangx.github.io/img/20150825-osx-provisioning-system.png"/></a>
+<p class="caption"><code>provision</code> at work. Provisioning a blank machine is probably the only time I need Terminal.app.</p>
+</div>
+]]></content></entry><entry><title type="html">I installed BlockParty, and the only thing I can say is WOW</title><link href="http://zmwangx.github.io/blog/2015-08-20-i-installed-blockparty-and-the-only-thing-i-can-say-is-wow.html"/><updated>2015-08-20T20:58:55-07:00</updated><id>http://zmwangx.github.io/blog/2015-08-20-i-installed-blockparty-and-the-only-thing-i-can-say-is-wow.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>I just let out <a href="http://zmwangx.github.io/blog/2015-08-20-ios-9-turn-off-wi-fi-assist.html">a load of complaints about iOS 9 beta</a> last night, but apparently forgot about one nice thing: <a href="https://developer.apple.com/videos/wwdc/2015/?id=511">Safari content blocking</a>.</p>
 <p>In this day and age, not being iOS/OS X developers ourselves won't stop the rest of us from obtaining ObjC/Swift source code.<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-08-20-i-installed-blockparty-and-the-only-thing-i-can-say-is-wow.html#fn1" id="fnref1"><sup>1</sup></a> I simply typed "Safari content blocker" into GitHub's search box, and there it popped, the most starred repo relevant to my search, <a href="https://github.com/krishkumar/BlockParty">krishkumar/BlockParty</a>. Thanks to Apple's new sideloading policy in Xcode 7, I was able to immediately test it out on my phone.</p>
@@ -624,33 +639,6 @@ Server: Apache</code></pre></div>
 <li id="fn1"><p>This problem isn't limited to reviews; it also applies to, for instance, approved edits. My <em>tag edits</em> (with explanations) got rejected quite a few times because the reviewers clearly didn't understand the topic &#8212; e.g., some morons assume that command line problems equal Bash problems.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-07-stackoverflow-review-system-is-completely-bs.html#fnref1">&#8617;&#65038;</a></p></li>
 <li id="fn2"><p>This is actually a good assumption, because this is the case at least 50% of the time from my limited experience. But one shouldn't operate under this assumption, especially if one doesn't understand the topic.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-07-stackoverflow-review-system-is-completely-bs.html#fnref2">&#8617;&#65038;</a></p></li>
 <li id="fn3"><p>I think I asked quite a few stupid questions back in the days, and now I'm totally ashamed of them. Insterestingly, some of those questions are my highest voted ones and got me quite some reps (compared to my total rep &#8212; I'm by no means a high rep user). See <a href="http://michael.richter.name/blogs/why-i-no-longer-contribute-to-stackoverflow"><em>Why I no longer contribute to StackOverflow</em></a> for a thorough discussion of the broken rep system and its disastrous effects.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-07-stackoverflow-review-system-is-completely-bs.html#fnref3">&#8617;&#65038;</a></p></li>
-</ol>
-</div>
-]]></content></entry><entry><title type="html">Using a personal helper package in everyday scripting</title><link href="http://zmwangx.github.io/blog/2015-05-30-using-a-personal-helper-package-in-everyday-scripting.html"/><updated>2015-05-30T22:48:57-07:00</updated><id>http://zmwangx.github.io/blog/2015-05-30-using-a-personal-helper-package-in-everyday-scripting.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
-
-<p>Recently I've been scripting (mostly in Python) quite a bit, and noticed that some functionalities get copied over or reimplemented over and over again. Examples include reading configuration files (mostly JSON, INI, and YAML), printing progress information to tty in color, displaying progress bar, and so on.</p>
-<p>In light of this, I came up with the idea of keeping a pool of helper modules in a personal helper package. I'm unimaginative at naming things, so I just named my package <code>zmwangx</code>. It is <a href="https://github.com/zmwangx/pyzmwangx">published on GitHub</a>, and the API docs are published on <a href="https://pyzmwangx.readthedocs.org">Read the Docs</a> for easy reference during scripting.<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-05-30-using-a-personal-helper-package-in-everyday-scripting.html#fn1" id="fnref1"><sup>1</sup></a> At the time of writing the following helper modules are available in the package:</p>
-<ul>
-<li><code>colorout       -</code> colorized output to stdout and stderr, and much more.</li>
-<li><code>config         -</code> read and write config files of various common formats.</li>
-<li><code>hash           -</code> hash files in a memory-efficient manner.</li>
-<li><code>humansize      -</code> convert size in bytes to human readable string (IEC or SI).</li>
-<li><code>humantime      -</code> convert duration in seconds to human readable string.</li>
-<li><code>infrastructure -</code> testing infrastructure.</li>
-<li><code>pbar           -</code> display progress bar for the progress of processing a file or stream.</li>
-<li><code>urlgrep        -</code> parse and match URLs from HTML documents.</li>
-</ul>
-<p>With a personalized helper package, scripting has never been more enjoyable. Here are just some of the benefits:</p>
-<ul>
-<li>Stating the obvious: write once, use everywhere (without copy/paste);</li>
-<li>As always, factoring out small functional units make code more readable and easier to debug; and having a dedicated pool just for helper modules encourages one to think about factoring, <em>early</em>;</li>
-<li>Bug fixes and enhancements in the helper package are instantly effective accross the board.</li>
-</ul>
-<p>Of course, one cannot depend on such a package in a formally published package (say, one published to PyPI), so things like <code>tools.py</code> or whatever are still necessary from time to time. But for day-to-day scripting, having a personal helper package that is used accross the board is definitely a good idea.</p>
-<div class="footnotes">
-<hr/>
-<ol>
-<li id="fn1"><p>I'm pretty paranoid about documenting things.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-05-30-using-a-personal-helper-package-in-everyday-scripting.html#fnref1">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
 ]]></content></entry></feed>
