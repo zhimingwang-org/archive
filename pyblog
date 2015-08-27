@@ -11,6 +11,7 @@
 import argparse
 from contextlib import contextmanager
 import copy
+import curses
 import datetime
 import email.utils
 import fileinput
@@ -22,6 +23,7 @@ import os
 import re
 import shutil
 import signal
+import string
 import subprocess
 import sys
 import tempfile
@@ -29,6 +31,7 @@ import time
 import urllib.parse
 import lxml.etree as ET
 
+import blessed
 import bs4
 import colorama
 import dateutil.parser
@@ -790,6 +793,22 @@ def sanitize(string):
     return urllib.parse.quote(string)
 
 
+def edit_post_with_editor(path):
+    """Launch text editor to edit post at a given path.
+
+    Text editor is $VISUAL, then if empty, $EDITOR, then if still empty,
+    vi.
+
+    """
+    if "VISUAL" in os.environ:
+        editor = os.environ["VISUAL"]
+    elif "EDITOR" in os.environ:
+        editor = os.environ["EDITOR"]
+    else:
+        editor = "vi"
+    subprocess.call([editor, path])
+
+
 def new_post(title):
     """Create a new post with metadata pre-filled.
 
@@ -820,6 +839,8 @@ def new_post(title):
         newpost.write("---\n")
     sys.stderr.write("New post created in:\n")
     print(fullpath)
+    edit_post_with_editor(fullpath)
+
     return 0
 
 
@@ -1121,6 +1142,193 @@ def preview(args):
     return 0
 
 
+def list_posts():
+    """List all posts, with date, title, and path to source file.
+
+    This function only lists posts that has been built (since it reads
+    metadata from HTML rather than Markdown).
+
+    Returns
+    -------
+    posts : list
+        A list of posts, in reverse chronological order, where each
+        element is a tuple of (date, title, path to source file).
+
+    """
+    posts = []
+    for name in os.listdir(os.path.join(BUILDDIR, "blog")):
+        if not re.match(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}.*\.html", name):
+            continue
+
+        htmlpath = os.path.join(BUILDDIR, "blog", name)
+        entry = AtomEntry()
+        item = RssItem()
+        try:
+            with open(htmlpath, encoding="utf-8") as htmlfile:
+                soup = bs4.BeautifulSoup(htmlfile.read(), "lxml")
+                title = soup.title.text
+                date = dateutil.parser.parse(soup.find("meta", attrs={"name": "date"})["content"])
+                source_path = os.path.join(POSTSDIR, re.sub(r'.html$', '.md', name))
+                posts.append((date, title, source_path))
+        except Exception:
+            sys.stderr.write("error: failed to read metadata from HTML file %s\n" % name)
+            with open(htmlpath, encoding="utf-8") as htmlfile:
+                sys.stderr.write("dumping HTML:%s\n\n" % htmlfile.read())
+            raise
+
+    posts.sort(key=lambda post: post[0], reverse=True)
+    return posts
+
+
+class PostSelector:
+
+    def __init__(self, term, posts):
+        self._term = term
+        self.posts_per_page = term.height - 2
+        self.pages = [posts[i:i+self.posts_per_page]
+                      for i in range(0, len(posts), self.posts_per_page)]
+        self.num_pages = len(self.pages)
+        self.pagepos = 0
+        self.postpos = 0
+        self.inserting = False  # True if in the middle of inserting a post #, False otherwise
+        term.enter_fullscreen()
+        print(term.clear(), end="")
+        sys.stdout.flush()
+        self.selection = ""
+        self.quit = False
+
+        self.display_page()
+
+    def _clear_to_eol(self):
+        term = self._term
+        print(term.clear_eol, end="")
+        sys.stdout.flush()
+
+    def _print_line(self, line, linenum, highlight=False):
+        term = self._term
+        width = term.width
+        with term.location(0, linenum):
+            if highlight:
+                print(term.reverse(line[:width]), end="")
+            else:
+                print(line[:width], end="")
+            self._clear_to_eol()
+
+    def _print_post(self, page, pos, highlight=False):
+        if pos >= len(page):
+            # if position out of range, just clear the line
+            self._print_line("", pos + 1, highlight)
+        else:
+            date, title, path = page[pos]
+            line = "%3d: %s %s" % (pos, date.strftime("%m/%d/%y"), title)
+            self._print_line(line, pos + 1, highlight)
+
+    def display_page(self):
+        term = self._term
+        page = self.pages[self.pagepos]
+
+        with term.hidden_cursor():
+            topline = "  PAGE %d/%d  POST %d" % (self.pagepos + 1, self.num_pages, self.postpos)
+            if self.inserting:
+                topline += term.blink("_")
+            self._print_line(topline, 0, highlight=True)
+
+            for i in range(self.posts_per_page):
+                self._print_post(page, i)
+            # highlight selected post
+            self._print_post(page, self.postpos, highlight=True)
+
+            bottomline = "  Press h for help."
+            self._print_line(bottomline, term.height - 1, highlight=True)
+
+    def dispatch(self, key):
+        term = self._term
+        if key in string.digits:
+            # insert
+            if self.inserting:
+                newpostpos = 10 * self.postpos + int(key)
+                if newpostpos < len(self.pages[self.pagepos]):
+                    self.postpos = newpostpos
+            else:
+                self.postpos = int(key)
+            self.inserting = True
+        elif key.name == "KEY_DELETE":
+            self.postpos //= 10
+            self.inserting = True
+        else:
+            self.inserting = False
+            if key.name == "KEY_ENTER":
+                self.selection = self.pages[self.pagepos][self.postpos][2]
+            if key in {"q", "Q"}:
+                self.quit = True
+            elif key.name == "KEY_DOWN" or key in {"n", "N"}:
+                if self.postpos + 1 < len(self.pages[self.pagepos]):
+                    self.postpos += 1
+            elif key.name == "KEY_UP" or key in {"p", "P"}:
+                if self.postpos > 0:
+                    self.postpos -= 1
+            elif key.name == "KEY_RIGHT" or key in {".", ">"}:
+                if self.pagepos + 1 < self.num_pages:
+                    self.pagepos += 1
+                    self.postpos = 0
+            elif key.name == "KEY_LEFT" or key in {",", "<"}:
+                if self.pagepos > 0:
+                    self.pagepos -= 1
+                    self.postpos = 0
+            elif key in {"h", "H"}:
+                print(term.clear_eol, end="")
+                sys.stdout.flush()
+                help_text_lines = [
+                    "Next post:         n or <down>",
+                    "Previous post:     p or <up>",
+                    "Next page:         . or > or <right>",
+                    "Previous page:     , or < or <left>",
+                    "Select post:       <enter> or <return>",
+                    "Select by number:  type number as shown (delete or backspace to edit)",
+                    "Get help:          h",
+                    "Quit program:      q",
+                ]
+                for i in range(term.height - 1):
+                    self._print_line(help_text_lines[i] if i < len(help_text_lines) else "", i)
+                bottomline = "  Press any key to continue."
+                self._print_line(bottomline, term.height - 1, highlight=True)
+
+                with term.raw():
+                    term.inkey()
+
+    def restore(self):
+        term = self._term
+        term.exit_fullscreen()
+        print(term.clear(), end="")
+        sys.stdout.flush()
+
+    def select(self):
+        term = self._term
+        try:
+            while True:
+                with term.raw():
+                    self.dispatch(term.inkey())
+                if self.selection or self.quit:
+                    break
+                self.display_page()
+        except Exception:
+            raise
+        finally:
+            self.restore()
+
+        return self.selection
+
+
+def edit_existing_post(args):
+    selector = PostSelector(blessed.Terminal(), list_posts())
+    selection = selector.select()
+    if selection:
+        print(selection)
+        edit_post_with_editor(selection)
+    else:
+        return 1
+
+
 def main():
     """CLI interface."""
     description = "Simple blog generator in Python with Pandoc as backend."
@@ -1173,6 +1381,11 @@ def main():
         "gen_deploy", aliases=["gd", "gendep"],
         description="Rebuild entire blog and deploy build/ to origin/master.")
     parser_new_post.set_defaults(func=gen_deploy)
+
+    parser_new_post = subparsers.add_parser(
+        "edit", aliases=["e", "ed"],
+        description="Bring up post selector to select post for editing.")
+    parser_new_post.set_defaults(func=edit_existing_post)
 
     with init_colorama():
         args = parser.parse_args()
