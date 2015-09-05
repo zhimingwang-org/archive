@@ -982,7 +982,7 @@ def deploy(args):
     # commit changes in BUILDDIR
     sys.stderr.write("%scommand: git add --all%s\n" % (BLUE, RESET))
     subprocess.check_call(["git", "add", "--all"])
-    sys.stderr.write("%scommand: git commit --gpg-sign --message='%s'%s\n" %
+    sys.stderr.write("%scommand: git commit --no-verify --gpg-sign --message='%s'%s\n" %
                      (BLUE, commit_message, RESET))
     try:
         subprocess.check_call(["git", "commit", "--gpg-sign",
