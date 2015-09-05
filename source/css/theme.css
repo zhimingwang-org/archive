@@ -227,6 +227,13 @@ noscript a {
     top: 1px;
 }
 
+/* fix problematic baseline shift in Firefox */
+@-moz-document url-prefix() {
+    .rss-icon {
+        top: 0;
+    }
+}
+
 .cc-icon {
     margin: 0 1px;
 }
