@@ -9,6 +9,7 @@ This blog can be built with the `pyblog` script. The `pyblog` script currently p
 * `preview` (aliases: `p`, `pre`).
 * `deploy` (aliases: `d`, `dep`);
 * `gen_deploy` (aliases: `gd`, `gendep`);
+* `edit` (aliases: `e`, `ed`).
 
 Run `pyblog --help` for more information, and `pyblog <action> --help` for what the action does and how to perform the action.
 
