@@ -13,7 +13,7 @@ This blog can be built with the `pyblog` script. The `pyblog` script currently p
 
 Run `pyblog --help` for more information, and `pyblog <action> --help` for what the action does and how to perform the action.
 
-Note that `pyblog` is incompatible with Python 2.x, and in fact only tested on Python 3.4.
+Note that `pyblog` is incompatible with Python 2.x, and in fact only tested on Python 3.4+.
 
 The theme of this blog is largely based on that of [mort.ninja](http://mort.ninja) by [Mort Yao](https://github.com/soimort). See [this post](https://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html) for more details.
 
