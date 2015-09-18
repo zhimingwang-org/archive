@@ -3,6 +3,10 @@ title: "I installed BlockParty, and the only thing I can say is WOW"
 date: 2015-08-20T20:58:55-07:00
 date-display: August 20, 2015
 ---
+**09/17/2015 update.** I'm now running [Marco Arment's](http://www.marco.org/2015/09/16/peace-content-blocker) [Peace](https://itunes.apple.com/us/app/peace-block-ads-trackers-powered/id1031035630?mt=8), powered by Ghostery.
+
+---
+
 I just let out [a load of complaints about iOS 9 beta](/blog/2015-08-20-ios-9-turn-off-wi-fi-assist.html) last night, but apparently forgot about one nice thing: [Safari content blocking](https://developer.apple.com/videos/wwdc/2015/?id=511).
 
 In this day and age, not being iOS/OS X developers ourselves won't stop the rest of us from obtaining ObjC/Swift source code.[^1] I simply typed "Safari content blocker" into GitHub's search box, and there it popped, the most starred repo relevant to my search, [krishkumar/BlockParty](https://github.com/krishkumar/BlockParty). Thanks to Apple's new sideloading policy in Xcode 7, I was able to immediately test it out on my phone.
