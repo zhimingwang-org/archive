@@ -3,6 +3,10 @@ title: "I installed BlockParty, and the only thing I can say is WOW"
 date: 2015-08-20T20:58:55-07:00
 date-display: August 20, 2015
 ---
+**09/18/2015 update.** Okay, [Peace has been pulled](http://www.marco.org/2015/09/18/just-doesnt-feel-good). Guess I'll keep using it for a while, though.
+
+---
+
 **09/17/2015 update.** I'm now running [Marco Arment's](http://www.marco.org/2015/09/16/peace-content-blocker) [Peace](https://itunes.apple.com/us/app/peace-block-ads-trackers-powered/id1031035630?mt=8), powered by Ghostery.
 
 ---
