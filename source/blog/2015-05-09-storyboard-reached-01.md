@@ -1,7 +1,7 @@
 ---
 title: "<code>storyboard</code> reached 0.1"
 date: 2015-05-09T00:32:28-07:00
-date-display: May 9, 2015
+date_display: May 9, 2015
 ---
 For quite some time I've been working on a Python project called [`storyboard`](https://github.com/zmwangx/storyboard), and today I finally released the 0.1 stable (or you can think of it as 1.0).
 

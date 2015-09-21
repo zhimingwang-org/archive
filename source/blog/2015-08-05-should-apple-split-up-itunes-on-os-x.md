@@ -1,7 +1,7 @@
 ---
 title: "Should Apple split up iTunes on OS X?"
 date: 2015-08-05T14:09:51-07:00
-date-display: August 5, 2015
+date_display: August 5, 2015
 ---
 These days everyone seems to be talking about how complicated iTunes is and how Apple should give it a clean-sheet rewrite. This is not new, but the argument has certainly intensified ever since the introduction of iCloud Photo Library and Apple Music. For one recent example, see [Don't order the fish](http://www.marco.org/2015/07/26/dont-order-the-fish) by Marco Arment. I was listening to John Gruber's [The Talk Show episode 127](https://daringfireball.net/thetalkshow/2015/07/29/ep-127) earlier today (a little bit late to the game, yeah), and the complexity argument was brought up yet again.
 

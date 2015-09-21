@@ -1,7 +1,7 @@
 ---
 title: "Chrome disappointment: the shabby and boring old bookmark system from Stone Age strikes back"
 date: 2015-06-10T23:17:05-07:00
-date-display: June 10, 2015
+date_display: June 10, 2015
 ---
 I just restarted my machine (in the process of planning a fresh OS re-install), and something in Chrome's UI immediately felt wrong. After a few moments I realized it was the star button (bookmark button) in the far right of the omnibox giving me the uneasy feeling — the old bookmark system is back. Broadcasting from stable channel, build 43.0.2357.124 on OS X.
 

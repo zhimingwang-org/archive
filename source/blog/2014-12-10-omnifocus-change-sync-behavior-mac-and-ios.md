@@ -1,7 +1,7 @@
 ---
 title: "OmniFocus: change sync behavior, Mac and iOS"
 date: 2014-12-10T22:45:34-0800
-date-display: December 10, 2014
+date_display: December 10, 2014
 ---
 On OS X, the following URIs are relevant:
 

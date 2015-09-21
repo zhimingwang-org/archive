@@ -1,7 +1,7 @@
 ---
 title: "Average phone plan in the U.S. costs ten time as much as that in the U.K."
 date: 2014-11-10T11:11:46-0800
-date-display: November 10, 2014
+date_display: November 10, 2014
 ---
 To quote [Opera News](http://blogs.opera.com/news/2014/11/mobile-data-anyway/),
 

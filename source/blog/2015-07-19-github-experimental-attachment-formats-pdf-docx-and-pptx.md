@@ -1,7 +1,7 @@
 ---
 title: "GitHub experimental attachment formats: PDF, DOCX and PPTX!?!"
 date: 2015-07-19T21:58:01-07:00
-date-display: July 19, 2015
+date_display: July 19, 2015
 ---
 I was browsing [github/hub](https://github.com/github/hub), and noticed something funny in the issue tracker:
 

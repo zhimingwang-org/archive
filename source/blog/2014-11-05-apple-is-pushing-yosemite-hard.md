@@ -1,7 +1,7 @@
 ---
 title: "Apple is pushing Yosemite hard"
 date: 2014-11-05T22:17:01-0800
-date-display: November  5, 2014
+date_display: November  5, 2014
 ---
 Apple is pushing Yosemite hard and secretly Yosemitizing things. iTunes was updated to its shiny new look on Mavericks, day one upon Yosemite launch. I liked it. The only problems I had with the new iTunes are:
 

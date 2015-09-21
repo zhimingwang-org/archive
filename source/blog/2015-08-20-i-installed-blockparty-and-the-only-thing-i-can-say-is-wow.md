@@ -1,7 +1,7 @@
 ---
 title: "I installed BlockParty, and the only thing I can say is WOW"
 date: 2015-08-20T20:58:55-07:00
-date-display: August 20, 2015
+date_display: August 20, 2015
 ---
 **09/18/2015 update.** Okay, [Peace has been pulled](http://www.marco.org/2015/09/18/just-doesnt-feel-good). Guess I'll keep using it for a while, though.
 

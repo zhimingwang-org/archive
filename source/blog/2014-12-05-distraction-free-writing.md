@@ -1,7 +1,7 @@
 ---
 title: "Distraction free writing"
 date: 2014-12-05T21:09:10-0800
-date-display: December  5, 2014
+date_display: December  5, 2014
 ---
 This is not the first time that a distraction free writing app is featured on the Mac App Store. This time the candidate is [Desk](https://itunes.apple.com/us/app/desk/id915839505?mt=12). The official website is [here](http://desk.pm), but licensing is MAS-exclusive. The icon looks like this:
 

@@ -1,7 +1,7 @@
 ---
 title: "Ripping copy-protected DVD with mpv"
 date: 2014-10-23T20:03:22-0700
-date-display: October 23, 2014
+date_display: October 23, 2014
 ---
 **_11/02/2014 update:_**
 

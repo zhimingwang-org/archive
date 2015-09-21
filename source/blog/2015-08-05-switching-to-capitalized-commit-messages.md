@@ -1,7 +1,7 @@
 ---
 title: "Switching to capitalized commit messages"
 date: 2015-08-05T19:38:37-07:00
-date-display: August 5, 2015
+date_display: August 5, 2015
 ---
 This post is a note to self.
 

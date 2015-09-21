@@ -1,7 +1,7 @@
 ---
 title: "Why Oh My Zsh is completely broken"
 date: 2015-05-03T17:15:49-0700
-date-display: May  3, 2015
+date_display: May  3, 2015
 ---
 Today I moved from [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh) to [Prezto](https://github.com/sorin-ionescu/prezto), after using Oh My Zsh for about three years since 2012. I'll try to shed some light on the reasons in this post.
 

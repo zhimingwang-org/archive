@@ -1,7 +1,7 @@
 ---
 title: "Microsoft is getting cool (but not its website)"
 date: 2015-02-17T18:57:19-0800
-date-display: February 17, 2015
+date_display: February 17, 2015
 ---
 Microsoft is getting kind of cool. For instance, open sourcing .NET last year caused quite a buzz. Ars has a good piece about this: [Microsoft’s continuing efforts to be cool](http://arstechnica.com/information-technology/2015/02/microsofts-continuing-efforts-to-be-cool/).
 

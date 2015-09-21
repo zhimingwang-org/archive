@@ -1,7 +1,7 @@
 ---
 title: "Original images in Day One journal"
 date: 2014-11-26T00:22:16-0800
-date-display: November 26, 2014
+date_display: November 26, 2014
 ---
 **TL; DR:** Jump to the paragraph beginning with “workaround”.
 

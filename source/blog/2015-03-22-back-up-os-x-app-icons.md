@@ -1,7 +1,7 @@
 ---
 title: "Back up OS X app icons"
 date: 2015-03-22T16:58:50-0700
-date-display: March 22, 2015
+date_display: March 22, 2015
 ---
 OS X application icons are valuable assets, and it's interesting to see how they evolve over time. This is especially the case when we upgraded to OS X 10.10 Yosemite, when Apple and many design-aware third party developers overhauled (mainly flattened) their icons.
 

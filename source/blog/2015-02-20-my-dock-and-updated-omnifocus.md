@@ -1,7 +1,7 @@
 ---
 title: "My dock and updated OmniFocus"
 date: 2015-02-20T16:16:10-0800
-date-display: February 20, 2015
+date_display: February 20, 2015
 ---
 
 > Simplicity is the ultimate sophistication.

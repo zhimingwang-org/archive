@@ -1,7 +1,7 @@
 ---
 title: "StackOverflow review system is completely BS"
 date: 2015-06-07T18:58:57-07:00
-date-display: June 7, 2015
+date_display: June 7, 2015
 ---
 I just answered an interesting question about ZLE [on StackOverflow](http://stackoverflow.com/q/30699242/1944784), and in the process I also improved my own toolchain. For the record, the OP asked for tab completion to present working directory items (executable files and directories) on an empty command line, which led to the following widget:
 

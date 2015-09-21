@@ -837,7 +837,7 @@ def new_post(title):
         newpost.write("---\n")
         newpost.write('title: "%s"\n' % title)
         newpost.write("date: %s\n" % iso_date)
-        newpost.write("date-display: %s\n" % display_date)
+        newpost.write("date_display: %s\n" % display_date)
         newpost.write("---\n")
     sys.stderr.write("New post created in:\n")
     print(fullpath)
@@ -892,8 +892,8 @@ def touch(filename):
                 whatchanged.write("-%s+%s\n" % (line, updated_line))
                 continue
 
-            if line.startswith("date-display: "):
-                updated_line = "date-display: %s\n" % display_date
+            if line.startswith("date_display: "):
+                updated_line = "date_display: %s\n" % display_date
                 sys.stdout.write(updated_line)
                 whatchanged.write("-%s+%s\n" % (line, updated_line))
                 continue

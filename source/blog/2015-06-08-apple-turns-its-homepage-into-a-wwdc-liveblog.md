@@ -1,7 +1,7 @@
 ---
 title: "Apple turns its homepage into a WWDC liveblog"
 date: 2015-06-08T14:42:50-07:00
-date-display: June 8, 2015
+date_display: June 8, 2015
 ---
 
 WWDC is Apple's biggest event every year, and WWDC keynote always attracts tons of hype. Apple knows that. In the past years folks who can't (at work, in class, etc.) or don't want to watch the crappy live stream would follow the various WWDC liveblogs presented by tech sites like Gizmodo, TechCrunch, Ars Technica, etc. But this year the landscape has changed: Apple rolled its own card-based liveblog at [www.apple.com/live/2015-june-event](http://www.apple.com/live/2015-june-event/).[^stream] Not only that; during the keynote, Apple redirected its homepage to the liveblog page, so it effectively turned its homepage into a liveblog:

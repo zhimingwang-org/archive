@@ -1,7 +1,7 @@
 ---
 title: "Help Mou hit 1.0"
 date: 2014-10-20T17:37:45-0700
-date-display: October 20, 2014
+date_display: October 20, 2014
 ---
 Quick call for [Mou 1.0 fundraiser](https://www.indiegogo.com/projects/mou-1-0-markdown-editor-on-os-x-for-you) on Indiegogo. At the time of writing, it has raised $6,178/$20,000, and has 39 days to go (with 21 already passed).
 

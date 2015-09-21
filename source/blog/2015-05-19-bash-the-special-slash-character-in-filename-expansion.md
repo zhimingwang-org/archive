@@ -1,7 +1,7 @@
 ---
 title: "Bash: the special slash character in filename expansion"
 date: 2015-05-19T18:33:51-07:00
-date-display: May 19, 2015
+date_display: May 19, 2015
 ---
 It is well-known and common sense that the slash character (`/`) serves a special role in Bash filename expansion. For instance, the asterisk `*` certainly won't match `/` or `.` when used in filename expansion; otherwise, a standalone `*` would match everything in the filesystem.
 

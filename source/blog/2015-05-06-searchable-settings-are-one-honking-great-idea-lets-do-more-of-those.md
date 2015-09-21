@@ -1,7 +1,7 @@
 ---
 title: "Searchable settings are one honking great idea — let's do more of those!"
 date: 2015-05-06T19:29:46-07:00
-date-display: May 6, 2015
+date_display: May 6, 2015
 ---
 I had to tweak some iOS settings just now, which wasn't a delightful experience. Since I just renovated my blog inside out and am still in the hype mode, I'll write a post on the interface design of settings or preferences.
 
