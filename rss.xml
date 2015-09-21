@@ -1,4 +1,39 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><atom:link href="http://zmwangx.github.io/rss.xml" rel="self" type="application/rss+xml"/><title>dl? cmplnts?</title><link>http://zmwangx.github.io/</link><description>Zhiming Wang's personal blog</description><language>en-us</language><managingEditor>zmwangx@gmail.com (Zhiming Wang)</managingEditor><webMaster>zmwangx@gmail.com (Zhiming Wang)</webMaster><pubDate>Fri, 18 Sep 2015 21:34:23 GMT</pubDate><lastBuildDate>Fri, 18 Sep 2015 21:34:23 GMT</lastBuildDate><generator>pyblog (https://github.com/zmwangx/zmwangx.github.io)</generator><docs>https://validator.w3.org/feed/docs/rss2.html</docs><image><url>http://zmwangx.github.io/img/icon-100.png</url><title>dl? cmplnts?</title><link>http://zmwangx.github.io/</link><width>100</width><height>100</height></image><item><title>After all these years, 10pt non-anti-aliased Monaco is still the best</title><link>http://zmwangx.github.io/blog/2015-08-31-after-all-these-years-10pt-non-anti-aliased-monaco-is-still-the-best.html</link><description><![CDATA[
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><atom:link href="http://zmwangx.github.io/rss.xml" rel="self" type="application/rss+xml"/><title>dl? cmplnts?</title><link>http://zmwangx.github.io/</link><description>Zhiming Wang's personal blog</description><language>en-us</language><managingEditor>zmwangx@gmail.com (Zhiming Wang)</managingEditor><webMaster>zmwangx@gmail.com (Zhiming Wang)</webMaster><pubDate>Mon, 21 Sep 2015 21:40:44 GMT</pubDate><lastBuildDate>Mon, 21 Sep 2015 21:40:44 GMT</lastBuildDate><generator>pyblog (https://github.com/zmwangx/zmwangx.github.io)</generator><docs>https://validator.w3.org/feed/docs/rss2.html</docs><image><url>http://zmwangx.github.io/img/icon-100.png</url><title>dl? cmplnts?</title><link>http://zmwangx.github.io/</link><width>100</width><height>100</height></image><item><title>Zsh 5.1 and bracketed paste</title><link>http://zmwangx.github.io/blog/2015-09-21-zsh-51-and-bracketed-paste.html</link><description><![CDATA[
+
+<p><strong>TL;DR.</strong> Jump to <a href="http://zmwangx.github.io/blog/2015-09-21-zsh-51-and-bracketed-paste.html#code">code</a>.</p>
+<hr/>
+<p>In short, Zsh 5.1 introduced bracketed paste mode<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-09-21-zsh-51-and-bracketed-paste.html#fn1" id="fnref1"><sup>1</sup></a> and turned it on by default (as it seems to me). It is nice in certain ways &#8212; I appreciate the change, yet I was bitten nevertheless. In at least two ways:</p>
+<ol style="list-style-type: decimal">
+<li><p>Most annoyingly, <code>url-quote-magic</code> doesn't work anymore when pasting URLs, so for example if I paste</p>
+<pre><code>https://www.google.com/search?q=zsh</code></pre>
+<p>without typing in a single or double quote first, the <code>?</code> won't be backslash-quoted by default, which causes a syntax error when passed unnoticed (out of habit).</p></li>
+<li><p>The Emacs shell<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-09-21-zsh-51-and-bracketed-paste.html#fn2" id="fnref2"><sup>2</sup></a> is littered with <code>^[[?2004h</code> and <code>^[[?2004l</code> around every prompt.</p></li>
+</ol>
+<p>The solution? Zsh now also ships with <a href="https://github.com/zsh-users/zsh/blob/master/Functions/Zle/bracketed-paste-magic"><code>bracketed-paste-magic</code></a> that solves exactly breakage #1 (and a bit more); to quote comments from the linked source file:</p>
+<blockquote>
+<p>Starting with zsh-5.1, ZLE began to recognize the "bracketed paste" capability of terminal emulators, that is, the sequences <code>$'\e[200~'</code> to start a paste and <code>$'\e[201~'</code> to indicate the end of the pasted text. Pastes are handled by the bracketed-paste widget and insert literally into the editor buffer rather than being interpreted as keystrokes.</p>
+<p>This disables some common usages where the self-insert widget has been replaced in order to accomplish some extra processing. An example is the contributed url-quote-magic widget. The bracketed-paste-magic widget replaces bracketed-paste with a wrapper that re-enables these self-insert actions, and other actions as selected by the zstyles described below.</p>
+</blockquote>
+<p>And to solve breakage #2, just disable bracketed paste altogether for dumb terms.</p>
+<p id="code">
+Putting it together:
+</p>
+<div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span class="co"># turn off ZLE bracketed paste in dumb term</span>
+<span class="co"># otherwise turn on ZLE bracketed-paste-magic</span>
+<span class="kw">if [[</span> <span class="ot">$TERM</span> <span class="ot">==</span> dumb<span class="kw"> ]]</span>; <span class="kw">then</span>
+    <span class="kw">unset</span> zle_bracketed_paste
+<span class="kw">else</span>
+    <span class="kw">autoload</span> -Uz bracketed-paste-magic
+    <span class="kw">zle</span> -N bracketed-paste bracketed-paste-magic
+<span class="kw">fi</span></code></pre></div>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>Bracketed paste mode is a safeguard against inadvertent interpretation of pasted text, e.g., newline being treated at <code>accept-line</code> in Zsh. You may read more about it <a href="https://cirw.in/blog/bracketed-paste">in this blog post</a>, which is somewhat outdated yet still informational.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-09-21-zsh-51-and-bracketed-paste.html#fnref1">&#8617;&#65038;</a></p></li>
+<li id="fn2"><p>I seldom use this dumb (literally) thing, but when I do I expect it to work ungarbled, naturally.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-09-21-zsh-51-and-bracketed-paste.html#fnref2">&#8617;&#65038;</a></p></li>
+</ol>
+</div>
+]]></description><author>zmwangx@gmail.com (Zhiming Wang)</author><guid isPermaLink="true">http://zmwangx.github.io/blog/2015-09-21-zsh-51-and-bracketed-paste.html</guid><pubDate>Mon, 21 Sep 2015 21:40:36 GMT</pubDate></item><item><title>After all these years, 10pt non-anti-aliased Monaco is still the best</title><link>http://zmwangx.github.io/blog/2015-08-31-after-all-these-years-10pt-non-anti-aliased-monaco-is-still-the-best.html</link><description><![CDATA[
 
 <p>Ars Technica <a href="http://arstechnica.com/information-technology/2015/08/open-source-typeface-hack-brings-design-to-source-code/">just ran a piece</a> on the open source programming font <a href="https://github.com/chrissimpkins/Hack">Hack</a>. Now I don't really know why this is news-worthy (open source programming fonts aren't a new thing), but I thought I'd give it a try.</p>
 <p>The result is unsurprising. I've loved my 10pt non-anti-aliased Monaco for years, beginning with the Pro profile of Terminal.app. In fact, I initially refused to use iTerm2 precisely because I can't reproduce my beloved typeface in it, until I found out the non anti-aliasing trick. This time again, Hack simply can't compete with my favorite font; see the screenshots below. Among other things, it is way too thick for my liking &#8212; the same problem that haunts a whole range of programming fonts. Note that Hack is <a href="https://github.com/chrissimpkins/Hack#about">supposed to</a> look good at 8px&#8211;12px according to its README, but I tested it at 9pt&#8211;12pt in iTerm2 (I know, pt is supposed to be larger than px, but I seriously doubt that anyone would want 8px or 6pt as their daily font size &#8212; and for that matter iTerm2 doesn't even allow me to go below 9pt, a pretty reasonable restriction, I'd say).</p>
@@ -559,64 +594,4 @@ DELETE_AFTER <span class="op">=</span> datetime.timedelta(days<span class="op">=
 <li id="fn6"><p>In other news, Google dropped YouTube collections two weeks ago (<a href="https://support.google.com/youtube/answer/6233832?hl=en">May 26, 2015</a>), causing another round of agony. Also, subscriptions were all over the place once more, just like Google's project landscape.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-10-chrome-disappointment-the-shabby-and-boring-old-bookmark-system-from-stone-age-strikes-back.html#fnref6">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
-]]></description><author>zmwangx@gmail.com (Zhiming Wang)</author><guid isPermaLink="true">http://zmwangx.github.io/blog/2015-06-10-chrome-disappointment-the-shabby-and-boring-old-bookmark-system-from-stone-age-strikes-back.html</guid><pubDate>Thu, 11 Jun 2015 06:17:05 GMT</pubDate></item><item><title>Apple turns its homepage into a WWDC liveblog</title><link>http://zmwangx.github.io/blog/2015-06-08-apple-turns-its-homepage-into-a-wwdc-liveblog.html</link><description><![CDATA[
-
-<p>WWDC is Apple's biggest event every year, and WWDC keynote always attracts tons of hype. Apple knows that. In the past years folks who can't (at work, in class, etc.) or don't want to watch the crappy live stream would follow the various WWDC liveblogs presented by tech sites like Gizmodo, TechCrunch, Ars Technica, etc. But this year the landscape has changed: Apple rolled its own card-based liveblog at <a href="http://www.apple.com/live/2015-june-event/">www.apple.com/live/2015-june-event</a>.<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-06-08-apple-turns-its-homepage-into-a-wwdc-liveblog.html#fn1" id="fnref1"><sup>1</sup></a> Not only that; during the keynote, Apple redirected its homepage to the liveblog page, so it effectively turned its homepage into a liveblog:</p>
-<div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span class="kw">&gt;</span> curl -sSIL http://www.apple.com
-HTTP/1.1 302 Moved Temporarily
-Location: http://www.apple.com/live/
-Content-Length: 210
-Content-Type: text/html; <span class="ot">charset=</span>iso-8859-1
-Expires: Mon, 08 Jun 2015 19:16:41 GMT
-Cache-Control: max-age=0, no-cache, no-store
-Pragma: no-cache
-Date: Mon, 08 Jun 2015 19:16:41 GMT
-Connection: keep-alive
-Server: Apache
-
-HTTP/1.1 301 Moved Permanently
-Content-Length: 0
-Date: Mon, 08 Jun 2015 19:16:41 GMT
-Connection: keep-alive
-Server: Apache
-Location: http://www.apple.com/live/2015-june-event/
-
-HTTP/1.1 200 OK
-Last-Modified: Mon, 08 Jun 2015 15:45:30 GMT
-ETag: <span class="st">"0b7bcbfbd14c411e64e728ae4d644de7"</span>
-Content-Type: text/html
-Cache-Control: max-age=298
-Date: Mon, 08 Jun 2015 19:16:41 GMT
-Connection: keep-alive
-Server: Apache</code></pre></div>
-<p>Of course, you miss a few jokes and random shots of Tim or Craig from the official liveblog, but hey, who don't like that official feel?<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-06-08-apple-turns-its-homepage-into-a-wwdc-liveblog.html#fn2" id="fnref2"><sup>2</sup></a></p>
-<p>Here are a few screenshots of today's liveblog. Unfortunately I only know some entry level JS, so I wasn't able to capture the entire page, which uses dynamic DOM based on one's position in the page.</p>
-<div class="figure">
-<a href="http://zmwangx.github.io/img/20150608-wwdc-2015-banner.png" target="_blank"><img alt="The banner on Chrome." src="http://zmwangx.github.io/img/20150608-wwdc-2015-banner.png"/></a>
-<p class="caption">The banner on Chrome.</p>
-</div>
-<div class="figure">
-<a href="http://zmwangx.github.io/img/20150608-wwdc-2015-liveblog-960x981.png" target="_blank"><img alt="Introducing OS X El Capitan, 960x981." src="http://zmwangx.github.io/img/20150608-wwdc-2015-liveblog-960x981.png"/></a>
-<p class="caption">Introducing OS X El Capitan, 960x981.</p>
-</div>
-<div class="figure">
-<a href="http://zmwangx.github.io/img/20150608-wwdc-2015-liveblog-1920x1080.png" target="_blank"><img alt="A fuller experience: 1920x1080." src="http://zmwangx.github.io/img/20150608-wwdc-2015-liveblog-1920x1080.png"/></a>
-<p class="caption">A fuller experience: 1920x1080.</p>
-</div>
-<p>By the way, here are the full-page screenshots of <a href="http://www.apple.com/osx/elcapitan-preview/">OS X 10.11 El Capitan</a> and <a href="http://www.apple.com/ios/ios9-preview/">iOS 9</a> previews. <code>pageres</code> recently <a href="https://github.com/sindresorhus/pageres/issues/174">cannot render web fonts</a>, which is rather annoying, so I used <a href="https://github.com/mrcoles/full-page-screen-capture-chrome-extension">Full Page Screen Capture</a> to capture the shots. I then resized to 50% to reduce filesizes a bit.</p>
-<div class="figure">
-<a href="http://zmwangx.github.io/img/20150608-osx-el-capitan-preview-1920x1080-50%25.png" target="_blank"><img alt="OS X El Capitan" src="http://zmwangx.github.io/img/20150608-osx-el-capitan-preview-1920x1080-50%25.png"/></a>
-<p class="caption"><a href="http://www.apple.com/osx/elcapitan-preview/">OS X El Capitan</a></p>
-</div>
-<div class="figure">
-<a href="http://zmwangx.github.io/img/20150608-ios-9-preview-1920x1080-50%25.png" target="_blank"><img alt="iOS 9" src="http://zmwangx.github.io/img/20150608-ios-9-preview-1920x1080-50%25.png"/></a>
-<p class="caption"><a href="http://www.apple.com/ios/ios9-preview/">iOS 9</a></p>
-</div>
-<div class="footnotes">
-<hr/>
-<ol>
-<li id="fn1"><p>The crappy live stream is still there, but thankfully you wouldn't see it if you're on a browser other than Safari. Just look the screenshot of the banner.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-08-apple-turns-its-homepage-into-a-wwdc-liveblog.html#fnref1">&#8617;&#65038;</a></p></li>
-<li id="fn2"><p>Yeah, I know some people don't; but those people are not likely to be Apple fans either.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-08-apple-turns-its-homepage-into-a-wwdc-liveblog.html#fnref2">&#8617;&#65038;</a></p></li>
-</ol>
-</div>
-]]></description><author>zmwangx@gmail.com (Zhiming Wang)</author><guid isPermaLink="true">http://zmwangx.github.io/blog/2015-06-08-apple-turns-its-homepage-into-a-wwdc-liveblog.html</guid><pubDate>Mon, 08 Jun 2015 21:42:50 GMT</pubDate></item></channel></rss>
+]]></description><author>zmwangx@gmail.com (Zhiming Wang)</author><guid isPermaLink="true">http://zmwangx.github.io/blog/2015-06-10-chrome-disappointment-the-shabby-and-boring-old-bookmark-system-from-stone-age-strikes-back.html</guid><pubDate>Thu, 11 Jun 2015 06:17:05 GMT</pubDate></item></channel></rss>
