@@ -17,7 +17,7 @@ In short, Zsh 5.1 introduced bracketed paste mode[^1] and turned it on by defaul
 
 2. The Emacs shell[^2] is littered with `^[[?2004h` and `^[[?2004l` around every prompt.
 
-The solution? Zsh now also ships with [`bracketed-paste-magic`](https://github.com/zsh-users/zsh/blob/master/Functions/Zle/bracketed-paste-magic) that solves exactly breakage #1 (and a bit more); to quote comments from the linked source file:
+The solution? Zsh now also ships with [`bracketed-paste-magic`](https://github.com/zsh-users/zsh/blob/master/Functions/Zle/bracketed-paste-magic) that resolves exactly breakage #1 (and a bit more); to quote comments from the linked source file:
 
 > Starting with zsh-5.1, ZLE began to recognize the "bracketed paste"
 capability of terminal emulators, that is, the sequences `$'\e[200~'` to
@@ -32,7 +32,7 @@ widget replaces bracketed-paste with a wrapper that re-enables these
 self-insert actions, and other actions as selected by the zstyles
 described below.
 
-And to solve breakage #2, just disable bracketed paste altogether for dumb terms.
+And to resolve breakage #2, just disable bracketed paste altogether for dumb terms.
 
 <p id="code">Putting it together:</p>
 
