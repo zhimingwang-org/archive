@@ -82,12 +82,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </header>
 <p><strong>TL;DR.</strong> Jump to <a href="#code">code</a>.</p>
 <hr/>
-<p>In short, Zsh 5.1 introduced bracketed paste mode<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a> and turned it on by default (as it seems to me). It is nice in certain ways — I appreciate the change, yet I was bitten nevertheless. In at least two ways:</p>
+<p>In short, Zsh 5.1 introduced bracketed paste mode<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a> and turned it on by default (as it seems to me<a class="footnoteRef" href="#fn2" id="fnref2"><sup>2</sup></a>). It is nice in certain ways — I appreciate the change, yet I was bitten nevertheless. In at least two ways:</p>
 <ol style="list-style-type: decimal">
 <li><p>Most annoyingly, <code>url-quote-magic</code> doesn't work anymore when pasting URLs, so for example if I paste</p>
 <pre><code>https://www.google.com/search?q=zsh</code></pre>
 <p>without typing in a single or double quote first, the <code>?</code> and <code>=</code> won't be backslash-quoted by default, which causes an error when passed unnoticed (out of habit).</p></li>
-<li><p>The Emacs shell<a class="footnoteRef" href="#fn2" id="fnref2"><sup>2</sup></a> is littered with <code>^[[?2004h</code> and <code>^[[?2004l</code> around every prompt.</p></li>
+<li><p>The Emacs shell<a class="footnoteRef" href="#fn3" id="fnref3"><sup>3</sup></a> is littered with <code>^[[?2004h</code> and <code>^[[?2004l</code> around every prompt.</p></li>
 </ol>
 <p>The solution? Zsh now also ships with <a href="https://github.com/zsh-users/zsh/blob/master/Functions/Zle/bracketed-paste-magic"><code>bracketed-paste-magic</code></a> that solves exactly breakage #1 (and a bit more); to quote comments from the linked source file:</p>
 <blockquote>
@@ -106,11 +106,17 @@ Putting it together:
     <span class="kw">autoload</span> -Uz bracketed-paste-magic
     <span class="kw">zle</span> -N bracketed-paste bracketed-paste-magic
 <span class="kw">fi</span><span class="line-number" data-line="1" style="top: 0.00em"><!----></span><span class="line-number" data-line="2" style="top: 1.35em"><!----></span><span class="line-number" data-line="3" style="top: 2.70em"><!----></span><span class="line-number" data-line="4" style="top: 4.05em"><!----></span><span class="line-number" data-line="5" style="top: 5.40em"><!----></span><span class="line-number" data-line="6" style="top: 6.75em"><!----></span><span class="line-number" data-line="7" style="top: 8.10em"><!----></span><span class="line-number" data-line="8" style="top: 9.45em"><!----></span></code></pre></div>
+<hr/>
+<p><span id="update"><strong>09/22/2015 update.</strong></span> I only read <code>NEWS</code> and not <code>README</code>, so I missed out on a very clear announcement of the <a href="https://github.com/zsh-users/zsh/blob/68405f31a043bdd5bf338eb06688ed3e1f740937/README#L38-L45">bracketed paste incompatibitilies (between 5.0.8 and 5.1)</a>:</p>
+<blockquote>
+<p>The default behaviour when text is pasted into an X Windows terminal has changed significantly (unless you are using a very old terminal emulator that doesn't support this mode). Now, the new "bracketed paste mode" treats all the pasted text as literal characters. This means, in particular, that a newline is simply inserted as a visible newline; you need to hit Return on the keyboard to execute the pasted text in one go. See the description of <code>zle_bracketed_paste</code> in the <code>zshparams</code> manual for more. "<code>unset zle_bracketed_paste</code>" restores the previous behaviour.</p>
+</blockquote>
 <div class="footnotes">
 <hr/>
 <ol>
 <li id="fn1"><p>Bracketed paste mode is a safeguard against inadvertent interpretation of pasted text, e.g., newline being treated at <code>accept-line</code> in Zsh. You may read more about it <a href="https://cirw.in/blog/bracketed-paste">in this blog post</a>, which is somewhat outdated yet still informational.<a class="footnotes-backlink" href="#fnref1">↩︎</a></p></li>
-<li id="fn2"><p>I seldom use this dumb (literally) thing, but when I do I expect it to work ungarbled, naturally.<a class="footnotes-backlink" href="#fnref2">↩︎</a></p></li>
+<li id="fn2"><p>Indeed it is. See <a href="#update">update</a> with more accurate info from official source.<a class="footnotes-backlink" href="#fnref2">↩︎</a></p></li>
+<li id="fn3"><p>I seldom use this dumb (literally) thing, but when I do I expect it to work ungarbled, naturally.<a class="footnotes-backlink" href="#fnref3">↩︎</a></p></li>
 </ol>
 </div>
 </article>
