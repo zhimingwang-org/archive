@@ -23,6 +23,7 @@ body {
     background: #ddd;
     line-height: 100px;
     text-align: center;
+    text-decoration: none;
     font-size: 0;
 }
 
@@ -35,7 +36,6 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #fff;
-    text-decoration: none;
     /* stretch to mimic Helvetica Neue */
     transform: scale(1,0.9);
     -webkit-transform: scale(1,0.9);
