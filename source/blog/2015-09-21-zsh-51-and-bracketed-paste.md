@@ -13,7 +13,7 @@ In short, Zsh 5.1 introduced bracketed paste mode[^1] and turned it on by defaul
 
         https://www.google.com/search?q=zsh
 
-    without typing in a single or double quote first, the `?` won't be backslash-quoted by default, which causes a syntax error when passed unnoticed (out of habit).
+    without typing in a single or double quote first, the `?` and `=` won't be backslash-quoted by default, which causes an error when passed unnoticed (out of habit).
 
 2. The Emacs shell[^2] is littered with `^[[?2004h` and `^[[?2004l` around every prompt.
 
