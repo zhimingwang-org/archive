@@ -89,12 +89,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>without typing in a single or double quote first, the <code>?</code> and <code>=</code> won't be backslash-quoted by default, which causes an error when passed unnoticed (out of habit).</p></li>
 <li><p>The Emacs shell<a class="footnoteRef" href="#fn3" id="fnref3"><sup>3</sup></a> is littered with <code>^[[?2004h</code> and <code>^[[?2004l</code> around every prompt.</p></li>
 </ol>
-<p>The solution? Zsh now also ships with <a href="https://github.com/zsh-users/zsh/blob/master/Functions/Zle/bracketed-paste-magic"><code>bracketed-paste-magic</code></a> that solves exactly breakage #1 (and a bit more); to quote comments from the linked source file:</p>
+<p>The solution? Zsh now also ships with <a href="https://github.com/zsh-users/zsh/blob/master/Functions/Zle/bracketed-paste-magic"><code>bracketed-paste-magic</code></a> that resolves exactly breakage #1 (and a bit more); to quote comments from the linked source file:</p>
 <blockquote>
 <p>Starting with zsh-5.1, ZLE began to recognize the "bracketed paste" capability of terminal emulators, that is, the sequences <code>$'\e[200~'</code> to start a paste and <code>$'\e[201~'</code> to indicate the end of the pasted text. Pastes are handled by the bracketed-paste widget and insert literally into the editor buffer rather than being interpreted as keystrokes.</p>
 <p>This disables some common usages where the self-insert widget has been replaced in order to accomplish some extra processing. An example is the contributed url-quote-magic widget. The bracketed-paste-magic widget replaces bracketed-paste with a wrapper that re-enables these self-insert actions, and other actions as selected by the zstyles described below.</p>
 </blockquote>
-<p>And to solve breakage #2, just disable bracketed paste altogether for dumb terms.</p>
+<p>And to resolve breakage #2, just disable bracketed paste altogether for dumb terms.</p>
 <p id="code">
 Putting it together:
 </p>
