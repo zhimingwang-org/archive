@@ -7,7 +7,7 @@ date_display: September 21, 2015
 
 ---
 
-In short, Zsh 5.1 introduced bracketed paste mode[^1] and turned it on by default (as it seems to me). It is nice in certain ways — I appreciate the change, yet I was bitten nevertheless. In at least two ways:
+In short, Zsh 5.1 introduced bracketed paste mode[^1] and turned it on by default (as it seems to me[^update]). It is nice in certain ways — I appreciate the change, yet I was bitten nevertheless. In at least two ways:
 
 1. Most annoyingly, `url-quote-magic` doesn't work anymore when pasting URLs, so for example if I paste
 
@@ -47,6 +47,21 @@ else
 fi
 ```
 
+---
+
+<span id="update">**09/22/2015 update.**</span> I only read `NEWS` and not `README`, so I missed out on a very clear announcement of the [bracketed paste incompatibitilies (between 5.0.8 and 5.1)](https://github.com/zsh-users/zsh/blob/68405f31a043bdd5bf338eb06688ed3e1f740937/README#L38-L45):
+
+> The default behaviour when text is pasted into an X Windows terminal has
+changed significantly (unless you are using a very old terminal emulator
+that doesn't support this mode).  Now, the new "bracketed paste mode"
+treats all the pasted text as literal characters.  This means, in
+particular, that a newline is simply inserted as a visible newline; you
+need to hit Return on the keyboard to execute the pasted text in one go.
+See the description of `zle_bracketed_paste` in the `zshparams` manual for
+more.  "`unset zle_bracketed_paste`" restores the previous behaviour.
+
 [^1]: Bracketed paste mode is a safeguard against inadvertent interpretation of pasted text, e.g., newline being treated at `accept-line` in Zsh. You may read more about it [in this blog post](https://cirw.in/blog/bracketed-paste), which is somewhat outdated yet still informational.
 
 [^2]: I seldom use this dumb (literally) thing, but when I do I expect it to work ungarbled, naturally.
+
+[^update]: Indeed it is. See [update](#update) with more accurate info from official source.
