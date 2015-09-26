@@ -66,10 +66,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <article class="content">
 <header class="article-header">
 <h1 class="article-title">OS X system ruby encoding annoyance</h1>
-<h2 class="article-metadata">
+<div class="article-metadata">
 <time class="article-timestamp" datetime="2015-01-01T22:49:39-0800">January 1, 2015,</time>
           by <span class="article-author">Zhiming Wang</span>
-</h2>
+</div>
 </header>
 <p>I've been using RVM (with fairly up-to-date Rubies) and pry since my day one with Ruby (well, almost), so it actually surprises me today when I found out by chance how poorly the system Ruby behaves when it comes to encoding.</p>
 <p>The major annoyance with the current system Ruby (2.0.0p481) is that it can't convert <code>UTF8-MAC</code> to <code>UTF-8</code> (namely, NFD to NFC, as far as I can tell), at least not with Korean characters. Consider the following script:</p>

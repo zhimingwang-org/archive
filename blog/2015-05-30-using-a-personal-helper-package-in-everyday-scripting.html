@@ -29,10 +29,10 @@
 <article class="content">
 <header class="article-header">
 <h1 class="article-title">Using a personal helper package in everyday scripting</h1>
-<h2 class="article-metadata">
+<div class="article-metadata">
 <time class="article-timestamp" datetime="2015-05-30T22:48:57-07:00">May 30, 2015,</time>
           by <span class="article-author">Zhiming Wang</span>
-</h2>
+</div>
 </header>
 <p>Recently I've been scripting (mostly in Python) quite a bit, and noticed that some functionalities get copied over or reimplemented over and over again. Examples include reading configuration files (mostly JSON, INI, and YAML), printing progress information to tty in color, displaying progress bar, and so on.</p>
 <p>In light of this, I came up with the idea of keeping a pool of helper modules in a personal helper package. I'm unimaginative at naming things, so I just named my package <code>zmwangx</code>. It is <a href="https://github.com/zmwangx/pyzmwangx">published on GitHub</a>, and the API docs are published on <a href="https://pyzmwangx.readthedocs.org">Read the Docs</a> for easy reference during scripting.<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a> At the time of writing the following helper modules are available in the package:</p>

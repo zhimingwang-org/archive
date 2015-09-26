@@ -90,6 +90,7 @@ h2 {
 }
 
 .article-metadata {
+    text-align: center;
     font-size: 1em;
     font-weight: normal;
     font-style: italic;

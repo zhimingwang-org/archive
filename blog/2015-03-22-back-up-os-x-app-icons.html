@@ -66,10 +66,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <article class="content">
 <header class="article-header">
 <h1 class="article-title">Back up OS X app icons</h1>
-<h2 class="article-metadata">
+<div class="article-metadata">
 <time class="article-timestamp" datetime="2015-03-22T16:58:50-0700">March 22, 2015,</time>
           by <span class="article-author">Zhiming Wang</span>
-</h2>
+</div>
 </header>
 <p>OS X application icons are valuable assets, and it's interesting to see how they evolve over time. This is especially the case when we upgraded to OS X 10.10 Yosemite, when Apple and many design-aware third party developers overhauled (mainly flattened) their icons.</p>
 <p>However, we lose all the old icons when we do a major OS upgrade. Technically they still live in Time Machine backups, but those are a pain to pull out. Therefore, I wrote a script just now to back up app icons of all applications living in <code>/Applications</code> (including those symlinked to <code>/Applications</code>, e.g., apps installed through <code>brew cask</code>) and its level-one subdirectories, and <code>/System/Library/CoreServices</code> (for <code>Finder.app</code> and such). Here's the script:</p>

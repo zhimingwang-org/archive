@@ -29,10 +29,10 @@
 <article class="content">
 <header class="article-header">
 <h1 class="article-title">OS X package receipts</h1>
-<h2 class="article-metadata">
+<div class="article-metadata">
 <time class="article-timestamp" datetime="2014-10-25T13:26:02-0700">October 25, 2014,</time>
           by <span class="article-author">Zhiming Wang</span>
-</h2>
+</div>
 </header>
 <p>I just learned something new. Whenever you install a <code>pkg</code> on OS X, OS X stores a receipt of what was installed in <code>/var/db/receipts</code> (I'm running OS X 10.9.5 at the time of writing), called a <strong>bom</strong> — bill of materials (I’d rather call it a manifest, whatever). This feature was introduced in NeXTSTEP. From <code>man 5 bom</code>:</p>
 <blockquote>

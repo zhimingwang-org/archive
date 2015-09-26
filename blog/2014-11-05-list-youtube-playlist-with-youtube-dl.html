@@ -66,10 +66,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <article class="content">
 <header class="article-header">
 <h1 class="article-title">List YouTube playlist with youtube-dl</h1>
-<h2 class="article-metadata">
+<div class="article-metadata">
 <time class="article-timestamp" datetime="2014-11-05T10:37:58-0800">November 5, 2014,</time>
           by <span class="article-author">Zhiming Wang</span>
-</h2>
+</div>
 </header>
 <p>Of course you are always welcome to use the <a href="https://developers.google.com/api-client-library/python/">Google APIs Client Library for Python</a> to wrestle with YouTube, which is usually pretty simple. (As an added bonus, YouTube has some <a href="https://developers.google.com/youtube/v3/code_samples/">nice runnable sample scripts</a> to get you started.) With the client library, listing videos in a YouTube playlist is a breeze.</p>
 <p>However, if you don't feel like writing code yourself (I usually don't feel like writing code myself until I use something often enough and existing solutions are suboptimal), <code>youtube-dl</code> recently added the functionality to list videos in a playlist with the <code>--flat-playlist</code> option.</p>

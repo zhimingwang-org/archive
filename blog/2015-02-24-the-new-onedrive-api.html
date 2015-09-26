@@ -29,10 +29,10 @@
 <article class="content">
 <header class="article-header">
 <h1 class="article-title">The new OneDrive API</h1>
-<h2 class="article-metadata">
+<div class="article-metadata">
 <time class="article-timestamp" datetime="2015-02-24T18:31:19-0800">February 24, 2015,</time>
           by <span class="article-author">Zhiming Wang</span>
-</h2>
+</div>
 </header>
 <p>Microsoft released the new OneDrive API today. See the blog post announcement <a href="https://blog.onedrive.com/the-new-onedrive-api/">here</a>. One highlight is that <a href="http://onedrive.github.io/items/upload_large_files.htm">large file upload</a> is now officially supported. Previously, large file upload was handled with a semi-official API using the BITS protocol; the only documentation was a <a href="https://gist.github.com/rgregg/37ba8929768a62131e85">gist</a>. Now it is handled through standard HTTP <code>POST</code>. With this major release, there's likely a lot of work to be done with <a href="https://github.com/mk-fg/python-onedrive">python-onedrive</a>. I have opened an issue: <a href="https://github.com/mk-fg/python-onedrive/issues/52">mk-fg/python-onedrive#52 — New OneDrive API support</a>.</p>
 <p>Interestingly, the new OneDrive API doc is hosted on GitHub Pages — <a href="http://onedrive.github.io">onedrive.github.io</a>, rather than MSDN. Exactly a week ago I wrote a piece, "<a href="/blog/2015-02-17-microsoft-is-getting-cool-but-not-its-website.html">Microsoft is getting cool (but not its website)</a>". Looks like they are doing something about their website (or better put, their online identity), too.</p>
