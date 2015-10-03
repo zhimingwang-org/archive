@@ -1,4 +1,21 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><atom:link href="http://zmwangx.github.io/rss.xml" rel="self" type="application/rss+xml"/><title>dl? cmplnts?</title><link>http://zmwangx.github.io/</link><description>Zhiming Wang's personal blog</description><language>en-us</language><managingEditor>zmwangx@gmail.com (Zhiming Wang)</managingEditor><webMaster>zmwangx@gmail.com (Zhiming Wang)</webMaster><pubDate>Thu, 01 Oct 2015 22:49:09 GMT</pubDate><lastBuildDate>Thu, 01 Oct 2015 22:49:09 GMT</lastBuildDate><generator>pyblog (https://github.com/zmwangx/zmwangx.github.io)</generator><docs>https://validator.w3.org/feed/docs/rss2.html</docs><image><url>http://zmwangx.github.io/img/icon-100.png</url><title>dl? cmplnts?</title><link>http://zmwangx.github.io/</link><width>100</width><height>100</height></image><item><title>Auto hidden menu bar &amp; dock + maximized window is the new full screen mode</title><link>http://zmwangx.github.io/blog/2015-10-01-auto-hidden-menu-bar-dock-maximized-window-is-the-new-full-screen-mode.html</link><description><![CDATA[
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><atom:link href="http://zmwangx.github.io/rss.xml" rel="self" type="application/rss+xml"/><title>dl? cmplnts?</title><link>http://zmwangx.github.io/</link><description>Zhiming Wang's personal blog</description><language>en-us</language><managingEditor>zmwangx@gmail.com (Zhiming Wang)</managingEditor><webMaster>zmwangx@gmail.com (Zhiming Wang)</webMaster><pubDate>Sat, 03 Oct 2015 10:34:33 GMT</pubDate><lastBuildDate>Sat, 03 Oct 2015 10:34:33 GMT</lastBuildDate><generator>pyblog (https://github.com/zmwangx/zmwangx.github.io)</generator><docs>https://validator.w3.org/feed/docs/rss2.html</docs><image><url>http://zmwangx.github.io/img/icon-100.png</url><title>dl? cmplnts?</title><link>http://zmwangx.github.io/</link><width>100</width><height>100</height></image><item><title>We need an OS X security white paper</title><link>http://zmwangx.github.io/blog/2015-10-03-we-need-an-os-x-security-white-paper.html</link><description><![CDATA[
+
+<p>Apple has been offering an excellent <a href="https://www.apple.com/privacy/docs/iOS_Security_Guide.pdf">iOS Security White Paper</a> since at least 2012, and it's very informative. I highly encourage everyone to read it. It even explains some annoyances of iOS; for instance, <a href="http://www.relay.fm/upgrade/56">this week's Upgrade episode</a> discussed, <a href="https://daringfireball.net/linked/2015/10/01/upgrade-56">in Gruber's words</a>, "the lousy, painstaking, and at times downright confusing experience of migrating to a new iOS device", and once you read the white paper you'll realize that many things just can't be migrated due to iOS's hardware security model &#8212; basically, certain classes of data are encrypted with crypto keys baked into the silicon (see the section "Hardware security features"). I'm not saying the migration experience should be this painful (I would love to see it fixed or improved), but at least there's an explanation.<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-10-03-we-need-an-os-x-security-white-paper.html#fn1" id="fnref1"><sup>1</sup></a></p>
+<p>But I digress. This post is about OS X. I've been hunting for an OS X equivalent for a while now, but I don't think it exists. And recently people are talking about Apple's <a href="https://www.apple.com/privacy/">updated Privacy website</a><a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-10-03-we-need-an-os-x-security-white-paper.html#fn2" id="fnref2"><sup>2</sup></a>, so I went there with a glimmer of hope. End result: no luck. In fact, Apple links to its iOS Security White Paper at the bottom of "<a href="https://www.apple.com/privacy/approach-to-privacy">Our Approach to Privacy</a>":</p>
+<div class="figure">
+<a href="http://zmwangx.github.io/img/20151003-ios-security-white-paper-but-no-osx.png" target="_blank"><img alt="iOS Security White Paper linked, but no OS X." src="http://zmwangx.github.io/img/20151003-ios-security-white-paper-but-no-osx.png"/></a>
+<p class="caption">iOS Security White Paper linked, but no OS X.</p>
+</div>
+<p>But there's little to no mention of OS X (the words "Mac" and "OS X" each appears only once on the page). This is not surprising; OS X as the second class citizen is nothing new, and iPhones and Apple Watches are arguably more intimate, and hence more private devices &#8212; at least for most people. It is somewhat disappointing though.</p>
+<p>I forgot to mention why I would like to see an OS X security white paper. The reason is simple: a lot of security features are under-explained. For instance, I might want to learn more about FileVault: why am I given the choice of decrypting my drive with iCloud &#8212; I believe it's not the case on iOS? How does iCloud handle my disk encryption key, if I allow it access (I don't)? Or I might want to learn more about System Integrity Protection: does it auto revert (or repair, in their eyes) some permissions (e.g., that of <code>/usr/local</code>), as I heard people talking about? Or maybe more about code signing and the inner workings of Gatekeeper: there's <a href="http://arstechnica.com/security/2015/09/drop-dead-simple-exploit-completely-bypasses-macs-malware-gatekeeper/">recent news</a> of Gatekeeper workarounds. I guess some of these stuff can be found in Apple's support documents or developer documentation if you look hard enough, but it would be nice if the major security features and their implementations are presented coherently in a single document. Maybe the OS X security model is too complex and diverse to fit into a single document? I don't know. Anyway, I'll keep waiting.</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>Loss of certain classes of protected data (due to hardward crypto keys) during migration should in principle only apply to migration by "restoration". What about providing a direct phone-to-phone migration, where data could be decrypted and transferred on the fly? But that would at least require a lightning male to lightning male cable (or you would have to entrust your most sensitive data, which shouldn't even leave the phone under normal conditions, to your Wi-Fi, something Apple probably wouldn't do), and having to use a different, and actually unheard-of cable isn't very realistic, so it won't be happening any time soon.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-10-03-we-need-an-os-x-security-white-paper.html#fnref1">&#8617;&#65038;</a></p></li>
+<li id="fn2"><p>I haven't read through everything, but the idea of a <a href="https://www.apple.com/privacy/privacy-policy/">non-law-practicing-human readable privacy policy</a> is great.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-10-03-we-need-an-os-x-security-white-paper.html#fnref2">&#8617;&#65038;</a></p></li>
+</ol>
+</div>
+]]></description><author>zmwangx@gmail.com (Zhiming Wang)</author><guid isPermaLink="true">http://zmwangx.github.io/blog/2015-10-03-we-need-an-os-x-security-white-paper.html</guid><pubDate>Sat, 03 Oct 2015 10:34:24 GMT</pubDate></item><item><title>Auto hidden menu bar &amp; dock + maximized window is the new full screen mode</title><link>http://zmwangx.github.io/blog/2015-10-01-auto-hidden-menu-bar-dock-maximized-window-is-the-new-full-screen-mode.html</link><description><![CDATA[
 
 <p>One nice feature of OS X El Capitan is that the menu bar can be auto hidden. Combined an auto hidden dock, we can now emulate the full screen experience with a maximized window while still enjoying overlayed windows, e.g., transparent terminal windows or "Picture in Picture" style small floating player. To see how closely a full screen experience is emulated this way, see the side-by-side screenshots below.</p>
 <div class="figure">
@@ -452,123 +469,4 @@ Why I hate Microsoft Office
 <li id="fn2"><p>Or maybe they will only open up regular browser traffic after iOS 9 stable is released.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-29-dl-cmplnts-in-apple-news.html#fnref2">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
-]]></description><author>zmwangx@gmail.com (Zhiming Wang)</author><guid isPermaLink="true">http://zmwangx.github.io/blog/2015-06-29-dl-cmplnts-in-apple-news.html</guid><pubDate>Tue, 30 Jun 2015 06:14:42 GMT</pubDate></item><item><title>Automatically clean up "Previous Mobile Applications"</title><link>http://zmwangx.github.io/blog/2015-06-27-automatically-clean-up-previous-mobile-applications.html</link><description><![CDATA[
-
-<p>iTunes keeps a "Previous Mobile Applications" folder of questionable value, which always annoys me. It eats into disk space and wastes syncing/backup cycles and bandwidth; you can easily find horror stories online about <a href="http://forums.macrumors.com/threads/5-years-of-deleted-iphone-apps-accumulated-in-my-itunes-library.1781676/#post-19749496">100GB+ PMA folders</a>. The value? You might be able to roll back to an earlier version, or restore an app pulled from the App Store. Really? I never had that need in my life<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-06-27-automatically-clean-up-previous-mobile-applications.html#fn1" id="fnref1"><sup>1</sup></a>; have you? Worst of all, there should be a periodic clean up option &#8212; just like how deleted mail are automatically purged after one month, but the option is missing.</p>
-<p>Therefore, I wrote a trivial Python script to do the periodic cleanup. Feel free to grab my script below (also available at <a class="uri" href="http://git.io/previous-mobile-applications">http://git.io/previous-mobile-applications</a>) to save a few minutes of hacking. It should be plugged into a daily or weekly or monthly cron job (or the equivalent), and it writes data to <code>~/.local/share/itunes/previous-mobile-applications.json</code> by default. To customize, just modify the global constants.</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co">#!/usr/bin/env python3</span>
-
-<span class="co">"""Periodically clean up "Previous Mobile Applications" of iTunes."""</span>
-
-<span class="im">import</span> arrow
-<span class="im">import</span> datetime
-<span class="im">import</span> json
-<span class="im">import</span> os
-<span class="im">import</span> sys
-
-OFFENDING_DIR <span class="op">=</span> os.path.expanduser(<span class="st">"~/Music/iTunes/iTunes Media/Mobile Applications/Previous Mobile Applications"</span>)
-STORAGE_DIR <span class="op">=</span> os.path.expanduser(<span class="st">"~/.local/share/itunes"</span>)
-STORAGE_FILE <span class="op">=</span> os.path.join(STORAGE_DIR, <span class="st">"previous-mobile-applications.json"</span>)
-
-DELETE_AFTER <span class="op">=</span> datetime.timedelta(days<span class="op">=</span><span class="dv">7</span>)
-
-<span class="kw">def</span> load_storage():
-    <span class="co">"""Load stored dictionary of seen apps from STORAGE_FILE.</span>
-
-<span class="co">    Returns</span>
-<span class="co">    -------</span>
-<span class="co">    seen_app_dict : dict</span>
-<span class="co">        Dictionary of (app_filename, first_seen_date) key-value pairs,</span>
-<span class="co">        where app_filename is str, and last_seen_date is datetime.date.</span>
-
-<span class="co">    """</span>
-    os.makedirs(STORAGE_DIR, mode<span class="op">=</span><span class="bn">0o700</span>, exist_ok<span class="op">=</span><span class="va">True</span>)
-    <span class="cf">try</span>:
-        <span class="cf">with</span> <span class="bu">open</span>(STORAGE_FILE, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> fp:
-            serializable_seen_app_dict <span class="op">=</span> json.load(fp)
-            <span class="cf">return</span> {app_filename: arrow.get(serialized_first_seen_date).date()
-                    <span class="cf">for</span> app_filename, serialized_first_seen_date <span class="op">in</span> serializable_seen_app_dict.items()}
-    <span class="cf">except</span> <span class="pp">OSError</span>:
-        <span class="cf">return</span> {}
-
-<span class="kw">def</span> write_storage(seen_app_dict):
-    <span class="co">"""Write the dictionary of seen apps to STORAGE_FILE.</span>
-
-<span class="co">    Parameters</span>
-<span class="co">    ----------</span>
-<span class="co">    seen_app_dict : dict</span>
-<span class="co">        See the return format of load_storage().</span>
-
-<span class="co">    Returns</span>
-<span class="co">    -------</span>
-<span class="co">    0 or 1</span>
-<span class="co">        Return code indicating success or failure.</span>
-
-<span class="co">    """</span>
-    <span class="co"># convert datetime.time to str (ISO 8601)</span>
-    serializable_seen_app_dict <span class="op">=</span> {app_filename: first_seen_date.isoformat()
-                                  <span class="cf">for</span> app_filename, first_seen_date <span class="op">in</span> seen_app_dict.items()}
-    os.makedirs(STORAGE_DIR, mode<span class="op">=</span><span class="bn">0o700</span>, exist_ok<span class="op">=</span><span class="va">True</span>)
-    <span class="cf">try</span>:
-        <span class="cf">with</span> <span class="bu">open</span>(STORAGE_FILE, mode<span class="op">=</span><span class="st">"w"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> fp:
-            json.dump(serializable_seen_app_dict, fp, indent<span class="op">=</span><span class="dv">2</span>, sort_keys<span class="op">=</span><span class="va">True</span>)
-        <span class="cf">return</span> <span class="dv">0</span>
-    <span class="cf">except</span> <span class="pp">OSError</span> <span class="im">as</span> err:
-        sys.stderr.write(<span class="st">"error: failed to write to '</span><span class="sc">%s</span><span class="st">': </span><span class="sc">%s</span><span class="st">"</span> <span class="op">%</span> (STORAGE_FILE, <span class="bu">str</span>(err)))
-        <span class="cf">return</span> <span class="dv">1</span>
-
-<span class="kw">def</span> main():
-    <span class="co">"""Main.</span>
-
-<span class="co">    Returns</span>
-<span class="co">    -------</span>
-<span class="co">    0 or 1</span>
-<span class="co">        Return code indicating success or failure.</span>
-
-<span class="co">    """</span>
-    <span class="cf">if</span> <span class="op">not</span> os.path.isdir(OFFENDING_DIR):
-        <span class="co"># good, you don't have that junk</span>
-        <span class="cf">return</span> <span class="dv">0</span>
-
-    today <span class="op">=</span> datetime.date.today()
-    seen_app_dict <span class="op">=</span> load_storage()
-    current_app_list <span class="op">=</span> os.listdir(OFFENDING_DIR)
-
-    <span class="co"># boot already disappeared apps</span>
-    <span class="cf">for</span> app <span class="op">in</span> [app <span class="cf">for</span> app <span class="op">in</span> seen_app_dict <span class="cf">if</span> app <span class="op">not</span> <span class="op">in</span> current_app_list]:
-        seen_app_dict.pop(app)
-
-    <span class="co"># add newly appeared apps</span>
-    <span class="cf">for</span> app <span class="op">in</span> [app <span class="cf">for</span> app <span class="op">in</span> current_app_list <span class="cf">if</span> app <span class="op">not</span> <span class="op">in</span> seen_app_dict]:
-        seen_app_dict[app] <span class="op">=</span> today
-
-    <span class="co"># delete expired apps</span>
-    returncode <span class="op">=</span> <span class="dv">0</span>
-    newly_deleted_apps <span class="op">=</span> []
-    <span class="cf">for</span> app <span class="op">in</span> seen_app_dict:
-        <span class="cf">if</span> today <span class="op">&gt;=</span> seen_app_dict[app] <span class="op">+</span> DELETE_AFTER:
-            app_path <span class="op">=</span> os.path.join(OFFENDING_DIR, app)
-            <span class="cf">try</span>:
-                os.remove(app_path)
-                newly_deleted_apps.append(app)
-            <span class="cf">except</span> <span class="pp">OSError</span> <span class="im">as</span> err:
-                sys.stderr.write(<span class="st">"error: failed to remove '</span><span class="sc">%s</span><span class="st">': </span><span class="sc">%s</span><span class="st">"</span> <span class="op">%</span> (app_path, <span class="bu">str</span>(err)))
-                returncode <span class="op">=</span> <span class="dv">1</span>
-
-    <span class="cf">for</span> app <span class="op">in</span> newly_deleted_apps:
-        seen_app_dict.pop(app)
-
-    <span class="co"># write data to disk</span>
-    returncode <span class="op">|=</span> write_storage(seen_app_dict)
-
-    <span class="cf">return</span> returncode
-
-<span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:
-    exit(main())</code></pre></div>
-<div class="footnotes">
-<hr/>
-<ol>
-<li id="fn1"><p>Full disclosure: unlike many people, I'm not very obsessed with my phone, and I only have about two dozen third-party apps.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-06-27-automatically-clean-up-previous-mobile-applications.html#fnref1">&#8617;&#65038;</a></p></li>
-</ol>
-</div>
-]]></description><author>zmwangx@gmail.com (Zhiming Wang)</author><guid isPermaLink="true">http://zmwangx.github.io/blog/2015-06-27-automatically-clean-up-previous-mobile-applications.html</guid><pubDate>Sun, 28 Jun 2015 04:19:59 GMT</pubDate></item></channel></rss>
+]]></description><author>zmwangx@gmail.com (Zhiming Wang)</author><guid isPermaLink="true">http://zmwangx.github.io/blog/2015-06-29-dl-cmplnts-in-apple-news.html</guid><pubDate>Tue, 30 Jun 2015 06:14:42 GMT</pubDate></item></channel></rss>

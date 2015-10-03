@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2015-10-03T03:34:24-07:00" name="date"/>
+<title>We need an OS X security white paper</title>
+<link href="/img/apple-touch-icon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/css/fonts.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-wide.css" media="only screen and (min-width: 1441px)" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-narrow.css" media="only screen and (max-width: 1023px)" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-ultranarrow.css" media="only screen and (max-width: 500px)" rel="stylesheet" type="text/css"/>
+<link href="/css/print.css" media="print" rel="stylesheet" type="text/css"/>
+<style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<nav class="nav">
+<a class="nav-icon" href="/" title="Home"><!--blog icon--></a>
+<div class="nav-title"><a class="nav-link" href="/">dl? cmplnts?</a></div>
+<div class="nav-author">by <a class="nav-link" href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</nav>
+<article class="content">
+<header class="article-header">
+<h1 class="article-title">We need an OS X security white paper</h1>
+<div class="article-metadata">
+<time class="article-timestamp" datetime="2015-10-03T03:34:24-07:00">October 3, 2015,</time>
+          by <span class="article-author">Zhiming Wang</span>
+</div>
+</header>
+<p>Apple has been offering an excellent <a href="https://www.apple.com/privacy/docs/iOS_Security_Guide.pdf">iOS Security White Paper</a> since at least 2012, and it's very informative. I highly encourage everyone to read it. It even explains some annoyances of iOS; for instance, <a href="http://www.relay.fm/upgrade/56">this week's Upgrade episode</a> discussed, <a href="https://daringfireball.net/linked/2015/10/01/upgrade-56">in Gruber's words</a>, "the lousy, painstaking, and at times downright confusing experience of migrating to a new iOS device", and once you read the white paper you'll realize that many things just can't be migrated due to iOS's hardware security model — basically, certain classes of data are encrypted with crypto keys baked into the silicon (see the section "Hardware security features"). I'm not saying the migration experience should be this painful (I would love to see it fixed or improved), but at least there's an explanation.<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a></p>
+<p>But I digress. This post is about OS X. I've been hunting for an OS X equivalent for a while now, but I don't think it exists. And recently people are talking about Apple's <a href="https://www.apple.com/privacy/">updated Privacy website</a><a class="footnoteRef" href="#fn2" id="fnref2"><sup>2</sup></a>, so I went there with a glimmer of hope. End result: no luck. In fact, Apple links to its iOS Security White Paper at the bottom of "<a href="https://www.apple.com/privacy/approach-to-privacy">Our Approach to Privacy</a>":</p>
+<div class="figure">
+<a href="/img/20151003-ios-security-white-paper-but-no-osx.png" target="_blank"><img alt="iOS Security White Paper linked, but no OS X." src="/img/20151003-ios-security-white-paper-but-no-osx.png"/></a>
+<p class="caption">iOS Security White Paper linked, but no OS X.</p>
+</div>
+<p>But there's little to no mention of OS X (the words "Mac" and "OS X" each appears only once on the page). This is not surprising; OS X as the second class citizen is nothing new, and iPhones and Apple Watches are arguably more intimate, and hence more private devices — at least for most people. It is somewhat disappointing though.</p>
+<p>I forgot to mention why I would like to see an OS X security white paper. The reason is simple: a lot of security features are under-explained. For instance, I might want to learn more about FileVault: why am I given the choice of decrypting my drive with iCloud — I believe it's not the case on iOS? How does iCloud handle my disk encryption key, if I allow it access (I don't)? Or I might want to learn more about System Integrity Protection: does it auto revert (or repair, in their eyes) some permissions (e.g., that of <code>/usr/local</code>), as I heard people talking about? Or maybe more about code signing and the inner workings of Gatekeeper: there's <a href="http://arstechnica.com/security/2015/09/drop-dead-simple-exploit-completely-bypasses-macs-malware-gatekeeper/">recent news</a> of Gatekeeper workarounds. I guess some of these stuff can be found in Apple's support documents or developer documentation if you look hard enough, but it would be nice if the major security features and their implementations are presented coherently in a single document. Maybe the OS X security model is too complex and diverse to fit into a single document? I don't know. Anyway, I'll keep waiting.</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>Loss of certain classes of protected data (due to hardward crypto keys) during migration should in principle only apply to migration by "restoration". What about providing a direct phone-to-phone migration, where data could be decrypted and transferred on the fly? But that would at least require a lightning male to lightning male cable (or you would have to entrust your most sensitive data, which shouldn't even leave the phone under normal conditions, to your Wi-Fi, something Apple probably wouldn't do), and having to use a different, and actually unheard-of cable isn't very realistic, so it won't be happening any time soon.<a class="footnotes-backlink" href="#fnref1">↩︎</a></p></li>
+<li id="fn2"><p>I haven't read through everything, but the idea of a <a href="https://www.apple.com/privacy/privacy-policy/">non-law-practicing-human readable privacy policy</a> is great.<a class="footnotes-backlink" href="#fnref2">↩︎</a></p></li>
+</ol>
+</div>
+</article>
+<hr class="content-separator"/>
+<footer class="footer">
+<span class="rfooter">
+<a class="rss-icon fa fa-rss fa-flip-horizontal" href="/rss.xml" target="_blank" title="RSS feed"><!--RSS feed icon--></a><a class="atom-icon fa fa-rss" href="/atom.xml" target="_blank" title="Atom feed"><!--Atom feed icon--></a><a class="cc-icon fa fa-creative-commons" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license."><!--CC icon--></a>
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</span>
+</footer>
+</body>
+</html>
