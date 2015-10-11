@@ -2,7 +2,16 @@ body {
     color: #333;
     font-family: "PT Serif", serif;
     font-size: 10.99pt;
+    -webkit-font-smoothing: antialiased;
     margin: 100px 0;
+}
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 1.25),
+only screen and ( min-device-pixel-ratio: 1.25),
+only screen and ( min-resolution: 200dpi),
+only screen and ( min-resolution: 1.25dppx) {
+    -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .nav {
