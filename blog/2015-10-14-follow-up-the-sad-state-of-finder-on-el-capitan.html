@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2015-10-14T12:30:32-07:00" name="date"/>
+<title>Follow-up: The sad state of Finder on El Capitan</title>
+<link href="/img/apple-touch-icon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/css/fonts.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-wide.css" media="only screen and (min-width: 1441px)" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-narrow.css" media="only screen and (max-width: 1023px)" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-ultranarrow.css" media="only screen and (max-width: 500px)" rel="stylesheet" type="text/css"/>
+<link href="/css/print.css" media="print" rel="stylesheet" type="text/css"/>
+<style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<nav class="nav">
+<a class="nav-icon" href="/" title="Home"><!--blog icon--></a>
+<div class="nav-title"><a class="nav-link" href="/">dl? cmplnts?</a></div>
+<div class="nav-author">by <a class="nav-link" href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</nav>
+<article class="content">
+<header class="article-header">
+<h1 class="article-title">Follow-up: The sad state of Finder on El Capitan</h1>
+<div class="article-metadata">
+<time class="article-timestamp" datetime="2015-10-14T12:30:32-07:00">October 14, 2015,</time>
+          by <span class="article-author">Zhiming Wang</span>
+</div>
+</header>
+<p><strong>10/14/2015 update</strong> (updated even before I published the article). Just as I was finishing this post, an update to TotalFinder came. <a href="http://totalfinder.binaryage.com/beta-changes">1.7.8</a>. And holy cow, it fixed automatic column resizing! The fix isn't perfect — there's actually a visible delay before resizing, but I'm happy again. Long live TotalFinder!</p>
+<hr/>
+<p>As expected, it's hard to get Finder to work the way I want it to on El Capitan. The unexpected part is that even after disabling the Debugging Restrictions part of SIP (<code>csrutil enable --without debug</code>), XtraFinder and TotalFinder<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a> both can't auto resize columns. Seems that a hole they are both utilizing has been closed. Just like <code>QLEnableTextSelection</code> in <code>com.apple.finder</code>, I guess. Apple gives, Apple takes. XtraFinder has additional problems like folder-on-top not working, window config occasionally forgotten, and the long-standing issue of shitty Chrome-style tab implementation (basically stacking a separate layer on top of each window) that shows a visible white divider, so I'm running TotalFinder right now, not sure about whether it would be abandoned completely next year. Anyway, even after running TotalFinder, it's still that damn old stupid Finder, the columns of which I have to manually resize all the time; just a little bit nicer.</p>
+<p>So I went out to look for full Finder replacements. I tried everything listed in the <a href="http://discuss.binaryage.com/t/totalfinder-alternatives/4124">TotalFinder alternatives</a> post on TotalFinder forums. None worked for me. Here's a very brief (batch) review.</p>
+<ul>
+<li><p><a href="http://likemac.ru/english/">Disk Order</a>, <a href="http://mac.eltima.com/file-manager.html">Commander </a><a href="http://mac.eltima.com/totalfinder-promo.html">One</a>, <a href="http://www.devstorm-apps.com/dc/">DCommander</a>, and <a href="http://crax.soft4u2.com/">CRAX Commander</a>: No column view. All of them are dual-pane though. What's the advantage of being dual-pane? I can't fathom. Easier to copy/cut and paste? What a joke — how often do you do that to justify having two panes in your face at all times? Might as well spend the time to do a column view. Column view enables fast navigation and provides a full picture of a directory tree, which is one of the two reasons I use Finder (i.e., a file manager), the other being Quick Look. If I just want to stay in a single directory, and painstakingly navigate in and out, I'll just do everything in the terminal, thank you. By the way, Command One and DCommander are suprisingly similar, both appearance-wise and functionality-wise. Not sure if one rips off the other (looks like DCommander is older). Also, why do most of them call themselves commanders? Another thing that I can't fathom.<a class="footnoteRef" href="#fn2" id="fnref2"><sup>2</sup></a></p></li>
+<li><p><a href="http://www.binarynights.com/forklift/">ForkLift</a>: Again, dual-pane, and doesn't seem to offer a single-pane mode, but you can drag the pane divider all the way to the right to hide the second one (including the divider). It has a column view, but doesn't seem to offer column auto resizing. Also, it doesn't hide items with the <code>hidden</code> flag, which is kind of insane. Even more shockingly, it offers no option to show file extensions! Tell me again that this is a power user tool. (Yeah, I know its myriad power user features, but I need the basic ones, and I don't see them. More discussions about "features" at the end.)</p></li>
+<li><p><a href="http://www.cocoatech.com/pathfinder/">Path Finder</a>. It actually kind of works. It offers column auto resizing, hidden in the view options of the column view (accessible via ⌘J). Even "<code>open ~</code>" could open in Path Finder, if you let it be the default file manager; that was a nice surprise, and I'm not sure about the mechanism (maybe <a href="https://apple.stackexchange.com/questions/73529/how-to-change-the-default-file-manager-for-osx">this</a>? Doesn't sound right though). However, it has a horrible default appearance, and even after substantial customizations, it still looks kind of crappy. Also, the auto resizing implementation is incomplete, in that it doesn't offer min and max column size settings, so when auto resizing is enabled, many columns look awfully narrow. I'm also suspicious about its tech support. When I was investigating some issues about it on Google, I found some relevant tickets on its <a href="http://support.cocoatech.com/">support site</a>, but <em>none</em> of the tickets have any replies. I didn't bother to look around, but that was definitely a bad impression.</p>
+<p>By the way, I mentioned concerns about Path Finder's pricing in the <a href="/blog/2015-07-30-the-sad-state-of-finder-on-el-capitan.html">sad state</a> post. At $40 it's definitely not cheap, but judging from the <a href="http://support.cocoatech.com/kb/installation-and-compatibility/path-finder-version-history">release history</a>, it's more like pay-to-upgrade every other year, rather than every year.</p>
+<p>Conclusion: not impressed.</p></li>
+</ul>
+<p>Finally, a few words about "pro features". Many of these file managers offer a huge bundle of pro features, but quite of a few of them are completely useless. Useless features include builtin text editor, hex editor, terminal, archiver and unarchiver, blah blah blah. Why would anyone use those watered-down builtins? I use the right tool, the dedicated tool, for the right job. (To give one example, Commander One includes a command line that you can type commands to execute — without command or filename completion, naturally; and it also ships with a builtin terminal accessible via ⌃O. Apart from horrendous typography, the builtin terminal is also barely better than a dumb term, incapable of handling my prompt theme. Meanwhile, iTerm2 is accessible via a system-wide shortcut ⌥Space to me — extremely convenient.) Support for other filesystems, including remote filesystems and in-place archive browsing, could be welcome though, although I seldom need them.</p>
+<hr/>
+<p>P.S. Here are the version numbers, at the time of writing, of the mentioned software packages (apparently, things might change in later versions):</p>
+<ul>
+<li>TotalFinder 1.7.6 (beta);</li>
+<li>XtraFinder 0.25.5;</li>
+<li>Disk Order 3.2.5;</li>
+<li>Commander One 1.1.1346;</li>
+<li>DCommander 2.7.2;</li>
+<li>CRAX Commander 1.10.4 (demo);</li>
+<li>ForkLift 2.6.6;</li>
+<li>Path Finder 7.2.</li>
+</ul>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>TotalFinder 1.7.8+ now supports column auto resizing on El Cap. See update at the top.<a class="footnotes-backlink" href="#fnref1">↩︎</a></p></li>
+<li id="fn2"><p>If you Google <a href="https://www.google.com/search?q=file+manager+commander">"file manager commander"</a>, you'll find a hell lot of "commanders". Reminds me of C&amp;C... Oh well.<a class="footnotes-backlink" href="#fnref2">↩︎</a></p></li>
+</ol>
+</div>
+</article>
+<hr class="content-separator"/>
+<footer class="footer">
+<span class="rfooter">
+<a class="rss-icon fa fa-rss fa-flip-horizontal" href="/rss.xml" target="_blank" title="RSS feed"><!--RSS feed icon--></a><a class="atom-icon fa fa-rss" href="/atom.xml" target="_blank" title="Atom feed"><!--Atom feed icon--></a><a class="cc-icon fa fa-creative-commons" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license."><!--CC icon--></a>
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</span>
+</footer>
+</body>
+</html>
