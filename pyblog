@@ -833,6 +833,10 @@ def new_post(title):
         if os.path.exists(POSTSDIR):
             os.remove(POSTSDIR)
         os.mkdir(POSTSDIR, mode=0o755)
+    if os.path.exists(fullpath):
+        sys.stderr.write("%serror: '%s' already exists, please pick a different title%s\n" %
+                         (RED, fullpath, RESET))
+        return 1
     with open(fullpath, 'w', encoding='utf-8') as newpost:
         newpost.write("---\n")
         newpost.write('title: "%s"\n' % title)
