@@ -27,7 +27,7 @@ A few tips about migration from AT&T:
 
 * About AT&T cancellation: Porting the number will automatically cancel your service with AT&T, so you don't need to call them for cancellation.
 
-An anecdote here: I initially feared the usual customer retention bullshit when I tried to cancel my AT&T service through online chat (I didn't know about automatic cancellation at that time), but there was none. Representative was very polite, and I only got a "sorry to see you go" at the end. So kudos to them.
+    An anecdote here: I initially feared the usual customer retention bullshit when I tried to cancel my AT&T service through online chat (I didn't know about automatic cancellation at that time), but there was none. Representative was very polite, and I only got a "sorry to see you go" at the end. So kudos to them.
 
 <h2 id="pros-and-cons">Pros and cons</h2>
 
