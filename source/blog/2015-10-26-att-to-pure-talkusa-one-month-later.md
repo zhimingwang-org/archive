@@ -49,7 +49,7 @@ Good:
 
 Bad:
 
-* There's no visual voicemail, only old-schooled voicemail which you need to dial a number to listen to, in the order they were received; moreover, dialing and listening to voicemail counts toward your minute balance. I hardly missed that. I never grew accustomed to voicemail anyway; no I have an excuse to forget about it completely.
+* There's no visual voicemail, only old-schooled voicemail which you need to dial a number to listen to, in the order they were received; moreover, dialing and listening to voicemail counts toward your minute balance. I hardly missed that. I never grew accustomed to voicemail anyway; now I have an excuse to forget about it completely.
 
 * All incoming phone calls and text messages count towards your minute balance (I don't know about what's most common in the U.S., but as far as I know this is rarely the case in China — you usually only pay for active usage, although you do need an active service to receive calls and messages). Calling toll free numbers counts, too, so now you'll be even more angry when you're put on hold for an hour.
 
