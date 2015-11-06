@@ -1,4 +1,20 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zmwangx.github.io/atom.xml" rel="self" type="application/atom+xml"/><link href="http://zmwangx.github.io/" rel="alternate" type="text/html"/><updated>2015-10-27T03:11:50-07:00</updated><id>http://zmwangx.github.io/</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">AT&amp;T to Pure TalkUSA, one month later</title><link href="http://zmwangx.github.io/blog/2015-10-26-att-to-pure-talkusa-one-month-later.html"/><updated>2015-10-26T00:00:30-07:00</updated><id>http://zmwangx.github.io/blog/2015-10-26-att-to-pure-talkusa-one-month-later.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
+<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zmwangx.github.io/atom.xml" rel="self" type="application/atom+xml"/><link href="http://zmwangx.github.io/" rel="alternate" type="text/html"/><updated>2015-11-06T10:50:21-08:00</updated><id>http://zmwangx.github.io/</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">Microsoft drops unlimited OneDrive storage after people use it for unlimited storage</title><link href="http://zmwangx.github.io/blog/2015-11-06-microsoft-drops-unlimited-onedrive-storage-after-people-use-it-for-unlimited-storage.html"/><updated>2015-11-06T10:49:51-08:00</updated><id>http://zmwangx.github.io/blog/2015-11-06-microsoft-drops-unlimited-onedrive-storage-after-people-use-it-for-unlimited-storage.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
+
+<p><a href="http://arstechnica.com/information-technology/2015/11/microsoft-drops-unlimited-onedrive-storage-after-people-use-it-for-unlimited-storage/">Story on Ars Technica</a>. <a href="https://blog.onedrive.com/onedrive_changes/">Official announcement</a>. I was playing catch up on this week's RSS when this one punched in my face.</p>
+<p>I currently have 5 TB of data in OneDrive. I was once worried about lock-in when I eventually have 20 or 100 TB there, but now that they have shown their true colors, the worries are all gone. They are not even offering anything past 1 TB. We have seen this too many times &#8212; shit happens when people actually use unlimited for unlimited. Usually unlimited quickly becomes qualified, but in this case, unlimited simply becomes limited. What irony when one looks back at their announcement from <a href="http://localhost:8000/blog/2014-10-27-onedrive-goes-unlimited.html">a year ago</a>:</p>
+<blockquote>
+<p>Today, storage limits just became a thing of the past with Office 365.</p>
+</blockquote>
+<p>Why even promise when they can't keep it for more than a year.</p>
+<p>Okay, Microsoft just reclaimed the top spot of my most-hated-companies list, and my <a href="http://zmwangx.github.io/blog/2015-11-06-microsoft-drops-unlimited-onedrive-storage-after-people-use-it-for-unlimited-storage.html">ongoing efforts on making a usable OneDrive CLI</a> have been wasted. I just pushed the final commit and closed all issues. Maybe it's a blessing that I'll no longer need to deal with that slow and glitchy API; I'll see after experimenting with APIs of other cloud storage providers.</p>
+<p>Guess my next stop is either Amazon Cloud Drive or S3, probably the former so that I don't need to calculate.<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-11-06-microsoft-drops-unlimited-onedrive-storage-after-people-use-it-for-unlimited-storage.html#fn1" id="fnref1"><sup>1</sup></a> And a quick search yields an actively-maintained CLI client <a href="https://github.com/yadayada/acd_cli">yadavada/acd_cli</a>, so I may not need to roll my own this time (it depends on usability).</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>Yeah I'm a mathematician, but I hate most calculations that involve $$. &#128514;<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-11-06-microsoft-drops-unlimited-onedrive-storage-after-people-use-it-for-unlimited-storage.html#fnref1">&#8617;&#65038;</a></p></li>
+</ol>
+</div>
+]]></content></entry><entry><title type="html">AT&amp;T to Pure TalkUSA, one month later</title><link href="http://zmwangx.github.io/blog/2015-10-26-att-to-pure-talkusa-one-month-later.html"/><updated>2015-10-26T00:00:30-07:00</updated><id>http://zmwangx.github.io/blog/2015-10-26-att-to-pure-talkusa-one-month-later.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p><strong>TL;DR</strong>: If you have questions about Pure TalkUSA unanswered by the <a href="https://www.puretalkusa.com/cell-phones-sim-cards.php">official FAQ</a>, I have some information for you starting from the section "<a href="http://zmwangx.github.io/blog/2015-10-26-att-to-pure-talkusa-one-month-later.html#migration-experience">migration experience</a>".</p>
 <hr/>
@@ -358,64 +374,6 @@ Putting it together:
 <li id="fn5"><p>For instance, where should music videos live?<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-08-05-should-apple-split-up-itunes-on-os-x.html#fnref5">&#8617;&#65038;</a></p></li>
 <li id="fn6"><p>By the way, Microsoft seems to have a split experience in Windows 10. Do people like it? The answer seems to be no.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-08-05-should-apple-split-up-itunes-on-os-x.html#fnref6">&#8617;&#65038;</a></p></li>
 <li id="fn7"><p>Previously what would appear in that corner is the downloads icon, but anyone who has experienced both versions would tell you that the downloads icon is at least much more visible than the new rotating circle. The downloads icon was a dark gray blob, whereas the new thing is a few thin arcs.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-08-05-should-apple-split-up-itunes-on-os-x.html#fnref7">&#8617;&#65038;</a></p></li>
-</ol>
-</div>
-]]></content></entry><entry><title type="html">Sync Chrome bookmarks with Safari on OS X</title><link href="http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html"/><updated>2015-08-02T22:11:56-07:00</updated><id>http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
-
-<p><strong>08/11/2015 Update:</strong> I have taken down the project from GitHub since it's way too flaky. Guess I'll stick with manually clicking around then...</p>
-<hr/>
-<p><strong>TL;DR</strong>: <a href="https://github.com/zmwangx/safari-sync-chrome-bookmarks">zmwangx/safari-sync-chrome-bookmarks</a> (now defunct; see update above).</p>
-<hr/>
-<p>I've been reading quite a bit of stuff on my iPhone 6 Plus these days, especially since I got my Apple Watch (not quite sure why these two things are correlated, but they are). I used to read subscribed content in Feedly, but abandoned that a while ago since Feedly does an unbearably bad job at updating my one-subscriber feeds,<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html#fn1" id="fnref1"><sup>1</sup></a> e.g., Ars Premier feed, GitHub release feeds, etc. Ever since then, I've been rocking a local Leaf engine on my Mac but lost access on my phone,<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html#fn2" id="fnref2"><sup>2</sup></a> and had to rely on bookmarks.</p>
-<p>However, as a Chrome user on the desktop and only on the desktop (iOS Chrome sucks), I have trouble getting my Chrome bookmarks into mobile Safari. Apple developed an <a href="https://chrome.google.com/webstore/detail/icloud-bookmarks/fkepacicchenbjecpbpbclokcabebhah?hl=en">iCloud Bookmarks</a> extension for Chrome that allegedly syncs your bookmarks to iCloud<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html#fn3" id="fnref3"><sup>3</sup></a>, but upon installing the extension for Mac Chrome, an error message pops up:</p>
-<blockquote>
-<p>The extension you are trying to install is designed to run on Windows 7 or 8. If you are using a Mac, your Safari bookmarks will automatically sync with your iPhone, iPad, and Mac when you sign in to iCloud on all your devices.</p>
-</blockquote>
-<p>The message is pretty clear: you have access to our browser, so you either use our browser or go fuck yourself.</p>
-<p>So, what's next? Fortunately, recent versions of Safari (I'm currently running 8.0.7) has an import feature that comes in handy and does a pretty good job: "File -&gt; Import From -&gt; Google Chrome..." which lets you import either history or bookmarks or both. Once they are imported into desktop Safari, iCloud is pretty good at pushing it to mobile. I have no problem importing both, but the idea that I'll have to launch Safari and click click click click just to sync my bookmarks is beyond horrible.</p>
-<p>Okay, remember we have another nightmare called AppleScript? And remember we have another nightmare within nightmare called GUI scripting? Yes, here's what we could do:</p>
-<pre class="applescript"><code>#!/usr/bin/osascript
-tell application "Safari" to activate
-delay 1
-tell application "System Events"
-    tell process "Safari"
-        tell menu bar 1
-            tell menu bar item "File"
-                tell menu "File"
-                    tell menu item "Import From"
-                        tell menu "Import From"
-                            click menu item "Google Chrome&#8230;"
-                            delay 1
-                            keystroke return
-                        end tell
-                    end tell
-                end tell
-            end tell
-        end tell
-    end tell
-end tell
-delay 1
-tell application "Safari" to quit</code></pre>
-<p>Holy crap, look at that cascade.<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html#fn4" id="fnref4"><sup>4</sup></a> Anyway, in principle, this piece of crap works. In reality, well, it <em>sometimes</em> works. Because you know the nightmare called "assistive access", among other unreliabilities of poking around with system events:</p>
-<div class="figure">
-<a href="http://zmwangx.github.io/img/20150802-assistive-access-nightmare.png" target="_blank"><img alt="Familiar?" src="http://zmwangx.github.io/img/20150802-assistive-access-nightmare.png"/></a>
-<p class="caption">Familiar?</p>
-</div>
-<p>On Yosemite at least, the pane to grant assistive access in System Preferences is three levels deep ("Security &amp; Privacy -&gt; Privacy -&gt; Accessibility"), behind an admin password, and most unfortunately, there's no way to grant access to individual executables through that pane, unless you are explicitly prompted about one, which may not happen when it should.<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html#fn5" id="fnref5"><sup>5</sup></a> <a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html#fn6" id="fnref6"><sup>6</sup></a> There's nothing I could do apart from granting access to both Terminal.app and iTerm.app and hope for the best. Not so surprisingly, just as demonstrated in my past encounters with GUI scripting, with access granted to the terminals, whether I'll get an "assitive access" error when running the script is completely hit-or-miss. This time it works, the next time it just stalls, and yet another time it emits the error... Oh god.</p>
-<p>In order to raise the rate of success, there's one other trick we could try: package the script into an Automator app. This way we can grant access to the standalone app, and that helps a bit. That's what I did in <a href="https://github.com/zmwangx/safari-sync-chrome-bookmarks">zmwangx/safari-sync-chrome-bookmarks</a>. It still occasionally get stuck, probably because I have a freaking slow spinning HDD and Safari would sometimes take forever to launch; but the accessibility problem does seem to go away (provided that you re-grant access every time you make the tiniest modification to the app).</p>
-<p>Now I can throw that into my crontab (launching Safari beforehand to avoid freezing up):</p>
-<pre class="crontab"><code>55 04 * * * open -g -a safari &amp;&amp; sleep 30 &amp;&amp; open -g -a safari-sync-chrome-bookmarks</code></pre>
-<p>or invoke on demand.</p>
-<p>Horrible solution, yes. Anything better? I would love to hear about it, but I highly doubt there's any, unless we directly work with <code>~/Library/Application Support/Google/Chrome/Default/Bookmarks</code> and <code>~/Library/Safari/Bookmarks.plist</code>. Probably a good problem to tackle though, provided that someone would sit down and understand the formats of the two files.</p>
-<div class="footnotes">
-<hr/>
-<ol>
-<li id="fn1"><p>I can understand that to reduce server load, they can't refresh the one-subscriber feeds at a rate, say, once per minute, but not being able to manually update, especially when you have a so-called "refresh" feature? Not cool. (What the manual "refresh" seems to do is to fetch Feedly's cached content.) Anyway, it's a freemium service with me running the free tier, so I can't really blame them.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html#fnref1">&#8617;&#65038;</a></p></li>
-<li id="fn2"><p>Which RSS reader/service I'll use next on iOS is a question; I haven't got time to compare the various options yet. So many readers, so many aggregation services!<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html#fnref2">&#8617;&#65038;</a></p></li>
-<li id="fn3"><p>And also one for Firefox, it seems<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html#fnref3">&#8617;&#65038;</a></p></li>
-<li id="fn4"><p>There's another annoyance: <code>"Google Chrome&#8230;"</code> cannot be replaced with <code>"Google Chrome..."</code>, or you won't ever find that menu item.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html#fnref4">&#8617;&#65038;</a></p></li>
-<li id="fn5"><p>There might be a way round through poking with the system accessibility database as root; see <a href="https://github.com/jacobsalmela/tccutil">jacobsalmela/tccutil</a>. However, until I have time to carefully evaluate the code, I'll have to stay with System Preferences.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html#fnref5">&#8617;&#65038;</a></p></li>
-<li id="fn6"><p>Yes, I can understand the security concerns, but having to jump through so many hoops just to get some damned GUI scripting to work is awfully frustrating &#8212; and that's when you assume that the damned thing would just work after you jump through the hoops.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-08-02-sync-chrome-bookmarks-with-safari-on-os-x.html#fnref6">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
 ]]></content></entry></feed>
