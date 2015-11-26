@@ -14,7 +14,7 @@ Regarding the first problem, the cost of function exporting is to mess with the 
 
 The second problem doesn't need much explanation — *shellshock it was*. It has been extensively documented elsewhere, so I'll just succinctly comment that to load exported functions into a subshell, function definitions have to be retrieved from the environment and executed (again because we're not in the utopia of Lisp[^lisp]), and loading is done passively from the subshell user's point of view, hence the code execution bug(s). The bug(s) has(have) allegedly been fixed, but code execution (presumably with the appropriate safeguards now) still can't be avoided altogether, so just like a sanitized `eval`, it would still wake you up at night.
 
-Well, if that's all I have to say, I wouldn't have started this post today. The thing that's bugging me is another issue I've found recently that's entirely avoidable, yet on which we'll probably never see light ever after due to a combination of factors.
+Well, if that's all I have to say, I wouldn't have started this post today. The thing that's bugging me is another issue I've found recently that's entirely avoidable, yet upon which we'll probably never see light ever after due to a combination of factors.
 
 It started with [this question on SO](http://stackoverflow.com/q/33819243/19447840). While troubleshooting I quickly noticed that a Bash-emulated `sh` imports those `BASH_FUNC`s from the environment:
 
