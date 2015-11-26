@@ -111,6 +111,7 @@ a {
 
 code {
     font-size: 0.95em;
+    color: #777;
     font-family: 'Droid Sans Mono', 'Courier', monospace;
 }
 
@@ -129,6 +130,7 @@ pre[class*=sourceCode] {
 pre code {
     font-size: 0.91em;
     line-height: 135%;
+    color: #333;
 }
 
 blockquote {
