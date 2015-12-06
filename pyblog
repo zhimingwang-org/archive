@@ -414,7 +414,7 @@ def generate_sitemap(feed):
         sys.stderr.write("wrote sitemap.xml\n")
 
 
-def abosolutify_links(soup, baseurl):
+def absolutify_links(soup, baseurl):
     """Make links in an article absolute.
 
     Parameters
@@ -529,7 +529,7 @@ def generate_index_and_feed():
                     for script_tag in article.find_all("script"):
                         tags_to_remove.append(script_tag)
                     # make internal links absolute
-                    abosolutify_links(article, entry_url)
+                    absolutify_links(article, entry_url)
                     # remove marked tags
                     for tag in tags_to_remove:
                         tag.extract()
