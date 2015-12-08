@@ -78,7 +78,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>The wrapper is very easy to write. Here's one implementation for Zsh with support for both GNU coreutils and BSD <code>rm</code>.</p>
 <div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span class="kw">rm</span> <span class="kw">()</span> <span class="kw">{</span>
     <span class="kw">setopt</span> localoptions noshwordsplit noksharrays
-    <span class="kw">local</span> <span class="ot">args_backup</span> <span class="ot">force</span>
+    <span class="kw">local</span> <span class="ot">args_backup</span> <span class="ot">force</span> <span class="ot">node</span>
     <span class="kw">set</span> -A args_backup <span class="ot">$@</span>
     <span class="kw">while</span> <span class="kw">:</span>; <span class="kw">do</span>
         <span class="kw">case</span> <span class="ot">$1</span><span class="kw"> in</span>
