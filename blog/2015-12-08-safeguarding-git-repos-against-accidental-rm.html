@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2015-12-08T00:17:39-08:00" name="date"/>
+<title>Safeguarding git repos against accidental rm</title>
+<link href="/img/apple-touch-icon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/css/fonts.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-wide.css" media="only screen and (min-width: 1441px)" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-narrow.css" media="only screen and (max-width: 1023px)" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-ultranarrow.css" media="only screen and (max-width: 500px)" rel="stylesheet" type="text/css"/>
+<link href="/css/print.css" media="print" rel="stylesheet" type="text/css"/>
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    </style>
+</head>
+<body>
+<nav class="nav">
+<a class="nav-icon" href="/" title="Home"><!--blog icon--></a>
+<div class="nav-title"><a class="nav-link" href="/">dl? cmplnts?</a></div>
+<div class="nav-author">by <a class="nav-link" href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</nav>
+<article class="content">
+<header class="article-header">
+<h1 class="article-title">Safeguarding git repos against accidental rm</h1>
+<div class="article-metadata">
+<time class="article-timestamp" datetime="2015-12-08T00:17:39-08:00">December 8, 2015,</time>
+          by <span class="article-author">Zhiming Wang</span>
+</div>
+</header>
+<p>Everyone who has spent a sizable portion of their life in terminals has experienced that "oh shit" moment: you realize what you've done immediately after you've hit enter, but it's already too late. And needlessly to say, many of those are associated to accidental <code>rm</code>s.</p>
+<p>I just had one of those moments. I was going to delete a subdirectory of <code>~/.config</code>, but hit return prematurely, and the command line ended up being <code>rm -r ~/.config</code>. Imagine the horror one second later. Fortunately I was saved by the read-only objects in <code>.git</code>, which triggered prompts; however, damage was already done, to some extent. I had to reinit the repo and do a hard reset, and a corrupted submodule was in my way (it blocked my attempt of <code>git reset --hard</code>) which I eventually had to completely remove and re-add. In the end everything was recovered (hopefully) and back to normal, but this episode was definitely not great for heart health, which led me to rethink <code>rm</code>.</p>
+<p>I've tried several safer <code>rm</code> solutions before. The first and obvious is to alias <code>rm</code> to <code>rm -i</code>, but having to answer dozens of prompts a day (or more) is agonizing and unproductive. I've also tried trashing, but a nonempty trash can makes me sick, so not for me either. I also used <code>safe-rm</code> for a couple of months, but without supplying my own blacklist (I have none to be blacklisted), I've never hit the default blacklist; apparently I'm not stupid enough to mess in system locations, so this won't really help much. Fortunately though, this time I might have found a very good solution for myself.</p>
+<p>The idea is to protect all git repos. Git repos<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a> are among the most valuable assets of programmers, and they have the nice property of not being completely removable without <code>-f</code> or <code>--force</code> (the work tree of a submodule, where <code>.git</code> is a regular file containing the relative path of the git dir, can be removed without <code>--force</code>, but we don't want to damage submodules anyway, so let's not single them out). It's unlikely that we would intend to remove a repo directory without specifying <code>-f</code> or <code>--force</code>, so let's just reject all such <code>rm</code> calls.</p>
+<p>The wrapper is very easy to write. Here's one implementation for Zsh with support for both GNU coreutils and BSD <code>rm</code>.</p>
+<div class="sourceCode"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span class="kw">rm</span> <span class="kw">()</span> <span class="kw">{</span>
+    <span class="kw">setopt</span> localoptions noshwordsplit noksharrays
+    <span class="kw">local</span> <span class="ot">args_backup</span> <span class="ot">force</span>
+    <span class="kw">set</span> -A args_backup <span class="ot">$@</span>
+    <span class="kw">while</span> <span class="kw">:</span>; <span class="kw">do</span>
+        <span class="kw">case</span> <span class="ot">$1</span><span class="kw"> in</span>
+            --force<span class="kw">|</span>-*f*<span class="kw">)</span> <span class="ot">force=</span>1 <span class="kw">&amp;&amp;</span> <span class="kw">shift;;</span>
+            --<span class="kw">)</span> <span class="kw">shift</span> <span class="kw">&amp;&amp;</span> <span class="kw">break;;</span>
+            -*<span class="kw">)</span> <span class="kw">shift;;</span>
+            *<span class="kw">)</span> <span class="kw">break;;</span>
+        <span class="kw">esac</span>
+    <span class="kw">done</span>
+    <span class="kw">for</span> node; <span class="kw">do</span>
+        <span class="co"># -f, --force hasn't been specified &amp;&amp; node is a git repo</span>
+       <span class="kw"> [[</span> <span class="ot">-z</span> <span class="ot">$force</span> &amp;&amp; <span class="ot">-e</span> <span class="ot">$node</span>/.git<span class="kw"> ]]</span> <span class="kw">&amp;&amp;</span> <span class="kw">{</span>
+            <span class="kw">printf</span> <span class="st">"\e[31m'%s' is a git repo -- won't remove without the -f or --force option"</span> <span class="ot">$node</span>
+            <span class="kw">return</span> 1
+        <span class="kw">}</span>
+    <span class="kw">done</span>
+    <span class="kw">command</span> <span class="kw">rm</span> <span class="ot">$args_backup</span>
+<span class="kw">}</span><span class="line-number" data-line="1" style="top: 0.00em"><!----></span><span class="line-number" data-line="2" style="top: 1.35em"><!----></span><span class="line-number" data-line="3" style="top: 2.70em"><!----></span><span class="line-number" data-line="4" style="top: 4.05em"><!----></span><span class="line-number" data-line="5" style="top: 5.40em"><!----></span><span class="line-number" data-line="6" style="top: 6.75em"><!----></span><span class="line-number" data-line="7" style="top: 8.10em"><!----></span><span class="line-number" data-line="8" style="top: 9.45em"><!----></span><span class="line-number" data-line="9" style="top: 10.80em"><!----></span><span class="line-number" data-line="10" style="top: 12.15em"><!----></span><span class="line-number" data-line="11" style="top: 13.50em"><!----></span><span class="line-number" data-line="12" style="top: 14.85em"><!----></span><span class="line-number" data-line="13" style="top: 16.20em"><!----></span><span class="line-number" data-line="14" style="top: 17.55em"><!----></span><span class="line-number" data-line="15" style="top: 18.90em"><!----></span><span class="line-number" data-line="16" style="top: 20.25em"><!----></span><span class="line-number" data-line="17" style="top: 21.60em"><!----></span><span class="line-number" data-line="18" style="top: 22.95em"><!----></span><span class="line-number" data-line="19" style="top: 24.30em"><!----></span><span class="line-number" data-line="20" style="top: 25.65em"><!----></span><span class="line-number" data-line="21" style="top: 27.00em"><!----></span></code></pre></div>
+<p>Personally, I stick it into a <a href="https://github.com/zmwangx/prezto/tree/master/modules/rm_guard">Prezto module</a> available from my fork. Hopefully it will serve me well this time round.</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>In this article, "repo" stands for the work tree of a repo, unless otherwise noted; the actual repo with git objects is referred to as "git dir".<a class="footnotes-backlink" href="#fnref1">↩︎</a></p></li>
+</ol>
+</div>
+</article>
+<hr class="content-separator"/>
+<footer class="footer">
+<span class="rfooter">
+<a class="rss-icon fa fa-rss fa-flip-horizontal" href="/rss.xml" target="_blank" title="RSS feed"><!--RSS feed icon--></a><a class="atom-icon fa fa-rss" href="/atom.xml" target="_blank" title="Atom feed"><!--Atom feed icon--></a><a class="cc-icon fa fa-creative-commons" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license."><!--CC icon--></a>
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</span>
+</footer>
+</body>
+</html>
