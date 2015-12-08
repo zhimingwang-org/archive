@@ -91,7 +91,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
     <span class="kw">for</span> node; <span class="kw">do</span>
         <span class="co"># -f, --force hasn't been specified &amp;&amp; node is a git repo</span>
        <span class="kw"> [[</span> <span class="ot">-z</span> <span class="ot">$force</span> &amp;&amp; <span class="ot">-e</span> <span class="ot">$node</span>/.git<span class="kw"> ]]</span> <span class="kw">&amp;&amp;</span> <span class="kw">{</span>
-            <span class="kw">printf</span> <span class="st">"\e[31m'%s' is a git repo -- won't remove without the -f or --force option"</span> <span class="ot">$node</span>
+            <span class="kw">printf</span> <span class="st">"\e[31m'%s' is a git repo -- won't remove without the -f or --force option\e[0m\n"</span> <span class="ot">$node</span>
             <span class="kw">return</span> 1
         <span class="kw">}</span>
     <span class="kw">done</span>
