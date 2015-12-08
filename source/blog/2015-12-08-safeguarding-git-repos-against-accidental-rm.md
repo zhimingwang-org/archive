@@ -18,7 +18,7 @@ The wrapper is very easy to write. Here's one implementation for Zsh with suppor
 ```zsh
 rm () {
     setopt localoptions noshwordsplit noksharrays
-    local args_backup force
+    local args_backup force node
     set -A args_backup $@
     while :; do
         case $1 in
