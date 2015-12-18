@@ -11,6 +11,10 @@ So much for first impressions. Apart from Monaco, everything felt great, until I
 
 Transition periods are always awkward, I guess.
 
+---
+
+**12/17/2015 Update.** After more than a full day's use, I actually quite love 10pt Monaco on a Retina display. I tried various fonts, including Menlo, Consolas and so on, but none of them has that whimsical feeling of Monaco. Hopefully the font is stuck now.
+
 [^replace]: I haven't got the nerve to replace the hard drive myself, since it looks so much more complicated than upgrading the memory.
 
 [^pdfs]: PDFs looked so horrible in Preview (and TeXShop, my LaTeX previewer, which only serves a niche) that I often viewed them in browsers (!!), where text at least looks reasonable (on par with slightly blurry text elsewhere). PDF Expert came along and kind of made the situation better for non-Retina.
