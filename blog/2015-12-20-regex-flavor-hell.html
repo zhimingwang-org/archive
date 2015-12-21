@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2015-12-20T16:03:03-08:00" name="date"/>
+<title>Regex flavor hell</title>
+<link href="/img/apple-touch-icon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/css/fonts.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-wide.css" media="only screen and (min-width: 1441px)" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-narrow.css" media="only screen and (max-width: 1023px)" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-ultranarrow.css" media="only screen and (max-width: 500px)" rel="stylesheet" type="text/css"/>
+<link href="/css/print.css" media="print" rel="stylesheet" type="text/css"/>
+<style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<nav class="nav">
+<a class="nav-icon" href="/" title="Home"><!--blog icon--></a>
+<div class="nav-title"><a class="nav-link" href="/">dl? cmplnts?</a></div>
+<div class="nav-author">by <a class="nav-link" href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</nav>
+<article class="content">
+<header class="article-header">
+<h1 class="article-title">Regex flavor hell</h1>
+<div class="article-metadata">
+<time class="article-timestamp" datetime="2015-12-20T16:03:03-08:00">December 20, 2015,</time>
+          by <span class="article-author">Zhiming Wang</span>
+</div>
+</header>
+<p>I write a lot of shell scripts, which means dealing with common *ix utilities a lot. I typically want my scripts to work on both OS X and Linux (or OS X + GNU utilities, which is my personal setup), which means writing commands that are understood in both GNU/Linux and BSD worlds. Unfortunately that's not so simple, because to do that I usually have to give up readily available functionalities (especially the vast collection of useful options typical of GNU utilities) and am constantly thrown back to the stone age that is POSIX, or a little bit more than POSIX.</p>
+<p>Working with regular expressions is especially painful. Almost every implementation of every utility (with regex support) has its own flavor of regex. Most notably the big three: <code>grep</code>, <code>sed</code> and <code>awk</code>. GNU utilities of course come with GNU extensions, but they are nothing when aiming for compatibility. Ignoring GNU extensions, there's a way to turn on standard POSIX extensions (ERE) on <code>sed</code>, but unfortunately GNU and BSD use different flags: <code>-r</code> for GNU sed and <code>-E</code> for BSD sed. The two implementations of <code>grep</code> thankfully use the same flag <code>-E</code> to turn on ERE, but GNU grep, being a GNU utility and having to distinguish itself from its mundane counterpart, further implements <code>-P,--perl-regexp</code> — regexers' dream. It's there but I can't use it, except in an interactive shell. <code>awk</code> has more than two implementations and will be left out of this discussion.</p>
+<p>Anyway, despite all these flavor issues, I can usually get away with BRE, although it's verbose and unreadable as hell (quantifiers in particular) and doesn't support alternation. I would be thankful if BRE is the end of the story, but it is not. There are more tools lurking around trying to sabotage scripters. <code>find</code> is a perfect example. BSD <code>find</code>, unsurprisingly, uses BRE by default with <code>-regex</code> and <code>-iregex</code>, and ERE may be turned on with the <code>-E</code> flag. GNU findutils <code>find</code>, however, tries to be helpful and future-proof by having a <code>-regextype</code> option:</p>
+<blockquote>
+<p>Changes the regular expression syntax understood by <code>-regex</code> and <code>-iregex</code> tests which occur later on the command line. Currently-implemented types are <code>emacs</code> (this is the default), <code>posix-awk</code>, <code>posix-basic</code>, <code>posix-egrep</code> and <code>posix-extended</code>.</p>
+</blockquote>
+<p>The Emacs flavor? You mean Elisp regexp? Okay fine, <a href="http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap09.html">BRE</a> — with few features other than grouping (<code>\(...\)</code>), quantifiers (<code>*</code> or <code>\{n,m\}</code>), bracket expressions and character classes — should still be pretty much compatible with Elisp regexp. However, the "Emacs flavor" isn't even the Elisp flavor. It's a <a href="https://www.gnu.org/software/findutils/manual/html_node/find_html/emacs-regular-expression-syntax.html">stripped version</a> specifically for findutils. In particular, there are <code>*</code>, <code>+</code> and <code>?</code> but no curly braces quantifiers, so gone is the dream of writing even just mildly complex regexps that are compatible with both BSD <code>find</code> and GNU findutils <code>find</code>. By the way, in case you wonder, the <a href="http://pubs.opengroup.org/onlinepubs/9699919799/utilities/find.html">POSIX <code>find</code></a> doesn't even have a <code>-regex</code> primary/operator...</p>
+<p>What a cruelly realistic world we live in.</p>
+</article>
+<hr class="content-separator"/>
+<footer class="footer">
+<span class="rfooter">
+<a class="rss-icon fa fa-rss fa-flip-horizontal" href="/rss.xml" target="_blank" title="RSS feed"><!--RSS feed icon--></a><a class="atom-icon fa fa-rss" href="/atom.xml" target="_blank" title="Atom feed"><!--Atom feed icon--></a><a class="cc-icon fa fa-creative-commons" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license."><!--CC icon--></a>
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</span>
+</footer>
+</body>
+</html>
