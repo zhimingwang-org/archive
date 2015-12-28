@@ -45,7 +45,7 @@ Accessing '__str__'
 '0'
 ```
 
-In addition, here's what happens if you try to let "pass through" a function:
+In addition, here's what happens if you try to "pass through" a function:
 
 ```python
 >>> def f(): return True
