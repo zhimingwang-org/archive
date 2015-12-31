@@ -616,6 +616,52 @@ def number_code_lines(soup):
         _pre_tag_insert_line_numbers(soup, pre_tag)
 
 
+# MARKDOWN EXTENSION!
+#
+# See docstring of process_image_sizes for documentation.
+
+# If matched, 1st group is width, 3rd group (optional) is height, and
+# 4th group is actual text.
+IMAGESIZE_EXTRACTOR = re.compile(r'\|(\d+)(x(\d+))?\|\s*(.*)')
+
+def process_image_sizes(soup):
+    """Process the image size Markdown extension.
+
+    Allows specifying image size in a Markdown image construct
+    ![](). The syntax is:
+
+        ![|width(xheight)?| alt](src)
+
+    where width and height are positive integers (xheight is optional),
+    and alt is the regular alt string (either plain or with some
+    Markdown formatting). alt string, as usual, is optional.
+
+    Examples:
+
+        ![|1920x1080| Hello, world!](http://example.com/hello.png)
+        ![|1920| *Hey!*](http://example.com/hey.png)
+        ![|1280x800|](http://example.com/noalt.png)
+
+    """
+    if not soup.article:
+        return
+    for img_tag in soup.article.find_all("img"):
+        if img_tag.has_attr("alt"):
+            match = IMAGESIZE_EXTRACTOR.match(img_tag["alt"])
+            if match:
+                width, _, height, realalt = match.groups()
+                img_tag["width"] = width
+                if height:
+                    img_tag["height"] = height
+                img_tag["alt"] = realalt
+
+    # strip image specs from captions, if any
+    for caption in soup.article.select(".figure .caption"):
+        if hasattr(caption, "contents") and isinstance(caption.contents[0], str):
+            match = IMAGESIZE_EXTRACTOR.match(caption.contents[0])
+            if match:
+                caption.contents[0].replace_with(match.group(4))
+
 def link_img_tags(soup):
     """Convert each <img> tag in <article> to a link to its original."""
     if not soup.article:
@@ -645,6 +691,7 @@ def postprocess_html_file(htmlfilepath):
 
         # a series of postprocessing (extensible)
         number_code_lines(soup)
+        process_image_sizes(soup)
         link_img_tags(soup)
         process_footnote_backlinks(soup)
 
