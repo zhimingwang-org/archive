@@ -9,10 +9,7 @@ Apple has a pretty thorough walkthrough in the support article [Install Windows 
 
 1. Win 7 ISO isn't available for download in the appropriate language (given your product key). This one sounds incredibly stupid... But it is a real problem at least for me and several others (just Google). I have a valid Win 7 Ultimate license from my institution, so I went to <https://www.microsoft.com/en-us/software-download/windows7> to grab my ISO (just for fun; I already have the image). However, after verifying my product key, here's the list of languages that I'm asked to choose from, where English is apparently missing (!!!):
 
-    <div class="figure">
-    <img height="365px" src="/img/20151229-win7-iso-language-choice.png" alt="da !@#$?"/>
-    <p class="caption">da !@#$?</p>
-    </div>
+    ![|394| da !@#$?](/img/20151229-win7-iso-language-choice.png)
 
     I don't know the solution to this problem. In my case I've archived English Win 7 Ultimate SP1 images (both x86 and x64) before, so I just proceeded with my old image.
 
