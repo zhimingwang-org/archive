@@ -18,3 +18,58 @@ Note that `pyblog` is incompatible with Python 2.x, and in fact only tested on P
 The theme of this blog is largely based on that of [mort.ninja](http://mort.ninja) by [Mort Yao](https://github.com/soimort). See [this post](https://zmwangx.github.io/blog/2015-05-05-new-blog-new-start.html) for more details.
 
 Self-hosted Google Web Fonts are downloaded from [google-webfonts-helper](https://google-webfonts-helper.herokuapp.com/fonts), courtesy of [Mario Ranftl](http://ranf.tl/2014/12/23/self-hosting-google-web-fonts/).
+
+## Markdown features of `pyblog`
+
+`pyblog` uses Pandoc for Markdown processing. The HTML template is
+located in [`templates/`](templates).
+
+Beyond Pandoc's standard Markdown to HTML conversion, `pyblog`
+postprocesses Pandoc-generated HTML to add a few Markdown extensions and
+blogging-friendly HTML transforms.
+
+### Markdown extensions
+
+#### Image size
+
+Allows specifying image size in a Markdown image construct `![]()`. The
+syntax is:
+
+    ![|width(xheight)?| alt](src)
+
+where `width` and `height` are positive integers (`xheight` is
+optional), and `alt` is the regular `alt` string (either plain or with
+some Markdown formatting). The `alt` string, as usual, is optional.
+
+Examples:
+
+    ![|1920x1080| Hello, world!](http://example.com/hello.png)
+    ![|1920| *Hey!*](http://example.com/hey.png)
+    ![|1280x800|](http://example.com/noalt.png)
+
+See `process_image_sizes` in [`pyblog`](pyblog).
+
+### Other HTML transforms
+
+#### Line-numbering in preformatted code blocks
+
+Line numbers are added to preformatted code blocks. Note that this
+transform is only applied to `pre` tags with class `sourceCode lang`,
+where `lang` is any language, so one must use a fenced code block with
+language spec in the Markdown document to take advantage.
+
+See `number_code_lines` in [`pyblog`](pyblog).
+
+#### Link images to originals
+
+`img` tags are automatically converted to clickable links to their
+originals (with `target="_blank"` so the original is opened in a new
+tab).
+
+See `link_img_tags` in [`pyblog`](pyblog).
+
+#### Footnote backlinks
+
+Pandoc Markdown has footnote support, but unfortunately doesn't support
+backlinks. This transform inserts a backlink to the end of each
+footnote so that readers won't get lost after finish reading a footnote.
