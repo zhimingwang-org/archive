@@ -15,12 +15,15 @@ This task could clearly be automated; the only slightly tricky bit is to program
 #!/usr/bin/env python3
 
 """setuptools stubs.
+
 Here we only stubbed the symbols in setuptools.__all__. Hopefully that's
 enough (actually I can't remember seeing any setup.py using more than
 setup and find_packages).
+
 setup has been spoofed to print the names of scripts, console_scripts
 and gui_scripts defined in the arguments to setup. Some user-friendly
 messages are also printed to stderr.
+
 """
 
 from __future__ import print_function
