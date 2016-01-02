@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2016-01-01T22:21:14-08:00" name="date"/>
+<title>Virtualenvs for everyone</title>
+<link href="/img/apple-touch-icon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/css/fonts.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-wide.css" media="only screen and (min-width: 1441px)" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-narrow.css" media="only screen and (max-width: 1023px)" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-ultranarrow.css" media="only screen and (max-width: 500px)" rel="stylesheet" type="text/css"/>
+<link href="/css/print.css" media="print" rel="stylesheet" type="text/css"/>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    </style>
+</head>
+<body>
+<nav class="nav">
+<a class="nav-icon" href="/" title="Home"><!--blog icon--></a>
+<div class="nav-title"><a class="nav-link" href="/">dl? cmplnts?</a></div>
+<div class="nav-author">by <a class="nav-link" href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</nav>
+<article class="content">
+<header class="article-header">
+<h1 class="article-title">Virtualenvs for everyone</h1>
+<div class="article-metadata">
+<time class="article-timestamp" datetime="2016-01-01T22:21:14-08:00">January 1, 2016,</time>
+          by <span class="article-author">Zhiming Wang</span>
+</div>
+</header>
+<p>Python distutils for the most part is rather pleasant to work with. That is, pleasant until you've accumulated so many packages that you eventually run into a clash of namespace, or a dependency conflict (or dependency hell as most would affectionately call it).<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a> In contrast, npm's approach to dependencies shuts out dependency hell completely, but it is so paranoid and costs so much duplication that I find it hard to appreciate unless necessary. Somewhere in between there's the virtualenv approach which I find most appealing for smallish projects — keep a single copy of each package in the dependency tree in a contained environment specific to the project at hand. This is how we debug Python projects, and it certainly also should be <em>the</em> way we run command line tools written in Python.</p>
+<p>There's another reason I like virtualenvs. There are tons of problems associated with choosing between Python 2 and 3 — some projects are Python 2 only, some are instead Python 3, some claim to be compatible with both but actually present subtle problems when you use one instead of the other. However, without virtualenvs, there's only one <code>bin</code> — <code>/usr/local/bin</code> — and everything's competing for it. Most programs (especially ones with a typical <code>setup.py</code>) don't install a soft/hardlink with a helpful <code>2</code> or <code>3</code> suffix when installing executables, let alone detailed suffixes like <code>2.7</code> or <code>3.5</code>, so without probing into the shebangs you're never sure which version of Python you're running your program with, and as a result Python 2/3 (or even a point release)-specific bugs occur randomly. Virtualenvs solve the problem by allowing you to have as many bins (and includes, and libs) as you like.</p>
+<p>Hence the title "virtualenvs for everyone". I would like to install each command line program written in Python into a separate virtualenv. The only issue is that apparently I don't want too many bins in my <code>$PATH</code>; to solve this issue, the executable bits of each project should be linked to a central place, for which I choose <code>$HOME/bin</code>. There could be as many symlinks as we like, so now we can have multiple links with increasing detailed version suffixes, e.g., <code>3</code>, <code>3.5</code>, <code>3.5.1</code>. Very nice.</p>
+<p>This task could clearly be automated; the only slightly tricky bit is to programmatically figure out which scripts a project installs to <code>bin</code>. Luckily, for projects using <code>setuptools.setup</code>, we can simply spoof that function. Here's my <code>setuptools/__init__.py</code>:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co">#!/usr/bin/env python3</span>
+
+<span class="co">"""setuptools stubs.</span>
+<span class="co">Here we only stubbed the symbols in setuptools.__all__. Hopefully that's</span>
+<span class="co">enough (actually I can't remember seeing any setup.py using more than</span>
+<span class="co">setup and find_packages).</span>
+<span class="co">setup has been spoofed to print the names of scripts, console_scripts</span>
+<span class="co">and gui_scripts defined in the arguments to setup. Some user-friendly</span>
+<span class="co">messages are also printed to stderr.</span>
+<span class="co">"""</span>
+
+<span class="im">from</span> __future__ <span class="im">import</span> print_function
+
+<span class="im">import</span> re
+<span class="im">import</span> sys
+<span class="im">import</span> os
+
+__all__ <span class="op">=</span> [
+    <span class="st">'setup'</span>, <span class="st">'Distribution'</span>, <span class="st">'Feature'</span>, <span class="st">'Command'</span>, <span class="st">'Extension'</span>, <span class="st">'Require'</span>,
+    <span class="co">'find_packages'</span>
+]
+
+<span class="kw">def</span> setup(<span class="op">**</span>kwargs):
+    scripts <span class="op">=</span> [os.path.basename(script_path)
+               <span class="cf">for</span> script_path <span class="op">in</span> kwargs.pop(<span class="st">'scripts'</span>, [])]
+    <span class="cf">if</span> scripts:
+        <span class="bu">print</span>(<span class="st">'scripts:</span><span class="ch">\n</span><span class="st">  - </span><span class="sc">%s</span><span class="st">'</span> <span class="op">%</span> <span class="st">'</span><span class="ch">\n</span><span class="st">  - '</span>.join(scripts), <span class="bu">file</span><span class="op">=</span>sys.stderr)
+    entry_points <span class="op">=</span> kwargs.pop(<span class="st">'entry_points'</span>, {})
+    <span class="cf">for</span> entry_point <span class="op">in</span> [<span class="st">'console_scripts'</span>, <span class="st">'gui_scripts'</span>]:
+        extra_scripts <span class="op">=</span> [re.split(<span class="st">'(\s|=)'</span>, spec.strip())[<span class="dv">0</span>]
+                         <span class="cf">for</span> spec <span class="op">in</span> entry_points.pop(entry_point, [])]
+        <span class="cf">if</span> extra_scripts:
+            <span class="bu">print</span>(<span class="st">'</span><span class="sc">%s</span><span class="st">:</span><span class="ch">\n</span><span class="st">  - </span><span class="sc">%s</span><span class="st">'</span> <span class="op">%</span> (entry_point, <span class="st">'</span><span class="ch">\n</span><span class="st">  - '</span>.join(extra_scripts)),
+                  <span class="bu">file</span><span class="op">=</span>sys.stderr)
+        scripts.extend(extra_scripts)
+    <span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>.join(<span class="bu">sorted</span>(scripts)))
+
+<span class="kw">class</span> Distribution(<span class="bu">object</span>): <span class="cf">pass</span>
+<span class="kw">class</span> Feature(<span class="bu">object</span>): <span class="cf">pass</span>
+<span class="kw">class</span> Command(<span class="bu">object</span>): <span class="cf">pass</span>
+<span class="kw">class</span> Extension(<span class="bu">object</span>): <span class="cf">pass</span>
+<span class="kw">class</span> Require(<span class="bu">object</span>): <span class="cf">pass</span>
+<span class="kw">def</span> find_packages(<span class="op">**</span>kwargs): <span class="cf">pass</span><span class="line-number" data-line="1" style="top: 0.00em"><!----></span><span class="line-number" data-line="2" style="top: 1.35em"><!----></span><span class="line-number" data-line="3" style="top: 2.70em"><!----></span><span class="line-number" data-line="4" style="top: 4.05em"><!----></span><span class="line-number" data-line="5" style="top: 5.40em"><!----></span><span class="line-number" data-line="6" style="top: 6.75em"><!----></span><span class="line-number" data-line="7" style="top: 8.10em"><!----></span><span class="line-number" data-line="8" style="top: 9.45em"><!----></span><span class="line-number" data-line="9" style="top: 10.80em"><!----></span><span class="line-number" data-line="10" style="top: 12.15em"><!----></span><span class="line-number" data-line="11" style="top: 13.50em"><!----></span><span class="line-number" data-line="12" style="top: 14.85em"><!----></span><span class="line-number" data-line="13" style="top: 16.20em"><!----></span><span class="line-number" data-line="14" style="top: 17.55em"><!----></span><span class="line-number" data-line="15" style="top: 18.90em"><!----></span><span class="line-number" data-line="16" style="top: 20.25em"><!----></span><span class="line-number" data-line="17" style="top: 21.60em"><!----></span><span class="line-number" data-line="18" style="top: 22.95em"><!----></span><span class="line-number" data-line="19" style="top: 24.30em"><!----></span><span class="line-number" data-line="20" style="top: 25.65em"><!----></span><span class="line-number" data-line="21" style="top: 27.00em"><!----></span><span class="line-number" data-line="22" style="top: 28.35em"><!----></span><span class="line-number" data-line="23" style="top: 29.70em"><!----></span><span class="line-number" data-line="24" style="top: 31.05em"><!----></span><span class="line-number" data-line="25" style="top: 32.40em"><!----></span><span class="line-number" data-line="26" style="top: 33.75em"><!----></span><span class="line-number" data-line="27" style="top: 35.10em"><!----></span><span class="line-number" data-line="28" style="top: 36.45em"><!----></span><span class="line-number" data-line="29" style="top: 37.80em"><!----></span><span class="line-number" data-line="30" style="top: 39.15em"><!----></span><span class="line-number" data-line="31" style="top: 40.50em"><!----></span><span class="line-number" data-line="32" style="top: 41.85em"><!----></span><span class="line-number" data-line="33" style="top: 43.20em"><!----></span><span class="line-number" data-line="34" style="top: 44.55em"><!----></span><span class="line-number" data-line="35" style="top: 45.90em"><!----></span><span class="line-number" data-line="36" style="top: 47.25em"><!----></span><span class="line-number" data-line="37" style="top: 48.60em"><!----></span><span class="line-number" data-line="38" style="top: 49.95em"><!----></span><span class="line-number" data-line="39" style="top: 51.30em"><!----></span><span class="line-number" data-line="40" style="top: 52.65em"><!----></span><span class="line-number" data-line="41" style="top: 54.00em"><!----></span><span class="line-number" data-line="42" style="top: 55.35em"><!----></span><span class="line-number" data-line="43" style="top: 56.70em"><!----></span></code></pre></div>
+<p>Now, let <code>$HERE</code> be the directory containing our fake <code>setuptools/</code>, and <code>$PROJECT_ROOT</code> be the project root directory containing <code>setup.py</code>. Run</p>
+<pre><code>PYTHONPATH=$HERE:$PYTHONPATH python $PROJECT_ROOT/setup.py</code></pre>
+<p>and bam! We get the names of all scripts on stdout.</p>
+<p>My full automation scripts, including the Zsh main function <code>virtual-install</code>, can be found in <a href="https://github.com/zmwangx/prezto/tree/master/modules/python/functions"><code>modules/python/functions</code> in zmwangx/prezto</a>. I'm not including it here because it uses some custom helper, and it's just too long (200+ lines, but not very sophisticated). Happy virtualenving!</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>In rare cases, even installing a single package could land you in trouble. The classical example is installing the <code>readme</code> package on a case-insensitive filesystem (e.g., the default mode of HFS+). "Unfortunately" <a href="https://bugs.python.org/issue24633">this</a> has been fixed.<a class="footnotes-backlink" href="#fnref1">↩︎</a></p></li>
+</ol>
+</div>
+</article>
+<hr class="content-separator"/>
+<footer class="footer">
+<span class="rfooter">
+<a class="rss-icon fa fa-rss fa-flip-horizontal" href="/rss.xml" target="_blank" title="RSS feed"><!--RSS feed icon--></a><a class="atom-icon fa fa-rss" href="/atom.xml" target="_blank" title="Atom feed"><!--Atom feed icon--></a><a class="cc-icon fa fa-creative-commons" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license."><!--CC icon--></a>
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</span>
+</footer>
+</body>
+</html>

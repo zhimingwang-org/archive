@@ -1,4 +1,63 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zmwangx.github.io/atom.xml" rel="self" type="application/atom+xml"/><link href="http://zmwangx.github.io/" rel="alternate" type="text/html"/><updated>2015-12-31T14:21:44-08:00</updated><id>http://zmwangx.github.io/</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">Catches when installing Windows 7 with Boot Camp</title><link href="http://zmwangx.github.io/blog/2015-12-29-catches-when-installing-windows-7-with-boot-camp.html"/><updated>2015-12-29T15:09:16-08:00</updated><id>http://zmwangx.github.io/blog/2015-12-29-catches-when-installing-windows-7-with-boot-camp.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
+<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zmwangx.github.io/atom.xml" rel="self" type="application/atom+xml"/><link href="http://zmwangx.github.io/" rel="alternate" type="text/html"/><updated>2016-01-01T22:21:39-08:00</updated><id>http://zmwangx.github.io/</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><icon>http://zmwangx.github.io/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">Virtualenvs for everyone</title><link href="http://zmwangx.github.io/blog/2016-01-01-virtualenvs-for-everyone.html"/><updated>2016-01-01T22:21:14-08:00</updated><id>http://zmwangx.github.io/blog/2016-01-01-virtualenvs-for-everyone.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
+
+<p>Python distutils for the most part is rather pleasant to work with. That is, pleasant until you've accumulated so many packages that you eventually run into a clash of namespace, or a dependency conflict (or dependency hell as most would affectionately call it).<a class="footnoteRef" href="http://zmwangx.github.io/blog/2016-01-01-virtualenvs-for-everyone.html#fn1" id="fnref1"><sup>1</sup></a> In contrast, npm's approach to dependencies shuts out dependency hell completely, but it is so paranoid and costs so much duplication that I find it hard to appreciate unless necessary. Somewhere in between there's the virtualenv approach which I find most appealing for smallish projects &#8212; keep a single copy of each package in the dependency tree in a contained environment specific to the project at hand. This is how we debug Python projects, and it certainly also should be <em>the</em> way we run command line tools written in Python.</p>
+<p>There's another reason I like virtualenvs. There are tons of problems associated with choosing between Python 2 and 3 &#8212; some projects are Python 2 only, some are instead Python 3, some claim to be compatible with both but actually present subtle problems when you use one instead of the other. However, without virtualenvs, there's only one <code>bin</code> &#8212; <code>/usr/local/bin</code> &#8212; and everything's competing for it. Most programs (especially ones with a typical <code>setup.py</code>) don't install a soft/hardlink with a helpful <code>2</code> or <code>3</code> suffix when installing executables, let alone detailed suffixes like <code>2.7</code> or <code>3.5</code>, so without probing into the shebangs you're never sure which version of Python you're running your program with, and as a result Python 2/3 (or even a point release)-specific bugs occur randomly. Virtualenvs solve the problem by allowing you to have as many bins (and includes, and libs) as you like.</p>
+<p>Hence the title "virtualenvs for everyone". I would like to install each command line program written in Python into a separate virtualenv. The only issue is that apparently I don't want too many bins in my <code>$PATH</code>; to solve this issue, the executable bits of each project should be linked to a central place, for which I choose <code>$HOME/bin</code>. There could be as many symlinks as we like, so now we can have multiple links with increasing detailed version suffixes, e.g., <code>3</code>, <code>3.5</code>, <code>3.5.1</code>. Very nice.</p>
+<p>This task could clearly be automated; the only slightly tricky bit is to programmatically figure out which scripts a project installs to <code>bin</code>. Luckily, for projects using <code>setuptools.setup</code>, we can simply spoof that function. Here's my <code>setuptools/__init__.py</code>:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co">#!/usr/bin/env python3</span>
+
+<span class="co">"""setuptools stubs.</span>
+<span class="co">Here we only stubbed the symbols in setuptools.__all__. Hopefully that's</span>
+<span class="co">enough (actually I can't remember seeing any setup.py using more than</span>
+<span class="co">setup and find_packages).</span>
+<span class="co">setup has been spoofed to print the names of scripts, console_scripts</span>
+<span class="co">and gui_scripts defined in the arguments to setup. Some user-friendly</span>
+<span class="co">messages are also printed to stderr.</span>
+<span class="co">"""</span>
+
+<span class="im">from</span> __future__ <span class="im">import</span> print_function
+
+<span class="im">import</span> re
+<span class="im">import</span> sys
+<span class="im">import</span> os
+
+__all__ <span class="op">=</span> [
+    <span class="st">'setup'</span>, <span class="st">'Distribution'</span>, <span class="st">'Feature'</span>, <span class="st">'Command'</span>, <span class="st">'Extension'</span>, <span class="st">'Require'</span>,
+    <span class="co">'find_packages'</span>
+]
+
+<span class="kw">def</span> setup(<span class="op">**</span>kwargs):
+    scripts <span class="op">=</span> [os.path.basename(script_path)
+               <span class="cf">for</span> script_path <span class="op">in</span> kwargs.pop(<span class="st">'scripts'</span>, [])]
+    <span class="cf">if</span> scripts:
+        <span class="bu">print</span>(<span class="st">'scripts:</span><span class="ch">\n</span><span class="st">  - </span><span class="sc">%s</span><span class="st">'</span> <span class="op">%</span> <span class="st">'</span><span class="ch">\n</span><span class="st">  - '</span>.join(scripts), <span class="bu">file</span><span class="op">=</span>sys.stderr)
+    entry_points <span class="op">=</span> kwargs.pop(<span class="st">'entry_points'</span>, {})
+    <span class="cf">for</span> entry_point <span class="op">in</span> [<span class="st">'console_scripts'</span>, <span class="st">'gui_scripts'</span>]:
+        extra_scripts <span class="op">=</span> [re.split(<span class="st">'(\s|=)'</span>, spec.strip())[<span class="dv">0</span>]
+                         <span class="cf">for</span> spec <span class="op">in</span> entry_points.pop(entry_point, [])]
+        <span class="cf">if</span> extra_scripts:
+            <span class="bu">print</span>(<span class="st">'</span><span class="sc">%s</span><span class="st">:</span><span class="ch">\n</span><span class="st">  - </span><span class="sc">%s</span><span class="st">'</span> <span class="op">%</span> (entry_point, <span class="st">'</span><span class="ch">\n</span><span class="st">  - '</span>.join(extra_scripts)),
+                  <span class="bu">file</span><span class="op">=</span>sys.stderr)
+        scripts.extend(extra_scripts)
+    <span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>.join(<span class="bu">sorted</span>(scripts)))
+
+<span class="kw">class</span> Distribution(<span class="bu">object</span>): <span class="cf">pass</span>
+<span class="kw">class</span> Feature(<span class="bu">object</span>): <span class="cf">pass</span>
+<span class="kw">class</span> Command(<span class="bu">object</span>): <span class="cf">pass</span>
+<span class="kw">class</span> Extension(<span class="bu">object</span>): <span class="cf">pass</span>
+<span class="kw">class</span> Require(<span class="bu">object</span>): <span class="cf">pass</span>
+<span class="kw">def</span> find_packages(<span class="op">**</span>kwargs): <span class="cf">pass</span></code></pre></div>
+<p>Now, let <code>$HERE</code> be the directory containing our fake <code>setuptools/</code>, and <code>$PROJECT_ROOT</code> be the project root directory containing <code>setup.py</code>. Run</p>
+<pre><code>PYTHONPATH=$HERE:$PYTHONPATH python $PROJECT_ROOT/setup.py</code></pre>
+<p>and bam! We get the names of all scripts on stdout.</p>
+<p>My full automation scripts, including the Zsh main function <code>virtual-install</code>, can be found in <a href="https://github.com/zmwangx/prezto/tree/master/modules/python/functions"><code>modules/python/functions</code> in zmwangx/prezto</a>. I'm not including it here because it uses some custom helper, and it's just too long (200+ lines, but not very sophisticated). Happy virtualenving!</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>In rare cases, even installing a single package could land you in trouble. The classical example is installing the <code>readme</code> package on a case-insensitive filesystem (e.g., the default mode of HFS+). "Unfortunately" <a href="https://bugs.python.org/issue24633">this</a> has been fixed.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2016-01-01-virtualenvs-for-everyone.html#fnref1">&#8617;&#65038;</a></p></li>
+</ol>
+</div>
+]]></content></entry><entry><title type="html">Catches when installing Windows 7 with Boot Camp</title><link href="http://zmwangx.github.io/blog/2015-12-29-catches-when-installing-windows-7-with-boot-camp.html"/><updated>2015-12-29T15:09:16-08:00</updated><id>http://zmwangx.github.io/blog/2015-12-29-catches-when-installing-windows-7-with-boot-camp.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>I was looking for a use for my retired Mid-2012 Non-Retina MacBook Pro 13''<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-12-29-catches-when-installing-windows-7-with-boot-camp.html#fn1" id="fnref1"><sup>1</sup></a>, and unsurprisingly I figured that I would turn it into a OS X-Windows dual boot for some occasional gaming. I'm a CnC fan (not hardcore, but still), mainly for RA2/YR and TW/KW, and playing these inside Fusion is really a subsubpar experience. Due to the age of these games and their compatibility problems on Windows 8 and higher<a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-12-29-catches-when-installing-windows-7-with-boot-camp.html#fn2" id="fnref2"><sup>2</sup></a>, I chose to shoot for a Windows 7 install.</p>
 <p>Apple has a pretty thorough walkthrough in the support article <a href="https://support.apple.com/en-us/HT205016">Install Windows 7 and earlier on your Mac using Boot Camp</a>. There are, however, some catches that I would like to collect and share in this post.</p>
@@ -456,16 +515,6 @@ Pros and cons
 <ol>
 <li id="fn1"><p>I do try to support websites I frequent, e.g., through <a href="https://arstechnica.com/subscriptions/">Ars Premier</a>.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-09-25-removing-google-analytics-from-this-blog.html#fnref1">&#8617;&#65038;</a></p></li>
 <li id="fn2"><p>Although it's easy to be a user of ad-blocking, I fully understand the moral (or even legal) burden of being the developer of an ad-blocker, let alone being the "face" of the ad-blocking industry; therefore, I understand and respect Marco's decision of pulling Peace.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-09-25-removing-google-analytics-from-this-blog.html#fnref2">&#8617;&#65038;</a></p></li>
-</ol>
-</div>
-]]></content></entry><entry><title type="html">Apple Watch: Digital Crown tightness issue</title><link href="http://zmwangx.github.io/blog/2015-09-24-apple-watch-digital-crown-tightness-issue.html"/><updated>2015-09-24T10:55:38-07:00</updated><id>http://zmwangx.github.io/blog/2015-09-24-apple-watch-digital-crown-tightness-issue.html</id><author><name>Zhiming Wang</name><uri>http://zmwangx.github.io/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
-
-<p>Quick tip: if the Digital Crown on your Apple Watch <em>all of a sudden</em><a class="footnoteRef" href="http://zmwangx.github.io/blog/2015-09-24-apple-watch-digital-crown-tightness-issue.html#fn1" id="fnref1"><sup>1</sup></a> feels too tight and doesn't turn smoothly, probably it was somehow over-turned (and probably because you played with watchOS 2 Time Travel, as I did). I don't know how that happened because it's clearly not supposed to happen, but turning it in the easy-to-turn direction for a few rounds fixed the tightness issue for me.</p>
-<p>There's also an <a href="https://support.apple.com/en-us/HT204639">Apple Support document</a> on troubleshooting and cleaning the Digital Crown, if the above doesn't help.</p>
-<div class="footnotes">
-<hr/>
-<ol>
-<li id="fn1"><p>Especially after upgrading to watchOS 2. Why in the hell could upgrading the software screw up the hardware? You'll see a possible cause if you read on.<a class="footnotes-backlink" href="http://zmwangx.github.io/blog/2015-09-24-apple-watch-digital-crown-tightness-issue.html#fnref1">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
 ]]></content></entry></feed>
