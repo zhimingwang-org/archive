@@ -2,7 +2,7 @@
 title: "dl? cmplnts?'s web doesn't suck"
 date: 2015-07-25T11:31:54-07:00
 date_display: July 25, 2015
-...
+---
 
 I was reading [Les Orchard's *The Verge's web sucks*](http://blog.lmorchard.com/2015/07/22/the-verge-web-sucks/) just now, and inspired by his dignostics of his various daily reads, I also ran the performance meter on my very own blog. Fortunately, it doesn't suck[^firefox]:
 

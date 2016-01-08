@@ -2,7 +2,7 @@
 title: "Regex flavor hell"
 date: 2015-12-20T16:03:03-08:00
 date_display: December 20, 2015
-...
+---
 
 I write a lot of shell scripts, which means dealing with common *ix utilities a lot. I typically want my scripts to work on both OS X and Linux (or OS X + GNU utilities, which is my personal setup), which means writing commands that are understood in both GNU/Linux and BSD worlds. Unfortunately that's not so simple, because to do that I usually have to give up readily available functionalities (especially the vast collection of useful options typical of GNU utilities) and am constantly thrown back to the stone age that is POSIX, or a little bit more than POSIX.
 

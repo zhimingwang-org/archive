@@ -2,7 +2,7 @@
 title: "Zsh 5.1 and bracketed paste"
 date: 2015-09-21T14:40:36-07:00
 date_display: September 21, 2015
-...
+---
 
 **TL;DR.** Jump to [code](#code).
 

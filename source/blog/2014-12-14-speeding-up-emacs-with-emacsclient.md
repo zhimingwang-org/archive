@@ -2,7 +2,7 @@
 title: "Speeding up Emacs with emacsclient"
 date: 2014-12-14T10:06:02-0800
 date_display: December 14, 2014
-...
+---
 
 Emacs is notorious for its loading time. For me, this is especially annoying when I'm editing LaTeX files — AUCTeX takes about five seconds to load, and once I exit Emacs (especially after a quick edit), all that work is wasted, and next time I want to do some quick editing with that same LaTeX file — sorry, another five seconds.
 

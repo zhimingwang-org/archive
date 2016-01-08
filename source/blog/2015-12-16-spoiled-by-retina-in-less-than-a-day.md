@@ -2,7 +2,7 @@
 title: "Spoiled by Retina, in less than a day"
 date: 2015-12-16T21:10:08-08:00
 date_display: December 16, 2015
-...
+---
 
 I finally got a 15'' Retina MacBook Pro this morning to replace my 13'' mid-2012 non-Retina MacBook Pro, whose spinning disk has been getting increasingly slower (or so I felt).[^replace] Apparently this is a pretty significant landmark in my personal computing history, since I'm saying goodbye to both spinning disk and non-Retina display on my primary computing device.
 

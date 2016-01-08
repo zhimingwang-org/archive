@@ -2,7 +2,7 @@
 title: "Fonts: why Chinese web design is hard"
 date: 2015-01-10T09:30:02-0800
 date_display: January 10, 2015
-...
+---
 
 For years I've been complaining about Chinese websites' horrendous designs. Yesterday I tried to translate one of my simple project websites to Chinese, and finally realized that web design for the Chinese language is no simple task — much harder than for English. The problem is fonts. This might not be the only problem (and cannot take blame for all the horrendous designs), but it certainly seems to be a roadblock.
 

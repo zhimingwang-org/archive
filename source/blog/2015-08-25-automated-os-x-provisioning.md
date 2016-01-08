@@ -2,7 +2,7 @@
 title: "Automated OS X provisioning"
 date: 2015-08-25T08:16:44-07:00
 date_display: August 25, 2015
-...
+---
 
 After quite a bit of work, I finally have a decent OS X provisioning system, capable of provisioning a blank OS X install (with Xcode and CLT) for development and everyday life.
 

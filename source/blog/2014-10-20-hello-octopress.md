@@ -2,7 +2,7 @@
 title: "Hello, Octopress!"
 date: 2014-10-20T16:53:00-0700
 date_display: October 20, 2014
-...
+---
 
 This post marks my transition from Tumblr to Octopress & GitHub Pages.
 

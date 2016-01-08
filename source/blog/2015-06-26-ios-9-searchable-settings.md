@@ -2,7 +2,7 @@
 title: "iOS 9: searchable Settings"
 date: 2015-06-26T23:59:28-07:00
 date_display: June 26, 2015
-...
+---
 
 Finally it's here. According to [MacRumors](http://www.macrumors.com/2015/06/26/hidden-features-in-ios-9-and-os-x-el-capitan/):
 

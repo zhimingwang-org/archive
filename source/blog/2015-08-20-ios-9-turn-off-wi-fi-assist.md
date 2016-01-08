@@ -2,7 +2,7 @@
 title: "iOS 9: turn off Wi-Fi Assist!"
 date: 2015-08-20T01:01:57-07:00
 date_display: August 20, 2015
-...
+---
 
 Seriously. Go to Settings->Cellular, and scroll all the way down to reveal the "Wi-Fi Assist" switch. See screenshot at the end of the post. You'll see a description:
 

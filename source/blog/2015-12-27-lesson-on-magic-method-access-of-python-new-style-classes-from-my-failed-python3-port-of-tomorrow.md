@@ -2,7 +2,7 @@
 title: "Lesson on magic method access of Python new-style classes (from my failed Python3 port of Tomorrow)"
 date: 2015-12-27T16:47:05-08:00
 date_display: December 27, 2015
-...
+---
 
 I know the title is formidably long, but I can't find something more accurate (and my homegrown mini CMS doesn't support subtitle), so please bear with me.
 

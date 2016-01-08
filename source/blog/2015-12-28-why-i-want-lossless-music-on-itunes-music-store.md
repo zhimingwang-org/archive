@@ -2,7 +2,7 @@
 title: "Why I want lossless music on iTunes Music Store"
 date: 2015-12-28T03:15:45-08:00
 date_display: December 28, 2015
-...
+---
 
 This is an impulse post after reading ["Apple again rumored to be working on high-resolution audio"](https://marco.org/2015/12/27/apple-hd-audio-again).[^macrumors]
 

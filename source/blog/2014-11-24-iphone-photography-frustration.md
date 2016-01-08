@@ -2,7 +2,7 @@
 title: "iPhone photography frustration"
 date: 2014-11-24T12:42:25-0800
 date_display: November 24, 2014
-...
+---
 
 **TL; DR:** Jump to the paragraph “In the end…”
 

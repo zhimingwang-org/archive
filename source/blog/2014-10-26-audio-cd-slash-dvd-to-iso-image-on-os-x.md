@@ -2,7 +2,7 @@
 title: "Convert Audio CD/DVD to ISO image on OS X"
 date: 2014-10-26T23:29:47-0700
 date_display: October 26, 2014
-...
+---
 
 **_11/02/2014 update:_**
 

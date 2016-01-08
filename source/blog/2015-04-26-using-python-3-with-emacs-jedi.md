@@ -2,7 +2,7 @@
 title: "Using Python 3 with Emacs Jedi"
 date: 2015-04-26T21:19:14-0700
 date_display: April 26, 2015
-...
+---
 
 Recently I'm working on [a hobby project in Python](https://github.com/zmwangx/storyboard), which means editing Python source files a lot. I've been using [Emacs Jedi](https://github.com/tkf/emacs-jedi) for almost as long as I've been writing Python, and it has been pretty helpful at completing away long names.
 

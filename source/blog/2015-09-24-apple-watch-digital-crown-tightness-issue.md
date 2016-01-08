@@ -2,7 +2,7 @@
 title: "Apple Watch: Digital Crown tightness issue"
 date: 2015-09-24T10:55:38-07:00
 date_display: September 24, 2015
-...
+---
 
 Quick tip: if the Digital Crown on your Apple Watch *all of a sudden*[^sudden] feels too tight and doesn't turn smoothly, probably it was somehow over-turned (and probably because you played with watchOS 2 Time Travel, as I did). I don't know how that happened because it's clearly not supposed to happen, but turning it in the easy-to-turn direction for a few rounds fixed the tightness issue for me.
 

@@ -2,7 +2,7 @@
 title: "Upgrading to El Capitan"
 date: 2015-10-01T11:46:44-07:00
 date_display: October 1, 2015
-...
+---
 
 I upgraded to El Capitan last night, and the experience is pretty painless. To be accurate, I'm not really upgrading in place — I always perform a clean install for each major OS upgrade to avoid subtle breakage later on. Therefore, what I did instead was to `rsync` out all my valuable data and state information[^state] to an external drive, wipe the internal drive clean, install new OS from scratch, then `rsync` everything back in. `rsync` is really good at this stuff (I affectionately alias `rsync -avP` to `r` during transfers in and out), and it is simply amazing at dropping the right stuff at the right place, including data deep down `~/Library/Containers`, without interfering with the existing structures[^existing]. With data and state info ready, reinstalling programs is also easy, thanks to my recently finished [automated provisioning system](/blog/2015-08-25-automated-os-x-provisioning.html). It was the first time I used it outside a VM to provision an OS from almost scratch, and I'm really happy with it.
 

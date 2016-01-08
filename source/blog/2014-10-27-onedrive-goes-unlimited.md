@@ -2,7 +2,7 @@
 title: "OneDrive goes unlimited"
 date: 2014-10-27T09:44:51-0700
 date_display: October 27, 2014
-...
+---
 
 **10/28/2014 Update:**
 

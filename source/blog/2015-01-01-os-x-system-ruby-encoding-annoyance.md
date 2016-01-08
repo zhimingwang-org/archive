@@ -2,7 +2,7 @@
 title: "OS X system ruby encoding annoyance"
 date: 2015-01-01T22:49:39-0800
 date_display: January  1, 2015
-...
+---
 
 I've been using RVM (with fairly up-to-date Rubies) and pry since my day one with Ruby (well, almost), so it actually surprises me today when I found out by chance how poorly the system Ruby behaves when it comes to encoding.
 

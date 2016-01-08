@@ -2,7 +2,7 @@
 title: "Using a personal helper package in everyday scripting"
 date: 2015-05-30T22:48:57-07:00
 date_display: May 30, 2015
-...
+---
 
 Recently I've been scripting (mostly in Python) quite a bit, and noticed that some functionalities get copied over or reimplemented over and over again. Examples include reading configuration files (mostly JSON, INI, and YAML), printing progress information to tty in color, displaying progress bar, and so on.
 

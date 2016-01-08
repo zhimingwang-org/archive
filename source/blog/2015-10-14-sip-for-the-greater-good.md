@@ -2,7 +2,7 @@
 title: "SIP — For the Greater Good"
 date: 2015-10-14T17:07:24-07:00
 date_display: October 14, 2015
-...
+---
 
 In recent months I wrote a few thousand words lamenting Finder and [SIP](https://en.wikipedia.org/wiki/System_Integrity_Protection) on El Capitan. See [The sad state of Finder on El Capitan](/blog/2015-07-30-the-sad-state-of-finder-on-el-capitan.html) and [its follow-up](/blog/2015-10-14-follow-up-the-sad-state-of-finder-on-el-capitan.html).
 

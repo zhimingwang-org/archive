@@ -2,7 +2,7 @@
 title: "The tip of the iceberg"
 date: 2015-06-12T14:24:18-07:00
 date_display: June 12, 2015
-...
+---
 
 *__Disclaimer__: While this post might have been triggered by a [specific](https://twitter.com/search?q=%23distractinglysexy)[^not-shaming] campaign, I'm certainly not addressing any specific concern or siding with any party. I never bothered to learn enough about a specific campaign to form a judgement that I would stand by,[^judge] since I simply don't care. I'm writing this post because I'm just too tired to see them popping up in my feeds every once in a while.*
 

@@ -2,7 +2,7 @@
 title: "The Google Chrome Comic — A classic"
 date: 2014-12-14T17:42:55-0800
 date_display: December 14, 2014
-...
+---
 
 I was cleaning up my Opera bookmarks just now — I'm semi-officially leaving Opera for Safari. Of course, Safari still can't handle everything (e.g., Adblock Plus is still not so good on Safari, YouTubeCenter lags behind and I don't bother to compile myself — yes, I have a certificate, and some power user features simply don't exist), so I'm still going to Opera/Opera beta/Chrome/Firefox for certain tasks. But Safari is very nice. For the first time.
 

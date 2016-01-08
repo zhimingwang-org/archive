@@ -2,7 +2,7 @@
 title: "All problems solved!?"
 date: 2015-06-23T21:47:07-07:00
 date_display: June 23, 2015
-...
+---
 
 The project I've been working on intermittently over the past month, [`pyonedrive`](https://github.com/zmwangx/pyonedrive), a OneDrive API v1.0 API/CLI client, is now quite satisfactory in terms of its feature set[^1], so today I'm thinking about what I should work on next. Of course there's [a lot more I can do](https://github.com/zmwangx/pyonedrive/labels/enhancement), but what is done already encapsulates 95%+ of my daily usage; moreover, as everyone knows, refining an existing project is not as exciting as starting a new one and making something happen that is previously tedious or impossible.
 

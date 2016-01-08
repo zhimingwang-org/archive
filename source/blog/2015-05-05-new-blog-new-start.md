@@ -2,7 +2,7 @@
 title: "New blog, new start"
 date: 2015-05-05T02:42:44-07:00
 date_display: May 5, 2015
-...
+---
 
 Octopress has been serving me for the past six months, during which even Octopress itself underwent major changes — in fact, [Octopress 3.0.0](https://github.com/octopress/octopress/releases/tag/v3.0.0) was only released 3 days ago, which I never got to try. Anyway, Octopress's heavily colored interface grew old on me fairly quickly. I'm especially unhappy with the inline `<code>` tag, which is always wrapped in a white box and stands out too much (worse still, there's no visual difference when such a `<code>` tag is placed inside an `<a>` tag). Since I use inline code/verbatim a lot, many of my articles were littered with arbitrary boxes everywhere.
 

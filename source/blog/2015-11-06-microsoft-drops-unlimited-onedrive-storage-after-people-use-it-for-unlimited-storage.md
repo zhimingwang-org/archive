@@ -2,7 +2,7 @@
 title: "Microsoft drops unlimited OneDrive storage after people use it for unlimited storage"
 date: 2015-11-06T10:49:51-08:00
 date_display: November 6, 2015
-...
+---
 
 [Story on Ars Technica](http://arstechnica.com/information-technology/2015/11/microsoft-drops-unlimited-onedrive-storage-after-people-use-it-for-unlimited-storage/). [Official announcement](https://blog.onedrive.com/onedrive_changes/). I was playing catch up on this week's RSS when this one punched in my face.
 

@@ -2,7 +2,7 @@
 title: "Removing Google Analytics from this blog"
 date: 2015-09-25T12:30:25-07:00
 date_display: September 25, 2015
-...
+---
 
 There was a lengthy discussion about Peace and ad-blocking in [Accidental Tech Podcast Episode 136](http://atp.fm/episodes/136). There were many lessons to learn from the story; as a side effect, it also made me reconsider Google Analytics on this blog.
 

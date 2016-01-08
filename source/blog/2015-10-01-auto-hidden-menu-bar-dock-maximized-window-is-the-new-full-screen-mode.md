@@ -2,7 +2,7 @@
 title: "Auto hidden menu bar & dock + maximized window is the new full screen mode"
 date: 2015-10-01T15:48:59-07:00
 date_display: October 1, 2015
-...
+---
 
 One nice feature of OS X El Capitan is that the menu bar can be auto hidden. Combined an auto hidden dock, we can now emulate the full screen experience with a maximized window while still enjoying overlayed windows, e.g., transparent terminal windows or "Picture in Picture" style small floating player. To see how closely a full screen experience is emulated this way, see the side-by-side screenshots below.
 

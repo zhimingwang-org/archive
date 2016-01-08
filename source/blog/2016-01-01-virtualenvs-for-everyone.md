@@ -2,7 +2,7 @@
 title: "Virtualenvs for everyone"
 date: 2016-01-01T22:21:14-08:00
 date_display: January 1, 2016
-...
+---
 
 Python distutils for the most part is rather pleasant to work with. That is, pleasant until you've accumulated so many packages that you eventually run into a clash of namespace, or a dependency conflict (or dependency hell as most would affectionately call it).[^trouble] In contrast, npm's approach to dependencies shuts out dependency hell completely, but it is so paranoid and costs so much duplication that I find it hard to appreciate unless necessary. Somewhere in between there's the virtualenv approach which I find most appealing for smallish projects — keep a single copy of each package in the dependency tree in a contained environment specific to the project at hand. This is how we debug Python projects, and it certainly also should be *the* way we run command line tools written in Python.
 

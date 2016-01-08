@@ -2,7 +2,7 @@
 title: "Google Drive — no selective subfolder sync?"
 date: 2014-10-28T20:49:24-0700
 date_display: October 28, 2014
-...
+---
 
 Up to this point I've been using Google Drive as an online backup service, and uploads files mostly manually, although I do sync `~/img` with the client.
 

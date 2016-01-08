@@ -2,7 +2,7 @@
 title: "Apple's customer service is still the best (plus an Authy horror story)"
 date: 2015-05-29T20:40:05-07:00
 date_display: May 29, 2015
-...
+---
 
 Recently the mute switch (officially known as the Ring/Silent switch) on my little-more-than-half-a-year-old iPhone 6 Plus stopped working. It almost always bounced back to ON (ring) position upon turning, and even if I could keep it at the OFF position for five seconds, it would most likely bounce back when I thrust it into my pocket. I got bitten a few times — almost got heart attacks when the phone dinged loudly in class. Minor yet annoying problem.
 

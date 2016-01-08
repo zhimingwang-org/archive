@@ -2,7 +2,7 @@
 title: "After all these years, 10pt non-anti-aliased Monaco is still the best"
 date: 2015-08-31T06:31:03+08:00
 date_display: August 31, 2015
-...
+---
 
 Ars Technica [just ran a piece](http://arstechnica.com/information-technology/2015/08/open-source-typeface-hack-brings-design-to-source-code/) on the open source programming font [Hack](https://github.com/chrissimpkins/Hack). Now I don't really know why this is news-worthy (open source programming fonts aren't a new thing), but I thought I'd give it a try.
 

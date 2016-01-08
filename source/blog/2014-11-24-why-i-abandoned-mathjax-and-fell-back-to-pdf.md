@@ -2,7 +2,7 @@
 title: "Why I abandoned MathJax and fell back to PDF"
 date: 2014-11-24T20:54:36-0800
 date_display: November 24, 2014
-...
+---
 
 Recently I wrote an expository article, [*Convolution of irreducible characters*](/pdf/20141119-convolution-of-irreducible-characters.pdf), and posted it [here](/blog/2014-11-19-convolution-of-irreducible-characters.html). At first I intended to use MathJax, but in the end I fell back to good ol' PDF. Here's why.
 

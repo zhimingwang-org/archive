@@ -2,7 +2,7 @@
 title: "Safeguarding git repos against accidental rm"
 date: 2015-12-08T00:17:39-08:00
 date_display: December 8, 2015
-...
+---
 
 Everyone who has spent a sizable portion of their life in terminals has experienced that "oh shit" moment: you realize what you've done immediately after you've hit enter, but it's already too late. And needlessly to say, many of those are associated to accidental `rm`s.
 
