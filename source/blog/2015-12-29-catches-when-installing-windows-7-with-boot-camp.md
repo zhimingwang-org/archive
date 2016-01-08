@@ -2,7 +2,8 @@
 title: "Catches when installing Windows 7 with Boot Camp"
 date: 2015-12-29T15:09:16-08:00
 date_display: December 29, 2015
----
+...
+
 I was looking for a use for my retired Mid-2012 Non-Retina MacBook Pro 13''^[2.9 GHz i7 + Intel HD Graphics 4000 + 16 GB RAM + frigging slow 750 GB 5400-rpm spinning disk I've yet to replace.], and unsurprisingly I figured that I would turn it into a OS X-Windows dual boot for some occasional gaming. I'm a CnC fan (not hardcore, but still), mainly for RA2/YR and TW/KW, and playing these inside Fusion is really a subsubpar experience. Due to the age of these games and their compatibility problems on Windows 8 and higher^[RA2/YR used to have problems even on Windows 7, at least inside Fusion, so I used to play them in XP SP3 VMs; I've yet to try them with Windows 7 running on bare metal.], I chose to shoot for a Windows 7 install.
 
 Apple has a pretty thorough walkthrough in the support article [Install Windows 7 and earlier on your Mac using Boot Camp](https://support.apple.com/en-us/HT205016). There are, however, some catches that I would like to collect and share in this post.

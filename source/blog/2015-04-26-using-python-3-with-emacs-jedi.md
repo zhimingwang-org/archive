@@ -2,7 +2,8 @@
 title: "Using Python 3 with Emacs Jedi"
 date: 2015-04-26T21:19:14-0700
 date_display: April 26, 2015
----
+...
+
 Recently I'm working on [a hobby project in Python](https://github.com/zmwangx/storyboard), which means editing Python source files a lot. I've been using [Emacs Jedi](https://github.com/tkf/emacs-jedi) for almost as long as I've been writing Python, and it has been pretty helpful at completing away long names.
 
 However, Jedi uses `python` by default, which means `python2` on most of our systems at this point. Occasionally I'm writing Python 3 specific code but Jedi completes to Python 2 or refuses to complete; for the record, I enjoy writing and debugging Python 3.3+ much better than 2.7 (I realized this after trying to create a code base that is backward compatible with 2.7, which means reinventing the wheel or introducing annoying branches from time to time). So naturally I'm looking into using Python 3 in Jedi.

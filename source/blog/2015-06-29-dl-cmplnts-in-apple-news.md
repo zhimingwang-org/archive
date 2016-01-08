@@ -2,7 +2,8 @@
 title: "dl? cmplnts? in Apple News"
 date: 2015-06-29T23:14:42-07:00
 date_display: June 29, 2015
----
+...
+
 I submitted this blog to Apple via [News Publisher](https://developer.apple.com/news-publisher/) a few days after the WWDC keynote, just to get a feel for the submission process. It was easy; basically I just needed to provide an [Atom 1.0](/atom.xml) or [RSS 2.0](/rss.xml) feed, both of which I already have anyway.[^care] I was told at the end of the submission process that my submission would be reviewed.
 
 [^care]: Of course my content isn't really optimized for the Apple News format, but why would I care.

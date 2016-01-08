@@ -2,7 +2,8 @@
 title: "Bash function exporting fiasco"
 date: 2015-11-25T15:38:13-08:00
 date_display: November 25, 2015
----
+...
+
 Bash is the only major shell (and the only shell that I know of) that implements function exporting. By now everyone should have heard of this feature, I suppose, after the publicity of Shellshock last year. I was personally introduced to it while writing parallel processing scripts [with GNU Parallel](https://www.gnu.org/software/parallel/parallel_tutorial.html#Transfer-environment-variables-and-functions) (long before Shellshock), and it seemed useful and clever at that time. Back then I often wondered why it didn't make its way into Z shell. However, now that I'm much more seasoned in shell scripting, I can see why and how this feature is troubled and of debatable value.
 
 Two problems lie at the heart of function exporting:

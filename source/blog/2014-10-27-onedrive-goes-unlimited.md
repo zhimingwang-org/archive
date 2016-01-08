@@ -2,7 +2,8 @@
 title: "OneDrive goes unlimited"
 date: 2014-10-27T09:44:51-0700
 date_display: October 27, 2014
----
+...
+
 **10/28/2014 Update:**
 
 Yesterday Microsoft pushed an update to OneDrive.app to MAS. After uninstalling, reinstalling, and wiping the 10 GB folder I'd like to sync (that's for photos; I upload videos via the web interface) on both client and server sides, it actually began to work. The speed was around 1 MB/s during my last sync of 10 GB worth of data. Not fast, but I will be fairly satisfied if it can keep up with that speed. Time will tell.

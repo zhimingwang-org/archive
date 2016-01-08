@@ -2,7 +2,8 @@
 title: "All is not lost"
 date: 2015-02-21T17:12:32-0800
 date_display: February 21, 2015
----
+...
+
 Lubos Motl always attacks the Many-Worlds Interpretation as if it is on the same level as anti-scientific claims. He even went on to attack Hugh Everett (the guy who first formulated this interpretation) personally; *ad hominem* is of course typical Motl shit, and I don't bother to find those posts. Anyway, here's yet another one: [Many worlds: a Rozali-Carroll exchange](http://motls.blogspot.com/2015/02/many-worlds-rozali-carroll-exchange.html).
 
 Disclaimer: I'm not really a proponent of Many-Worlds, at least not of the part of it that says history really *branches* into *many* worlds. Well, Lubos is at least right about one thing: "many worlds", taken literally, can't even be well-defined. However, I do believe that the world is can be described by a "universal wavefunction" (I prefer to call it the "universal state vector") in some gargantuan Hilbert space. And the universal state vector has to evolve deterministically. The reason is simple: **_all information is not lost_**. This principle is fundamental to physics and it's simply not on the same level as falsifiability, which is little more than a philosopher's toy and a nice thing to have. In quantum mechanics' terms, *unitarity must be respected*; this is why the Copenhagen Interpretation, or at least the wavefunction-collapsing part of it, cannot hold up to serious scrutiny — no operator can ever collapse the wavefunction and break unitarity. Those who hold the Copenhagen Interpretation are confusing *their* lack of knowledge (albeit a fundamental one, as they were entangled into the system when they make an observation) with the fundamental loss of information (which is not possible).

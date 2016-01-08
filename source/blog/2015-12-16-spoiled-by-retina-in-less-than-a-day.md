@@ -2,7 +2,8 @@
 title: "Spoiled by Retina, in less than a day"
 date: 2015-12-16T21:10:08-08:00
 date_display: December 16, 2015
----
+...
+
 I finally got a 15'' Retina MacBook Pro this morning to replace my 13'' mid-2012 non-Retina MacBook Pro, whose spinning disk has been getting increasingly slower (or so I felt).[^replace] Apparently this is a pretty significant landmark in my personal computing history, since I'm saying goodbye to both spinning disk and non-Retina display on my primary computing device.
 
 The transition was initially smooth except for a few things. First, as a tap-to-click wizard I immediately turned on tap-to-click, but I had a hard time dragging things because it was too easy to trigger a force touch instead on the medium setting, and under the firm setting I could hardly force touch at all; in the end I just turned off force touch altogether, and haven't had any problem since. By the way, I was initially worried about the keyboard too but it worked surprisingly well for me, so no complaints there. Secondly, [10pt non-anti-aliased Monaco](/blog/2015-08-31-after-all-these-years-10pt-non-anti-aliased-monaco-is-still-the-best.html) looks weird on Retina since it's no longer the beloved bitmap version. I turned on antialiasing and now it's no longer weird, but it felt totally different and I'm not sure if I like it (definitely not as much as the 10pt bitmap Monaco anyway). It's okay right now but I'll probably need to spend some time trying out different fonts. Obviously there are [like-minded folks](https://news.ycombinator.com/item?id=10140728) out there. Sad story.

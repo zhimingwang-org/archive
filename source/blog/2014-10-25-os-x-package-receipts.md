@@ -2,7 +2,8 @@
 title: "OS X package receipts"
 date: 2014-10-25T13:26:02-0700
 date_display: October 25, 2014
----
+...
+
 I just learned something new. Whenever you install a `pkg` on OS X, OS X stores a receipt of what was installed in `/var/db/receipts` (I'm running OS X 10.9.5 at the time of writing), called a **bom** — bill of materials (I’d rather call it a manifest, whatever). This feature was introduced in NeXTSTEP. From `man 5 bom`:
 
 > The Mac OS X Installer uses a file system "bill of materials" to determine which files to install, remove, or upgrade. A bill of materials, **bom**, contains all the files within a directory, along with some information about each file. File information includes: the file's UNIX permissions, its owner and group, its size, its time of last modification, and so on.  Also included are a checksum of each file and information about hard links.

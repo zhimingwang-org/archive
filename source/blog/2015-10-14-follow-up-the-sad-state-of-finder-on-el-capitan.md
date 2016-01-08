@@ -2,7 +2,8 @@
 title: "Follow-up: The sad state of Finder on El Capitan"
 date: 2015-10-14T12:30:32-07:00
 date_display: October 14, 2015
----
+...
+
 **10/14/2015 update** (updated even before I published the article). Just as I was finishing this post, an update to TotalFinder came. [1.7.8](http://totalfinder.binaryage.com/beta-changes). And holy cow, it fixed automatic column resizing! The fix isn't perfect — there's actually a visible delay before resizing, but I'm happy again. Long live TotalFinder!
 
 ---

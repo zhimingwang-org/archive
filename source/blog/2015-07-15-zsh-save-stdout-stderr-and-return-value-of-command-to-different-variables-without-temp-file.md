@@ -2,7 +2,8 @@
 title: "Zsh: save stdout, stderr, and return value of command to different variables (without temp file)"
 date: 2015-07-15T09:21:47-07:00
 date_display: July 15, 2015
----
+...
+
 This is something worth sharing. The idea was based on [this SO answer](http://stackoverflow.com/a/18086548/1944784), and I cooked up this particular implementation to remove potential race conditions, with input from Mathias Fredriksson[^1]. See [mafredri/zsh-async#1](https://github.com/mafredri/zsh-async/issues/1), and in particular [this comment](https://github.com/mafredri/zsh-async/issues/1#issuecomment-121468958) for explanation.
 
 ```zsh

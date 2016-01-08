@@ -2,7 +2,8 @@
 title: "AT&T to Pure TalkUSA, one month later"
 date: 2015-10-26T00:00:30-07:00
 date_display: October 26, 2015
----
+...
+
 **TL;DR**: If you have questions about Pure TalkUSA unanswered by the [official FAQ](https://www.puretalkusa.com/cell-phones-sim-cards.php), I have some information for you starting from the section "[migration experience](#migration-experience)".
 
 ---

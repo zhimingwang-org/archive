@@ -2,7 +2,8 @@
 title: "Bash: the special slash character in filename expansion"
 date: 2015-05-19T18:33:51-07:00
 date_display: May 19, 2015
----
+...
+
 It is well-known and common sense that the slash character (`/`) serves a special role in Bash filename expansion. For instance, the asterisk `*` certainly won't match `/` or `.` when used in filename expansion; otherwise, a standalone `*` would match everything in the filesystem.
 
 However, it is less clear how a literal slash character[^expansion] is treated in extended glob patterns. Naively one would expect it to just match a literal slash, but the real situtation is more complicated than that. Consider the following examples:

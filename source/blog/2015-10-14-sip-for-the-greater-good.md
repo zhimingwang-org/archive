@@ -2,7 +2,8 @@
 title: "SIP — For the Greater Good"
 date: 2015-10-14T17:07:24-07:00
 date_display: October 14, 2015
----
+...
+
 In recent months I wrote a few thousand words lamenting Finder and [SIP](https://en.wikipedia.org/wiki/System_Integrity_Protection) on El Capitan. See [The sad state of Finder on El Capitan](/blog/2015-07-30-the-sad-state-of-finder-on-el-capitan.html) and [its follow-up](/blog/2015-10-14-follow-up-the-sad-state-of-finder-on-el-capitan.html).
 
 For the record, I'm not blaming SIP. It does deal a serious blow to people who in-memory patch stock applications (and there's a good discussion about the creativity aspect on [ATP episode 128](http://atp.fm/episodes/128)), but the general public — at least more than 95% of users — should not be negatively affected, at least not in the short term. And I can understand why SIP protection comes at this time. Macs used to be safe, but in recent years we are seeing real world exploits increasingly more often. History has shown that technically-challenged users simply can't be entrusted with admin accounts, they are too willing to give their passwords to shady software downloaded from shady corners of the web (and sometimes even renowned corners get hacked). But they are given admin accounts anyway (there has to be someone knowing the admin password), so Apple has to come up with ways to protect them. SIP is a pretty good response.

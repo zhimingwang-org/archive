@@ -2,7 +2,8 @@
 title: "Safeguarding git repos against accidental rm"
 date: 2015-12-08T00:17:39-08:00
 date_display: December 8, 2015
----
+...
+
 Everyone who has spent a sizable portion of their life in terminals has experienced that "oh shit" moment: you realize what you've done immediately after you've hit enter, but it's already too late. And needlessly to say, many of those are associated to accidental `rm`s.
 
 I just had one of those moments. I was going to delete a subdirectory of `~/.config`, but hit return prematurely, and the command line ended up being `rm -r ~/.config`. Imagine the horror one second later. Fortunately I was saved by the read-only objects in `.git`, which triggered prompts; however, damage was already done, to some extent. I had to reinit the repo and do a hard reset, and a corrupted submodule was in my way (it blocked my attempt of `git reset --hard`) which I eventually had to completely remove and re-add. In the end everything was recovered (hopefully) and back to normal, but this episode was definitely not great for heart health, which led me to rethink `rm`.

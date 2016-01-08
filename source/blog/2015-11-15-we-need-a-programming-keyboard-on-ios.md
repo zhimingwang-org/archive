@@ -2,7 +2,8 @@
 title: "We need a programming keyboard on iOS"
 date: 2015-11-15T02:17:05-08:00
 date_display: November 15, 2015
----
+...
+
 We do. If you ever tried to say something on GitHub (web) or StackOverflow (web or app) on iOS, you'll probably agree with me. The stock keyboard (or any third party keyboard that I've heard of) is simply awful at this. Typing on iOS software keyboard is unpleasant enough to begin with, but behold:
 
 * Auto"correct" messes up everything as fast as you can type, which isn't really fast anyway; might as well call it autorot.

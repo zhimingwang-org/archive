@@ -2,7 +2,8 @@
 title: "Automated OS X provisioning"
 date: 2015-08-25T08:16:44-07:00
 date_display: August 25, 2015
----
+...
+
 After quite a bit of work, I finally have a decent OS X provisioning system, capable of provisioning a blank OS X install (with Xcode and CLT) for development and everyday life.
 
 Here it is: [`zmwangx/dotfiles/provision`](https://github.com/zmwangx/dotfiles/blob/master/provision). In case the path changes in the future and invalidates the aforementioned URL, [here](https://github.com/zmwangx/dotfiles/blob/d8e20b731583d69b380d422c8788f61cd4a4e211/provision) is the archived provisioning script at the current master. Of course the provisioning system is not a single script; it reads and executes modules from a [`provision.d`](https://github.com/zmwangx/dotfiles/tree/master/provision.d) directory, which in turn links into other specialized parts of the system.

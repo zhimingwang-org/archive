@@ -2,7 +2,8 @@
 title: "Apple's customer service is still the best (plus an Authy horror story)"
 date: 2015-05-29T20:40:05-07:00
 date_display: May 29, 2015
----
+...
+
 Recently the mute switch (officially known as the Ring/Silent switch) on my little-more-than-half-a-year-old iPhone 6 Plus stopped working. It almost always bounced back to ON (ring) position upon turning, and even if I could keep it at the OFF position for five seconds, it would most likely bounce back when I thrust it into my pocket. I got bitten a few times — almost got heart attacks when the phone dinged loudly in class. Minor yet annoying problem.
 
 So I took my phone to the Genius Bar today, prepared to have it sent to a repair center[^repair-center] and get a loan in the mean time — basically, I was prepared for all sorts of trouble. But nope. I demoed the problem for three seconds, my agent explained to me in five seconds that the switch alone was hard to replace and took fifteen seconds to verify my warranty status (I suppose), then off he went to retrieve a brand new replacement for me. No questions asked about the little dent on my old phone or whatever. *So I ended up with a brand new phone in less than five minutes.* (Of course, redoing setup and restoring backup took much longer than that.)

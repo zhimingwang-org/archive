@@ -2,7 +2,8 @@
 title: "Ripping copy-protected DVD with mpv"
 date: 2014-10-23T20:03:22-0700
 date_display: October 23, 2014
----
+...
+
 **_11/02/2014 update:_**
 
 See [this post](/blog/2014-11-02-vobcopy-dvdbackup-etc.html) for issues, explanations, and more.

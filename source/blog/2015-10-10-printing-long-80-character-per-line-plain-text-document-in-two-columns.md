@@ -2,7 +2,8 @@
 title: "Printing long, 80-character-per-line plain text document in two columns"
 date: 2015-10-10T22:35:15-07:00
 date_display: October 10, 2015
----
+...
+
 **TL; DR**. Jump to [code](#code).
 
 ---

@@ -2,7 +2,8 @@
 title: "Using a command table as wallpaper"
 date: 2015-05-22T00:48:19-07:00
 date_display: May 22, 2015
----
+...
+
 Recently I cleaned up my source code directory, removed a lot of rarely-used, dated scripts, and grouped the remaining standalone scripts into a central place (`~/dev/scripts`)[^dev]. One thing I learned in this process is that I tend to write a reusable script but rarely actually reuse it (even if it sits on `PATH`), sometimes implementing the same functionality twice or typing a long command line over and over again.
 
 [^dev]: The `~/dev` directory stands for development, and contains all my source code and almost all local builds. The point is by having a `~/dev` directory, I no longer need to have `bin`, `include`, `lib`, and `share` in my `HOME`, thus saving a few slots. Backing up and restoring is also slightly easier.

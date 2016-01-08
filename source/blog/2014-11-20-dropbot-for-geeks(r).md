@@ -2,7 +2,8 @@
 title: "Dropbot for Geeks®"
 date: 2014-11-20T09:48:15-0800
 date_display: November 20, 2014
----
+...
+
 I propose the following cloud storage and syncing service model of the future. I call it **Dropbot for Geeks®**, and it totally rules. It's designed for geeks who are tired of the highly limited, miserably unproductive traditional services (based on clicking around). It has the following features:
 
 * Standard Unix file system commands exposed as an API, e.g., `cat`, `cd`, `cp`, `du`, `df`, `file`, `find`, `head`, `ln`, `ls`, `mkdir`, `mv`, `pwd`, `rm`, `rmdir`, `tail`, `touch`, etc.

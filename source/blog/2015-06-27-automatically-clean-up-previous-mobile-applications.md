@@ -2,7 +2,8 @@
 title: 'Automatically clean up "Previous Mobile Applications"'
 date: 2015-06-27T21:19:59-07:00
 date_display: June 27, 2015
----
+...
+
 iTunes keeps a "Previous Mobile Applications" folder of questionable value, which always annoys me. It eats into disk space and wastes syncing/backup cycles and bandwidth; you can easily find horror stories online about [100GB+ PMA folders](http://forums.macrumors.com/threads/5-years-of-deleted-iphone-apps-accumulated-in-my-itunes-library.1781676/#post-19749496). The value? You might be able to roll back to an earlier version, or restore an app pulled from the App Store. Really? I never had that need in my life[^disclosure]; have you? Worst of all, there should be a periodic clean up option — just like how deleted mail are automatically purged after one month, but the option is missing.
 
 [^disclosure]: Full disclosure: unlike many people, I'm not very obsessed with my phone, and I only have about two dozen third-party apps.

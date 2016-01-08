@@ -2,7 +2,8 @@
 title: "OS X system ruby encoding annoyance"
 date: 2015-01-01T22:49:39-0800
 date_display: January  1, 2015
----
+...
+
 I've been using RVM (with fairly up-to-date Rubies) and pry since my day one with Ruby (well, almost), so it actually surprises me today when I found out by chance how poorly the system Ruby behaves when it comes to encoding.
 
 The major annoyance with the current system Ruby (2.0.0p481) is that it can't convert `UTF8-MAC` to `UTF-8` (namely, NFD to NFC, as far as I can tell), at least not with Korean characters. Consider the following script:

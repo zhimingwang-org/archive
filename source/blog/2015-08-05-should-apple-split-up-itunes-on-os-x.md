@@ -2,7 +2,8 @@
 title: "Should Apple split up iTunes on OS X?"
 date: 2015-08-05T14:09:51-07:00
 date_display: August 5, 2015
----
+...
+
 These days everyone seems to be talking about how complicated iTunes is and how Apple should give it a clean-sheet rewrite. This is not new, but the argument has certainly intensified ever since the introduction of iCloud Photo Library and Apple Music. For one recent example, see [Don't order the fish](http://www.marco.org/2015/07/26/dont-order-the-fish) by Marco Arment. I was listening to John Gruber's [The Talk Show episode 127](https://daringfireball.net/thetalkshow/2015/07/29/ep-127) earlier today (a little bit late to the game, yeah), and the complexity argument was brought up yet again.
 
 I just can't buy that argument. (Disclaimer: in this post I'm talking about UI/UX, not the backend.) Granted, there are many tabs in iTunes. There's one for music, one for movies, one for TV shows, one for podcasts, one for iOS apps, one for each iOS device currently connected via USB, and so on. You can hide some of them if you don't use them. And for each of these tabs there are probably subtabs, and occasionally a sidebar. This might sound rather intimidating to the faint-hearted, but if you really dive into iTunes, you'll find that 99% of the functionalities you'll ever need to find or organize your stuff are under four clicks away^[Just a rough estimate off the top of my head; please don't challenge me or hold me responsible.], and editing metadata (including batch editing) is pretty easy too. All in all, iTunes as it currently stands is both powerful (too many things on the plate, in some people's words) and not badly complicated, in the sense that you can certainly find your way around if you try. Some would argue that some of iTunes' features get shuffled into different places from version to version; yeah that's annoying, but in reality it usually takes less than five minutes to find all I need in a new version.

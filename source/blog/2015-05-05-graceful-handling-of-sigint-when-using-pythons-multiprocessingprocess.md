@@ -2,7 +2,8 @@
 title: "Graceful handling of <code>SIGINT</code> when using Python's <code>multiprocessing.Process</code>"
 date: 2015-05-05T22:03:39-07:00
 date_display: May 5, 2015
----
+...
+
 Today I learned something about Python's (at least CPython's) multiprocessing and signal handling, and I would like to share it here. Basically my situation was such (when developing [`pydoc`](https://github.com/zmwangx/zmwangx.github.io/blob/source/pyblog) that powers this blog):
 
 * I would like to serve the blog with an HTTP server while auto-regenerating for changes;

@@ -2,7 +2,8 @@
 title: "The importance of dated, detailed release notes"
 date: 2015-10-12T14:29:42-07:00
 date_display: October 12, 2015
----
+...
+
 I can't stress how much I value release notes, especially for closed source, commercial software. None of us want to invest on a piece of abandonware (unless it is ageless, which is quite unlikely for anything with a GUI), or a piece of software that is not completely abandoned, but takes a full year to adapt to the latest OS, campatibility-wise or UI-wise; and release notes, especially with dates, serve as almost the single metric for gauging developer commitment. In fact, whenever I try to learn about a piece of software that I heard about, one of the first things I do, usually after browsing through features and screenshots and before I even download the software to try out, is to look for its release notes and skim through it if available, and the outcome largely determines whether I'll even bother to download the installer.[^cask] A prominent, dedicated page with dated, detailed release notes immediately leaves a good impression on me.
 
 Unfortunately, many developers or publishers don't value release notes as much as I do. Several problems, in ascending order of seriousness:

@@ -2,7 +2,8 @@
 title: "Get rolling"
 date: 2014-10-21T11:40:14-0700
 date_display: October 21, 2014
----
+...
+
 Yesterday, on an internet forum, I saw someone’s signature, which translates to
 
 > Don’t even get started if you know you can't know from the beginning that you won't make it to the very end.

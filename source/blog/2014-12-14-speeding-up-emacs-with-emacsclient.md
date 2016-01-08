@@ -2,7 +2,8 @@
 title: "Speeding up Emacs with emacsclient"
 date: 2014-12-14T10:06:02-0800
 date_display: December 14, 2014
----
+...
+
 Emacs is notorious for its loading time. For me, this is especially annoying when I'm editing LaTeX files — AUCTeX takes about five seconds to load, and once I exit Emacs (especially after a quick edit), all that work is wasted, and next time I want to do some quick editing with that same LaTeX file — sorry, another five seconds.
 
 This problem can be solved by "using that same Emacs", i.e., running Emacs in server mode, then connecting to the server via `emacsclient`. Below is my script, which I call `emc`, to make `emacsclient` more user-friendly. `emc` opens a file (given as `$1`) on the server, launching one on its way if none is detected. Note that I used `-cqta=` for `emacsclient`. The `-c` option is `--create-frame`, i.e., create a new frame (in the current tty, for instance) instead of using the existing frame (in another tty, for instance); this allows for multiple frames accross different ttys. The `-q` option is for `--quiet`, suppressing messages like "Waiting for Emacs..." The `-t` option is for `--tty`, or equivalently, the familiar `-nw` option of `emacs`. The `-a=` options is `--alternate-editor=`; according to the manpage, `-a, --alternate-editor=EDITOR` has the following effect:

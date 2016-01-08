@@ -2,7 +2,8 @@
 title: "We need an OS X security white paper"
 date: 2015-10-03T03:34:24-07:00
 date_display: October 3, 2015
----
+...
+
 Apple has been offering an excellent [iOS Security White Paper](https://www.apple.com/privacy/docs/iOS_Security_Guide.pdf) since at least 2012, and it's very informative. I highly encourage everyone to read it. It even explains some annoyances of iOS; for instance, [this week's Upgrade episode](http://www.relay.fm/upgrade/56) discussed, [in Gruber's words](https://daringfireball.net/linked/2015/10/01/upgrade-56), "the lousy, painstaking, and at times downright confusing experience of migrating to a new iOS device", and once you read the white paper you'll realize that many things just can't be migrated due to iOS's hardware security model — basically, certain classes of data are encrypted with crypto keys baked into the silicon (see the section "Hardware security features"). I'm not saying the migration experience should be this painful (I would love to see it fixed or improved), but at least there's an explanation.[^migration]
 
 But I digress. This post is about OS X. I've been hunting for an OS X equivalent for a while now, but I don't think it exists. And recently people are talking about Apple's [updated Privacy website](https://www.apple.com/privacy/)[^site], so I went there with a glimmer of hope. End result: no luck. In fact, Apple links to its iOS Security White Paper at the bottom of "[Our Approach to Privacy](https://www.apple.com/privacy/approach-to-privacy)":

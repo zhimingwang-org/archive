@@ -2,7 +2,8 @@
 title: "Microsoft drops unlimited OneDrive storage after people use it for unlimited storage"
 date: 2015-11-06T10:49:51-08:00
 date_display: November 6, 2015
----
+...
+
 [Story on Ars Technica](http://arstechnica.com/information-technology/2015/11/microsoft-drops-unlimited-onedrive-storage-after-people-use-it-for-unlimited-storage/). [Official announcement](https://blog.onedrive.com/onedrive_changes/). I was playing catch up on this week's RSS when this one punched in my face.
 
 I currently have 5 TB of data in OneDrive. I was once worried about lock-in when I eventually have 20 or 100 TB there, but now that they have shown their true colors, the worries are all gone. They are not even offering anything past 1 TB. We have seen this too many times — shit happens when people actually use unlimited for unlimited. Usually unlimited quickly becomes qualified, but in this case, unlimited simply becomes limited. What irony when one looks back at their announcement from [a year ago](http://localhost:8000/blog/2014-10-27-onedrive-goes-unlimited.html):

@@ -2,7 +2,8 @@
 title: "Using a personal helper package in everyday scripting"
 date: 2015-05-30T22:48:57-07:00
 date_display: May 30, 2015
----
+...
+
 Recently I've been scripting (mostly in Python) quite a bit, and noticed that some functionalities get copied over or reimplemented over and over again. Examples include reading configuration files (mostly JSON, INI, and YAML), printing progress information to tty in color, displaying progress bar, and so on.
 
 In light of this, I came up with the idea of keeping a pool of helper modules in a personal helper package. I'm unimaginative at naming things, so I just named my package `zmwangx`. It is [published on GitHub](https://github.com/zmwangx/pyzmwangx), and the API docs are published on [Read the Docs](https://pyzmwangx.readthedocs.org) for easy reference during scripting.[^doc] At the time of writing the following helper modules are available in the package:

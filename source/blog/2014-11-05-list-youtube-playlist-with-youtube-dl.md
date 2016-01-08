@@ -2,7 +2,8 @@
 title: "List YouTube playlist with youtube-dl"
 date: 2014-11-05T10:37:58-0800
 date_display: November  5, 2014
----
+...
+
 Of course you are always welcome to use the [Google APIs Client Library for Python](https://developers.google.com/api-client-library/python/) to wrestle with YouTube, which is usually pretty simple. (As an added bonus, YouTube has some [nice runnable sample scripts](https://developers.google.com/youtube/v3/code_samples/) to get you started.) With the client library, listing videos in a YouTube playlist is a breeze.
 
 However, if you don't feel like writing code yourself (I usually don't feel like writing code myself until I use something often enough and existing solutions are suboptimal), `youtube-dl` recently added the functionality to list videos in a playlist with the `--flat-playlist` option.
@@ -21,6 +22,7 @@ However, if you don't feel like writing code yourself (I usually don't feel like
 [download] Downloading video #3 of 119
 [download] Downloading video #4 of 119
 ...
+
 ```
 
 which doesn't really make sense — it tells you that it collected 119 video ids, and no more. Once you have `-j` on, you get JSON data that you can parse with anything:
@@ -32,6 +34,7 @@ which doesn't really make sense — it tells you that it collected 119 video ids
 {"url": "znW5ALwWNQw", "_type": "url", "ie_key": "Youtube", "id": "znW5ALwWNQw"}
 {"url": "qyE7-auTIcc", "_type": "url", "ie_key": "Youtube", "id": "qyE7-auTIcc"}
 ...
+
 ```
 
 The most straightforward way to parse this is to use a command line JSON parser, the best one being [jq](https://github.com/stedolan/jq):
@@ -43,6 +46,7 @@ https://youtube.com/v/j9l5nchv1Z8
 https://youtube.com/v/znW5ALwWNQw
 https://youtube.com/v/qyE7-auTIcc
 ...
+
 ```
 
 There you go, a list of URIs you can use. Of course you can put this in a script to save some typing:

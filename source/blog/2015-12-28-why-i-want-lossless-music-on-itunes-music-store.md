@@ -2,7 +2,8 @@
 title: "Why I want lossless music on iTunes Music Store"
 date: 2015-12-28T03:15:45-08:00
 date_display: December 28, 2015
----
+...
+
 This is an impulse post after reading ["Apple again rumored to be working on high-resolution audio"](https://marco.org/2015/12/27/apple-hd-audio-again).[^macrumors]
 
 To be clear, I'm no audiophile. I can't tell the difference between 256kbps AAC and lossless (maybe not even the difference between 128k and 256k), and my midrange to lower midrange equipments probably won't let me tell anyway. I'm certainly not a consumer of snake oil.

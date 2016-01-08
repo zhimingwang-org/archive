@@ -2,7 +2,8 @@
 title: "Fonts: why Chinese web design is hard"
 date: 2015-01-10T09:30:02-0800
 date_display: January 10, 2015
----
+...
+
 For years I've been complaining about Chinese websites' horrendous designs. Yesterday I tried to translate one of my simple project websites to Chinese, and finally realized that web design for the Chinese language is no simple task — much harder than for English. The problem is fonts. This might not be the only problem (and cannot take blame for all the horrendous designs), but it certainly seems to be a roadblock.
 
 The problem with fonts boils down to the fact that the Chinese writing system has too many glyphs. I still remember learning things about the GB 2312 charset when I was twelve — there are 3755 Level 1 characters (more commonly seen), 3008 Level 2 characters, and other symbols and foreign glyphs. Designing more than six thousand Chinese characters is so much harder than designing 26 letters. I'm not sure if many glyphs are auto-generated from parts, but that would certainly degrade the quality. The result? Availability of digital fonts suffers. There are simply not so many choices of Chinese fonts. Chinese writing is beautiful, but I've yet to see a font for screens (let alone the web) that conveys that beauty. This might be subjective, but I have the impression that fonts generally look worse on screen than in print, and more so for Chinese fonts (Retina doesn't help much). For the record, I checked Apple's font usage at the moment, and they are using a tailored font named "PingHei" ("平黑", I guess; see screenshot at the end); I'm not at all impressed. Compare that to the English counterpart (also at the end) — not on the same level. (I won't talk about Microsoft since it doesn't feature a design department, or that department is brain dead. Well, I'm a little opinionated.)

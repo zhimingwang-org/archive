@@ -2,7 +2,8 @@
 title: "autoenv with auto cleanup"
 date: 2015-12-26T00:15:48-08:00
 date_display: December 26, 2015
----
+...
+
 I heard about [kennethreitz/autoenv](https://github.com/kennethreitz/autoenv) a long time ago. The idea of autoloading project-specific environment modifications is nice, but no auto cleanup after leaving a project was a showstopper for me.
 
 Today, I took matters into my own hands and wrote a fresh Zsh implementation[^re] with auto cleanup support. Check it out: <https://github.com/zmwangx/prezto/tree/master/modules/autoenv>.

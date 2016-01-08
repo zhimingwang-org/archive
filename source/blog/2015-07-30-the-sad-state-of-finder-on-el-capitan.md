@@ -2,7 +2,8 @@
 title: "The sad state of Finder on El Capitan"
 date: 2015-07-30T23:59:09-07:00
 date_display: July 30, 2015
----
+...
+
 I was listening to [Accidental Tech Podcast E128](http://atp.fm/episodes/128) today, which discussed the implications of Rootless (i.e. System Integrity Protection) at quite some length.[^1] Which stirred up my old worries about the Finder — I was briefly concerned about TotalFinder immediately after Rootless was announced in WWDC, but was quickly reassured and forgot that concern after learning that Homebrew (i.e. `/usr/local`) isn't affected, which attracted more of my attention.
 
 [^1]: It's interesting to listen to John Siracusa's take on the issue, by the way. I completely agree with him.

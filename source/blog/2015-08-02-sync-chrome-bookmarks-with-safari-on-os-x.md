@@ -2,7 +2,8 @@
 title: "Sync Chrome bookmarks with Safari on OS X"
 date: 2015-08-02T22:11:56-07:00
 date_display: August 2, 2015
----
+...
+
 **08/11/2015 Update:** I have taken down the project from GitHub since it's way too flaky. Guess I'll stick with manually clicking around then...
 
 ---

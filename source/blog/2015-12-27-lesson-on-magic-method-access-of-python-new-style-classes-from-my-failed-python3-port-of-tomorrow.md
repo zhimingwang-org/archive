@@ -2,7 +2,8 @@
 title: "Lesson on magic method access of Python new-style classes (from my failed Python3 port of Tomorrow)"
 date: 2015-12-27T16:47:05-08:00
 date_display: December 27, 2015
----
+...
+
 I know the title is formidably long, but I can't find something more accurate (and my homegrown mini CMS doesn't support subtitle), so please bear with me.
 
 So, I have [madisonmay/Tomorrow](https://github.com/madisonmay/Tomorrow) — "magic decorator syntax for asynchronous code in Python 2.7" — bookmarked for a long time[^long] without ever trying it, because I simply don't write Python 2 code any more (except when I try to maintain compatibililty). I felt kind of strange that a ~50-line project with ~1000 stars on GitHub hasn't been ported to Python 3 already, so I gave it a shot just now.

@@ -2,7 +2,8 @@
 title: "Why Oh My Zsh is completely broken"
 date: 2015-05-03T17:15:49-0700
 date_display: May  3, 2015
----
+...
+
 Today I moved from [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh) to [Prezto](https://github.com/sorin-ionescu/prezto), after using Oh My Zsh for about three years since 2012. I'll try to shed some light on the reasons in this post.
 
 Zsh is a rather complicated shell (compared to Bash), with a hell lot of builtins and a complex completion system. The complexity makes it powerful, but also makes it intimidating to mortals; moreover, it doesn't look as sweet as it could be out of box. Most mortals, me included, want an interactive shell that's sweet and "just works", so we need wizards to guide us in configuring this beast. Oh My Zsh and Prezto are just two of such configuration frameworks. Oh My Zsh is somewhat older: the first commit of Oh My Zsh dates back to [August 2009](https://github.com/robbyrussell/oh-my-zsh/commit/e20401e04e057a39c228dbb99dda68ec7fa4235a), while Prezto was forked from Oh My Zsh in [February 2011](https://github.com/sorin-ionescu/prezto/commit/8d487d4f6c2d38cb108d7c8c0c2de9f0385da402), and has since been completely rewritten. `robbyrussell/oh-my-zsh` as of today has 23,610 stars on GitHub, while `sorin-ionescu/prezto` has 4,069. This doesn't imply Oh My Zsh is any better — I guess the fancy name of Oh My Zsh earned it a lot more undeserved stars; you'll see why soon.

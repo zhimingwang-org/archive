@@ -2,7 +2,8 @@
 title: "Regex flavor hell"
 date: 2015-12-20T16:03:03-08:00
 date_display: December 20, 2015
----
+...
+
 I write a lot of shell scripts, which means dealing with common *ix utilities a lot. I typically want my scripts to work on both OS X and Linux (or OS X + GNU utilities, which is my personal setup), which means writing commands that are understood in both GNU/Linux and BSD worlds. Unfortunately that's not so simple, because to do that I usually have to give up readily available functionalities (especially the vast collection of useful options typical of GNU utilities) and am constantly thrown back to the stone age that is POSIX, or a little bit more than POSIX.
 
 Working with regular expressions is especially painful. Almost every implementation of every utility (with regex support) has its own flavor of regex. Most notably the big three: `grep`, `sed` and `awk`. GNU utilities of course come with GNU extensions, but they are nothing when aiming for compatibility. Ignoring GNU extensions, there's a way to turn on standard POSIX extensions (ERE) on `sed`, but unfortunately GNU and BSD use different flags: `-r` for GNU sed and `-E` for BSD sed. The two implementations of `grep` thankfully use the same flag `-E` to turn on ERE, but GNU grep, being a GNU utility and having to distinguish itself from its mundane counterpart, further implements `-P,--perl-regexp` — regexers' dream. It's there but I can't use it, except in an interactive shell. `awk` has more than two implementations and will be left out of this discussion.

@@ -2,7 +2,8 @@
 title: "Switching to capitalized commit messages"
 date: 2015-08-05T19:38:37-07:00
 date_display: August 5, 2015
----
+...
+
 This post is a note to self.
 
 As a long time git user, I've always used lowercase commit messages (in the subject line). I never quite liked the idea of capitalized commit messages, which are seldom complete sentences (and they are never period-terminated). Similarly, I avoid capilatization like hell in comments, unless when I write complete sentences. By the way, there's a technical advantage of writing lowercase commit messages: I can easily tell my human-made commits from auto commits like merge and revert commits, because they always begin with a capitalized "Merge", "Revert", etc.

@@ -2,7 +2,8 @@
 title: "Interstellar"
 date: 2014-11-07T23:56:31-0800
 date_display: November  7, 2014
----
+...
+
 Today (I mean November 7, 2014 — it’s technically November 8 at the time of writing) I saw [*Interstellar*](https://en.wikipedia.org/wiki/Interstellar_%28film%29) (IMAX digital) at AMC Mercado 20. I rarely go to movie theaters, less on the release day (film formats of *Interstellar* were released on November 5, and digital formats followed on November 7). However, reviews of it were positive (from the physics community), and I really need a way to release stress these days — I wasn’t in the right condition for months. So I figured I’d just spend an afternoon in front of the big screen.
 
 I’ve heard good things about IMAX 70mm film, like no trailers, among other things. But I didn’t bother the extra seven miles’ drive to Hackworth IMAX Dome, so I landed on IMAX digital. Still a pretty stunning experience, although I ended up watching forty minutes worth of trailers before the real thing (arrived fifteen minutes early). In hindsight maybe I’d be better off spending some extra time on the road.

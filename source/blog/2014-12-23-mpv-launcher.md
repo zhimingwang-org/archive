@@ -2,7 +2,8 @@
 title: "mpv launcher"
 date: 2014-12-23T00:51:05-0800
 date_display: December 23, 2014
----
+...
+
 **_04/06/2015 update:_**
 
 I just noticed that `daemonize` doesn't play too well with the OS; in particular, when you use dark menu bar on OS X Yosemite, apps launched with `daemonize` won't conform to that. So a native shell solution would be using `/bin/zsh` and run

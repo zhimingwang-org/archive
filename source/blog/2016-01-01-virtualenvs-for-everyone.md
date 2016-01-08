@@ -2,7 +2,8 @@
 title: "Virtualenvs for everyone"
 date: 2016-01-01T22:21:14-08:00
 date_display: January 1, 2016
----
+...
+
 Python distutils for the most part is rather pleasant to work with. That is, pleasant until you've accumulated so many packages that you eventually run into a clash of namespace, or a dependency conflict (or dependency hell as most would affectionately call it).[^trouble] In contrast, npm's approach to dependencies shuts out dependency hell completely, but it is so paranoid and costs so much duplication that I find it hard to appreciate unless necessary. Somewhere in between there's the virtualenv approach which I find most appealing for smallish projects — keep a single copy of each package in the dependency tree in a contained environment specific to the project at hand. This is how we debug Python projects, and it certainly also should be *the* way we run command line tools written in Python.
 
 There's another reason I like virtualenvs. There are tons of problems associated with choosing between Python 2 and 3 — some projects are Python 2 only, some are instead Python 3, some claim to be compatible with both but actually present subtle problems when you use one instead of the other. However, without virtualenvs, there's only one `bin` — `/usr/local/bin` — and everything's competing for it. Most programs (especially ones with a typical `setup.py`) don't install a soft/hardlink with a helpful `2` or `3` suffix when installing executables, let alone detailed suffixes like `2.7` or `3.5`, so without probing into the shebangs you're never sure which version of Python you're running your program with, and as a result Python 2/3 (or even a point release)-specific bugs occur randomly. Virtualenvs solve the problem by allowing you to have as many bins (and includes, and libs) as you like.
