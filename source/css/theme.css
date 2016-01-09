@@ -226,25 +226,33 @@ noscript a {
 }
 
 .rss-icon, .atom-icon, .cc-icon {
-    position: relative;
     text-decoration: none;
 }
 
 .rss-icon, .atom-icon {
-    font-size: 16px;
-    margin: 0 2px;
-    top: 1px;
-}
-
-/* fix problematic baseline shift in Firefox */
-@-moz-document url-prefix() {
-    .rss-icon {
-        top: 0;
-    }
+    margin: 0 3px;
 }
 
 .cc-icon {
     margin: 0 1px;
+}
+
+.rss-icon:before, .atom-icon:before {
+    content: "\e800";
+    font-family: fontello;
+    font-size: 105%;
+}
+
+.rss-icon:before {
+    display: inline-block;
+    transform: scale(-1,1);
+    -webkit-transform: scale(-1,1);
+}
+
+.cc-icon:before {
+    content: "\e801";
+    font-family: fontello;
+    font-size: 95%;
 }
 
 /* blog index */
