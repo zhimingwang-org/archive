@@ -227,6 +227,8 @@ noscript a {
 
 .rss-icon, .atom-icon, .cc-icon {
     text-decoration: none;
+    position: relative;
+    top: 1px;
 }
 
 .rss-icon, .atom-icon {
