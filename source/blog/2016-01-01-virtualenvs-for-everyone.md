@@ -63,7 +63,9 @@ def find_packages(**kwargs): pass
 
 Now, let `$HERE` be the directory containing our fake `setuptools/`, and `$PROJECT_ROOT` be the project root directory containing `setup.py`. Run
 
-    PYTHONPATH=$HERE:$PYTHONPATH python $PROJECT_ROOT/setup.py
+```zsh
+PYTHONPATH=$HERE:$PYTHONPATH python $PROJECT_ROOT/setup.py
+```
 
 and bam! We get the names of all scripts on stdout.
 
