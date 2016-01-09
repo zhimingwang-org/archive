@@ -68,6 +68,7 @@ BUILDDIR = os.path.join(ROOTDIR, "build")
 ATOM = os.path.join(BUILDDIR, "atom.xml")
 RSS = os.path.join(BUILDDIR, "rss.xml")
 INDEXHTML = os.path.join(BUILDDIR, "index.html")
+EXCLUDELIST = os.path.join(SOURCEDIR, ".exclude")
 
 FEED_MAX_ENTRIES = 20
 CODE_LINE_HEIGHT = 18
@@ -690,6 +691,16 @@ def postprocess_html_file(htmlfilepath):
         htmlfileobj.truncate()
 
 
+def static_vars(**kwargs):
+    def decorate(func):
+        for k in kwargs:
+            setattr(func, k, kwargs[k])
+        return func
+    return decorate
+
+
+# exclude_list is only inialized once to avoid constant disk IO
+@static_vars(exclude_list=None)
 def generate_blog(fresh=False, report_total_errors=True):
     """Generate the blog in BUILDDIR.
 
@@ -746,8 +757,25 @@ def generate_blog(fresh=False, report_total_errors=True):
     fundamental_mtime = max(generator_mtime, template_mtime)
     anything_modified = False
 
-    for root, _, files in os.walk(SOURCEDIR):
+    exclude_list = generate_blog.exclude_list  # get value of static variable
+    if exclude_list is None:
+        try:
+            with open(EXCLUDELIST) as fp:
+                exclude_list = [line.rstrip() for line in list(fp)
+                                if line.strip() != "" and not line.startswith('#')]
+        except OSError:
+            exclude_list = []
+        generate_blog.exclude_list = exclude_list  # assign to static variable for the future
+
+    for root, dirs, files in os.walk(SOURCEDIR):
         relroot = os.path.relpath(root, start=SOURCEDIR)
+
+        # If relroot is in exclude list, skip all files and remove all subdirs from traversal list.
+        # os.path.join(relroot, "") is basically the path with a slash.
+        if relroot in exclude_list or os.path.join(relroot, "") in exclude_list:
+            dirs[:] = []
+            continue
+
         dstroot = os.path.join(BUILDDIR, relroot)
         if not os.path.isdir(dstroot):
             if os.path.exists(dstroot):
@@ -755,7 +783,7 @@ def generate_blog(fresh=False, report_total_errors=True):
             os.mkdir(dstroot, mode=0o755)
 
         for name in files:
-            if name.startswith('.'):
+            if name.startswith('.') or os.path.join(relroot, name) in exclude_list:
                 continue
             extension = name.split(".")[-1]
             if extension not in ["css", "jpg", "md", "png", "svg", "ico", "txt",
