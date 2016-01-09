@@ -150,6 +150,14 @@ pre code {
     word-wrap: normal;
 }
 
+ol {
+    padding-left: 20px;
+}
+
+ul {
+    padding-left: 16px;
+}
+
 blockquote {
     margin: 0;
     padding: 0 1em;
