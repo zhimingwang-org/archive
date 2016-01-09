@@ -905,7 +905,7 @@ def new_post(title):
         newpost.write('title: "%s"\n' % title)
         newpost.write("date: %s\n" % iso_date)
         newpost.write("date_display: %s\n" % display_date)
-        newpost.write("---\n")
+        newpost.write("---\n\n")
     sys.stderr.write("New post created in:\n")
     print(fullpath)
     edit_post_with_editor(fullpath)
