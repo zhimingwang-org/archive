@@ -1,7 +1,7 @@
 body {
-    color: #333;
-    font-family: "PT Serif", serif;
-    font-size: 10.99pt;
+    color: #000;
+    font-family: Times, "Times New Roman", serif;
+    font-size: 16px;
     -webkit-font-smoothing: antialiased;
     margin: 100px 0;
 }
@@ -88,34 +88,44 @@ hr {
 
 h1 {
     text-align: center;
-    font-size: 1.65em;
+    font-size: 150%;
     font-weight: bold;
 }
 
 h2 {
     text-align: center;
-    font-size: 1.27em;
+    font-size: 125%;
     font-weight: bold;
 }
 
 .article-metadata {
     text-align: center;
-    font-size: 1em;
+    font-size: 100%;
     font-weight: normal;
     font-style: italic;
 }
 
 a {
-    color: #333;
+    color: #000;
     word-wrap: break-word;
 }
 
 code {
-    font-size: 0.95em;
-    color: #777;
-    font-family: 'Droid Sans Mono', 'Courier', monospace;
+    font-size: 14px;
+    color: #333;
+    font-family: Courier, monospace;
     white-space: pre-wrap;
     word-wrap: break-word;
+}
+
+h1 code {
+    font-size: 22px;
+    color: #000;
+}
+
+h2 code {
+    font-size: 18px;
+    color: #000
 }
 
 pre {
@@ -124,16 +134,15 @@ pre {
     border-left: 0.4em solid #ddd;
 }
 
+/* Pandoc wraps pre[class*=sourceCode] in a div tag, so it is necessary to
+eliminate the margins of such pre tags to avoid too much spacing.*/
 pre[class*=sourceCode] {
-    position: relative;
-    padding-left: 2em;
     margin: 0;
 }
 
 pre code {
-    font-size: 0.91em;
-    line-height: 135%;
-    color: #333;
+    font-size: 13px;
+    color: #000;
     white-space: pre;
     word-wrap: normal;
 }
@@ -156,44 +165,28 @@ img {
     width: 80%;
     margin: auto;
     text-align: center;
-    font-size: 0.91em;
+    font-size: 90%;
 }
 
 .figure .caption code {
-    font-size: 0.87em;
+    font-size: 13px;
+}
+
+sup {
+    font-size: 11px;
+    margin: 0 0 0 1px;
 }
 
 noscript {
-    color: #ccc;
+    color: #999;
 }
 
 noscript a {
-    color: #ccc;
-}
-
-.line-number {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin-top: 0.8em;
-    pointer-events: none;
-    white-space: pre;
-}
-
-.line-number:before {
-    content: attr(data-line);
-    position: absolute;
-    top: .4em;
-    left: .5em;
-    min-width: 2em;
-    color: #ccc;
-    font-size: 0.65em;
-    text-align: center;
-    vertical-align: .3em;
+    color: #999;
 }
 
 .footnotes {
-    font-size: 0.91em;
+    font-size: 90%;
 }
 
 .footnotes ol {
@@ -205,12 +198,11 @@ noscript a {
 }
 
 .footnotes code {
-    font-size: 0.87em;
+    font-size: 13px;
 }
 
 .footnotes-backlink {
     margin-left: 0.2em;
-    font-size: 1.2em;
     vertical-align: -0.2em;
     color: #bbb;
     text-decoration: none;

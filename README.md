@@ -51,15 +51,6 @@ See `process_image_sizes` in [`pyblog`](pyblog).
 
 ### Other HTML transforms
 
-#### Line-numbering in preformatted code blocks
-
-Line numbers are added to preformatted code blocks. Note that this
-transform is only applied to `pre` tags with class `sourceCode lang`,
-where `lang` is any language, so one must use a fenced code block with
-language spec in the Markdown document to take advantage.
-
-See `number_code_lines` in [`pyblog`](pyblog).
-
 #### Link images to originals
 
 `img` tags are automatically converted to clickable links to their

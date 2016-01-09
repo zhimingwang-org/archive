@@ -29,13 +29,13 @@ import sys
 import tempfile
 import time
 import urllib.parse
-import lxml.etree as ET
 
 import blessed
 import bs4
 import colorama
 import dateutil.parser
 import dateutil.tz
+import lxml.etree as ET
 
 ############################# BLOG CONFIGURATIONS ##############################
 # Safe to customize
@@ -606,16 +606,6 @@ def _pre_tag_insert_line_numbers(soup, pre_tag):
         pre_tag.code.append(ln_tag)
 
 
-def number_code_lines(soup):
-    """Insert line numbers to preformatted code blocks."""
-    for pre_tag in soup.find_all("pre"):
-        if ((pre_tag.code is None or "class" not in pre_tag.attrs or
-             not "sourceCode" in pre_tag["class"])):
-            # not really a block of source code
-            continue
-        _pre_tag_insert_line_numbers(soup, pre_tag)
-
-
 # MARKDOWN EXTENSION!
 #
 # See docstring of process_image_sizes for documentation.
@@ -690,7 +680,6 @@ def postprocess_html_file(htmlfilepath):
         soup = bs4.BeautifulSoup(htmlfileobj.read(), "lxml")
 
         # a series of postprocessing (extensible)
-        number_code_lines(soup)
         process_image_sizes(soup)
         link_img_tags(soup)
         process_footnote_backlinks(soup)
