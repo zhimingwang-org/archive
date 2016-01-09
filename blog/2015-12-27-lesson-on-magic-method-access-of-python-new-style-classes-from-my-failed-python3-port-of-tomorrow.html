@@ -11,50 +11,13 @@
 <meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <link href="/css/fonts.css" media="all" rel="stylesheet" type="text/css"/>
-<link href="/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css"/>
 <link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
 <link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
 <link href="/css/theme-wide.css" media="only screen and (min-width: 1441px)" rel="stylesheet" type="text/css"/>
 <link href="/css/theme-narrow.css" media="only screen and (max-width: 1023px)" rel="stylesheet" type="text/css"/>
 <link href="/css/theme-ultranarrow.css" media="only screen and (max-width: 500px)" rel="stylesheet" type="text/css"/>
+<link href="/css/highlight.css" media="all" rel="stylesheet" type="text/css"/>
 <link href="/css/print.css" media="print" rel="stylesheet" type="text/css"/>
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-    </style>
 </head>
 <body>
 <nav class="nav">
@@ -89,7 +52,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
         <span class="cf">if</span> name <span class="op">==</span> <span class="st">"_obj"</span>:
             <span class="cf">return</span> <span class="bu">object</span>.<span class="fu">__getattribute__</span>(<span class="va">self</span>, name)
         <span class="bu">print</span>(<span class="st">"Accessing '</span><span class="sc">%s</span><span class="st">'"</span> <span class="op">%</span> name)
-        <span class="cf">return</span> <span class="va">self</span>._obj.<span class="fu">__getattribute__</span>(name)<span class="line-number" data-line="1" style="top: 0.00em"><!----></span><span class="line-number" data-line="2" style="top: 1.35em"><!----></span><span class="line-number" data-line="3" style="top: 2.70em"><!----></span><span class="line-number" data-line="4" style="top: 4.05em"><!----></span><span class="line-number" data-line="5" style="top: 5.40em"><!----></span><span class="line-number" data-line="6" style="top: 6.75em"><!----></span><span class="line-number" data-line="7" style="top: 8.10em"><!----></span><span class="line-number" data-line="8" style="top: 9.45em"><!----></span><span class="line-number" data-line="9" style="top: 10.80em"><!----></span><span class="line-number" data-line="10" style="top: 12.15em"><!----></span></code></pre></div>
+        <span class="cf">return</span> <span class="va">self</span>._obj.<span class="fu">__getattribute__</span>(name)</code></pre></div>
 <p>This snippet is valid in both Python 2.7 and Python 3, but here's the surprise:</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;&gt;&gt;</span> g <span class="op">=</span> PassThrough(<span class="dv">0</span>)
 <span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span>(g)
@@ -101,7 +64,7 @@ Accessing <span class="st">'__str__'</span>
 <span class="va">True</span>
 <span class="op">&gt;&gt;&gt;</span> g.<span class="fu">__str__</span>()
 Accessing <span class="st">'__str__'</span>
-<span class="co">'0'</span><span class="line-number" data-line="1" style="top: 0.00em"><!----></span><span class="line-number" data-line="2" style="top: 1.35em"><!----></span><span class="line-number" data-line="3" style="top: 2.70em"><!----></span><span class="line-number" data-line="4" style="top: 4.05em"><!----></span><span class="line-number" data-line="5" style="top: 5.40em"><!----></span><span class="line-number" data-line="6" style="top: 6.75em"><!----></span><span class="line-number" data-line="7" style="top: 8.10em"><!----></span><span class="line-number" data-line="8" style="top: 9.45em"><!----></span><span class="line-number" data-line="9" style="top: 10.80em"><!----></span><span class="line-number" data-line="10" style="top: 12.15em"><!----></span><span class="line-number" data-line="11" style="top: 13.50em"><!----></span></code></pre></div>
+<span class="co">'0'</span></code></pre></div>
 <p>In addition, here's what happens if you try to "pass through" a function:</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;&gt;&gt;</span> <span class="kw">def</span> f(): <span class="cf">return</span> <span class="va">True</span>
 <span class="op">&gt;&gt;&gt;</span> g <span class="op">=</span> PassThrough(f)
@@ -120,7 +83,7 @@ Accessing <span class="st">'__call__'</span>
 <span class="va">True</span>
 <span class="op">&gt;&gt;&gt;</span> g.<span class="fu">__call__</span>()
 Accessing <span class="st">'__call__'</span>
-<span class="va">True</span><span class="line-number" data-line="1" style="top: 0.00em"><!----></span><span class="line-number" data-line="2" style="top: 1.35em"><!----></span><span class="line-number" data-line="3" style="top: 2.70em"><!----></span><span class="line-number" data-line="4" style="top: 4.05em"><!----></span><span class="line-number" data-line="5" style="top: 5.40em"><!----></span><span class="line-number" data-line="6" style="top: 6.75em"><!----></span><span class="line-number" data-line="7" style="top: 8.10em"><!----></span><span class="line-number" data-line="8" style="top: 9.45em"><!----></span><span class="line-number" data-line="9" style="top: 10.80em"><!----></span><span class="line-number" data-line="10" style="top: 12.15em"><!----></span><span class="line-number" data-line="11" style="top: 13.50em"><!----></span><span class="line-number" data-line="12" style="top: 14.85em"><!----></span><span class="line-number" data-line="13" style="top: 16.20em"><!----></span><span class="line-number" data-line="14" style="top: 17.55em"><!----></span><span class="line-number" data-line="15" style="top: 18.90em"><!----></span><span class="line-number" data-line="16" style="top: 20.25em"><!----></span><span class="line-number" data-line="17" style="top: 21.60em"><!----></span><span class="line-number" data-line="18" style="top: 22.95em"><!----></span></code></pre></div>
+<span class="va">True</span></code></pre></div>
 <p>As you can tell, although <code>__str__</code> or <code>__call__</code> may have been implemented through <code>__getattribute__</code>, and <code>hasattr</code> (which in turn depends on <code>getattr</code>) has no trouble finding them, they are not picked up by <code>str</code> or function call <code>(...)</code>. At this point, one would suspect that this is due to <code>str</code> or function call only looking at the class instance's <code>__dict__</code>. Compare this to the behavior of an old-style class:</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> PassThrough():
 
@@ -129,7 +92,7 @@ Accessing <span class="st">'__call__'</span>
 
     <span class="kw">def</span> <span class="fu">__getattr__</span>(<span class="va">self</span>, name):
         <span class="bu">print</span>(<span class="st">"Acessing '</span><span class="sc">%s</span><span class="st">'"</span> <span class="op">%</span> name)
-        <span class="cf">return</span> <span class="va">self</span>._obj.<span class="fu">__getattribute__</span>(name)<span class="line-number" data-line="1" style="top: 0.00em"><!----></span><span class="line-number" data-line="2" style="top: 1.35em"><!----></span><span class="line-number" data-line="3" style="top: 2.70em"><!----></span><span class="line-number" data-line="4" style="top: 4.05em"><!----></span><span class="line-number" data-line="5" style="top: 5.40em"><!----></span><span class="line-number" data-line="6" style="top: 6.75em"><!----></span><span class="line-number" data-line="7" style="top: 8.10em"><!----></span><span class="line-number" data-line="8" style="top: 9.45em"><!----></span></code></pre></div>
+        <span class="cf">return</span> <span class="va">self</span>._obj.<span class="fu">__getattribute__</span>(name)</code></pre></div>
 <p>Now:</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;&gt;&gt;</span> g <span class="op">=</span> PassThrough(<span class="dv">0</span>)
 <span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span>(g)
@@ -139,7 +102,7 @@ Acessing <span class="st">'__str__'</span>
 <span class="op">&gt;&gt;&gt;</span> g <span class="op">=</span> PassThrough(f)
 <span class="op">&gt;&gt;&gt;</span> g()
 Acessing <span class="st">'__call__'</span>
-<span class="va">True</span><span class="line-number" data-line="1" style="top: 0.00em"><!----></span><span class="line-number" data-line="2" style="top: 1.35em"><!----></span><span class="line-number" data-line="3" style="top: 2.70em"><!----></span><span class="line-number" data-line="4" style="top: 4.05em"><!----></span><span class="line-number" data-line="5" style="top: 5.40em"><!----></span><span class="line-number" data-line="6" style="top: 6.75em"><!----></span><span class="line-number" data-line="7" style="top: 8.10em"><!----></span><span class="line-number" data-line="8" style="top: 9.45em"><!----></span><span class="line-number" data-line="9" style="top: 10.80em"><!----></span></code></pre></div>
+<span class="va">True</span></code></pre></div>
 <p>Note that magic method access is always routed through <code>__getattr__</code>.</p>
 <p>After some digging, my suspicion was confirmed: indeed, for new-style classes, rather than invoking <code>__getattribute__</code>, the Python interpreter only looks for magic methods in <code>__dict__</code>. But is there a workaround for implementing something like the <code>PassThrough</code> class above? There's a <a href="http://stackoverflow.com/a/9059858/">nice answer</a> on StackOverflow that uses a metaclass to "automatically add proxies for magic methods at the time of class creation", to quote the author. However, the thing about Tomorrow is that <em>we don't have the result and don't know whatever magic methods it might have at class creation</em> — after all, Python isn't a statically typed language. It is possible for programmers to offer hints, but then Tomorrow won't be as elegant and magical anymore. Therefore, unfortunately enough, Tomorrow isn't portable to Python 3 — at least not without a substantial hack that's beyond my knowledge, or a complete overhaul of its logic (haven't thought about that).</p>
 <div class="footnotes">
@@ -152,7 +115,7 @@ Acessing <span class="st">'__call__'</span>
 <hr class="content-separator"/>
 <footer class="footer">
 <span class="rfooter">
-<a class="rss-icon fa fa-rss fa-flip-horizontal" href="/rss.xml" target="_blank" title="RSS feed"><!--RSS feed icon--></a><a class="atom-icon fa fa-rss" href="/atom.xml" target="_blank" title="Atom feed"><!--Atom feed icon--></a><a class="cc-icon fa fa-creative-commons" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license."><!--CC icon--></a>
+<a class="rss-icon" href="/rss.xml" target="_blank" title="RSS feed"><!--RSS feed icon--></a><a class="atom-icon" href="/atom.xml" target="_blank" title="Atom feed"><!--Atom feed icon--></a><a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license."><!--CC icon--></a>
 <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
 </span>
 </footer>

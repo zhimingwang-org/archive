@@ -11,50 +11,13 @@
 <meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <link href="/css/fonts.css" media="all" rel="stylesheet" type="text/css"/>
-<link href="/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css"/>
 <link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
 <link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
 <link href="/css/theme-wide.css" media="only screen and (min-width: 1441px)" rel="stylesheet" type="text/css"/>
 <link href="/css/theme-narrow.css" media="only screen and (max-width: 1023px)" rel="stylesheet" type="text/css"/>
 <link href="/css/theme-ultranarrow.css" media="only screen and (max-width: 500px)" rel="stylesheet" type="text/css"/>
+<link href="/css/highlight.css" media="all" rel="stylesheet" type="text/css"/>
 <link href="/css/print.css" media="print" rel="stylesheet" type="text/css"/>
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-    </style>
 </head>
 <body>
 <nav class="nav">
@@ -107,7 +70,7 @@ require <span class="st">'fileutils'</span>
   }
 <span class="kw">end</span>
 
-rename(<span class="dt">ARGV</span>)<span class="line-number" data-line="1" style="top: 0.00em"><!----></span><span class="line-number" data-line="2" style="top: 1.35em"><!----></span><span class="line-number" data-line="3" style="top: 2.70em"><!----></span><span class="line-number" data-line="4" style="top: 4.05em"><!----></span><span class="line-number" data-line="5" style="top: 5.40em"><!----></span><span class="line-number" data-line="6" style="top: 6.75em"><!----></span><span class="line-number" data-line="7" style="top: 8.10em"><!----></span><span class="line-number" data-line="8" style="top: 9.45em"><!----></span><span class="line-number" data-line="9" style="top: 10.80em"><!----></span><span class="line-number" data-line="10" style="top: 12.15em"><!----></span><span class="line-number" data-line="11" style="top: 13.50em"><!----></span><span class="line-number" data-line="12" style="top: 14.85em"><!----></span><span class="line-number" data-line="13" style="top: 16.20em"><!----></span><span class="line-number" data-line="14" style="top: 17.55em"><!----></span><span class="line-number" data-line="15" style="top: 18.90em"><!----></span><span class="line-number" data-line="16" style="top: 20.25em"><!----></span><span class="line-number" data-line="17" style="top: 21.60em"><!----></span><span class="line-number" data-line="18" style="top: 22.95em"><!----></span><span class="line-number" data-line="19" style="top: 24.30em"><!----></span><span class="line-number" data-line="20" style="top: 25.65em"><!----></span><span class="line-number" data-line="21" style="top: 27.00em"><!----></span><span class="line-number" data-line="22" style="top: 28.35em"><!----></span><span class="line-number" data-line="23" style="top: 29.70em"><!----></span><span class="line-number" data-line="24" style="top: 31.05em"><!----></span><span class="line-number" data-line="25" style="top: 32.40em"><!----></span><span class="line-number" data-line="26" style="top: 33.75em"><!----></span><span class="line-number" data-line="27" style="top: 35.10em"><!----></span></code></pre></div>
+rename(<span class="dt">ARGV</span>)</code></pre></div>
 <p>You might ask why I used ruby (littered with bash) when it's obviously a job for bash or perl. Well, the reason is that I first wrote this thing in ruby as a <a href="https://gist.github.com/zmwangx/d6406fb8bf51ac768770">Dropzone 3 action</a>. I'm lazy, so I just borrowed that script and modified its printout for shell use.</p>
 <hr/>
 <p>By the way, I also found a project called <code>cv</code> (Coreutils Viewer), which is <a href="https://github.com/Xfennec/cv">officially described as</a></p>
@@ -119,7 +82,7 @@ rename(<span class="dt">ARGV</span>)<span class="line-number" data-line="1" styl
 <hr class="content-separator"/>
 <footer class="footer">
 <span class="rfooter">
-<a class="rss-icon fa fa-rss fa-flip-horizontal" href="/rss.xml" target="_blank" title="RSS feed"><!--RSS feed icon--></a><a class="atom-icon fa fa-rss" href="/atom.xml" target="_blank" title="Atom feed"><!--Atom feed icon--></a><a class="cc-icon fa fa-creative-commons" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license."><!--CC icon--></a>
+<a class="rss-icon" href="/rss.xml" target="_blank" title="RSS feed"><!--RSS feed icon--></a><a class="atom-icon" href="/atom.xml" target="_blank" title="Atom feed"><!--Atom feed icon--></a><a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license."><!--CC icon--></a>
 <a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
 </span>
 </footer>
