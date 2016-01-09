@@ -1,0 +1,8 @@
+# Items in this exclude list and their descendants won't be copied to
+# deployment directory. Note that files starting with dot are automatically
+# excluded (but not directories starting with dot).
+#
+# No negation or globbing (yet).
+
+template.html
+fonts/fontello/
