@@ -39,28 +39,31 @@ only screen and ( min-resolution: 1.25dppx) {
 .nav-icon:before {
     content: "ZW";
     display: inline-block;
-    font-family: "Open Sans";
-    font-size: 36px;
+    position: relative;
+    top: 1px;
+    left: 1px;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 35px;
     font-weight: normal;
+    letter-spacing: 2px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #fff;
-    /* stretch to mimic Helvetica Neue */
-    transform: scale(1,0.9);
-    -webkit-transform: scale(1,0.9);
-    -moz-transform: scale(1,0.9);
-    -ms-transform: scale(1,0.9);
-    -o-transform: scale(1,0.9);
+    transform: scale(1,0.95);
+    -webkit-transform: scale(1,0.95);
+    -moz-transform: scale(1,0.95);
+    -ms-transform: scale(1,0.95);
+    -o-transform: scale(1,0.95);
 }
 
 .nav-title {
-    font-size: 16px;
+    font-size: 17px;
     font-weight: bold;
-    margin: 1px 0;
+    margin: 2px 0 1px 0;
 }
 
 .nav-author {
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .nav-link {
