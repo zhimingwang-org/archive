@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2016-01-14T01:02:52-08:00" name="date"/>
+<title>The dirtiest mistakes of OS X</title>
+<link href="/img/apple-touch-icon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/css/fonts.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-wide.css" media="only screen and (min-width: 1441px)" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-narrow.css" media="only screen and (max-width: 1023px)" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-ultranarrow.css" media="only screen and (max-width: 500px)" rel="stylesheet" type="text/css"/>
+<link href="/css/print.css" media="print" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<nav class="nav">
+<a class="nav-icon" href="/" title="Home"><!--blog icon--></a>
+<div class="nav-title"><a class="nav-link" href="/">dl? cmplnts?</a></div>
+<div class="nav-author">by <a class="nav-link" href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</nav>
+<article class="content">
+<header class="article-header">
+<h1 class="article-title">The dirtiest mistakes of OS X</h1>
+<div class="article-metadata">
+<time class="article-timestamp" datetime="2016-01-14T01:02:52-08:00">January 14, 2016,</time>
+          by <span class="article-author">Zhiming Wang</span>
+</div>
+</header>
+<p>I must have written about this elsewhere, but here are my top three:</p>
+<ol style="list-style-type: decimal">
+<li><p><code>.DS_Store</code>. Finder litters faster than one could clean up.</p></li>
+<li><p>HFS+ NFD*.<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a> Heard of the cursed encoding <code>UTF8-MAC</code>? Pure Evil. Culprit of tons of garbled text issues (especially cross platform ones) and probably most length miscalculation issues. Even Apple's Terminal.app can't do NFD right. I wonder how Korean users navigate their filesystems in terminal.</p></li>
+<li><p>Plist XML. It's XML, but even worse.</p></li>
+</ol>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>NFD with an asterisk, i.e., not even NFD. According to Apple in <a href="https://developer.apple.com/library/mac/qa/qa1173/_index.html">an old Technical Q&amp;A</a>,</p>
+<blockquote>
+<p>The terms used in this Q&amp;A, precomposed and decomposed, roughly correspond to Unicode Normal Forms C and D, respectively. However, most volume formats do not follow the exact specification for these normal forms. For example, HFS Plus (Mac OS Extended) uses a variant of Normal Form D in which U+2000 through U+2FFF, U+F900 through U+FAFF, and U+2F800 through U+2FAFF are not decomposed (this avoids problems with round trip conversions from old Mac text encodings). It's likely that your volume format has similar oddities.</p>
+</blockquote>
+<p>They are conscious enough to call these oddities.<a class="footnotes-backlink" href="#fnref1">↩︎</a></p></li>
+</ol>
+</div>
+</article>
+<hr class="content-separator"/>
+<footer class="footer">
+<span class="rfooter">
+<a class="rss-icon" href="/rss.xml" target="_blank" title="RSS feed"><!--RSS feed icon--></a><a class="atom-icon" href="/atom.xml" target="_blank" title="Atom feed"><!--Atom feed icon--></a><a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license."><!--CC icon--></a>
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</span>
+</footer>
+</body>
+</html>
