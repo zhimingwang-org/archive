@@ -113,21 +113,16 @@ a {
 }
 
 code {
-    font-size: 14px;
+    font-size: 90%;
     color: #333;
     font-family: Courier, monospace;
     white-space: pre-wrap;
     word-wrap: break-word;
 }
 
-h1 code {
-    font-size: 23px;
+h1 code, h2 code {
+    font-size: 95%;
     color: #000;
-}
-
-h2 code {
-    font-size: 18px;
-    color: #000
 }
 
 pre {
@@ -143,7 +138,7 @@ pre[class*=sourceCode] {
 }
 
 pre code {
-    font-size: 13px;
+    font-size: 85%;
     color: #000;
     white-space: pre;
     word-wrap: normal;
@@ -178,10 +173,6 @@ img {
     font-size: 90%;
 }
 
-.figure .caption code {
-    font-size: 13px;
-}
-
 sup {
     font-size: 11px;
     margin: 0 0 0 1px;
@@ -205,10 +196,6 @@ noscript a {
 
 .footnotes p {
     margin: 0.6em 0;
-}
-
-.footnotes code {
-    font-size: 13px;
 }
 
 .footnotes-backlink {

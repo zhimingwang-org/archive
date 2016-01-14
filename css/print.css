@@ -1,6 +1,10 @@
 body {
     margin: 5% 0;
-    font-size: 7.936pt;
+    font-size: 12px;
+}
+
+pre {
+    -webkit-print-color-adjust: exact;
 }
 
 .content, .content-separator, .footer {
