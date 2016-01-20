@@ -11,3 +11,7 @@ Me-too comments under bug reports are the most untolerable. If you have more det
 Me-too comments under feature requests are more understandable, though I genuinely doubt that two or three people requesting a feature instead of one would make a big difference. After all, the issue tracker is not a feature voting platform; most folks understand this and behave themselves, so "me-too demand" isn't even remotely accurate at reflecting demand.
 
 Me-too folks: please stop being childish. If you have nothing to add, don't add anything (unless otherwise requested).
+
+---
+
+**01/20/2015 Update.** I came accross [dear-githuub/dear-github](https://github.com/dear-github/dear-github) just now, whose [open letter](https://github.com/dear-github/dear-github/blob/bc7a4f6bc78445905751061bf96f731edda14c25/README.md) also places +1 comments on its list of biggest problems (current count is three) on GitHub.
