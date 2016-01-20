@@ -14,4 +14,4 @@ Me-too folks: please stop being childish. If you have nothing to add, don't add 
 
 ---
 
-**01/20/2015 Update.** I came accross [dear-githuub/dear-github](https://github.com/dear-github/dear-github) just now, whose [open letter](https://github.com/dear-github/dear-github/blob/bc7a4f6bc78445905751061bf96f731edda14c25/README.md) also places +1 comments on its list of biggest problems (current count is three) on GitHub.
+**01/20/2015 Update.** I came accross [dear-githuub/dear-github](https://github.com/dear-github/dear-github) just now, which was started a mere six days ago, and the [open letter](https://github.com/dear-github/dear-github/blob/bc7a4f6bc78445905751061bf96f731edda14c25/README.md) of which also places +1 comments on its list of biggest problems on GitHub.
