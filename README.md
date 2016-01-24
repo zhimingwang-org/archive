@@ -22,7 +22,7 @@ Self-hosted Google Web Fonts are downloaded from [google-webfonts-helper](https:
 ## Markdown features of `pyblog`
 
 `pyblog` uses Pandoc for Markdown processing. The HTML template is
-located in [`templates/`](templates).
+located at [`source/template.html`](source/template.html).
 
 Beyond Pandoc's standard Markdown to HTML conversion, `pyblog`
 postprocesses Pandoc-generated HTML to add a few Markdown extensions and
