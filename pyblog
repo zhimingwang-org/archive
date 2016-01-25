@@ -1007,10 +1007,11 @@ def deploy(args):
                          "to the source branch, since the SHA and title "
                          "of the latest commit on the source branch will be "
                          "incorporated into the commit message on "
-                         "the deployment branch.\n")
+                         "the deployment branch. Type s[hell] on the "
+                         "next prompt to open an interactive shell.\n")
         sys.stderr.write(RESET)
         while True:
-            sys.stderr.write("Continue? [yN] ")
+            sys.stderr.write("Continue? [yNs] ")
             answer = input()
             if not answer:
                 # default
@@ -1022,6 +1023,15 @@ def deploy(args):
             elif answer.startswith(('n', 'N')):
                 abort = True
                 break
+            elif answer.startswith(('s', 'S')):
+                shell = (os.environ['SHELL'] if 'SHELL' in os.environ and os.environ['SHELL']
+                         else 'zsh')
+                subprocess.call(shell)
+                stilldirty = subprocess.check_output(["git", "status", "--porcelain"])
+                if stilldirty:
+                    sys.stderr.write(YELLOW)
+                    sys.stderr.write("Project root is still dirty.\n")
+                    sys.stderr.write(RESET)
             else:
                 sys.stderr.write("Please answer yes or no.\n")
         if abort:
