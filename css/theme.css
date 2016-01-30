@@ -166,10 +166,18 @@ img {
     margin: 5px auto;
 }
 
+.figure {
+    text-align: center;
+}
+
+.figure img {
+    display: inline;
+    margin: 0 0 5px 0;
+}
+
 .figure .caption {
     width: 80%;
     margin: auto;
-    text-align: center;
     font-size: 90%;
 }
 
