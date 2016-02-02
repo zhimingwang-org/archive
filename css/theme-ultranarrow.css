@@ -1,3 +1,11 @@
 .content, .content-separator, .footer {
     width: 90%;
 }
+
+.blog-index-yearly-index {
+    margin-left: 0;
+}
+
+.blog-index-post-date {
+    width: 4em;
+}
