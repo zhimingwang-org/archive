@@ -390,7 +390,8 @@ def generate_sitemap(feed):
     sitemap.append(make_sitemap_url_element(BLOG_HOME, feed.updated, "daily", 1.0))
     # other top level pages
     for name in os.listdir(BUILDDIR):
-        if not name.endswith(".html") or name == "index.html":
+        if (not name.endswith(".html") or name == "index.html" or
+            re.match("google[a-z0-9]+\.html", name)):  # exclude Google's site ownership verification file
             continue
         link = urllib.parse.urljoin(BLOG_HOME, name)
         fullpath = os.path.join(BUILDDIR, name)
@@ -760,21 +761,20 @@ def generate_blog(fresh=False, report_total_errors=True):
     if exclude_list is None:
         try:
             with open(EXCLUDELIST) as fp:
-                exclude_list = [line.rstrip() for line in list(fp)
+                exclude_list = [os.path.abspath(os.path.join(SOURCEDIR, line.rstrip()))
+                                for line in list(fp)
                                 if line.strip() != "" and not line.startswith('#')]
         except OSError:
             exclude_list = []
         generate_blog.exclude_list = exclude_list  # assign to static variable for the future
 
     for root, dirs, files in os.walk(SOURCEDIR):
-        relroot = os.path.relpath(root, start=SOURCEDIR)
-
-        # If relroot is in exclude list, skip all files and remove all subdirs from traversal list.
-        # os.path.join(relroot, "") is basically the path with a slash.
-        if relroot in exclude_list or os.path.join(relroot, "") in exclude_list:
+        # If root is in exclude list, skip all files and remove all subdirs from traversal list.
+        if root in exclude_list:
             dirs[:] = []
             continue
 
+        relroot = os.path.relpath(root, start=SOURCEDIR)
         dstroot = os.path.join(BUILDDIR, relroot)
         if not os.path.isdir(dstroot):
             if os.path.exists(dstroot):
@@ -782,8 +782,9 @@ def generate_blog(fresh=False, report_total_errors=True):
             os.mkdir(dstroot, mode=0o755)
 
         for name in files:
-            if name.startswith('.') or os.path.join(relroot, name) in exclude_list:
+            if name.startswith('.') or os.path.join(root, name) in exclude_list:
                 continue
+
             extension = name.split(".")[-1]
             if extension not in ["css", "jpg", "md", "png", "svg", "ico", "txt",
                                  "eot", "ttf", "woff", "woff2"]:
