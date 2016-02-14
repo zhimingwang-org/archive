@@ -786,7 +786,7 @@ def generate_blog(fresh=False, report_total_errors=True):
                 continue
 
             extension = name.split(".")[-1]
-            if extension not in ["css", "jpg", "md", "png", "svg", "ico", "txt",
+            if extension not in ["css", "html", "jpg", "md", "png", "svg", "ico", "txt",
                                  "eot", "ttf", "woff", "woff2"]:
                 continue
 
@@ -803,7 +803,7 @@ def generate_blog(fresh=False, report_total_errors=True):
                 anything_modified = True
                 if srcpath == INDEXMD:
                     continue # index will be processed separately
-                if extension in ["css", "jpg", "png", "svg", "ico", "txt",
+                if extension in ["css", "html", "jpg", "png", "svg", "ico", "txt",
                                  "eot", "ttf", "woff", "woff2"]:
                     sys.stderr.write("copying %s\n" % relpath)
                     shutil.copy(srcpath, dstpath)
