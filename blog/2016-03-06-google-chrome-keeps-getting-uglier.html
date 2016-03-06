@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2016-03-06T14:59:45-08:00" name="date"/>
+<title>Google Chrome keeps getting uglier</title>
+<link href="/img/apple-touch-icon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/css/fonts.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-wide.css" media="only screen and (min-width: 1441px)" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-narrow.css" media="only screen and (max-width: 1023px)" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-ultranarrow.css" media="only screen and (max-width: 500px)" rel="stylesheet" type="text/css"/>
+<link href="/css/print.css" media="print" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<nav class="nav">
+<a class="nav-icon" href="/" title="Home"><!--blog icon--></a>
+<div class="nav-title"><a class="nav-link" href="/">dl? cmplnts?</a></div>
+<div class="nav-author">by <a class="nav-link" href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</nav>
+<article class="content">
+<header class="article-header">
+<h1 class="article-title">Google Chrome keeps getting uglier</h1>
+<div class="article-metadata">
+<time class="article-timestamp" datetime="2016-03-06T14:59:45-08:00">March 6, 2016,</time>
+          by <span class="article-author">Zhiming Wang</span>
+</div>
+</header>
+<p>I hate to say this, but the Google Chrome team keeps making poor design decisions to make it more and more ugly. I still remember the sad day when the kind of cool wrench button gave way to the utterly boring hamburger one. I also remember the sad day when the omnibox dropdown <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=276746">pointlessly went full width</a> (after more than two years, I still fail to see how it makes any sense, although my eyes have long grown used to it).<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a> And I'm sure there are other stupid changes that I can't name at the moment.</p>
+<p>Unfortunately, they just won't stop. <a href="http://googlechromereleases.blogspot.com/2016/03/stable-channel-update.html">Four days ago</a> stable 49.0.2623.75 came out with a flurry of horrible visual changes.</p>
+<ol style="list-style-type: decimal">
+<li><p>The icon. For whatever reason I have the impression that I might have seen this a while ago, but let's just pretend it's brand new. The new app icon is the most outrageously flat icon I've even seen. Compare it to that of 48.0.2564.103<a class="footnoteRef" href="#fn2" id="fnref2"><sup>2</sup></a>:</p>
+<div class="figure">
+<a href="/img/20160306-chrome-mac-48.0.2564.103-49.0.2623.75-icons-side-by-side.png" target="_blank"><img alt="Old and new app icons side by side. To the left, the 48.0.2564.103 icon; to the right, the 49.0.2623.75 icon." src="/img/20160306-chrome-mac-48.0.2564.103-49.0.2623.75-icons-side-by-side.png" width="512"/></a>
+<p class="caption">Old and new app icons side by side. To the left, <a href="/img/20160306-chrome-mac-48.0.2564.103-icon.png">the 48.0.2564.103 icon</a>; to the right, <a href="/img/20160306-chrome-mac-49.0.2623.75-icon.png">the 49.0.2623.75 icon</a>.</p>
+</div>
+<p>And let's see them in action:</p>
+<div class="figure">
+<a href="/img/20160306-chrome-mac-48.0.2564.103-49.0.2623.75-icons-side-by-side-in-dock.png" target="_blank"><img alt="Both icons in the dock, old one the left and new one on the right." src="/img/20160306-chrome-mac-48.0.2564.103-49.0.2623.75-icons-side-by-side-in-dock.png" width="560"/></a>
+<p class="caption">Both icons in the dock, old one the left and new one on the right.</p>
+</div>
+<p>Apart from flatness (lack of any gloss found in almost all Apple icons, however flattened they are), see how the new icon is notably larger than the old one, and any other circular icons for that matter. Apparently, consistency and guidelines mean nothing to them.</p>
+<p>I wonder why they made this change. Maybe for material design? I certainly don't want to see my Mac infested by material design, thank you. And maybe to keep the icon in line with their new Google branding? Indeed, just like <a href="https://web.archive.org/web/20160306221914/https://g-design.storage.googleapis.com/production/v5/assets/g-logo.png">the new Google logo</a> which did away with serifs, this one has no depth at all and is very childish.</p>
+<p>It's a shame I can't just throw this icon out of my dock. Looks like in addition to iTunes now I have yet another icon to replace following each update, except this one updates much more often, and almost silently.</p></li>
+<li><p>Downloads. I almost thought I was hacked when I opened the Downloads tab and saw</p>
+<div class="figure">
+<a href="/img/20160306-chrome-mac-49.0.2623.75-downloads.png" target="_blank"><img alt="Downloads in 49.0.2623.75." src="/img/20160306-chrome-mac-49.0.2623.75-downloads.png" width="848"/></a>
+<p class="caption">Downloads in 49.0.2623.75.</p>
+</div>
+<p>instead of a nice and clean</p>
+<div class="figure">
+<a href="/img/20160306-chrome-mac-48.0.2564.103-downloads.png" target="_blank"><img alt="Downloads in 48.0.2564.103." src="/img/20160306-chrome-mac-48.0.2564.103-downloads.png" width="728"/></a>
+<p class="caption">Downloads in 48.0.2564.103.</p>
+</div>
+<p>Materail design infestation, apparently. Funny how they managed to convey less info in a LOT more space, and look horrible at the same time. At least they can choose a pleasant color palette if they want to use color (which is totally unnecessary as seen from the old design)? No, they can't.</p></li>
+<li><p>Incognito mode. There's a reason why books are printed on light-colored paper, and there's a reason why the web is predominantly light-backgrounded, including user agent default style sheets. The old incognito follows the light background rule, plus a non-intrusive notice in the middle and a reasonably shaded tab bar to indicate incognito status:</p>
+<div class="figure">
+<a href="/img/20160306-chrome-mac-48.0.2564.103-incognito.png" target="_blank"><img alt="Incognito window in 48.0.2564.103." src="/img/20160306-chrome-mac-48.0.2564.103-incognito.png" width="893"/></a>
+<p class="caption">Incognito window in 48.0.2564.103.</p>
+</div>
+<p>But not anymore. Since those of you using Incognito mode must be conducting shady business, why not highlight that with a black background:</p>
+<div class="figure">
+<a href="/img/20160306-chrome-mac-49.0.2623.75-incognito.png" target="_blank"><img alt="Incognito window in 49.0.2623.75. Even more shocking if you maximize your browser windows." src="/img/20160306-chrome-mac-49.0.2623.75-incognito.png" width="625"/></a>
+<p class="caption">Incognito window in 49.0.2623.75. Even more shocking if you maximize your browser windows.</p>
+</div>
+<p>Oh. My. God. Now I hesitate whenever I want to press ⇧⌘N; it's just too great a cultural shock for me to handle.</p></li>
+</ol>
+<p>Those are just three changes I've discovered so far. Hopefully there are no more lurking surprises.</p>
+<p>Conclusion? Sigh.</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>Dev left a <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=276746#c28">comment</a> when marking that issue as wont fix:</p>
+<blockquote>
+<p>... The current look is a precursor to a family of related work to make the Omnibox better, so expect to see more investment in this space to come. ...</p>
+</blockquote>
+<p>A family of related work? After 2.5 years the omnibox looks almost exactly the same as the screenshot in the issue. More to come my ass. Maybe I should be grateful, at least it didn't get worse.<a class="footnotes-backlink" href="#fnref1">↩︎</a></p></li>
+<li id="fn2"><p>I realized the last stable was 48.0.2564.109 instead of 48.0.2564.103 only after taking the screenshots. Doesn't matter anyway.<a class="footnotes-backlink" href="#fnref2">↩︎</a></p></li>
+</ol>
+</div>
+</article>
+<hr class="content-separator"/>
+<footer class="footer">
+<span class="rfooter">
+<a class="rss-icon" href="/rss.xml" target="_blank" title="RSS feed"><!--RSS feed icon--></a><a class="atom-icon" href="/atom.xml" target="_blank" title="Atom feed"><!--Atom feed icon--></a><a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license."><!--CC icon--></a>
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</span>
+</footer>
+</body>
+</html>
