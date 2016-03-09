@@ -46,6 +46,10 @@ Those are just three changes I've discovered so far. Hopefully there are no more
 
 Conclusion? Sigh.
 
+---
+
+**03/09/2016 update**. They also broke showing/hiding extension buttons (from toolbar) recently, probably in the same update. We used to be able to reshow a hidden button from `chrome://extensions`; that's no longer possible. Now we need to click on the hamburger (great), right click on one of the hidden buttons — which temporarily promotes the button to the toolbar and display the context menu, and while the context menu is still on, click on "Keep in Toolbar". So intuitive, your average computer users are definitely going to figure that out by themselves. Very nice.
+
 
 [^103]: I realized the last stable was 48.0.2564.109 instead of 48.0.2564.103 only after taking the screenshots. Doesn't matter anyway.
 
