@@ -28,8 +28,7 @@
 <header class="article-header">
 <h1 class="article-title">Upgrading to El Capitan</h1>
 <div class="article-metadata">
-<time class="article-timestamp" datetime="2015-10-01T11:46:44-07:00">October 1, 2015,</time>
-          by <span class="article-author">Zhiming Wang</span>
+<time class="article-timestamp" datetime="2015-10-01T11:46:44-07:00">October 1, 2015</time>, by <span class="article-author">Zhiming Wang</span>
 </div>
 </header>
 <p>I upgraded to El Capitan last night, and the experience is pretty painless. To be accurate, I'm not really upgrading in place — I always perform a clean install for each major OS upgrade to avoid subtle breakage later on. Therefore, what I did instead was to <code>rsync</code> out all my valuable data and state information<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a> to an external drive, wipe the internal drive clean, install new OS from scratch, then <code>rsync</code> everything back in. <code>rsync</code> is really good at this stuff (I affectionately alias <code>rsync -avP</code> to <code>r</code> during transfers in and out), and it is simply amazing at dropping the right stuff at the right place, including data deep down <code>~/Library/Containers</code>, without interfering with the existing structures<a class="footnoteRef" href="#fn2" id="fnref2"><sup>2</sup></a>. With data and state info ready, reinstalling programs is also easy, thanks to my recently finished <a href="/blog/2015-08-25-automated-os-x-provisioning.html">automated provisioning system</a>. It was the first time I used it outside a VM to provision an OS from almost scratch, and I'm really happy with it.</p>

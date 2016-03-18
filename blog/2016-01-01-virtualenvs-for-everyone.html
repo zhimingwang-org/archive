@@ -29,8 +29,7 @@
 <header class="article-header">
 <h1 class="article-title">Virtualenvs for everyone</h1>
 <div class="article-metadata">
-<time class="article-timestamp" datetime="2016-01-01T22:21:14-08:00">January 1, 2016,</time>
-          by <span class="article-author">Zhiming Wang</span>
+<time class="article-timestamp" datetime="2016-01-01T22:21:14-08:00">January 1, 2016</time>, by <span class="article-author">Zhiming Wang</span>
 </div>
 </header>
 <p>Python distutils for the most part is rather pleasant to work with. That is, pleasant until you've accumulated so many packages that you eventually run into a clash of namespace, or a dependency conflict (or dependency hell as most would affectionately call it).<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a> In contrast, npm's approach to dependencies shuts out dependency hell completely, but it is so paranoid and costs so much duplication that I find it hard to appreciate unless necessary. Somewhere in between there's the virtualenv approach which I find most appealing for smallish projects — keep a single copy of each package in the dependency tree in a contained environment specific to the project at hand. This is how we debug Python projects, and it certainly also should be <em>the</em> way we run command line tools written in Python.</p>
