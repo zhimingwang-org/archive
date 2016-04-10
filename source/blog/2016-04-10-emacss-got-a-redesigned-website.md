@@ -4,7 +4,7 @@ date: 2016-04-10T03:04:19-07:00
 date_display: April 10, 2016
 ---
 
-I've been very busy lately, so I haven't posted anything for a month. As a result, I have many topic notes sitting in Notes.app — including the kik-left-pad-npm drama, the Text Expander outcry, and such — waiting to be organized and written up (I'll probably never write them up in the end, since these days it's very weird to write online about an event whose attention span has already lapsed).
+I've been very busy lately, so I haven't posted anything for a month. As a result, I have many topic notes sitting in Notes.app — including the kik-left-pad-npm drama, the Text Expander outcry, and such — waiting to be organized and written up (I'll probably never write them up in the end, since these days it's very weird to write an opinion piece about an event whose attention span has already lapsed).
 
 Anyway, this will be a short post about Emacs's [redesigned website](https://gnu.org/software/emacs/). See screenshot at the end. Apparently this was [last week's news](https://twitter.com/NicolasPetton/status/714854524108800000), but there's little interest in Emacs in general, so the news only reached me two days ago, sort of by chance.
 
