@@ -126,6 +126,7 @@ h1 code, h2 code {
 }
 
 pre {
+    overflow-x: scroll;
     padding: 1em;
     background: #fbfbfb;
     border-left: 0.4em solid #ddd;
