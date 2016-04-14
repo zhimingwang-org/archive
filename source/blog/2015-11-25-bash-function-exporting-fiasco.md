@@ -34,8 +34,10 @@ That's surprising but not scary enough, because if you're not a fool you won't c
     /bin/sh: func: line 0: `func () {  cat <(echo hello)'
     /bin/sh: error importing function definition for `func'
 
-Note that we're actively doing nothing in `sh`, yet we get all these syntax errors from loading `func`. This happens to every invocation of `sh`, and as you might expect, there are no shortage of programs that are either `sh` scripts (e.g., fasd) or have internal `sh` calls (e.g., GNU Parallel). A single export of a Bourn shell incompatible function will haunt you through the entire session. Oops.
+Note that we're actively doing nothing in `sh`, yet we get all these syntax errors from loading `func`. This happens to every invocation of `sh`, and as you might expect, there are no shortage of programs that are either `sh` scripts (e.g., fasd) or have internal `sh` calls (e.g., GNU Parallel[^parallel]). A single export of a Bourn shell incompatible function will haunt you through the entire session. Oops.
 
 As I said, I don't know if the displayed error messages are due to Apple's modifications (anyone willing to look at the [source code](https://opensource.apple.com/source/bash/bash-97/)?), since a symlink named `sh` to `/bin/bash` doesn't print error messages, but instead load the wrong function, which is almost as bad but less annoying to innocent users. At any rate, it's not even worth reporting, either to GNU or Apple, because we're stuck with bash 3.2 for `/bin/sh` forever (thank you GPLv3), and it takes a hell of a vulnerability like shellshock to get a small update out of Apple's hands. We can install newer shells to `/usr/local` as much as we'd like to, but `/bin/sh` is simply the final word for many tasks involving the shell. Yet it's stained by this troubled bash-specific feature, and it's not going anywhere. So sad.
 
 [^lisp]: I'm not commenting on the security of Lisp.
+
+[^parallel]: **04/14/2015 Update.** GNU Parallel is no longer haunted by this issue since [`3d919c6`](http://git.savannah.gnu.org/cgit/parallel.git/commit/?id=3d919c6cd427e9615f56f260eb959a44d5d32c18).
