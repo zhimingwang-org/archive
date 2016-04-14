@@ -51,12 +51,13 @@ cat: &lt;(echo hello): No such file or directory</code></pre>
 /bin/sh: func: line 0: syntax error near unexpected token `('
 /bin/sh: func: line 0: `func () {  cat &lt;(echo hello)'
 /bin/sh: error importing function definition for `func'</code></pre>
-<p>Note that we're actively doing nothing in <code>sh</code>, yet we get all these syntax errors from loading <code>func</code>. This happens to every invocation of <code>sh</code>, and as you might expect, there are no shortage of programs that are either <code>sh</code> scripts (e.g., fasd) or have internal <code>sh</code> calls (e.g., GNU Parallel). A single export of a Bourn shell incompatible function will haunt you through the entire session. Oops.</p>
+<p>Note that we're actively doing nothing in <code>sh</code>, yet we get all these syntax errors from loading <code>func</code>. This happens to every invocation of <code>sh</code>, and as you might expect, there are no shortage of programs that are either <code>sh</code> scripts (e.g., fasd) or have internal <code>sh</code> calls (e.g., GNU Parallel<a class="footnoteRef" href="#fn2" id="fnref2"><sup>2</sup></a>). A single export of a Bourn shell incompatible function will haunt you through the entire session. Oops.</p>
 <p>As I said, I don't know if the displayed error messages are due to Apple's modifications (anyone willing to look at the <a href="https://opensource.apple.com/source/bash/bash-97/">source code</a>?), since a symlink named <code>sh</code> to <code>/bin/bash</code> doesn't print error messages, but instead load the wrong function, which is almost as bad but less annoying to innocent users. At any rate, it's not even worth reporting, either to GNU or Apple, because we're stuck with bash 3.2 for <code>/bin/sh</code> forever (thank you GPLv3), and it takes a hell of a vulnerability like shellshock to get a small update out of Apple's hands. We can install newer shells to <code>/usr/local</code> as much as we'd like to, but <code>/bin/sh</code> is simply the final word for many tasks involving the shell. Yet it's stained by this troubled bash-specific feature, and it's not going anywhere. So sad.</p>
 <div class="footnotes">
 <hr/>
 <ol>
 <li id="fn1"><p>I'm not commenting on the security of Lisp.<a class="footnotes-backlink" href="#fnref1">↩︎</a></p></li>
+<li id="fn2"><p><strong>04/14/2015 Update.</strong> GNU Parallel is no longer haunted by this issue since <a href="http://git.savannah.gnu.org/cgit/parallel.git/commit/?id=3d919c6cd427e9615f56f260eb959a44d5d32c18"><code>3d919c6</code></a>.<a class="footnotes-backlink" href="#fnref2">↩︎</a></p></li>
 </ol>
 </div>
 </article>
