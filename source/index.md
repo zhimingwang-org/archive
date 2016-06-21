@@ -1,7 +1,6 @@
 ---
 title: dl? cmplnts?
 ---
-## About me
 
 My name is Zhiming Wang (Simplified Chinese: 王之铭), and I am a Ph.D. student in theoretical physics at Princeton (first year as of September 2016). Previously I earned my bachelor's degree in mathematics and physics at Stanford, and I still consider myself a would-be mathematician alongside physicist. I enjoy coding in my spare time, for fun and profit — I hate repetitive tasks, so computer programs help me automate and get things done quickly.
 
