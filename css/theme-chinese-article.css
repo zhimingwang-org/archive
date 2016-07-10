@@ -1,0 +1,66 @@
+h1 {
+    font-size: 140%;
+}
+
+h2 {
+    font-size: 110%;
+}
+
+h3 {
+    font-size: 100%;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+    text-indent: 2em;
+    line-height: 1.3em;
+}
+
+blockquote {
+    margin: 1em 2em 1em 2em;
+    padding: 0;
+    border: none;
+    font-style: normal;
+}
+
+article a {
+    text-decoration: none;
+    color: #777;
+}
+
+sup {
+    margin: 0;
+}
+
+.en p, .en li {
+    text-indent: 0;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.en blockquote {
+    font-style: italic;
+}
+
+.date-tag {
+    text-align: right;
+}
+
+.poem {
+    text-align: center;
+}
+
+.undent, .footnotes p {
+    text-indent: 0;
+}
+
+.skip {
+    margin-bottom: 1em;
+}
+
+.poem p {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-indent: 0;
+}
