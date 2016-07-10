@@ -270,6 +270,12 @@ noscript a {
     font-size: 95%;
 }
 
+.hidden-link {
+    color: inherit;
+    cursor: text;
+    text-decoration: none;
+}
+
 /* blog index */
 
 .blog-index-year-title {
