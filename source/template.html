@@ -37,7 +37,12 @@ $if(subtitle)$
         <h1 class="article-subtitle">$subtitle$</h1>
 $endif$
         <div class="article-metadata">
-          $if(date_display)$<time class="article-timestamp" $if(date)$datetime="$date$"$endif$>$date_display$</time>, $endif$by <span class="article-author">Zhiming Wang</span>
+$if(author)$
+          <span class="article-author">$author$</span><br/>
+$endif$
+$if(date_display)$
+          <time class="article-timestamp" $if(date)$datetime="$date$"$endif$>$date_display$</time>
+$endif$
         </div>
       </header>
 $endif$
