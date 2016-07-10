@@ -1,6 +1,14 @@
 body {
     color: #000;
-    font-family: Times, "Times New Roman", serif;
+    font-family: Times, "Times New Roman",
+                 /* Chinese fonts */
+                 "Kaiti SC", /* macOS */
+                 KaiTi, /* Windows (simkai.ttf, not always included despite
+                           https://www.microsoft.com/typography/fonts/product.aspx?PID=161
+                           https://www.microsoft.com/typography/fonts/product.aspx?PID=164) */
+                 "Microsoft YaHei", /* Windows */
+                 "Heiti SC", /* iOS */
+                 serif;
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
     margin: 100px 0;
