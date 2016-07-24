@@ -1,5 +1,21 @@
 ---
 title: dl? cmplnts?
+custom-css: "
+    .blog-index-year-title {
+        text-align: left;
+    }
+
+    .blog-index-yearly-index {
+        margin-left: 1em;
+    }
+
+    .blog-index td {
+        vertical-align: top;
+    }
+
+    .blog-index-post-date {
+        width: 5em;
+    }"
 ---
 
 My name is Zhiming Wang (Simplified Chinese: 王之铭), and I am a Ph.D. student in high energy theory at Princeton Physics (first year as of September 2016). Previously I earned my bachelor's degree in mathematics and physics at Stanford. I enjoy coding in my spare time, for fun and profit — I hate repetitive tasks, so computer programs help me automate and get things done quickly.

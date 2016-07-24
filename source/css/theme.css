@@ -269,27 +269,3 @@ noscript a {
     font-family: fontello;
     font-size: 95%;
 }
-
-.hidden-link {
-    color: inherit;
-    cursor: text;
-    text-decoration: none;
-}
-
-/* blog index */
-
-.blog-index-year-title {
-    text-align: left;
-}
-
-.blog-index-yearly-index {
-    margin-left: 1em;
-}
-
-.blog-index td {
-    vertical-align: top;
-}
-
-.blog-index-post-date {
-    width: 5em;
-}
