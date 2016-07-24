@@ -28,6 +28,9 @@ $endif$
 $if(chinese_article)$
     <link href="/css/print-chinese-article.css" media="print" rel="stylesheet" type="text/css"/>
 $endif$
+$if(custom-css)$
+    <style type="text/css">$custom-css$</style>
+$endif$
   </head>
   <body>
     <nav class="nav">
