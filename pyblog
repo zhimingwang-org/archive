@@ -39,7 +39,8 @@ import lxml.etree as ET
 
 ############################# BLOG CONFIGURATIONS ##############################
 # Safe to customize
-BLOG_HOME = "http://zmwangx.github.io/"
+BLOG_HOME = "http://zhimingwang.org/"
+CUSTOM_DOMAIN = "zhimingwang.org"  # GitHub Pages custom domain (could be None)
 BLOG_TITLE = "dl? cmplnts?"
 BLOG_DESCRIPTION = "Zhiming Wang's personal blog"
 LANGUAGE = "en-us"
@@ -750,6 +751,10 @@ def generate_blog(fresh=False, report_total_errors=True):
     if not os.path.exists(os.path.join(BUILDDIR, ".nojekyll")):
         with open(os.path.join(BUILDDIR, ".nojekyll"), "w") as fileobj:
             pass
+
+    if CUSTOM_DOMAIN and not os.path.exists(os.path.join(BUILDDIR, "CNAME")):
+        with open(os.path.join(BUILDDIR, "CNAME"), "w") as fileobj:
+            fileobj.write(CUSTOM_DOMAIN)
 
     failed_builds = 0
     generator_mtime = os.path.getmtime(GENERATORSOURCE)
