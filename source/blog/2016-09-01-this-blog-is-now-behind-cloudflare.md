@@ -15,3 +15,5 @@ After careful evaluation, I decided that CloudFlare's SSL model is good enough f
 End result: this blog is now behind CloudFlare. Readers should now see that green HTTPS badge again (note that I'm enforcing HTTPS — without HSTS though). As for CAPTCHAs, I have adjusted the firewall settings on CloudFlare's dashboard — "Security Level" to "Essentially Off" and "Challenge Passage" to 1 year, so hopefully it won't be too annoying.[^tor]
 
 [^tor]: I don't use Tor, and don't intend to raise Big Brother's suspicion by using it, so I have no idea of the actual Tor experience.
+
+**09/01/2016 Update.** I just realized that [CloudFlare supports whitelisting Tor traffic](https://support.cloudflare.com/hc/en-us/articles/203306930-Does-CloudFlare-block-Tor-). Did that.
