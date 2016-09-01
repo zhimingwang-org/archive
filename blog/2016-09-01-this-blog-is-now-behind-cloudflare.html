@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2016-09-01T20:11:00+08:00" name="date"/>
+<title>This blog is now behind CloudFlare</title>
+<link href="/img/apple-touch-icon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/css/fonts.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/normalize.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-wide.css" media="only screen and (min-width: 1441px)" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-narrow.css" media="only screen and (max-width: 1023px)" rel="stylesheet" type="text/css"/>
+<link href="/css/theme-ultranarrow.css" media="only screen and (max-width: 500px)" rel="stylesheet" type="text/css"/>
+<link href="/css/print.css" media="print" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<nav class="nav">
+<a class="nav-icon" href="/" title="Home"><!--blog icon--></a>
+<div class="nav-title"><a class="nav-link" href="/">dl? cmplnts?</a></div>
+<div class="nav-author">by <a class="nav-link" href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a></div>
+</nav>
+<article class="content">
+<header class="article-header">
+<h1 class="article-title">This blog is now behind CloudFlare</h1>
+<div class="article-metadata">
+<time class="article-timestamp" datetime="2016-09-01T20:11:00+08:00">September 1, 2016</time>
+</div>
+</header>
+<p>Back in July I registered the domain <a href="http://zhimingwang.org">zhimingwang.org</a> and pointed this GitHub Pages-powered blog at it. Since then I have lost the HTTPS badge due to GitHub Pages not supporting HTTPS on custom domains (see <a href="https://github.com/isaacs/github/issues/156">isaacs/github#156</a>).</p>
+<p>There have been a lot of discussions on isaacs/github#156 (and stupid <a href="/blog/2016-01-18-me-too-comments-on-github.html">+1's</a> too). Among the proposed solutions is putting the website behind CloudFlare. I carefully investigated <a href="https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/">this option</a> and read almost all the arguments against it. I fully understand CloudFlare's SSL models (summarized in the image below), and I do realize most if not all of the limitations of CloudFlare, including CloudFlare being a huge MITM (which is inevitable for a CDN anyway), as well as most if not all of its annoyances, including CAPTCHAs which I myself would occasionally run into when I'm browsing with PIA VPN, and JavaScript-based browser checks.</p>
+<div class="figure">
+<a href="/img/20160901-cloudflare-ssl-modes.png" target="_blank"><img alt="CloudFlare's SSL modes. I use the Full SSL mode so that both ends of the connection are encrypted. Again, I know CloudFlare is a big MITM and could be a high profile target. Credit: CloudFlare." src="/img/20160901-cloudflare-ssl-modes.png" width="500"/></a>
+<p class="caption">CloudFlare's SSL modes. I use the Full SSL mode so that both ends of the connection are encrypted. Again, I know CloudFlare is a big MITM and could be a high profile target. Credit: <a href="https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/">CloudFlare</a>.</p>
+</div>
+<p>After careful evaluation, I decided that CloudFlare's SSL model is good enough for me. After all, this is just a damn blog, with nothing sensitive. TLS is still nice because it guards against prying eyes and unethical ad-injecting ISPs or Wi-Fi hotspots, but other than that, it isn't necessary.</p>
+<p>End result: this blog is now behind CloudFlare. Readers should now see that green HTTPS badge again (note that I'm enforcing HTTPS — without HSTS though). As for CAPTCHAs, I have adjusted the firewall settings on CloudFlare's dashboard — "Security Level" to "Essentially Off" and "Challenge Passage" to 1 year, so hopefully it won't be too annoying.<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a></p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn1"><p>I don't use Tor, and don't intend to raise Big Brother's suspicion by using it, so I have no idea of the actual Tor experience.<a class="footnotes-backlink" href="#fnref1">↩︎</a></p></li>
+</ol>
+</div>
+</article>
+<hr class="content-separator"/>
+<footer class="footer">
+<span class="rfooter">
+<a class="rss-icon" href="/rss.xml" target="_blank" title="RSS feed"><!--RSS feed icon--></a><a class="atom-icon" href="/atom.xml" target="_blank" title="Atom feed"><!--Atom feed icon--></a><a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license."><!--CC icon--></a>
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</span>
+</footer>
+</body>
+</html>
