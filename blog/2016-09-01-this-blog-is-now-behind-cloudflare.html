@@ -39,6 +39,7 @@
 </div>
 <p>After careful evaluation, I decided that CloudFlare's SSL model is good enough for me. After all, this is just a damn blog, with nothing sensitive. TLS is still nice because it guards against prying eyes and unethical ad-injecting ISPs or Wi-Fi hotspots, but other than that, it isn't necessary.</p>
 <p>End result: this blog is now behind CloudFlare. Readers should now see that green HTTPS badge again (note that I'm enforcing HTTPS — without HSTS though). As for CAPTCHAs, I have adjusted the firewall settings on CloudFlare's dashboard — "Security Level" to "Essentially Off" and "Challenge Passage" to 1 year, so hopefully it won't be too annoying.<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a></p>
+<p><strong>09/01/2016 Update.</strong> I just realized that <a href="https://support.cloudflare.com/hc/en-us/articles/203306930-Does-CloudFlare-block-Tor-">CloudFlare supports whitelisting Tor traffic</a>. Did that.</p>
 <div class="footnotes">
 <hr/>
 <ol>
