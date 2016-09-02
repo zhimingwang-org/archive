@@ -67,14 +67,20 @@ only screen and ( min-resolution: 1.25dppx) {
     font-size: 17px;
     font-weight: bold;
     margin: 2px 0 1px 0;
+    text-decoration: none;
+}
+
+.nav-title:before {
+    content: "dl? cmplnts?";
 }
 
 .nav-author {
     font-size: 13px;
+    text-decoration: none;
 }
 
-.nav-link {
-    text-decoration: none;
+.nav-author:before {
+    content: "by Zhiming Wang";
 }
 
 .content, .content-separator, .footer {
