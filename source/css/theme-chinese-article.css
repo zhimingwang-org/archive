@@ -64,3 +64,11 @@ sup {
     margin-bottom: 1em;
     text-indent: 0;
 }
+
+@media print {
+    footer {
+        width: 0;
+        height: 0;
+        visibility: hidden;
+    }
+}
