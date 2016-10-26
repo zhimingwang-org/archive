@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="Zhiming Wang" name="author"/>
+<meta content="2016-10-26T12:16:22-04:00" name="date"/>
+<title>pyenv: compiling Python with SQLite in nonstandard location</title>
+<link href="/img/apple-touch-icon-152.png" rel="apple-touch-icon-precomposed"/>
+<meta content="#FFFFFF" name="msapplication-TileColor"/>
+<meta content="/img/favicon-144.png" name="msapplication-TileImage"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="/css/normalize.min.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/theme.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/css/highlight.css" media="all" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<nav class="nav">
+<a class="nav-icon" href="/" title="Home"><!--blog icon--></a>
+<a class="nav-title" href="/"><!--blog title--></a>
+<a class="nav-author" href="https://github.com/zmwangx" target="_blank"><!--blog author--></a>
+</nav>
+<article class="content">
+<header class="article-header">
+<h1 class="article-title">pyenv: compiling Python with SQLite in nonstandard location</h1>
+<div class="article-metadata">
+<time class="article-timestamp" datetime="2016-10-26T12:16:22-04:00">October 26, 2016</time>
+</div>
+</header>
+<p>This is a quick post sharing a workaround that I needed just now.</p>
+<p>I was trying to compile Pythons with pyenv on a RHEL 6.8 cluster. Unfortunately <code>sqlite-devel</code> is not installed and I doubt I can convince my sysadmin to install a package for me. The lack of SQLite headers resulted in Pythons without <code>_sqlite3</code> which is essential for me. Hitting at SQLite headers from Linuxbrew with <code>CPATH</code> did not help either.</p>
+<p>Digging into CPython source code, turns out that CPython only looks into <a href="https://github.com/python/cpython/blob/59fa72e34da71fb24f52251c1cc88ed3c3b14797/setup.py#L1132-L1138">a fixed set of paths</a>:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">sqlite_inc_paths <span class="op">=</span> [ <span class="st">'/usr/include'</span>,
+                     <span class="co">'/usr/include/sqlite'</span>,
+                     <span class="co">'/usr/include/sqlite3'</span>,
+                     <span class="co">'/usr/local/include'</span>,
+                     <span class="co">'/usr/local/include/sqlite'</span>,
+                     <span class="co">'/usr/local/include/sqlite3'</span>,
+                     ]
+<span class="cf">if</span> cross_compiling:
+    sqlite_inc_paths <span class="op">=</span> []</code></pre></div>
+<p>Well that's unfortunate. Luckily pyenv makes it really easy to patch Python source code; take a look at <a href="https://github.com/yyuu/pyenv/tree/master/plugins/python-build/share/python-build/patches"><code>plugins/python-build/share/python-build/patches</code></a> and you'll get the idea. Therefore, in the case of Linuxbrew'ed pyenv and SQLite, say we want to build Python 3.5.2 with SQLite support, we simply put the following patch at <code>~/.linuxbrew/opt/pyenv/plugins/python-build/share/python-build/patches/3.5.2/Python-3.5.2/linuxbrew-sqlite3.patch</code>:</p>
+<div class="sourceCode"><pre class="sourceCode diff"><code class="sourceCode diff"><span class="kw">diff --git a/setup.py b/setup.py</span>
+index 174ce72..774fd65 100644
+<span class="dt">--- a/setup.py</span>
+<span class="dt">+++ b/setup.py</span>
+<span class="dt">@@ -1108,6 +1108,7 @@ class PyBuildExt(build_ext):</span>
+                              '/usr/local/include',
+                              '/usr/local/include/sqlite',
+                              '/usr/local/include/sqlite3',
+<span class="ot">+                             os.path.expanduser('~/.linuxbrew/opt/sqlite/include/'),</span>
+                              ]
+         if cross_compiling:
+             sqlite_inc_paths = []</code></pre></div>
+<p>That's it. Now</p>
+<pre><code>$ pyenv install 3.5.2</code></pre>
+<p>and enjoy.</p>
+</article>
+<hr class="content-separator"/>
+<footer class="footer">
+<span class="rfooter">
+<a class="rss-icon" href="/rss.xml" target="_blank" title="RSS feed"><!--RSS feed icon--></a><a class="atom-icon" href="/atom.xml" target="_blank" title="Atom feed"><!--Atom feed icon--></a><a class="cc-icon" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" title="Released under the Creative Commons Attribution 4.0 International license."><!--CC icon--></a>
+<a href="https://github.com/zmwangx" target="_blank">Zhiming Wang</a>
+</span>
+</footer>
+</body>
+</html>

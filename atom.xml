@@ -1,4 +1,34 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zhimingwang.org/atom.xml" rel="self" type="application/atom+xml"/><link href="http://zhimingwang.org/" rel="alternate" type="text/html"/><updated>2016-09-02T21:54:58+08:00</updated><id>http://zhimingwang.org/</id><author><name>Zhiming Wang</name><uri>http://zhimingwang.org/</uri><email>zmwangx@gmail.com</email></author><icon>http://zhimingwang.org/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">This blog is now behind CloudFlare</title><link href="http://zhimingwang.org/blog/2016-09-01-this-blog-is-now-behind-cloudflare.html"/><updated>2016-09-01T20:11:00+08:00</updated><id>http://zhimingwang.org/blog/2016-09-01-this-blog-is-now-behind-cloudflare.html</id><author><name>Zhiming Wang</name><uri>http://zhimingwang.org/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
+<feed xmlns="http://www.w3.org/2005/Atom"><title>dl? cmplnts?</title><subtitle>Zhiming Wang's personal blog</subtitle><link href="http://zhimingwang.org/atom.xml" rel="self" type="application/atom+xml"/><link href="http://zhimingwang.org/" rel="alternate" type="text/html"/><updated>2016-10-26T12:17:02-04:00</updated><id>http://zhimingwang.org/</id><author><name>Zhiming Wang</name><uri>http://zhimingwang.org/</uri><email>zmwangx@gmail.com</email></author><icon>http://zhimingwang.org/img/icon-400.png</icon><generator uri="https://github.com/zmwangx/zmwangx.github.io">pyblog</generator><entry><title type="html">pyenv: compiling Python with SQLite in nonstandard location</title><link href="http://zhimingwang.org/blog/2016-10-26-pyenv-compiling-python-with-sqlite-in-nonstandard-location.html"/><updated>2016-10-26T12:16:22-04:00</updated><id>http://zhimingwang.org/blog/2016-10-26-pyenv-compiling-python-with-sqlite-in-nonstandard-location.html</id><author><name>Zhiming Wang</name><uri>http://zhimingwang.org/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
+
+<p>This is a quick post sharing a workaround that I needed just now.</p>
+<p>I was trying to compile Pythons with pyenv on a RHEL 6.8 cluster. Unfortunately <code>sqlite-devel</code> is not installed and I doubt I can convince my sysadmin to install a package for me. The lack of SQLite headers resulted in Pythons without <code>_sqlite3</code> which is essential for me. Hitting at SQLite headers from Linuxbrew with <code>CPATH</code> did not help either.</p>
+<p>Digging into CPython source code, turns out that CPython only looks into <a href="https://github.com/python/cpython/blob/59fa72e34da71fb24f52251c1cc88ed3c3b14797/setup.py#L1132-L1138">a fixed set of paths</a>:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">sqlite_inc_paths <span class="op">=</span> [ <span class="st">'/usr/include'</span>,
+                     <span class="co">'/usr/include/sqlite'</span>,
+                     <span class="co">'/usr/include/sqlite3'</span>,
+                     <span class="co">'/usr/local/include'</span>,
+                     <span class="co">'/usr/local/include/sqlite'</span>,
+                     <span class="co">'/usr/local/include/sqlite3'</span>,
+                     ]
+<span class="cf">if</span> cross_compiling:
+    sqlite_inc_paths <span class="op">=</span> []</code></pre></div>
+<p>Well that's unfortunate. Luckily pyenv makes it really easy to patch Python source code; take a look at <a href="https://github.com/yyuu/pyenv/tree/master/plugins/python-build/share/python-build/patches"><code>plugins/python-build/share/python-build/patches</code></a> and you'll get the idea. Therefore, in the case of Linuxbrew'ed pyenv and SQLite, say we want to build Python 3.5.2 with SQLite support, we simply put the following patch at <code>~/.linuxbrew/opt/pyenv/plugins/python-build/share/python-build/patches/3.5.2/Python-3.5.2/linuxbrew-sqlite3.patch</code>:</p>
+<div class="sourceCode"><pre class="sourceCode diff"><code class="sourceCode diff"><span class="kw">diff --git a/setup.py b/setup.py</span>
+index 174ce72..774fd65 100644
+<span class="dt">--- a/setup.py</span>
+<span class="dt">+++ b/setup.py</span>
+<span class="dt">@@ -1108,6 +1108,7 @@ class PyBuildExt(build_ext):</span>
+                              '/usr/local/include',
+                              '/usr/local/include/sqlite',
+                              '/usr/local/include/sqlite3',
+<span class="ot">+                             os.path.expanduser('~/.linuxbrew/opt/sqlite/include/'),</span>
+                              ]
+         if cross_compiling:
+             sqlite_inc_paths = []</code></pre></div>
+<p>That's it. Now</p>
+<pre><code>$ pyenv install 3.5.2</code></pre>
+<p>and enjoy.</p>
+]]></content></entry><entry><title type="html">This blog is now behind CloudFlare</title><link href="http://zhimingwang.org/blog/2016-09-01-this-blog-is-now-behind-cloudflare.html"/><updated>2016-09-01T20:11:00+08:00</updated><id>http://zhimingwang.org/blog/2016-09-01-this-blog-is-now-behind-cloudflare.html</id><author><name>Zhiming Wang</name><uri>http://zhimingwang.org/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
 
 <p>Back in July I registered the domain <a href="http://zhimingwang.org">zhimingwang.org</a> and pointed this GitHub Pages-powered blog at it. Since then I have lost the HTTPS badge due to GitHub Pages not supporting HTTPS on custom domains (see <a href="https://github.com/isaacs/github/issues/156">isaacs/github#156</a>).</p>
 <p>There have been a lot of discussions on isaacs/github#156 (and stupid <a href="http://zhimingwang.org/blog/2016-01-18-me-too-comments-on-github.html">+1's</a> too). Among the proposed solutions is putting the website behind CloudFlare. I carefully investigated <a href="https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/">this option</a> and read almost all the arguments against it. I fully understand CloudFlare's SSL models (summarized in the image below), and I do realize most if not all of the limitations of CloudFlare, including CloudFlare being a huge MITM (which is inevitable for a CDN anyway), as well as most if not all of its annoyances, including CAPTCHAs which I myself would occasionally run into when I'm browsing with PIA VPN, and JavaScript-based browser checks.</p>
@@ -531,22 +561,6 @@ cat: &lt;(echo hello): No such file or directory</code></pre>
 <hr/>
 <ol>
 <li id="fn1"><p>To be fair, typing BBCode is even worse. Unfortunately that's what Ars Technica use, and I've given up on commenting there.<a class="footnotes-backlink" href="http://zhimingwang.org/blog/2015-11-15-we-need-a-programming-keyboard-on-ios.html#fnref1">&#8617;&#65038;</a></p></li>
-</ol>
-</div>
-]]></content></entry><entry><title type="html">Microsoft drops unlimited OneDrive storage after people use it for unlimited storage</title><link href="http://zhimingwang.org/blog/2015-11-06-microsoft-drops-unlimited-onedrive-storage-after-people-use-it-for-unlimited-storage.html"/><updated>2015-11-06T10:49:51-08:00</updated><id>http://zhimingwang.org/blog/2015-11-06-microsoft-drops-unlimited-onedrive-storage-after-people-use-it-for-unlimited-storage.html</id><author><name>Zhiming Wang</name><uri>http://zhimingwang.org/</uri><email>zmwangx@gmail.com</email></author><content type="html"><![CDATA[
-
-<p><a href="http://arstechnica.com/information-technology/2015/11/microsoft-drops-unlimited-onedrive-storage-after-people-use-it-for-unlimited-storage/">Story on Ars Technica</a>. <a href="https://blog.onedrive.com/onedrive_changes/">Official announcement</a>. I was playing catch up on this week's RSS when this one punched in my face.</p>
-<p>I currently have 5 TB of data in OneDrive. I was once worried about lock-in when I eventually have 20 or 100 TB there, but now that they have shown their true colors, the worries are all gone. They are not even offering anything past 1 TB. We have seen this too many times &#8212; shit happens when people actually use unlimited for unlimited. Usually unlimited quickly becomes qualified, but in this case, unlimited simply becomes limited. What irony when one looks back at their announcement from <a href="http://localhost:8000/blog/2014-10-27-onedrive-goes-unlimited.html">a year ago</a>:</p>
-<blockquote>
-<p>Today, storage limits just became a thing of the past with Office 365.</p>
-</blockquote>
-<p>Why even promise when they can't keep it for more than a year.</p>
-<p>Okay, Microsoft just reclaimed the top spot of my most-hated-companies list, and my <a href="http://zhimingwang.org/blog/2015-11-06-microsoft-drops-unlimited-onedrive-storage-after-people-use-it-for-unlimited-storage.html">ongoing efforts on making a usable OneDrive CLI</a> have been wasted. I just pushed the final commit and closed all issues. Maybe it's a blessing that I'll no longer need to deal with that slow and glitchy API; I'll see after experimenting with APIs of other cloud storage providers.</p>
-<p>Guess my next stop is either Amazon Cloud Drive or S3, probably the former so that I don't need to calculate.<a class="footnoteRef" href="http://zhimingwang.org/blog/2015-11-06-microsoft-drops-unlimited-onedrive-storage-after-people-use-it-for-unlimited-storage.html#fn1" id="fnref1"><sup>1</sup></a> And a quick search yields an actively-maintained CLI client <a href="https://github.com/yadayada/acd_cli">yadavada/acd_cli</a>, so I may not need to roll my own this time (it depends on usability).</p>
-<div class="footnotes">
-<hr/>
-<ol>
-<li id="fn1"><p>Yeah I'm a mathematician, but I hate most calculations that involve $$. &#128514;<a class="footnotes-backlink" href="http://zhimingwang.org/blog/2015-11-06-microsoft-drops-unlimited-onedrive-storage-after-people-use-it-for-unlimited-storage.html#fnref1">&#8617;&#65038;</a></p></li>
 </ol>
 </div>
 ]]></content></entry></feed>
