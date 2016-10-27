@@ -28,7 +28,7 @@
 </div>
 </header>
 <p>This is a quick post sharing a workaround that I needed just now.</p>
-<p>I was trying to compile Pythons with pyenv on a RHEL 6.8 cluster. Unfortunately <code>sqlite-devel</code> is not installed and I doubt I can convince my sysadmin to install a package for me. The lack of SQLite headers resulted in Pythons without <code>_sqlite3</code> which is essential for me. Hitting at SQLite headers from Linuxbrew with <code>CPATH</code> did not help either.</p>
+<p>I was trying to compile Pythons with pyenv on a RHEL 6.8 cluster. Unfortunately <code>sqlite-devel</code> is not installed and I doubt I can convince my sysadmin to install a package for me. The lack of SQLite headers resulted in Pythons without <code>_sqlite3</code> which is essential for me. Hinting at SQLite headers from Linuxbrew with <code>CPATH</code> did not help either.</p>
 <p>Digging into CPython source code, turns out that CPython only looks into <a href="https://github.com/python/cpython/blob/59fa72e34da71fb24f52251c1cc88ed3c3b14797/setup.py#L1132-L1138">a fixed set of paths</a>:</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">sqlite_inc_paths <span class="op">=</span> [ <span class="st">'/usr/include'</span>,
                      <span class="co">'/usr/include/sqlite'</span>,
