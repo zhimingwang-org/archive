@@ -34,14 +34,14 @@
 </blockquote>
 <p>Note that <code>emacsclient</code> requires a filename, so my script prompts for one if <code>$1</code> is empty.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co">#!/usr/bin/env bash</span>
-<span class="kw">if [[</span> <span class="ot">-n</span> <span class="ot">$1</span><span class="kw"> ]]</span>; <span class="kw">then</span>
-    <span class="ot">file=$1</span>
+<span class="kw">if [[</span> <span class="ot">-n</span> <span class="va">$1</span><span class="kw"> ]]</span>; <span class="kw">then</span>
+    <span class="va">file=$1</span>
 <span class="kw">else</span>
-    <span class="kw">while [[</span> <span class="ot">-z</span> <span class="ot">${file}</span><span class="kw"> ]]</span>; <span class="kw">do</span>
-        <span class="kw">read</span> -p <span class="st">'filename: '</span> <span class="ot">file</span>
+    <span class="kw">while [[</span> <span class="ot">-z</span> <span class="va">${file}</span><span class="kw"> ]]</span>; <span class="kw">do</span>
+        <span class="bu">read</span> -p <span class="st">'filename: '</span> <span class="va">file</span>
     <span class="kw">done</span>
 <span class="kw">fi</span>
-<span class="kw">emacsclient</span> -cqta= <span class="st">"</span><span class="ot">${file}</span><span class="st">"</span></code></pre></div>
+<span class="ex">emacsclient</span> -cqta= <span class="st">"</span><span class="va">${file}</span><span class="st">"</span></code></pre></div>
 <p>Note that using <code>emacsclient</code> has the additional benefit that the same buffer is simultaneously updated accross different ttys (See screenshot, where I opened the current post in two different ttys). This way, you won't face the nasty "file changed on disk" problem when you accidentally edited the same file in another tty session.</p>
 <div class="figure">
 <a href="https://i.imgur.com/9KxEWKq.png" target="_blank"><img alt="screen shot of multiple copies of the same buffer" src="https://i.imgur.com/9KxEWKq.png"/></a>

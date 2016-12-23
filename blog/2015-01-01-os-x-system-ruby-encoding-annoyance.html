@@ -35,16 +35,16 @@ str = <span class="st">"에이핑크"</span>
 puts str.to_hex_string
 puts str.encode(<span class="st">"UTF-8"</span>, <span class="st">"UTF8-MAC"</span>).to_hex_string</code></pre></div>
 <p>Here are what I get with the system Ruby and the latested brewed Ruby:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">&gt;</span> <span class="kw">/usr/bin/ruby</span> --version
-<span class="kw">ruby</span> 2.0.0p481 (2014-05-08 revision 45883) [<span class="kw">universal.x86_64-darwin14</span>]
-<span class="kw">&gt;</span> <span class="kw">/usr/local/bin/ruby</span> --version
-<span class="kw">ruby</span> 2.2.0p0 (2014-12-25 revision 49005) [<span class="kw">x86_64-darwin14</span>]
-<span class="kw">&gt;</span> <span class="kw">/usr/bin/ruby</span> utf8-mac.rb
-<span class="kw">e1</span> 84 8b e1 85 a6 e1 84 8b e1 85 b5 e1 84 91 e1 85 b5 e1 86 bc e1 84 8f e1 85 b3
-<span class="kw">e1</span> 84 8b e1 85 a6 e1 84 8b e1 85 b5 e1 84 91 e1 85 b5 e1 86 bc e1 84 8f e1 85 b3
-<span class="kw">&gt;</span> <span class="kw">/usr/local/bin/ruby</span> utf8-mac.rb
-<span class="kw">e1</span> 84 8b e1 85 a6 e1 84 8b e1 85 b5 e1 84 91 e1 85 b5 e1 86 bc e1 84 8f e1 85 b3
-<span class="kw">ec</span> 97 90 ec 9d b4 ed 95 91 ed 81 ac</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="op">&gt;</span> <span class="ex">/usr/bin/ruby</span> --version
+<span class="ex">ruby</span> 2.0.0p481 (2014-05-08 revision 45883) [<span class="ex">universal.x86_64-darwin14</span>]
+<span class="op">&gt;</span> <span class="ex">/usr/local/bin/ruby</span> --version
+<span class="ex">ruby</span> 2.2.0p0 (2014-12-25 revision 49005) [<span class="ex">x86_64-darwin14</span>]
+<span class="op">&gt;</span> <span class="ex">/usr/bin/ruby</span> utf8-mac.rb
+<span class="ex">e1</span> 84 8b e1 85 a6 e1 84 8b e1 85 b5 e1 84 91 e1 85 b5 e1 86 bc e1 84 8f e1 85 b3
+<span class="ex">e1</span> 84 8b e1 85 a6 e1 84 8b e1 85 b5 e1 84 91 e1 85 b5 e1 86 bc e1 84 8f e1 85 b3
+<span class="op">&gt;</span> <span class="ex">/usr/local/bin/ruby</span> utf8-mac.rb
+<span class="ex">e1</span> 84 8b e1 85 a6 e1 84 8b e1 85 b5 e1 84 91 e1 85 b5 e1 86 bc e1 84 8f e1 85 b3
+<span class="ex">ec</span> 97 90 ec 9d b4 ed 95 91 ed 81 ac</code></pre></div>
 <p>As you can see, in the case of the system Ruby, NFD is left untouched. This leads to problems with, for instance, Google Translate. One obvious solution is to outsource the task to <code>iconv</code>, but I have the impression that outsourcing language features to shell commands is a generally despised practice.</p>
 <p>There's one more surprise. While <code>pry</code> with latest Rubies tend to handle Unicode very well (unlike <code>irb</code>), I tried <code>pry</code> with the current system Ruby, and it doesn't work; due to this annoying limitation, I couldn't even test the above problem interactively, and had to resort to a script. Maybe the problem can be resolved by compiling Ruby with <code>readline</code> or whatever; I didn't bother. The bottom line is, the system Ruby is not very pleasant for men in the 21st century — good Unicode support ought to be a must. (By the way, NFD in HFS+ is maddening. It breaks Terminal, iTerm, Google Translate, scp with Linux hosts, and the list goes on.)</p>
 <p>P.S. In Dropzone 3 custom actions you can select a custom Ruby with the <code>RubyPath</code> meta field, e.g.,</p>

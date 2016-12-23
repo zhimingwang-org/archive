@@ -60,7 +60,7 @@ DELETE_AFTER <span class="op">=</span> datetime.timedelta(days<span class="op">=
         <span class="cf">with</span> <span class="bu">open</span>(STORAGE_FILE, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> fp:
             serializable_seen_app_dict <span class="op">=</span> json.load(fp)
             <span class="cf">return</span> {app_filename: arrow.get(serialized_first_seen_date).date()
-                    <span class="cf">for</span> app_filename, serialized_first_seen_date <span class="op">in</span> serializable_seen_app_dict.items()}
+                    <span class="cf">for</span> app_filename, serialized_first_seen_date <span class="kw">in</span> serializable_seen_app_dict.items()}
     <span class="cf">except</span> <span class="pp">OSError</span>:
         <span class="cf">return</span> {}
 
@@ -80,7 +80,7 @@ DELETE_AFTER <span class="op">=</span> datetime.timedelta(days<span class="op">=
 <span class="co">    """</span>
     <span class="co"># convert datetime.time to str (ISO 8601)</span>
     serializable_seen_app_dict <span class="op">=</span> {app_filename: first_seen_date.isoformat()
-                                  <span class="cf">for</span> app_filename, first_seen_date <span class="op">in</span> seen_app_dict.items()}
+                                  <span class="cf">for</span> app_filename, first_seen_date <span class="kw">in</span> seen_app_dict.items()}
     os.makedirs(STORAGE_DIR, mode<span class="op">=</span><span class="bn">0o700</span>, exist_ok<span class="op">=</span><span class="va">True</span>)
     <span class="cf">try</span>:
         <span class="cf">with</span> <span class="bu">open</span>(STORAGE_FILE, mode<span class="op">=</span><span class="st">"w"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> fp:
@@ -99,7 +99,7 @@ DELETE_AFTER <span class="op">=</span> datetime.timedelta(days<span class="op">=
 <span class="co">        Return code indicating success or failure.</span>
 
 <span class="co">    """</span>
-    <span class="cf">if</span> <span class="op">not</span> os.path.isdir(OFFENDING_DIR):
+    <span class="cf">if</span> <span class="kw">not</span> os.path.isdir(OFFENDING_DIR):
         <span class="co"># good, you don't have that junk</span>
         <span class="cf">return</span> <span class="dv">0</span>
 
@@ -108,17 +108,17 @@ DELETE_AFTER <span class="op">=</span> datetime.timedelta(days<span class="op">=
     current_app_list <span class="op">=</span> os.listdir(OFFENDING_DIR)
 
     <span class="co"># boot already disappeared apps</span>
-    <span class="cf">for</span> app <span class="op">in</span> [app <span class="cf">for</span> app <span class="op">in</span> seen_app_dict <span class="cf">if</span> app <span class="op">not</span> <span class="op">in</span> current_app_list]:
+    <span class="cf">for</span> app <span class="kw">in</span> [app <span class="cf">for</span> app <span class="kw">in</span> seen_app_dict <span class="cf">if</span> app <span class="kw">not</span> <span class="kw">in</span> current_app_list]:
         seen_app_dict.pop(app)
 
     <span class="co"># add newly appeared apps</span>
-    <span class="cf">for</span> app <span class="op">in</span> [app <span class="cf">for</span> app <span class="op">in</span> current_app_list <span class="cf">if</span> app <span class="op">not</span> <span class="op">in</span> seen_app_dict]:
+    <span class="cf">for</span> app <span class="kw">in</span> [app <span class="cf">for</span> app <span class="kw">in</span> current_app_list <span class="cf">if</span> app <span class="kw">not</span> <span class="kw">in</span> seen_app_dict]:
         seen_app_dict[app] <span class="op">=</span> today
 
     <span class="co"># delete expired apps</span>
     returncode <span class="op">=</span> <span class="dv">0</span>
     newly_deleted_apps <span class="op">=</span> []
-    <span class="cf">for</span> app <span class="op">in</span> seen_app_dict:
+    <span class="cf">for</span> app <span class="kw">in</span> seen_app_dict:
         <span class="cf">if</span> today <span class="op">&gt;=</span> seen_app_dict[app] <span class="op">+</span> DELETE_AFTER:
             app_path <span class="op">=</span> os.path.join(OFFENDING_DIR, app)
             <span class="cf">try</span>:
@@ -128,7 +128,7 @@ DELETE_AFTER <span class="op">=</span> datetime.timedelta(days<span class="op">=
                 sys.stderr.write(<span class="st">"error: failed to remove '</span><span class="sc">%s</span><span class="st">': </span><span class="sc">%s</span><span class="st">"</span> <span class="op">%</span> (app_path, <span class="bu">str</span>(err)))
                 returncode <span class="op">=</span> <span class="dv">1</span>
 
-    <span class="cf">for</span> app <span class="op">in</span> newly_deleted_apps:
+    <span class="cf">for</span> app <span class="kw">in</span> newly_deleted_apps:
         seen_app_dict.pop(app)
 
     <span class="co"># write data to disk</span>

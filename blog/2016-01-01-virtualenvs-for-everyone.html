@@ -58,13 +58,13 @@ __all__ <span class="op">=</span> [
 
 <span class="kw">def</span> setup(<span class="op">**</span>kwargs):
     scripts <span class="op">=</span> [os.path.basename(script_path)
-               <span class="cf">for</span> script_path <span class="op">in</span> kwargs.pop(<span class="st">'scripts'</span>, [])]
+               <span class="cf">for</span> script_path <span class="kw">in</span> kwargs.pop(<span class="st">'scripts'</span>, [])]
     <span class="cf">if</span> scripts:
         <span class="bu">print</span>(<span class="st">'scripts:</span><span class="ch">\n</span><span class="st">  - </span><span class="sc">%s</span><span class="st">'</span> <span class="op">%</span> <span class="st">'</span><span class="ch">\n</span><span class="st">  - '</span>.join(scripts), <span class="bu">file</span><span class="op">=</span>sys.stderr)
     entry_points <span class="op">=</span> kwargs.pop(<span class="st">'entry_points'</span>, {})
-    <span class="cf">for</span> entry_point <span class="op">in</span> [<span class="st">'console_scripts'</span>, <span class="st">'gui_scripts'</span>]:
+    <span class="cf">for</span> entry_point <span class="kw">in</span> [<span class="st">'console_scripts'</span>, <span class="st">'gui_scripts'</span>]:
         extra_scripts <span class="op">=</span> [re.split(<span class="st">'(\s|=)'</span>, spec.strip())[<span class="dv">0</span>]
-                         <span class="cf">for</span> spec <span class="op">in</span> entry_points.pop(entry_point, [])]
+                         <span class="cf">for</span> spec <span class="kw">in</span> entry_points.pop(entry_point, [])]
         <span class="cf">if</span> extra_scripts:
             <span class="bu">print</span>(<span class="st">'</span><span class="sc">%s</span><span class="st">:</span><span class="ch">\n</span><span class="st">  - </span><span class="sc">%s</span><span class="st">'</span> <span class="op">%</span> (entry_point, <span class="st">'</span><span class="ch">\n</span><span class="st">  - '</span>.join(extra_scripts)),
                   <span class="bu">file</span><span class="op">=</span>sys.stderr)

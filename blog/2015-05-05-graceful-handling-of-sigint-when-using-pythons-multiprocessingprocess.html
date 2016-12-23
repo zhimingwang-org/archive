@@ -58,7 +58,7 @@
             httpd.shutdown()
 
 <span class="kw">def</span> do_things():
-    <span class="cf">for</span> i <span class="op">in</span> <span class="bu">range</span>(<span class="dv">10</span>):
+    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):
         sys.stderr.write(<span class="st">"."</span>)
         sys.stderr.flush()
         time.sleep(<span class="dv">1</span>)
@@ -77,7 +77,7 @@
 
     signal.signal(signal.SIGINT, sigint_mitigator)
 
-    <span class="cf">while</span> <span class="op">not</span> sigint_raised:
+    <span class="cf">while</span> <span class="kw">not</span> sigint_raised:
         do_things()
 
     server_process.join()

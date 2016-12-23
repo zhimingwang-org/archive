@@ -29,13 +29,13 @@
 </header>
 <p>It is well-known and common sense that the slash character (<code>/</code>) serves a special role in Bash filename expansion. For instance, the asterisk <code>*</code> certainly won't match <code>/</code> or <code>.</code> when used in filename expansion; otherwise, a standalone <code>*</code> would match everything in the filesystem.</p>
 <p>However, it is less clear how a literal slash character<a class="footnoteRef" href="#fn1" id="fnref1"><sup>1</sup></a> is treated in extended glob patterns. Naively one would expect it to just match a literal slash, but the real situtation is more complicated than that. Consider the following examples:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">bash-4.3</span>$ shopt -s extglob nullglob
-<span class="kw">bash-4.3</span>$ echo /usr/@(bin<span class="kw">|lib</span>)
-<span class="kw">/usr/bin</span> /usr/lib
-<span class="kw">bash-4.3</span>$ echo /usr@(/bin<span class="kw">|/lib</span>)
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">bash-4.3</span>$ shopt -s extglob nullglob
+<span class="ex">bash-4.3</span>$ echo /usr/@(bin<span class="kw">|</span><span class="ex">lib</span>)
+<span class="ex">/usr/bin</span> /usr/lib
+<span class="ex">bash-4.3</span>$ echo /usr@(/bin<span class="kw">|</span><span class="ex">/lib</span>)
 
-<span class="kw">bash-4.3</span>$ [[ /usr/bin == /usr@(/bin<span class="kw">|/lib</span>) ]] <span class="kw">&amp;&amp;</span> <span class="kw">echo</span> matching
-<span class="kw">matching</span></code></pre></div>
+<span class="ex">bash-4.3</span>$ [[ /usr/bin == /usr@(/bin<span class="kw">|</span><span class="ex">/lib</span>) ]] <span class="kw">&amp;&amp;</span> <span class="bu">echo</span> matching
+<span class="ex">matching</span></code></pre></div>
 <p>As seen from this example, patterns with slash simply doesn't work (in filename expansion) when placed in an extended glob pattern list, and there's no error whatsoever. I looked up the <a href="https://www.gnu.org/software/bash/manual/html_node/Pattern-Matching.html#Pattern-Matching">Bash Reference Manual</a> and the <a href="http://mywiki.wooledge.org/BashGuide/Patterns">Bash Guide</a> but neither mentioned this behavior. One might need to delve into the source code to say for sure what exactly is going on.</p>
 <p>In comparison, Zsh and its <a href="http://zsh.sourceforge.net/Doc/Release/Expansion.html#Filename-Generation">docs</a> are much more up front about this issue:</p>
 <blockquote>

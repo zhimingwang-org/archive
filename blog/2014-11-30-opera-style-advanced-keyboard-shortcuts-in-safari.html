@@ -40,7 +40,7 @@
 </ul>
 <p>Lately, with the Yosemite release, Safari has become a much more competitive browser. I won't say why, and I admit that it has major missing features that still prevents it from becoming my default — but I have to say I’m gradually moving more of more of my browsing, especially reading, to Safari. It would be nice if I could carry my power user shortcuts with me. Fortunately, this is possible. Just modify the plist in the following way:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co">#!/usr/bin/env bash</span>
-<span class="kw">defaults</span> write com.apple.Safari NSUserKeyEquivalents <span class="st">'{</span>
+<span class="ex">defaults</span> write com.apple.Safari NSUserKeyEquivalents <span class="st">'{</span>
 <span class="st">"Actual Size"="6";</span>
 <span class="st">"Back"="z";</span>
 <span class="st">"Find..."="/";</span>
@@ -51,7 +51,7 @@
 <span class="st">"Zoom Out"="9";</span>
 <span class="st">}'</span></code></pre></div>
 <p>Relaunch Safari. You are all set! Enjoy the ultrafast single key navigating experience. To reset,</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">defaults</span> delete com.apple.Safari NSUserKeyEquivalents</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">defaults</span> delete com.apple.Safari NSUserKeyEquivalents</code></pre></div>
 <hr/>
 <p><strong><em>2014/12/22 Update:</em></strong></p>
 <p>There's one caveat to this approach — unlike in Opera, where the default layman shortcuts (e.g., ⌘F) are still available when advanced keyboard shorts are enabled, in Safari they are simply overwritten. This is annoying when the web page or web app binds certain keys, especially <code>/</code> to its own search bar (a notable example being google.com). In that case I have to admit defeat and click on the menu bar item, which takes a hundred times as long as a single <code>/</code> keystroke.</p>
