@@ -12,7 +12,7 @@ The first rule of using MAS (or any kind of app store, for that matter) is that 
 
 > I have purchased and downloaded AntiVirus Sentinel Pro for Macintosh with Yosemite OS. I have a bad feeling this application is useless and maybe even harmful. Anyone knows if it is safe to use it?
 
-Okay, so why did you purchased it in the first place? I guess clueless users like this one are in every MAS developer's wet dreams.
+Okay, so why did you purchase it in the first place? I guess clueless users like this one are in every MAS developer's wet dreams.
 
 Let's continue with the Google search results. Second one is the iTunes preview link. Third one is a [YouTube video](http://www.securityfocus.eu/www/sentinel-pro.html) (also linked from MAS) which seems to be the only online documentation this app's got. Judging from the video the interface seems to be done in Java or something... Never mind that. Fourth result is a [rather recent thread](http://www.mac-forums.com/os-x-operating-system/327356-antivirus-sentinel-pro.html) (August 2015) from Mac Forums. Not this again:
 
@@ -30,7 +30,7 @@ Anyway, we were sidetracked. Back to the home page, actually this app does have 
 
 Back to MAS, the reviews are kind of jokes, too:
 
-![](/img/20160124-antivirus-sentinel-pro-reviews.png)
+![Stupid reviews for stupid app.](/img/20160124-antivirus-sentinel-pro-reviews.png)
 
 The first one begins with
 

@@ -12,7 +12,7 @@ I currently have 5 TB of data in OneDrive. I was once worried about lock-in when
 
 Why even promise when they can't keep it for more than a year.
 
-Okay, Microsoft just reclaimed the top spot of my most-hated-companies list, and my [ongoing efforts on making a usable OneDrive CLI]() have been wasted. I just pushed the final commit and closed all issues. Maybe it's a blessing that I'll no longer need to deal with that slow and glitchy API; I'll see after experimenting with APIs of other cloud storage providers.
+Okay, Microsoft just reclaimed the top spot of my most-hated-companies list, and my [ongoing efforts on making a usable OneDrive CLI](https://github.com/zmwangx/pyonedrive) have been wasted. I just pushed the final commit and closed all issues. Maybe it's a blessing that I'll no longer need to deal with that slow and glitchy API; I'll see after experimenting with APIs of other cloud storage providers.
 
 Guess my next stop is either Amazon Cloud Drive or S3, probably the former so that I don't need to calculate.[^calculate] And a quick search yields an actively-maintained CLI client [yadavada/acd_cli](https://github.com/yadayada/acd_cli), so I may not need to roll my own this time (it depends on usability).
 
