@@ -26,4 +26,4 @@ install:
   - pip install -r requirements.txt
 script:
   - python pyblog generate
-  - find build -name '*.html' -print0 | while IFS= read -r -d '' file; do tidy -q -e "$file"; done
+  - find build -path 'build/google*.html' -o -name '*.html' -print0 | xargs -0 tidy -q -e --gnu-emacs yes
