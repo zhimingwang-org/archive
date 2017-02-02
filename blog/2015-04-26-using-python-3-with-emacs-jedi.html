@@ -15,6 +15,7 @@
 <link href="/css/highlight.css" media="all" rel="stylesheet" type="text/css"/>
 </head>
 <body>
+<div id="archival-notice">This blog has been archived.<br/>Visit my home page at <a href="https://zhimingwang.org">zhimingwang.org</a>.</div>
 <nav class="nav">
 <a class="nav-icon" href="/" title="Home"><!--blog icon--></a>
 <a class="nav-title" href="/"><!--blog title--></a>
@@ -31,9 +32,9 @@
 <p>However, Jedi uses <code>python</code> by default, which means <code>python2</code> on most of our systems at this point. Occasionally I'm writing Python 3 specific code but Jedi completes to Python 2 or refuses to complete; for the record, I enjoy writing and debugging Python 3.3+ much better than 2.7 (I realized this after trying to create a code base that is backward compatible with 2.7, which means reinventing the wheel or introducing annoying branches from time to time). So naturally I'm looking into using Python 3 in Jedi.</p>
 <p>The <a href="https://tkf.github.io/emacs-jedi/latest/#how-to-use-python-3-or-any-other-specific-version-of-python">official docs</a> has been confusing and unhelpful at least for me, since it insists on setting up the virtualenv from within Emacs, and it failed for me. Why can't I set up the virtualenv myself? Turns out I can, and it's incredibly simple. The commands below assume that you have installed Jedi and friends (well, dependencies) using <code>package.el</code>.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">mkdir</span> -p ~/.emacs.d/.python-environments
-<span class="ex">virtualenv</span> -p /usr/local/bin/python3 ~/.emacs.d/.python-environments/jedi  <span class="co"># or whatever your python3 path is</span>
+<span class="ex">virtualenv</span> -p /usr/local/bin/python3 ~/.emacs.d/.python-environments/jedi  # or whatever your python3 path is
 <span class="co"># If you feel like installing the server with 'M-x jedi:install-server', also do the following</span>
-<span class="ex">~/.emacs.d/.python-environments/jedi/bin/pip</span> install --upgrade ~/.emacs.d/elpa/jedi-20150109.2230/  <span class="co"># you might need to change the version number</span></code></pre></div>
+<span class="ex">~/.emacs.d/.python-environments/jedi/bin/pip</span> install --upgrade ~/.emacs.d/elpa/jedi-20150109.2230/  # you might need to change the version number</code></pre></div>
 <p>And that's it. Put the following in your <code>~/.emacs</code>:</p>
 <div class="sourceCode"><pre class="sourceCode commonlisp"><code class="sourceCode commonlisp">(add-hook 'python-mode-hook 'jedi:setup)
 (<span class="kw">setq</span> jedi:complete-on-dot <span class="kw">t</span>)

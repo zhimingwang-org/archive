@@ -15,6 +15,7 @@
 <link href="/css/highlight.css" media="all" rel="stylesheet" type="text/css"/>
 </head>
 <body>
+<div id="archival-notice">This blog has been archived.<br/>Visit my home page at <a href="https://zhimingwang.org">zhimingwang.org</a>.</div>
 <nav class="nav">
 <a class="nav-icon" href="/" title="Home"><!--blog icon--></a>
 <a class="nav-title" href="/"><!--blog title--></a>
@@ -46,7 +47,7 @@
     <span class="kw">done</span>
     <span class="kw">for</span> node; <span class="kw">do</span>
         <span class="co"># -f, --force hasn't been specified &amp;&amp; node is a git repo</span>
-       <span class="kw"> [[</span> <span class="ot">-z</span> <span class="ot">$force</span> &amp;&amp; <span class="ot">-e</span> <span class="ot">$node</span>/.git<span class="kw"> ]]</span> <span class="kw">&amp;&amp;</span> <span class="kw">{</span>
+        [[ -z <span class="ot">$force</span> <span class="kw">&amp;&amp;</span> -e <span class="ot">$node</span>/.git ]] <span class="kw">&amp;&amp;</span> <span class="kw">{</span>
             <span class="kw">printf</span> <span class="st">"\e[31m'%s' is a git repo -- won't remove without the -f or --force option\e[0m\n"</span> <span class="ot">$node</span>
             <span class="kw">return</span> 1
         <span class="kw">}</span>

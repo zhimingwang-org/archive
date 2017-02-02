@@ -15,6 +15,7 @@
 <link href="/css/highlight.css" media="all" rel="stylesheet" type="text/css"/>
 </head>
 <body>
+<div id="archival-notice">This blog has been archived.<br/>Visit my home page at <a href="https://zhimingwang.org">zhimingwang.org</a>.</div>
 <nav class="nav">
 <a class="nav-icon" href="/" title="Home"><!--blog icon--></a>
 <a class="nav-title" href="/"><!--blog title--></a>
@@ -66,14 +67,14 @@ XELATEX_PROGRAM <span class="op">=</span> (<span class="vs">r"""</span>
 <span class="sc">{table}</span>
 <span class="vs">\end</span><span class="sc">{{</span><span class="vs">verbatim</span><span class="sc">}}</span>
 <span class="vs">\end</span><span class="sc">{{</span><span class="vs">document</span><span class="sc">}}</span>
-<span class="st">"""</span>)
+<span class="vs">"""</span>)
 
 <span class="kw">def</span> text_table(<span class="op">**</span>kwargs):
     <span class="co">"""Generate the text version of the table."""</span>
     width <span class="op">=</span> kwargs[<span class="st">"width"</span>] <span class="cf">if</span> <span class="st">"width"</span> <span class="kw">in</span> kwargs <span class="cf">else</span> DEFAULT_COLUMN_WIDTH
     directory <span class="op">=</span> kwargs[<span class="st">"directory"</span>] <span class="cf">if</span> <span class="st">"directory"</span> <span class="kw">in</span> kwargs <span class="cf">else</span> HERE
     command_line <span class="op">=</span> (<span class="vs">r"find </span><span class="sc">{directory}</span><span class="vs"> -maxdepth 1 -type f -perm -u=x -exec basename </span><span class="sc">{{}}</span><span class="vs"> \; "</span>
-                    <span class="co">"| column -c {width} | expand"</span>.<span class="bu">format</span>(
+                    <span class="st">"| column -c </span><span class="sc">{width}</span><span class="st"> | expand"</span>.<span class="bu">format</span>(
                         directory<span class="op">=</span>shlex.quote(directory), width<span class="op">=</span>width))
     ccommand(command_line)
     <span class="cf">return</span> subprocess.check_output(command_line, shell<span class="op">=</span><span class="va">True</span>).decode(<span class="st">"utf-8"</span>)
@@ -118,7 +119,7 @@ XELATEX_PROGRAM <span class="op">=</span> (<span class="vs">r"""</span>
     size <span class="op">=</span> kwargs[<span class="st">"size"</span>] <span class="cf">if</span> <span class="st">"size"</span> <span class="kw">in</span> kwargs <span class="cf">else</span> DEFAULT_SIZE
     background <span class="op">=</span> kwargs[<span class="st">"background"</span>] <span class="cf">if</span> <span class="st">"background"</span> <span class="kw">in</span> kwargs <span class="cf">else</span> DEFAULT_BACKGROUND_COLOR
     command_line <span class="op">=</span> (<span class="st">"convert -density </span><span class="sc">{density}</span><span class="st"> table.pdf -resize </span><span class="sc">{size}</span><span class="st"> -size </span><span class="sc">{size}</span><span class="st"> "</span>
-                    <span class="co">"xc:{background} +swap -gravity center -composite table.png"</span>.<span class="bu">format</span>(
+                    <span class="st">"xc:</span><span class="sc">{background}</span><span class="st"> +swap -gravity center -composite table.png"</span>.<span class="bu">format</span>(
                         density<span class="op">=</span>density, size<span class="op">=</span>size, background<span class="op">=</span>background))
     <span class="cf">try</span>:
         ccommand(command_line)

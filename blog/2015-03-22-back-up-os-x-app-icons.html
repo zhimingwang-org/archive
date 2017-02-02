@@ -15,6 +15,7 @@
 <link href="/css/highlight.css" media="all" rel="stylesheet" type="text/css"/>
 </head>
 <body>
+<div id="archival-notice">This blog has been archived.<br/>Visit my home page at <a href="https://zhimingwang.org">zhimingwang.org</a>.</div>
 <nav class="nav">
 <a class="nav-icon" href="/" title="Home"><!--blog icon--></a>
 <a class="nav-title" href="/"><!--blog title--></a>
@@ -40,7 +41,7 @@
 <span class="kw">{</span>
     <span class="co"># $1 is the path to the app</span>
     <span class="va">filename=$(</span><span class="ex">/usr/libexec/PlistBuddy</span> -c <span class="st">"print CFBundleIconFile"</span> <span class="st">"</span><span class="va">$1</span><span class="st">"</span>/Contents/Info.plist <span class="op">2&gt;</span>/dev/null<span class="va">)</span>
-   <span class="kw"> [[</span> <span class="ot">-n</span> <span class="va">${filename}</span><span class="kw"> ]]</span> <span class="kw">||</span> <span class="bu">return</span>
+    [[ <span class="ex">-n</span> <span class="va">${filename}</span> ]] <span class="kw">||</span> <span class="bu">return</span>
     <span class="va">filename=$(</span><span class="fu">basename</span> <span class="st">"</span><span class="va">${filename}</span><span class="st">"</span> .icns<span class="va">)</span>
     <span class="bu">echo</span> <span class="st">"</span><span class="va">$1</span><span class="st">/Contents/Resources/</span><span class="va">${filename}</span><span class="st">.icns"</span>
 <span class="kw">}</span>
@@ -52,8 +53,8 @@
     <span class="va">path=$(</span><span class="ex">realpath</span> -e <span class="st">"</span><span class="va">$1</span><span class="st">"</span><span class="va">)</span> <span class="kw">||</span> <span class="kw">{</span> <span class="bu">echo</span> <span class="st">"</span><span class="va">${RED}</span><span class="st">error: broken link '</span><span class="va">${path}</span><span class="st">'</span><span class="va">${RESET}</span><span class="st">"</span> <span class="op">&gt;&amp;2</span><span class="kw">;</span> <span class="bu">return</span> 1<span class="kw">;</span> <span class="kw">}</span>
     <span class="va">version=$(</span><span class="ex">app_version</span> <span class="st">"</span><span class="va">${path}</span><span class="st">"</span><span class="va">)</span>
     <span class="va">icon_path=$(</span><span class="ex">app_icon_path</span> <span class="st">"</span><span class="va">${path}</span><span class="st">"</span><span class="va">)</span>
-   <span class="kw"> [[</span> <span class="ot">-n</span> <span class="va">${icon_path}</span><span class="kw"> ]]</span> <span class="kw">||</span> <span class="kw">{</span> <span class="bu">echo</span> <span class="st">"</span><span class="va">${YELLOW}</span><span class="st">warning: '</span><span class="va">$1</span><span class="st">' has no app icon</span><span class="va">${RESET}</span><span class="st">"</span><span class="kw">;</span> <span class="bu">return</span> 1<span class="kw">;</span> <span class="kw">}</span>
-   <span class="kw"> [[</span> <span class="ot">-f</span> <span class="va">${icon_path}</span><span class="kw"> ]]</span> <span class="kw">||</span> <span class="kw">{</span> <span class="bu">echo</span> <span class="st">"</span><span class="va">${RED}</span><span class="st">error: '</span><span class="va">${icon_path}</span><span class="st">' does not exist</span><span class="va">${RESET}</span><span class="st">"</span> <span class="op">&gt;&amp;2</span><span class="kw">;</span> <span class="bu">return</span> 1<span class="kw">;</span> <span class="kw">}</span>
+    [[ <span class="ex">-n</span> <span class="va">${icon_path}</span> ]] <span class="kw">||</span> <span class="kw">{</span> <span class="bu">echo</span> <span class="st">"</span><span class="va">${YELLOW}</span><span class="st">warning: '</span><span class="va">$1</span><span class="st">' has no app icon</span><span class="va">${RESET}</span><span class="st">"</span><span class="kw">;</span> <span class="bu">return</span> 1<span class="kw">;</span> <span class="kw">}</span>
+    [[ <span class="ex">-f</span> <span class="va">${icon_path}</span> ]] <span class="kw">||</span> <span class="kw">{</span> <span class="bu">echo</span> <span class="st">"</span><span class="va">${RED}</span><span class="st">error: '</span><span class="va">${icon_path}</span><span class="st">' does not exist</span><span class="va">${RESET}</span><span class="st">"</span> <span class="op">&gt;&amp;2</span><span class="kw">;</span> <span class="bu">return</span> 1<span class="kw">;</span> <span class="kw">}</span>
     <span class="fu">cp</span> <span class="st">"</span><span class="va">${icon_path}</span><span class="st">"</span> <span class="st">"</span><span class="va">${name}</span><span class="st">-</span><span class="va">${version}</span><span class="st">.icns"</span>
     <span class="bu">echo</span> <span class="st">"</span><span class="va">${name}</span><span class="st">-</span><span class="va">${version}</span><span class="st">.icns"</span>
 <span class="kw">}</span>
