@@ -1,3 +1,5 @@
+*Feburary 01, 2017: This blog has been archived. Visit my home page at [zhimingwang.org](https://zhimingwang.org).*
+
 [![Build Status](https://travis-ci.org/zmwangx/zmwangx.github.io.svg?branch=source)](https://travis-ci.org/zmwangx/zmwangx.github.io)
 
 This blog can be built with the `pyblog` script. The `pyblog` script currently provides the following actions:

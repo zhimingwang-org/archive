@@ -39,8 +39,8 @@ import lxml.etree as ET
 
 ############################# BLOG CONFIGURATIONS ##############################
 # Safe to customize
-BLOG_HOME = "http://zhimingwang.org/"
-CUSTOM_DOMAIN = "zhimingwang.org"  # GitHub Pages custom domain (could be None)
+BLOG_HOME = "http://archive.zhimingwang.org/"
+CUSTOM_DOMAIN = "archive.zhimingwang.org"  # GitHub Pages custom domain (could be None)
 BLOG_TITLE = "dl? cmplnts?"
 BLOG_DESCRIPTION = "Zhiming Wang's personal blog"
 LANGUAGE = "en-us"
